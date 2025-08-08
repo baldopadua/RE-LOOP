@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=6 format=3 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scenes/level_1_scene.gd" id="1_6g18d"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_peipn"]
@@ -22,8 +22,7 @@ source_tilemap = NodePath("TileMapLayer")
 [node name="PlayerScene" parent="." instance=ExtResource("2_peipn")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-visible = false
-tile_map_data = PackedByteArray("AAD0//3/AQAAAAAAAAD0//7/AQAAAAAAAAD0////AQAAAAAAAAD0/wAAAQAAAAAAAAD1/wAAAQAAAAAAAAD2/wAAAQAAAAAAAAD3/wAAAQAAAAAAAAD4/wAAAQAAAAAAAAD5/wAAAQAAAAAAAAD6/wAAAQAAAAAAAAD7/wAAAQAAAAAAAAD8/wAAAQAAAAAAAAD9/wAAAQAAAAAAAAAFAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAADAAAAAQAAAAAAAAACAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAD//wAAAQAAAAAAAAD+/wAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQABAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAOAP//AQAAAAAAAAAOAP7/AQAAAAAAAAAOAP3/AQAAAAAAAAAOAPz/AQAAAAAAAAA=")
+tile_map_data = PackedByteArray(0, 0, 14, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_1kqti")
 
 [node name="Camera2D" type="Camera2D" parent="."]
