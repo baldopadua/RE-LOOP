@@ -18,7 +18,9 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("move_left") and round(rad_to_deg(rotation)) > -180.0 and not is_moving:
 		direction = player_directions.LEFT
 		rotate_player()
-
+	# MAX TURNS REACHED
+	elif (event.is_action_pressed("move_right") or event.is_action_pressed("move_left")) and (round(rad_to_deg(rotation)) == 180.0 or round(rad_to_deg(rotation)) == -180.0) and not is_moving:
+		print("MAX TURNS REACHED!")
 func _tween_finished():
 	tween.kill()
 	is_moving = false
