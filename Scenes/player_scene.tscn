@@ -13,10 +13,13 @@ gradient = SubResource("Gradient_8tj53")
 script = ExtResource("1_8tj53")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(9.53674e-07, 280)
+position = Vector2(9.53674e-07, -271)
 scale = Vector2(0.3125, 0.46875)
 texture = SubResource("GradientTexture2D_7cibt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 280)
+position = Vector2(0, -271)
 shape = SubResource("CapsuleShape2D_8tj53")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(10, -271)
