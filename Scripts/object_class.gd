@@ -8,9 +8,6 @@ class_name object_class
 
 @export var object_name: String = "Generic Object"
 @export var is_pickupable: bool = true
-@export var needs_waypoint: bool = false
-@export var has_waypoint: bool = false
-@export var score_if_cleared: int = 0 # Apply this to interactable objects
 @export var usable_targets: Array[String] = [] 
 
 var is_reachable: bool = false
@@ -25,7 +22,8 @@ func _ready():
 # Both body_entered tsaka body_exit ko tinanggal
 
 func _on_body_entered(body) -> void:
-	if body.name != "player":
+	print("BODY: %s" % str(body))
+	if body.name != "PlayerScene":
 		return
 	# For Tools [ Mop, Rugs, Buckets ]
 	if is_pickupable and not body.is_holding_object:

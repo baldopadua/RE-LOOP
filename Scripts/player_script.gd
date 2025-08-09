@@ -13,6 +13,7 @@ var origi_object_pos: Vector2
 var is_holding_object : bool = false
 var available_object : object_class = null
 var available_interactable_object : object_class = null
+@onready var time_sfx = $"../ProgressionalAudio"
 
 # TODO: Change this later to animated sprite
 @onready var sprite = $Sprite2D
@@ -25,9 +26,11 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_right") and round(rad_to_deg(rotation)) < 180.0 and not is_moving:
 		direction = player_directions.RIGHT
 		rotate_player()
+		play_sfx()
 	elif event.is_action_pressed("move_left") and round(rad_to_deg(rotation)) > -180.0 and not is_moving:
 		direction = player_directions.LEFT
 		rotate_player()
+		play_sfx()
 	# MAX TURNS REACHED
 	elif (event.is_action_pressed("move_right") or event.is_action_pressed("move_left")) and (round(rad_to_deg(rotation)) == 180.0 or round(rad_to_deg(rotation)) == -180.0) and not is_moving:
 		print("MAX TURNS REACHED!")
@@ -47,6 +50,16 @@ func _tween_finished():
 	tween.kill()
 	is_moving = false
 	pass
+
+func play_sfx():
+	time_sfx.pitch_scale = randf() + 1.0
+	if direction == player_directions.RIGHT:
+		time_sfx.stream = load("res://Audio/time_manip.wav")
+		time_sfx.play()
+	else:
+		time_sfx.stream = load("res://Audio/time_manip_reversed.wav")
+		time_sfx.play()
+		
 
 # Movement of Player
 func rotate_player():
@@ -71,7 +84,7 @@ func rotate_player():
 		sprite.flip_h = true
 		
 	# set the tween
-	tween.tween_property(self, "rotation", rotation_tween, transition_time).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "rotation", rotation_tween, transition_time).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 	
 func _process(delta):
 	pass
