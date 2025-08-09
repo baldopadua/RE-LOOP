@@ -4,26 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="2_7cibt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8tj53"]
-radius = 6.0
-height = 22.0
+radius = 17.0
+height = 42.0
 
 [node name="PlayerScene" type="CharacterBody2D"]
 script = ExtResource("1_8tj53")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(2, -280)
+position = Vector2(1.65106, -280.629)
 rotation = 3.14159
+scale = Vector2(2.05667, 2.05667)
 texture = ExtResource("2_7cibt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -280)
+position = Vector2(0, -280)
 shape = SubResource("CapsuleShape2D_8tj53")
 
 [node name="object_position" type="Marker2D" parent="."]
 position = Vector2(1, -280)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -280)
-zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
