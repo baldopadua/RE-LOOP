@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var player_directions = GlobalVariables.player_direction
 @export var direction: GlobalVariables.player_direction
+@export var player_clock_position: int = 0 # Default to 0, nasa top
 
 const angle_per_move := 30 # The that will be added everytime player rotates
 var is_moving: bool = false
@@ -12,27 +13,34 @@ var held_object: object_class = null
 var origi_object_pos: Vector2
 var is_holding_object : bool = false
 var available_object : object_class = null
-var available_interactable_object : object_class = null
-@onready var time_sfx = $"../ProgressionalAudio"
+#var available_interactable_object : object_class = null
+var interactable_objects: Array = []
+
+# SFX
+@onready var time_sfx: Object = $"../time_manip"
+@onready var clank_sfx: Object = $"../clank"
 
 # TODO: Change this later to animated sprite
 @onready var sprite = $Sprite2D
 
 func _ready() -> void:
 	object_pos = get_node("object_position")
+	print(type_string(typeof(time_sfx)))
 
 func _input(event: InputEvent) -> void:
 	# MOVEMENT
-	if event.is_action_pressed("move_right") and round(rad_to_deg(rotation)) < 180.0 and not is_moving:
-		direction = player_directions.RIGHT
+	if event.is_action_pressed("move_right") and round(rad_to_deg(rotation)) < 180.0 and not is_moving and not GlobalVariables.player_stopped:
+		direction = player_directions.CLOCKWISE
 		rotate_player()
-		play_sfx()
-	elif event.is_action_pressed("move_left") and round(rad_to_deg(rotation)) > -180.0 and not is_moving:
-		direction = player_directions.LEFT
+		GlobalVariables.play_sfx(time_sfx, player_directions.CLOCKWISE)
+		GlobalVariables.play_sfx(clank_sfx, player_directions.CLOCKWISE)
+	elif event.is_action_pressed("move_left") and round(rad_to_deg(rotation)) > -180.0 and not is_moving and not GlobalVariables.player_stopped:
+		direction = player_directions.COUNTERCLOCKWISE
 		rotate_player()
-		play_sfx()
+		GlobalVariables.play_sfx(time_sfx, player_directions.COUNTERCLOCKWISE)
+		GlobalVariables.play_sfx(clank_sfx, player_directions.COUNTERCLOCKWISE)
 	# MAX TURNS REACHED
-	elif (event.is_action_pressed("move_right") or event.is_action_pressed("move_left")) and (round(rad_to_deg(rotation)) == 180.0 or round(rad_to_deg(rotation)) == -180.0) and not is_moving:
+	elif (event.is_action_pressed("move_right") or event.is_action_pressed("move_left")) and (round(rad_to_deg(rotation)) == 180.0 or round(rad_to_deg(rotation)) == -180.0) and not is_moving and not GlobalVariables.player_stopped:
 		print("MAX TURNS REACHED!")
 		
 	# OBJECT INTERACTION
@@ -43,23 +51,22 @@ func _input(event: InputEvent) -> void:
 		item_drop()
 	# Interact with Objects using Tools
 	# TODO: Guys baka meron kayo mas efficient solution, may apo na sa tuhod yung if else ko ;-;
-	elif event.is_action_pressed("interact") and is_holding_object and available_interactable_object != null:
-		print("Interact with this")
+	elif event.is_action_pressed("interact") and is_holding_object and interactable_objects != null:
+		for obj in interactable_objects:
+			if obj.object_name in held_object.usable_targets:
+				held_object.interact(obj)
+				held_object = null
+				is_holding_object = false
+				break
 
 func _tween_finished():
 	tween.kill()
 	is_moving = false
-	pass
-
-func play_sfx():
-	time_sfx.pitch_scale = randf() + 1.0
-	if direction == player_directions.RIGHT:
-		time_sfx.stream = load("res://Audio/time_manip.wav")
-		time_sfx.play()
+	if direction == player_directions.CLOCKWISE:
+		player_clock_position += 1
 	else:
-		time_sfx.stream = load("res://Audio/time_manip_reversed.wav")
-		time_sfx.play()
-		
+		player_clock_position -= 1
+	print(player_clock_position)
 
 # Movement of Player
 func rotate_player():
@@ -76,7 +83,7 @@ func rotate_player():
 		
 	# Rotate based on direction
 	var rotation_tween: float
-	if direction == player_directions.RIGHT:
+	if direction == player_directions.CLOCKWISE:
 		rotation_tween = rotation + deg_to_rad(angle_per_move)
 		sprite.flip_h = false
 	else:

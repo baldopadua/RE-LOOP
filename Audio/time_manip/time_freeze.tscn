@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfjn0ovrjl87e"]
+
+[ext_resource type="AudioStream" uid="uid://37kwicksjd18" path="res://Audio/wavs/time_freeze.mp3" id="1_jldk1"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyg4q"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("1_jldk1")
+
+[node name="time_freeze" type="AudioStreamPlayer2D"]
+stream = SubResource("AudioStreamRandomizer_eyg4q")
+volume_db = 1.0
+max_polyphony = 6

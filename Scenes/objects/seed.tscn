@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://crgcfnjvowrjv"]
+[gd_scene load_steps=5 format=3 uid="uid://c70cg6ape7qus"]
 
-[ext_resource type="Script" path="res://Scripts/object_class.gd" id="1_a0bdr"]
+[ext_resource type="Script" uid="uid://c5sevvwh55kxw" path="res://Scripts/seed.gd" id="1_qb80l"]
 
 [sub_resource type="Gradient" id="Gradient_h627t"]
-colors = PackedColorArray(0.348232, 0.189966, 0, 1, 0.516554, 0.215639, 0, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_arhpd"]
 gradient = SubResource("Gradient_h627t")
@@ -11,26 +11,25 @@ width = 10
 height = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
-size = Vector2(31, 18)
+size = Vector2(15, 15)
 
-[node name="Soil" type="Area2D"]
+[node name="Seed" type="Area2D"]
 light_mask = 3
 visibility_layer = 3
+z_index = 2
 disable_mode = 2
-script = ExtResource("1_a0bdr")
-object_name = "soil"
-is_pickupable = false
+script = ExtResource("1_qb80l")
+object_name = "seed"
+usable_targets = Array[String](["soil"])
+metadata/_custom_type_script = "uid://d1t303evbdwox"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.5, 1)
-scale = Vector2(2.9, 1.2)
 texture = SubResource("GradientTexture2D_arhpd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
-position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_nwbkr")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

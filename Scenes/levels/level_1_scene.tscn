@@ -1,0 +1,101 @@
+[gd_scene load_steps=19 format=4 uid="uid://cbl4k6bkjnggc"]
+
+[ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/level_1_scene.gd" id="1_pxia2"]
+[ext_resource type="Texture2D" uid="uid://csmaxjvlux4gi" path="res://Assets/grey-red-box.png" id="2_l4q40"]
+[ext_resource type="Texture2D" uid="uid://cyh820yfsstco" path="res://Assets/RoundWorldFuture.png" id="3_cmquk"]
+[ext_resource type="Texture2D" uid="uid://bua2qfy6026td" path="res://Assets/blank-clock.png" id="4_70ox2"]
+[ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_xkn6d"]
+[ext_resource type="PackedScene" uid="uid://c70cg6ape7qus" path="res://Scenes/objects/seed.tscn" id="6_ystme"]
+[ext_resource type="PackedScene" uid="uid://crgcfnjvowrjv" path="res://Scenes/objects/soil.tscn" id="8_cd6w3"]
+[ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/time_manip/bell.tscn" id="8_l4q40"]
+[ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/time_manip/time_manip.tscn" id="9_cmquk"]
+[ext_resource type="PackedScene" uid="uid://3ytk6p6f2w23" path="res://Scenes/objects/tree.tscn" id="10_cmquk"]
+[ext_resource type="PackedScene" uid="uid://d1tjd7nf23n8s" path="res://Audio/time_manip/cinematic_impact.tscn" id="11_70ox2"]
+[ext_resource type="PackedScene" uid="uid://b26khqfn4jala" path="res://Audio/time_manip/glass_break.tscn" id="12_cd6w3"]
+[ext_resource type="PackedScene" uid="uid://dfjn0ovrjl87e" path="res://Audio/time_manip/time_freeze.tscn" id="13_7hl30"]
+[ext_resource type="PackedScene" uid="uid://co4mj4xfj7mhw" path="res://Audio/time_manip/ice_break.tscn" id="14_ggo0n"]
+[ext_resource type="PackedScene" uid="uid://cic27iv8pc2fo" path="res://Audio/time_manip/underwater_explosion.tscn" id="15_jr302"]
+[ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/time_manip/clank.tscn" id="16_7hl30"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wf4qv"]
+texture = ExtResource("2_l4q40")
+texture_region_size = Vector2i(24, 24)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1kqti"]
+tile_size = Vector2i(24, 24)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_wf4qv")
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("source_tilemap")]
+script = ExtResource("1_pxia2")
+source_tilemap = NodePath("TileMapLayer")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wwAAQAAAAAAAAAAAAwAAQAAAAAAAAD+/wwAAQAAAAAAAAABAAwAAQAAAAAAAAADAAsAAQAAAAAAAAAEAAsAAQAAAAAAAAAFAAsAAQAAAAAAAAAGAAoAAQAAAAAAAAAHAAkAAQAAAAAAAAAIAAkAAQAAAAAAAAAJAAgAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAYAAQAAAAAAAAALAAUAAQAAAAAAAAALAAQAAQAAAAAAAAALAAMAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAAAAQAAAAAAAAAMAP//AQAAAAAAAAAMAP7/AQAAAAAAAAAMAAEAAQAAAAAAAAACAAwAAQAAAAAAAAD9/wwAAQAAAAAAAAAMAP3/AQAAAAAAAAALAPz/AQAAAAAAAAALAPv/AQAAAAAAAAALAPr/AQAAAAAAAAAKAPn/AQAAAAAAAAAJAPj/AQAAAAAAAAAJAPf/AQAAAAAAAAAIAPb/AQAAAAAAAAAHAPb/AQAAAAAAAAAGAPX/AQAAAAAAAAAFAPT/AQAAAAAAAAAEAPT/AQAAAAAAAAADAPT/AQAAAAAAAAACAPP/AQAAAAAAAAABAPP/AQAAAAAAAAD///P/AQAAAAAAAAD+//P/AQAAAAAAAAD9//P/AQAAAAAAAAD8/wsAAQAAAAAAAAD7/wsAAQAAAAAAAAD6/wsAAQAAAAAAAAD5/woAAQAAAAAAAAD4/wkAAQAAAAAAAAD3/wkAAQAAAAAAAAD2/wgAAQAAAAAAAAD2/wcAAQAAAAAAAAD1/wYAAQAAAAAAAAD0/wUAAQAAAAAAAAD0/wQAAQAAAAAAAAD0/wMAAQAAAAAAAADz/wIAAQAAAAAAAADz/wEAAQAAAAAAAADz/wAAAQAAAAAAAADz////AQAAAAAAAADz//7/AQAAAAAAAADz//3/AQAAAAAAAAD0//z/AQAAAAAAAAD0//v/AQAAAAAAAAD0//r/AQAAAAAAAAD1//n/AQAAAAAAAAD2//j/AQAAAAAAAAD2//f/AQAAAAAAAAD3//b/AQAAAAAAAAD4//b/AQAAAAAAAAD5//X/AQAAAAAAAAD6//T/AQAAAAAAAAD7//T/AQAAAAAAAAD8//T/AQAAAAAAAAAAAPP/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_1kqti")
+
+[node name="SampleMap" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -350.0
+offset_right = 350.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cmquk")
+expand_mode = 1
+
+[node name="Clock" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_70ox2")
+expand_mode = 1
+
+[node name="PlayerScene" parent="." instance=ExtResource("5_xkn6d")]
+
+[node name="Seed" parent="." instance=ExtResource("6_ystme")]
+position = Vector2(-241, 138)
+
+[node name="Soil" parent="." instance=ExtResource("8_cd6w3")]
+position = Vector2(1, -282)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 2)
+zoom = Vector2(0.9, 0.9)
+position_smoothing_enabled = true
+
+[node name="bell" parent="." instance=ExtResource("8_l4q40")]
+
+[node name="time_manip" parent="." instance=ExtResource("9_cmquk")]
+
+[node name="tree" parent="." instance=ExtResource("10_cmquk")]
+visible = false
+position = Vector2(0, -279)
+
+[node name="cinematic_impact" parent="." instance=ExtResource("11_70ox2")]
+
+[node name="glass_break" parent="." instance=ExtResource("12_cd6w3")]
+
+[node name="time_freeze" parent="." instance=ExtResource("13_7hl30")]
+
+[node name="ice_break" parent="." instance=ExtResource("14_ggo0n")]
+
+[node name="underwater_explosion" parent="." instance=ExtResource("15_jr302")]
+
+[node name="clank" parent="." instance=ExtResource("16_7hl30")]

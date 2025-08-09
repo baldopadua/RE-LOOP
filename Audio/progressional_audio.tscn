@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbdf16v3l212t"]
-
-[ext_resource type="AudioStream" uid="uid://2co3uykc3dwt" path="res://Audio/time_manip.wav" id="1_6or6l"]
-
-[node name="ProgressionalAudio" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_6or6l")

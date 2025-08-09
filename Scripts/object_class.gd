@@ -36,7 +36,9 @@ func _on_body_entered(body) -> void:
 		print("%s is interactable" % object_name)
 		is_reachable = true
 		player_char = body
-		body.available_interactable_object = self
+		#body.available_interactable_object = self
+		body.interactable_objects.append(self)
+		print(body.interactable_objects)
 
 func _on_body_exited(body) -> void:
 	print("BODY: %s" % str(body))
@@ -54,7 +56,9 @@ func _on_body_exited(body) -> void:
 	if not is_pickupable:
 		is_reachable = false
 		player_char = null
-		body.available_interactable_object = null
+		#body.available_interactable_object = null
+		if body.interactable_objects.has(self):
+			body.interactable_objects.erase(self)
 		print("Out of Interactable Range")
 
 func set_flipped(flip: bool):
