@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=11 format=4 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scenes/level_1_scene.gd" id="1_6g18d"]
-[ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_peipn"]
+[ext_resource type="PackedScene" uid="uid://cljssbdufvpdy" path="res://Scenes/player_scene.tscn" id="2_peipn"]
 [ext_resource type="Texture2D" uid="uid://csmaxjvlux4gi" path="res://Assets/grey-red-box.png" id="3_7s3be"]
 [ext_resource type="Texture2D" uid="uid://cyh820yfsstco" path="res://Assets/RoundWorldFuture.png" id="4_1kqti"]
 [ext_resource type="Texture2D" uid="uid://bua2qfy6026td" path="res://Assets/blank-clock.png" id="4_wf4qv"]
+[ext_resource type="Texture2D" uid="uid://cucd81qljw5f" path="res://Assets/circle.png" id="6_d7bb0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wf4qv"]
 texture = ExtResource("3_7s3be")
@@ -16,6 +17,64 @@ texture_region_size = Vector2i(24, 24)
 tile_size = Vector2i(24, 24)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_wf4qv")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k3i5e"]
+texture = ExtResource("6_d7bb0")
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.06021, 3.89698, 8, 0.0573082, 8, 3.66774, 4.72795, 6.13201, 2.77946, 8, -2.43561, 8)
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.56762, -0.515777, -2.55023, -2.29234, 0.830974, -3.3812, 8, -4.24083, 8, -0.687702, 2.60754, 0.171926, -2.83677, 1.26079, -8, 3.89698)
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.24083, -3.35255, -4.0689, 1.0029, -4.0689, 8, -2.6935, 8, 1.60464, 4.44141, 0.171926, 1.28944, -0.458468, -3.75371, -0.916937, -8, -0.916937)
+8:4/0 = 0
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.97845, 2.33816, 3.0576, 8, 8, 0.899294, 8, -0.94101, 6.00387, -4.49647, 3.77703, -8, 1.97845)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.41566, 1.03155, 8, -1.94849, 8, 4.81392, 8, 7.04895, 7.49583, 7.74235, 6.79106, 8, 2.95139, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.68067, -6.44893, -2.8084, -8, 0.866791, -8, -3.29381, -3.12045, -5.30476, 0.0693436, -6.83031, 3.18979, -8, 5.27009, -8, -3.0511, -5.92885, -4.646)
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.43887, -8, 8, -8, 8, -1.43887, 4.49647, -4.49647)
+9:5/0 = 0
+9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -5.1778, -4.7717, -2.33509, 0.710678, 1.82746, 8, -2.84271, 8, -4.03758, 4.69579, -8, -1.82746)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.719435, -0.359716, 2.69788, -8, 7.20831, -8, 5.5839, -5.78696, 4.67633, -1.43887, 4.49647, 8, 1.07915, 8)
+5:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+9:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.23746, -8, 8, -8, 8, 8, -1.79859, 8, -1.79859, 2.33816, -2.1583, -3.77703)
+4:7/0 = 0
+4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.25901, -8, 4.85619, -8, 5.57562, -3.0576, 8, 2.15831, 8, 7.37421, 6.29506, 8, 3.0576, 3.41732, 1.25901, -1.07915)
+5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.52157, -6.44687, 6.19306, -5.98874, 8, -7.13491, 8, -8, 8)
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.72593, -8, 1.42136, -1.72593, 0, 3.65492, -2.63966, 9.1373, -6.32266, 8.35588, -7.10679, 8, -4.7717, 5.07628, -1.82746, -3.55339, -1.92899, -6.29458, -1.94849, -8)
+4:8/0 = 0
+5:8/0 = 0
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -5.98874, -8, 0.269791, 0.539574, 5.58758, 5.10046, 8, 6.24663, 8, 8, 4.5864, 8, -3.32738, 1.97845, -8, -4.13675)
+6:8/0 = 0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 6.30394, -6.96299, 6.76241, -5.0145, 8, -8, 8)
+7:8/0 = 0
+8:8/0 = 0
+8:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -6.47491, 8, -3.77703, 8, -0.719435, -0.539576, 8, -8, 8, 3.77703, -1.43887)
+9:8/0 = 0
+9:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.69788, -8, -3.23746, -4.85618, -5.39576, -2.87774, -8, -1.61873, -8, -2.33816, -8, -6.64779, -7.22087, -8)
+5:9/0 = 0
+5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, -6.09153, 7.16356, -6.7624, 6.59048, -7.33549, 5.96009, -8)
+6:9/0 = 0
+6:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.56865, -8, -1.11678, -6.59916, 1.11678, -5.99001, 4.26407, -5.48238, 8, -5.1778, 8, -2.53814, 5.68543, -2.84272, 2.53814, -2.74119, -0.710678, -3.45187, -3.9595, -4.87323, -7.04895, -6.13201, -8, -8, -8, -8)
+7:9/0 = 0
+7:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.07628, -0.507627, -4.87323, 4.46712, -6.19306, 8, -8, 8, -3.95689, 0.812204, -2.33509, -8, -2.53814)
+8:9/0 = 0
+8:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.0576, -8, -5.57562, -6.29505, -8, -4.13675)
+
+[sub_resource type="TileSet" id="TileSet_d7bb0"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_k3i5e")
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("source_tilemap")]
 script = ExtResource("1_6g18d")
@@ -40,6 +99,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_wf4qv")
 expand_mode = 1
+
+[node name="CircleMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+position = Vector2(-10, 25)
+scale = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAAAAAEAAAAHAAgAAAD//wEAAAAGAAgAAAD+/wEAAAAFAAgAAAD+/wAAAAAFAAcAAAD+////AAAFAAYAAAD+//7/AAAFAAUAAAD//wAAAAAGAAcAAAD+//3/AAAFAAQAAAD///3/AAAGAAQAAAD///7/AAAGAAUAAAAAAP7/AAAHAAUAAAABAP7/AAAIAAUAAAABAP//AAAIAAYAAAABAAAAAAAIAAcAAAABAAEAAAAIAAgAAAAAAAIAAAAHAAkAAAD//wIAAAAGAAkAAAD9/wAAAAAEAAcAAAD9/wEAAAAEAAgAAAD9////AAAEAAYAAAD9//7/AAAEAAUAAAACAAAAAAAJAAcAAAACAAEAAAAJAAgAAAACAP//AAAJAAYAAAACAP7/AAAJAAUAAAABAP3/AAAIAAQAAAAAAP3/AAAHAAQAAAABAAIAAAAIAAkAAAA=")
+tile_set = SubResource("TileSet_d7bb0")
 
 [node name="SampleMap" type="TextureRect" parent="."]
 anchors_preset = 8
