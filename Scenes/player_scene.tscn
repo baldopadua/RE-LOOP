@@ -21,7 +21,7 @@ texture = SubResource("GradientTexture2D_7cibt")
 position = Vector2(0, -270)
 shape = SubResource("CapsuleShape2D_8tj53")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="object_position" type="Marker2D" parent="."]
 position = Vector2(10, -270)
 
 [node name="Camera2D" type="Camera2D" parent="."]

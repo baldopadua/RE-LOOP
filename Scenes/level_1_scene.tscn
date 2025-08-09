@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=9 format=4 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scenes/level_1_scene.gd" id="1_6g18d"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_peipn"]
 [ext_resource type="Texture2D" uid="uid://csmaxjvlux4gi" path="res://Assets/grey-red-box.png" id="3_7s3be"]
 [ext_resource type="Texture2D" uid="uid://cyh820yfsstco" path="res://Assets/RoundWorldFuture.png" id="4_1kqti"]
 [ext_resource type="Texture2D" uid="uid://bua2qfy6026td" path="res://Assets/blank-clock.png" id="4_wf4qv"]
+[ext_resource type="PackedScene" uid="uid://c70cg6ape7qus" path="res://Scenes/seed.tscn" id="6_d7bb0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wf4qv"]
 texture = ExtResource("3_7s3be")
@@ -25,22 +26,6 @@ source_tilemap = NodePath("TileMapLayer")
 tile_map_data = PackedByteArray("AAD//wwAAQAAAAAAAAAAAAwAAQAAAAAAAAD+/wwAAQAAAAAAAAABAAwAAQAAAAAAAAADAAsAAQAAAAAAAAAEAAsAAQAAAAAAAAAFAAsAAQAAAAAAAAAGAAoAAQAAAAAAAAAHAAkAAQAAAAAAAAAIAAkAAQAAAAAAAAAJAAgAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAYAAQAAAAAAAAALAAUAAQAAAAAAAAALAAQAAQAAAAAAAAALAAMAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAAAAQAAAAAAAAAMAP//AQAAAAAAAAAMAP7/AQAAAAAAAAAMAAEAAQAAAAAAAAACAAwAAQAAAAAAAAD9/wwAAQAAAAAAAAAMAP3/AQAAAAAAAAALAPz/AQAAAAAAAAALAPv/AQAAAAAAAAALAPr/AQAAAAAAAAAKAPn/AQAAAAAAAAAJAPj/AQAAAAAAAAAJAPf/AQAAAAAAAAAIAPb/AQAAAAAAAAAHAPb/AQAAAAAAAAAGAPX/AQAAAAAAAAAFAPT/AQAAAAAAAAAEAPT/AQAAAAAAAAADAPT/AQAAAAAAAAACAPP/AQAAAAAAAAABAPP/AQAAAAAAAAD///P/AQAAAAAAAAD+//P/AQAAAAAAAAD9//P/AQAAAAAAAAD8/wsAAQAAAAAAAAD7/wsAAQAAAAAAAAD6/wsAAQAAAAAAAAD5/woAAQAAAAAAAAD4/wkAAQAAAAAAAAD3/wkAAQAAAAAAAAD2/wgAAQAAAAAAAAD2/wcAAQAAAAAAAAD1/wYAAQAAAAAAAAD0/wUAAQAAAAAAAAD0/wQAAQAAAAAAAAD0/wMAAQAAAAAAAADz/wIAAQAAAAAAAADz/wEAAQAAAAAAAADz/wAAAQAAAAAAAADz////AQAAAAAAAADz//7/AQAAAAAAAADz//3/AQAAAAAAAAD0//z/AQAAAAAAAAD0//v/AQAAAAAAAAD0//r/AQAAAAAAAAD1//n/AQAAAAAAAAD2//j/AQAAAAAAAAD2//f/AQAAAAAAAAD3//b/AQAAAAAAAAD4//b/AQAAAAAAAAD5//X/AQAAAAAAAAD6//T/AQAAAAAAAAD7//T/AQAAAAAAAAD8//T/AQAAAAAAAAAAAPP/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_1kqti")
 
-[node name="Clock" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -300.0
-offset_right = 300.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_wf4qv")
-expand_mode = 1
-
 [node name="SampleMap" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,4 +41,22 @@ grow_vertical = 2
 texture = ExtResource("4_1kqti")
 expand_mode = 1
 
+[node name="Clock" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wf4qv")
+expand_mode = 1
+
 [node name="PlayerScene" parent="." instance=ExtResource("2_peipn")]
+
+[node name="Seed" parent="." instance=ExtResource("6_d7bb0")]
+position = Vector2(-241, 138)
