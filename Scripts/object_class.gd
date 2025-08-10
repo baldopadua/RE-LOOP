@@ -8,6 +8,7 @@ class_name object_class
 
 @export var object_name: String = "Generic Object"
 @export var is_pickupable: bool = true
+@export var timeline: GlobalVariables.object_timeline
 @export var usable_targets: Array[String] = [] 
 
 var is_reachable: bool = false

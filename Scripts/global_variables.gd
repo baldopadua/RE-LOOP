@@ -2,6 +2,9 @@ extends Node
 
 enum Directions {COUNTERCLOCKWISE, CLOCKWISE}
 const player_direction = Directions
+enum Timelines {PAST, PRESENT, FUTURE}
+const object_timeline = Timelines
+
 const transition_time: float = 0.5
 var is_looping: bool = false
 var player_stopped: bool = false
