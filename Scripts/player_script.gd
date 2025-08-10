@@ -15,6 +15,35 @@ var is_holding_object : bool = false
 var available_object : object_class = null
 #var available_interactable_object : object_class = null
 var interactable_objects: Array = []
+# DETERMINES IF THE DEGREES IS PASOK sa 3,6,9,12 CLOCK TIME
+var deg_to_time: Dictionary = {
+	0.0: 12,
+	360.0: 12,
+	-360.0: 12,
+	30.0: 12,
+	-30.0: 12,
+	60.0: 12,
+	-60.0: 12,
+	90.0: 3,
+	-90.0: 3,
+	120.0: 3,
+	-120.0: 3,
+	150.0: 3,
+	-150.0: 3,
+	180.0: 6,
+	-180.0: 6,
+	210.0: 6,
+	-210.0: 6,
+	240.0: 6,
+	-240.0: 6,
+	270.0: 9,
+	-270.0: 9,
+	300.0: 9,
+	-300.0: 9,
+	330.0: 9,
+	-330.0: 9,
+}
+var entered_clock_area: int = 12
 
 # SFX
 @onready var time_sfx: Object = $"../time_manip"
@@ -28,13 +57,13 @@ func _ready() -> void:
 	print(type_string(typeof(time_sfx)))
 
 func _input(event: InputEvent) -> void:
-	# MOVEMENT
-	if event.is_action_pressed("move_right") and round(rad_to_deg(rotation)) < 180.0 and not is_moving and not GlobalVariables.player_stopped:
+	# MOVEMENT round(rad_to_deg(rotation)) < 180.0
+	if event.is_action_pressed("move_right") and not is_moving and not GlobalVariables.player_stopped:
 		direction = player_directions.CLOCKWISE
 		rotate_player()
 		GlobalVariables.play_sfx(time_sfx, player_directions.CLOCKWISE)
 		GlobalVariables.play_sfx(clank_sfx, player_directions.CLOCKWISE)
-	elif event.is_action_pressed("move_left") and round(rad_to_deg(rotation)) > -180.0 and not is_moving and not GlobalVariables.player_stopped:
+	elif event.is_action_pressed("move_left") and not is_moving and not GlobalVariables.player_stopped:
 		direction = player_directions.COUNTERCLOCKWISE
 		rotate_player()
 		GlobalVariables.play_sfx(time_sfx, player_directions.COUNTERCLOCKWISE)
@@ -44,14 +73,13 @@ func _input(event: InputEvent) -> void:
 		print("MAX TURNS REACHED!")
 		
 	# OBJECT INTERACTION
-	if event.is_action_pressed("interact") and available_object != null:
+	if event.is_action_pressed("interact") and available_object != null and not is_moving:
 		item_pick_up()
 	# Drop Objects
-	elif event.is_action_pressed("drop") and is_holding_object:
+	elif event.is_action_pressed("drop") and is_holding_object and not is_moving:
 		item_drop()
 	# Interact with Objects using Tools
-	# TODO: Guys baka meron kayo mas efficient solution, may apo na sa tuhod yung if else ko ;-;
-	elif event.is_action_pressed("interact") and is_holding_object and interactable_objects != null:
+	elif event.is_action_pressed("interact") and is_holding_object and interactable_objects != null and not is_moving:
 		for obj in interactable_objects:
 			if obj.object_name in held_object.usable_targets:
 				held_object.interact(obj)
@@ -60,13 +88,41 @@ func _input(event: InputEvent) -> void:
 				break
 
 func _tween_finished():
+	
+	# RESET THE SFX PITCH SCALE WHEN REACHING BOTH ENDS
+	if round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0 or round(rad_to_deg(rotation)) == 0.0:
+		time_sfx.pitch_scale = 1.0
+		clank_sfx.pitch_scale = 1.0
+	
+	# RESET THE ANGLE TO 30
+	if round(rad_to_deg(rotation)) == 390.0 and direction == player_directions.CLOCKWISE:
+		rotation = deg_to_rad(30.0)
+	elif round(rad_to_deg(rotation)) == -390.0 and direction == player_directions.COUNTERCLOCKWISE:
+		rotation = deg_to_rad(-30.0)
+	
+	print(round(rad_to_deg(rotation)))
+	
+	# CHECKS IF DEGREES IS IN ANOTHER AREA
+	if round(rad_to_deg(rotation)) in deg_to_time:
+		#print(deg_to_time[round(rad_to_deg(rotation))])
+		# KAPAG WALA NA SA PREVIOUS CLOCK AREA ADD CURRENT STATES
+		if deg_to_time[round(rad_to_deg(rotation))] != entered_clock_area:
+			# INCREMENT/DECREMENT THE STATE OF ALL OBJECTS DEPENDING ON DIRECTION
+			for obj in get_parent().get_children():
+				# IF OBJECT_CLASS YUNG OBJECT AND MORE THAN OR EQUAL SA 90.0 YUNG NATRAVEL
+				if obj is object_class:
+					if direction == player_directions.CLOCKWISE and obj.current_state < obj.max_state_threshold: 
+						obj.current_state += 1
+					elif direction == player_directions.COUNTERCLOCKWISE and obj.current_state > obj.min_state_threshold:  
+						obj.current_state -= 1
+			# SET THE ENTERED CLOCK AREA TO AREA KUNG NASAN PLAYER
+			entered_clock_area = deg_to_time[round(rad_to_deg(rotation))]
+		
+	for obj in get_parent().get_children():
+		if obj is object_class:
+			print(obj.name, " STATE: ", obj.current_state)
 	tween.kill()
 	is_moving = false
-	if direction == player_directions.CLOCKWISE:
-		player_clock_position += 1
-	else:
-		player_clock_position -= 1
-	print(player_clock_position)
 
 # Movement of Player
 func rotate_player():
@@ -93,7 +149,7 @@ func rotate_player():
 	# set the tween
 	tween.tween_property(self, "rotation", rotation_tween, transition_time).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 	
-func _process(delta):
+func _process(_delta):
 	pass
 
 # Reparent the object to mark2D of the player

@@ -38,13 +38,6 @@ scale = Vector2(2.9, 2.95)
 texture = SubResource("GradientTexture2D_arhpd")
 
 [node name="State4" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-0.5, 29.5)
-scale = Vector2(2.9, 4.05)
-texture = SubResource("GradientTexture2D_arhpd")
-
-[node name="State5" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-0.5, 39)
 scale = Vector2(2.9, 5)
 texture = SubResource("GradientTexture2D_arhpd")

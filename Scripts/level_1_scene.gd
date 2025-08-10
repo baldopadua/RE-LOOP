@@ -1,11 +1,11 @@
 extends Node2D
 
 @export var source_tilemap: TileMapLayer
-@onready var seed = $Seed
+@onready var seed_obj = $Seed
 @onready var soil = $Soil
 @onready var tree = $tree
 @onready var player = $PlayerScene
-var states := ["State1", "State2", "State3", "State4", "State5"]
+var states := ["State1", "State2", "State3", "State4"]
 var center_circle: Vector2i = Vector2i(0,0)
 
 # SFX
@@ -22,18 +22,24 @@ func _ready():
 # If seed is planted in soil
 # Tree can now cycle
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if soil.has_node("Seed") and GlobalVariables.is_looping:
 		soil.visible = false
+		seed_obj.visible = false
 		tree.visible = true
-		update_tree_visibility(player.player_clock_position)
+		# SET THE TREE MAX AND MIN STATE TO START INCREMENTING
+		if tree.max_state_threshold == 0 and tree.min_state_threshold == 0 and tree.current_state == 0:
+			tree.max_state_threshold = 4
+			tree.min_state_threshold = 1
+			tree.current_state = 1
+		update_tree_visibility(tree.current_state)
 
 func update_tree_visibility(stage: int) -> void:
 	# stage is 1-based, so we subtract 1 for array index
 	var index = clamp(stage - 1, 0, states.size() - 1)
 	for i in range(states.size()):
 		tree.get_node(states[i]).visible = (i == index)
-	if stage == 5:
+	if stage == 4:
 		# Stop
 		GlobalVariables.is_looping = false
 		GlobalVariables.player_stopped = true

@@ -8,9 +8,10 @@ class_name object_class
 
 @export var object_name: String = "Generic Object"
 @export var is_pickupable: bool = true
-@export var timeline: GlobalVariables.object_timeline
 @export var usable_targets: Array[String] = [] 
-
+@export var max_state_threshold: int
+@export var min_state_threshold: int
+@export var current_state: int
 var is_reachable: bool = false
 var player_char: CharacterBody2D = null
 var player_arrow_owner: CharacterBody2D
@@ -23,7 +24,7 @@ func _ready():
 # Both body_entered tsaka body_exit ko tinanggal
 
 func _on_body_entered(body) -> void:
-	print("BODY: %s" % str(body))
+	#print("BODY: %s" % str(body))
 	if body.name != "PlayerScene":
 		return
 	# For Tools [ Mop, Rugs, Buckets ]
@@ -42,7 +43,7 @@ func _on_body_entered(body) -> void:
 		print(body.interactable_objects)
 
 func _on_body_exited(body) -> void:
-	print("BODY: %s" % str(body))
+	#print("BODY: %s" % str(body))
 	if body != player_char:
 		return
 	

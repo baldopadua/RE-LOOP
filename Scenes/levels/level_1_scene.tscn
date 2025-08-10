@@ -70,7 +70,7 @@ expand_mode = 1
 [node name="PlayerScene" parent="." instance=ExtResource("5_xkn6d")]
 
 [node name="Seed" parent="." instance=ExtResource("6_ystme")]
-position = Vector2(-241, 138)
+position = Vector2(0, 280)
 
 [node name="Soil" parent="." instance=ExtResource("8_cd6w3")]
 position = Vector2(1, -282)
