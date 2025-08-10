@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://yvqym0oya6dg"]
-
-[ext_resource type="AudioStream" uid="uid://d34epvcx0h8sw" path="res://Audio/hover.mp3" id="1_7bsht"]
-
-[node name="hover_sound" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_7bsht")

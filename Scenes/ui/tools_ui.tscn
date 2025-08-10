@@ -30,4 +30,5 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="hover_sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(97, -16)
 stream = ExtResource("4_cd0x1")
