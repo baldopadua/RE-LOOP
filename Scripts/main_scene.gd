@@ -105,11 +105,22 @@ func _connect_hover_signals() -> void:
     for button_name in ["start_button", "tutorial_button"]:
         var btn = get_node(button_name)
         if btn:
-            btn.connect("mouse_entered", Callable(self, "_on_button_hovered"))
+            btn.connect("mouse_entered", Callable(self, "_on_button_hovered").bind(btn))
+            btn.connect("mouse_exited", Callable(self, "_on_button_unhovered").bind(btn))
 
-func _on_button_hovered() -> void:
+func _on_button_hovered(btn: TextureButton) -> void:
     if hover_sound:
         hover_sound.play()
+    # Animate scale up (subtle)
+    var tween := create_tween()
+    tween.tween_property(btn, "scale", Vector2(1.05, 1.05), 0.12)\
+        .set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func _on_button_unhovered(btn: TextureButton) -> void:
+    # Animate scale back to normal
+    var tween := create_tween()
+    tween.tween_property(btn, "scale", Vector2(1, 1), 0.12)\
+        .set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 
 func _process(_delta: float) -> void:
     pass

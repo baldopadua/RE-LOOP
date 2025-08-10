@@ -43,12 +43,17 @@ expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="start_button" type="TextureButton" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.402344
-anchor_top = 0.565278
-anchor_right = 0.625
-anchor_bottom = 0.6875
+anchor_left = 0.433594
+anchor_top = 0.580556
+anchor_right = 0.570313
+anchor_bottom = 0.658333
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
 texture_normal = ExtResource("2_jv6wh")
 texture_hover = ExtResource("3_iacmt")
 ignore_texture_size = true
@@ -56,16 +61,17 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="tutorial_button" type="TextureButton" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.314322
-anchor_top = 0.617022
-anchor_right = 0.539
-anchor_bottom = 0.747223
-offset_left = 114.668
-offset_top = 49.7444
-offset_right = 112.08
-offset_bottom = 44.0001
+anchor_left = 0.436719
+anchor_top = 0.713889
+anchor_right = 0.570313
+anchor_bottom = 0.790278
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
 texture_normal = ExtResource("3_x6ack")
 texture_hover = ExtResource("5_6ev3c")
 ignore_texture_size = true
