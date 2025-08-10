@@ -16,15 +16,42 @@ var center_circle: Vector2i = Vector2i(0,0)
 @onready var underwater_explosion: Object = $underwater_explosion
 @onready var bell: Object = $bell
 
+var tween_rotate: Tween
+var tween_scale: Tween
+
 func _ready():
 	GlobalVariables.is_looping = true
+	
+	# INITIALLY ROTATE TO 360 DEGREES
+	rotation = deg_to_rad(360.0)
+	# INITIALLY SET THE SCALE TO 0
+	scale = Vector2(0.0,0.0)
+	
+	# CREATE TWEEN FOR ROTATE
+	tween_rotate = create_tween()
+	# Connect tween_finished if not yet connected
+	if not tween_rotate.is_connected("finished", _tween_rotation_finished):
+		tween_rotate.connect("finished", _tween_rotation_finished)
+	var rotation_tween = rotation - deg_to_rad(360.0)
+	tween_rotate.tween_property(self, "rotation", rotation_tween, 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	
+	# CREATE TWEEN FOR SCALE
+	tween_scale = create_tween()
+	if not tween_scale.is_connected("finished", _tween_scale_finished):
+		tween_scale.connect("finished", _tween_scale_finished)
+	tween_scale.tween_property(self, "scale", Vector2(1.0,1.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+
+func _tween_rotation_finished():
+	tween_rotate.kill()
+
+func _tween_scale_finished():
+	tween_scale.kill()
 
 # If seed is planted in soil
 # Tree can now cycle
 
 func _process(_delta: float) -> void:
 	if soil.has_node("Seed") and GlobalVariables.is_looping:
-		soil.visible = false
 		seed_obj.visible = false
 		tree.visible = true
 		# SET THE TREE MAX AND MIN STATE TO START INCREMENTING

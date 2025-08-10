@@ -13,14 +13,14 @@ script = ExtResource("1_8tj53")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1.65106, -280.629)
+position = Vector2(0, -290)
 rotation = 3.14159
 scale = Vector2(2.05667, 2.05667)
 texture = ExtResource("2_7cibt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -280)
+position = Vector2(0, -290)
 shape = SubResource("CapsuleShape2D_8tj53")
 
 [node name="object_position" type="Marker2D" parent="."]
-position = Vector2(1, -280)
+position = Vector2(0, -290)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkdvxqnay6fsb"]
+
+[ext_resource type="AudioStream" uid="uid://2co3uykc3dwt" path="res://Audio/wavs/time_manip.wav" id="1_fdhon"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyg4q"]
+playback_mode = 2
+streams_count = 1
+stream_0/stream = ExtResource("1_fdhon")
+
+[node name="time_manip" type="AudioStreamPlayer2D"]
+stream = SubResource("AudioStreamRandomizer_eyg4q")
+volume_db = 1.0
+max_polyphony = 6

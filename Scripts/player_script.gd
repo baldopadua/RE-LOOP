@@ -44,33 +44,54 @@ var deg_to_time: Dictionary = {
 	-330.0: 9,
 }
 var entered_clock_area: int = 12
+var prev_deg: float = 0.0
+
+# MAPS
+@onready var map1: TileMapLayer = $"../map1"
+@onready var map2: TileMapLayer = $"../map2"
+@onready var map3: TileMapLayer = $"../map3"
+@onready var map4: TileMapLayer = $"../map4"
+var maps_dict: Dictionary
 
 # SFX
 @onready var time_sfx: Object = $"../time_manip"
 @onready var clank_sfx: Object = $"../clank"
+@onready var bell_sfx: Object = $"../bell"
+@onready var shwoop_sfx: Object = $"../shwoop"
+@onready var reverse_ahh_sfx: Object = $"../cinematic_ah"
+@onready var tick_tock_sfx: Object = $"../tick_tock"
 
 # TODO: Change this later to animated sprite
 @onready var sprite = $Sprite2D
 
 func _ready() -> void:
+	if GlobalVariables.is_restarting:
+		GlobalVariables.is_restarting = false
+		GlobalVariables.restart_level_sfx_vfx([shwoop_sfx, tick_tock_sfx, reverse_ahh_sfx])
+		# PLAY RESTART SFX AND CUTSCENES
 	object_pos = get_node("object_position")
 	print(type_string(typeof(time_sfx)))
+	maps_dict = {
+		12: map1,
+		3: map2,
+		6: map3,
+		9: map4
+	}
 
 func _input(event: InputEvent) -> void:
 	# MOVEMENT round(rad_to_deg(rotation)) < 180.0
 	if event.is_action_pressed("move_right") and not is_moving and not GlobalVariables.player_stopped:
 		direction = player_directions.CLOCKWISE
+		prev_deg = round(rad_to_deg(rotation))
 		rotate_player()
 		GlobalVariables.play_sfx(time_sfx, player_directions.CLOCKWISE)
 		GlobalVariables.play_sfx(clank_sfx, player_directions.CLOCKWISE)
 	elif event.is_action_pressed("move_left") and not is_moving and not GlobalVariables.player_stopped:
+		prev_deg = round(rad_to_deg(rotation))
 		direction = player_directions.COUNTERCLOCKWISE
 		rotate_player()
 		GlobalVariables.play_sfx(time_sfx, player_directions.COUNTERCLOCKWISE)
 		GlobalVariables.play_sfx(clank_sfx, player_directions.COUNTERCLOCKWISE)
-	# MAX TURNS REACHED
-	elif (event.is_action_pressed("move_right") or event.is_action_pressed("move_left")) and (round(rad_to_deg(rotation)) == 180.0 or round(rad_to_deg(rotation)) == -180.0) and not is_moving and not GlobalVariables.player_stopped:
-		print("MAX TURNS REACHED!")
 		
 	# OBJECT INTERACTION
 	if event.is_action_pressed("interact") and available_object != null and not is_moving:
@@ -94,6 +115,11 @@ func _tween_finished():
 		time_sfx.pitch_scale = 1.0
 		clank_sfx.pitch_scale = 1.0
 	
+	# RESET THE LEVEL IF LOOPED
+	if (round(rad_to_deg(rotation)) == 0.0 or round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0) and (prev_deg == 330.0 or prev_deg == -330.0) and GlobalVariables.is_looping:
+		GlobalVariables.is_restarting = true
+		get_tree().reload_current_scene()
+	
 	# RESET THE ANGLE TO 30
 	if round(rad_to_deg(rotation)) == 390.0 and direction == player_directions.CLOCKWISE:
 		rotation = deg_to_rad(30.0)
@@ -103,8 +129,9 @@ func _tween_finished():
 	print(round(rad_to_deg(rotation)))
 	
 	# CHECKS IF DEGREES IS IN ANOTHER AREA
-	if round(rad_to_deg(rotation)) in deg_to_time:
+	if round(rad_to_deg(rotation)) in deg_to_time and GlobalVariables.is_looping:
 		#print(deg_to_time[round(rad_to_deg(rotation))])
+		
 		# KAPAG WALA NA SA PREVIOUS CLOCK AREA ADD CURRENT STATES
 		if deg_to_time[round(rad_to_deg(rotation))] != entered_clock_area:
 			# INCREMENT/DECREMENT THE STATE OF ALL OBJECTS DEPENDING ON DIRECTION
@@ -116,7 +143,9 @@ func _tween_finished():
 					elif direction == player_directions.COUNTERCLOCKWISE and obj.current_state > obj.min_state_threshold:  
 						obj.current_state -= 1
 			# SET THE ENTERED CLOCK AREA TO AREA KUNG NASAN PLAYER
+			maps_dict[entered_clock_area].visible = false
 			entered_clock_area = deg_to_time[round(rad_to_deg(rotation))]
+			maps_dict[entered_clock_area].visible = true
 		
 	for obj in get_parent().get_children():
 		if obj is object_class:
@@ -126,9 +155,6 @@ func _tween_finished():
 
 # Movement of Player
 func rotate_player():
-	# Asynchrnously start the scene transition here
-	# Some async func to start reversing or forwarding time
-	
 	# Player is moving and create a tween to smooth animation
 	is_moving = true
 	tween = create_tween()
@@ -202,3 +228,4 @@ func item_drop() -> void:
 		held_object = null
 		is_holding_object = false
 		print("Object dropped")
+		

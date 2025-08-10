@@ -1,46 +1,113 @@
-[gd_scene load_steps=5 format=3 uid="uid://3ytk6p6f2w23"]
+[gd_scene load_steps=6 format=4 uid="uid://3ytk6p6f2w23"]
 
-[ext_resource type="Script" uid="uid://d1t303evbdwox" path="res://Scripts/object_class.gd" id="1_obsv6"]
+[ext_resource type="Script" uid="uid://dxhkvoxn1q5vy" path="res://Scripts/tree_script.gd" id="1_uvtpv"]
+[ext_resource type="Texture2D" uid="uid://dlmmmwvov1v42" path="res://Assets/level_1/tree_spritesheet.png" id="2_0yjm6"]
 
-[sub_resource type="Gradient" id="Gradient_h627t"]
-colors = PackedColorArray(0.348232, 0.189966, 0, 1, 0.516554, 0.215639, 0, 1)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8h35"]
+texture = ExtResource("2_0yjm6")
+21:0/0 = 0
+22:0/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+6:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+2:6/0 = 0
+6:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+20:6/0 = 0
+21:6/0 = 0
+22:6/0 = 0
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_arhpd"]
-gradient = SubResource("Gradient_h627t")
-width = 10
-height = 20
+[sub_resource type="TileSet" id="TileSet_n5ney"]
+sources/0 = SubResource("TileSetAtlasSource_j8h35")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
 size = Vector2(31, 18)
 
 [node name="tree" type="Area2D"]
 disable_mode = 2
-script = ExtResource("1_obsv6")
+script = ExtResource("1_uvtpv")
 object_name = "tree"
 is_pickupable = false
 
-[node name="State1" type="Sprite2D" parent="."]
+[node name="State1" type="TileMapLayer" parent="."]
 visible = false
-position = Vector2(-0.5, 1)
-scale = Vector2(2.9, 1.2)
-texture = SubResource("GradientTexture2D_arhpd")
+texture_filter = 1
+rotation = 3.14159
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD/////AAABAAUAAAAAAP//AAACAAUAAAAAAAAAAAACAAYAAAA=")
+tile_set = SubResource("TileSet_n5ney")
 
-[node name="State2" type="Sprite2D" parent="."]
+[node name="State2" type="TileMapLayer" parent="."]
 visible = false
-position = Vector2(-0.5, 9)
-scale = Vector2(2.9, 2)
-texture = SubResource("GradientTexture2D_arhpd")
+texture_filter = 1
+rotation = 3.14159
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD///7/AAAJAAQAAAD/////AAAJAAUAAAD//wAAAAAJAAYAAAAAAP7/AAAKAAQAAAAAAP//AAAKAAUAAAAAAAAAAAAKAAYAAAA=")
+tile_set = SubResource("TileSet_n5ney")
 
-[node name="State3" type="Sprite2D" parent="."]
+[node name="State3" type="TileMapLayer" parent="."]
 visible = false
-position = Vector2(-0.5, 18.5)
-scale = Vector2(2.9, 2.95)
-texture = SubResource("GradientTexture2D_arhpd")
+texture_filter = 1
+rotation = 3.14159
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD+//3/AAAMAAMAAAD+//7/AAAMAAQAAAD///3/AAANAAMAAAD///7/AAANAAQAAAD/////AAANAAUAAAD//wAAAAANAAYAAAAAAP3/AAAOAAMAAAAAAP7/AAAOAAQAAAAAAP//AAAOAAUAAAAAAAAAAAAOAAYAAAA=")
+tile_set = SubResource("TileSet_n5ney")
 
-[node name="State4" type="Sprite2D" parent="."]
-position = Vector2(-0.5, 39)
-scale = Vector2(2.9, 5)
-texture = SubResource("GradientTexture2D_arhpd")
+[node name="State4" type="TileMapLayer" parent="."]
+visible = false
+texture_filter = 1
+rotation = 3.14159
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD+//v/AAAUAAEAAAD+//z/AAAUAAIAAAD+//3/AAAUAAMAAAD+/wAAAAAUAAYAAAD///r/AAAVAAAAAAD///v/AAAVAAEAAAD///z/AAAVAAIAAAD///3/AAAVAAMAAAD///7/AAAVAAQAAAD/////AAAVAAUAAAD//wAAAAAVAAYAAAAAAPr/AAAWAAAAAAAAAPv/AAAWAAEAAAAAAPz/AAAWAAIAAAAAAP3/AAAWAAMAAAAAAP7/AAAWAAQAAAAAAP//AAAWAAUAAAAAAAAAAAAWAAYAAAABAPv/AAAXAAEAAAABAPz/AAAXAAIAAAA=")
+tile_set = SubResource("TileSet_n5ney")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3

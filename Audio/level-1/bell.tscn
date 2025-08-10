@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlb043fvqn8o8"]
+
+[ext_resource type="AudioStream" uid="uid://djspbs1k70j2x" path="res://Audio/wavs/big_bell.wav" id="1_xvejs"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyg4q"]
+playback_mode = 2
+streams_count = 1
+stream_0/stream = ExtResource("1_xvejs")
+
+[node name="bell" type="AudioStreamPlayer2D"]
+stream = SubResource("AudioStreamRandomizer_eyg4q")
+volume_db = 1.0
+pitch_scale = 0.25
+max_polyphony = 6
