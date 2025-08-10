@@ -70,7 +70,6 @@ func _ready() -> void:
 		GlobalVariables.restart_level_sfx_vfx([shwoop_sfx, tick_tock_sfx, reverse_ahh_sfx])
 		# PLAY RESTART SFX AND CUTSCENES
 	object_pos = get_node("object_position")
-	print(type_string(typeof(time_sfx)))
 	maps_dict = {
 		12: map1,
 		3: map2,
@@ -150,6 +149,7 @@ func _tween_finished():
 	for obj in get_parent().get_children():
 		if obj is object_class:
 			print(obj.name, " STATE: ", obj.current_state)
+	
 	tween.kill()
 	is_moving = false
 
