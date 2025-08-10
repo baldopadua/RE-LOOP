@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dypu05rngiwmu"]
+[gd_scene load_steps=9 format=3 uid="uid://dypu05rngiwmu"]
 
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
-[ext_resource type="Texture2D" uid="uid://dlwvop2dbq7c3" path="res://Assets/game_mainscene.png" id="1_52fb6"]
+[ext_resource type="Texture2D" uid="uid://dlwvop2dbq7c3" path="res://Assets/ui/game_mainscene.png" id="1_52fb6"]
 [ext_resource type="Texture2D" uid="uid://dq7dbqonna3k1" path="res://Assets/ui/start_button.png" id="2_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://cwj6dcbbifodd" path="res://Assets/ui/start_button_hover.png" id="3_iacmt"]
 [ext_resource type="Texture2D" uid="uid://ch0smx87vbyue" path="res://Assets/ui/tutorial_button.png" id="3_x6ack"]
 [ext_resource type="Texture2D" uid="uid://c5db05gsc4i1i" path="res://Assets/ui/tutorial_button_hover.png" id="5_6ev3c"]
+[ext_resource type="AudioStream" uid="uid://d34epvcx0h8sw" path="res://Audio/hover.mp3" id="7_maf8m"]
+[ext_resource type="AudioStream" uid="uid://35povcthktt2" path="res://Audio/ui/main_bgmusic.mp3" id="9_m1efj"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -65,3 +67,10 @@ texture_hover = ExtResource("5_6ev3c")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
+
+[node name="hover_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_maf8m")
+
+[node name="main_bgm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_m1efj")
+autoplay = true
