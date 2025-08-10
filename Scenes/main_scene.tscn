@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dypu05rngiwmu"]
+[gd_scene load_steps=7 format=3 uid="uid://dypu05rngiwmu"]
 
+[ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
 [ext_resource type="Texture2D" uid="uid://dlwvop2dbq7c3" path="res://Assets/game_mainscene.png" id="1_52fb6"]
 [ext_resource type="Texture2D" uid="uid://dq7dbqonna3k1" path="res://Assets/ui/start_button.png" id="2_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://cwj6dcbbifodd" path="res://Assets/ui/start_button_hover.png" id="3_iacmt"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6ev3c")
 
 [node name="main" type="Control" parent="."]
 layout_mode = 1
