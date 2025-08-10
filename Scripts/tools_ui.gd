@@ -23,6 +23,7 @@ func _on_home_button_mouse_exited() -> void:
 
 func _on_home_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
+	GlobalVariables.set_custom_cursor()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
