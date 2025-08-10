@@ -22,6 +22,9 @@ func set_custom_cursor():
 			var big_cursor = ImageTexture.create_from_image(img)
 			Input.set_custom_mouse_cursor(big_cursor)
 
+func remove_custom_cursor():
+	Input.set_custom_mouse_cursor(null)
+
 func play_sfx(sfx: Object, direction: Directions):
 	if direction == player_direction.CLOCKWISE:
 		sfx.pitch_scale += 0.03
