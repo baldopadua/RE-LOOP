@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://q1qxxhu70ua8"]
+
+[ext_resource type="Script" uid="uid://bivq5sqyxynwu" path="res://Scripts/tools_ui.gd" id="1_8gy7f"]
+[ext_resource type="Texture2D" uid="uid://b12iiajbsrgbp" path="res://Assets/ui/home_icon.png" id="2_cd0x1"]
+[ext_resource type="Texture2D" uid="uid://b7q67ng4t64rt" path="res://Assets/ui/home_icon_hover.png" id="3_audsv"]
+[ext_resource type="AudioStream" uid="uid://d34epvcx0h8sw" path="res://Audio/hover.mp3" id="4_cd0x1"]
+
+[node name="tools_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 486.0
+offset_top = -263.0
+offset_right = 526.0
+offset_bottom = -223.0
+script = ExtResource("1_8gy7f")
+
+[node name="home_button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.7
+anchor_top = -1.575
+anchor_right = 3.225
+anchor_bottom = -0.075
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_cd0x1")
+texture_hover = ExtResource("3_audsv")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="hover_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cd0x1")

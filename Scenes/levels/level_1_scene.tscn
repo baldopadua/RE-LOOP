@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=23 format=4 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/level_1_scene.gd" id="1_pxia2"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/level_1/World_Level1 (1)-Sheet.png" id="2_ttgta"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" path="res://Audio/level-1/tick_tock.tscn" id="17_ggo0n"]
 [ext_resource type="PackedScene" path="res://Audio/level-1/reverse_ahh.tscn" id="18_jr302"]
 [ext_resource type="PackedScene" path="res://Audio/level-1/shwoop.tscn" id="19_ttgta"]
+[ext_resource type="PackedScene" uid="uid://q1qxxhu70ua8" path="res://Scenes/ui/tools_ui.tscn" id="20_j2f8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2f8f"]
 texture = ExtResource("2_ttgta")
@@ -6040,3 +6041,5 @@ position = Vector2(0, -296.43)
 [node name="cinematic_ah" parent="." instance=ExtResource("18_jr302")]
 
 [node name="shwoop" parent="." instance=ExtResource("19_ttgta")]
+
+[node name="tools_ui" parent="." instance=ExtResource("20_j2f8f")]
