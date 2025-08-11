@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bivq5sqyxynwu" path="res://Scripts/tools_ui.gd" id="1_8gy7f"]
 [ext_resource type="Texture2D" uid="uid://b12iiajbsrgbp" path="res://Assets/ui/home_icon.png" id="2_cd0x1"]
 [ext_resource type="Texture2D" uid="uid://b7q67ng4t64rt" path="res://Assets/ui/home_icon_hover.png" id="3_audsv"]
-[ext_resource type="AudioStream" uid="uid://d34epvcx0h8sw" path="res://Audio/hover.mp3" id="4_cd0x1"]
+[ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="4_cd0x1"]
 
 [node name="tools_ui" type="Control"]
 layout_mode = 3
