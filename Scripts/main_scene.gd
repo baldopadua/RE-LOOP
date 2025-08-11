@@ -18,6 +18,10 @@ func _ready() -> void:
 	_connect_buttons()
 	_hide_tutorial_overlay_initial()
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		GlobalVariables.update_cursor_by_mouse_motion(event)
+
 func _play_bgm() -> void:
 	if main_bgm and main_bgm.stream:
 		if main_bgm.stream.has_method("set_loop"):
