@@ -8,116 +8,139 @@ extends Control
 @onready var start_button := $start_button
 @onready var tutorial_button := $tutorial_button
 @onready var page_turn_sound := $tutorial_overlay/page_turn_sound
-
+@onready var click_sound := $click_sound
 var tutorial_bg_texture := preload("res://Assets/ui/tutorial_bg.png")
 var original_bg_texture := preload("res://Assets/ui/game_mainscene.png")
 
+# --- Initialization & Connections ---
 func _ready() -> void:
-	# Play and loop the background music
+	_play_bgm()
+	_connect_buttons()
+	_hide_tutorial_overlay_initial()
+
+func _play_bgm() -> void:
 	if main_bgm and main_bgm.stream:
 		if main_bgm.stream.has_method("set_loop"):
 			main_bgm.stream.set_loop(true)
 		elif main_bgm.stream.has_property("loop"):
 			main_bgm.stream.loop = true
 		main_bgm.play()
-		
-	_connect_start_button()
+
+func _connect_buttons() -> void:
+	_connect_button(start_button, "_on_start_button_pressed")
+	_connect_button(tutorial_button, "_on_tutorial_button_pressed")
+	_connect_button(close_button, "_on_close_button_pressed")
 	_connect_hover_signals()
-	_connect_tutorial_button()
-	_connect_close_button()
-	# Ensure overlay is hidden and transparent at start
+
+func _connect_button(btn: Object, method: String) -> void:
+	if btn and (btn is Button or btn is TextureButton):
+		btn.connect("pressed", Callable(self, method))
+
+func _hide_tutorial_overlay_initial() -> void:
 	if tutorial_overlay:
 		tutorial_overlay.visible = false
 		tutorial_overlay.modulate.a = 0.0
 
-func _connect_start_button() -> void:
-	var btn := get_node("start_button")
-	if not btn:
-		return
-	btn.connect("pressed", Callable(self, "_on_start_button_pressed"))
-
+# --- Button Event Handlers ---
 func _on_start_button_pressed() -> void:
+	start_button.disabled = true
+	if click_sound:
+		click_sound.play()
+	_fade_out(main_bg, 0.25, Callable(self, "_go_to_level_scene"))
+
+func _go_to_level_scene() -> void:
 	get_tree().change_scene_to_file("res://Scenes/levels/level_1_scene.tscn")
 
-func _connect_tutorial_button() -> void:
-	var tut_btn := get_node("tutorial_button")
-	if tut_btn:
-		tut_btn.connect("pressed", Callable(self, "_on_tutorial_button_pressed"))
-
-func _connect_close_button() -> void:
-	if close_button:
-		close_button.connect("pressed", Callable(self, "_on_close_button_pressed"))
-
 func _on_tutorial_button_pressed() -> void:
-	# Disable buttons
-	start_button.disabled = true
-	tutorial_button.disabled = true
-	# Play page turn sound
+	_set_buttons_disabled(true)
 	if page_turn_sound:
 		page_turn_sound.play()
-	# Fade out current bg
-	var tween := create_tween()
-	tween.tween_property(main_bg, "modulate:a", 0.0, 0.3)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(Callable(self, "_show_tutorial_overlay"))
-	tween.tween_callback(Callable(self, "_change_bg_to_tutorial"))
-	tween.tween_property(main_bg, "modulate:a", 1.0, 0.3)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	_fade_out(main_bg, 0.3, Callable(self, "_show_tutorial_and_change_bg"))
+
+func _show_tutorial_and_change_bg() -> void:
+	_show_tutorial_overlay()
+	_change_bg_to_tutorial()
+	_fade_in(main_bg, 0.3)
 
 func _on_close_button_pressed() -> void:
-	# Enable buttons
-	start_button.disabled = false
-	tutorial_button.disabled = false
-	# Play page turn sound when closing
+	_set_buttons_disabled(false)
 	if page_turn_sound:
 		page_turn_sound.play()
-	# Fade out overlay and background, then restore
+	_fade_out(
+		tutorial_overlay, 0.3,
+		Callable(self, "_hide_tutorial_and_restore_bg")
+	)
+
+func _hide_tutorial_and_restore_bg() -> void:
+	_hide_tutorial_overlay()
+	_fade_out(
+		main_bg, 0.3,
+		Callable(self, "_restore_bg_to_original_and_fade_in")
+	)
+
+func _restore_bg_to_original_and_fade_in() -> void:
+	_restore_bg_to_original()
+	_fade_in(main_bg, 0.3)
+
+func _set_buttons_disabled(disabled: bool) -> void:
+	start_button.disabled = disabled
+	tutorial_button.disabled = disabled
+
+# --- Transition Helpers ---
+func _fade_out(node: CanvasItem, duration: float, callback: Callable) -> void:
 	var tween := create_tween()
-	tween.tween_property(tutorial_overlay, "modulate:a", 0.0, 0.3)\
+	tween.tween_property(node, "modulate:a", 0.0, duration)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(Callable(self, "_hide_tutorial_overlay"))
-	tween.tween_property(main_bg, "modulate:a", 0.0, 0.3)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(Callable(self, "_restore_bg_to_original"))
-	tween.tween_property(main_bg, "modulate:a", 1.0, 0.3)\
+	tween.tween_callback(callback)
+
+func _fade_in(node: CanvasItem, duration: float) -> void:
+	var tween := create_tween()
+	tween.tween_property(node, "modulate:a", 1.0, duration)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 
-func _show_tutorial_overlay():
+# --- Overlay & Background Helpers ---
+func _show_tutorial_overlay() -> void:
 	if tutorial_overlay:
 		tutorial_overlay.visible = true
-		var tween := create_tween()
-		tween.tween_property(
-			tutorial_overlay, "modulate:a", 1.0, 0.4
-		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		_fade_in(tutorial_overlay, 0.4)
 
-func _hide_tutorial_overlay():
+func _hide_tutorial_overlay() -> void:
 	if tutorial_overlay:
 		tutorial_overlay.visible = false
 
-func _change_bg_to_tutorial():
+func _change_bg_to_tutorial() -> void:
 	main_bg.texture = tutorial_bg_texture
 
-func _restore_bg_to_original():
+func _restore_bg_to_original() -> void:
 	main_bg.texture = original_bg_texture
 
+# --- Hover Logic ---
 func _connect_hover_signals() -> void:
-	for button_name in ["start_button", "tutorial_button"]:
-		var btn = get_node(button_name)
+	var btns = [start_button, tutorial_button]
+	for btn in btns:
 		if btn:
-			btn.connect("mouse_entered", Callable(self, "_on_button_hovered").bind(btn))
-			btn.connect("mouse_exited", Callable(self, "_on_button_unhovered").bind(btn))
+			btn.connect("mouse_entered",
+				Callable(self, "_on_button_hovered").bind(btn))
+			btn.connect("mouse_exited",
+				Callable(self, "_on_button_unhovered").bind(btn))
 
 func _on_button_hovered(btn: TextureButton) -> void:
 	if hover_sound:
 		hover_sound.play()
-	# Animate scale up (subtle)
+	btn.disabled = true
 	var tween := create_tween()
 	tween.tween_property(btn, "scale", Vector2(1.05, 1.05), 0.12)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_callback(Callable(self, "_enable_button").bind(btn))
+
+func _enable_button(btn: TextureButton) -> void:
+	btn.disabled = false
 
 func _on_button_unhovered(btn: TextureButton) -> void:
-	# Animate scale back to normal
 	var tween := create_tween()
+	tween.tween_property(btn, "scale", Vector2(1, 1), 0.12)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
 	tween.tween_property(btn, "scale", Vector2(1, 1), 0.12)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 
