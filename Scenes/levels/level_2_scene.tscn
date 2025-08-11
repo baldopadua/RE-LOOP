@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=4 uid="uid://bfqg45e6qdyho"]
+[gd_scene load_steps=28 format=4 uid="uid://bfqg45e6qdyho"]
 
 [ext_resource type="Script" uid="uid://5bf1u063c7jk" path="res://Scripts/level_2_script.gd" id="1_8wkhw"]
+[ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="2_11452"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="2_lwspt"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_i42nt"]
 [ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="8_hwqhc"]
@@ -12,9 +13,61 @@
 [ext_resource type="PackedScene" uid="uid://ceifb3xl03qsu" path="res://Scenes/objects/level-2/old_man.tscn" id="15_b5hpa"]
 [ext_resource type="PackedScene" uid="uid://cic27iv8pc2fo" path="res://Audio/level-1/underwater_explosion.tscn" id="15_f0jkt"]
 [ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="16_ku8w8"]
+[ext_resource type="PackedScene" uid="uid://c5dg6h5tc4svx" path="res://Scenes/objects/level-2/sword.tscn" id="16_m8g1c"]
 [ext_resource type="PackedScene" uid="uid://dkojkmm7fp0p" path="res://Audio/level-1/tick_tock.tscn" id="17_fajtg"]
+[ext_resource type="PackedScene" uid="uid://be3gp4la2b857" path="res://Audio/level-2/sword.tscn" id="17_kim2w"]
 [ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="18_7x2kw"]
 [ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="19_pd65x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_157a6"]
+atlas = ExtResource("2_11452")
+region = Rect2(0, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r5jx"]
+atlas = ExtResource("2_11452")
+region = Rect2(240, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu1y6"]
+atlas = ExtResource("2_11452")
+region = Rect2(480, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgaox"]
+atlas = ExtResource("2_11452")
+region = Rect2(720, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivggd"]
+atlas = ExtResource("2_11452")
+region = Rect2(960, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmm5q"]
+atlas = ExtResource("2_11452")
+region = Rect2(1200, 0, 240, 135)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wkhw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_157a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r5jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu1y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgaox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivggd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmm5q")
+}],
+"loop": true,
+"name": &"bg",
+"speed": 3.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2f8f"]
 texture = ExtResource("2_lwspt")
@@ -5934,8 +5987,16 @@ texture = ExtResource("2_lwspt")
 [sub_resource type="TileSet" id="TileSet_8r5jx"]
 sources/0 = SubResource("TileSetAtlasSource_j2f8f")
 
-[node name="Node2D" type="Node2D"]
+[node name="level_2" type="Node2D"]
 script = ExtResource("1_8wkhw")
+
+[node name="bg_space" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+rotation = -1.5708
+scale = Vector2(5.37778, 5.37778)
+sprite_frames = SubResource("SpriteFrames_8wkhw")
+animation = &"bg"
+autoplay = "bg"
 
 [node name="map1" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -5998,3 +6059,8 @@ position_smoothing_enabled = true
 
 [node name="old_man" parent="." instance=ExtResource("15_b5hpa")]
 position = Vector2(-143, 248)
+
+[node name="Sword" parent="." instance=ExtResource("16_m8g1c")]
+position = Vector2(140, -234)
+
+[node name="sword" parent="." instance=ExtResource("17_kim2w")]

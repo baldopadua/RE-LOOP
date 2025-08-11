@@ -44,3 +44,8 @@ func update_old_man_visibility():
 				old_man.get_node("AnimatedSprite2D").play_backwards("young_to_strong")
 			
 		previous_state = current_state
+
+func interact(object_interacted: object_class):
+	if object_interacted.object_name == "sword" and current_state == 5:
+		reparent(object_interacted)
+		is_pickupable = false

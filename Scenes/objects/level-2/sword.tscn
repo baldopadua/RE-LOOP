@@ -1,0 +1,144 @@
+[gd_scene load_steps=19 format=3 uid="uid://c5dg6h5tc4svx"]
+
+[ext_resource type="Script" uid="uid://ca700bvbms5kx" path="res://Scripts/sword.gd" id="1_di3vf"]
+[ext_resource type="Texture2D" uid="uid://baakkgd1h2xfq" path="res://Assets/levels/level_2/loopBreak2_sheet.png" id="2_di3vf"]
+[ext_resource type="Texture2D" uid="uid://d2gt2huwh184d" path="res://Assets/levels/level_2/Sword.png" id="2_h1qa4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjp23"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(0, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8dqh"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(48, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i70us"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(96, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a81q"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efha0"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(192, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nblmw"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(240, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwiyp"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(288, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5oqx"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(336, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0ydk"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(384, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0i1k"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(432, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uydj"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(480, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyf0d"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(528, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aspn3"]
+atlas = ExtResource("2_di3vf")
+region = Rect2(576, 0, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wdsb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjp23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8dqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i70us")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a81q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efha0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nblmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwiyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5oqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0ydk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0i1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uydj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyf0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aspn3")
+}],
+"loop": false,
+"name": &"unsheate",
+"speed": 6.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
+size = Vector2(55.5692, 45.6147)
+
+[node name="Sword" type="Area2D"]
+light_mask = 3
+visibility_layer = 3
+disable_mode = 2
+script = ExtResource("1_di3vf")
+object_name = "sword"
+is_pickupable = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-17.4177, 44.1446)
+rotation = -2.61799
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wdsb4")
+animation = &"unsheate"
+frame = 12
+frame_progress = 1.0
+
+[node name="SwordSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-17.4308, 44.1384)
+rotation = -2.61799
+scale = Vector2(2, 2)
+texture = ExtResource("2_h1qa4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+z_index = 1
+position = Vector2(10.958, -16.9273)
+rotation = -2.61799
+shape = SubResource("RectangleShape2D_nwbkr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

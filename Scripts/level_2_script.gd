@@ -3,6 +3,7 @@ extends Node2D
 @export var source_tilemap: TileMapLayer
 @onready var player = $PlayerScene
 @onready var old_man: object_class = $old_man
+@onready var sword: object_class = $Sword
 
 # SFX
 @onready var cinematic_impact: Object = $cinematic_impact
@@ -14,6 +15,7 @@ extends Node2D
 
 var tween_rotate: Tween
 var tween_scale: Tween
+var objects: Array = []
 
 func _ready():
 	GlobalVariables.is_looping = true
@@ -37,6 +39,9 @@ func _ready():
 	if not tween_scale.is_connected("finished", _tween_scale_finished):
 		tween_scale.connect("finished", _tween_scale_finished)
 	tween_scale.tween_property(self, "scale", Vector2(1.0,1.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	
+	objects.append(old_man)
+	objects.append(sword)
 
 func _tween_rotation_finished():
 	tween_rotate.kill()

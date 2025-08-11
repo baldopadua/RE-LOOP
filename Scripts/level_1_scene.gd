@@ -4,6 +4,7 @@ extends Node2D
 @onready var seed_obj = $Seed
 @onready var soil = $Soil
 @onready var tree = $tree
+@onready var objects: Array = []
 @onready var player = $PlayerScene
 var states := ["State1", "State2", "State3", "State4"]
 var center_circle: Vector2i = Vector2i(0,0)
@@ -41,6 +42,9 @@ func _ready():
 	if not tween_scale.is_connected("finished", _tween_scale_finished):
 		tween_scale.connect("finished", _tween_scale_finished)
 	tween_scale.tween_property(self, "scale", Vector2(1.0,1.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	objects.append(soil)
+	objects.append(tree)
+	objects.append(seed_obj)
 
 func _tween_rotation_finished():
 	tween_rotate.kill()

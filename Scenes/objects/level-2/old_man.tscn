@@ -139,7 +139,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
-size = Vector2(14.3923, 28.4724)
+size = Vector2(28.0286, 41.0876)
 
 [node name="old_man" type="Area2D"]
 light_mask = 3
@@ -148,14 +148,16 @@ disable_mode = 2
 script = ExtResource("1_8m304")
 object_name = "old_man"
 is_pickupable = false
+usable_targets = Array[String](["sword"])
 max_state_threshold = 5
 min_state_threshold = 1
 current_state = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(5.47115, -5.13655)
 rotation = 0.523599
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_u53p5")
 animation = &"old_to_super_old"
 
@@ -163,7 +165,7 @@ animation = &"old_to_super_old"
 light_mask = 3
 visibility_layer = 3
 z_index = 1
-position = Vector2(-2.07804, 0)
+position = Vector2(0.946627, -1.09408)
 rotation = 0.523599
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_nwbkr")

@@ -4,7 +4,7 @@ var tween_climb: Tween
 var tween_rotate: Tween
 var tween_scale: Tween
 
-var is_playing: bool = false
+var is_playing: bool = false	
 
 func _on_body_entered(body) -> void:
 	#print("BODY: %s" % str(body))

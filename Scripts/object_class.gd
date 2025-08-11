@@ -66,17 +66,6 @@ func _on_body_exited(body) -> void:
 func set_flipped(flip: bool):
 	if has_node("item_sprite"):   
 		$item_sprite.flip_h = flip
-
-#Interaction with problems
-func use_on(target: object_class) -> bool:
-	if target == null:
-		return false
-	if target.has_method("get_obj_name"):
-		var target_name = target.get_obj_name()
-		if target_name in usable_targets:
-			print("%s used on %s" % [object_name, target_name])
-			return true
-	return false
 	
 func get_obj_name():
 	return object_name

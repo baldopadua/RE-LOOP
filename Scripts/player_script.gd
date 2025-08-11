@@ -138,9 +138,10 @@ func _tween_finished():
 		# KAPAG WALA NA SA PREVIOUS CLOCK AREA ADD CURRENT STATES
 		if deg_to_time[round(rad_to_deg(rotation))] != entered_clock_area:
 			# INCREMENT/DECREMENT THE STATE OF ALL OBJECTS DEPENDING ON DIRECTION
-			for obj in get_parent().get_children():
-				# IF OBJECT_CLASS YUNG OBJECT AND MORE THAN OR EQUAL SA 90.0 YUNG NATRAVEL
-				if obj is object_class:
+			for obj in get_parent().objects:
+				# IF OBJECT_CLASS AND IS IN THE LEVEL SCENE NOT PLAYER
+				if obj is object_class and (obj.get_parent().name == "level_2" or obj.get_parent().name != "object_position"):
+					print("PARENT: ", obj.get_parent())
 					if direction == player_directions.CLOCKWISE and obj.current_state < obj.max_state_threshold: 
 						obj.current_state += 1
 					elif direction == player_directions.COUNTERCLOCKWISE and obj.current_state > obj.min_state_threshold:  
