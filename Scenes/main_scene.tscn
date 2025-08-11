@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dypu05rngiwmu"]
+[gd_scene load_steps=23 format=3 uid="uid://dypu05rngiwmu"]
 
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
 [ext_resource type="Texture2D" uid="uid://dlwvop2dbq7c3" path="res://Assets/ui/game_mainscene.png" id="1_52fb6"]
-[ext_resource type="Texture2D" uid="uid://dq7dbqonna3k1" path="res://Assets/ui/start_button.png" id="2_jv6wh"]
-[ext_resource type="Texture2D" uid="uid://cwj6dcbbifodd" path="res://Assets/ui/start_button_hover.png" id="3_iacmt"]
-[ext_resource type="Texture2D" uid="uid://ch0smx87vbyue" path="res://Assets/ui/tutorial_button.png" id="3_x6ack"]
-[ext_resource type="Texture2D" uid="uid://c5db05gsc4i1i" path="res://Assets/ui/tutorial_button_hover.png" id="5_6ev3c"]
+[ext_resource type="Texture2D" uid="uid://chg7xq6f7mumr" path="res://Assets/ui/start_button.png" id="2_jv6wh"]
+[ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="3_7ewk0"]
+[ext_resource type="Texture2D" uid="uid://cwndswkyv0b33" path="res://Assets/ui/start_button_hover.png" id="3_iacmt"]
+[ext_resource type="Texture2D" uid="uid://b4b5idm0212da" path="res://Assets/ui/tutorial_button.png" id="3_x6ack"]
+[ext_resource type="Texture2D" uid="uid://c284erqqs1py8" path="res://Assets/ui/gametitle.png" id="4_lhp3t"]
+[ext_resource type="Texture2D" uid="uid://coddlv2n5auim" path="res://Assets/ui/tutorial_button_hover.png" id="5_6ev3c"]
 [ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="7_drdnd"]
 [ext_resource type="AudioStream" uid="uid://cw5va43ffrudg" path="res://Audio/ui/click.mp3" id="9_ioaeq"]
 [ext_resource type="AudioStream" uid="uid://35povcthktt2" path="res://Audio/ui/main_bgmusic.mp3" id="9_m1efj"]
@@ -13,6 +15,56 @@
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="10_mai8y"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="11_76v2p"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="12_drdnd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(0, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnsmo"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(240, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psl12"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(480, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ebs2"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(720, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyb3p"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(960, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvnna"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(1200, 0, 240, 135)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ioaeq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhp3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnsmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psl12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ebs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyb3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvnna")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -43,18 +95,37 @@ texture = ExtResource("1_52fb6")
 expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="game_animated_bg" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(640, 360.5)
+scale = Vector2(5.4, 5.35556)
+sprite_frames = SubResource("SpriteFrames_ioaeq")
+autoplay = "true"
+frame_progress = 0.112907
+
+[node name="gametitle" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_right = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0259283
+texture = ExtResource("4_lhp3t")
+expand_mode = 1
+
 [node name="start_button" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.433594
-anchor_top = 0.580556
-anchor_right = 0.570313
-anchor_bottom = 0.658333
-offset_left = -80.0
-offset_top = -20.0
-offset_right = 80.0
-offset_bottom = 20.0
+anchor_left = 0.401563
+anchor_top = 0.601389
+anchor_right = 0.651563
+anchor_bottom = 0.7375
+offset_bottom = -3.05176e-05
 texture_normal = ExtResource("2_jv6wh")
 texture_hover = ExtResource("3_iacmt")
 ignore_texture_size = true
@@ -65,10 +136,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.436719
-anchor_top = 0.713889
-anchor_right = 0.570313
-anchor_bottom = 0.790278
+anchor_left = 0.464844
+anchor_top = 0.780556
+anchor_right = 0.585156
+anchor_bottom = 0.851389
 offset_left = -80.0
 offset_top = -20.0
 offset_right = 80.0

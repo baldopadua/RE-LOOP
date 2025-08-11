@@ -9,6 +9,7 @@ extends Control
 @onready var tutorial_button := $tutorial_button
 @onready var page_turn_sound := $tutorial_overlay/page_turn_sound
 @onready var click_sound := $click_sound
+@onready var game_animated_bg := $game_animated_bg
 var tutorial_bg_texture := preload("res://Assets/ui/tutorial_bg.png")
 var original_bg_texture := preload("res://Assets/ui/game_mainscene.png")
 
@@ -17,6 +18,8 @@ func _ready() -> void:
 	_play_bgm()
 	_connect_buttons()
 	_hide_tutorial_overlay_initial()
+	if game_animated_bg:
+		game_animated_bg.play()
 
 func _input(event):
 	if event is InputEventMouseMotion:
