@@ -7,25 +7,118 @@ extends object_class
 @onready var sword_sprite: Sprite2D = $SwordSprite
 @onready var sword_sfx: AudioStreamPlayer2D = $"../sword"
 
-var is_playing: bool = false	
+var is_playing: bool = false
+var is_playing_two: bool = false
+var tween_climb: Tween
+var tween_rotate: Tween
+var tween_scale: Tween
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if has_node("old_man") and GlobalVariables.is_looping and not is_playing:
 		break_loop()
 	pass
 
 func break_loop():
-	if get_node("old_man").current_state == 2:
+	# TODO: LOOP BREAK ANIMATION PLAYS EARLY WHEN NOT SUPPOSED TO.
+	# STRONG TO OLD ANIMATION NEEDS TO PLAY BACKWARDS FIRST THEN
+	# PLAY LOOP BREAK ANIMATION 
+	var old_man = get_node("old_man")
+	if old_man.current_state == 2:
+		
 		is_playing = true
 		GlobalVariables.player_stopped = true
 		GlobalVariables.is_looping = false
-		get_node("old_man").get_node("AnimatedSprite2D").play_backwards("strong_to_old")
-		await get_tree().create_timer(2.0)
+		
+		# WAIT FOR THE ANIMATION TO FINISH
+		var anim_strong_to_old = old_man.get_node("AnimatedSprite2D")
+		anim_strong_to_old.play_backwards("strong_to_old")
+		await anim_strong_to_old.animation_finished
+		
 		sword_sprite.visible = false
 		loop_break_animation.visible = true
 		get_node("old_man").visible = false
+		
+		#PLAY MUSIC
 		sword_sfx.play()
 		loop_break_animation.play("unsheate")
-		# PLAY MUSIC
-		await get_tree().create_timer(1.0)
+		await loop_break_animation.animation_finished
+		# WAIT FOR ANIMATION TO FINISH FIRST
 		GlobalVariables.player_stopped = false
+
+func _on_body_entered(body) -> void:
+	#print("BODY: %s" % str(body))
+	if body.name != "PlayerScene":
+		return
+	# For Tools [ Mop, Rugs, Buckets ]
+	if is_pickupable and not body.is_holding_object:
+		print("Player can pick up %s" % object_name)
+		is_reachable = true
+		player_char = body
+		body.available_object = self
+	# For Interactables [ Puddles, Drips, Toilet ]
+	elif not is_pickupable and body.is_holding_object:
+		print("%s is interactable" % object_name)
+		is_reachable = true
+		player_char = body
+		#body.available_interactable_object = self
+		body.interactable_objects.append(self)
+		print(body.interactable_objects)
+	
+	# CLIMB THE SWORD
+	if not GlobalVariables.is_looping and not is_playing_two:
+		
+		# SO THAT IT ONLY EXECUTES ONCE
+		is_playing_two = true
+		# DISABLE PLAYER MOVEMENT
+		GlobalVariables.player_stopped = true
+		
+		await get_tree().create_timer(1).timeout
+		
+		# PLAY CLIMB ANIMATION
+		if body.has_node("AnimatedSprite2D"):
+			var sprite = body.get_node("AnimatedSprite2D")
+			sprite.stop()
+			sprite.play("climb")
+		
+		# CLIMB
+		tween_climb = create_tween()
+		
+		# Connect tween_finished if not yet connected
+		if not tween_climb.is_connected("finished", _tween_climb_finished):
+			tween_climb.connect("finished", _tween_climb_finished)
+			
+		var screen_center = Vector2(-150.0, 250.0)
+		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)
+		await tween_climb.finished
+		
+		body.visible = false
+		# SWITCH SCENE TO LEVEL 2
+		go_to_level_3()
+		
+func go_to_level_3():
+	# CREATE TWEEN FOR ROTATE
+	tween_rotate = create_tween()
+	# Connect tween_finished if not yet connected
+	if not tween_rotate.is_connected("finished", _tween_rotation_finished):
+		tween_rotate.connect("finished", _tween_rotation_finished)
+	var rotation_tween = get_parent().rotation - deg_to_rad(-360.0)
+	tween_rotate.tween_property(get_parent(), "rotation", rotation_tween, 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	
+	# CREATE TWEEN FOR SCALE
+	tween_scale = create_tween()
+	# Connect tween_finished if not yet connected
+	if not tween_scale.is_connected("finished", _tween_scale_finished):
+		tween_scale.connect("finished", _tween_scale_finished)
+	tween_scale.tween_property(get_parent(), "scale", Vector2(0.0,0.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	await tween_scale.finished
+	await get_tree().create_timer(1).timeout
+	get_parent().get_tree().change_scene_to_file("res://Scenes/levels/level_3_scene.tscn")
+
+func _tween_climb_finished():
+	tween_climb.kill()
+
+func _tween_rotation_finished():
+	tween_rotate.kill()
+
+func _tween_scale_finished():
+	tween_scale.kill()

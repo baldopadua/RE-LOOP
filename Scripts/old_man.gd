@@ -3,14 +3,12 @@ extends object_class
 var previous_state: int = 3
 var old_man = self
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_old_man_visibility()
 
 func update_old_man_visibility():
 	if not old_man:
 		return
-	
-	var current_state = old_man.current_state
 	
 	if current_state == 5:
 		is_pickupable = true
@@ -18,7 +16,7 @@ func update_old_man_visibility():
 		is_pickupable = false
 	
 	if current_state != previous_state:
-		print(previous_state, " ", current_state)
+		print("PREVIOUS STATE: ", previous_state, " ", "CURRENT STATE: ", current_state)
 		match [previous_state, current_state]:
 			[1, 2]:
 				old_man.get_node("AnimatedSprite2D").play("young_to_strong")
@@ -27,7 +25,8 @@ func update_old_man_visibility():
 			[3, 4]:
 				old_man.get_node("AnimatedSprite2D").play("old_to_super_old")
 			[4, 5]:
-				old_man.get_node("AnimatedSprite2D").play("dead_skeleton")
+				var anim = old_man.get_node("AnimatedSprite2D")
+				anim.play("dead_skeleton")
 
 			# Reverse animations
 			[5, 4]:
@@ -47,5 +46,6 @@ func update_old_man_visibility():
 
 func interact(object_interacted: object_class):
 	if object_interacted.object_name == "sword" and current_state == 5:
+		position = Vector2(0, 50.0)
 		reparent(object_interacted)
 		is_pickupable = false

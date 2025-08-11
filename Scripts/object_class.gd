@@ -27,6 +27,9 @@ func _on_body_entered(body) -> void:
 	#print("BODY: %s" % str(body))
 	if body.name != "PlayerScene":
 		return
+	if not body.is_holding_object:
+		var anim = get_node("AnimatedSprite2D")
+		await anim.animation_finished
 	# For Tools [ Mop, Rugs, Buckets ]
 	if is_pickupable and not body.is_holding_object:
 		print("Player can pick up %s" % object_name)

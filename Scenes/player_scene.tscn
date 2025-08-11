@@ -156,4 +156,9 @@ position = Vector2(0, -290)
 shape = SubResource("CapsuleShape2D_8tj53")
 
 [node name="object_position" type="Marker2D" parent="."]
+position = Vector2(0, -230)
+rotation = 3.14159
+
+[node name="object_drop_position" type="Marker2D" parent="."]
 position = Vector2(0, -290)
+rotation = 3.14159

@@ -45,6 +45,7 @@ var deg_to_time: Dictionary = {
 }
 var entered_clock_area: int = 12
 var prev_deg: float = 0.0
+var available_object_last_pos: Vector2
 
 # MAPS
 @onready var map1: TileMapLayer = $"../map1"
@@ -63,6 +64,7 @@ var maps_dict: Dictionary
 
 # Changed from Sprite2D to AnimatedSprite2D
 @onready var sprite = $AnimatedSprite2D
+@onready var object_drop_position := $object_drop_position
 
 func _ready() -> void:
 	if GlobalVariables.is_restarting:
@@ -150,7 +152,8 @@ func _tween_finished():
 			maps_dict[entered_clock_area].visible = false
 			entered_clock_area = deg_to_time[round(rad_to_deg(rotation))]
 			maps_dict[entered_clock_area].visible = true
-		
+			
+	
 	#for obj in get_parent().get_children():
 		#if obj is object_class:
 			#print(obj.name, " STATE: ", obj.current_state)
@@ -187,7 +190,14 @@ func _process(_delta):
 # Reparent the object to mark2D of the player
 func _deferred_reparent(obj) -> void:
 	obj.reparent(object_pos)
-	obj.position = Vector2.ZERO   
+	
+	# TWEEN TO ADD BOUNCE WHEN PICKING UP
+	var tween_pickup = create_tween()
+	var screen_center = Vector2.ZERO   
+	tween_pickup.tween_property(obj, "position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	await tween_pickup.finished
+	tween_pickup.kill()
+	 
 	held_object = obj
 	update_held_object_direction()
 
@@ -202,19 +212,9 @@ func update_held_object_direction():
 			object_pos.position.x = abs(origi_object_pos.x)
 			if held_object.has_method("set_flipped"):
 				held_object.set_flipped(false)
-		
-		# Ensure filling bar stays visible when changing direction
-		if "on_pickup" in held_object:
-			held_object.on_pickup()
 			
 func item_pick_up() -> void:
 	if not is_holding_object and available_object.is_reachable:
-		# Call on_pickup if the object supports it (e.g., bucket)
-		if "on_pickup" in available_object:
-			available_object.on_pickup()
-		# Pause fill if the object supports it (e.g., bucket)
-		if "pause_fill" in available_object:
-			available_object.pause_fill()
 		# Defer/Delay the reparenting to avoid error
 		# during physics callback or something
 		call_deferred("_deferred_reparent", available_object)
@@ -226,10 +226,14 @@ func item_pick_up() -> void:
 func item_drop() -> void:
 	# reparent to parent of this player which is the main game
 	if held_object:
-		# Call on_putdown if the object supports it (e.g., bucket)
-		if "on_putdown" in held_object:
-			held_object.on_putdown()
-		held_object.position = position
+		
+		# TWEEN TO ADD BOUNCE WHEN DROPPING DOWN
+		var tween_pickup = create_tween()
+		var screen_center = Vector2(0,50.0)  
+		tween_pickup.tween_property(held_object, "position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+		await tween_pickup.finished
+		tween_pickup.kill()
+			
 		held_object.reparent(get_parent())
 		held_object = null
 		is_holding_object = false

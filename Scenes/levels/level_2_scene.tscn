@@ -5991,6 +5991,7 @@ sources/0 = SubResource("TileSetAtlasSource_j2f8f")
 script = ExtResource("1_8wkhw")
 
 [node name="bg_space" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.5, 0.5, 0.5, 1)
 texture_filter = 1
 rotation = -1.5708
 scale = Vector2(5.37778, 5.37778)

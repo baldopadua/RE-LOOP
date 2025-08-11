@@ -48,9 +48,9 @@ func _on_body_entered(body) -> void:
 		if not tween_climb.is_connected("finished", _tween_climb_finished):
 			tween_climb.connect("finished", _tween_climb_finished)
 			
-		var position_tween = Vector2(0,300)
-		tween_climb.tween_property(body, "position", position_tween, 1.5).set_trans(Tween.TRANS_LINEAR)
-		await get_tree().create_timer(2.5).timeout
+		var screen_center = Vector2(0.0, 250.0)
+		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)
+		await tween_climb.finished
 		
 		body.visible = false
 		# SWITCH SCENE TO LEVEL 2
@@ -71,6 +71,7 @@ func go_to_level_2():
 	if not tween_scale.is_connected("finished", _tween_scale_finished):
 		tween_scale.connect("finished", _tween_scale_finished)
 	tween_scale.tween_property(get_parent(), "scale", Vector2(0.0,0.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	await tween_scale.finished
 	await get_tree().create_timer(1).timeout
 	get_parent().get_tree().change_scene_to_file("res://Scenes/levels/level_2_scene.tscn")
 

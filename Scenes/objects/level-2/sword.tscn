@@ -104,7 +104,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
-size = Vector2(55.5692, 45.6147)
+size = Vector2(55.5692, 111.613)
 
 [node name="Sword" type="Area2D"]
 light_mask = 3
@@ -136,7 +136,7 @@ texture = ExtResource("2_h1qa4")
 light_mask = 3
 visibility_layer = 3
 z_index = 1
-position = Vector2(10.958, -16.9273)
+position = Vector2(-5.54173, 11.6508)
 rotation = -2.61799
 shape = SubResource("RectangleShape2D_nwbkr")
 
