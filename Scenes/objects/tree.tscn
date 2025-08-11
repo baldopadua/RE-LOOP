@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://3ytk6p6f2w23"]
 
 [ext_resource type="Script" uid="uid://dxhkvoxn1q5vy" path="res://Scripts/tree_script.gd" id="1_uvtpv"]
-[ext_resource type="Texture2D" uid="uid://dlmmmwvov1v42" path="res://Assets/level_1/tree_spritesheet.png" id="2_0yjm6"]
+[ext_resource type="Texture2D" uid="uid://vpgh1vjh3ndt" path="res://Assets/level_1/tree_spritesheet.png" id="2_0yjm6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8h35"]
 texture = ExtResource("2_0yjm6")
@@ -81,7 +81,7 @@ is_pickupable = false
 visible = false
 texture_filter = 1
 rotation = 3.14159
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAD/////AAABAAUAAAAAAP//AAACAAUAAAAAAAAAAAACAAYAAAA=")
 tile_set = SubResource("TileSet_n5ney")
 
@@ -89,7 +89,7 @@ tile_set = SubResource("TileSet_n5ney")
 visible = false
 texture_filter = 1
 rotation = 3.14159
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAD///7/AAAJAAQAAAD/////AAAJAAUAAAD//wAAAAAJAAYAAAAAAP7/AAAKAAQAAAAAAP//AAAKAAUAAAAAAAAAAAAKAAYAAAA=")
 tile_set = SubResource("TileSet_n5ney")
 
@@ -97,15 +97,16 @@ tile_set = SubResource("TileSet_n5ney")
 visible = false
 texture_filter = 1
 rotation = 3.14159
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAD+//3/AAAMAAMAAAD+//7/AAAMAAQAAAD///3/AAANAAMAAAD///7/AAANAAQAAAD/////AAANAAUAAAD//wAAAAANAAYAAAAAAP3/AAAOAAMAAAAAAP7/AAAOAAQAAAAAAP//AAAOAAUAAAAAAAAAAAAOAAYAAAA=")
 tile_set = SubResource("TileSet_n5ney")
 
 [node name="State4" type="TileMapLayer" parent="."]
 visible = false
 texture_filter = 1
+position = Vector2(0, -1)
 rotation = 3.14159
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAD+//v/AAAUAAEAAAD+//z/AAAUAAIAAAD+//3/AAAUAAMAAAD+/wAAAAAUAAYAAAD///r/AAAVAAAAAAD///v/AAAVAAEAAAD///z/AAAVAAIAAAD///3/AAAVAAMAAAD///7/AAAVAAQAAAD/////AAAVAAUAAAD//wAAAAAVAAYAAAAAAPr/AAAWAAAAAAAAAPv/AAAWAAEAAAAAAPz/AAAWAAIAAAAAAP3/AAAWAAMAAAAAAP7/AAAWAAQAAAAAAP//AAAWAAUAAAAAAAAAAAAWAAYAAAABAPv/AAAXAAEAAAABAPz/AAAXAAIAAAA=")
 tile_set = SubResource("TileSet_n5ney")
 

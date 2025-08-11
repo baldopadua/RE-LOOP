@@ -61,8 +61,8 @@ var maps_dict: Dictionary
 @onready var reverse_ahh_sfx: Object = $"../cinematic_ah"
 @onready var tick_tock_sfx: Object = $"../tick_tock"
 
-# TODO: Change this later to animated sprite
-@onready var sprite = $Sprite2D
+# Changed from Sprite2D to AnimatedSprite2D
+@onready var sprite = $AnimatedSprite2D
 
 func _ready() -> void:
 	if GlobalVariables.is_restarting:
@@ -76,6 +76,7 @@ func _ready() -> void:
 		6: map3,
 		9: map4
 	}
+	sprite.play("idle")
 
 func _input(event: InputEvent) -> void:
 	# MOVEMENT round(rad_to_deg(rotation)) < 180.0
@@ -85,12 +86,14 @@ func _input(event: InputEvent) -> void:
 		rotate_player()
 		GlobalVariables.play_sfx(time_sfx, player_directions.CLOCKWISE)
 		GlobalVariables.play_sfx(clank_sfx, player_directions.CLOCKWISE)
+		sprite.play("walk")
 	elif event.is_action_pressed("move_left") and not is_moving and not GlobalVariables.player_stopped:
 		prev_deg = round(rad_to_deg(rotation))
 		direction = player_directions.COUNTERCLOCKWISE
 		rotate_player()
 		GlobalVariables.play_sfx(time_sfx, player_directions.COUNTERCLOCKWISE)
 		GlobalVariables.play_sfx(clank_sfx, player_directions.COUNTERCLOCKWISE)
+		sprite.play("walk")
 		
 	# OBJECT INTERACTION
 	if event.is_action_pressed("interact") and available_object != null and not is_moving:
@@ -98,6 +101,7 @@ func _input(event: InputEvent) -> void:
 	# Drop Objects
 	elif event.is_action_pressed("drop") and is_holding_object and not is_moving:
 		item_drop()
+		sprite.play("idle")
 	# Interact with Objects using Tools
 	elif event.is_action_pressed("interact") and is_holding_object and interactable_objects != null and not is_moving:
 		for obj in interactable_objects:
@@ -105,10 +109,10 @@ func _input(event: InputEvent) -> void:
 				held_object.interact(obj)
 				held_object = null
 				is_holding_object = false
+				sprite.play("idle")
 				break
 
 func _tween_finished():
-	
 	# RESET THE SFX PITCH SCALE WHEN REACHING BOTH ENDS
 	if round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0 or round(rad_to_deg(rotation)) == 0.0:
 		time_sfx.pitch_scale = 1.0
@@ -152,6 +156,7 @@ func _tween_finished():
 	
 	tween.kill()
 	is_moving = false
+	sprite.play("idle")
 
 # Movement of Player
 func rotate_player():
@@ -200,7 +205,7 @@ func update_held_object_direction():
 		# Ensure filling bar stays visible when changing direction
 		if "on_pickup" in held_object:
 			held_object.on_pickup()
-
+			
 func item_pick_up() -> void:
 	if not is_holding_object and available_object.is_reachable:
 		# Call on_pickup if the object supports it (e.g., bucket)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vpgh1vjh3ndt"
-path="res://.godot/imported/tree_spritesheet.png-450cffa8f1bd0fe5cddcd1fbcdbb095a.ctex"
+uid="uid://du2njb678chcx"
+path="res://.godot/imported/Plooy Guy-Sheet.png-5a2e72f19f64e95f07095f7908560210.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/level_1/tree_spritesheet.png"
-dest_files=["res://.godot/imported/tree_spritesheet.png-450cffa8f1bd0fe5cddcd1fbcdbb095a.ctex"]
+source_file="res://Assets/Plooy Guy-Sheet.png"
+dest_files=["res://.godot/imported/Plooy Guy-Sheet.png-5a2e72f19f64e95f07095f7908560210.ctex"]
 
 [params]
 

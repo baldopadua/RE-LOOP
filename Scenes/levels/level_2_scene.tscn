@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=4 uid="uid://c7nnohgt0671e"]
+[gd_scene load_steps=17 format=4 uid="uid://bfqg45e6qdyho"]
 
-[ext_resource type="Script" uid="uid://5bf1u063c7jk" path="res://Scripts/level_2_script.gd" id="1_8wkhw"]
+[ext_resource type="Script" path="res://Scripts/level_2_script.gd" id="1_8wkhw"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/level_1/World_Level1 (1)-Sheet.png" id="2_lwspt"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_i42nt"]
 [ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="8_hwqhc"]

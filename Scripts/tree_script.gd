@@ -25,6 +25,9 @@ func _on_body_entered(body) -> void:
 	
 	# CLIMB THE TREE
 	if not GlobalVariables.is_looping:
+		# PLAY CLIMB ANIMATION
+		if body.has_node("AnimatedSprite2D"):
+			body.get_node("AnimatedSprite2D").play("climb")
 		
 		# DISABLE PLAYER MOVEMENT
 		GlobalVariables.player_stopped = true
