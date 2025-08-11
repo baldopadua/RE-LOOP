@@ -129,7 +129,7 @@ func _tween_finished():
 	elif round(rad_to_deg(rotation)) == -390.0 and direction == player_directions.COUNTERCLOCKWISE:
 		rotation = deg_to_rad(-30.0)
 	
-	print(round(rad_to_deg(rotation)))
+	#print(round(rad_to_deg(rotation)))
 	
 	# CHECKS IF DEGREES IS IN ANOTHER AREA
 	if round(rad_to_deg(rotation)) in deg_to_time and GlobalVariables.is_looping:
@@ -150,9 +150,9 @@ func _tween_finished():
 			entered_clock_area = deg_to_time[round(rad_to_deg(rotation))]
 			maps_dict[entered_clock_area].visible = true
 		
-	for obj in get_parent().get_children():
-		if obj is object_class:
-			print(obj.name, " STATE: ", obj.current_state)
+	#for obj in get_parent().get_children():
+		#if obj is object_class:
+			#print(obj.name, " STATE: ", obj.current_state)
 	
 	tween.kill()
 	is_moving = false

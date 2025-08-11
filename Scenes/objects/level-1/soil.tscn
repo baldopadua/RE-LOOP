@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://crgcfnjvowrjv"]
+
+[ext_resource type="Script" uid="uid://d1t303evbdwox" path="res://Scripts/object_class.gd" id="1_a0bdr"]
+[ext_resource type="Texture2D" uid="uid://bdnfiuumni1te" path="res://Assets/levels/level_1/DirtMound.png" id="2_pck1w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
+size = Vector2(31, 18)
+
+[node name="Soil" type="Area2D"]
+light_mask = 3
+visibility_layer = 3
+disable_mode = 2
+script = ExtResource("1_a0bdr")
+object_name = "soil"
+is_pickupable = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.5, -7)
+scale = Vector2(2, 2)
+texture = ExtResource("2_pck1w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+z_index = 1
+position = Vector2(-0.5, 1)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_nwbkr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

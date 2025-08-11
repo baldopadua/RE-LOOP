@@ -4,6 +4,8 @@ var tween_climb: Tween
 var tween_rotate: Tween
 var tween_scale: Tween
 
+var is_playing: bool = false
+
 func _on_body_entered(body) -> void:
 	#print("BODY: %s" % str(body))
 	if body.name != "PlayerScene":
@@ -24,16 +26,24 @@ func _on_body_entered(body) -> void:
 		print(body.interactable_objects)
 	
 	# CLIMB THE TREE
-	if not GlobalVariables.is_looping:
-		# PLAY CLIMB ANIMATION
-		if body.has_node("AnimatedSprite2D"):
-			body.get_node("AnimatedSprite2D").play("climb")
+	if not GlobalVariables.is_looping and not is_playing:
 		
+		# SO THAT IT ONLY EXECUTES ONCE
+		is_playing = true
 		# DISABLE PLAYER MOVEMENT
 		GlobalVariables.player_stopped = true
 		
+		await get_tree().create_timer(1).timeout
+		
+		# PLAY CLIMB ANIMATION
+		if body.has_node("AnimatedSprite2D"):
+			var sprite = body.get_node("AnimatedSprite2D")
+			sprite.stop()
+			sprite.play("climb")
+		
 		# CLIMB
 		tween_climb = create_tween()
+		
 		# Connect tween_finished if not yet connected
 		if not tween_climb.is_connected("finished", _tween_climb_finished):
 			tween_climb.connect("finished", _tween_climb_finished)
@@ -41,6 +51,7 @@ func _on_body_entered(body) -> void:
 		var position_tween = Vector2(0,300)
 		tween_climb.tween_property(body, "position", position_tween, 1.5).set_trans(Tween.TRANS_LINEAR)
 		await get_tree().create_timer(2.5).timeout
+		
 		body.visible = false
 		# SWITCH SCENE TO LEVEL 2
 		go_to_level_2()

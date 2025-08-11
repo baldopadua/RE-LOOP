@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://bfqg45e6qdyho"]
+[gd_scene load_steps=18 format=4 uid="uid://bfqg45e6qdyho"]
 
-[ext_resource type="Script" path="res://Scripts/level_2_script.gd" id="1_8wkhw"]
-[ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/level_1/World_Level1 (1)-Sheet.png" id="2_lwspt"]
+[ext_resource type="Script" uid="uid://5bf1u063c7jk" path="res://Scripts/level_2_script.gd" id="1_8wkhw"]
+[ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="2_lwspt"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_i42nt"]
 [ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="8_hwqhc"]
 [ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/level-1/time_manip.tscn" id="9_0pbmp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b26khqfn4jala" path="res://Audio/level-1/glass_break.tscn" id="12_n64xy"]
 [ext_resource type="PackedScene" uid="uid://dfjn0ovrjl87e" path="res://Audio/level-1/time_freeze.tscn" id="13_ym47h"]
 [ext_resource type="PackedScene" uid="uid://co4mj4xfj7mhw" path="res://Audio/level-1/ice_break.tscn" id="14_cn0ic"]
+[ext_resource type="PackedScene" uid="uid://ceifb3xl03qsu" path="res://Scenes/objects/level-2/old_man.tscn" id="15_b5hpa"]
 [ext_resource type="PackedScene" uid="uid://cic27iv8pc2fo" path="res://Audio/level-1/underwater_explosion.tscn" id="15_f0jkt"]
 [ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="16_ku8w8"]
 [ext_resource type="PackedScene" uid="uid://dkojkmm7fp0p" path="res://Audio/level-1/tick_tock.tscn" id="17_fajtg"]
@@ -5969,6 +5970,8 @@ tile_set = SubResource("TileSet_8r5jx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 2)
+rotation = -1.5708
+ignore_rotation = false
 position_smoothing_enabled = true
 
 [node name="bell" parent="." instance=ExtResource("8_hwqhc")]
@@ -5992,3 +5995,6 @@ position_smoothing_enabled = true
 [node name="cinematic_ah" parent="." instance=ExtResource("18_7x2kw")]
 
 [node name="shwoop" parent="." instance=ExtResource("19_pd65x")]
+
+[node name="old_man" parent="." instance=ExtResource("15_b5hpa")]
+position = Vector2(-143, 248)

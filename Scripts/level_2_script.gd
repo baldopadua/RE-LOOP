@@ -2,8 +2,7 @@ extends Node2D
 
 @export var source_tilemap: TileMapLayer
 @onready var player = $PlayerScene
-var states := ["State1", "State2", "State3", "State4"]
-var center_circle: Vector2i = Vector2i(0,0)
+@onready var old_man: object_class = $old_man
 
 # SFX
 @onready var cinematic_impact: Object = $cinematic_impact
@@ -44,9 +43,6 @@ func _tween_rotation_finished():
 
 func _tween_scale_finished():
 	tween_scale.kill()
-
-# If seed is planted in soil
-# Tree can now cycle
 
 func _process(_delta: float) -> void:
 	pass
