@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dypu05rngiwmu"]
+[gd_scene load_steps=24 format=3 uid="uid://dypu05rngiwmu"]
 
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
 [ext_resource type="Texture2D" uid="uid://dlwvop2dbq7c3" path="res://Assets/ui/game_mainscene.png" id="1_52fb6"]
@@ -9,15 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://c284erqqs1py8" path="res://Assets/ui/gametitle.png" id="4_lhp3t"]
 [ext_resource type="Texture2D" uid="uid://coddlv2n5auim" path="res://Assets/ui/tutorial_button_hover.png" id="5_6ev3c"]
 [ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="7_drdnd"]
-[ext_resource type="Texture2D" uid="uid://dycrhdnxrjgsl" path="res://Assets/ui/credits_animated_icon.png" id="9_gnsmo"]
 [ext_resource type="AudioStream" uid="uid://cw5va43ffrudg" path="res://Audio/ui/click.mp3" id="9_ioaeq"]
 [ext_resource type="AudioStream" uid="uid://35povcthktt2" path="res://Audio/ui/main_bgmusic.mp3" id="9_m1efj"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="10_mai8y"]
-[ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="10_psl12"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="11_76v2p"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="12_drdnd"]
 [ext_resource type="Texture2D" uid="uid://dn7v831jhqhjf" path="res://Assets/ui/tutorial.png" id="12_lhp3t"]
-[ext_resource type="Texture2D" uid="uid://d3akhbebr27n1" path="res://Assets/ui/credits_overlay.png" id="18_2ebs2"]
+[ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
 atlas = ExtResource("3_7ewk0")
@@ -66,103 +64,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b48ew"]
-atlas = ExtResource("9_gnsmo")
-region = Rect2(0, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8edxt"]
-atlas = ExtResource("9_gnsmo")
-region = Rect2(27, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5oxhp"]
-atlas = ExtResource("9_gnsmo")
-region = Rect2(54, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nt2eh"]
-atlas = ExtResource("9_gnsmo")
-region = Rect2(81, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5cm5d"]
-atlas = ExtResource("9_gnsmo")
-region = Rect2(108, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5bov3"]
-atlas = ExtResource("9_gnsmo")
-region = Rect2(135, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xle81"]
-atlas = ExtResource("10_psl12")
-region = Rect2(0, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s8qe6"]
-atlas = ExtResource("10_psl12")
-region = Rect2(27, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yb0ja"]
-atlas = ExtResource("10_psl12")
-region = Rect2(54, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_15kh8"]
-atlas = ExtResource("10_psl12")
-region = Rect2(81, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_viu5a"]
-atlas = ExtResource("10_psl12")
-region = Rect2(108, 0, 27, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b00ha"]
-atlas = ExtResource("10_psl12")
-region = Rect2(135, 0, 27, 36)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lhp3t"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b48ew")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8edxt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5oxhp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nt2eh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5cm5d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5bov3")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xle81")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s8qe6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yb0ja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_15kh8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_viu5a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b00ha")
-}],
-"loop": true,
-"name": &"hover",
 "speed": 5.0
 }]
 
@@ -248,13 +149,17 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="credits_animated_icon" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(443, 430)
-scale = Vector2(5.26389, 5.47222)
-sprite_frames = SubResource("SpriteFrames_lhp3t")
-frame = 1
-frame_progress = 0.162426
+[node name="credits" parent="." instance=ExtResource("12_psl12")]
+layout_mode = 1
+anchor_left = 0.275781
+anchor_top = 0.436111
+anchor_right = 0.392969
+anchor_bottom = 0.730556
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
 
 [node name="hover_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_drdnd")
@@ -274,7 +179,7 @@ anchor_left = 0.0632813
 anchor_top = -0.130556
 anchor_right = 0.976531
 anchor_bottom = 1.15289
-offset_right = -38.9601
+offset_right = -38.9602
 offset_bottom = -41.08
 grow_horizontal = 2
 grow_vertical = 2
@@ -300,33 +205,3 @@ metadata/_edit_use_anchors_ = true
 
 [node name="page_turn_sound" type="AudioStreamPlayer2D" parent="tutorial_overlay"]
 stream = ExtResource("12_drdnd")
-
-[node name="cresdits_overlay" type="TextureRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.125781
-anchor_top = 0.0902778
-anchor_right = 0.880469
-anchor_bottom = 0.8875
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("18_2ebs2")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="close_button" type="TextureButton" parent="cresdits_overlay"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.881988
-anchor_top = 0.0087108
-anchor_right = 0.965838
-anchor_bottom = 0.151568
-offset_bottom = 1.52588e-05
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("10_mai8y")
-texture_hover = ExtResource("11_76v2p")
-ignore_texture_size = true
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true

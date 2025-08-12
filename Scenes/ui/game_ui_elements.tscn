@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://wvr0ph3yi7o1"]
+[gd_scene load_steps=34 format=3 uid="uid://wvr0ph3yi7o1"]
 
+[ext_resource type="Script" uid="uid://dwfjc4wc808h0" path="res://Scripts/ui/game_ui_elements.gd" id="1_ev2l3"]
 [ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="3_8fl4t"]
 [ext_resource type="Texture2D" uid="uid://c2dq7rfpmpmqb" path="res://Assets/ui/keys_elements.png" id="3_e48s1"]
 [ext_resource type="Texture2D" uid="uid://nhql76otu131" path="res://Assets/ui/counterclockwise_time_indicator.png" id="4_7xvw7"]
@@ -208,9 +209,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ev2l3")
 metadata/_edit_use_anchors_ = true
 
-[node name="gui_frame" type="Control" parent="."]
+[node name="ui_frame" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,7 +221,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="keys_elements" type="TextureRect" parent="gui_frame"]
+[node name="keys_elements" type="TextureRect" parent="ui_frame"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -231,7 +233,7 @@ texture = ExtResource("3_e48s1")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="tutorial_button" type="TextureButton" parent="gui_frame"]
+[node name="tutorial_button" type="TextureButton" parent="ui_frame"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -244,15 +246,15 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="time_indicator" type="AnimatedSprite2D" parent="gui_frame"]
+[node name="time_indicator" type="AnimatedSprite2D" parent="ui_frame"]
 texture_filter = 1
 position = Vector2(1151.5, 574.5)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_7xvw7")
 animation = &"clockwise_time_indicator"
-frame_progress = 0.524751
+frame_progress = 0.97585
 
-[node name="settings_button" type="TextureButton" parent="gui_frame"]
+[node name="settings_button" type="TextureButton" parent="ui_frame"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
