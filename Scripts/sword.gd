@@ -4,6 +4,7 @@ extends object_class
 # IF HAS NODE old_man BEGIN PROCESS IF old_man.current_state is 2 or strong
 # ANIMATESPRITE2D.aVISIBLE = TRUE THEN PLAY ANIMATION
 @onready var loop_break_animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var loopbreak2: AnimatedSprite2D = get_parent().get_node("loopbreak2")
 @onready var sword_sprite: Sprite2D = $SwordSprite
 @onready var sword_sfx: AudioStreamPlayer2D = $"../sword"
 
@@ -44,6 +45,8 @@ func break_loop():
 		#PLAY MUSIC
 		sword_sfx.play()
 		loop_break_animation.play("unsheate")
+		loopbreak2.visible = true
+		loopbreak2.play()
 		await loop_break_animation.animation_finished
 		# WAIT FOR ANIMATION TO FINISH FIRST
 		GlobalVariables.player_stopped = false

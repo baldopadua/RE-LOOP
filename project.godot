@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RE:LOOP"
-run/main_scene="uid://dypu05rngiwmu"
+run/main_scene="uid://clmxq6e31gwm8"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
