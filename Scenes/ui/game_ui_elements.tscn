@@ -1,11 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://wvr0ph3yi7o1"]
+[gd_scene load_steps=37 format=3 uid="uid://wvr0ph3yi7o1"]
 
 [ext_resource type="Script" uid="uid://dwfjc4wc808h0" path="res://Scripts/ui/game_ui_elements.gd" id="1_ev2l3"]
 [ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="3_8fl4t"]
 [ext_resource type="Texture2D" uid="uid://c2dq7rfpmpmqb" path="res://Assets/ui/keys_elements.png" id="3_e48s1"]
+[ext_resource type="Texture2D" uid="uid://3vkvbxe40udp" path="res://Assets/ui/brochure_hovered.png" id="3_uwqlr"]
 [ext_resource type="Texture2D" uid="uid://dmlkwrmka11h8" path="res://Assets/ui/counterclockwise_time_indicator.png" id="4_7xvw7"]
-[ext_resource type="Texture2D" uid="uid://dmkx2o3qq4l0i" path="res://Assets/ui/tutorial_icon.png" id="4_8fl4t"]
 [ext_resource type="Texture2D" uid="uid://dacn8hwtmnni2" path="res://Assets/ui/settings_icon.png" id="5_7xvw7"]
+[ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="6_rl4jv"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="7_uwqlr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xvw7"]
@@ -113,8 +114,8 @@ atlas = ExtResource("4_7xvw7")
 region = Rect2(420, 0, 35, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6evt"]
-atlas = ExtResource("4_7xvw7")
-region = Rect2(455, 0, 35, 42)
+atlas = ExtResource("6_rl4jv")
+region = Rect2(0, 0, 35, 42)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7xvw7"]
 animations = [{
@@ -239,10 +240,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -155.0
-offset_right = 210.0
-offset_bottom = 45.0
+offset_left = 34.0
+offset_top = -152.0
+offset_right = 234.0
+offset_bottom = 48.0
 grow_vertical = 0
 pivot_offset = Vector2(-10, 210)
 texture = ExtResource("3_e48s1")
@@ -262,13 +263,13 @@ offset_bottom = 110.0
 grow_horizontal = 0
 pivot_offset = Vector2(110, -10)
 mouse_filter = 2
-texture_normal = ExtResource("4_8fl4t")
+texture_normal = ExtResource("3_uwqlr")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="time_indicator" type="AnimatedSprite2D" parent="ui_frame"]
 texture_filter = 1
-position = Vector2(1187, 603)
+position = Vector2(1155, 582)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_7xvw7")
 animation = &"fixed"
@@ -276,10 +277,10 @@ animation = &"fixed"
 [node name="settings_button" type="TextureButton" parent="ui_frame"]
 texture_filter = 1
 layout_mode = 1
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 110.0
-offset_bottom = 110.0
+offset_left = 37.0
+offset_top = 29.0
+offset_right = 87.0
+offset_bottom = 79.0
 pivot_offset = Vector2(-10, -10)
 texture_normal = ExtResource("5_7xvw7")
 ignore_texture_size = true
