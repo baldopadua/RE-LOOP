@@ -69,8 +69,18 @@ position = Vector2(638.5, 361.25)
 scale = Vector2(5.29583, 5.28519)
 sprite_frames = SubResource("SpriteFrames_7iton")
 
-[node name="level_1_scene" parent="." instance=ExtResource("4_fiftr")]
-position = Vector2(638, 361)
+[node name="levels_frame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 279.0
+offset_right = -282.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="level_1_scene" parent="levels_frame" instance=ExtResource("4_fiftr")]
+position = Vector2(359, 361)
 
 [node name="game_ui_elements" parent="." instance=ExtResource("3_fiftr")]
 texture_filter = 1

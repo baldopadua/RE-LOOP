@@ -173,6 +173,7 @@ stream = ExtResource("9_ioaeq")
 
 [node name="tutorial_overlay" type="TextureRect" parent="."]
 visible = false
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0632813
