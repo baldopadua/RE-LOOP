@@ -10,6 +10,8 @@ extends Control
 
 const CREDITS_ICON_BASE_SCALE = Vector2(6.28704, 6.95834)
 const CREDITS_ICON_HOVER_SCALE = CREDITS_ICON_BASE_SCALE * 1.2
+const OVERLAY_FINAL_POSITION = Vector2(52, 11) 
+const ICON_POSITION = Vector2(88, 65.2501)
 
 var last_frame_index := 0
 
@@ -47,6 +49,13 @@ func _process(_delta: float) -> void:
 
 func _fade_in_overlay():
 	credits_overlay.visible = true
+	credits_overlay.scale = Vector2(0.2, 0.2)
+	credits_overlay.position = ICON_POSITION
+	var tween := create_tween()
+	tween.tween_property(credits_overlay, "scale", Vector2(1, 1), 0.18)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(credits_overlay, "position", OVERLAY_FINAL_POSITION, 0.18)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	# Removed fade-in transition, just show overlay instantly.
 	var main_scene = get_tree().current_scene
 	if main_scene:
@@ -63,6 +72,18 @@ func _on_close_button_pressed() -> void:
 	_fade_out_overlay()
 
 func _fade_out_overlay():
+	# Animate overlay scale down and move back to icon position before hiding
+	var tween := create_tween()
+	tween.tween_property(credits_overlay, "scale", Vector2(0.2, 0.2), 0.15)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_property(credits_overlay, "position", ICON_POSITION, 0.15)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_callback(Callable(self, "_hide_overlay_and_fade"))
+
+func _hide_overlay_and_fade():
+	credits_overlay.visible = false
+	credits_overlay.scale = Vector2(1, 1)
+	credits_overlay.position = OVERLAY_FINAL_POSITION
 	var fade_rect := ColorRect.new()
 	fade_rect.color = Color(0, 0, 0, 0)
 	fade_rect.anchor_right = 1.0

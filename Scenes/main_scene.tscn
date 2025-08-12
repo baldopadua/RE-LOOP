@@ -242,8 +242,8 @@ texture_filter = 1
 position = Vector2(88, 65.2501)
 scale = Vector2(6.28704, 6.95834)
 sprite_frames = SubResource("SpriteFrames_5cm5d")
-frame_progress = 0.666657
 autoplay = "default"
+frame_progress = 0.666657
 
 [node name="tutorial_button" type="TextureButton" parent="."]
 texture_filter = 1
