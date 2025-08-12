@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dypu05rngiwmu"]
+[gd_scene load_steps=22 format=3 uid="uid://dypu05rngiwmu"]
 
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
 [ext_resource type="Texture2D" uid="uid://dlwvop2dbq7c3" path="res://Assets/ui/game_mainscene.png" id="1_52fb6"]
@@ -11,10 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="7_drdnd"]
 [ext_resource type="AudioStream" uid="uid://cw5va43ffrudg" path="res://Audio/ui/click.mp3" id="9_ioaeq"]
 [ext_resource type="AudioStream" uid="uid://35povcthktt2" path="res://Audio/ui/main_bgmusic.mp3" id="9_m1efj"]
-[ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="10_mai8y"]
-[ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="11_76v2p"]
+[ext_resource type="PackedScene" uid="uid://bnrnr4wjbytbv" path="res://Scenes/ui/tutorial.tscn" id="10_ioaeq"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="12_drdnd"]
-[ext_resource type="Texture2D" uid="uid://dn7v831jhqhjf" path="res://Assets/ui/tutorial.png" id="12_lhp3t"]
 [ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
@@ -161,6 +159,10 @@ offset_right = 0.0
 offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 
+[node name="tutorial" parent="." instance=ExtResource("10_ioaeq")]
+visible = false
+layout_mode = 1
+
 [node name="hover_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_drdnd")
 
@@ -171,38 +173,5 @@ autoplay = true
 [node name="click_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_ioaeq")
 
-[node name="tutorial_overlay" type="TextureRect" parent="."]
-visible = false
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0632813
-anchor_top = -0.130556
-anchor_right = 0.976531
-anchor_bottom = 1.15289
-offset_right = -38.9602
-offset_bottom = -41.08
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_lhp3t")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="close_button" type="TextureButton" parent="tutorial_overlay"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.818584
-anchor_top = 0.141563
-anchor_right = 0.902655
-anchor_bottom = 0.241223
-offset_bottom = 1.52588e-05
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("10_mai8y")
-texture_hover = ExtResource("11_76v2p")
-ignore_texture_size = true
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="page_turn_sound" type="AudioStreamPlayer2D" parent="tutorial_overlay"]
+[node name="page_turn_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_drdnd")
