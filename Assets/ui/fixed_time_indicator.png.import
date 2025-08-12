@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmlkwrmka11h8"
-path="res://.godot/imported/counterclockwise_time_indicator.png-cf17ed2b1fed3339a8262152adaf8881.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://csb3y2p08huiq"
+valid=false
 
 [deps]
 
-source_file="res://Assets/ui/counterclockwise_time_indicator.png"
-dest_files=["res://.godot/imported/counterclockwise_time_indicator.png-cf17ed2b1fed3339a8262152adaf8881.ctex"]
+source_file="res://Assets/ui/fixed_time_indicator.png"
 
 [params]
 
