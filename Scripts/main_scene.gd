@@ -54,12 +54,46 @@ func _on_tutorial_button_pressed() -> void:
 	_set_buttons_disabled(true)
 	if page_turn_sound:
 		page_turn_sound.play()
+	# Hide main menu elements
+	if gametitle:
+		gametitle.visible = false
+	if start_button:
+		start_button.visible = false
+	if tutorial_button:
+		tutorial_button.visible = false
+	if has_node("credits"):
+		get_node("credits").visible = false
+	# Play dim background animation
+	if game_animated_bg and game_animated_bg.sprite_frames.has_animation("dim_game_background"):
+		game_animated_bg.play("dim_game_background")
+	# Fade in overlay before showing tutorial
+	_fade_in_tutorial_overlay()
+
+func _fade_in_tutorial_overlay():
+	var fade_rect := ColorRect.new()
+	fade_rect.color = Color(0, 0, 0, 1)
+	fade_rect.anchor_right = 1.0
+	fade_rect.anchor_bottom = 1.0
+	fade_rect.z_index = 999
+	add_child(fade_rect)
+	var tween := create_tween()
+	tween.tween_property(fade_rect, "color:a", 0.0, 0.2)
+	tween.tween_callback(Callable(self, "_show_tutorial_overlay"))
+	tween.tween_callback(Callable(fade_rect, "queue_free"))
+
+func _show_tutorial_overlay():
 	if tutorial_instance == null or not is_instance_valid(tutorial_instance):
 		tutorial_instance = tutorial_scene_packed.instantiate()
 		add_child(tutorial_instance)
 		tutorial_instance.z_index = 100
+		# Hide tutorial_bg when shown from main scene
+		if tutorial_instance.has_node("tutorial_bg"):
+			tutorial_instance.get_node("tutorial_bg").visible = false
 	else:
 		tutorial_instance.visible = true
+		# Hide tutorial_bg when shown from main scene
+		if tutorial_instance.has_node("tutorial_bg"):
+			tutorial_instance.get_node("tutorial_bg").visible = false
 
 func _set_buttons_disabled(disabled: bool) -> void:
 	start_button.disabled = disabled
