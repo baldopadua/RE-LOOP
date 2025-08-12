@@ -44,6 +44,7 @@ var deg_to_time: Dictionary = {
 	-330.0: 9,
 }
 var entered_clock_area: int = 12
+var previous_clock_area: int = 12
 var prev_deg: float = 0.0
 var available_object_last_pos: Vector2
 
@@ -143,13 +144,14 @@ func _tween_finished():
 			for obj in get_parent().objects:
 				# IF OBJECT_CLASS AND IS IN THE LEVEL SCENE NOT PLAYER
 				if obj is object_class and (obj.get_parent().name == "level_2" or obj.get_parent().name != "object_position"):
-					print("PARENT: ", obj.get_parent())
+					#print("PARENT: ", obj.get_parent())
 					if direction == player_directions.CLOCKWISE and obj.current_state < obj.max_state_threshold: 
 						obj.current_state += 1
 					elif direction == player_directions.COUNTERCLOCKWISE and obj.current_state > obj.min_state_threshold:  
 						obj.current_state -= 1
 			# SET THE ENTERED CLOCK AREA TO AREA KUNG NASAN PLAYER
 			maps_dict[entered_clock_area].visible = false
+			previous_clock_area = entered_clock_area
 			entered_clock_area = deg_to_time[round(rad_to_deg(rotation))]
 			maps_dict[entered_clock_area].visible = true
 			
@@ -214,7 +216,7 @@ func update_held_object_direction():
 				held_object.set_flipped(false)
 			
 func item_pick_up() -> void:
-	if not is_holding_object and available_object.is_reachable:
+	if not is_holding_object and available_object.is_reachable and not is_moving:
 		# Defer/Delay the reparenting to avoid error
 		# during physics callback or something
 		call_deferred("_deferred_reparent", available_object)
@@ -225,7 +227,7 @@ func item_pick_up() -> void:
 
 func item_drop() -> void:
 	# reparent to parent of this player which is the main game
-	if held_object:
+	if held_object and not is_moving:
 		
 		# TWEEN TO ADD BOUNCE WHEN DROPPING DOWN
 		var tween_pickup = create_tween()
@@ -238,4 +240,4 @@ func item_drop() -> void:
 		held_object = null
 		is_holding_object = false
 		print("Object dropped")
-		
+		interactable_objects.clear()

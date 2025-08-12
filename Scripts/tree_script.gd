@@ -7,23 +7,7 @@ var tween_scale: Tween
 var is_playing: bool = false	
 
 func _on_body_entered(body) -> void:
-	#print("BODY: %s" % str(body))
-	if body.name != "PlayerScene":
-		return
-	# For Tools [ Mop, Rugs, Buckets ]
-	if is_pickupable and not body.is_holding_object:
-		print("Player can pick up %s" % object_name)
-		is_reachable = true
-		player_char = body
-		body.available_object = self
-	# For Interactables [ Puddles, Drips, Toilet ]
-	elif not is_pickupable and body.is_holding_object:
-		print("%s is interactable" % object_name)
-		is_reachable = true
-		player_char = body
-		#body.available_interactable_object = self
-		body.interactable_objects.append(self)
-		print(body.interactable_objects)
+	handle_body_entered(body) 
 	
 	# CLIMB THE TREE
 	if not GlobalVariables.is_looping and not is_playing:

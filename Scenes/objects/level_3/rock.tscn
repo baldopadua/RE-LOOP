@@ -1,30 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://lftn8e82jmja"]
+[gd_scene load_steps=4 format=3 uid="uid://lftn8e82jmja"]
 
-[ext_resource type="Script" uid="uid://d1t303evbdwox" path="res://Scripts/object_class.gd" id="1_h4ped"]
-
-[sub_resource type="Gradient" id="Gradient_h627t"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_arhpd"]
-gradient = SubResource("Gradient_h627t")
-width = 10
-height = 10
+[ext_resource type="Script" uid="uid://cp4ph6xk7oue6" path="res://Scripts/rock.gd" id="1_1h124"]
+[ext_resource type="Texture2D" uid="uid://cia7fvqduwmcc" path="res://Assets/levels/level_3/rock.png" id="2_1h124"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
-size = Vector2(15, 15)
+size = Vector2(12, 12)
 
 [node name="Rock" type="Area2D"]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
 disable_mode = 2
-script = ExtResource("1_h4ped")
+script = ExtResource("1_1h124")
 object_name = "rock"
 usable_targets = Array[String](["geyser"])
 metadata/_custom_type_script = "uid://d1t303evbdwox"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_arhpd")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_1h124")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3

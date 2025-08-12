@@ -2,7 +2,6 @@ extends Node2D
 
 @export var source_tilemap: TileMapLayer
 @onready var player = $PlayerScene
-@onready var geyser = $geyser
 
 # SFX
 @onready var cinematic_impact: Object = $cinematic_impact
@@ -41,7 +40,6 @@ func _ready():
 	
 	# APPEND THE OBJECTS IN THE OBJECTS ARRAY HERE
 	# THIS WILL BE REFERENCED BY THE PLAYER LATER ON SO DONT FORGET THIS!
-	objects.append(geyser)
 
 func _tween_rotation_finished():
 	tween_rotate.kill()

@@ -24,28 +24,34 @@ func _ready():
 # Both body_entered tsaka body_exit ko tinanggal
 
 func _on_body_entered(body) -> void:
-	#print("BODY: %s" % str(body))
+	handle_body_entered(body)
+
+func handle_body_entered(body):
+		#print("BODY: %s" % str(body))
 	if body.name != "PlayerScene":
 		return
 	if not body.is_holding_object and has_node("AnimatedSprite2D"):
 		var anim = get_node("AnimatedSprite2D")
 		await anim.animation_finished
-	# For Tools [ Mop, Rugs, Buckets ]
+	# PICKING UP THINGS
 	if is_pickupable and not body.is_holding_object:
-		print("Player can pick up %s" % object_name)
+		#print("Player can pick up %s" % object_name)
 		is_reachable = true
 		player_char = body
 		body.available_object = self
-	# For Interactables [ Puddles, Drips, Toilet ]
+	# INTERACTING WHILE CARRYING PICKUPABLE THINGS
 	elif not is_pickupable and body.is_holding_object:
-		print("%s is interactable" % object_name)
+		#print("%s is interactable" % object_name)
 		is_reachable = true
 		player_char = body
 		#body.available_interactable_object = self
 		body.interactable_objects.append(self)
-		print(body.interactable_objects)
+		#print(body.interactable_objects)
 
 func _on_body_exited(body) -> void:
+	handle_body_exited(body)
+	
+func handle_body_exited(body):
 	#print("BODY: %s" % str(body))
 	if body != player_char:
 		return
@@ -55,7 +61,7 @@ func _on_body_exited(body) -> void:
 		is_reachable = false
 		player_char = null
 		body.available_object = null
-		print("Out of Object Range")
+		#print("Out of Object Range")
 		
 	# Interatable behavior if out of range
 	if not is_pickupable:
@@ -64,7 +70,7 @@ func _on_body_exited(body) -> void:
 		#body.available_interactable_object = null
 		if body.interactable_objects.has(self):
 			body.interactable_objects.erase(self)
-		print("Out of Interactable Range")
+		#print("Out of Interactable Range")
 
 func set_flipped(flip: bool):
 	if has_node("item_sprite"):   
