@@ -69,5 +69,3 @@ func _restore_main_menu():
 			main_scene.get_node("tutorial_button").visible = true
 		if main_scene.has_node("credits"):
 			main_scene.get_node("credits").visible = true
-
-s
