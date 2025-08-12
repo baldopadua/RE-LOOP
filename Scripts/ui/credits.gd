@@ -47,13 +47,15 @@ func _on_credits_button_hovered() -> void:
 		var current_frame = credits_animated_icon.frame
 		credits_animated_icon.play("hover")
 		credits_animated_icon.frame = current_frame
+		var tween := create_tween()
+		tween.tween_property(credits_animated_icon, "scale", Vector2(8, 9), 0.12)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func _on_credits_button_unhovered() -> void:
 	if credits_animated_icon:
 		var current_frame = credits_animated_icon.frame
 		credits_animated_icon.play("default")
 		credits_animated_icon.frame = current_frame
-	if credits_animated_icon:
-		var current_frame = credits_animated_icon.frame
-		credits_animated_icon.play("default")
-		credits_animated_icon.frame = current_frame
+		var tween := create_tween()
+		tween.tween_property(credits_animated_icon, "scale", Vector2(6.63195, 7.50694), 0.12)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
