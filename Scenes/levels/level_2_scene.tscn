@@ -5998,6 +5998,7 @@ sources/0 = SubResource("TileSetAtlasSource_j2f8f")
 script = ExtResource("1_8wkhw")
 
 [node name="loopbreak2" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(-2.5, 1.7)
 rotation = -1.39626
