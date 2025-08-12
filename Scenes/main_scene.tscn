@@ -94,15 +94,15 @@ region = Rect2(135, 0, 27, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oyb3p"]
 atlas = ExtResource("5_7ewk0")
-region = Rect2(27, 0, 27, 36)
+region = Rect2(0, 0, 27, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jvnna"]
 atlas = ExtResource("5_7ewk0")
-region = Rect2(54, 0, 27, 36)
+region = Rect2(27, 0, 27, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b48ew"]
 atlas = ExtResource("5_7ewk0")
-region = Rect2(0, 0, 27, 36)
+region = Rect2(54, 0, 27, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8edxt"]
 atlas = ExtResource("5_7ewk0")
@@ -228,9 +228,9 @@ layout_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.263281
-anchor_top = 0.513889
+anchor_top = 0.479167
 anchor_right = 0.3875
-anchor_bottom = 0.683333
+anchor_bottom = 0.719444
 grow_horizontal = 2
 grow_vertical = 2
 ignore_texture_size = true
@@ -239,9 +239,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="credits_animated_icon" type="AnimatedSprite2D" parent="credits/credits_button"]
 texture_filter = 1
-position = Vector2(80, 39)
-scale = Vector2(6.7963, 7.19445)
+position = Vector2(88, 65.2501)
+scale = Vector2(6.28704, 6.95834)
 sprite_frames = SubResource("SpriteFrames_5cm5d")
+frame_progress = 0.666657
+autoplay = "default"
 
 [node name="tutorial_button" type="TextureButton" parent="."]
 texture_filter = 1

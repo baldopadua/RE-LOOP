@@ -8,6 +8,9 @@ extends Control
 @onready var credits_button := $credits_button
 @onready var click_sound := $"../click_sound"
 
+const CREDITS_ICON_BASE_SCALE = Vector2(6.28704, 6.95834)
+const CREDITS_ICON_HOVER_SCALE = CREDITS_ICON_BASE_SCALE * 1.2
+
 var last_frame_index := 0
 
 # Called when the node enters the scene tree for the first time.
@@ -106,9 +109,13 @@ func _on_credits_button_hovered() -> void:
 		var last_frame = credits_animated_icon.frame
 		credits_animated_icon.play("credits_icon_hover")
 		credits_animated_icon.frame = last_frame
+		credits_animated_icon.scale = CREDITS_ICON_HOVER_SCALE # scale up from base
 
 func _on_credits_button_unhovered() -> void:
 	if credits_animated_icon:
 		var last_frame = credits_animated_icon.frame
+		credits_animated_icon.play("default")
+		credits_animated_icon.frame = last_frame
+		credits_animated_icon.scale = CREDITS_ICON_BASE_SCALE # restore to base
 		credits_animated_icon.play("default")
 		credits_animated_icon.frame = last_frame
