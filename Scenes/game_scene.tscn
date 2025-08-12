@@ -69,8 +69,8 @@ position = Vector2(638.5, 361.25)
 scale = Vector2(5.29583, 5.28519)
 sprite_frames = SubResource("SpriteFrames_7iton")
 
-[node name="game_ui_elements" parent="." instance=ExtResource("3_fiftr")]
+[node name="game_gui_elements" parent="." instance=ExtResource("3_fiftr")]
 layout_mode = 1
 
-[node name="Node2D" parent="." instance=ExtResource("4_fiftr")]
+[node name="level_1_scene" parent="." instance=ExtResource("4_fiftr")]
 position = Vector2(638, 361)
