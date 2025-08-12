@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://dypu05rngiwmu"]
 
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
-[ext_resource type="Texture2D" uid="uid://dlwvop2dbq7c3" path="res://Assets/ui/game_mainscene.png" id="1_52fb6"]
+[ext_resource type="Texture2D" uid="uid://bq8mow31m52eg" path="res://Assets/ui/game_main_bg.png" id="2_7ewk0"]
 [ext_resource type="Texture2D" uid="uid://chg7xq6f7mumr" path="res://Assets/ui/start_button.png" id="2_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="3_7ewk0"]
 [ext_resource type="Texture2D" uid="uid://cwndswkyv0b33" path="res://Assets/ui/start_button_hover.png" id="3_iacmt"]
@@ -90,7 +90,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_52fb6")
+texture = ExtResource("2_7ewk0")
 expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
