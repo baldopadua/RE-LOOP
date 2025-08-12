@@ -27,7 +27,7 @@ func _on_body_entered(body) -> void:
 	#print("BODY: %s" % str(body))
 	if body.name != "PlayerScene":
 		return
-	if not body.is_holding_object:
+	if not body.is_holding_object and has_node("AnimatedSprite2D"):
 		var anim = get_node("AnimatedSprite2D")
 		await anim.animation_finished
 	# For Tools [ Mop, Rugs, Buckets ]

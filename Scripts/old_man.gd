@@ -25,16 +25,11 @@ func update_old_man_visibility():
 			[3, 4]:
 				old_man.get_node("AnimatedSprite2D").play("old_to_super_old")
 			[4, 5]:
-				var anim = old_man.get_node("AnimatedSprite2D")
-				anim.play("dead_skeleton")
+				old_man.get_node("AnimatedSprite2D").play("dead_skeleton")
 
 			# Reverse animations
 			[5, 4]:
-				var sprite = old_man.get_node("AnimatedSprite2D")
-				sprite.play_backwards("dead_skeleton")
-				# Wait until it finishes
-				await sprite.animation_finished
-				sprite.play("old_to_super_old")
+				old_man.get_node("AnimatedSprite2D").play("skeleton_to_super_old")
 			[4, 3]:
 				old_man.get_node("AnimatedSprite2D").play_backwards("old_to_super_old")
 			[3, 2]:
