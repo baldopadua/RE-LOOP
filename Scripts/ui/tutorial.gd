@@ -1,5 +1,10 @@
 extends Control
 
+const OVERLAY_FINAL_SCALE = Vector2(1, 1)
+const OVERLAY_START_SCALE = Vector2(0.2, 0.2)
+const OVERLAY_FINAL_POSITION = Vector2(-425, -425) # from tutorial_overlay node offsets
+const OVERLAY_START_POSITION = Vector2(1920, -425) # right edge, same Y
+
 @onready var tutorial_overlay := $tutorial_overlay
 @onready var close_button := $close_button
 @onready var page_turn_sound := $tutorial_overlay/page_turn_sound
@@ -8,7 +13,19 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tutorial_overlay.visible = true
+	tutorial_overlay.scale = Vector2(1, 1)
+	# Center the overlay using rect_global_position based on parent size
+	var parent_size = get_viewport_rect().size
+	var overlay_size = tutorial_overlay.size
+	var final_pos = (parent_size / 2) - (overlay_size / 2)
+	var start_pos = Vector2(parent_size.x, final_pos.y)
+	tutorial_overlay.position = start_pos
+	var tween := create_tween()
+	tween.tween_property(tutorial_overlay, "position", final_pos, 0.25)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	close_button.connect("pressed", Callable(self, "_on_close_button_pressed"))
+	close_button.z_index = 100
+	tutorial_overlay.z_index = 99
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -20,15 +37,19 @@ func _on_close_button_pressed() -> void:
 	_fade_out_and_close()
 
 func _fade_out_and_close():
-	var fade_rect := ColorRect.new()
-	fade_rect.color = Color(0, 0, 0, 0)
-	fade_rect.anchor_right = 1.0
-	fade_rect.anchor_bottom = 1.0
-	fade_rect.z_index = 999
-	add_child(fade_rect)
+	var parent_size = get_viewport_rect().size
+	var overlay_size = tutorial_overlay.size
+	var start_pos = Vector2(parent_size.x, (parent_size.y / 2) - (overlay_size.y / 2))
 	var tween := create_tween()
-	tween.tween_property(fade_rect, "color:a", 1.0, 0.5)
-	tween.tween_callback(Callable(self, "_after_fade_out"))
+	tween.tween_property(tutorial_overlay, "position", start_pos, 0.18)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_callback(Callable(self, "_fade_out_overlay"))
+
+func _fade_out_overlay():
+	tutorial_overlay.visible = false
+	tutorial_overlay.position = OVERLAY_FINAL_POSITION
+	await get_tree().create_timer(0.18).timeout
+	_after_fade_out()
 
 func _after_fade_out():
 	_restore_main_menu()
@@ -49,4 +70,4 @@ func _restore_main_menu():
 		if main_scene.has_node("credits"):
 			main_scene.get_node("credits").visible = true
 
-# No changes needed unless you want to control tutorial_bg visibility here.
+s
