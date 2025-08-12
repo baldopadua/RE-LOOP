@@ -1,7 +1,7 @@
 extends Control
 
 @onready var tutorial_overlay := $tutorial_overlay
-@onready var close_button := $tutorial_overlay/close_button
+@onready var close_button := $close_button
 @onready var page_turn_sound := $tutorial_overlay/page_turn_sound
 
 
@@ -19,5 +19,3 @@ func _on_close_button_pressed() -> void:
 		page_turn_sound.play()
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
-
-

@@ -3,7 +3,7 @@ extends Node
 enum Directions {COUNTERCLOCKWISE, CLOCKWISE}
 const player_direction = Directions
 
-const transition_time: float = 0.5
+const transition_time: float = 0.1
 var is_looping: bool = false
 var player_stopped: bool = false
 var is_restarting: bool = false
@@ -72,7 +72,7 @@ func restart_level(levels_frame):
 	var current_level = levels_frame.get_child(0)
 
 	if current_level:
-		var level_scene = load(current_level.scene_file_path)  # works in Godot 4.x
+		var level_scene = load(current_level.scene_file_path) 
 		current_level.queue_free()
 		var new_level = level_scene.instantiate()
 		levels_frame.add_child(new_level)

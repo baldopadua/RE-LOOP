@@ -28,12 +28,10 @@ func _on_body_entered(body) -> void:
 	handle_body_entered(body)
 
 func handle_body_entered(body):
-		#print("BODY: %s" % str(body))
+	#print("BODY: %s" % str(body))
 	if body.name != "PlayerScene":
 		return
-	if not body.is_holding_object and has_node("AnimatedSprite2D"):
-		var anim = get_node("AnimatedSprite2D")
-		await anim.animation_finished
+		
 	# PICKING UP THINGS
 	if is_pickupable and not body.is_holding_object:
 		#print("Player can pick up %s" % object_name)
@@ -63,8 +61,9 @@ func handle_body_entered(body):
 		is_reachable = true
 		player_char = body
 		body.available_object = self
+		
 	# INTERACTING WHILE CARRYING PICKUPABLE THINGS
-	elif not is_pickupable and body.is_holding_object:
+	if not is_pickupable and body.is_holding_object:
 		#print("%s is interactable" % object_name)
 		is_reachable = true
 		player_char = body

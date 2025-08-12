@@ -263,7 +263,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"burst",
-"speed": 12.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -353,7 +353,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
-size = Vector2(58.6673, 35.043)
+size = Vector2(30.5167, 28.1506)
 
 [node name="geyser" type="Area2D"]
 light_mask = 3
@@ -426,7 +426,7 @@ texture = ExtResource("8_nnvwh")
 light_mask = 3
 visibility_layer = 3
 z_index = 1
-position = Vector2(35.4911, -44.2165)
+position = Vector2(35.1406, -46.7075)
 rotation = -2.61799
 shape = SubResource("RectangleShape2D_nwbkr")
 

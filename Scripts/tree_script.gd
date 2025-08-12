@@ -4,8 +4,11 @@ var tween_climb: Tween
 var tween_rotate: Tween
 var tween_scale: Tween
 var level_2 = preload("res://Scenes/levels/level_2_scene.tscn")
-
+var time_indicator: AnimatedSprite2D
 var is_playing: bool = false	
+
+func _ready() -> void:
+	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
 
 func _on_body_entered(body) -> void:
 	handle_body_entered(body) 
@@ -17,8 +20,13 @@ func _on_body_entered(body) -> void:
 		is_playing = true
 		# DISABLE PLAYER MOVEMENT
 		GlobalVariables.player_stopped = true
-		
+			
 		await get_tree().create_timer(1).timeout
+		
+		# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
+		time_indicator.animation = "fixed"
+		time_indicator.frame = 0
+		time_indicator.pause()
 		
 		# PLAY CLIMB ANIMATION
 		if body.has_node("AnimatedSprite2D"):

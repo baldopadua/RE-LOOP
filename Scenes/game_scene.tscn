@@ -77,9 +77,9 @@ position = Vector2(640, 360)
 
 [node name="level_1_scene" parent="levels_frame" instance=ExtResource("4_fiftr")]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="CanvasLayerGameUi" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="game_ui_elements" parent="CanvasLayer2" instance=ExtResource("3_fiftr")]
+[node name="game_ui_elements" parent="CanvasLayerGameUi" instance=ExtResource("3_fiftr")]
 texture_filter = 1
 pivot_offset = Vector2(640, 360)

@@ -14,6 +14,7 @@ var tween_rotate: Tween
 var tween_scale: Tween
 var allowed_angles: Array = [0.0, 360.0, -360.0, 90.0, -90.0, 180.0, -180.0, 270.0, -270.0]
 var is_player_in_geyser: bool = false
+var time_indicator: AnimatedSprite2D
 
 # SCAN IF THERE ARE ROCKS CHILDREN AND CURRENT STATE IS 2
 # 	IF NUMBER OF ROCKS IS < 5 THEN
@@ -23,9 +24,17 @@ var is_player_in_geyser: bool = false
 #		PLAY PRESSURE 1, TWO TIMES
 #		PLAY PRESSURE 2, TWO TIMES
 
+func _ready() -> void:
+	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
+
 func _process(_delta: float) -> void:
 	if is_player_in_geyser:
 		if animate_geyser.frame == 18:
+			# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
+			time_indicator.animation = "fixed"
+			time_indicator.frame = 0
+			time_indicator.pause()
+			
 			animate_geyser.play("loop_break")
 				
 			# SPRUNG ALONG WITH GEYSER EXPLOSION

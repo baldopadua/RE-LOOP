@@ -6,7 +6,6 @@ extends Control
 var tutorial_instance: Control = null
 
 func _ready() -> void:
-	$ui_frame/time_indicator.play()
 	_setup_tutorial_button()
 
 func _setup_tutorial_button() -> void:

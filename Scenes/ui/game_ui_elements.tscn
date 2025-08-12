@@ -158,7 +158,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_duq1c")
 }],
-"loop": true,
+"loop": false,
 "name": &"clockwise_time_indicator",
 "speed": 5.0
 }, {
@@ -202,7 +202,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k3ktg")
 }],
-"loop": true,
+"loop": false,
 "name": &"counterclockwise_time_indicator",
 "speed": 5.0
 }, {
@@ -210,7 +210,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h6evt")
 }],
-"loop": true,
+"loop": false,
 "name": &"fixed",
 "speed": 5.0
 }]
@@ -239,11 +239,15 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -200.0
-offset_right = 300.0
+offset_left = 10.0
+offset_top = -155.0
+offset_right = 210.0
+offset_bottom = 45.0
 grow_vertical = 0
+pivot_offset = Vector2(-10, 210)
 texture = ExtResource("3_e48s1")
 expand_mode = 1
+stretch_mode = 4
 
 [node name="tutorial_button" type="TextureButton" parent="ui_frame"]
 texture_filter = 1
@@ -267,7 +271,7 @@ texture_filter = 1
 position = Vector2(1187, 603)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_7xvw7")
-animation = &"clockwise_time_indicator"
+animation = &"fixed"
 
 [node name="settings_button" type="TextureButton" parent="ui_frame"]
 texture_filter = 1
