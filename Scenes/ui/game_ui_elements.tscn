@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://wvr0ph3yi7o1"]
+[gd_scene load_steps=36 format=3 uid="uid://wvr0ph3yi7o1"]
 
 [ext_resource type="Script" uid="uid://dwfjc4wc808h0" path="res://Scripts/ui/game_ui_elements.gd" id="1_ev2l3"]
 [ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="3_8fl4t"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dmlkwrmka11h8" path="res://Assets/ui/counterclockwise_time_indicator.png" id="4_7xvw7"]
 [ext_resource type="Texture2D" uid="uid://dmkx2o3qq4l0i" path="res://Assets/ui/tutorial_icon.png" id="4_8fl4t"]
 [ext_resource type="Texture2D" uid="uid://dacn8hwtmnni2" path="res://Assets/ui/settings_icon.png" id="5_7xvw7"]
+[ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="7_uwqlr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xvw7"]
 atlas = ExtResource("3_8fl4t")
@@ -261,11 +262,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="time_indicator" type="AnimatedSprite2D" parent="ui_frame"]
 texture_filter = 1
-position = Vector2(1151.5, 574.5)
+position = Vector2(1167, 573)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_7xvw7")
-animation = &"fixed"
-frame_progress = 0.764838
+animation = &"clockwise_time_indicator"
+frame_progress = 0.475035
 
 [node name="settings_button" type="TextureButton" parent="ui_frame"]
 texture_filter = 1
@@ -279,3 +280,6 @@ texture_normal = ExtResource("5_7xvw7")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
+
+[node name="page_turn_sound" type="AudioStreamPlayer2D" parent="ui_frame"]
+stream = ExtResource("7_uwqlr")
