@@ -1,0 +1,172 @@
+[gd_scene load_steps=22 format=3 uid="uid://dypu05rngiwmu"]
+
+[ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
+[ext_resource type="Texture2D" uid="uid://bq8mow31m52eg" path="res://Assets/ui/game_main_bg.png" id="2_7ewk0"]
+[ext_resource type="Texture2D" uid="uid://chg7xq6f7mumr" path="res://Assets/ui/start_button.png" id="2_jv6wh"]
+[ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="3_7ewk0"]
+[ext_resource type="Texture2D" uid="uid://cwndswkyv0b33" path="res://Assets/ui/start_button_hover.png" id="3_iacmt"]
+[ext_resource type="Texture2D" uid="uid://b4b5idm0212da" path="res://Assets/ui/tutorial_button.png" id="3_x6ack"]
+[ext_resource type="Texture2D" uid="uid://c284erqqs1py8" path="res://Assets/ui/gametitle.png" id="4_lhp3t"]
+[ext_resource type="Texture2D" uid="uid://coddlv2n5auim" path="res://Assets/ui/tutorial_button_hover.png" id="5_6ev3c"]
+[ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="7_drdnd"]
+[ext_resource type="AudioStream" uid="uid://cw5va43ffrudg" path="res://Audio/ui/click.mp3" id="9_ioaeq"]
+[ext_resource type="AudioStream" uid="uid://35povcthktt2" path="res://Audio/ui/main_bgmusic.mp3" id="9_m1efj"]
+[ext_resource type="PackedScene" uid="uid://bnrnr4wjbytbv" path="res://Scenes/ui/tutorial.tscn" id="10_ioaeq"]
+[ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="12_drdnd"]
+[ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(0, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnsmo"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(240, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psl12"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(480, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ebs2"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(720, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyb3p"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(960, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvnna"]
+atlas = ExtResource("3_7ewk0")
+region = Rect2(1200, 0, 240, 135)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ioaeq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhp3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnsmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psl12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ebs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyb3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvnna")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ev3c")
+
+[node name="main" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="main_bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7ewk0")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="game_animated_bg" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(641.5, 360)
+scale = Vector2(5.32083, 5.31852)
+sprite_frames = SubResource("SpriteFrames_ioaeq")
+autoplay = "true"
+frame_progress = 0.112907
+
+[node name="gametitle" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -31.0
+offset_right = 105.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0259283
+texture = ExtResource("4_lhp3t")
+expand_mode = 1
+
+[node name="start_button" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.417188
+anchor_top = 0.606944
+anchor_right = 0.646875
+anchor_bottom = 0.736111
+offset_bottom = -3.05176e-05
+texture_normal = ExtResource("2_jv6wh")
+texture_hover = ExtResource("3_iacmt")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="tutorial_button" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.416406
+anchor_top = 0.759722
+anchor_right = 0.644531
+anchor_bottom = 0.880556
+texture_normal = ExtResource("3_x6ack")
+texture_hover = ExtResource("5_6ev3c")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="credits" parent="." instance=ExtResource("12_psl12")]
+layout_mode = 1
+anchor_left = 0.275781
+anchor_top = 0.433333
+anchor_right = 0.392969
+anchor_bottom = 0.727778
+
+[node name="tutorial" parent="." instance=ExtResource("10_ioaeq")]
+visible = false
+layout_mode = 1
+
+[node name="hover_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_drdnd")
+
+[node name="main_bgm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_m1efj")
+autoplay = true
+
+[node name="click_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ioaeq")
+
+[node name="page_turn_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_drdnd")

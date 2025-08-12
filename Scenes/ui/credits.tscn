@@ -1,0 +1,164 @@
+[gd_scene load_steps=20 format=3 uid="uid://cfk6vdandqjxj"]
+
+[ext_resource type="Script" uid="uid://nip6iw1j78g7" path="res://Scripts/ui/credits.gd" id="1_bsd6y"]
+[ext_resource type="Texture2D" uid="uid://dycrhdnxrjgsl" path="res://Assets/ui/credits_animated_icon.png" id="1_pnf7k"]
+[ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="2_bsd6y"]
+[ext_resource type="Texture2D" uid="uid://d3akhbebr27n1" path="res://Assets/ui/credits_overlay.png" id="4_rpyp6"]
+[ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="5_p1uch"]
+[ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="6_etvaj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b48ew"]
+atlas = ExtResource("1_pnf7k")
+region = Rect2(0, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8edxt"]
+atlas = ExtResource("1_pnf7k")
+region = Rect2(27, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oxhp"]
+atlas = ExtResource("1_pnf7k")
+region = Rect2(54, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt2eh"]
+atlas = ExtResource("1_pnf7k")
+region = Rect2(81, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cm5d"]
+atlas = ExtResource("1_pnf7k")
+region = Rect2(108, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bov3"]
+atlas = ExtResource("1_pnf7k")
+region = Rect2(135, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xle81"]
+atlas = ExtResource("2_bsd6y")
+region = Rect2(0, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8qe6"]
+atlas = ExtResource("2_bsd6y")
+region = Rect2(27, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb0ja"]
+atlas = ExtResource("2_bsd6y")
+region = Rect2(54, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15kh8"]
+atlas = ExtResource("2_bsd6y")
+region = Rect2(81, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viu5a"]
+atlas = ExtResource("2_bsd6y")
+region = Rect2(108, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b00ha"]
+atlas = ExtResource("2_bsd6y")
+region = Rect2(135, 0, 27, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhp3t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b48ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8edxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oxhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt2eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cm5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bov3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xle81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8qe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb0ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15kh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viu5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b00ha")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 5.0
+}]
+
+[node name="credits" type="Control"]
+layout_mode = 3
+anchor_left = -0.0078125
+anchor_top = -0.0291667
+anchor_right = 0.109375
+anchor_bottom = 0.265277
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bsd6y")
+metadata/_edit_use_anchors_ = true
+
+[node name="credits_button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="credits_animated_icon" type="AnimatedSprite2D" parent="credits_button"]
+texture_filter = 1
+position = Vector2(79, 98)
+scale = Vector2(6.63195, 7.50694)
+sprite_frames = SubResource("SpriteFrames_lhp3t")
+frame = 3
+frame_progress = 0.78441
+
+[node name="credits_overlay" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.07333
+anchor_top = -1.41038
+anchor_right = 5.89333
+anchor_bottom = 1.89151
+offset_right = 4.57764e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_rpyp6")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="close_button" type="TextureButton" parent="credits_overlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.890373
+anchor_top = 0.0457143
+anchor_right = 0.982423
+anchor_bottom = 0.191429
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_p1uch")
+texture_hover = ExtResource("6_etvaj")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true

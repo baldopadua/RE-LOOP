@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://clmxq6e31gwm8"]
+
+[ext_resource type="Script" uid="uid://cq7q8j32eespg" path="res://Scripts/game_scene.gd" id="1_6h5vk"]
+[ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="1_x87qo"]
+[ext_resource type="PackedScene" uid="uid://wvr0ph3yi7o1" path="res://Scenes/ui/game_ui_elements.tscn" id="3_fiftr"]
+[ext_resource type="PackedScene" uid="uid://cbl4k6bkjnggc" path="res://Scenes/levels/level_1_scene.tscn" id="4_fiftr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6fju"]
+atlas = ExtResource("1_x87qo")
+region = Rect2(0, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h5vk"]
+atlas = ExtResource("1_x87qo")
+region = Rect2(240, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiftr"]
+atlas = ExtResource("1_x87qo")
+region = Rect2(480, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ixah"]
+atlas = ExtResource("1_x87qo")
+region = Rect2(720, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgj8m"]
+atlas = ExtResource("1_x87qo")
+region = Rect2(960, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fmhe"]
+atlas = ExtResource("1_x87qo")
+region = Rect2(1200, 0, 240, 135)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7iton"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6fju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6h5vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiftr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ixah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgj8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fmhe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GameScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6h5vk")
+
+[node name="game_scene_bg" type="AnimatedSprite2D" parent="."]
+position = Vector2(638.5, 361.25)
+scale = Vector2(5.29583, 5.28519)
+sprite_frames = SubResource("SpriteFrames_7iton")
+
+[node name="levels_frame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 279.0
+offset_right = -282.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="level_1_scene" parent="levels_frame" instance=ExtResource("4_fiftr")]
+position = Vector2(359, 361)
+
+[node name="game_ui_elements" parent="." instance=ExtResource("3_fiftr")]
+texture_filter = 1
+layout_mode = 1
