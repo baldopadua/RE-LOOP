@@ -63,10 +63,6 @@ func _on_tutorial_button_pressed() -> void:
 		tutorial_button.visible = false
 	if has_node("credits"):
 		get_node("credits").visible = false
-	# Play dim background animation
-	if game_animated_bg and game_animated_bg.sprite_frames.has_animation("dim_game_background"):
-		game_animated_bg.play("dim_game_background")
-	# Fade in overlay before showing tutorial
 	_fade_in_tutorial_overlay()
 
 func _fade_in_tutorial_overlay():
