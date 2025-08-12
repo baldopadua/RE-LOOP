@@ -64,24 +64,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6h5vk")
 
-[node name="game_scene_bg" type="AnimatedSprite2D" parent="."]
-position = Vector2(638.5, 361.25)
-scale = Vector2(5.29583, 5.28519)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="game_scene_bg" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(640, 360)
+scale = Vector2(5.511, 5.5)
 sprite_frames = SubResource("SpriteFrames_7iton")
 
-[node name="levels_frame" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 279.0
-offset_right = -282.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="levels_frame" type="Node2D" parent="."]
+position = Vector2(640, 360)
 
 [node name="level_1_scene" parent="levels_frame" instance=ExtResource("4_fiftr")]
-position = Vector2(359, 361)
 
-[node name="game_ui_elements" parent="." instance=ExtResource("3_fiftr")]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="game_ui_elements" parent="CanvasLayer2" instance=ExtResource("3_fiftr")]
 texture_filter = 1
-layout_mode = 1
+pivot_offset = Vector2(640, 360)

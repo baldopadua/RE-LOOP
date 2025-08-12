@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=4 uid="uid://fyqypy6fcyaf"]
+[gd_scene load_steps=17 format=4 uid="uid://fyqypy6fcyaf"]
 
 [ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/level_4_script.gd" id="1_f0imo"]
-[ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="2_vv041"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="3_d64ua"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="4_be8ic"]
 [ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="5_6d2y4"]
@@ -15,56 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dkojkmm7fp0p" path="res://Audio/level-1/tick_tock.tscn" id="13_56sg6"]
 [ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="14_b0trk"]
 [ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="15_enhda"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_157a6"]
-atlas = ExtResource("2_vv041")
-region = Rect2(0, 0, 240, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8r5jx"]
-atlas = ExtResource("2_vv041")
-region = Rect2(240, 0, 240, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gu1y6"]
-atlas = ExtResource("2_vv041")
-region = Rect2(480, 0, 240, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tgaox"]
-atlas = ExtResource("2_vv041")
-region = Rect2(720, 0, 240, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivggd"]
-atlas = ExtResource("2_vv041")
-region = Rect2(960, 0, 240, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rmm5q"]
-atlas = ExtResource("2_vv041")
-region = Rect2(1200, 0, 240, 135)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8wkhw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_157a6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8r5jx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gu1y6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tgaox")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivggd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rmm5q")
-}],
-"loop": true,
-"name": &"bg",
-"speed": 3.0
-}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2f8f"]
 texture = ExtResource("3_d64ua")
@@ -5986,15 +5935,6 @@ sources/0 = SubResource("TileSetAtlasSource_j2f8f")
 
 [node name="level_4" type="Node2D"]
 script = ExtResource("1_f0imo")
-
-[node name="bg_space" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.5, 0.5, 0.5, 1)
-texture_filter = 1
-rotation = -3.14159
-scale = Vector2(5.37778, 5.37778)
-sprite_frames = SubResource("SpriteFrames_8wkhw")
-animation = &"bg"
-autoplay = "bg"
 
 [node name="map1" type="TileMapLayer" parent="."]
 texture_filter = 1

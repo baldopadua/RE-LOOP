@@ -124,7 +124,7 @@ func _tween_finished():
 	# RESET THE LEVEL IF LOOPED
 	if (round(rad_to_deg(rotation)) == 0.0 or round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0) and (prev_deg == 330.0 or prev_deg == -330.0) and GlobalVariables.is_looping:
 		GlobalVariables.is_restarting = true
-		get_tree().reload_current_scene()
+		GlobalVariables.restart_level(get_parent().get_parent())
 	
 	# RESET THE ANGLE TO 30
 	if round(rad_to_deg(rotation)) == 390.0 and direction == player_directions.CLOCKWISE:

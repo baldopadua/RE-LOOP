@@ -147,7 +147,9 @@ func go_to_level_4():
 	tween_scale.tween_property(get_parent(), "scale", Vector2(0.0,0.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 	await tween_scale.finished
 	await get_tree().create_timer(1).timeout
-	get_parent().get_tree().change_scene_to_file("res://Scenes/levels/level_4_scene.tscn")
+	
+	# NEXT LEVEL
+	GlobalVariables.change_level("res://Scenes/levels/level_4_scene.tscn", get_parent().get_parent())
 
 func _tween_rotation_finished():
 	tween_rotate.kill()

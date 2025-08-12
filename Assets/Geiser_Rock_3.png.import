@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://om83r6rq541q"
-path="res://.godot/imported/past_text.png-0b944d8232ef65749cf323ba716e53f1.ctex"
+uid="uid://cngvt7fqimfox"
+path="res://.godot/imported/Geiser_Rock_3.png-2fad205a10406600c30410dbe4940b69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/levels/level_1/past_text.png"
-dest_files=["res://.godot/imported/past_text.png-0b944d8232ef65749cf323ba716e53f1.ctex"]
+source_file="res://Assets/Geiser_Rock_3.png"
+dest_files=["res://.godot/imported/Geiser_Rock_3.png-2fad205a10406600c30410dbe4940b69.ctex"]
 
 [params]
 

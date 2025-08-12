@@ -1,7 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://dypu05rngiwmu"]
 
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
-[ext_resource type="Texture2D" uid="uid://bq8mow31m52eg" path="res://Assets/ui/game_main_bg.png" id="2_7ewk0"]
 [ext_resource type="Texture2D" uid="uid://chg7xq6f7mumr" path="res://Assets/ui/start_button.png" id="2_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="3_7ewk0"]
 [ext_resource type="Texture2D" uid="uid://cwndswkyv0b33" path="res://Assets/ui/start_button_hover.png" id="3_iacmt"]
@@ -14,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bnrnr4wjbytbv" path="res://Scenes/ui/tutorial.tscn" id="10_ioaeq"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="12_drdnd"]
 [ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ioaeq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
 atlas = ExtResource("3_7ewk0")
@@ -81,23 +82,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="main_bg" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_7ewk0")
+texture = SubResource("ImageTexture_ioaeq")
 expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="game_animated_bg" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(641.5, 360)
-scale = Vector2(5.32083, 5.31852)
+position = Vector2(640, 360)
+scale = Vector2(5.502, 5.5)
 sprite_frames = SubResource("SpriteFrames_ioaeq")
 autoplay = "true"
 frame_progress = 0.112907
@@ -105,15 +106,13 @@ frame_progress = 0.112907
 [node name="gametitle" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -22.0
-offset_top = -31.0
-offset_right = 105.0
-offset_bottom = 41.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -640.0
+offset_right = 640.0
+offset_bottom = 720.0
 grow_horizontal = 2
-grow_vertical = 2
 rotation = 0.0259283
 texture = ExtResource("4_lhp3t")
 expand_mode = 1

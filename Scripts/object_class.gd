@@ -15,6 +15,7 @@ class_name object_class
 var is_reachable: bool = false
 var player_char: CharacterBody2D = null
 var player_arrow_owner: CharacterBody2D
+var glow_light: PointLight2D = null
 
 func _ready():
 	print(object_name + " instantiated!")
@@ -36,6 +37,29 @@ func handle_body_entered(body):
 	# PICKING UP THINGS
 	if is_pickupable and not body.is_holding_object:
 		#print("Player can pick up %s" % object_name)
+		
+		# CREATE POINT LIGHT
+		glow_light = PointLight2D.new()
+		glow_light.position = Vector2(0, 0)
+
+		# CREATE GRADIENT
+		var gradient = Gradient.new()
+		gradient.set_color(0, Color.YELLOW)
+		gradient.set_color(1, Color.TRANSPARENT)
+		gradient.offsets[1] = 0.5
+
+		# CREATE TEXTURE FROM GRADIENT
+		var gradient_texture = GradientTexture2D.new()
+		gradient_texture.gradient = gradient
+		gradient_texture.fill = GradientTexture2D.FILL_RADIAL
+		gradient_texture.fill_from = Vector2(0.5, 0.5)
+
+		# ASSIGN TO LIGHT
+		glow_light.texture = gradient_texture
+		glow_light.energy = 1.5
+
+		add_child(glow_light)
+		
 		is_reachable = true
 		player_char = body
 		body.available_object = self
@@ -62,6 +86,11 @@ func handle_body_exited(body):
 		player_char = null
 		body.available_object = null
 		#print("Out of Object Range")
+		
+		# DELETE POINTLIGHT
+		if glow_light:
+			glow_light.queue_free()
+			glow_light = null
 		
 	# Interatable behavior if out of range
 	if not is_pickupable:

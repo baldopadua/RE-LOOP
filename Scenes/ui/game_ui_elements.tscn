@@ -232,37 +232,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="keys_elements" type="TextureRect" parent="ui_frame"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0179687
-anchor_top = 0.744444
-anchor_right = 0.217187
-anchor_bottom = 0.972222
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 300.0
+grow_vertical = 0
 texture = ExtResource("3_e48s1")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="tutorial_button" type="TextureButton" parent="ui_frame"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.913281
-anchor_top = 0.0333333
-anchor_right = 0.973437
-anchor_bottom = 0.1375
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 110.0
+grow_horizontal = 0
+pivot_offset = Vector2(110, -10)
 mouse_filter = 2
 texture_normal = ExtResource("4_8fl4t")
 ignore_texture_size = true
 stretch_mode = 0
-metadata/_edit_use_anchors_ = true
 
 [node name="time_indicator" type="AnimatedSprite2D" parent="ui_frame"]
 texture_filter = 1
-position = Vector2(1167, 573)
+position = Vector2(1187, 603)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_7xvw7")
 animation = &"clockwise_time_indicator"
@@ -270,15 +272,14 @@ animation = &"clockwise_time_indicator"
 [node name="settings_button" type="TextureButton" parent="ui_frame"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0226563
-anchor_top = 0.0333333
-anchor_right = 0.0734373
-anchor_bottom = 0.125
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 110.0
+pivot_offset = Vector2(-10, -10)
 texture_normal = ExtResource("5_7xvw7")
 ignore_texture_size = true
 stretch_mode = 0
-metadata/_edit_use_anchors_ = true
 
 [node name="page_turn_sound" type="AudioStreamPlayer2D" parent="ui_frame"]
 stream = ExtResource("7_uwqlr")

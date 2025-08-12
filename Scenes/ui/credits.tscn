@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://nip6iw1j78g7" path="res://Scripts/ui/credits.gd" id="1_bsd6y"]
 [ext_resource type="Texture2D" uid="uid://dycrhdnxrjgsl" path="res://Assets/ui/credits_animated_icon.png" id="1_pnf7k"]
 [ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="2_bsd6y"]
-[ext_resource type="Texture2D" uid="uid://d3akhbebr27n1" path="res://Assets/ui/credits_overlay.png" id="4_rpyp6"]
+[ext_resource type="Texture2D" uid="uid://d3uprtjd0xeax" path="res://Assets/ui/credits1.png" id="4_rpyp6"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="5_p1uch"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="6_etvaj"]
 
@@ -134,6 +134,7 @@ frame_progress = 0.78441
 
 [node name="credits_overlay" type="TextureRect" parent="."]
 visible = false
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -2.07333
@@ -148,6 +149,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="close_button" type="TextureButton" parent="credits_overlay"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.890373

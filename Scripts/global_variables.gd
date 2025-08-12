@@ -12,6 +12,7 @@ var plooy_right = preload("res://Assets/ui/plooy_right.png")
 var plooy_left = preload("res://Assets/ui/plooy_left.png")
 
 func _ready():
+	# TODO: SET THE TEXTURE > FILTER OF BOTH PLOY'S RIGHT AND LEFT TO "NEAREST"
 	set_custom_cursor()
 
 func set_custom_cursor(direction = null):
@@ -56,3 +57,22 @@ func restart_level_sfx_vfx(sfxs: Array):
 	# SFX
 	for sfx in sfxs:
 		sfx.play()
+
+func change_level(scene_path: String, levels_frame):
+	# Remove current level
+	for child in levels_frame.get_children():
+		child.queue_free()
+
+	# Load and add new level
+	var new_level = load(scene_path).instantiate()
+	levels_frame.add_child(new_level)
+
+func restart_level(levels_frame):
+	# Remove and Re-open current level
+	var current_level = levels_frame.get_child(0)
+
+	if current_level:
+		var level_scene = load(current_level.scene_file_path)  # works in Godot 4.x
+		current_level.queue_free()
+		var new_level = level_scene.instantiate()
+		levels_frame.add_child(new_level)
