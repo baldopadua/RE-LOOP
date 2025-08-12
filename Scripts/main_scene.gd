@@ -8,15 +8,14 @@ extends Control
 @onready var click_sound := $click_sound
 @onready var game_animated_bg := $game_animated_bg
 @onready var gametitle := $gametitle
-@onready var tutorial := $tutorial
 @onready var page_turn_sound := $page_turn_sound
+@onready var tutorial_scene_packed := preload("res://Scenes/ui/tutorial.tscn")
+var tutorial_instance: Control = null
 
 # --- Initialization & Connections ---
 func _ready() -> void:
 	_play_bgm()
 	_connect_buttons()
-	if tutorial:
-		tutorial.visible = false
 	if game_animated_bg:
 		game_animated_bg.play()
 
@@ -55,8 +54,12 @@ func _on_tutorial_button_pressed() -> void:
 	_set_buttons_disabled(true)
 	if page_turn_sound:
 		page_turn_sound.play()
-	if tutorial:
-		tutorial.visible = true
+	if tutorial_instance == null or not is_instance_valid(tutorial_instance):
+		tutorial_instance = tutorial_scene_packed.instantiate()
+		add_child(tutorial_instance)
+		tutorial_instance.z_index = 100
+	else:
+		tutorial_instance.visible = true
 
 func _set_buttons_disabled(disabled: bool) -> void:
 	start_button.disabled = disabled

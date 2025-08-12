@@ -18,10 +18,6 @@ func _on_close_button_pressed() -> void:
 	if page_turn_sound:
 		page_turn_sound.play()
 	await get_tree().create_timer(0.5).timeout
-	var parent = get_parent()
-	if parent and parent.name == "MainScene":
-		get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
-	else:
-		queue_free()
+	queue_free()
 
 
