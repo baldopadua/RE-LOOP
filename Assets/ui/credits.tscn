@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dejx8e76u405m"]
+[gd_scene load_steps=16 format=3 uid="uid://duu7f8fhtiala"]
 
 [ext_resource type="Texture2D" uid="uid://dycrhdnxrjgsl" path="res://Assets/ui/credits_animated_icon.png" id="1_mb18o"]
 [ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="2_citno"]
