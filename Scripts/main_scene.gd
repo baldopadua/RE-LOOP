@@ -53,10 +53,10 @@ func _on_start_button_pressed() -> void:
 	start_button.disabled = true
 	if click_sound:
 		click_sound.play()
-	_fade_out(main_bg, 0.25, Callable(self, "_go_to_level_scene"))
+	_fade_out(main_bg, 0.25, Callable(self, "_go_to_next_scene"))
 
-func _go_to_level_scene() -> void:
-	get_tree().change_scene_to_file("res://Scenes/levels/level_1_scene.tscn")
+func _go_to_next_scene() -> void:
+	get_tree().change_scene_to_file('res://Scenes/game_scene.tscn')
 
 func _on_tutorial_button_pressed() -> void:
 	_set_buttons_disabled(true)

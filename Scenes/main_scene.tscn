@@ -97,8 +97,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="game_animated_bg" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(640, 360.5)
-scale = Vector2(5.4, 5.35556)
+position = Vector2(641.5, 360)
+scale = Vector2(5.32083, 5.31852)
 sprite_frames = SubResource("SpriteFrames_ioaeq")
 autoplay = "true"
 frame_progress = 0.112907
