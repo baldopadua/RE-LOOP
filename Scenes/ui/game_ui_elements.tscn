@@ -266,7 +266,6 @@ position = Vector2(1167, 573)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_7xvw7")
 animation = &"clockwise_time_indicator"
-frame_progress = 0.475035
 
 [node name="settings_button" type="TextureButton" parent="ui_frame"]
 texture_filter = 1
