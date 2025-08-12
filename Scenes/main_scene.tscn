@@ -11,10 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="7_drdnd"]
 [ext_resource type="AudioStream" uid="uid://cw5va43ffrudg" path="res://Audio/ui/click.mp3" id="9_ioaeq"]
 [ext_resource type="AudioStream" uid="uid://35povcthktt2" path="res://Audio/ui/main_bgmusic.mp3" id="9_m1efj"]
-[ext_resource type="Texture2D" uid="uid://8ddu3kcyqbx8" path="res://Assets/ui/Tutorial.png" id="9_mai8y"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="10_mai8y"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="11_76v2p"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="12_drdnd"]
+[ext_resource type="Texture2D" uid="uid://dn7v831jhqhjf" path="res://Assets/ui/tutorial.png" id="12_lhp3t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
 atlas = ExtResource("3_7ewk0")
@@ -170,7 +170,7 @@ offset_right = -38.9601
 offset_bottom = -41.08
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_mai8y")
+texture = ExtResource("12_lhp3t")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 

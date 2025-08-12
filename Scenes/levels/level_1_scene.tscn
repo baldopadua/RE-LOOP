@@ -5942,6 +5942,12 @@ sources/0 = SubResource("TileSetAtlasSource_j2f8f")
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_pxia2")
 
+[node name="tools_ui" parent="." instance=ExtResource("20_j2f8f")]
+offset_left = -636.0
+offset_top = -357.0
+offset_right = 639.0
+offset_bottom = 361.0
+
 [node name="map1" type="TileMapLayer" parent="."]
 texture_filter = 1
 scale = Vector2(2.175, 2.175)
@@ -6041,5 +6047,3 @@ position = Vector2(0, -296.43)
 [node name="cinematic_ah" parent="." instance=ExtResource("18_jr302")]
 
 [node name="shwoop" parent="." instance=ExtResource("19_ttgta")]
-
-[node name="tools_ui" parent="." instance=ExtResource("20_j2f8f")]
