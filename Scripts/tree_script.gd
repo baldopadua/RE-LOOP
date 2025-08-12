@@ -7,7 +7,6 @@ var tween_scale: Tween
 var is_playing: bool = false	
 
 func _on_body_entered(body) -> void:
-	#print("BODY: %s" % str(body))
 	if body.name != "PlayerScene":
 		return
 	# For Tools [ Mop, Rugs, Buckets ]
@@ -51,6 +50,13 @@ func _on_body_entered(body) -> void:
 		var screen_center = Vector2(0.0, 250.0)
 		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)
 		await tween_climb.finished
+		
+		# PLAY JUMP ANIMATION AFTER CLIMB
+		if body.has_node("AnimatedSprite2D"):
+			var sprite = body.get_node("AnimatedSprite2D")
+			sprite.stop()
+			sprite.play("jump")
+			await sprite.animation_finished
 		
 		body.visible = false
 		# SWITCH SCENE TO LEVEL 2

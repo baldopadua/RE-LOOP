@@ -10,6 +10,7 @@ extends object_class
 var is_playing: bool = false
 var is_playing_two: bool = false
 var tween_climb: Tween
+var tween_jump: Tween
 var tween_rotate: Tween
 var tween_scale: Tween
 
@@ -46,7 +47,6 @@ func break_loop():
 		GlobalVariables.player_stopped = false
 
 func _on_body_entered(body) -> void:
-	#print("BODY: %s" % str(body))
 	if body.name != "PlayerScene":
 		return
 	# For Tools [ Mop, Rugs, Buckets ]
@@ -60,7 +60,6 @@ func _on_body_entered(body) -> void:
 		print("%s is interactable" % object_name)
 		is_reachable = true
 		player_char = body
-		#body.available_interactable_object = self
 		body.interactable_objects.append(self)
 		print(body.interactable_objects)
 	
@@ -80,25 +79,35 @@ func _on_body_entered(body) -> void:
 			sprite.stop()
 			sprite.play("climb")
 		
-		# CLIMB
+		# CLIMB TO STOPPING POINT (100px before center)
 		tween_climb = create_tween()
-		
-		# Connect tween_finished if not yet connected
 		if not tween_climb.is_connected("finished", _tween_climb_finished):
 			tween_climb.connect("finished", _tween_climb_finished)
 			
-		var screen_center = Vector2(-150.0, 250.0)
-		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)
+		var stopping_point = Vector2(-60, 100.0)  # 100px above final position
+		tween_climb.tween_property(body, "position", stopping_point, 1.5).set_trans(Tween.TRANS_LINEAR)
 		await tween_climb.finished
 		
+		# PLAY JUMP ANIMATION AND FINAL MOVE
+		if body.has_node("AnimatedSprite2D"):
+			var sprite = body.get_node("AnimatedSprite2D")
+			sprite.stop()
+			sprite.play("jump")
+			
+			# JUMP TO FINAL POSITION
+			var final_position = Vector2(-150.0, 250.0)
+			tween_jump = create_tween()
+			tween_jump.tween_property(body, "position", final_position, 1.0).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+			await tween_jump.finished
+			await sprite.animation_finished
+		
 		body.visible = false
-		# SWITCH SCENE TO LEVEL 2
+		# SWITCH SCENE TO LEVEL 3
 		go_to_level_3()
 		
 func go_to_level_3():
 	# CREATE TWEEN FOR ROTATE
 	tween_rotate = create_tween()
-	# Connect tween_finished if not yet connected
 	if not tween_rotate.is_connected("finished", _tween_rotation_finished):
 		tween_rotate.connect("finished", _tween_rotation_finished)
 	var rotation_tween = get_parent().rotation - deg_to_rad(-360.0)
@@ -106,7 +115,6 @@ func go_to_level_3():
 	
 	# CREATE TWEEN FOR SCALE
 	tween_scale = create_tween()
-	# Connect tween_finished if not yet connected
 	if not tween_scale.is_connected("finished", _tween_scale_finished):
 		tween_scale.connect("finished", _tween_scale_finished)
 	tween_scale.tween_property(get_parent(), "scale", Vector2(0.0,0.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
@@ -116,6 +124,9 @@ func go_to_level_3():
 
 func _tween_climb_finished():
 	tween_climb.kill()
+
+func _tween_jump_finished():
+	tween_jump.kill()
 
 func _tween_rotation_finished():
 	tween_rotate.kill()
