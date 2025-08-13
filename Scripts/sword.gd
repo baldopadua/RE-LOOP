@@ -7,6 +7,11 @@ extends object_class
 @onready var loopbreak2: AnimatedSprite2D = get_parent().get_node("loopbreak2")
 @onready var sword_sprite: Sprite2D = $SwordSprite
 @onready var sword_sfx: AudioStreamPlayer2D = $"../sword"
+@onready var cinematic_impact = $"../cinematic_ah"
+@onready var glass_break = $"../glass_break"
+@onready var ice_break = $"../ice_break"
+@onready var bell = $"../bell"
+@onready var underwater_explosion = $"../underwater_explosion"
 
 var is_playing: bool = false
 var is_playing_two: bool = false
@@ -49,6 +54,11 @@ func break_loop():
 
 		await loop_break_animation.animation_finished
 		# WAIT FOR ANIMATION TO FINISH FIRST
+		cinematic_impact.play()
+		glass_break.play()
+		ice_break.play()
+		bell.play()
+		underwater_explosion.play()
 		loopbreak2.visible = true
 		loopbreak2.play()
 		GlobalVariables.player_stopped = false

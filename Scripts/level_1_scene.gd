@@ -83,10 +83,7 @@ func update_tree_visibility(stage: int) -> void:
 		glass_break.play()
 		ice_break.play()
 		bell.play()
-		await get_tree().create_timer(3.0).timeout
-		bell.play()
 		underwater_explosion.play()
-		await get_tree().create_timer(3.0).timeout
-		bell.play()
+		await get_tree().create_timer(1.0).timeout
 		GlobalVariables.player_stopped = false
 		return

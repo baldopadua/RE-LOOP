@@ -28,7 +28,7 @@ func _on_body_entered(body) -> void:
 	handle_body_entered(body)
 
 func handle_body_entered(body):
-	#print("BODY: %s" % str(body))
+	print("BODY ENTERED: %s" % str(body))
 	if body.name != "PlayerScene":
 		return
 		
@@ -75,7 +75,7 @@ func _on_body_exited(body) -> void:
 	handle_body_exited(body)
 	
 func handle_body_exited(body):
-	#print("BODY: %s" % str(body))
+	print("BODY EXITED: %s" % str(body))
 	if body != player_char:
 		return
 	

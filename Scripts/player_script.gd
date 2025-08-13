@@ -94,22 +94,33 @@ func _input(event: InputEvent) -> void:
 		rotate_player()
 		GlobalVariables.play_sfx(time_sfx, player_directions.CLOCKWISE)
 		GlobalVariables.play_sfx(clank_sfx, player_directions.CLOCKWISE)
-		sprite.play("walk")
 	elif event.is_action_pressed("move_left") and not is_moving and not GlobalVariables.player_stopped:
 		prev_deg = round(rad_to_deg(rotation))
 		direction = player_directions.COUNTERCLOCKWISE
 		rotate_player()
 		GlobalVariables.play_sfx(time_sfx, player_directions.COUNTERCLOCKWISE)
 		GlobalVariables.play_sfx(clank_sfx, player_directions.COUNTERCLOCKWISE)
-		sprite.play("walk")
 		
-	# OBJECT INTERACTION
-	if event.is_action_pressed("interact") and available_object != null and not is_moving:
-		item_pick_up()
-	# Drop Objects
-	elif event.is_action_pressed("drop") and is_holding_object and not is_moving:
-		item_drop()
-		sprite.play("idle")
+	# OBJECT INTERACTION AND DROP
+	if event.is_action_pressed("interact"):
+		# PICK UP ITEMS
+		if available_object != null and not is_moving:
+			item_pick_up()
+			sprite.play("idle")
+		# TRY INTERACTING WITH OBJECTS
+		elif is_holding_object and interactable_objects.size() != 0 and not is_moving:
+			for obj in interactable_objects:
+				if obj.object_name in held_object.usable_targets:
+					held_object.interact(obj)
+					held_object = null
+					is_holding_object = false
+					sprite.play("idle")
+					break
+		# DROP ITEMS
+		elif is_holding_object and not is_moving:
+			item_drop()
+			sprite.play("idle")
+		
 	# Interact with Objects using Tools
 	elif event.is_action_pressed("interact") and is_holding_object and interactable_objects != null and not is_moving:
 		for obj in interactable_objects:
@@ -184,6 +195,7 @@ func _tween_finished():
 
 # Movement of Player
 func rotate_player():
+	sprite.play("walk")
 	# Player is moving and create a tween to smooth animation
 	is_moving = true
 	tween = create_tween()
