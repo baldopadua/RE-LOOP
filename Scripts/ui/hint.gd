@@ -13,6 +13,7 @@ var _hint_shown := {
 	"old man": false,
 	"rock": false
 }
+var _pending_hint_level: String = "" # Store which hint to show when requested
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -73,17 +74,14 @@ func _on_fade_out_done():
 	# queue_free() # Remove this line if you want to reuse the node
 
 func _on_level_instantiated(level_name: String):
-	if level_name in _hint_shown and _hint_shown[level_name]:
-		return
-	# Only show hint if this is the first time for this level AND not a reset
-	if level_name in _hint_shown:
-		_hint_shown[level_name] = true
-		# Hide all containers first
+	# Only mark as available, don't show overlay yet
+	if level_name in _hint_shown and not _hint_shown[level_name]:
+		_pending_hint_level = level_name
+		# Prepare containers but do not show overlay
 		$hint_overlay/hint_container_1.visible = false
 		$hint_overlay/hint_container_2.visible = false
 		$hint_overlay/hint_container_3.visible = false
 		$hint_overlay/hint_container_4.visible = false
-		# Show the correct one
 		match level_name:
 			"seed":
 				$hint_overlay/hint_container_1.visible = true
@@ -93,6 +91,10 @@ func _on_level_instantiated(level_name: String):
 				$hint_overlay/hint_container_3.visible = true
 			_:
 				pass
-		await get_tree().create_timer(1.2).timeout
+		# Do not call show_hint_overlay() here
+
+# Call this function from your "hint/help" button
+func show_hint_on_demand():
+	if _pending_hint_level != "" and not _hint_shown[_pending_hint_level]:
+		_hint_shown[_pending_hint_level] = true
 		show_hint_overlay()
-	# If not a tracked level, do not show the hint at all
