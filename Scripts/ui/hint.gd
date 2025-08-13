@@ -8,6 +8,12 @@ const OVERLAY_START_SCALE = Vector2(0.2, 0.2)
 @onready var page_turn_sound := $hint_overlay/page_turn_sound
 @onready var loy_sprite := $hint_overlay/AnimatedSprite2D # Add reference to AnimatedSprite2D
 
+var _hint_shown := {
+	"seed": false,
+	"old man": false,
+	"rock": false
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	close_button.connect("pressed", Callable(self, "_on_close_button_pressed"))
@@ -19,6 +25,8 @@ func _ready() -> void:
 	if loy_sprite:
 		loy_sprite.play("default")
 		loy_sprite.flip_h = true
+	if GlobalVariables.has_signal("level_instantiated"):
+		GlobalVariables.connect("level_instantiated", Callable(self, "_on_level_instantiated"))
 
 func show_hint_overlay():
 	visible = true # Ensure the root node is visible
@@ -61,3 +69,28 @@ func _on_fade_out_done():
 	hint_overlay.visible = false
 	visible = false # Hide the root node instead of freeing
 	# queue_free() # Remove this line if you want to reuse the node
+
+func _on_level_instantiated(level_name: String):
+	if level_name in _hint_shown and _hint_shown[level_name]:
+		return
+	# Only show hint if this is the first time for this level AND not a reset
+	if level_name in _hint_shown:
+		_hint_shown[level_name] = true
+		# Hide all containers first
+		$hint_overlay/hint_container_1.visible = false
+		$hint_overlay/hint_container_2.visible = false
+		$hint_overlay/hint_container_3.visible = false
+		$hint_overlay/hint_container_4.visible = false
+		# Show the correct one
+		match level_name:
+			"seed":
+				$hint_overlay/hint_container_1.visible = true
+			"old man":
+				$hint_overlay/hint_container_2.visible = true
+			"rock":
+				$hint_overlay/hint_container_3.visible = true
+			_:
+				pass
+		await get_tree().create_timer(1.2).timeout
+		show_hint_overlay()
+	# If not a tracked level, do not show the hint at all

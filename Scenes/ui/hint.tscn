@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c221xvoh8em1d"]
+[gd_scene load_steps=16 format=3 uid="uid://c221xvoh8em1d"]
 
 [ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="1_d2whi"]
 [ext_resource type="Script" uid="uid://dxr2toew43b86" path="res://Scripts/ui/hint.gd" id="1_txt2m"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://woq1l326oxns" path="res://Assets/ui/hint/hint_2.png" id="4_qhjfp"]
 [ext_resource type="Texture2D" uid="uid://wg21y0rbjlo2" path="res://Assets/ui/hint/hint_3.png" id="5_8wecr"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="5_txt2m"]
+[ext_resource type="Texture2D" uid="uid://b0momkrk7xd2h" path="res://Assets/ui/hint/hint_container.png" id="6_l46pk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhjfp"]
 atlas = ExtResource("4_0deiq")
@@ -125,17 +126,13 @@ visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.197256
-anchor_top = 0.0935961
-anchor_right = 0.922813
-anchor_bottom = 0.875205
-offset_left = 166.878
-offset_top = 44.5517
-offset_right = 166.878
-offset_bottom = 44.5517
+anchor_left = 0.178388
+anchor_top = 0.047619
+anchor_right = 0.921955
+anchor_bottom = 0.950739
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_8wecr")
+texture = ExtResource("6_l46pk")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 

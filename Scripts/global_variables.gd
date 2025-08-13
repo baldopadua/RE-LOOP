@@ -13,6 +13,8 @@ var plooy_left = preload("res://Assets/ui/plooy_left.png")
 
 var custom_cursor_enabled := true
 
+signal level_instantiated(level_name: String)
+
 func _ready():
 	# TODO: SET THE TEXTURE > FILTER OF BOTH PLOY'S RIGHT AND LEFT TO "NEAREST"
 	set_custom_cursor()
@@ -75,6 +77,7 @@ func change_level(scene_path: String, levels_frame):
 	# Load and add new level
 	var new_level = load(scene_path).instantiate()
 	levels_frame.add_child(new_level)
+	notify_level_instantiated(scene_path) # Notify that a new level has been instantiated
 
 func restart_level(levels_frame):
 	# Remove and Re-open current level
@@ -85,3 +88,17 @@ func restart_level(levels_frame):
 		current_level.queue_free()
 		var new_level = level_scene.instantiate()
 		levels_frame.add_child(new_level)
+		notify_level_instantiated(current_level.scene_file_path) # Notify that the level has been restarted
+
+func notify_level_instantiated(scene_path: String):
+	var level_name := ""
+	if "seed" in scene_path:
+		level_name = "seed"
+	elif "old_man" in scene_path or "oldman" in scene_path \
+			or "level_2" in scene_path:
+		level_name = "old man"
+	elif "rock" in scene_path or "level_3" in scene_path:
+		level_name = "rock"
+	else:
+		level_name = scene_path
+	emit_signal("level_instantiated", level_name)
