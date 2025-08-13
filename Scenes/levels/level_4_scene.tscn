@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://fyqypy6fcyaf"]
+[gd_scene load_steps=21 format=4 uid="uid://fyqypy6fcyaf"]
 
 [ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/level_4_script.gd" id="1_f0imo"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="3_d64ua"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://dkojkmm7fp0p" path="res://Audio/level-1/tick_tock.tscn" id="13_56sg6"]
 [ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="14_b0trk"]
 [ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="15_enhda"]
+[ext_resource type="PackedScene" uid="uid://vlqb8h3fre51" path="res://Scenes/objects/level_4/dirt_for_wheat.tscn" id="15_f0imo"]
+[ext_resource type="PackedScene" uid="uid://b1bb6s7gdlb63" path="res://Scenes/objects/level_4/chicken.tscn" id="16_vv041"]
+[ext_resource type="PackedScene" uid="uid://udo0t50xwh0p" path="res://Scenes/objects/level_4/incubator.tscn" id="17_d64ua"]
+[ext_resource type="PackedScene" uid="uid://cjtn0kgsh5cd4" path="res://Scenes/objects/level_4/wheat_seeds.tscn" id="18_be8ic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2f8f"]
 texture = ExtResource("3_d64ua")
@@ -5966,10 +5970,11 @@ tile_map_data = PackedByteArray("AAD2//v/AAAIAQYAAAD2//z/AAAIAQcAAAD2//3/AAAIAQg
 tile_set = SubResource("TileSet_8r5jx")
 
 [node name="PlayerScene" parent="." instance=ExtResource("4_be8ic")]
+rotation = 2.0944
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 2)
-rotation = -3.14159
+rotation = -1.5708
 ignore_rotation = false
 position_smoothing_enabled = true
 
@@ -5994,3 +5999,15 @@ position_smoothing_enabled = true
 [node name="cinematic_ah" parent="." instance=ExtResource("14_b0trk")]
 
 [node name="shwoop" parent="." instance=ExtResource("15_enhda")]
+
+[node name="ObjectInteract" parent="." instance=ExtResource("15_f0imo")]
+position = Vector2(-149, -258)
+
+[node name="ObjectInteract2" parent="." instance=ExtResource("16_vv041")]
+position = Vector2(-294, -3)
+
+[node name="ObjectInteract3" parent="." instance=ExtResource("17_d64ua")]
+position = Vector2(-149, 264)
+
+[node name="ObjectPickup" parent="." instance=ExtResource("18_be8ic")]
+position = Vector2(254, 145)
