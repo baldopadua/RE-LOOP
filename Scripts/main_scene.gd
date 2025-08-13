@@ -10,7 +10,9 @@ extends Control
 @onready var gametitle := $gametitle
 @onready var page_turn_sound := $page_turn_sound
 @onready var tutorial_scene_packed := preload("res://Scenes/ui/tutorial.tscn")
+@onready var transition_scene_packed := preload("res://Scenes/screen_effects/game_scene_transition.tscn")
 var tutorial_instance: Control = null
+var transition_instance: Control = null
 
 # --- Initialization & Connections ---
 func _ready() -> void:
@@ -45,7 +47,34 @@ func _on_start_button_pressed() -> void:
 	start_button.disabled = true
 	if click_sound:
 		click_sound.play()
-	_fade_out(main_bg, 0.25, Callable(self, "_go_to_next_scene"))
+	GlobalVariables.remove_custom_cursor() # Disable custom cursor only on start
+	_show_transition_and_go_to_game_scene()
+
+func _show_transition_and_go_to_game_scene():
+	# Hide main menu elements
+	if main_bg:
+		main_bg.visible = false
+	if gametitle:
+		gametitle.visible = false
+	if start_button:
+		start_button.visible = false
+	if tutorial_button:
+		tutorial_button.visible = false
+	if has_node("credits"):
+		get_node("credits").visible = false
+
+	# Instance and show the transition scene
+	transition_instance = transition_scene_packed.instantiate()
+	add_child(transition_instance)
+	transition_instance.z_index = 999
+
+	# Call the transition's play_and_continue method, or fallback to timer
+	if transition_instance.has_method("play_and_continue"):
+		transition_instance.play_and_continue(Callable(self, "_go_to_next_scene"))
+	else:
+		# fallback: wait 0.7s then continue
+		await get_tree().create_timer(0.7).timeout
+		_go_to_next_scene()
 
 func _go_to_next_scene() -> void:
 	get_tree().change_scene_to_file('res://Scenes/game_scene.tscn')

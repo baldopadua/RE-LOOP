@@ -11,11 +11,15 @@ var custom_cursor = preload("res://Assets/Loopling.png")
 var plooy_right = preload("res://Assets/ui/plooy_right.png")
 var plooy_left = preload("res://Assets/ui/plooy_left.png")
 
+var custom_cursor_enabled := true
+
 func _ready():
 	# TODO: SET THE TEXTURE > FILTER OF BOTH PLOY'S RIGHT AND LEFT TO "NEAREST"
 	set_custom_cursor()
 
 func set_custom_cursor(direction = null):
+	if not custom_cursor_enabled:
+		return
 	var cursor_texture: Texture2D = custom_cursor
 	if direction == player_direction.CLOCKWISE:
 		cursor_texture = plooy_right
@@ -35,6 +39,11 @@ func set_custom_cursor(direction = null):
 
 func remove_custom_cursor():
 	Input.set_custom_mouse_cursor(null)
+	custom_cursor_enabled = false
+
+func enable_custom_cursor():
+	custom_cursor_enabled = true
+	set_custom_cursor()
 
 func update_cursor_by_mouse_motion(event: InputEventMouseMotion):
 	if event.relative.x < 0:
