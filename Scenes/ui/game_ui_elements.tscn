@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://wvr0ph3yi7o1"]
+[gd_scene load_steps=39 format=3 uid="uid://wvr0ph3yi7o1"]
 
 [ext_resource type="Script" uid="uid://dwfjc4wc808h0" path="res://Scripts/ui/game_ui_elements.gd" id="1_ev2l3"]
 [ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="3_8fl4t"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dacn8hwtmnni2" path="res://Assets/ui/settings_icon.png" id="5_7xvw7"]
 [ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="6_rl4jv"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="7_uwqlr"]
+[ext_resource type="PackedScene" uid="uid://c221xvoh8em1d" path="res://Scenes/ui/hint.tscn" id="10_0phbq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xvw7"]
 atlas = ExtResource("3_8fl4t")
@@ -276,7 +277,7 @@ scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_7xvw7")
 animation = &"fixed"
 
-[node name="settings_button" type="TextureButton" parent="ui_frame"]
+[node name="hint_button" type="TextureButton" parent="ui_frame"]
 texture_filter = 1
 layout_mode = 1
 offset_left = 37.0
@@ -290,3 +291,7 @@ stretch_mode = 0
 
 [node name="page_turn_sound" type="AudioStreamPlayer2D" parent="ui_frame"]
 stream = ExtResource("7_uwqlr")
+
+[node name="hint" parent="ui_frame" instance=ExtResource("10_0phbq")]
+visible = false
+layout_mode = 1
