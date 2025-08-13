@@ -42,16 +42,8 @@ func _connect_button(btn: Object, method: String) -> void:
 	if btn and (btn is Button or btn is TextureButton):
 		btn.connect("pressed", Callable(self, method))
 
-# --- Button Event Handlers ---
-func _on_start_button_pressed() -> void:
-	start_button.disabled = true
-	if click_sound:
-		click_sound.play()
-	GlobalVariables.remove_custom_cursor() # Disable custom cursor only on start
-	_show_transition_and_go_to_game_scene()
-
-func _show_transition_and_go_to_game_scene():
-	# Hide main menu elements
+# --- Utility: Hide Main Menu Elements ---
+func _hide_main_menu_elements() -> void:
 	if main_bg:
 		main_bg.visible = false
 	if gametitle:
@@ -63,6 +55,16 @@ func _show_transition_and_go_to_game_scene():
 	if has_node("credits"):
 		get_node("credits").visible = false
 
+# --- Button Event Handlers ---
+func _on_start_button_pressed() -> void:
+	start_button.disabled = true
+	if click_sound:
+		click_sound.play()
+	GlobalVariables.remove_custom_cursor() # Disable custom cursor only on start
+	_show_transition_and_go_to_game_scene()
+
+func _show_transition_and_go_to_game_scene():
+	_hide_main_menu_elements()
 	# Instance and show the transition scene
 	transition_instance = transition_scene_packed.instantiate()
 	add_child(transition_instance)
@@ -83,15 +85,7 @@ func _on_tutorial_button_pressed() -> void:
 	_set_buttons_disabled(true)
 	if page_turn_sound:
 		page_turn_sound.play()
-	# Hide main menu elements
-	if gametitle:
-		gametitle.visible = false
-	if start_button:
-		start_button.visible = false
-	if tutorial_button:
-		tutorial_button.visible = false
-	if has_node("credits"):
-		get_node("credits").visible = false
+	_hide_main_menu_elements()
 	_fade_in_tutorial_overlay()
 
 func _fade_in_tutorial_overlay():
