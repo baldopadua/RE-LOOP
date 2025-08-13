@@ -7,6 +7,7 @@ class_name object_class
 # 3. Tools
 
 @export var object_name: String = "Generic Object"
+@export var object_type: GlobalVariables.object_types
 @export var is_pickupable: bool = true
 @export var usable_targets: Array[String] = [] 
 @export var max_state_threshold: int
@@ -23,6 +24,36 @@ func _ready():
 # Tinanggal ko muna ung static type ng body, but it should be CharacterBody2D
 # Nag e-error kasi kapag naka staticly typed ewan pa kung bakit
 # Both body_entered tsaka body_exit ko tinanggal
+
+func _on_body_exited(body) -> void:
+	handle_body_exited(body)
+	
+func handle_body_exited(body):
+	await get_tree().create_timer(0.05).timeout
+	print("BODY EXITED: %s" % str(body))
+	if body != player_char:
+		return
+	
+	# Tool behavior if out of rangea
+	if object_type == GlobalVariables.object_types.TOOL:
+		is_reachable = false
+		player_char = null
+		body.available_object = null
+		#print("Out of Object Range")
+		
+		# DELETE POINTLIGHT
+		if glow_light:
+			glow_light.queue_free()
+			glow_light = null
+		
+	# Interatable behavior if out of range
+	if object_type == GlobalVariables.object_types.NONTOOL:
+		is_reachable = false
+		player_char = null
+		#body.available_interactable_object = null
+		if body.interactable_objects.has(self):
+			body.interactable_objects.erase(self)
+		#print("Out of Interactable Range")
 
 func _on_body_entered(body) -> void:
 	handle_body_entered(body)
@@ -70,35 +101,6 @@ func handle_body_entered(body):
 		#body.available_interactable_object = self
 		body.interactable_objects.append(self)
 		#print(body.interactable_objects)
-
-func _on_body_exited(body) -> void:
-	handle_body_exited(body)
-	
-func handle_body_exited(body):
-	print("BODY EXITED: %s" % str(body))
-	if body != player_char:
-		return
-	
-	# Tool behavior if out of rangea
-	if is_pickupable:
-		is_reachable = false
-		player_char = null
-		body.available_object = null
-		#print("Out of Object Range")
-		
-		# DELETE POINTLIGHT
-		if glow_light:
-			glow_light.queue_free()
-			glow_light = null
-		
-	# Interatable behavior if out of range
-	if not is_pickupable:
-		is_reachable = false
-		player_char = null
-		#body.available_interactable_object = null
-		if body.interactable_objects.has(self):
-			body.interactable_objects.erase(self)
-		#print("Out of Interactable Range")
 
 func set_flipped(flip: bool):
 	if has_node("item_sprite"):   

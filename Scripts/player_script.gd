@@ -256,6 +256,7 @@ func item_pick_up() -> void:
 		# The player is currently holding an object
 		is_holding_object = true
 		print("Object picked up: " + available_object.object_name)
+		available_object.is_pickupable = false
 
 func item_drop() -> void:
 	# reparent to parent of this player which is the main game
@@ -267,7 +268,8 @@ func item_drop() -> void:
 		tween_pickup.tween_property(held_object, "position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 		await tween_pickup.finished
 		tween_pickup.kill()
-			
+		
+		held_object.is_pickupable = true	
 		held_object.reparent(get_parent())
 		held_object = null
 		is_holding_object = false
