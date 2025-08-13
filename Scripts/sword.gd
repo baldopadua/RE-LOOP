@@ -43,12 +43,14 @@ func break_loop():
 		get_node("old_man").visible = false
 		
 		#PLAY MUSIC
+
 		sword_sfx.play()
 		loop_break_animation.play("unsheate")
-		loopbreak2.visible = true
-		loopbreak2.play()
+
 		await loop_break_animation.animation_finished
 		# WAIT FOR ANIMATION TO FINISH FIRST
+		loopbreak2.visible = true
+		loopbreak2.play()
 		GlobalVariables.player_stopped = false
 
 func _on_body_entered(body) -> void:
