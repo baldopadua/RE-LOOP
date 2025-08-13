@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://h6nnskumaw0c"]
+
+[ext_resource type="Script" uid="uid://s8jnirodg5jd" path="res://Scripts/ui/level_title_name.gd" id="1_da5yc"]
+[ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="1_ueulc"]
+[ext_resource type="Texture2D" uid="uid://d2h610gk3tsry" path="res://Assets/ui/hint/Ancient Tree.png" id="2_7y66j"]
+[ext_resource type="Texture2D" uid="uid://boc7wfks3w6ex" path="res://Assets/ui/hint/Old Man.png" id="3_da5yc"]
+[ext_resource type="Texture2D" uid="uid://bstky07f6gh8" path="res://Assets/ui/hint/Under Pressure.png" id="4_53wis"]
+[ext_resource type="Texture2D" uid="uid://dxgl2iv3061vw" path="res://Assets/ui/hint/The Theory of Evolution.png" id="5_5tjod"]
+
+[node name="level_title_name" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_da5yc")
+
+[node name="title_frame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title_bg" type="TextureRect" parent="title_frame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ueulc")
+
+[node name="title_1" type="TextureRect" parent="title_frame/title_bg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 460.0
+offset_top = 305.0
+offset_right = -469.0
+offset_bottom = -352.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7y66j")
+
+[node name="title_2" type="TextureRect" parent="title_frame/title_bg"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 510.0
+offset_top = 320.0
+offset_right = -512.0
+offset_bottom = -348.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_da5yc")
+
+[node name="title_3" type="TextureRect" parent="title_frame/title_bg"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 516.0
+offset_top = 324.0
+offset_right = -506.0
+offset_bottom = -344.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_53wis")
+
+[node name="title_4" type="TextureRect" parent="title_frame/title_bg"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 298.0
+offset_top = 315.0
+offset_right = -306.0
+offset_bottom = -338.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_5tjod")
