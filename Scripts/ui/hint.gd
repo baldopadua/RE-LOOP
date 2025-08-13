@@ -30,6 +30,8 @@ func _ready() -> void:
 
 func show_hint_overlay():
 	visible = true # Ensure the root node is visible
+	if page_turn_sound:
+		page_turn_sound.play() # Play sound when popup appears
 	_reset_overlay()
 
 func _reset_overlay():
