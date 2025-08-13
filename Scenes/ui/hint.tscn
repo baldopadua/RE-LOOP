@@ -77,7 +77,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="hint_container_1" type="TextureRect" parent="hint_overlay"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -107,6 +106,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_container_3" type="TextureRect" parent="hint_overlay"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -114,6 +114,25 @@ anchor_left = 0.197256
 anchor_top = 0.0935961
 anchor_right = 0.922813
 anchor_bottom = 0.875205
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8wecr")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_container_4" type="TextureRect" parent="hint_overlay"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.197256
+anchor_top = 0.0935961
+anchor_right = 0.922813
+anchor_bottom = 0.875205
+offset_left = 166.878
+offset_top = 44.5517
+offset_right = 166.878
+offset_bottom = 44.5517
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_8wecr")
