@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="1_x87qo"]
 [ext_resource type="PackedScene" uid="uid://wvr0ph3yi7o1" path="res://Scenes/ui/game_ui_elements.tscn" id="3_fiftr"]
 [ext_resource type="PackedScene" uid="uid://cbl4k6bkjnggc" path="res://Scenes/levels/level_1_scene.tscn" id="4_fiftr"]
-[ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="5_1ixah"]
+[ext_resource type="PackedScene" uid="uid://cjedaxlyfa33k" path="res://Scenes/game_scene_transition.tscn" id="5_1ixah"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6fju"]
 atlas = ExtResource("1_x87qo")
@@ -88,25 +88,4 @@ pivot_offset = Vector2(640, 360)
 [node name="CanvasLayerTransition" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="game_scene_transition" type="Control" parent="CanvasLayerTransition"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="ploy" type="TextureRect" parent="CanvasLayerTransition/game_scene_transition"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.254687
-anchor_top = 0.0861111
-anchor_right = 0.750781
-anchor_bottom = 0.948611
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_1ixah")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
+[node name="game_scene_transition" parent="CanvasLayerTransition" instance=ExtResource("5_1ixah")]
