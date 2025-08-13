@@ -15,6 +15,7 @@ var tween_scale: Tween
 var allowed_angles: Array = [0.0, 360.0, -360.0, 90.0, -90.0, 180.0, -180.0, 270.0, -270.0]
 var is_player_in_geyser: bool = false
 var time_indicator: AnimatedSprite2D
+var default_geyser_played: bool = false
 
 # SCAN IF THERE ARE ROCKS CHILDREN AND CURRENT STATE IS 2
 # 	IF NUMBER OF ROCKS IS < 5 THEN
@@ -50,9 +51,20 @@ func _process(_delta: float) -> void:
 			go_to_level_4()
 	
 	# IF ANGLE OF PLAYER IS IN 3,6,9,12 AND ROCK SIZE IS GREATER THAN 0
-	if round(rad_to_deg(player.rotation)) in allowed_angles and rocks.size() > 0 and not is_playing_two:
+	if round(rad_to_deg(player.rotation)) in allowed_angles and rocks.size() > 0 and not is_playing_two and player.direction == GlobalVariables.player_direction.CLOCKWISE:
 		geyser_ekusproshon()
-	
+	elif round(rad_to_deg(player.rotation)) in allowed_angles and rocks.size() > 0 and not is_playing_two and player.direction == GlobalVariables.player_direction.COUNTERCLOCKWISE:
+		return_rocks()
+		
+	if round(rad_to_deg(player.rotation)) in allowed_angles and rocks.size() == 0 and not default_geyser_played:
+		default_geyser_played = true
+		animate_geyser.visible = true
+		get_node("NoRock").visible = false
+		animate_geyser.play("default_geyser")
+		await animate_geyser.animation_finished
+		get_node("NoRock").visible = true
+		default_geyser_played = false
+		animate_geyser.visible = false
 
 # IN BODY ENTERED, IF PRESSURE 1 OR PRESSURE 2 IS ANIMATION_PLAYING AND NUMBER OF ROCKS IS 5
 #	EXECUTE BREAK LOOP
@@ -62,13 +74,6 @@ func geyser_ekusproshon():
 	animate_geyser.visible = true
 	# LESS THAN FIVE ROCKS IS NOT GOING TO BUILD PRESSURE
 	if rocks.size() >= 1 and rocks.size() < 5:
-		animate_geyser.play("default_geyser")
-		
-		# DISABLE VISIBILITY OF EVERY STATE
-		for node in get_children():
-			if "State" in str(node.name):
-				node.visible = false
-		 
 		# SET THE VISIBILITY TO TRUE FOR THE DEFAULT NO ROCK TEXTURE
 		# get_node("NoRock").visible = true
 		
@@ -100,6 +105,11 @@ func geyser_ekusproshon():
 		is_playing_two = false
 
 func return_rocks():
+		# DISABLE VISIBILITY OF EVERY STATE
+	for node in get_children():
+		if "State" in str(node.name):
+			node.visible = false
+	animate_geyser.play("default_geyser")
 	for rock in rocks:
 			rock.visible = true
 			rock.is_pickupable = true

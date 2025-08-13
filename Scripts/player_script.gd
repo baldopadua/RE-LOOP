@@ -216,24 +216,10 @@ func rotate_player():
 		moves -= 1
 		
 	# set the tween
-	tween.tween_property(self, "rotation", rotation_tween, transition_time).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "rotation", rotation_tween, transition_time).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	
 func _process(_delta):
 	pass
-
-# Reparent the object to mark2D of the player
-func _deferred_reparent(obj) -> void:
-	obj.reparent(object_pos)
-	
-	# TWEEN TO ADD BOUNCE WHEN PICKING UP
-	var tween_pickup = create_tween()
-	var screen_center = Vector2.ZERO   
-	tween_pickup.tween_property(obj, "position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-	await tween_pickup.finished
-	tween_pickup.kill()
-	 
-	held_object = obj
-	update_held_object_direction()
 
 func update_held_object_direction():
 	if held_object:
@@ -251,17 +237,26 @@ func item_pick_up() -> void:
 	if not is_holding_object and available_object.is_reachable and not is_moving:
 		# Defer/Delay the reparenting to avoid error
 		# during physics callback or something
-		call_deferred("_deferred_reparent", available_object)
+		#call_deferred("_deferred_reparent", available_object)
+		available_object.is_pickupable = false
+		held_object = available_object
+		available_object.reparent(object_pos)	 
+		update_held_object_direction()
+		print("Object picked up: " + held_object.object_name)
+		
+		# TWEEN TO ADD BOUNCE WHEN PICKING UP
+		var tween_pickup = create_tween()
+		var screen_center = Vector2.ZERO   
+		tween_pickup.tween_property(held_object, "position", screen_center, 0.1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		await tween_pickup.finished
+		tween_pickup.kill()
 		
 		# The player is currently holding an object
 		is_holding_object = true
-		print("Object picked up: " + available_object.object_name)
-		available_object.is_pickupable = false
 
 func item_drop() -> void:
 	# reparent to parent of this player which is the main game
 	if held_object and not is_moving:
-		
 		# TWEEN TO ADD BOUNCE WHEN DROPPING DOWN
 		var tween_pickup = create_tween()
 		var screen_center = Vector2(0,50.0)  

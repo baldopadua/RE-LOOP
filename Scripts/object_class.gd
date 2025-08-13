@@ -21,7 +21,7 @@ var glow_light: PointLight2D = null
 func _ready():
 	print(object_name + " instantiated!")
 
-# Tinanggal ko muna ung static type ng body, but it should be CharacterBody2D
+# Tinanggal ko muna ung static type ng body, but it should be CharacteerBody2D
 # Nag e-error kasi kapag naka staticly typed ewan pa kung bakit
 # Both body_entered tsaka body_exit ko tinanggal
 
@@ -29,10 +29,12 @@ func _on_body_exited(body) -> void:
 	handle_body_exited(body)
 	
 func handle_body_exited(body):
-	await get_tree().create_timer(0.05).timeout
-	print("BODY EXITED: %s" % str(body))
+	
+	# IF NOT PLAYER SCENE OR BEING PICKED UP DISABLE BODY ENTER AND EXIT
 	if body != player_char:
 		return
+	
+	print("BODY EXITED: %s" % str(body))
 	
 	# Tool behavior if out of rangea
 	if object_type == GlobalVariables.object_types.TOOL:
@@ -59,12 +61,15 @@ func _on_body_entered(body) -> void:
 	handle_body_entered(body)
 
 func handle_body_entered(body):
-	print("BODY ENTERED: %s" % str(body))
+	
+	# IF NOT PLAYER SCENE OR BEING PICKED UP DISABLE BODY ENTER AND EXIT
 	if body.name != "PlayerScene":
 		return
-		
+	
+	print("BODY ENTERED: %s" % str(body))
+	
 	# PICKING UP THINGS
-	if is_pickupable and not body.is_holding_object:
+	if is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.TOOL:
 		#print("Player can pick up %s" % object_name)
 		
 		# CREATE POINT LIGHT
@@ -94,7 +99,7 @@ func handle_body_entered(body):
 		body.available_object = self
 		
 	# INTERACTING WHILE CARRYING PICKUPABLE THINGS
-	if not is_pickupable and body.is_holding_object:
+	if not is_pickupable and body.is_holding_object and object_type == GlobalVariables.object_types.NONTOOL:
 		#print("%s is interactable" % object_name)
 		is_reachable = true
 		player_char = body
