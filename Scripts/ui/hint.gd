@@ -37,7 +37,7 @@ func _reset_overlay():
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
