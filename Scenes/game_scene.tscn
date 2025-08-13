@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="1_x87qo"]
 [ext_resource type="PackedScene" uid="uid://wvr0ph3yi7o1" path="res://Scenes/ui/game_ui_elements.tscn" id="3_fiftr"]
 [ext_resource type="PackedScene" uid="uid://cbl4k6bkjnggc" path="res://Scenes/levels/level_1_scene.tscn" id="4_fiftr"]
-[ext_resource type="PackedScene" path="res://Scenes/game_scene_transition.tscn" id="5_1ixah"]
+[ext_resource type="PackedScene" uid="uid://dxspjb75j0pbc" path="res://Scenes/screen_effects/game_scene_transition.tscn" id="5_1ixah"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6fju"]
 atlas = ExtResource("1_x87qo")
