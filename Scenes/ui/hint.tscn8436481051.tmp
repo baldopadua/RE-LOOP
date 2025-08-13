@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="1_d2whi"]
 [ext_resource type="Script" uid="uid://dxr2toew43b86" path="res://Scripts/ui/hint.gd" id="1_txt2m"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="2_tj7ow"]
-[ext_resource type="Texture2D" uid="uid://b0momkrk7xd2h" path="res://Assets/ui/hint/hint_container.png" id="3_0deiq"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="3_dh2er"]
 [ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="4_0deiq"]
+[ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="4_dqkp0"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="5_txt2m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhjfp"]
@@ -70,23 +70,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="hint_container" type="TextureRect" parent="hint_overlay"]
+[node name="text_box" type="TextureRect" parent="hint_overlay"]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.23125
-anchor_top = 0.0694444
-anchor_right = 0.932813
-anchor_bottom = 0.890278
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 309.0
+offset_top = 78.0
+offset_right = -578.0
+offset_bottom = -212.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_0deiq")
+texture = ExtResource("4_dqkp0")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="hint_overlay"]
 texture_filter = 1
-position = Vector2(199, 572)
-scale = Vector2(10.1667, 10.4908)
+position = Vector2(199, 600)
+scale = Vector2(16.1667, 16.6299)
 sprite_frames = SubResource("SpriteFrames_txt2m")
 frame_progress = 0.86958
 flip_h = true
@@ -94,18 +96,19 @@ flip_h = true
 [node name="page_turn_sound" type="AudioStreamPlayer2D" parent="hint_overlay"]
 stream = ExtResource("5_txt2m")
 
-[node name="close_button" type="TextureButton" parent="hint_overlay"]
+[node name="close_button" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.86875
-anchor_top = 0.0833333
-anchor_right = 0.946875
-anchor_bottom = 0.222222
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -90.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 110.0
 grow_horizontal = 0
 pivot_offset = Vector2(110, -10)
 texture_normal = ExtResource("2_tj7ow")
 texture_hover = ExtResource("3_dh2er")
 ignore_texture_size = true
 stretch_mode = 0
-metadata/_edit_use_anchors_ = true

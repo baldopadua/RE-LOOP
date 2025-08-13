@@ -4,8 +4,9 @@ const OVERLAY_FINAL_SCALE = Vector2(1, 1)
 const OVERLAY_START_SCALE = Vector2(0.2, 0.2)
 
 @onready var hint_overlay := $hint_overlay
-@onready var close_button := $close_button
+@onready var close_button := $hint_overlay/close_button
 @onready var page_turn_sound := $hint_overlay/page_turn_sound
+@onready var loy_sprite := $hint_overlay/AnimatedSprite2D # Add reference to AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +15,10 @@ func _ready() -> void:
 	hint_overlay.z_index = 99
 	# Start hidden until show_hint_overlay is called
 	hint_overlay.visible = false
+	# Autoplay and flip si Loy
+	if loy_sprite:
+		loy_sprite.play("default")
+		loy_sprite.flip_h = true
 
 func show_hint_overlay():
 	visible = true # Ensure the root node is visible
