@@ -11,10 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="6_lhp3t"]
 [ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="7_drdnd"]
 [ext_resource type="AudioStream" uid="uid://cw5va43ffrudg" path="res://Audio/ui/click.mp3" id="9_ioaeq"]
-[ext_resource type="AudioStream" uid="uid://35povcthktt2" path="res://Audio/ui/main_bgmusic.mp3" id="9_m1efj"]
 [ext_resource type="PackedScene" uid="uid://bnrnr4wjbytbv" path="res://Scenes/ui/tutorial.tscn" id="10_ioaeq"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="12_drdnd"]
 [ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
+[ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/ui/re_loop-theme-song.mp3" id="13_lhp3t"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ioaeq"]
 
@@ -278,7 +278,8 @@ metadata/_edit_use_anchors_ = true
 stream = ExtResource("7_drdnd")
 
 [node name="main_bgm" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_m1efj")
+stream = ExtResource("13_lhp3t")
+volume_db = 7.336
 autoplay = true
 
 [node name="click_sound" type="AudioStreamPlayer2D" parent="."]

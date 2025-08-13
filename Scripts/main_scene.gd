@@ -29,8 +29,9 @@ func _play_bgm() -> void:
 	if main_bgm and main_bgm.stream:
 		if main_bgm.stream.has_method("set_loop"):
 			main_bgm.stream.set_loop(true)
-		elif main_bgm.stream.has_property("loop"):
-			main_bgm.stream.loop = true
+		elif main_bgm.stream is AudioStream:
+			if "loop" in main_bgm.stream:
+				main_bgm.stream.loop = true
 		main_bgm.play()
 
 func _connect_buttons() -> void:
