@@ -12,9 +12,19 @@ const OVERLAY_START_POSITION = Vector2(1920, -425) # right edge, same Y
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_reset_overlay()
+	close_button.connect("pressed", Callable(self, "_on_close_button_pressed"))
+	close_button.z_index = 100
+	tutorial_overlay.z_index = 99
+	connect("visibility_changed", Callable(self, "_on_visibility_changed"))
+
+func _on_visibility_changed():
+	if visible:
+		_reset_overlay()
+
+func _reset_overlay():
 	tutorial_overlay.visible = true
-	tutorial_overlay.scale = Vector2(1, 1)
-	# Center the overlay using rect_global_position based on parent size
+	tutorial_overlay.scale = OVERLAY_FINAL_SCALE
 	var parent_size = get_viewport_rect().size
 	var overlay_size = tutorial_overlay.size
 	var final_pos = (parent_size / 2) - (overlay_size / 2)
@@ -23,9 +33,6 @@ func _ready() -> void:
 	var tween := create_tween()
 	tween.tween_property(tutorial_overlay, "position", final_pos, 0.25)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	close_button.connect("pressed", Callable(self, "_on_close_button_pressed"))
-	close_button.z_index = 100
-	tutorial_overlay.z_index = 99
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -56,7 +63,7 @@ func _after_fade_out():
 	var main_scene = get_tree().current_scene
 	if main_scene and main_scene.has_method("restore_default_bg_animation"):
 		main_scene.restore_default_bg_animation()
-	queue_free()
+	visible = false # Hide the node instead of freeing
 
 func _restore_main_menu():
 	var main_scene = get_tree().current_scene

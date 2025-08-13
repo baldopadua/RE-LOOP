@@ -17,8 +17,11 @@ func _ready() -> void:
 
 func show_hint_overlay():
 	visible = true # Ensure the root node is visible
+	_reset_overlay()
+
+func _reset_overlay():
 	hint_overlay.visible = true
-	hint_overlay.scale = Vector2(1, 1)
+	hint_overlay.scale = OVERLAY_FINAL_SCALE
 	var parent_size = get_viewport_rect().size
 	var overlay_size = hint_overlay.size
 	var final_pos = (parent_size / 2) - (overlay_size / 2)

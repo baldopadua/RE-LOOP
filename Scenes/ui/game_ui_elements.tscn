@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://wvr0ph3yi7o1"]
+[gd_scene load_steps=40 format=3 uid="uid://wvr0ph3yi7o1"]
 
 [ext_resource type="Script" uid="uid://dwfjc4wc808h0" path="res://Scripts/ui/game_ui_elements.gd" id="1_ev2l3"]
 [ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="3_8fl4t"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="6_rl4jv"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="7_uwqlr"]
 [ext_resource type="PackedScene" uid="uid://c221xvoh8em1d" path="res://Scenes/ui/hint.tscn" id="10_0phbq"]
+[ext_resource type="PackedScene" uid="uid://bnrnr4wjbytbv" path="res://Scenes/ui/tutorial.tscn" id="11_smuvt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xvw7"]
 atlas = ExtResource("3_8fl4t")
@@ -293,5 +294,9 @@ stretch_mode = 0
 stream = ExtResource("7_uwqlr")
 
 [node name="hint" parent="ui_frame" instance=ExtResource("10_0phbq")]
+visible = false
+layout_mode = 1
+
+[node name="tutorial" parent="ui_frame" instance=ExtResource("11_smuvt")]
 visible = false
 layout_mode = 1
