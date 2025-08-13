@@ -66,6 +66,9 @@ func _on_start_button_pressed() -> void:
 
 func _show_transition_and_go_to_game_scene():
 	_hide_main_menu_elements()
+	# Stop background music
+	if main_bgm and main_bgm.playing:
+		main_bgm.stop()
 	# Instance and show the transition scene
 	transition_instance = transition_scene_packed.instantiate()
 	add_child(transition_instance)
