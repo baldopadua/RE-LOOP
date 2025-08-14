@@ -70,6 +70,7 @@ layer = -1
 follow_viewport_enabled = true
 
 [node name="game_scene_bg" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(640, 360)
 scale = Vector2(5.511, 5.5)
 sprite_frames = SubResource("SpriteFrames_7iton")
