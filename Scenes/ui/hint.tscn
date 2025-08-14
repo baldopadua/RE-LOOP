@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://woq1l326oxns" path="res://Assets/ui/hint/hint_2.png" id="4_qhjfp"]
 [ext_resource type="Texture2D" uid="uid://wg21y0rbjlo2" path="res://Assets/ui/hint/hint_3.png" id="5_8wecr"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="5_txt2m"]
-[ext_resource type="Texture2D" uid="uid://b0momkrk7xd2h" path="res://Assets/ui/hint/hint_container.png" id="6_l46pk"]
+[ext_resource type="Texture2D" uid="uid://loktk8i0xmn" path="res://Assets/ui/hint/hint_4.png" id="6_l46pk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhjfp"]
 atlas = ExtResource("4_0deiq")
@@ -126,10 +126,10 @@ visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.178388
-anchor_top = 0.047619
-anchor_right = 0.921955
-anchor_bottom = 0.950739
+anchor_left = 0.140652
+anchor_top = -0.0328407
+anchor_right = 1.03945
+anchor_bottom = 0.975369
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_l46pk")
