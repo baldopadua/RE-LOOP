@@ -92,6 +92,7 @@ rotation = 0.523599
 shape = SubResource("RectangleShape2D_nwbkr")
 
 [node name="branch" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-20, 28)
 rotation = -2.61799
 scale = Vector2(2, 2)
@@ -101,6 +102,7 @@ frame = 6
 frame_progress = 1.0
 
 [node name="stick" parent="." instance=ExtResource("4_w47xb")]
+visible = false
 position = Vector2(-19, 29)
 rotation = 1.51844
 is_pickupable = false

@@ -13,6 +13,7 @@ func _process(_delta: float) -> void:
 			[1, 2, GlobalVariables.player_direction.CLOCKWISE]:
 				is_played = false
 				if stick:
+					branch.visible = true
 					branch.play("tree")
 					await branch.animation_finished
 					stick.visible = true
@@ -24,8 +25,10 @@ func _process(_delta: float) -> void:
 				is_played = false
 				if stick:
 					stick.visible = false
-					branch.visible = true
 					stick.is_pickupable = false
 					branch.play_backwards("tree")
+					await branch.animation_finished
+					branch.visible = false
 				else:
 					branch.visible = false
+		previous_state = current_state

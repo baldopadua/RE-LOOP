@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://djdtr07cgv0co"]
 
-[ext_resource type="Script" uid="uid://d1t303evbdwox" path="res://Scripts/object_class.gd" id="1_kkfyl"]
+[ext_resource type="Script" uid="uid://wxhb1e6i0niw" path="res://Scripts/stick.gd" id="1_wbbh5"]
 [ext_resource type="Texture2D" uid="uid://bx0bxg1lfyar8" path="res://Assets/levels/level_4/collectible_stick.png" id="2_wbbh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
@@ -11,9 +11,9 @@ light_mask = 3
 visibility_layer = 3
 z_index = 1
 disable_mode = 2
-script = ExtResource("1_kkfyl")
+script = ExtResource("1_wbbh5")
 object_name = "stick"
-usable_targets = Array[String](["soil"])
+usable_targets = Array[String](["dog"])
 metadata/_custom_type_script = "uid://d1t303evbdwox"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
