@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bkklrol1yda1l"]
+[gd_scene load_steps=25 format=4 uid="uid://bkklrol1yda1l"]
 
 [ext_resource type="Script" uid="uid://w412f5j4febn" path="res://Scripts/level_3_script.gd" id="1_thi73"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="3_njtrs"]
@@ -16,6 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="15_cq20m"]
 [ext_resource type="PackedScene" uid="uid://dco164x5ft03" path="res://Scenes/objects/level_3/geyser.tscn" id="16_symai"]
 [ext_resource type="PackedScene" uid="uid://lftn8e82jmja" path="res://Scenes/objects/level_3/rock.tscn" id="17_4srx3"]
+[ext_resource type="AudioStream" uid="uid://bt6xxs02lxxlj" path="res://Audio/pickup_item.wav" id="17_oyt3y"]
+[ext_resource type="AudioStream" uid="uid://svaslsbjpxun" path="res://Audio/level-3/water_eruption.wav" id="18_6xexh"]
+[ext_resource type="AudioStream" uid="uid://bhb388kh47yiw" path="res://Audio/level-3/rock_water_drop.wav" id="19_3gnya"]
+[ext_resource type="AudioStream" uid="uid://dk3o16h28soqe" path="res://Audio/level-3/rock_ground_drop.wav" id="20_hmu4b"]
+[ext_resource type="AudioStream" uid="uid://r1p3goyqtthx" path="res://Audio/level-3/rock_explode.wav" id="21_oy0dn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2f8f"]
 texture = ExtResource("3_njtrs")
@@ -5935,6 +5940,11 @@ texture = ExtResource("3_njtrs")
 [sub_resource type="TileSet" id="TileSet_8r5jx"]
 sources/0 = SubResource("TileSetAtlasSource_j2f8f")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6xexh"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("18_6xexh")
+
 [node name="level_3" type="Node2D"]
 script = ExtResource("1_thi73")
 
@@ -6027,3 +6037,33 @@ position = Vector2(-145, -251)
 rotation = 2.61799
 orig_pos = Vector2(-145, -251)
 orig_rotation = 150.0
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_oyt3y")
+volume_db = 1.0
+
+[node name="geyser_explode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_6xexh")
+volume_db = 1.0
+
+[node name="rock_water_drop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_3gnya")
+volume_db = 1.0
+
+[node name="rock_ground_drop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_hmu4b")
+volume_db = 1.0
+
+[node name="rock_explode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_oy0dn")
+volume_db = 1.0
+
+[node name="rock_explode_fail" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_6xexh")
+volume_db = 1.0
+pitch_scale = 1.5
+
+[node name="rock_default_geyser_explode" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_6xexh")
+volume_db = 1.0
+pitch_scale = 4.0

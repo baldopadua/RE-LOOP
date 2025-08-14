@@ -3,6 +3,10 @@ extends object_class
 var previous_state: int = 3
 var old_man = self
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var bones = $"../bones"
+@onready var kid_transform = $"../kid_transform"
+@onready var man_transform = $"../man_transform"
+@onready var old_transform = $"../old_transform"
 
 func _on_body_entered(body)-> void:
 	if previous_state == 4 and current_state == 4:
@@ -31,22 +35,34 @@ func update_old_man_visibility():
 		match [previous_state, current_state]:
 			[1, 2]:
 				animated_sprite.play("young_to_strong")
+				man_transform.pitch_scale = 1
+				man_transform.play()
 			[2, 3]:
-				animated_sprite.play("strong_to_old")				
+				animated_sprite.play("strong_to_old")
+				man_transform.pitch_scale = 0.5				
 			[3, 4]:
 				animated_sprite.play("old_to_super_old")
+				old_transform.play()
 			[4, 5]:
 				animated_sprite.play("dead_skeleton")
+				bones.play()
 
 			# Reverse animations
 			[5, 4]:
 				animated_sprite.play("skeleton_to_super_old")
+				bones.play()
 			[4, 3]:
 				animated_sprite.play_backwards("old_to_super_old")
+				man_transform.pitch_scale = 0.5
+				man_transform.play()
 			[3, 2]:
 				animated_sprite.play_backwards("strong_to_old")
+				man_transform.pitch_scale = 1
+				man_transform.play()
 			[2, 1]:
 				animated_sprite.play_backwards("young_to_strong")
+				kid_transform.pitch_scale = 1
+				kid_transform.play()
 			
 		previous_state = current_state
 

@@ -34,7 +34,7 @@ func handle_body_exited(body):
 	if body != player_char:
 		return
 	
-	print("BODY EXITED: %s" % str(body))
+	#print("BODY EXITED: %s" % str(body))
 	
 	# Tool behavior if out of rangea
 	if object_type == GlobalVariables.object_types.TOOL:
@@ -66,7 +66,7 @@ func handle_body_entered(body):
 	if body.name != "PlayerScene":
 		return
 	
-	print("BODY ENTERED: %s" % str(body))
+	#print("BODY ENTERED: %s" % str(body))
 	
 	# PICKING UP THINGS
 	if is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.TOOL:

@@ -6,6 +6,7 @@ var tween_scale: Tween
 var level_2 = preload("res://Scenes/levels/level_2_scene.tscn")
 var time_indicator: AnimatedSprite2D
 var is_playing: bool = false	
+@onready var climb = $"../Climb"
 
 func _ready() -> void:
 	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
@@ -40,7 +41,9 @@ func _on_body_entered(body) -> void:
 		# Connect tween_finished if not yet connected
 		if not tween_climb.is_connected("finished", _tween_climb_finished):
 			tween_climb.connect("finished", _tween_climb_finished)
-			
+	
+		climb.play()
+		
 		var screen_center = Vector2(0.0, 250.0)
 		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)
 		await tween_climb.finished

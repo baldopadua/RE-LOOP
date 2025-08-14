@@ -5,6 +5,7 @@ var is_played: bool = false
 
 func _process(_delta: float) -> void:
 	if current_state == 2 and not is_played:
+		print("Yes")
 		is_played = true
 		sprite.play("Present")
 		await sprite.animation_finished
@@ -12,9 +13,11 @@ func _process(_delta: float) -> void:
 	elif current_state == 1 and is_played:
 		is_played = false
 		sprite.play("Past")
+		is_pickupable = false
 	elif current_state == 3 and is_played:
 		is_played = false
 		sprite.play("Future")
+		is_pickupable = false
 		
 func interact(object_interacted: object_class):
 	if object_interacted.object_name == "incubator":

@@ -2,6 +2,7 @@ extends object_class
 
 @export var orig_pos: Vector2
 @export var orig_rotation: float
+@onready var rock_water_drop = $"../rock_water_drop"
 
 func interact(object_interacted: object_class):
 	if object_interacted.object_name == "geyser":
@@ -18,6 +19,8 @@ func interact(object_interacted: object_class):
 		tween_drop.tween_property(self, "position", pos_drop, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 		await tween_drop.finished
 		tween_drop.kill()
+		
+		rock_water_drop.play()
 		
 		reparent(object_interacted)
 		is_pickupable = false
