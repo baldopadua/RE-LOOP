@@ -388,7 +388,8 @@ visible = false
 position = Vector2(628, 360)
 scale = Vector2(6.47321, 5.5)
 sprite_frames = SubResource("SpriteFrames_lhp3t")
-frame_progress = 0.754512
+frame = 11
+frame_progress = 0.23532
 speed_scale = 2.0
 
 [node name="game_animated_bg" type="AnimatedSprite2D" parent="."]
@@ -397,7 +398,8 @@ position = Vector2(655.5, 360)
 scale = Vector2(5.57917, 5.5)
 sprite_frames = SubResource("SpriteFrames_ioaeq")
 autoplay = "true"
-frame_progress = 0.465208
+frame = 5
+frame_progress = 0.933967
 
 [node name="gametitle" type="TextureRect" parent="."]
 texture_filter = 1
