@@ -11,7 +11,8 @@ const OVERLAY_START_SCALE = Vector2(0.2, 0.2)
 var _hint_shown := {
 	"seed": false,
 	"old man": false,
-	"rock": false
+	"rock": false,
+	"dinosaur": false
 }
 var _pending_hint_level: String = "" # Store which hint to show when requested
 
@@ -89,6 +90,8 @@ func _on_level_instantiated(level_name: String):
 				$hint_overlay/hint_container_2.visible = true
 			"rock":
 				$hint_overlay/hint_container_3.visible = true
+			"dinosaur":
+				$hint_overlay/hint_container_4.visible = true
 			_:
 				pass
 		# Do not call show_hint_overlay() here

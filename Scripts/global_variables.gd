@@ -99,6 +99,8 @@ func notify_level_instantiated(scene_path: String):
 		level_name = "old man"
 	elif "rock" in scene_path or "level_3" in scene_path:
 		level_name = "rock"
+	elif "dinosaur" in scene_path or "level_4" in scene_path:
+		level_name = "dinosaur"
 	else:
 		level_name = scene_path
 	emit_signal("level_instantiated", level_name)
