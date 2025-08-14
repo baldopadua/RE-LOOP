@@ -13,7 +13,11 @@ config_version=5
 config/name="RE:LOOP"
 run/main_scene="uid://dypu05rngiwmu"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/image="uid://dqxv8sy5omreg"
 config/icon="res://icon.svg"
+config/image=""
+config/defaults/default_clear_color=Color(0.111197, 0.111197, 0.111197, 1)
+config/bg_color=Color(0.14, 0.14, 0.14, 1)
 
 [autoload]
 
