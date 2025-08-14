@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bn1u7rxapvdbv"]
+[gd_scene load_steps=19 format=3 uid="uid://bn1u7rxapvdbv"]
 
 [ext_resource type="Script" uid="uid://bvkjbo5mnux15" path="res://Scripts/dog.gd" id="1_26f7n"]
 [ext_resource type="Texture2D" uid="uid://it0nf1j8lb0e" path="res://Assets/levels/level_4/Dog_Stick-Sheet.png" id="2_26f7n"]
@@ -58,34 +58,6 @@ region = Rect2(1536, 0, 48, 71)
 [sub_resource type="AtlasTexture" id="AtlasTexture_d14wi"]
 atlas = ExtResource("2_26f7n")
 region = Rect2(1584, 0, 48, 71)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pwfcq"]
-atlas = ExtResource("2_26f7n")
-region = Rect2(0, 0, 48, 71)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wm53c"]
-atlas = ExtResource("2_26f7n")
-region = Rect2(48, 0, 48, 71)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8km58"]
-atlas = ExtResource("2_26f7n")
-region = Rect2(96, 0, 48, 71)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ug0yr"]
-atlas = ExtResource("2_26f7n")
-region = Rect2(144, 0, 48, 71)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnv0e"]
-atlas = ExtResource("2_26f7n")
-region = Rect2(192, 0, 48, 71)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dtpfh"]
-atlas = ExtResource("2_26f7n")
-region = Rect2(240, 0, 48, 71)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7hnhe"]
-atlas = ExtResource("2_26f7n")
-region = Rect2(288, 0, 48, 71)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6w1o8"]
 animations = [{
@@ -154,28 +126,7 @@ animations = [{
 "name": &"old_to_grave",
 "speed": 14.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pwfcq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wm53c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8km58")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ug0yr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rnv0e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dtpfh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7hnhe")
-}],
+"frames": [],
 "loop": false,
 "name": &"young_to_old",
 "speed": 14.0
@@ -197,6 +148,13 @@ min_state_threshold = 1
 current_state = 1
 
 [node name="StickDog" type="AnimatedSprite2D" parent="."]
+rotation = 2.0944
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6w1o8")
+animation = &"young_to_old"
+
+[node name="BoneDog" type="AnimatedSprite2D" parent="."]
+visible = false
 rotation = 2.0944
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_6w1o8")
