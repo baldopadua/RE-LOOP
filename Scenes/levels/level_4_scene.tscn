@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://fyqypy6fcyaf"]
+[gd_scene load_steps=29 format=4 uid="uid://fyqypy6fcyaf"]
 
 [ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/level_4_script.gd" id="1_f0imo"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="3_d64ua"]
@@ -17,13 +17,15 @@
 [ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="15_enhda"]
 [ext_resource type="PackedScene" uid="uid://djdtr07cgv0co" path="res://Scenes/objects/level_4/tools/stick.tscn" id="16_6d2y4"]
 [ext_resource type="PackedScene" uid="uid://wa372vchah3q" path="res://Scenes/objects/level_4/tools/bone.tscn" id="17_mj1vs"]
-[ext_resource type="PackedScene" uid="uid://b8rqtsafw44ge" path="res://Scenes/objects/level_4/tools/statues.tscn" id="18_37es6"]
+[ext_resource type="PackedScene" uid="uid://b8rqtsafw44ge" path="res://Scenes/objects/level_4/tools/statues1.tscn" id="18_37es6"]
 [ext_resource type="PackedScene" uid="uid://b4fhx7cv5bnqd" path="res://Scenes/objects/level_4/tools/chicken.tscn" id="19_trv2w"]
 [ext_resource type="PackedScene" uid="uid://dfuqimqiipdvc" path="res://Scenes/objects/level_4/tools/lizard.tscn" id="20_lahvx"]
 [ext_resource type="PackedScene" uid="uid://bn1u7rxapvdbv" path="res://Scenes/objects/level_4/non_tools/dog.tscn" id="21_37es6"]
 [ext_resource type="PackedScene" uid="uid://cd6wnkqq2sftc" path="res://Scenes/objects/level_4/non_tools/incubator.tscn" id="22_trv2w"]
 [ext_resource type="PackedScene" uid="uid://drft7kjr45005" path="res://Scenes/objects/level_4/tools/seed.tscn" id="23_lahvx"]
 [ext_resource type="AudioStream" uid="uid://bt6xxs02lxxlj" path="res://Audio/pickup_item.wav" id="24_trv2w"]
+[ext_resource type="PackedScene" uid="uid://b564v66w42qm6" path="res://Scenes/objects/level_4/tools/statues2.tscn" id="25_0bs5k"]
+[ext_resource type="PackedScene" uid="uid://bxrvbyampevae" path="res://Scenes/objects/level_4/tools/statues3.tscn" id="26_oqr2g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2f8f"]
 texture = ExtResource("3_d64ua")
@@ -6013,15 +6015,6 @@ position = Vector2(-251, -145)
 [node name="bone" parent="." instance=ExtResource("17_mj1vs")]
 position = Vector2(-251, -145)
 
-[node name="statues" parent="." instance=ExtResource("18_37es6")]
-position = Vector2(290, 0)
-
-[node name="statues2" parent="." instance=ExtResource("18_37es6")]
-position = Vector2(-290, 0)
-
-[node name="statues3" parent="." instance=ExtResource("18_37es6")]
-position = Vector2(0, 290)
-
 [node name="chicken" parent="." instance=ExtResource("19_trv2w")]
 position = Vector2(251, -145)
 
@@ -6029,7 +6022,7 @@ position = Vector2(251, -145)
 position = Vector2(-272, 162)
 
 [node name="dog" parent="." instance=ExtResource("21_37es6")]
-position = Vector2(-251, -145)
+position = Vector2(-228, -129)
 
 [node name="incubator" parent="." instance=ExtResource("22_trv2w")]
 position = Vector2(-145, -251)
@@ -6040,3 +6033,12 @@ position = Vector2(145, 251)
 [node name="pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_trv2w")
 volume_db = 1.0
+
+[node name="statues1" parent="." instance=ExtResource("18_37es6")]
+position = Vector2(251, 0)
+
+[node name="statues2" parent="." instance=ExtResource("25_0bs5k")]
+position = Vector2(-253, 0)
+
+[node name="statues3" parent="." instance=ExtResource("26_oqr2g")]
+position = Vector2(0, 254)
