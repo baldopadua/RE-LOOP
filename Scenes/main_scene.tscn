@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dypu05rngiwmu"]
+[gd_scene load_steps=39 format=3 uid="uid://dypu05rngiwmu"]
 
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="2_ioaeq"]
@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="12_drdnd"]
 [ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
 [ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/ui/re_loop-theme-song.mp3" id="13_lhp3t"]
+[ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="16_psl12"]
+[ext_resource type="Script" uid="uid://bbvh8f4m8xvxl" path="res://Scripts/cursor.gd" id="17_2ebs2"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ioaeq"]
 
@@ -287,3 +289,8 @@ stream = ExtResource("9_ioaeq")
 
 [node name="page_turn_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_drdnd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("16_psl12")
+script = ExtResource("17_2ebs2")

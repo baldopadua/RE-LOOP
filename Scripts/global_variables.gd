@@ -15,35 +15,44 @@ var plooy_left = preload("res://Assets/ui/plooy_left.png")
 var custom_cursor_enabled := true
 
 func _ready():
-	# TODO: SET THE TEXTURE > FILTER OF BOTH PLOY'S RIGHT AND LEFT TO "NEAREST"
+	# Set texture filter mode to nearest for crisp pixels
+	
+	# Hide system cursor and set up custom cursor
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	set_custom_cursor()
 
 func set_custom_cursor(direction = null):
 	if not custom_cursor_enabled:
 		return
+	
 	var cursor_texture: Texture2D = custom_cursor
 	if direction == player_direction.CLOCKWISE:
 		cursor_texture = plooy_right
 	elif direction == player_direction.COUNTERCLOCKWISE:
 		cursor_texture = plooy_left
-	# else: use default
+	
 	if cursor_texture and cursor_texture is Texture2D:
+		# Create a scaled-up version of the cursor
 		var img = cursor_texture.get_image()
 		if img:
 			if img.get_format() != Image.FORMAT_RGBA8:
 				img.convert(Image.FORMAT_RGBA8)
 			var scale_factor = 3.5
 			var new_size = img.get_size() * scale_factor
-			img.resize(new_size.x, new_size.y, Image.INTERPOLATE_LANCZOS)
+			img.resize(new_size.x, new_size.y, Image.INTERPOLATE_NEAREST)
 			var big_cursor = ImageTexture.create_from_image(img)
-			Input.set_custom_mouse_cursor(big_cursor)
+			Input.set_custom_mouse_cursor(big_cursor, Input.CURSOR_ARROW, new_size / 2)
 
 func remove_custom_cursor():
 	Input.set_custom_mouse_cursor(null)
 	custom_cursor_enabled = false
+	# Show system cursor when custom cursor is disabled
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func enable_custom_cursor():
 	custom_cursor_enabled = true
+	# Hide system cursor again when re-enabling custom cursor
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	set_custom_cursor()
 
 func update_cursor_by_mouse_motion(event: InputEventMouseMotion):
