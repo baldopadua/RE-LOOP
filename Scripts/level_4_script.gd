@@ -15,7 +15,7 @@ var tween_rotate: Tween
 var tween_scale: Tween
 var objects: Array = []
 @onready var soil = $soil
-@onready var stick = $stick
+@onready var stick = $soil/stick
 @onready var bone = $bone
 @onready var statues = $statues1
 @onready var statues2 = $statues2

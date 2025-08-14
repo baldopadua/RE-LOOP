@@ -182,7 +182,7 @@ position = Vector2(0, -2.38419e-07)
 rotation = 2.61799
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_732bu")
-frame_progress = 0.00659997
+frame_progress = 0.226087
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3

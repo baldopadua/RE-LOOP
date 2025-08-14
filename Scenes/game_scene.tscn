@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cq7q8j32eespg" path="res://Scripts/game_scene.gd" id="1_6h5vk"]
 [ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="1_x87qo"]
-[ext_resource type="PackedScene" uid="uid://fyqypy6fcyaf" path="res://Scenes/levels/level_4_scene.tscn" id="3_1ixah"]
 [ext_resource type="PackedScene" uid="uid://wvr0ph3yi7o1" path="res://Scenes/ui/game_ui_elements.tscn" id="3_fiftr"]
+[ext_resource type="PackedScene" uid="uid://cbl4k6bkjnggc" path="res://Scenes/levels/level_1_scene.tscn" id="4_fiftr"]
 [ext_resource type="PackedScene" uid="uid://cjedaxlyfa33k" path="res://Scenes/game_scene_transition.tscn" id="5_1ixah"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6fju"]
@@ -77,7 +77,7 @@ sprite_frames = SubResource("SpriteFrames_7iton")
 [node name="levels_frame" type="Node2D" parent="."]
 position = Vector2(640, 360)
 
-[node name="level_4" parent="levels_frame" instance=ExtResource("3_1ixah")]
+[node name="level_1" parent="levels_frame" instance=ExtResource("4_fiftr")]
 
 [node name="CanvasLayerGameUi" type="CanvasLayer" parent="."]
 layer = 2
