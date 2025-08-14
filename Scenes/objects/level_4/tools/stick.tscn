@@ -1,17 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://djdtr07cgv0co"]
+[gd_scene load_steps=4 format=3 uid="uid://djdtr07cgv0co"]
 
 [ext_resource type="Script" uid="uid://d1t303evbdwox" path="res://Scripts/object_class.gd" id="1_kkfyl"]
-
-[sub_resource type="Gradient" id="Gradient_h627t"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_arhpd"]
-gradient = SubResource("Gradient_h627t")
-width = 10
-height = 10
+[ext_resource type="Texture2D" uid="uid://bx0bxg1lfyar8" path="res://Assets/levels/level_4/collectible_stick.png" id="2_wbbh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
-size = Vector2(15, 15)
+size = Vector2(31.8827, 4)
 
 [node name="stick" type="Area2D"]
 light_mask = 3
@@ -24,12 +17,18 @@ usable_targets = Array[String](["soil"])
 metadata/_custom_type_script = "uid://d1t303evbdwox"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_arhpd")
+position = Vector2(-1, -1)
+rotation = -2.61799
+scale = Vector2(2, 2)
+texture = ExtResource("2_wbbh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
+position = Vector2(2, -2)
+rotation = -2.61799
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_nwbkr")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

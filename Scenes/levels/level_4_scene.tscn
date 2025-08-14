@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://fyqypy6fcyaf"]
+[gd_scene load_steps=28 format=4 uid="uid://fyqypy6fcyaf"]
 
 [ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/level_4_script.gd" id="1_f0imo"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="3_d64ua"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="14_b0trk"]
 [ext_resource type="PackedScene" uid="uid://b7k8hh85s26ag" path="res://Scenes/objects/level_4/non_tools/soil.tscn" id="15_be8ic"]
 [ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="15_enhda"]
-[ext_resource type="PackedScene" uid="uid://djdtr07cgv0co" path="res://Scenes/objects/level_4/tools/stick.tscn" id="16_6d2y4"]
 [ext_resource type="PackedScene" uid="uid://wa372vchah3q" path="res://Scenes/objects/level_4/tools/bone.tscn" id="17_mj1vs"]
 [ext_resource type="PackedScene" uid="uid://b8rqtsafw44ge" path="res://Scenes/objects/level_4/tools/statues1.tscn" id="18_37es6"]
 [ext_resource type="PackedScene" uid="uid://b4fhx7cv5bnqd" path="res://Scenes/objects/level_4/tools/chicken.tscn" id="19_trv2w"]
@@ -6007,13 +6006,10 @@ position_smoothing_enabled = true
 [node name="shwoop" parent="." instance=ExtResource("15_enhda")]
 
 [node name="soil" parent="." instance=ExtResource("15_be8ic")]
-position = Vector2(145, -251)
-
-[node name="stick" parent="." instance=ExtResource("16_6d2y4")]
-position = Vector2(-251, -145)
+position = Vector2(158, -272)
 
 [node name="bone" parent="." instance=ExtResource("17_mj1vs")]
-position = Vector2(-251, -145)
+position = Vector2(-233.75, -131.175)
 
 [node name="chicken" parent="." instance=ExtResource("19_trv2w")]
 position = Vector2(251, -145)
@@ -6022,10 +6018,10 @@ position = Vector2(251, -145)
 position = Vector2(-272, 162)
 
 [node name="dog" parent="." instance=ExtResource("21_37es6")]
-position = Vector2(-228, -129)
+position = Vector2(-230, -131)
 
 [node name="incubator" parent="." instance=ExtResource("22_trv2w")]
-position = Vector2(-145, -251)
+position = Vector2(-134, -234)
 
 [node name="seed" parent="." instance=ExtResource("23_lahvx")]
 position = Vector2(145, 251)

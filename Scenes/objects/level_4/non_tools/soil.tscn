@@ -1,38 +1,110 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7k8hh85s26ag"]
+[gd_scene load_steps=14 format=3 uid="uid://b7k8hh85s26ag"]
 
-[ext_resource type="Script" uid="uid://d1t303evbdwox" path="res://Scripts/object_class.gd" id="1_7o3og"]
-
-[sub_resource type="Gradient" id="Gradient_h627t"]
-colors = PackedColorArray(0.348232, 0.189966, 0, 1, 0.516554, 0.215639, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_arhpd"]
-gradient = SubResource("Gradient_h627t")
-width = 10
-height = 10
+[ext_resource type="Script" uid="uid://c7gkgdue40cij" path="res://Scripts/soil_lvl_4.gd" id="1_w47xb"]
+[ext_resource type="Texture2D" uid="uid://bdnfiuumni1te" path="res://Assets/levels/level_1/DirtMound.png" id="2_64hiw"]
+[ext_resource type="Texture2D" uid="uid://dsim370olw30d" path="res://Assets/levels/level_4/branch-Sheet.png" id="3_fpd43"]
+[ext_resource type="PackedScene" uid="uid://djdtr07cgv0co" path="res://Scenes/objects/level_4/tools/stick.tscn" id="4_w47xb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwbkr"]
-size = Vector2(31, 18)
+size = Vector2(64, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w47xb"]
+atlas = ExtResource("3_fpd43")
+region = Rect2(0, 0, 19, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v85wb"]
+atlas = ExtResource("3_fpd43")
+region = Rect2(19, 0, 19, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kkhk"]
+atlas = ExtResource("3_fpd43")
+region = Rect2(38, 0, 19, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv4wd"]
+atlas = ExtResource("3_fpd43")
+region = Rect2(57, 0, 19, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsoym"]
+atlas = ExtResource("3_fpd43")
+region = Rect2(76, 0, 19, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ide3"]
+atlas = ExtResource("3_fpd43")
+region = Rect2(95, 0, 19, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5uo4"]
+atlas = ExtResource("3_fpd43")
+region = Rect2(114, 0, 19, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjjf7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w47xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v85wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kkhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv4wd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsoym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ide3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5uo4")
+}],
+"loop": false,
+"name": &"tree",
+"speed": 7.0
+}]
 
 [node name="soil" type="Area2D"]
 light_mask = 3
 visibility_layer = 3
 disable_mode = 2
-script = ExtResource("1_7o3og")
+script = ExtResource("1_w47xb")
 object_name = "soil"
 object_type = 1
 is_pickupable = false
+max_state_threshold = 2
+min_state_threshold = 1
+current_state = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="DirtSprite" type="Sprite2D" parent="."]
 position = Vector2(-0.5, 1)
-scale = Vector2(2.9, 1.2)
-texture = SubResource("GradientTexture2D_arhpd")
+rotation = 0.523599
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_64hiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
-position = Vector2(-0.5, 1)
+position = Vector2(0, 3.5)
+rotation = 0.523599
 shape = SubResource("RectangleShape2D_nwbkr")
+
+[node name="branch" type="AnimatedSprite2D" parent="."]
+position = Vector2(-20, 28)
+rotation = -2.61799
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fjjf7")
+animation = &"tree"
+frame = 6
+frame_progress = 1.0
+
+[node name="stick" parent="." instance=ExtResource("4_w47xb")]
+position = Vector2(-19, 29)
+rotation = 1.51844
+is_pickupable = false
+usable_targets = Array[String](["incubator"])
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
