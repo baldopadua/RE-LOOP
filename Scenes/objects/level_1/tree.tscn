@@ -75,6 +75,7 @@ size = Vector2(31, 18)
 disable_mode = 2
 script = ExtResource("1_uvtpv")
 object_name = "tree"
+object_type = 1
 is_pickupable = false
 
 [node name="State1" type="TileMapLayer" parent="."]

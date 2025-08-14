@@ -12,6 +12,7 @@ visibility_layer = 3
 disable_mode = 2
 script = ExtResource("1_a0bdr")
 object_name = "soil"
+object_type = 1
 is_pickupable = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

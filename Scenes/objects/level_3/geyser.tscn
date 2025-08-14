@@ -361,6 +361,7 @@ visibility_layer = 3
 disable_mode = 2
 script = ExtResource("1_bdyfl")
 object_name = "geyser"
+object_type = 1
 is_pickupable = false
 max_state_threshold = 2
 min_state_threshold = 1

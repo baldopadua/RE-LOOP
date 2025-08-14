@@ -20,6 +20,7 @@ func _ready() -> void:
 	_connect_buttons()
 	if game_animated_bg:
 		game_animated_bg.play()
+	update_sprite_scale()
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -163,3 +164,19 @@ func _on_button_unhovered(btn: TextureButton) -> void:
 
 func _process(_delta: float) -> void:
 	pass
+
+
+func _notification(what):
+	if what == NOTIFICATION_RESIZED:
+		update_sprite_scale()
+
+func update_sprite_scale():
+	var viewport_size = get_viewport_rect().size
+	var sprite_size = $game_animated_bg.sprite_frames.get_frame_texture("default", 0).get_size()
+
+	# Calculate scale while keeping aspect ratio
+	var scale_factor = min(viewport_size.x / sprite_size.x, viewport_size.y / sprite_size.y)
+	$game_animated_bg.scale = Vector2(scale_factor, scale_factor)
+
+	# Center on screen
+	$game_animated_bg.position = viewport_size / 2

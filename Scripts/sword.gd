@@ -7,6 +7,14 @@ extends object_class
 @onready var loopbreak2: AnimatedSprite2D = get_parent().get_node("loopbreak2")
 @onready var sword_sprite: Sprite2D = $SwordSprite
 @onready var sword_sfx: AudioStreamPlayer2D = $"../sword"
+@onready var cinematic_impact = $"../cinematic_ah"
+@onready var glass_break = $"../glass_break"
+@onready var ice_break = $"../ice_break"
+@onready var bell = $"../bell"
+@onready var underwater_explosion = $"../underwater_explosion"
+@onready var climb = $"../Climb"
+@onready var sword_swing = $"../Sword2"
+@onready var nagulat = $"../nagulat"
 
 var is_playing: bool = false
 var is_playing_two: bool = false
@@ -43,12 +51,18 @@ func break_loop():
 		get_node("old_man").visible = false
 		
 		#PLAY MUSIC
-
-		sword_sfx.play()
+		sword_swing.play()
+		nagulat.play()
 		loop_break_animation.play("unsheate")
 
 		await loop_break_animation.animation_finished
 		# WAIT FOR ANIMATION TO FINISH FIRST
+		sword_sfx.play()
+		cinematic_impact.play()
+		glass_break.play()
+		ice_break.play()
+		bell.play()
+		underwater_explosion.play()
 		loopbreak2.visible = true
 		loopbreak2.play()
 		GlobalVariables.player_stopped = false
@@ -83,6 +97,9 @@ func _on_body_entered(body) -> void:
 		# Connect tween_finished if not yet connected
 		if not tween_climb.is_connected("finished", _tween_climb_finished):
 			tween_climb.connect("finished", _tween_climb_finished)
+			
+		# PLAY SOUND CLIMB
+		climb.play()
 			
 		var screen_center = Vector2(-150.0, 250.0)
 		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)

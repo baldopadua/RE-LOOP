@@ -15,6 +15,18 @@ var tween_scale: Tween
 var allowed_angles: Array = [0.0, 360.0, -360.0, 90.0, -90.0, 180.0, -180.0, 270.0, -270.0]
 var is_player_in_geyser: bool = false
 var time_indicator: AnimatedSprite2D
+var default_geyser_played: bool = false
+@onready var geyser_explode = $"../geyser_explode"
+@onready var rock_water_drop = $"../rock_water_drop"
+@onready var rock_ground_drop = $"../rock_ground_drop"
+@onready var rock_explode = $"../rock_explode"
+@onready var rock_explode_fail = $"../rock_explode_fail"
+@onready var rock_default_geyser_explode = $"../rock_default_geyser_explode"
+@onready var cinematic_impact = $"../cinematic_ah"
+@onready var glass_break = $"../glass_break"
+@onready var ice_break = $"../ice_break"
+@onready var bell = $"../bell"
+@onready var underwater_explosion = $"../underwater_explosion"
 
 # SCAN IF THERE ARE ROCKS CHILDREN AND CURRENT STATE IS 2
 # 	IF NUMBER OF ROCKS IS < 5 THEN
@@ -30,13 +42,22 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if is_player_in_geyser:
 		if animate_geyser.frame == 18:
+			
+			geyser_explode.play()
+			rock_explode.play()
+			cinematic_impact.play()
+			glass_break.play()
+			ice_break.play()
+			bell.play()
+			underwater_explosion.play()
+			
 			# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
 			time_indicator.animation = "fixed"
 			time_indicator.frame = 0
 			time_indicator.pause()
 			
 			animate_geyser.play("loop_break")
-				
+			
 			# SPRUNG ALONG WITH GEYSER EXPLOSION
 			sprung_tween = create_tween()
 				
@@ -48,11 +69,24 @@ func _process(_delta: float) -> void:
 			player.visible = false
 			# SWITCH SCENE TO LEVEL 2
 			go_to_level_4()
+			
 	
 	# IF ANGLE OF PLAYER IS IN 3,6,9,12 AND ROCK SIZE IS GREATER THAN 0
-	if round(rad_to_deg(player.rotation)) in allowed_angles and rocks.size() > 0 and not is_playing_two:
+	if round(rad_to_deg(player.rotation)) in allowed_angles and rocks.size() > 0 and not is_playing_two and player.direction == GlobalVariables.player_direction.CLOCKWISE:
 		geyser_ekusproshon()
-	
+	elif round(rad_to_deg(player.rotation)) in allowed_angles and rocks.size() > 0 and not is_playing_two and player.direction == GlobalVariables.player_direction.COUNTERCLOCKWISE:
+		return_rocks()
+		
+	if round(rad_to_deg(player.rotation)) in allowed_angles and rocks.size() == 0 and not default_geyser_played:
+		default_geyser_played = true
+		animate_geyser.visible = true
+		get_node("NoRock").visible = false
+		animate_geyser.play("default_geyser")
+		await animate_geyser.animation_finished
+		rock_default_geyser_explode.play()
+		get_node("NoRock").visible = true
+		default_geyser_played = false
+		animate_geyser.visible = false
 
 # IN BODY ENTERED, IF PRESSURE 1 OR PRESSURE 2 IS ANIMATION_PLAYING AND NUMBER OF ROCKS IS 5
 #	EXECUTE BREAK LOOP
@@ -62,15 +96,11 @@ func geyser_ekusproshon():
 	animate_geyser.visible = true
 	# LESS THAN FIVE ROCKS IS NOT GOING TO BUILD PRESSURE
 	if rocks.size() >= 1 and rocks.size() < 5:
-		animate_geyser.play("default_geyser")
-		
-		# DISABLE VISIBILITY OF EVERY STATE
-		for node in get_children():
-			if "State" in str(node.name):
-				node.visible = false
-		 
 		# SET THE VISIBILITY TO TRUE FOR THE DEFAULT NO ROCK TEXTURE
 		# get_node("NoRock").visible = true
+		
+		rock_explode_fail.play()
+		rock_default_geyser_explode.play()
 		
 		# REPARENT EACH ROCK TO LEVEL 3 NODE
 		await return_rocks()
@@ -100,6 +130,11 @@ func geyser_ekusproshon():
 		is_playing_two = false
 
 func return_rocks():
+		# DISABLE VISIBILITY OF EVERY STATE
+	for node in get_children():
+		if "State" in str(node.name):
+			node.visible = false
+	animate_geyser.play("default_geyser")
 	for rock in rocks:
 			rock.visible = true
 			rock.is_pickupable = true
@@ -115,6 +150,8 @@ func return_rocks():
 			tween_prev_pos.tween_property(rock, "position", rock_prev_pos, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 			await tween_prev_pos.finished
 			tween_prev_pos.kill()
+			
+			rock_ground_drop.play()
 			
 			var tween_prev_rotation = create_tween()
 			

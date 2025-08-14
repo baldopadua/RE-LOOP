@@ -67,6 +67,7 @@ script = ExtResource("1_6h5vk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
+follow_viewport_enabled = true
 
 [node name="game_scene_bg" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(640, 360)
@@ -76,7 +77,7 @@ sprite_frames = SubResource("SpriteFrames_7iton")
 [node name="levels_frame" type="Node2D" parent="."]
 position = Vector2(640, 360)
 
-[node name="level_1_scene" parent="levels_frame" instance=ExtResource("4_fiftr")]
+[node name="level_1" parent="levels_frame" instance=ExtResource("4_fiftr")]
 
 [node name="CanvasLayerGameUi" type="CanvasLayer" parent="."]
 layer = 2

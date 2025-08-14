@@ -63,6 +63,7 @@ var maps_dict: Dictionary
 @onready var shwoop_sfx: Object = $"../shwoop"
 @onready var reverse_ahh_sfx: Object = $"../cinematic_ah"
 @onready var tick_tock_sfx: Object = $"../tick_tock"
+@onready var pickup = $"../pickup"
 
 # Changed from Sprite2D to AnimatedSprite2D
 @onready var sprite = $AnimatedSprite2D
@@ -94,31 +95,33 @@ func _input(event: InputEvent) -> void:
 		rotate_player()
 		GlobalVariables.play_sfx(time_sfx, player_directions.CLOCKWISE)
 		GlobalVariables.play_sfx(clank_sfx, player_directions.CLOCKWISE)
-		sprite.play("walk")
 	elif event.is_action_pressed("move_left") and not is_moving and not GlobalVariables.player_stopped:
 		prev_deg = round(rad_to_deg(rotation))
 		direction = player_directions.COUNTERCLOCKWISE
 		rotate_player()
 		GlobalVariables.play_sfx(time_sfx, player_directions.COUNTERCLOCKWISE)
 		GlobalVariables.play_sfx(clank_sfx, player_directions.COUNTERCLOCKWISE)
-		sprite.play("walk")
 		
-	# OBJECT INTERACTION
-	if event.is_action_pressed("interact") and available_object != null and not is_moving:
-		item_pick_up()
-	# Drop Objects
-	elif event.is_action_pressed("drop") and is_holding_object and not is_moving:
-		item_drop()
-		sprite.play("idle")
-	# Interact with Objects using Tools
-	elif event.is_action_pressed("interact") and is_holding_object and interactable_objects != null and not is_moving:
-		for obj in interactable_objects:
-			if obj.object_name in held_object.usable_targets:
-				held_object.interact(obj)
-				held_object = null
-				is_holding_object = false
-				sprite.play("idle")
-				break
+	# OBJECT INTERACTION AND DROP
+	if event.is_action_pressed("interact"):
+		# PICK UP ITEMS
+		if available_object != null and not is_moving:
+			item_pick_up()
+			sprite.play("idle")
+		# TRY INTERACTING WITH OBJECTS
+		elif is_holding_object and interactable_objects.size() != 0 and not is_moving:
+			for obj in interactable_objects:
+				if obj.object_name in held_object.usable_targets:
+					held_object.interact(obj)
+					pickup.play()
+					held_object = null
+					is_holding_object = false
+					sprite.play("idle")
+					break
+		# DROP ITEMS
+		elif is_holding_object and not is_moving:
+			item_drop()
+			sprite.play("idle")
 
 func _tween_finished():
 	# RESET THE SFX PITCH SCALE WHEN REACHING BOTH ENDS
@@ -174,9 +177,9 @@ func _tween_finished():
 			maps_dict[entered_clock_area].visible = true
 			
 	
-	#for obj in get_parent().get_children():
-		#if obj is object_class:
-			#print(obj.name, " STATE: ", obj.current_state)
+	for obj in get_parent().get_children():
+		if obj is object_class:
+			print(obj.name, " STATE: ", obj.current_state)
 	
 	tween.kill()
 	is_moving = false
@@ -184,6 +187,7 @@ func _tween_finished():
 
 # Movement of Player
 func rotate_player():
+	sprite.play("walk")
 	# Player is moving and create a tween to smooth animation
 	is_moving = true
 	tween = create_tween()
@@ -204,24 +208,10 @@ func rotate_player():
 		moves -= 1
 		
 	# set the tween
-	tween.tween_property(self, "rotation", rotation_tween, transition_time).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "rotation", rotation_tween, transition_time).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	
 func _process(_delta):
 	pass
-
-# Reparent the object to mark2D of the player
-func _deferred_reparent(obj) -> void:
-	obj.reparent(object_pos)
-	
-	# TWEEN TO ADD BOUNCE WHEN PICKING UP
-	var tween_pickup = create_tween()
-	var screen_center = Vector2.ZERO   
-	tween_pickup.tween_property(obj, "position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-	await tween_pickup.finished
-	tween_pickup.kill()
-	 
-	held_object = obj
-	update_held_object_direction()
 
 func update_held_object_direction():
 	if held_object:
@@ -239,23 +229,40 @@ func item_pick_up() -> void:
 	if not is_holding_object and available_object.is_reachable and not is_moving:
 		# Defer/Delay the reparenting to avoid error
 		# during physics callback or something
-		call_deferred("_deferred_reparent", available_object)
+		#call_deferred("_deferred_reparent", available_object)
+		available_object.is_pickupable = false
+		held_object = available_object
+		available_object.reparent(object_pos)	 
+		update_held_object_direction()
+		print("Object picked up: " + held_object.object_name)
+		
+		
+		
+		# TWEEN TO ADD BOUNCE WHEN PICKING UP
+		var tween_pickup = create_tween()
+		var screen_center = Vector2.ZERO   
+		tween_pickup.tween_property(held_object, "position", screen_center, 0.1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		await tween_pickup.finished
+		tween_pickup.kill()
+		
+		pickup.play()
 		
 		# The player is currently holding an object
 		is_holding_object = true
-		print("Object picked up: " + available_object.object_name)
 
 func item_drop() -> void:
 	# reparent to parent of this player which is the main game
 	if held_object and not is_moving:
-		
 		# TWEEN TO ADD BOUNCE WHEN DROPPING DOWN
 		var tween_pickup = create_tween()
 		var screen_center = Vector2(0,50.0)  
 		tween_pickup.tween_property(held_object, "position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 		await tween_pickup.finished
 		tween_pickup.kill()
-			
+		
+		pickup.play()
+		
+		held_object.is_pickupable = true	
 		held_object.reparent(get_parent())
 		held_object = null
 		is_holding_object = false
