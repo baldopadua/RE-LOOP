@@ -7,6 +7,7 @@ extends Control
 @onready var tutorial_button := $tutorial_button
 @onready var click_sound := $click_sound
 @onready var game_animated_bg := $game_animated_bg
+@onready var game_animated_explosion_bg := $game_animated_explosion_bg
 @onready var gametitle := $gametitle
 @onready var page_turn_sound := $page_turn_sound
 @onready var tutorial_scene_packed := preload("res://Scenes/ui/tutorial.tscn")
@@ -19,7 +20,10 @@ func _ready() -> void:
 	_play_bgm()
 	_connect_buttons()
 	if game_animated_bg:
+		game_animated_bg.visible = true
 		game_animated_bg.play()
+	if game_animated_explosion_bg:
+		game_animated_explosion_bg.visible = false
 	update_sprite_scale()
 
 func _input(event):
@@ -62,6 +66,12 @@ func _on_start_button_pressed() -> void:
 	start_button.disabled = true
 	if click_sound:
 		click_sound.play()
+	# Hide normal bg, show explosion bg
+	if game_animated_bg:
+		game_animated_bg.visible = false
+	if game_animated_explosion_bg:
+		game_animated_explosion_bg.visible = true
+		game_animated_explosion_bg.play()
 	GlobalVariables.remove_custom_cursor() # Disable custom cursor only on start
 	_show_transition_and_go_to_game_scene()
 
@@ -177,6 +187,9 @@ func update_sprite_scale():
 	# Calculate scale while keeping aspect ratio
 	var scale_factor = min(viewport_size.x / sprite_size.x, viewport_size.y / sprite_size.y)
 	$game_animated_bg.scale = Vector2(scale_factor, scale_factor)
-
-	# Center on screen
 	$game_animated_bg.position = viewport_size / 2
+
+	# Also update explosion bg if present
+	if $game_animated_explosion_bg:
+		$game_animated_explosion_bg.scale = Vector2(scale_factor, scale_factor)
+		$game_animated_explosion_bg.position = viewport_size / 2
