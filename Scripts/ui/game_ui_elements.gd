@@ -33,5 +33,3 @@ func _on_hint_button_pressed() -> void:
 
 func _process(_delta: float) -> void:
 	pass
-
-
