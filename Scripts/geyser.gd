@@ -168,7 +168,7 @@ func _on_body_entered(body) -> void:
 	handle_body_entered(body) 
 	
 	# SPRUNG ALONG WITH THE GEISER
-	if (animate_geyser.animation == "burst" and animate_geyser.is_playing()) and animate_geyser.frame >= 0 and animate_geyser.frame <= 18 and rocks.size() == 5:
+	if (animate_geyser.animation == "burst" and animate_geyser.is_playing()) and animate_geyser.frame >= 0 and animate_geyser.frame <= 18 and rocks.size() == 5 and body.direction == GlobalVariables.player_direction.COUNTERCLOCKWISE:
 	
 		# DISABLE PLAYER MOVEMENT
 		GlobalVariables.player_stopped = true

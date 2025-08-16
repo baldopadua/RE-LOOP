@@ -180,6 +180,7 @@ func _tween_finished():
 	for obj in get_parent().get_children():
 		if obj is object_class:
 			print(obj.name, " STATE: ", obj.current_state)
+			print("PARENT NAME: ", str(get_parent().name))
 	
 	tween.kill()
 	is_moving = false
@@ -235,8 +236,6 @@ func item_pick_up() -> void:
 		available_object.reparent(object_pos)	 
 		update_held_object_direction()
 		print("Object picked up: " + held_object.object_name)
-		
-		
 		
 		# TWEEN TO ADD BOUNCE WHEN PICKING UP
 		var tween_pickup = create_tween()

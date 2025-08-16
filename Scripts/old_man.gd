@@ -25,7 +25,7 @@ func update_old_man_visibility():
 	
 	# THE PLAYER ENTERED FIRST BEFORE THE STATE CHANGES SO IT READS 4 INSTEAD OF 5
 	
-	if current_state == 5 and get_parent().name == "level_2":
+	if current_state == 5 and get_parent().name != "PlayerScene" and get_parent().name != "Sword":
 		is_pickupable = true
 	else:
 		is_pickupable = false
