@@ -25,10 +25,11 @@ func _ready() -> void:
 	if game_animated_explosion_bg:
 		game_animated_explosion_bg.visible = false
 	update_sprite_scale()
+	# Restore custom cursor and hide system mouse when returning to main scene
+	if has_node("custom_cursor"):
+		$custom_cursor.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-func _input(event):
-	if event is InputEventMouseMotion:
-		GlobalVariables.update_cursor_by_mouse_motion(event)
 
 func _play_bgm() -> void:
 	if main_bgm and main_bgm.stream:
@@ -72,8 +73,12 @@ func _on_start_button_pressed() -> void:
 	if game_animated_explosion_bg:
 		game_animated_explosion_bg.visible = true
 		game_animated_explosion_bg.play()
-	GlobalVariables.remove_custom_cursor() # Disable custom cursor only on start
+	# Hide custom cursor and show system mouse
+	if has_node("custom_cursor"):
+		$custom_cursor.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_show_transition_and_go_to_game_scene()
+
 
 func _show_transition_and_go_to_game_scene():
 	_hide_main_menu_elements()

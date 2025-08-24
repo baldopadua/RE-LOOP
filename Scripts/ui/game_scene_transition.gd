@@ -3,7 +3,6 @@ extends Control
 var _callback: Callable = Callable()
 
 func play_and_continue(callback: Callable) -> void:
-	GlobalVariables.remove_custom_cursor()
 	_callback = callback
 	
 	self.modulate.a = 0.0
