@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3iygj")
 
-[node name="ploy" type="TextureRect" parent="."]
+[node name="plooy" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
