@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bnrnr4wjbytbv" path="res://Scenes/ui/tutorial.tscn" id="10_ioaeq"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="12_drdnd"]
 [ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
-[ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/ui/re_loop-theme-song.mp3" id="13_lhp3t"]
+[ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/ui/game_theme_song.mp3" id="13_lhp3t"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="18_2ebs2"]
 [ext_resource type="Script" path="res://Scripts/ui/custom_cursor.gd" id="19_oyb3p"]
 
