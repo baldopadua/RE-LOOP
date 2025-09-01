@@ -1,15 +1,12 @@
 extends Control
 
-@onready var hover_sound := $hover_sound
-@onready var main_bgm := $main_bgm
+@onready var sound_manager := $SoundManager
 @onready var main_bg := $main_bg
 @onready var start_button := $start_button
 @onready var tutorial_button := $tutorial_button
-@onready var click_sound := $click_sound
 @onready var game_animated_bg := $game_animated_bg
 @onready var game_animated_explosion_bg := $game_animated_explosion_bg
 @onready var gametitle := $gametitle
-@onready var page_turn_sound := $page_turn_sound
 @onready var tutorial_scene_packed := preload("res://Scenes/ui/tutorial.tscn")
 @onready var transition_scene_packed := preload("res://Scenes/screen_effects/game_scene_transition.tscn")
 var tutorial_instance: Control = null
@@ -32,13 +29,8 @@ func _ready() -> void:
 
 
 func _play_bgm() -> void:
-	if main_bgm and main_bgm.stream:
-		if main_bgm.stream.has_method("set_loop"):
-			main_bgm.stream.set_loop(true)
-		elif main_bgm.stream is AudioStream:
-			if "loop" in main_bgm.stream:
-				main_bgm.stream.loop = true
-		main_bgm.play()
+	if sound_manager:
+		sound_manager.play_music("main_bgm")
 
 func _connect_buttons() -> void:
 	_connect_button(start_button, "_on_start_button_pressed")
@@ -65,8 +57,8 @@ func _hide_main_menu_elements() -> void:
 # --- Button Event Handlers ---
 func _on_start_button_pressed() -> void:
 	start_button.disabled = true
-	if click_sound:
-		click_sound.play()
+	if sound_manager:
+		sound_manager.play_ui("click")
 	# Hide normal bg, show explosion bg
 	if game_animated_bg:
 		game_animated_bg.visible = false
@@ -82,11 +74,9 @@ func _on_start_button_pressed() -> void:
 
 func _show_transition_and_go_to_game_scene():
 	_hide_main_menu_elements()
-	
 	# Stop background music
-	if main_bgm and main_bgm.playing:
-		main_bgm.stop()
-		
+	if sound_manager:
+		sound_manager.stop_music("main_bgm")
 	# Instance and show the transition scene
 	transition_instance = transition_scene_packed.instantiate()
 	add_child(transition_instance)
@@ -105,8 +95,8 @@ func _go_to_next_scene() -> void:
 
 func _on_tutorial_button_pressed() -> void:
 	_set_buttons_disabled(true)
-	if page_turn_sound:
-		page_turn_sound.play()
+	if sound_manager:
+		sound_manager.play_ui("page_turn")
 	_hide_main_menu_elements()
 	_fade_in_tutorial_overlay()
 
@@ -163,8 +153,8 @@ func _connect_hover_signals() -> void:
 				Callable(self, "_on_button_unhovered").bind(btn))
 
 func _on_button_hovered(btn: TextureButton) -> void:
-	if hover_sound:
-		hover_sound.play()
+	if sound_manager:
+		sound_manager.play_ui("hover")
 	btn.disabled = true
 	var tween := create_tween()
 	tween.tween_property(btn, "scale", Vector2(1.05, 1.05), 0.12)\

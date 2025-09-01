@@ -2,11 +2,8 @@ extends Control
 
 @onready var credits_overlay := $credits_frame/credits_overlay
 @onready var close_button := $credits_frame/credits_overlay/close_button
-@onready var hover_sound := $"../hover_sound"
-@onready var page_turn_sound := $"../page_turn_sound"
 @onready var credits_animated_icon := $credits_button/credits_animated_icon
 @onready var credits_button := $credits_button
-@onready var click_sound := $"../click_sound"
 
 const CREDITS_ICON_BASE_SCALE = Vector2(6.28704, 6.95834)
 const CREDITS_ICON_HOVER_SCALE = CREDITS_ICON_BASE_SCALE * 1.2
@@ -22,9 +19,17 @@ func _ready() -> void:
 	credits_button.connect("mouse_exited", Callable(self, "_on_credits_button_unhovered"))
 	credits_button.connect("pressed", Callable(self, "_on_credits_button_pressed"))
 
+# --- Utility: Get SoundManager ---
+func _get_sound_manager():
+	var main_scene = get_tree().current_scene
+	if main_scene and main_scene.has_node("SoundManager"):
+		return main_scene.get_node("SoundManager")
+	return null
+
 func _on_credits_button_pressed() -> void:
-	if page_turn_sound:
-		page_turn_sound.play()
+	var sound_manager = _get_sound_manager()
+	if sound_manager:
+		sound_manager.play_ui("page_turn")
 	# Fade in overlay with animation
 	_fade_in_overlay()
 	var main_scene = get_tree().current_scene
@@ -67,8 +72,9 @@ func _fade_in_overlay():
 			main_scene.get_node("tutorial_button").visible = false
 
 func _on_close_button_pressed() -> void:
-	if page_turn_sound:
-		page_turn_sound.play()
+	var sound_manager = _get_sound_manager()
+	if sound_manager:
+		sound_manager.play_ui("page_turn")
 	_fade_out_overlay()
 
 func _fade_out_overlay():
@@ -124,8 +130,9 @@ func _restore_main_menu():
 			main_scene.restore_default_bg_animation()
 
 func _on_credits_button_hovered() -> void:
-	if hover_sound:
-		hover_sound.play()
+	var sound_manager = _get_sound_manager()
+	if sound_manager:
+		sound_manager.play_ui("hover")
 	if credits_animated_icon:
 		var last_frame = credits_animated_icon.frame
 		credits_animated_icon.play("credits_icon_hover")

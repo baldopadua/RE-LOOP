@@ -7,7 +7,6 @@ const OVERLAY_START_POSITION = Vector2(1920, -425) # right edge, same Y
 
 @onready var tutorial_overlay := $tutorial_overlay
 @onready var close_button := $close_button
-@onready var page_turn_sound := $tutorial_overlay/page_turn_sound
 
 
 # Called when the node enters the scene tree for the first time.
@@ -38,9 +37,17 @@ func _reset_overlay():
 func _process(_delta: float) -> void:
 	pass
 
+# --- Utility: Get SoundManager ---
+func _get_sound_manager():
+	var main_scene = get_tree().current_scene
+	if main_scene and main_scene.has_node("SoundManager"):
+		return main_scene.get_node("SoundManager")
+	return null
+
 func _on_close_button_pressed() -> void:
-	if page_turn_sound:
-		page_turn_sound.play()
+	var sound_manager = _get_sound_manager()
+	if sound_manager:
+		sound_manager.play_ui("page_turn")
 	_fade_out_and_close()
 
 func _fade_out_and_close():

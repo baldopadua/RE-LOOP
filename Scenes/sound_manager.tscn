@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhy1n0sv8ota8"]
+
+[ext_resource type="Script" uid="uid://bhdr1gfr3i466" path="res://Scripts/sound_manager.gd" id="1_32i44"]
+[ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="2_wyfeo"]
+[ext_resource type="AudioStream" uid="uid://cw5va43ffrudg" path="res://Audio/ui/click.mp3" id="3_08tfe"]
+[ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="4_rc4uc"]
+[ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/ui/game_theme_song.mp3" id="5_t5182"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_32i44")
+
+[node name="sfx" type="Node2D" parent="."]
+
+[node name="ui_sfx" type="Node2D" parent="sfx"]
+
+[node name="hover_sound" type="AudioStreamPlayer2D" parent="sfx/ui_sfx"]
+stream = ExtResource("2_wyfeo")
+
+[node name="click_sound" type="AudioStreamPlayer2D" parent="sfx/ui_sfx"]
+stream = ExtResource("3_08tfe")
+
+[node name="page_turn_sound" type="AudioStreamPlayer2D" parent="sfx/ui_sfx"]
+stream = ExtResource("4_rc4uc")
+
+[node name="global_sfx" type="Node2D" parent="sfx"]
+
+[node name="level_1_sfx" type="Node2D" parent="sfx"]
+
+[node name="level_2_sfx" type="Node2D" parent="sfx"]
+
+[node name="level_3_sfx" type="Node2D" parent="sfx"]
+
+[node name="music" type="Node2D" parent="."]
+
+[node name="main_bgm" type="AudioStreamPlayer2D" parent="music"]
+stream = ExtResource("5_t5182")
+volume_db = 7.336
+autoplay = true
