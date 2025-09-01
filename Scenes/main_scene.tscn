@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="6_lhp3t"]
 [ext_resource type="PackedScene" uid="uid://bnrnr4wjbytbv" path="res://Scenes/ui/tutorial.tscn" id="10_ioaeq"]
 [ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
-[ext_resource type="PackedScene" uid="uid://bhy1n0sv8ota8" path="res://Scenes/sound_manager.tscn" id="16_gnsmo"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/sound_manager.tscn" id="16_gnsmo"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="18_2ebs2"]
 [ext_resource type="Script" path="res://Scripts/ui/custom_cursor.gd" id="19_oyb3p"]
 

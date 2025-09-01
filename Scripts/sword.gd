@@ -6,15 +6,7 @@ extends object_class
 @onready var loop_break_animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var loopbreak2: AnimatedSprite2D = get_parent().get_node("loopbreak2")
 @onready var sword_sprite: Sprite2D = $SwordSprite
-@onready var sword_sfx: AudioStreamPlayer2D = $"../sword"
-@onready var cinematic_impact = $"../cinematic_ah"
-@onready var glass_break = $"../glass_break"
-@onready var ice_break = $"../ice_break"
-@onready var bell = $"../bell"
-@onready var underwater_explosion = $"../underwater_explosion"
-@onready var climb = $"../Climb"
-@onready var sword_swing = $"../Sword2"
-@onready var nagulat = $"../nagulat"
+@onready var sound_manager = get_parent().get_node("SoundManager")
 
 var is_playing: bool = false
 var is_playing_two: bool = false
@@ -32,37 +24,42 @@ func _process(_delta: float) -> void:
 	pass
 
 func break_loop():
-	# STRONG TO OLD ANIMATION NEEDS TO PLAY BACKWARDS FIRST THEN
-	# PLAY LOOP BREAK ANIMATION 
 	var old_man = get_node("old_man")
 	if old_man.current_state == 2:
-		
 		is_playing = true
 		GlobalVariables.player_stopped = true
 		GlobalVariables.is_looping = false
-		
-		# WAIT FOR THE ANIMATION TO FINISH
+
 		var anim_strong_to_old = old_man.get_node("AnimatedSprite2D")
 		anim_strong_to_old.play_backwards("strong_to_old")
 		await anim_strong_to_old.animation_finished
-		
+
 		sword_sprite.visible = false
 		loop_break_animation.visible = true
 		get_node("old_man").visible = false
-		
-		#PLAY MUSIC
-		sword_swing.play()
-		nagulat.play()
-		loop_break_animation.play("unsheate")
 
+		# PLAY SFX via SoundManager
+		if sound_manager:
+			if sound_manager.sfx.has("Sword2"):
+				sound_manager.play_sfx("Sword2")
+			if sound_manager.sfx.has("nagulat"):
+				sound_manager.play_sfx("nagulat")
+		loop_break_animation.play("unsheate")
 		await loop_break_animation.animation_finished
-		# WAIT FOR ANIMATION TO FINISH FIRST
-		sword_sfx.play()
-		cinematic_impact.play()
-		glass_break.play()
-		ice_break.play()
-		bell.play()
-		underwater_explosion.play()
+
+		if sound_manager:
+			if sound_manager.sfx.has("sword"):
+				sound_manager.play_sfx("sword")
+			if sound_manager.sfx.has("cinematic_ah"):
+				sound_manager.play_sfx("cinematic_ah")
+			if sound_manager.sfx.has("glass_break"):
+				sound_manager.play_sfx("glass_break")
+			if sound_manager.sfx.has("ice_break"):
+				sound_manager.play_sfx("ice_break")
+			if sound_manager.sfx.has("bell"):
+				sound_manager.play_sfx("bell")
+			if sound_manager.sfx.has("underwater_explosion"):
+				sound_manager.play_sfx("underwater_explosion")
 		loopbreak2.visible = true
 		loopbreak2.play()
 		GlobalVariables.player_stopped = false
@@ -72,43 +69,34 @@ func _on_body_entered(body) -> void:
 	
 	# CLIMB THE SWORD
 	if not GlobalVariables.is_looping and not is_playing_two:
-		
-		# SO THAT IT ONLY EXECUTES ONCE
 		is_playing_two = true
-		# DISABLE PLAYER MOVEMENT
 		GlobalVariables.player_stopped = true
-		
 		await get_tree().create_timer(1).timeout
-		
-		# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
+
 		time_indicator.animation = "fixed"
 		time_indicator.frame = 0
 		time_indicator.pause()
-		
-		# PLAY CLIMB ANIMATION
+
 		if body.has_node("AnimatedSprite2D"):
 			var sprite = body.get_node("AnimatedSprite2D")
 			sprite.stop()
 			sprite.play("climb")
-		
-		# CLIMB
+
 		tween_climb = create_tween()
-		
-		# Connect tween_finished if not yet connected
 		if not tween_climb.is_connected("finished", _tween_climb_finished):
 			tween_climb.connect("finished", _tween_climb_finished)
-			
-		# PLAY SOUND CLIMB
-		climb.play()
-			
+
+		# PLAY CLIMB SFX via SoundManager
+		if sound_manager and sound_manager.sfx.has("Climb"):
+			sound_manager.play_sfx("Climb")
+
 		var screen_center = Vector2(-150.0, 250.0)
 		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)
 		await tween_climb.finished
-		
+
 		body.visible = false
-		# SWITCH SCENE TO LEVEL 2
 		go_to_level_3()
-		
+
 func go_to_level_3():
 	# CREATE TWEEN FOR ROTATE
 	tween_rotate = create_tween()

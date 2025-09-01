@@ -1,31 +1,12 @@
-[gd_scene load_steps=37 format=4 uid="uid://bfqg45e6qdyho"]
+[gd_scene load_steps=18 format=4 uid="uid://bfqg45e6qdyho"]
 
 [ext_resource type="Script" uid="uid://5bf1u063c7jk" path="res://Scripts/level_2_script.gd" id="1_8wkhw"]
 [ext_resource type="Texture2D" uid="uid://cnymugobhf2kf" path="res://Assets/levels/level_2/Loop break 2.png" id="2_11452"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="2_lwspt"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_i42nt"]
-[ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="8_hwqhc"]
-[ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/level-1/time_manip.tscn" id="9_0pbmp"]
-[ext_resource type="PackedScene" uid="uid://d1tjd7nf23n8s" path="res://Audio/level-1/cinematic_impact.tscn" id="11_cgkiv"]
-[ext_resource type="PackedScene" uid="uid://b26khqfn4jala" path="res://Audio/level-1/glass_break.tscn" id="12_n64xy"]
-[ext_resource type="PackedScene" uid="uid://dfjn0ovrjl87e" path="res://Audio/level-1/time_freeze.tscn" id="13_ym47h"]
-[ext_resource type="PackedScene" uid="uid://co4mj4xfj7mhw" path="res://Audio/level-1/ice_break.tscn" id="14_cn0ic"]
 [ext_resource type="PackedScene" uid="uid://ceifb3xl03qsu" path="res://Scenes/objects/level_2/old_man.tscn" id="15_b5hpa"]
-[ext_resource type="PackedScene" uid="uid://cic27iv8pc2fo" path="res://Audio/level-1/underwater_explosion.tscn" id="15_f0jkt"]
-[ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="16_ku8w8"]
 [ext_resource type="PackedScene" uid="uid://c5dg6h5tc4svx" path="res://Scenes/objects/level_2/sword.tscn" id="16_m8g1c"]
-[ext_resource type="PackedScene" uid="uid://dkojkmm7fp0p" path="res://Audio/level-1/tick_tock.tscn" id="17_fajtg"]
-[ext_resource type="PackedScene" uid="uid://be3gp4la2b857" path="res://Audio/level-2/sword.tscn" id="17_kim2w"]
-[ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="18_7x2kw"]
-[ext_resource type="AudioStream" uid="uid://mx84a50byjkj" path="res://Audio/climb_lvl1_2.wav" id="19_8wkhw"]
-[ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="19_pd65x"]
-[ext_resource type="AudioStream" uid="uid://bt6xxs02lxxlj" path="res://Audio/pickup_item.wav" id="20_lwspt"]
-[ext_resource type="AudioStream" uid="uid://bkr8pimm0kht" path="res://Audio/level-2/sword_sound.wav" id="21_8arjg"]
-[ext_resource type="AudioStream" uid="uid://bgqoutks1wanx" path="res://Audio/level-2/bones_collapse.wav" id="22_xrixn"]
-[ext_resource type="AudioStream" uid="uid://lkgup3yrmdri" path="res://Audio/level-2/kid_transformation.wav" id="23_i42nt"]
-[ext_resource type="AudioStream" uid="uid://dglemqrh3iwqs" path="res://Audio/level-2/man_transformation.wav" id="24_im344"]
-[ext_resource type="AudioStream" uid="uid://dh87evicq78fk" path="res://Audio/level-2/old_man_transformation.wav" id="25_rxlll"]
-[ext_resource type="AudioStream" uid="uid://c3nk4vsr5e80d" path="res://Audio/level-2/man_nagulat_sa_sword.wav" id="26_hwqhc"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/sound_manager.tscn" id="27_0pbmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wkhw"]
 atlas = ExtResource("2_11452")
@@ -6052,66 +6033,10 @@ rotation = -1.5708
 ignore_rotation = false
 position_smoothing_enabled = true
 
-[node name="bell" parent="." instance=ExtResource("8_hwqhc")]
-
-[node name="time_manip" parent="." instance=ExtResource("9_0pbmp")]
-
-[node name="cinematic_impact" parent="." instance=ExtResource("11_cgkiv")]
-
-[node name="glass_break" parent="." instance=ExtResource("12_n64xy")]
-
-[node name="time_freeze" parent="." instance=ExtResource("13_ym47h")]
-
-[node name="ice_break" parent="." instance=ExtResource("14_cn0ic")]
-
-[node name="underwater_explosion" parent="." instance=ExtResource("15_f0jkt")]
-
-[node name="clank" parent="." instance=ExtResource("16_ku8w8")]
-
-[node name="tick_tock" parent="." instance=ExtResource("17_fajtg")]
-
-[node name="cinematic_ah" parent="." instance=ExtResource("18_7x2kw")]
-
-[node name="shwoop" parent="." instance=ExtResource("19_pd65x")]
-
 [node name="old_man" parent="." instance=ExtResource("15_b5hpa")]
 position = Vector2(-143, 248)
 
 [node name="Sword" parent="." instance=ExtResource("16_m8g1c")]
 position = Vector2(140, -234)
 
-[node name="sword" parent="." instance=ExtResource("17_kim2w")]
-
-[node name="Climb" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("19_8wkhw")
-volume_db = 1.0
-pitch_scale = 2.0
-
-[node name="pickup" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("20_lwspt")
-volume_db = 1.0
-
-[node name="Sword2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("21_8arjg")
-volume_db = 1.0
-
-[node name="bones" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("22_xrixn")
-volume_db = 1.0
-pitch_scale = 1.5
-
-[node name="kid_transform" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("23_i42nt")
-volume_db = 1.0
-
-[node name="man_transform" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("24_im344")
-volume_db = 1.0
-
-[node name="old_transform" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("25_rxlll")
-volume_db = 1.0
-
-[node name="nagulat" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("26_hwqhc")
-volume_db = 1.0
+[node name="SoundManager" parent="." instance=ExtResource("27_0pbmp")]

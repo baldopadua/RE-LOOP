@@ -6,12 +6,7 @@ extends Node2D
 @onready var sword: object_class = $Sword
 
 # SFX
-@onready var cinematic_impact: Object = $cinematic_impact
-@onready var glass_break: Object = $glass_break
-@onready var ice_break: Object = $ice_break
-@onready var time_freeze: Object = $time_freeze
-@onready var underwater_explosion: Object = $underwater_explosion
-@onready var bell: Object = $bell
+@onready var sound_manager = $SoundManager
 
 var tween_rotate: Tween
 var tween_scale: Tween
@@ -51,3 +46,12 @@ func _tween_scale_finished():
 
 func _process(_delta: float) -> void:
 	pass
+
+# Example function to play a sound effect using the centralized sound manager
+func play_level2_sfx(sfx_name: String):
+	if sound_manager and sound_manager.sfx.has(sfx_name):
+		sound_manager.play_sfx(sfx_name)
+
+# Example usage in your logic:
+# func some_event():
+#     play_level2_sfx("cinematic_impact")
