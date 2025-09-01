@@ -25,6 +25,9 @@ func _init_sfx() -> Dictionary:
 	var dict := {}
 	if has_node("sfx"):
 		_collect_sfx_nodes($sfx, dict)
+		# Add finish_level_sfx as a group node for special access
+		if $sfx/global_sfx.has_node("finish_level_sfx"):
+			dict["finish_level_sfx"] = $sfx/global_sfx/finish_level_sfx
 	return dict
 
 # --- UI SFX ---
@@ -67,3 +70,17 @@ func adjust_sfx_pitch_scale(sfx_name: String, delta: float) -> void:
 		var player = sfx[sfx_name]
 		if player is AudioStreamPlayer2D:
 			player.pitch_scale += delta
+
+func play_finish_level_sfx():
+	if sfx.has("finish_level_sfx"):
+		var finish_sfx = sfx["finish_level_sfx"]
+		for sfx_node in finish_sfx.get_children():
+			if sfx_node.has_method("play"):
+				sfx_node.play()
+
+func play_reset_level_sfx():
+	if has_node("sfx/global_sfx/reset_level_sfx"):
+		var reset_sfx = $sfx/global_sfx/reset_level_sfx
+		for sfx_node in reset_sfx.get_children():
+			if sfx_node.has_method("play"):
+				sfx_node.play()

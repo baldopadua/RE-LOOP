@@ -50,16 +50,9 @@ func break_loop():
 		if sound_manager:
 			if sound_manager.sfx.has("sword"):
 				sound_manager.play_sfx("sword")
-			if sound_manager.sfx.has("cinematic_ah"):
-				sound_manager.play_sfx("cinematic_ah")
-			if sound_manager.sfx.has("glass_break"):
-				sound_manager.play_sfx("glass_break")
-			if sound_manager.sfx.has("ice_break"):
-				sound_manager.play_sfx("ice_break")
-			if sound_manager.sfx.has("bell"):
-				sound_manager.play_sfx("bell")
-			if sound_manager.sfx.has("underwater_explosion"):
-				sound_manager.play_sfx("underwater_explosion")
+			# Play all finish level SFX at once
+			if sound_manager.has_method("play_finish_level_sfx"):
+				sound_manager.play_finish_level_sfx()
 		loopbreak2.visible = true
 		loopbreak2.play()
 		GlobalVariables.player_stopped = false
@@ -126,3 +119,5 @@ func _tween_rotation_finished():
 
 func _tween_scale_finished():
 	tween_scale.kill()
+
+

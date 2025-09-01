@@ -53,23 +53,27 @@ stream = ExtResource("4_rc4uc")
 
 [node name="global_sfx" type="Node2D" parent="sfx"]
 
-[node name="cinematic_ah" parent="sfx/global_sfx" instance=ExtResource("14_y78yn")]
+[node name="reset_level_sfx" type="Node2D" parent="sfx/global_sfx"]
 
-[node name="cinematic_impact" parent="sfx/global_sfx" instance=ExtResource("7_y0hwn")]
+[node name="cinematic_ah" parent="sfx/global_sfx/reset_level_sfx" instance=ExtResource("14_y78yn")]
 
-[node name="shwoop" parent="sfx/global_sfx" instance=ExtResource("15_e2ibl")]
+[node name="shwoop" parent="sfx/global_sfx/reset_level_sfx" instance=ExtResource("15_e2ibl")]
 
-[node name="underwater_explosion" parent="sfx/global_sfx" instance=ExtResource("11_6t0k7")]
+[node name="tick_tock" parent="sfx/global_sfx/reset_level_sfx" instance=ExtResource("13_pc0tp")]
 
-[node name="glass_break" parent="sfx/global_sfx" instance=ExtResource("8_bhbga")]
+[node name="finish_level_sfx" type="Node2D" parent="sfx/global_sfx"]
+
+[node name="cinematic_impact" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("7_y0hwn")]
+
+[node name="glass_break" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("8_bhbga")]
+
+[node name="underwater_explosion" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("11_6t0k7")]
+
+[node name="ice_break" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("10_2lq4n")]
+
+[node name="bell" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("5_20vxg")]
 
 [node name="time_freeze" parent="sfx/global_sfx" instance=ExtResource("9_r4shu")]
-
-[node name="ice_break" parent="sfx/global_sfx" instance=ExtResource("10_2lq4n")]
-
-[node name="bell" parent="sfx/global_sfx" instance=ExtResource("5_20vxg")]
-
-[node name="tick_tock" parent="sfx/global_sfx" instance=ExtResource("13_pc0tp")]
 
 [node name="player_sfx" type="Node2D" parent="sfx"]
 

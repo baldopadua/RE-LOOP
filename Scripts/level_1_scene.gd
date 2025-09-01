@@ -73,16 +73,10 @@ func update_tree_visibility(stage: int) -> void:
 		loopbreak.play()
 		GlobalVariables.is_looping = false
 		GlobalVariables.player_stopped = true
-		# Play SFX using SoundManager for global_sfx nodes
-		if sound_manager:
-			if sound_manager.sfx.has("cinematic_impact"):
-				sound_manager.play_sfx("cinematic_impact")
-			if sound_manager.sfx.has("glass_break"):
-				sound_manager.play_sfx("glass_break")
-			if sound_manager.sfx.has("ice_break"):
-				sound_manager.play_sfx("ice_break")
-			if sound_manager.sfx.has("bell"):
-				sound_manager.play_sfx("bell")
+		# Play SFX using SoundManager for finish_level_sfx nodes
+		if sound_manager and sound_manager.has_method("play_finish_level_sfx"):
+			sound_manager.play_finish_level_sfx()
 		await get_tree().create_timer(1.0).timeout
 		GlobalVariables.player_stopped = false
 		return
+					

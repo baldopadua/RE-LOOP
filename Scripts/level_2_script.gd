@@ -52,6 +52,4 @@ func play_level2_sfx(sfx_name: String):
 	if sound_manager and sound_manager.sfx.has(sfx_name):
 		sound_manager.play_sfx(sfx_name)
 
-# Example usage in your logic:
-# func some_event():
-#     play_level2_sfx("cinematic_impact")
+
