@@ -10,12 +10,7 @@ var states := ["State1", "State2", "State3", "State4"]
 var center_circle: Vector2i = Vector2i(0,0)
 
 # SFX
-@onready var cinematic_impact: Object = $cinematic_impact
-@onready var glass_break: Object = $glass_break
-@onready var ice_break: Object = $ice_break
-@onready var time_freeze: Object = $time_freeze
-@onready var underwater_explosion: Object = $underwater_explosion
-@onready var bell: Object = $bell
+@onready var sound_manager = $SoundManager
 
 var tween_rotate: Tween
 var tween_scale: Tween
@@ -78,11 +73,16 @@ func update_tree_visibility(stage: int) -> void:
 		loopbreak.play()
 		GlobalVariables.is_looping = false
 		GlobalVariables.player_stopped = true
-		cinematic_impact.play()
-		glass_break.play()
-		ice_break.play()
-		bell.play()
-		underwater_explosion.play()
+		# Play SFX using SoundManager for global_sfx nodes
+		if sound_manager:
+			if sound_manager.sfx.has("cinematic_impact"):
+				sound_manager.play_sfx("cinematic_impact")
+			if sound_manager.sfx.has("glass_break"):
+				sound_manager.play_sfx("glass_break")
+			if sound_manager.sfx.has("ice_break"):
+				sound_manager.play_sfx("ice_break")
+			if sound_manager.sfx.has("bell"):
+				sound_manager.play_sfx("bell")
 		await get_tree().create_timer(1.0).timeout
 		GlobalVariables.player_stopped = false
 		return

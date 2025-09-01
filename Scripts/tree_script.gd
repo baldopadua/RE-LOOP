@@ -6,7 +6,7 @@ var tween_scale: Tween
 var level_2 = preload("res://Scenes/levels/level_2_scene.tscn")
 var time_indicator: AnimatedSprite2D
 var is_playing: bool = false	
-@onready var climb = $"../Climb"
+@onready var sound_manager = $SoundManager
 
 func _ready() -> void:
 	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
@@ -42,7 +42,7 @@ func _on_body_entered(body) -> void:
 		if not tween_climb.is_connected("finished", _tween_climb_finished):
 			tween_climb.connect("finished", _tween_climb_finished)
 	
-		climb.play()
+		play_climb_sfx()
 		
 		var screen_center = Vector2(0.0, 250.0)
 		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)
@@ -81,3 +81,7 @@ func _tween_rotation_finished():
 
 func _tween_scale_finished():
 	tween_scale.kill()
+
+func play_climb_sfx():
+	if sound_manager and sound_manager.sfx.has("Climb"):
+		sound_manager.play_sfx("Climb")

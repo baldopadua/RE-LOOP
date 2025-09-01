@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=22 format=4 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/level_1_scene.gd" id="1_pxia2"]
 [ext_resource type="Texture2D" uid="uid://bfy4mv3573p42" path="res://Assets/levels/level_1/Loop Break 1.png" id="2_j2f8f"]
@@ -9,19 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c70cg6ape7qus" path="res://Scenes/objects/level_1/seed.tscn" id="6_ystme"]
 [ext_resource type="PackedScene" uid="uid://crgcfnjvowrjv" path="res://Scenes/objects/level_1/soil.tscn" id="8_cd6w3"]
 [ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="8_l4q40"]
-[ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/level-1/time_manip.tscn" id="9_cmquk"]
 [ext_resource type="PackedScene" uid="uid://3ytk6p6f2w23" path="res://Scenes/objects/level_1/tree.tscn" id="10_cmquk"]
-[ext_resource type="PackedScene" uid="uid://d1tjd7nf23n8s" path="res://Audio/level-1/cinematic_impact.tscn" id="11_70ox2"]
-[ext_resource type="PackedScene" uid="uid://b26khqfn4jala" path="res://Audio/level-1/glass_break.tscn" id="12_cd6w3"]
-[ext_resource type="PackedScene" uid="uid://dfjn0ovrjl87e" path="res://Audio/level-1/time_freeze.tscn" id="13_7hl30"]
-[ext_resource type="PackedScene" uid="uid://co4mj4xfj7mhw" path="res://Audio/level-1/ice_break.tscn" id="14_ggo0n"]
-[ext_resource type="PackedScene" uid="uid://cic27iv8pc2fo" path="res://Audio/level-1/underwater_explosion.tscn" id="15_jr302"]
-[ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="16_7hl30"]
-[ext_resource type="PackedScene" uid="uid://dkojkmm7fp0p" path="res://Audio/level-1/tick_tock.tscn" id="17_ggo0n"]
-[ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="18_jr302"]
-[ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="19_ttgta"]
-[ext_resource type="AudioStream" uid="uid://mx84a50byjkj" path="res://Audio/climb_lvl1_2.wav" id="21_157a6"]
-[ext_resource type="AudioStream" uid="uid://bt6xxs02lxxlj" path="res://Audio/pickup_item.wav" id="22_8r5jx"]
+[ext_resource type="PackedScene" uid="uid://bhy1n0sv8ota8" path="res://Scenes/sound_manager.tscn" id="23_gu1y6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2f8f"]
 texture = ExtResource("2_ttgta")
@@ -6086,34 +6075,7 @@ position_smoothing_enabled = true
 
 [node name="bell" parent="." instance=ExtResource("8_l4q40")]
 
-[node name="time_manip" parent="." instance=ExtResource("9_cmquk")]
-
 [node name="tree" parent="." instance=ExtResource("10_cmquk")]
 position = Vector2(0, -296.43)
 
-[node name="cinematic_impact" parent="." instance=ExtResource("11_70ox2")]
-
-[node name="glass_break" parent="." instance=ExtResource("12_cd6w3")]
-
-[node name="time_freeze" parent="." instance=ExtResource("13_7hl30")]
-
-[node name="ice_break" parent="." instance=ExtResource("14_ggo0n")]
-
-[node name="underwater_explosion" parent="." instance=ExtResource("15_jr302")]
-
-[node name="clank" parent="." instance=ExtResource("16_7hl30")]
-
-[node name="tick_tock" parent="." instance=ExtResource("17_ggo0n")]
-
-[node name="cinematic_ah" parent="." instance=ExtResource("18_jr302")]
-
-[node name="shwoop" parent="." instance=ExtResource("19_ttgta")]
-
-[node name="Climb" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("21_157a6")
-volume_db = 1.0
-pitch_scale = 2.0
-
-[node name="pickup" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("22_8r5jx")
-volume_db = 1.0
+[node name="SoundManager" parent="." instance=ExtResource("23_gu1y6")]

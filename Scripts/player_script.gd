@@ -56,24 +56,18 @@ var moves: int = 0
 @onready var map4: TileMapLayer = $"../map4"
 var maps_dict: Dictionary
 
-# SFX
-@onready var time_sfx: Object = $"../time_manip"
-@onready var clank_sfx: Object = $"../clank"
-@onready var bell_sfx: Object = $"../bell"
-@onready var shwoop_sfx: Object = $"../shwoop"
-@onready var reverse_ahh_sfx: Object = $"../cinematic_ah"
-@onready var tick_tock_sfx: Object = $"../tick_tock"
-@onready var pickup = $"../pickup"
-
 # Changed from Sprite2D to AnimatedSprite2D
 @onready var sprite = $AnimatedSprite2D
 @onready var object_drop_position := $object_drop_position
 var time_indicator: AnimatedSprite2D
+@onready var sound_manager = $SoundManager
 
 func _ready() -> void:
 	if GlobalVariables.is_restarting:
 		GlobalVariables.is_restarting = false
-		GlobalVariables.restart_level_sfx_vfx([shwoop_sfx, tick_tock_sfx, reverse_ahh_sfx])
+		sound_manager.play_sfx("shwoop")
+		sound_manager.play_sfx("tick_tock")
+		sound_manager.play_sfx("cinematic_ah")
 		# PLAY RESTART SFX AND CUTSCENES
 	object_pos = get_node("object_position")
 	maps_dict = {
@@ -93,14 +87,18 @@ func _input(event: InputEvent) -> void:
 		direction = player_directions.CLOCKWISE
 		prev_deg = round(rad_to_deg(rotation))
 		rotate_player()
-		GlobalVariables.play_sfx(time_sfx, player_directions.CLOCKWISE)
-		GlobalVariables.play_sfx(clank_sfx, player_directions.CLOCKWISE)
+		sound_manager.adjust_sfx_pitch_scale("time_manip", 0.03)
+		sound_manager.adjust_sfx_pitch_scale("clank", 0.03)
+		sound_manager.play_sfx("time_manip")
+		sound_manager.play_sfx("clank")
 	elif event.is_action_pressed("move_left") and not is_moving and not GlobalVariables.player_stopped:
 		prev_deg = round(rad_to_deg(rotation))
 		direction = player_directions.COUNTERCLOCKWISE
 		rotate_player()
-		GlobalVariables.play_sfx(time_sfx, player_directions.COUNTERCLOCKWISE)
-		GlobalVariables.play_sfx(clank_sfx, player_directions.COUNTERCLOCKWISE)
+		sound_manager.adjust_sfx_pitch_scale("time_manip", -0.03)
+		sound_manager.adjust_sfx_pitch_scale("clank", -0.03)
+		sound_manager.play_sfx("time_manip")
+		sound_manager.play_sfx("clank")
 		
 	# OBJECT INTERACTION AND DROP
 	if event.is_action_pressed("interact"):
@@ -113,7 +111,7 @@ func _input(event: InputEvent) -> void:
 			for obj in interactable_objects:
 				if obj.object_name in held_object.usable_targets:
 					held_object.interact(obj)
-					pickup.play()
+					sound_manager.play_sfx("pickup")
 					held_object = null
 					is_holding_object = false
 					sprite.play("idle")
@@ -126,8 +124,8 @@ func _input(event: InputEvent) -> void:
 func _tween_finished():
 	# RESET THE SFX PITCH SCALE WHEN REACHING BOTH ENDS
 	if round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0 or round(rad_to_deg(rotation)) == 0.0:
-		time_sfx.pitch_scale = 1.0
-		clank_sfx.pitch_scale = 1.0
+		sound_manager.set_sfx_pitch_scale("time_manip", 1.0)
+		sound_manager.set_sfx_pitch_scale("clank", 1.0)
 	
 	# SWITCH THE MONOLITH
 	# INITIAL VALUE NO ENERGY and # POSITIVE MEANS CLOCKWISE
@@ -244,7 +242,7 @@ func item_pick_up() -> void:
 		await tween_pickup.finished
 		tween_pickup.kill()
 		
-		pickup.play()
+		sound_manager.play_sfx("pickup")
 		
 		# The player is currently holding an object
 		is_holding_object = true
@@ -258,11 +256,17 @@ func item_drop() -> void:
 		tween_pickup.tween_property(held_object, "position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 		await tween_pickup.finished
 		tween_pickup.kill()
-		
-		pickup.play()
-		
-		held_object.is_pickupable = true	
-		held_object.reparent(get_parent())
+
+		sound_manager.play_sfx("pickup")
+
+		# Only set properties and reparent if held_object is still valid
+		if held_object:
+			held_object.is_pickupable = true	
+			held_object.reparent(get_parent())
+			held_object = null
+			is_holding_object = false
+			print("Object dropped")
+			interactable_objects.clear()
 		held_object = null
 		is_holding_object = false
 		print("Object dropped")
