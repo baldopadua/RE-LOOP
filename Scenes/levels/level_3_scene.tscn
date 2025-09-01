@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bkklrol1yda1l"]
+[gd_scene load_steps=26 format=4 uid="uid://bkklrol1yda1l"]
 
 [ext_resource type="Script" uid="uid://w412f5j4febn" path="res://Scripts/level_3_script.gd" id="1_thi73"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="3_njtrs"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bhb388kh47yiw" path="res://Audio/level-3/rock_water_drop.wav" id="19_3gnya"]
 [ext_resource type="AudioStream" uid="uid://dk3o16h28soqe" path="res://Audio/level-3/rock_ground_drop.wav" id="20_hmu4b"]
 [ext_resource type="AudioStream" uid="uid://r1p3goyqtthx" path="res://Audio/level-3/rock_explode.wav" id="21_oy0dn"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/sound_manager.tscn" id="22_3gnya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2f8f"]
 texture = ExtResource("3_njtrs")
@@ -6067,3 +6068,5 @@ pitch_scale = 1.5
 stream = SubResource("AudioStreamRandomizer_6xexh")
 volume_db = 1.0
 pitch_scale = 4.0
+
+[node name="SoundManager" parent="." instance=ExtResource("22_3gnya")]

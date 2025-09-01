@@ -8,6 +8,7 @@ var is_exploded: bool = false
 var rocks: Array = []
 @onready var animate_geyser: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player = $"../PlayerScene"
+@onready var sound_manager = get_parent().get_node("SoundManager")
 var is_playing_two: bool = false
 var sprung_tween: Tween
 var tween_rotate: Tween
@@ -16,25 +17,7 @@ var allowed_angles: Array = [0.0, 360.0, -360.0, 90.0, -90.0, 180.0, -180.0, 270
 var is_player_in_geyser: bool = false
 var time_indicator: AnimatedSprite2D
 var default_geyser_played: bool = false
-@onready var geyser_explode = $"../geyser_explode"
-@onready var rock_water_drop = $"../rock_water_drop"
-@onready var rock_ground_drop = $"../rock_ground_drop"
-@onready var rock_explode = $"../rock_explode"
-@onready var rock_explode_fail = $"../rock_explode_fail"
-@onready var rock_default_geyser_explode = $"../rock_default_geyser_explode"
-@onready var cinematic_impact = $"../cinematic_ah"
-@onready var glass_break = $"../glass_break"
-@onready var ice_break = $"../ice_break"
-@onready var bell = $"../bell"
-@onready var underwater_explosion = $"../underwater_explosion"
-
-# SCAN IF THERE ARE ROCKS CHILDREN AND CURRENT STATE IS 2
-# 	IF NUMBER OF ROCKS IS < 5 THEN
-# 		PLAY DEFAULT GEYSER ANIMATION AND PUT BACK THE CHILD ROCKS INTO THEIR
-#		PAST POSITION AND ROTATION
-#	ELSE
-#		PLAY PRESSURE 1, TWO TIMES
-#		PLAY PRESSURE 2, TWO TIMES
+# Remove direct SFX node references
 
 func _ready() -> void:
 	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
@@ -42,14 +25,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if is_player_in_geyser:
 		if animate_geyser.frame == 18:
-			
-			geyser_explode.play()
-			rock_explode.play()
-			cinematic_impact.play()
-			glass_break.play()
-			ice_break.play()
-			bell.play()
-			underwater_explosion.play()
+			if sound_manager:
+				sound_manager.play_sfx("geyser_explode")
+				sound_manager.play_sfx("rock_explode")
+				sound_manager.play_sfx("cinematic_ah")
+				sound_manager.play_sfx("glass_break")
+				sound_manager.play_sfx("ice_break")
+				sound_manager.play_sfx("bell")
+				sound_manager.play_sfx("underwater_explosion")
 			
 			# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
 			time_indicator.animation = "fixed"
@@ -83,7 +66,8 @@ func _process(_delta: float) -> void:
 		get_node("NoRock").visible = false
 		animate_geyser.play("default_geyser")
 		await animate_geyser.animation_finished
-		rock_default_geyser_explode.play()
+		if sound_manager:
+			sound_manager.play_sfx("rock_default_geyser_explode")
 		get_node("NoRock").visible = true
 		default_geyser_played = false
 		animate_geyser.visible = false
@@ -96,12 +80,9 @@ func geyser_ekusproshon():
 	animate_geyser.visible = true
 	# LESS THAN FIVE ROCKS IS NOT GOING TO BUILD PRESSURE
 	if rocks.size() >= 1 and rocks.size() < 5:
-		# SET THE VISIBILITY TO TRUE FOR THE DEFAULT NO ROCK TEXTURE
-		# get_node("NoRock").visible = true
-		
-		rock_explode_fail.play()
-		rock_default_geyser_explode.play()
-		
+		if sound_manager:
+			sound_manager.play_sfx("rock_explode_fail")
+			sound_manager.play_sfx("rock_default_geyser_explode")
 		# REPARENT EACH ROCK TO LEVEL 3 NODE
 		await return_rocks()
 		
@@ -136,32 +117,33 @@ func return_rocks():
 			node.visible = false
 	animate_geyser.play("default_geyser")
 	for rock in rocks:
-			rock.visible = true
-			rock.is_pickupable = true
-			rock.reparent(get_parent())
-			
-			# TWEEN TO ADD BOUNCE WHEN DROPPING DOWN
-			var tween_prev_pos = create_tween()
-			
-			# GET THE PREV POS ON FIRST INDEX
-			var rock_prev_pos = rock.orig_pos
-			print(rock_prev_pos)
-			
-			tween_prev_pos.tween_property(rock, "position", rock_prev_pos, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-			await tween_prev_pos.finished
-			tween_prev_pos.kill()
-			
-			rock_ground_drop.play()
-			
-			var tween_prev_rotation = create_tween()
-			
-			# GET THE PREV ROTATION IN SECOND INDEX
-			var rock_prev_rotation = rock.orig_rotation
-			
-			tween_prev_rotation.tween_property(rock, "rotation", rock_prev_rotation, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-			await tween_prev_rotation.finished
-			tween_prev_rotation.kill()
-			
+		rock.visible = true
+		rock.is_pickupable = true
+		rock.reparent(get_parent())
+		
+		# TWEEN TO ADD BOUNCE WHEN DROPPING DOWN
+		var tween_prev_pos = create_tween()
+		
+		# GET THE PREV POS ON FIRST INDEX
+		var rock_prev_pos = rock.orig_pos
+		print(rock_prev_pos)
+		
+		tween_prev_pos.tween_property(rock, "position", rock_prev_pos, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+		await tween_prev_pos.finished
+		tween_prev_pos.kill()
+		
+		if sound_manager:
+			sound_manager.play_sfx("rock_ground_drop")
+		
+		var tween_prev_rotation = create_tween()
+		
+		# GET THE PREV ROTATION IN SECOND INDEX
+		var rock_prev_rotation = rock.orig_rotation
+		
+		tween_prev_rotation.tween_property(rock, "rotation", rock_prev_rotation, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+		await tween_prev_rotation.finished
+		tween_prev_rotation.kill()
+		
 	rocks.clear()
 
 func _on_body_entered(body) -> void:
@@ -202,3 +184,6 @@ func _tween_rotation_finished():
 
 func _tween_scale_finished():
 	tween_scale.kill()
+	
+
+

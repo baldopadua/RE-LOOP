@@ -2,7 +2,7 @@ extends object_class
 
 @export var orig_pos: Vector2
 @export var orig_rotation: float
-@onready var rock_water_drop = $"../rock_water_drop"
+@onready var sound_manager = get_parent().get_node("SoundManager")
 
 func interact(object_interacted: object_class):
 	if object_interacted.object_name == "geyser":
@@ -20,7 +20,8 @@ func interact(object_interacted: object_class):
 		await tween_drop.finished
 		tween_drop.kill()
 		
-		rock_water_drop.play()
+		if sound_manager:
+			sound_manager.play_sfx("rock_water_drop")
 		
 		reparent(object_interacted)
 		is_pickupable = false
