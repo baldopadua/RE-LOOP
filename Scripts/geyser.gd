@@ -26,14 +26,12 @@ func _process(_delta: float) -> void:
 	if is_player_in_geyser:
 		if animate_geyser.frame == 18:
 			if sound_manager:
+				# Play level_3_sfx SFX directly
 				sound_manager.play_sfx("geyser_explode")
 				sound_manager.play_sfx("rock_explode")
-				sound_manager.play_sfx("cinematic_ah")
-				sound_manager.play_sfx("glass_break")
-				sound_manager.play_sfx("ice_break")
-				sound_manager.play_sfx("bell")
-				sound_manager.play_sfx("underwater_explosion")
-			
+				# Play all finish_level_sfx SFX at once
+				if sound_manager.has_method("play_finish_level_sfx"):
+					sound_manager.play_finish_level_sfx()
 			# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
 			time_indicator.animation = "fixed"
 			time_indicator.frame = 0
@@ -184,6 +182,6 @@ func _tween_rotation_finished():
 
 func _tween_scale_finished():
 	tween_scale.kill()
-	
+
 
 

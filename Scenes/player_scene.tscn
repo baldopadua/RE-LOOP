@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dc8173ksfevyx" path="res://Scripts/player_script.gd" id="1_8tj53"]
 [ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="2_7cibt"]
-[ext_resource type="PackedScene" uid="uid://bhy1n0sv8ota8" path="res://Scenes/sound_manager.tscn" id="3_e13mc"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/sound_manager.tscn" id="3_e13mc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e13mc"]
 atlas = ExtResource("2_7cibt")

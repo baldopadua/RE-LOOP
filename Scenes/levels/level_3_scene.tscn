@@ -1,26 +1,10 @@
-[gd_scene load_steps=26 format=4 uid="uid://bkklrol1yda1l"]
+[gd_scene load_steps=9 format=4 uid="uid://bkklrol1yda1l"]
 
 [ext_resource type="Script" uid="uid://w412f5j4febn" path="res://Scripts/level_3_script.gd" id="1_thi73"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="3_njtrs"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="4_6xexh"]
-[ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="5_3gnya"]
-[ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/level-1/time_manip.tscn" id="6_hmu4b"]
-[ext_resource type="PackedScene" uid="uid://d1tjd7nf23n8s" path="res://Audio/level-1/cinematic_impact.tscn" id="7_oy0dn"]
-[ext_resource type="PackedScene" uid="uid://b26khqfn4jala" path="res://Audio/level-1/glass_break.tscn" id="8_m5ou4"]
-[ext_resource type="PackedScene" uid="uid://dfjn0ovrjl87e" path="res://Audio/level-1/time_freeze.tscn" id="9_g7l62"]
-[ext_resource type="PackedScene" uid="uid://co4mj4xfj7mhw" path="res://Audio/level-1/ice_break.tscn" id="10_6afkb"]
-[ext_resource type="PackedScene" uid="uid://cic27iv8pc2fo" path="res://Audio/level-1/underwater_explosion.tscn" id="11_lxwrt"]
-[ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="12_v1th1"]
-[ext_resource type="PackedScene" uid="uid://dkojkmm7fp0p" path="res://Audio/level-1/tick_tock.tscn" id="13_6q3o1"]
-[ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="14_k83tx"]
-[ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="15_cq20m"]
 [ext_resource type="PackedScene" uid="uid://dco164x5ft03" path="res://Scenes/objects/level_3/geyser.tscn" id="16_symai"]
 [ext_resource type="PackedScene" uid="uid://lftn8e82jmja" path="res://Scenes/objects/level_3/rock.tscn" id="17_4srx3"]
-[ext_resource type="AudioStream" uid="uid://bt6xxs02lxxlj" path="res://Audio/pickup_item.wav" id="17_oyt3y"]
-[ext_resource type="AudioStream" uid="uid://svaslsbjpxun" path="res://Audio/level-3/water_eruption.wav" id="18_6xexh"]
-[ext_resource type="AudioStream" uid="uid://bhb388kh47yiw" path="res://Audio/level-3/rock_water_drop.wav" id="19_3gnya"]
-[ext_resource type="AudioStream" uid="uid://dk3o16h28soqe" path="res://Audio/level-3/rock_ground_drop.wav" id="20_hmu4b"]
-[ext_resource type="AudioStream" uid="uid://r1p3goyqtthx" path="res://Audio/level-3/rock_explode.wav" id="21_oy0dn"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/sound_manager.tscn" id="22_3gnya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2f8f"]
@@ -5941,11 +5925,6 @@ texture = ExtResource("3_njtrs")
 [sub_resource type="TileSet" id="TileSet_8r5jx"]
 sources/0 = SubResource("TileSetAtlasSource_j2f8f")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6xexh"]
-random_pitch = 1.5
-streams_count = 1
-stream_0/stream = ExtResource("18_6xexh")
-
 [node name="level_3" type="Node2D"]
 script = ExtResource("1_thi73")
 
@@ -5986,28 +5965,6 @@ rotation = -3.14159
 ignore_rotation = false
 position_smoothing_enabled = true
 
-[node name="bell" parent="." instance=ExtResource("5_3gnya")]
-
-[node name="time_manip" parent="." instance=ExtResource("6_hmu4b")]
-
-[node name="cinematic_impact" parent="." instance=ExtResource("7_oy0dn")]
-
-[node name="glass_break" parent="." instance=ExtResource("8_m5ou4")]
-
-[node name="time_freeze" parent="." instance=ExtResource("9_g7l62")]
-
-[node name="ice_break" parent="." instance=ExtResource("10_6afkb")]
-
-[node name="underwater_explosion" parent="." instance=ExtResource("11_lxwrt")]
-
-[node name="clank" parent="." instance=ExtResource("12_v1th1")]
-
-[node name="tick_tock" parent="." instance=ExtResource("13_6q3o1")]
-
-[node name="cinematic_ah" parent="." instance=ExtResource("14_k83tx")]
-
-[node name="shwoop" parent="." instance=ExtResource("15_cq20m")]
-
 [node name="geyser" parent="." instance=ExtResource("16_symai")]
 position = Vector2(115, -212)
 
@@ -6038,35 +5995,5 @@ position = Vector2(-145, -251)
 rotation = 2.61799
 orig_pos = Vector2(-145, -251)
 orig_rotation = 150.0
-
-[node name="pickup" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("17_oyt3y")
-volume_db = 1.0
-
-[node name="geyser_explode" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("18_6xexh")
-volume_db = 1.0
-
-[node name="rock_water_drop" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("19_3gnya")
-volume_db = 1.0
-
-[node name="rock_ground_drop" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("20_hmu4b")
-volume_db = 1.0
-
-[node name="rock_explode" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("21_oy0dn")
-volume_db = 1.0
-
-[node name="rock_explode_fail" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_6xexh")
-volume_db = 1.0
-pitch_scale = 1.5
-
-[node name="rock_default_geyser_explode" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_6xexh")
-volume_db = 1.0
-pitch_scale = 4.0
 
 [node name="SoundManager" parent="." instance=ExtResource("22_3gnya")]
