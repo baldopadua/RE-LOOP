@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://ciik8gauu5jgn"]
+
+[ext_resource type="Script" uid="uid://bfyxj6ex06pot" path="res://Scripts/area_handler.gd" id="1_lquwd"]
+[ext_resource type="Texture2D" uid="uid://cyh820yfsstco" path="res://Assets/RoundWorldFuture.png" id="2_4kfly"]
+[ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="2_ft6qj"]
+[ext_resource type="Texture2D" uid="uid://bua2qfy6026td" path="res://Assets/blank-clock.png" id="3_meqgv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw2kp"]
+atlas = ExtResource("2_ft6qj")
+region = Rect2(0, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kfly"]
+atlas = ExtResource("2_ft6qj")
+region = Rect2(1400, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_meqgv"]
+atlas = ExtResource("2_ft6qj")
+region = Rect2(2800, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_domgy"]
+atlas = ExtResource("2_ft6qj")
+region = Rect2(4200, 0, 350, 350)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3fpq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw2kp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kfly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meqgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_domgy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AreaHandler" type="Node2D"]
+script = ExtResource("1_lquwd")
+
+[node name="SampleMap" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -375.0
+offset_right = 375.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_4kfly")
+expand_mode = 1
+
+[node name="Clock" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_meqgv")
+expand_mode = 1
+
+[node name="world_map" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.50002, -1.99998)
+scale = Vector2(2.12857, 2.17714)
+sprite_frames = SubResource("SpriteFrames_x3fpq")

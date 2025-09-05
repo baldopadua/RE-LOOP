@@ -49,18 +49,12 @@ var prev_deg: float = 0.0
 var available_object_last_pos: Vector2
 var moves: int = 0
 
-# MAPS
-@onready var map1: TileMapLayer = $"../map1"
-@onready var map2: TileMapLayer = $"../map2"
-@onready var map3: TileMapLayer = $"../map3"
-@onready var map4: TileMapLayer = $"../map4"
-var maps_dict: Dictionary
-
 # Changed from Sprite2D to AnimatedSprite2D
 @onready var sprite = $AnimatedSprite2D
 @onready var object_drop_position := $object_drop_position
-var time_indicator: AnimatedSprite2D
 @onready var sound_manager = $SoundManager
+var area_handler: Node2D
+var time_indicator: AnimatedSprite2D
 
 func _ready() -> void:
 	if GlobalVariables.is_restarting:
@@ -70,16 +64,12 @@ func _ready() -> void:
 		sound_manager.play_sfx("cinematic_ah")
 		# PLAY RESTART SFX AND CUTSCENES
 	object_pos = get_node("object_position")
-	maps_dict = {
-		12: map1,
-		3: map2,
-		6: map3,
-		9: map4
-	}
 	sprite.play("idle")
 	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
 	time_indicator.animation = "clockwise_time_indicator"
 	time_indicator.frame = moves
+	# MAP HANDLER
+	area_handler = get_parent().get_node("AreaHandler") 
 
 func _input(event: InputEvent) -> void:
 	# MOVEMENT round(rad_to_deg(rotation)) < 180.0
@@ -169,10 +159,13 @@ func _tween_finished():
 					elif direction == player_directions.COUNTERCLOCKWISE and obj.current_state > obj.min_state_threshold:  
 						obj.current_state -= 1
 			# SET THE ENTERED CLOCK AREA TO AREA KUNG NASAN PLAYER
-			maps_dict[entered_clock_area].visible = false
+			#maps_dict[entered_clock_area].visible = false
 			previous_clock_area = entered_clock_area
 			entered_clock_area = deg_to_time[round(rad_to_deg(rotation))]
-			maps_dict[entered_clock_area].visible = true
+			# UPDATE MAP IN THE AREA HANDLER
+			if area_handler:
+				area_handler.show_map_for_clock_area(entered_clock_area)
+			#maps_dict[entered_clock_area].visible = true
 			
 	
 	for obj in get_parent().get_children():

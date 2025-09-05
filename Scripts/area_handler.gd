@@ -1,0 +1,25 @@
+extends Node2D
+
+@onready var world_map: AnimatedSprite2D = $world_map
+
+# Map clock area to frame index
+var clock_area_to_frame := {
+	12: 0, # frame 0
+	3: 1,  # frame 1
+	6: 2,  # frame 2
+	9: 3   # frame 3
+}
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	world_map.frame = 0
+	world_map.pause()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+
+func show_map_for_clock_area(clock_area: int) -> void:
+	if clock_area in clock_area_to_frame:
+		world_map.frame = clock_area_to_frame[clock_area]
+		world_map.pause()
