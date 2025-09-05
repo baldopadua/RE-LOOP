@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ciik8gauu5jgn"]
+[gd_scene load_steps=29 format=3 uid="uid://ciik8gauu5jgn"]
 
 [ext_resource type="Script" uid="uid://bfyxj6ex06pot" path="res://Scripts/area_handler.gd" id="1_lquwd"]
 [ext_resource type="Texture2D" uid="uid://cyh820yfsstco" path="res://Assets/RoundWorldFuture.png" id="2_4kfly"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bua2qfy6026td" path="res://Assets/blank-clock.png" id="3_meqgv"]
 [ext_resource type="Texture2D" uid="uid://bfy4mv3573p42" path="res://Assets/levels/level_1/Loop Break 1.png" id="5_meqgv"]
 [ext_resource type="Texture2D" uid="uid://cnymugobhf2kf" path="res://Assets/levels/level_2/Loop break 2.png" id="6_domgy"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/sound_manager.tscn" id="7_x3fpq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yw2kp"]
 atlas = ExtResource("2_ft6qj")
@@ -40,6 +41,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"other_map",
 "speed": 5.0
 }]
 
@@ -194,9 +200,12 @@ grow_vertical = 2
 texture = ExtResource("3_meqgv")
 expand_mode = 1
 
-[node name="world_map" type="AnimatedSprite2D" parent="."]
+[node name="world_environment" type="Node2D" parent="."]
 position = Vector2(-2.50002, -1.99998)
 scale = Vector2(2.12857, 2.17714)
+
+[node name="map" type="AnimatedSprite2D" parent="world_environment"]
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_x3fpq")
 
 [node name="loop_break" type="Node2D" parent="."]
@@ -217,3 +226,6 @@ scale = Vector2(2.175, 2.175)
 sprite_frames = SubResource("SpriteFrames_xgawu")
 frame = 6
 frame_progress = 1.0
+
+[node name="SoundManager" parent="." instance=ExtResource("7_x3fpq")]
+position = Vector2(-375, -375)
