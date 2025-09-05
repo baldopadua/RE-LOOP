@@ -6,6 +6,7 @@ extends Node2D
 @onready var tree = $tree
 @onready var objects: Array = []
 @onready var player = $PlayerScene
+@onready var area_handler = $AreaHandler
 var states := ["State1", "State2", "State3", "State4"]
 var center_circle: Vector2i = Vector2i(0,0)
 
@@ -63,14 +64,12 @@ func _process(_delta: float) -> void:
 
 func update_tree_visibility(stage: int) -> void:
 	# stage is 1-based, so we subtract 1 for array index
-	var loopbreak = $loopbreak
 	var index = clamp(stage - 1, 0, states.size() - 1)
 	for i in range(states.size()):
 		tree.get_node(states[i]).visible = (i == index)
 	if stage == 4:
 		# Stop
-		loopbreak.visible = true
-		loopbreak.play()
+		area_handler.show_loop_break(1)
 		GlobalVariables.is_looping = false
 		GlobalVariables.player_stopped = true
 		# Play SFX using SoundManager for finish_level_sfx nodes
@@ -79,4 +78,5 @@ func update_tree_visibility(stage: int) -> void:
 		await get_tree().create_timer(1.0).timeout
 		GlobalVariables.player_stopped = false
 		return
-					
+
+

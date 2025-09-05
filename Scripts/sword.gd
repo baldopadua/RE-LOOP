@@ -4,9 +4,9 @@ extends object_class
 # IF HAS NODE old_man BEGIN PROCESS IF old_man.current_state is 2 or strong
 # ANIMATESPRITE2D.aVISIBLE = TRUE THEN PLAY ANIMATION
 @onready var loop_break_animation: AnimatedSprite2D = $AnimatedSprite2D
-@onready var loopbreak2: AnimatedSprite2D = get_parent().get_node("loopbreak2")
 @onready var sword_sprite: Sprite2D = $SwordSprite
 @onready var sound_manager = get_parent().get_node("SoundManager")
+@onready var area_handler = get_parent().get_node("AreaHandler")
 
 var is_playing: bool = false
 var is_playing_two: bool = false
@@ -53,8 +53,7 @@ func break_loop():
 			# Play all finish level SFX at once
 			if sound_manager.has_method("play_finish_level_sfx"):
 				sound_manager.play_finish_level_sfx()
-		loopbreak2.visible = true
-		loopbreak2.play()
+		area_handler.show_loop_break(2)
 		GlobalVariables.player_stopped = false
 
 func _on_body_entered(body) -> void:

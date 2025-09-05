@@ -1,6 +1,9 @@
 extends Node2D
 
 @onready var world_map: AnimatedSprite2D = $world_map
+@onready var loop_break: Node2D = $loop_break
+@onready var level_1_break: AnimatedSprite2D = $loop_break/level_1_break
+@onready var level_2_break: AnimatedSprite2D = $loop_break/level_2_break
 
 # Map clock area to frame index
 var clock_area_to_frame := {
@@ -23,3 +26,14 @@ func show_map_for_clock_area(clock_area: int) -> void:
 	if clock_area in clock_area_to_frame:
 		world_map.frame = clock_area_to_frame[clock_area]
 		world_map.pause()
+
+func show_loop_break(level: int) -> void:
+	loop_break.visible = true
+	level_1_break.visible = false
+	level_2_break.visible = false
+	if level == 1:
+		level_1_break.visible = true
+		level_1_break.play()
+	elif level == 2:
+		level_2_break.visible = true
+		level_2_break.play()
