@@ -5979,7 +5979,7 @@ tile_set = SubResource("TileSet_8r5jx")
 [node name="PlayerScene" parent="." instance=ExtResource("4_be8ic")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-rotation = -1.5708
+rotation = 1.5708
 ignore_rotation = false
 position_smoothing_enabled = true
 
