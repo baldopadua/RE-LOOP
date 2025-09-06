@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://wspt4mwhafhc"]
+[gd_scene load_steps=34 format=3 uid="uid://wspt4mwhafhc"]
 
 [ext_resource type="Script" uid="uid://bhdr1gfr3i466" path="res://Scripts/component/sound_manager.gd" id="1_ynhbd"]
 [ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="2_sanpt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="5_vsbfc"]
 [ext_resource type="AudioStream" uid="uid://d2tjtumu1r0ov" path="res://Audio/ambience/wind-ambience_sfx.mp3" id="6_2aguw"]
 [ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="6_ip4rx"]
+[ext_resource type="AudioStream" uid="uid://bpjg7ii1y2ht6" path="res://Audio/ambience/Eerie-Graveyard -Ambience SFX.mp3" id="7_2aguw"]
 [ext_resource type="PackedScene" uid="uid://dkojkmm7fp0p" path="res://Audio/level-1/tick_tock.tscn" id="7_86f52"]
 [ext_resource type="PackedScene" uid="uid://d1tjd7nf23n8s" path="res://Audio/level-1/cinematic_impact.tscn" id="8_7m0u3"]
 [ext_resource type="PackedScene" uid="uid://b26khqfn4jala" path="res://Audio/level-1/glass_break.tscn" id="9_uli6b"]
@@ -63,6 +64,9 @@ stream = ExtResource("5_6lgko")
 [node name="wind_sfx" type="AudioStreamPlayer2D" parent="sfx/global_sfx/ambience_sfx"]
 stream = ExtResource("6_2aguw")
 volume_db = 5.0
+
+[node name="graveyard_sfx" type="AudioStreamPlayer2D" parent="sfx/global_sfx/ambience_sfx"]
+stream = ExtResource("7_2aguw")
 
 [node name="reset_level_sfx" type="Node2D" parent="sfx/global_sfx"]
 

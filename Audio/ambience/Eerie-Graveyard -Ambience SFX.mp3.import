@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bpjg7ii1y2ht6"
+path="res://.godot/imported/Eerie-Graveyard -Ambience SFX.mp3-ea217617c12aeba47d184c9f60c012ad.mp3str"
+
+[deps]
+
+source_file="res://Audio/ambience/Eerie-Graveyard -Ambience SFX.mp3"
+dest_files=["res://.godot/imported/Eerie-Graveyard -Ambience SFX.mp3-ea217617c12aeba47d184c9f60c012ad.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
