@@ -4,6 +4,7 @@ extends Node2D
 @onready var loop_break: Node2D = $loop_break
 @onready var level_1_break: AnimatedSprite2D = $loop_break/level_1_break
 @onready var level_2_break: AnimatedSprite2D = $loop_break/level_2_break
+@onready var sound_manager: Node = $SoundManager
 
 # Map clock area to frame index
 var clock_area_to_frame := {
@@ -15,8 +16,10 @@ var clock_area_to_frame := {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	map_sprite.frame = 0
-	map_sprite.pause()
+	# Play forest ambience sound via SoundManager (always forest_sfx)
+		if sound_manager.has_method("play_ambience_sfx"):
+			sound_manager.play_ambience_sfx("forest_sfx")
+			sound_manager.set_ambience_volume("forest_sfx", 10) 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -26,11 +29,15 @@ func show_map_for_clock_area(clock_area: int) -> void:
 	if clock_area in clock_area_to_frame:
 		map_sprite.frame = clock_area_to_frame[clock_area]
 		map_sprite.pause()
+		
 
 func show_loop_break(level: int) -> void:
 	loop_break.visible = true
 	level_1_break.visible = false
 	level_2_break.visible = false
+	# Lower the volume of forest_sfx ambience when breaking the loop
+	if sound_manager.has_method("set_ambience_volume"):
+		sound_manager.set_ambience_volume("forest_sfx", -10) 
 	if level == 1:
 		level_1_break.visible = true
 		level_1_break.play()

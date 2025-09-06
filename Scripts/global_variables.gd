@@ -15,19 +15,6 @@ signal level_instantiated(level_name: String)
 func _ready():
 	pass
 
-func play_sfx(sfx: Object, direction: Directions):
-	if direction == player_direction.CLOCKWISE:
-		sfx.pitch_scale += 0.03
-		sfx.play()
-	else:
-		sfx.pitch_scale -= 0.03
-		sfx.play()
-
-func restart_level_sfx_vfx(sfxs: Array):
-	# PERFORM SOME CUTSCENES AFTER RESTARTING
-	# SFX
-	for sfx in sfxs:
-		sfx.play()
 
 func change_level(scene_path: String, levels_frame):
 	# Remove current level

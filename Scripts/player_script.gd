@@ -59,9 +59,7 @@ var time_indicator: AnimatedSprite2D
 func _ready() -> void:
 	if GlobalVariables.is_restarting:
 		GlobalVariables.is_restarting = false
-		sound_manager.play_sfx("shwoop")
-		sound_manager.play_sfx("tick_tock")
-		sound_manager.play_sfx("cinematic_ah")
+		sound_manager.play_reset_level_sfx()
 		# PLAY RESTART SFX AND CUTSCENES
 	object_pos = get_node("object_position")
 	sprite.play("idle")

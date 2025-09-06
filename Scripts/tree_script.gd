@@ -42,7 +42,7 @@ func _on_body_entered(body) -> void:
 		if not tween_climb.is_connected("finished", _tween_climb_finished):
 			tween_climb.connect("finished", _tween_climb_finished)
 	
-		play_climb_sfx()
+		sound_manager.play_player_sfx("Climb")
 		
 		var screen_center = Vector2(0.0, 250.0)
 		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)
@@ -81,7 +81,3 @@ func _tween_rotation_finished():
 
 func _tween_scale_finished():
 	tween_scale.kill()
-
-func play_climb_sfx():
-	if sound_manager and sound_manager.sfx.has("Climb"):
-		sound_manager.play_sfx("Climb")

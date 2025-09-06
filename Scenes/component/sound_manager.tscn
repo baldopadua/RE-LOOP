@@ -59,7 +59,6 @@ stream = ExtResource("4_2aguw")
 
 [node name="forest_sfx" type="AudioStreamPlayer2D" parent="sfx/global_sfx/ambience_sfx"]
 stream = ExtResource("5_6lgko")
-volume_db = 15.0
 
 [node name="wind_sfx" type="AudioStreamPlayer2D" parent="sfx/global_sfx/ambience_sfx"]
 stream = ExtResource("6_2aguw")
