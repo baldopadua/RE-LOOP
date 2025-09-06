@@ -1,27 +1,27 @@
 [gd_scene load_steps=29 format=3 uid="uid://ciik8gauu5jgn"]
 
-[ext_resource type="Script" uid="uid://bfyxj6ex06pot" path="res://Scripts/area_handler.gd" id="1_lquwd"]
-[ext_resource type="Texture2D" uid="uid://cyh820yfsstco" path="res://Assets/RoundWorldFuture.png" id="2_4kfly"]
-[ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="2_ft6qj"]
-[ext_resource type="Texture2D" uid="uid://bua2qfy6026td" path="res://Assets/blank-clock.png" id="3_meqgv"]
-[ext_resource type="Texture2D" uid="uid://bfy4mv3573p42" path="res://Assets/levels/level_1/Loop Break 1.png" id="5_meqgv"]
-[ext_resource type="Texture2D" uid="uid://cnymugobhf2kf" path="res://Assets/levels/level_2/Loop break 2.png" id="6_domgy"]
-[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/sound_manager.tscn" id="7_x3fpq"]
+[ext_resource type="Script" uid="uid://bfyxj6ex06pot" path="res://Scripts/component/area_handler.gd" id="1_hhhxy"]
+[ext_resource type="Texture2D" uid="uid://cyh820yfsstco" path="res://Assets/RoundWorldFuture.png" id="2_j1fyd"]
+[ext_resource type="Texture2D" uid="uid://bua2qfy6026td" path="res://Assets/blank-clock.png" id="3_26ycf"]
+[ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="4_rthw2"]
+[ext_resource type="Texture2D" uid="uid://bfy4mv3573p42" path="res://Assets/levels/level_1/Loop Break 1.png" id="5_p8qog"]
+[ext_resource type="Texture2D" uid="uid://cnymugobhf2kf" path="res://Assets/levels/level_2/Loop break 2.png" id="6_rpbdi"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="7_7c312"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yw2kp"]
-atlas = ExtResource("2_ft6qj")
+atlas = ExtResource("4_rthw2")
 region = Rect2(0, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kfly"]
-atlas = ExtResource("2_ft6qj")
+atlas = ExtResource("4_rthw2")
 region = Rect2(1400, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_meqgv"]
-atlas = ExtResource("2_ft6qj")
+atlas = ExtResource("4_rthw2")
 region = Rect2(2800, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_domgy"]
-atlas = ExtResource("2_ft6qj")
+atlas = ExtResource("4_rthw2")
 region = Rect2(4200, 0, 350, 350)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x3fpq"]
@@ -50,31 +50,31 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2f8f"]
-atlas = ExtResource("5_meqgv")
+atlas = ExtResource("5_p8qog")
 region = Rect2(0, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_157a6"]
-atlas = ExtResource("5_meqgv")
+atlas = ExtResource("5_p8qog")
 region = Rect2(350, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8r5jx"]
-atlas = ExtResource("5_meqgv")
+atlas = ExtResource("5_p8qog")
 region = Rect2(700, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gu1y6"]
-atlas = ExtResource("5_meqgv")
+atlas = ExtResource("5_p8qog")
 region = Rect2(1050, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgaox"]
-atlas = ExtResource("5_meqgv")
+atlas = ExtResource("5_p8qog")
 region = Rect2(1400, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivggd"]
-atlas = ExtResource("5_meqgv")
+atlas = ExtResource("5_p8qog")
 region = Rect2(1750, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmm5q"]
-atlas = ExtResource("5_meqgv")
+atlas = ExtResource("5_p8qog")
 region = Rect2(2100, 0, 350, 350)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_domgy"]
@@ -107,31 +107,31 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wkhw"]
-atlas = ExtResource("6_domgy")
+atlas = ExtResource("6_rpbdi")
 region = Rect2(0, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwspt"]
-atlas = ExtResource("6_domgy")
+atlas = ExtResource("6_rpbdi")
 region = Rect2(350, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8arjg"]
-atlas = ExtResource("6_domgy")
+atlas = ExtResource("6_rpbdi")
 region = Rect2(700, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xrixn"]
-atlas = ExtResource("6_domgy")
+atlas = ExtResource("6_rpbdi")
 region = Rect2(1050, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i42nt"]
-atlas = ExtResource("6_domgy")
+atlas = ExtResource("6_rpbdi")
 region = Rect2(1400, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_im344"]
-atlas = ExtResource("6_domgy")
+atlas = ExtResource("6_rpbdi")
 region = Rect2(1750, 0, 350, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rxlll"]
-atlas = ExtResource("6_domgy")
+atlas = ExtResource("6_rpbdi")
 region = Rect2(2100, 0, 350, 350)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xgawu"]
@@ -164,7 +164,7 @@ animations = [{
 }]
 
 [node name="AreaHandler" type="Node2D"]
-script = ExtResource("1_lquwd")
+script = ExtResource("1_hhhxy")
 
 [node name="SampleMap" type="TextureRect" parent="."]
 visible = false
@@ -181,7 +181,23 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_4kfly")
+texture = ExtResource("2_j1fyd")
+expand_mode = 1
+
+[node name="Clock" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_26ycf")
 expand_mode = 1
 
 [node name="world_environment" type="Node2D" parent="."]
@@ -210,20 +226,5 @@ sprite_frames = SubResource("SpriteFrames_xgawu")
 frame = 6
 frame_progress = 1.0
 
-[node name="SoundManager" parent="." instance=ExtResource("7_x3fpq")]
+[node name="SoundManager" parent="." instance=ExtResource("7_7c312")]
 position = Vector2(-375, -375)
-
-[node name="Clock" type="TextureRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -300.0
-offset_right = 300.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_meqgv")
-expand_mode = 1

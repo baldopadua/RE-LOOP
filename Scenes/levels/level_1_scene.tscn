@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://cbl4k6bkjnggc"]
 
-[ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/level_1_scene.gd" id="1_pxia2"]
-[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/area_handler.tscn" id="2_cmquk"]
+[ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/levels/level_1_scene.gd" id="1_pxia2"]
+[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_cmquk"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_xkn6d"]
 [ext_resource type="PackedScene" uid="uid://c70cg6ape7qus" path="res://Scenes/objects/level_1/seed.tscn" id="6_ystme"]
 [ext_resource type="PackedScene" uid="uid://crgcfnjvowrjv" path="res://Scenes/objects/level_1/soil.tscn" id="8_cd6w3"]
 [ext_resource type="PackedScene" uid="uid://3ytk6p6f2w23" path="res://Scenes/objects/level_1/tree.tscn" id="10_cmquk"]
-[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/sound_manager.tscn" id="23_gu1y6"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="23_gu1y6"]
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_pxia2")

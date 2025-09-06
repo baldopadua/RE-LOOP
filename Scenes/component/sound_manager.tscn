@@ -1,0 +1,154 @@
+[gd_scene load_steps=31 format=3 uid="uid://wspt4mwhafhc"]
+
+[ext_resource type="Script" uid="uid://bhdr1gfr3i466" path="res://Scripts/component/sound_manager.gd" id="1_ynhbd"]
+[ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="2_sanpt"]
+[ext_resource type="AudioStream" uid="uid://cw5va43ffrudg" path="res://Audio/ui/click.mp3" id="3_6lgko"]
+[ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn_sfx.mp3" id="4_2aguw"]
+[ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="5_vsbfc"]
+[ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="6_ip4rx"]
+[ext_resource type="PackedScene" uid="uid://dkojkmm7fp0p" path="res://Audio/level-1/tick_tock.tscn" id="7_86f52"]
+[ext_resource type="PackedScene" uid="uid://d1tjd7nf23n8s" path="res://Audio/level-1/cinematic_impact.tscn" id="8_7m0u3"]
+[ext_resource type="PackedScene" uid="uid://b26khqfn4jala" path="res://Audio/level-1/glass_break.tscn" id="9_uli6b"]
+[ext_resource type="PackedScene" uid="uid://cic27iv8pc2fo" path="res://Audio/level-1/underwater_explosion.tscn" id="10_ucgwd"]
+[ext_resource type="PackedScene" uid="uid://co4mj4xfj7mhw" path="res://Audio/level-1/ice_break.tscn" id="11_kbx4k"]
+[ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="12_wax2h"]
+[ext_resource type="PackedScene" uid="uid://dfjn0ovrjl87e" path="res://Audio/level-1/time_freeze.tscn" id="13_ev6nr"]
+[ext_resource type="AudioStream" uid="uid://bt6xxs02lxxlj" path="res://Audio/pickup_item.wav" id="14_kjqcc"]
+[ext_resource type="AudioStream" uid="uid://mx84a50byjkj" path="res://Audio/climb_lvl1_2.wav" id="15_m4x1h"]
+[ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/level-1/time_manip.tscn" id="16_4nov3"]
+[ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="17_nb86s"]
+[ext_resource type="PackedScene" uid="uid://be3gp4la2b857" path="res://Audio/level-2/sword.tscn" id="18_4r04m"]
+[ext_resource type="AudioStream" uid="uid://bkr8pimm0kht" path="res://Audio/level-2/sword_sound.wav" id="19_3oqx0"]
+[ext_resource type="AudioStream" uid="uid://bgqoutks1wanx" path="res://Audio/level-2/bones_collapse.wav" id="20_oau0s"]
+[ext_resource type="AudioStream" uid="uid://lkgup3yrmdri" path="res://Audio/level-2/kid_transformation.wav" id="21_g8dbi"]
+[ext_resource type="AudioStream" uid="uid://dglemqrh3iwqs" path="res://Audio/level-2/man_transformation.wav" id="22_ulap6"]
+[ext_resource type="AudioStream" uid="uid://dh87evicq78fk" path="res://Audio/level-2/old_man_transformation.wav" id="23_d467h"]
+[ext_resource type="AudioStream" uid="uid://c3nk4vsr5e80d" path="res://Audio/level-2/man_nagulat_sa_sword.wav" id="24_x6g16"]
+[ext_resource type="AudioStream" uid="uid://svaslsbjpxun" path="res://Audio/level-3/water_eruption.wav" id="25_t7wkh"]
+[ext_resource type="AudioStream" uid="uid://bhb388kh47yiw" path="res://Audio/level-3/rock_water_drop.wav" id="26_vv6oa"]
+[ext_resource type="AudioStream" uid="uid://dk3o16h28soqe" path="res://Audio/level-3/rock_ground_drop.wav" id="27_asjk1"]
+[ext_resource type="AudioStream" uid="uid://r1p3goyqtthx" path="res://Audio/level-3/rock_explode.wav" id="28_1fwc2"]
+[ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/ui/game_theme_song.mp3" id="29_fwa5o"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7wrvl"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("25_t7wkh")
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource("1_ynhbd")
+
+[node name="sfx" type="Node2D" parent="."]
+
+[node name="ui_sfx" type="Node2D" parent="sfx"]
+
+[node name="hover_sound" type="AudioStreamPlayer2D" parent="sfx/ui_sfx"]
+stream = ExtResource("2_sanpt")
+
+[node name="click_sound" type="AudioStreamPlayer2D" parent="sfx/ui_sfx"]
+stream = ExtResource("3_6lgko")
+
+[node name="page_turn_sound" type="AudioStreamPlayer2D" parent="sfx/ui_sfx"]
+stream = ExtResource("4_2aguw")
+
+[node name="global_sfx" type="Node2D" parent="sfx"]
+
+[node name="reset_level_sfx" type="Node2D" parent="sfx/global_sfx"]
+
+[node name="cinematic_ah" parent="sfx/global_sfx/reset_level_sfx" instance=ExtResource("5_vsbfc")]
+
+[node name="shwoop" parent="sfx/global_sfx/reset_level_sfx" instance=ExtResource("6_ip4rx")]
+
+[node name="tick_tock" parent="sfx/global_sfx/reset_level_sfx" instance=ExtResource("7_86f52")]
+
+[node name="finish_level_sfx" type="Node2D" parent="sfx/global_sfx"]
+
+[node name="cinematic_impact" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("8_7m0u3")]
+
+[node name="glass_break" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("9_uli6b")]
+
+[node name="underwater_explosion" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("10_ucgwd")]
+
+[node name="ice_break" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("11_kbx4k")]
+
+[node name="bell" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("12_wax2h")]
+
+[node name="time_freeze" parent="sfx/global_sfx" instance=ExtResource("13_ev6nr")]
+
+[node name="player_sfx" type="Node2D" parent="sfx"]
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="sfx/player_sfx"]
+stream = ExtResource("14_kjqcc")
+volume_db = 1.0
+
+[node name="Climb" type="AudioStreamPlayer2D" parent="sfx/player_sfx"]
+stream = ExtResource("15_m4x1h")
+
+[node name="time_manip" parent="sfx/player_sfx" instance=ExtResource("16_4nov3")]
+
+[node name="clank" parent="sfx/player_sfx" instance=ExtResource("17_nb86s")]
+
+[node name="level_1_sfx" type="Node2D" parent="sfx"]
+
+[node name="level_2_sfx" type="Node2D" parent="sfx"]
+
+[node name="sword" parent="sfx/level_2_sfx" instance=ExtResource("18_4r04m")]
+
+[node name="Sword2" type="AudioStreamPlayer2D" parent="sfx/level_2_sfx"]
+stream = ExtResource("19_3oqx0")
+volume_db = 1.0
+
+[node name="bones" type="AudioStreamPlayer2D" parent="sfx/level_2_sfx"]
+stream = ExtResource("20_oau0s")
+volume_db = 1.0
+pitch_scale = 1.5
+
+[node name="kid_transform" type="AudioStreamPlayer2D" parent="sfx/level_2_sfx"]
+stream = ExtResource("21_g8dbi")
+volume_db = 1.0
+
+[node name="man_transform" type="AudioStreamPlayer2D" parent="sfx/level_2_sfx"]
+stream = ExtResource("22_ulap6")
+volume_db = 1.0
+
+[node name="old_transform" type="AudioStreamPlayer2D" parent="sfx/level_2_sfx"]
+stream = ExtResource("23_d467h")
+volume_db = 1.0
+
+[node name="nagulat" type="AudioStreamPlayer2D" parent="sfx/level_2_sfx"]
+stream = ExtResource("24_x6g16")
+volume_db = 1.0
+
+[node name="level_3_sfx" type="Node2D" parent="sfx"]
+
+[node name="geyser_explode" type="AudioStreamPlayer2D" parent="sfx/level_3_sfx"]
+stream = ExtResource("25_t7wkh")
+volume_db = 1.0
+
+[node name="rock_water_drop" type="AudioStreamPlayer2D" parent="sfx/level_3_sfx"]
+stream = ExtResource("26_vv6oa")
+volume_db = 1.0
+
+[node name="rock_ground_drop" type="AudioStreamPlayer2D" parent="sfx/level_3_sfx"]
+stream = ExtResource("27_asjk1")
+volume_db = 1.0
+
+[node name="rock_explode" type="AudioStreamPlayer2D" parent="sfx/level_3_sfx"]
+stream = ExtResource("28_1fwc2")
+volume_db = 1.0
+
+[node name="rock_explode_fail" type="AudioStreamPlayer2D" parent="sfx/level_3_sfx"]
+stream = SubResource("AudioStreamRandomizer_7wrvl")
+volume_db = 1.0
+pitch_scale = 1.5
+
+[node name="rock_default_geyser_explode" type="AudioStreamPlayer2D" parent="sfx/level_3_sfx"]
+stream = SubResource("AudioStreamRandomizer_7wrvl")
+volume_db = 1.0
+pitch_scale = 4.0
+
+[node name="music" type="Node2D" parent="."]
+
+[node name="main_bgm" type="AudioStreamPlayer2D" parent="music"]
+stream = ExtResource("29_fwa5o")
+volume_db = 7.336

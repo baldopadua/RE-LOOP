@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://fyqypy6fcyaf"]
 
-[ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/level_4_script.gd" id="1_f0imo"]
-[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/area_handler.tscn" id="2_lahvx"]
+[ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/levels/level_4_script.gd" id="1_f0imo"]
+[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_lahvx"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="4_be8ic"]
-[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/sound_manager.tscn" id="14_yxj7a"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="14_yxj7a"]
 [ext_resource type="PackedScene" uid="uid://b7k8hh85s26ag" path="res://Scenes/objects/level_4/non_tools/soil.tscn" id="15_be8ic"]
 [ext_resource type="PackedScene" uid="uid://wa372vchah3q" path="res://Scenes/objects/level_4/tools/bone.tscn" id="17_mj1vs"]
 [ext_resource type="PackedScene" uid="uid://b8rqtsafw44ge" path="res://Scenes/objects/level_4/tools/statues1.tscn" id="18_37es6"]

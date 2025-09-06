@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://bfqg45e6qdyho"]
 
-[ext_resource type="Script" uid="uid://5bf1u063c7jk" path="res://Scripts/level_2_script.gd" id="1_8wkhw"]
-[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/area_handler.tscn" id="4_8chl0"]
+[ext_resource type="Script" uid="uid://5bf1u063c7jk" path="res://Scripts/levels/level_2_script.gd" id="1_8wkhw"]
+[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="4_8chl0"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_i42nt"]
 [ext_resource type="PackedScene" uid="uid://ceifb3xl03qsu" path="res://Scenes/objects/level_2/old_man.tscn" id="15_b5hpa"]
 [ext_resource type="PackedScene" uid="uid://c5dg6h5tc4svx" path="res://Scenes/objects/level_2/sword.tscn" id="16_m8g1c"]
-[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/sound_manager.tscn" id="27_0pbmp"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="27_0pbmp"]
 
 [node name="level_2" type="Node2D"]
 script = ExtResource("1_8wkhw")
