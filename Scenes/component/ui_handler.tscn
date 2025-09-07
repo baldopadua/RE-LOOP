@@ -559,7 +559,6 @@ scale = Vector2(6.47321, 5.5)
 sprite_frames = SubResource("SpriteFrames_fw52k")
 
 [node name="game_animated_bg" type="AnimatedSprite2D" parent="background"]
-visible = false
 texture_filter = 1
 position = Vector2(655.5, 360)
 scale = Vector2(5.57917, 5.5)
@@ -574,7 +573,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="gametitle" type="TextureRect" parent="main_menu"]
+[node name="game_title" type="TextureRect" parent="main_menu"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
@@ -854,6 +853,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="close_button" type="TextureButton" parent="overlay"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1

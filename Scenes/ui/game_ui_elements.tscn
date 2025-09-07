@@ -293,7 +293,6 @@ texture_normal = ExtResource("8_ovp1g")
 texture_hover = ExtResource("9_ihimg")
 ignore_texture_size = true
 stretch_mode = 0
-metadata/_edit_use_anchors_ = true
 
 [node name="page_turn_sound" type="AudioStreamPlayer2D" parent="ui_frame"]
 stream = ExtResource("7_uwqlr")
