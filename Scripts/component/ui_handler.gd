@@ -109,7 +109,7 @@ func hide_background(bg_name: String) -> void:
 		bg_node = background.get_node(bg_name)
 		bg_node.visible = false
 
-# SHOW/HIDE/REMOVE MAIN MENU
+# ---------------------SHOW/HIDE/REMOVE MAIN MENU
 func show_main_menu():
 	if sound_manager:
 		sound_manager.play_music("main_bgm")
@@ -140,6 +140,7 @@ func remove_main_menu():
 	if main_menu:
 		sound_manager.stop_music("main_bgm")
 		background.queue_free()
+		main_menu.visible=false
 		main_menu.queue_free()
 
 func hide_main_menu():
@@ -152,7 +153,7 @@ func unhide_main_menu():
 		main_menu.visible = true
 		main_menu.visible = true
 
-# OVERLAY 
+# --------------------------OVERLAY 
 func show_close_button():
 	if ui_layout.has_node("overlay"):
 		var overlay = ui_layout.get_node("overlay")
@@ -192,7 +193,6 @@ func close_overlay_button(node):
 		current = current.get_parent()
 		to_free.visible = false
 		to_free.queue_free()
-	# After closing the child, hide the overlay itself
 	overlay.visible = false
 
 
