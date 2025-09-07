@@ -42,6 +42,12 @@ func show_cursor():
 		$custom_cursor.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
+# REMOVE CURSOR
+func remove_cursor():
+	if has_node("custom_cursor"):
+		$custom_cursor.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 # AUTO-PLAY ALL ANIMATEDSPRITE2D NODES THAT ARE VISIBLE UNDER PARENT
 func auto_play_visible_sprites(parent: Node) -> void:
 	for node in _get_all_nodes(parent):
@@ -133,6 +139,7 @@ func show_main_menu():
 func remove_main_menu():
 	if main_menu:
 		sound_manager.stop_music("main_bgm")
+		background.queue_free()
 		main_menu.queue_free()
 
 func hide_main_menu():
@@ -146,7 +153,6 @@ func unhide_main_menu():
 		main_menu.visible = true
 
 # OVERLAY 
-
 func show_close_button():
 	if ui_layout.has_node("overlay"):
 		var overlay = ui_layout.get_node("overlay")

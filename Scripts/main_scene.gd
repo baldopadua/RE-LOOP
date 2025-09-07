@@ -45,7 +45,9 @@ func _on_main_menu_button_pressed(button_type):
 	if ui_handler.sound_manager:
 		if button_type == "start":
 			ui_handler.sound_manager.play_ui("click")
+			ui_handler.remove_cursor()
 			ui_handler.remove_main_menu()
+			$GameScene.visible = true
 		elif button_type == "tutorial":
 			ui_handler.sound_manager.play_ui("page_turn")
 			ui_handler.hide_main_menu()
