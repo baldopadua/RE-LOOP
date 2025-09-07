@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://yi6b7rc6mnj6"]
+[gd_scene load_steps=115 format=3 uid="uid://yi6b7rc6mnj6"]
 
 [ext_resource type="Script" uid="uid://c4y00npx7l6j5" path="res://Scripts/component/ui_handler.gd" id="1_4lx54"]
 [ext_resource type="Texture2D" uid="uid://x71yae621dsr" path="res://Assets/wormhole (1)-Sheet.png" id="2_vslub"]
@@ -15,8 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://rd183d7psrym" path="res://Assets/ui/Tutorial.png" id="9_0b04p"]
 [ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="9_1mbbf"]
 [ext_resource type="Texture2D" uid="uid://cg2l84tao5f1l" path="res://Assets/ui/credits_bg.png" id="9_4db0x"]
+[ext_resource type="Texture2D" uid="uid://dycrhdnxrjgsl" path="res://Assets/ui/credits_animated_icon.png" id="9_4r7hv"]
 [ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="9_p4mwq"]
 [ext_resource type="Texture2D" uid="uid://dmlkwrmka11h8" path="res://Assets/ui/counterclockwise_time_indicator.png" id="10_fw52k"]
+[ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="10_y4w7x"]
 [ext_resource type="Texture2D" uid="uid://oxutfru2ik0r" path="res://Assets/ui/brochure_unhovered.png" id="11_fw52k"]
 [ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="11_hu5x7"]
 [ext_resource type="Texture2D" uid="uid://3vkvbxe40udp" path="res://Assets/ui/brochure_hovered.png" id="12_hu5x7"]
@@ -288,6 +290,103 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4w7x"]
+atlas = ExtResource("9_4r7hv")
+region = Rect2(0, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exohx"]
+atlas = ExtResource("9_4r7hv")
+region = Rect2(27, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nol8b"]
+atlas = ExtResource("9_4r7hv")
+region = Rect2(54, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us0vv"]
+atlas = ExtResource("9_4r7hv")
+region = Rect2(81, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vcng"]
+atlas = ExtResource("9_4r7hv")
+region = Rect2(108, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ue8t"]
+atlas = ExtResource("9_4r7hv")
+region = Rect2(135, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2hc1"]
+atlas = ExtResource("10_y4w7x")
+region = Rect2(0, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8elr"]
+atlas = ExtResource("10_y4w7x")
+region = Rect2(27, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkpeg"]
+atlas = ExtResource("10_y4w7x")
+region = Rect2(54, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k3yl"]
+atlas = ExtResource("10_y4w7x")
+region = Rect2(81, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pln8"]
+atlas = ExtResource("10_y4w7x")
+region = Rect2(108, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swapm"]
+atlas = ExtResource("10_y4w7x")
+region = Rect2(135, 0, 27, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwsb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4w7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exohx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nol8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us0vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vcng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ue8t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2hc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8elr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkpeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k3yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pln8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swapm")
+}],
+"loop": true,
+"name": &"hover",
 "speed": 5.0
 }]
 
@@ -615,6 +714,23 @@ texture_hover = ExtResource("8_nol8b")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
+
+[node name="credits_button" type="TextureButton" parent="main_menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.279687
+anchor_top = 0.490278
+anchor_right = 0.4
+anchor_bottom = 0.741667
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="credits_animated_icon" type="AnimatedSprite2D" parent="main_menu/credits_button"]
+position = Vector2(73.875, 66)
+scale = Vector2(5.47222, 6)
+sprite_frames = SubResource("SpriteFrames_iwsb4")
+animation = &"hover"
 
 [node name="game_ui_elements" type="Control" parent="."]
 visible = false

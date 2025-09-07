@@ -1,5 +1,14 @@
 extends Control
 
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+	
 # Recursively get all nodes under this node (including nested)
 func _get_all_nodes(parent: Node) -> Array:
 	var nodes = []
@@ -37,7 +46,10 @@ func show_main_menu():
 		$background.visible = true
 		# Show only game_animated_bg inside background
 		if $background.has_node("game_animated_bg"):
-			$background.get_node("game_animated_bg").visible = true
+			var bg_anim = $background.get_node("game_animated_bg")
+			bg_anim.visible = true
+			if bg_anim.has_method("play"):
+				bg_anim.play("default")
 	if $main_menu:
 		hide_all_children($main_menu)
 		$main_menu.visible = true
@@ -45,17 +57,41 @@ func show_main_menu():
 		for child in $main_menu.get_children():
 			if child.has_method("set_visible"):
 				child.visible = true
+		# Setup credits button animation
+		setup_credits_button()
+		# Play credits_animated_icon animation
+		if $main_menu.has_node("credits_button"):
+			var btn = $main_menu.get_node("credits_button")
+			if btn.has_node("credits_animated_icon"):
+				var icon = btn.get_node("credits_animated_icon")
+				icon.visible = true
+				if icon.has_method("play"):
+					icon.play("default")
 	# Hide other direct children (custom_cursor no longer handled here)
 	for child in get_children():
 		if child.name not in ["background", "main_menu"]:
 			if child.has_method("set_visible"):
 				child.visible = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func setup_credits_button():
+	if $main_menu.has_node("credits_button"):
+		var btn = $main_menu.get_node("credits_button")
+		var entered_callable = Callable(self, "_on_credits_button_mouse_entered")
+		var exited_callable = Callable(self, "_on_credits_button_mouse_exited")
+		if not btn.is_connected("mouse_entered", entered_callable):
+			btn.connect("mouse_entered", entered_callable)
+		if not btn.is_connected("mouse_exited", exited_callable):
+			btn.connect("mouse_exited", exited_callable)
+		# Set default animation
+		if btn.has_node("credits_animated_icon"):
+			btn.get_node("credits_animated_icon").animation = "default"
 
+func _on_credits_button_mouse_entered():
+	var btn = $main_menu.get_node("credits_button")
+	if btn.has_node("credits_animated_icon"):
+		btn.get_node("credits_animated_icon").animation = "hover"
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+func _on_credits_button_mouse_exited():
+	var btn = $main_menu.get_node("credits_button")
+	if btn.has_node("credits_animated_icon"):
+		btn.get_node("credits_animated_icon").animation = "default"
