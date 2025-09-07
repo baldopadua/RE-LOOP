@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="2_ioaeq"]
 [ext_resource type="Texture2D" uid="uid://chg7xq6f7mumr" path="res://Assets/ui/start_button.png" id="2_jv6wh"]
-[ext_resource type="Texture2D" uid="uid://bq8mow31m52eg" path="res://Assets/ui/game_main_bg.png" id="2_psl12"]
 [ext_resource type="Texture2D" uid="uid://cwndswkyv0b33" path="res://Assets/ui/start_button_hover.png" id="3_iacmt"]
 [ext_resource type="Texture2D" uid="uid://x71yae621dsr" path="res://Assets/wormhole (1)-Sheet.png" id="3_psl12"]
 [ext_resource type="Texture2D" uid="uid://b4b5idm0212da" path="res://Assets/ui/tutorial_button.png" id="3_x6ack"]
 [ext_resource type="Texture2D" uid="uid://c284erqqs1py8" path="res://Assets/ui/gametitle.png" id="4_lhp3t"]
 [ext_resource type="Texture2D" uid="uid://coddlv2n5auim" path="res://Assets/ui/tutorial_button_hover.png" id="5_6ev3c"]
 [ext_resource type="Texture2D" uid="uid://dycrhdnxrjgsl" path="res://Assets/ui/credits_animated_icon.png" id="5_7ewk0"]
+[ext_resource type="PackedScene" uid="uid://yi6b7rc6mnj6" path="res://Scenes/component/ui_handler.tscn" id="5_psl12"]
 [ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="6_lhp3t"]
 [ext_resource type="PackedScene" uid="uid://bnrnr4wjbytbv" path="res://Scenes/ui/tutorial.tscn" id="10_ioaeq"]
 [ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
@@ -392,17 +392,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="main_bg" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_psl12")
-expand_mode = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="game_animated_explosion_bg" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(655.5, 360)
@@ -436,11 +425,15 @@ rotation = 0.0409988
 texture = ExtResource("4_lhp3t")
 expand_mode = 1
 
+[node name="UiHandler" parent="." instance=ExtResource("5_psl12")]
+layout_mode = 1
+
 [node name="tutorial" parent="." instance=ExtResource("10_ioaeq")]
 visible = false
 layout_mode = 1
 
 [node name="credits" parent="." instance=ExtResource("12_psl12")]
+visible = false
 layout_mode = 1
 
 [node name="credits_button" type="TextureButton" parent="credits"]
