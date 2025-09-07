@@ -2,6 +2,7 @@ extends Control
 
 @onready var sound_manager = get_node("SoundManager")
 @onready var ui_layout = $ui_layout
+@onready var background = $background
 
 # CALLED WHEN THE NODE ENTERS THE SCENE TREE FOR THE FIRST TIME.
 func _ready() -> void:
@@ -82,20 +83,23 @@ func _on_button_hovered(_button):
 	if sound_manager:
 		sound_manager.play_ui("hover")
 
-# SHOW MAIN MENU
+# SHOW SPECIFIC BACKGROUND CHILD BY NAME
+func show_background(bg_name: String) -> void:
+	if background:
+		hide_all_children(background)
+		background.visible = true
+		if background.has_node(bg_name):
+			var bg_node = background.get_node(bg_name)
+			bg_node.visible = true
+			if bg_node is AnimatedSprite2D and bg_node.has_method("play"):
+				bg_node.play("default")
+
+# SHOW/HIDE/REMOVE MAIN MENU
 func show_main_menu():
 	if sound_manager:
 		sound_manager.play_music("main_bgm")
-	# HIDE ALL CHILDREN OF BACKGROUND AND MAIN_MENU FIRST
-	if $background:
-		hide_all_children($background)
-		$background.visible = true
-		# SHOW ONLY GAME_ANIMATED_BG INSIDE BACKGROUND
-		if $background.has_node("game_animated_bg"):
-			var bg_anim = $background.get_node("game_animated_bg")
-			bg_anim.visible = true
-			if bg_anim.has_method("play"):
-				bg_anim.play("default")
+	# SHOW ONLY SPECIFIC BACKGROUND
+	show_background("game_animated_bg")
 	# USE NEW HIERARCHY FOR MAIN_MENU
 	if ui_layout.has_node("main_menu"):
 		var main_menu = ui_layout.get_node("main_menu")
@@ -115,4 +119,14 @@ func show_main_menu():
 		else:
 			if child.has_method("set_visible"):
 				child.visible = false
+				child.visible = false
 
+func remove_main_menu():
+	if ui_layout.has_node("main_menu"):
+		var main_menu = ui_layout.get_node("main_menu")
+		main_menu.queue_free()
+
+func hide_main_menu():
+	if ui_layout.has_node("main_menu"):
+		var main_menu = ui_layout.get_node("main_menu")
+		main_menu.visible = false
