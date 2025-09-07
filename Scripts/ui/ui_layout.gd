@@ -1,19 +1,22 @@
 extends Control
 
-@onready var credits_button = $credits_button
-@onready var animated_icon = credits_button.get_node("credits_animated_icon") if credits_button.has_node("credits_animated_icon") else null
+@onready var credits_button = $main_menu/credits_button
+var animated_icon: AnimatedSprite2D = null
 
-# Called when the node enters the scene tree for the first time.
+# CALLED WHEN THE NODE ENTERS THE SCENE TREE FOR THE FIRST TIME.
 func _ready() -> void:
-	setup_credits_button()
+	if credits_button and credits_button.has_node("credits_animated_icon"):
+		animated_icon = credits_button.get_node("credits_animated_icon")
+	if credits_button:
+		setup_credits_button()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# CALLED EVERY FRAME. 'DELTA' IS THE ELAPSED TIME SINCE THE PREVIOUS FRAME.
 func _process(_delta: float) -> void:
 	pass
 
 func setup_credits_button():
 	if credits_button:
-		# Ensure mouse_filter is correct
+		# ENSURE MOUSE_FILTER IS CORRECT
 		credits_button.mouse_filter = Control.MOUSE_FILTER_STOP
 		var enter_cb = Callable(self, "_on_credits_button_mouse_entered")
 		var exit_cb = Callable(self, "_on_credits_button_mouse_exited")

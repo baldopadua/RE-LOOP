@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://c4y00npx7l6j5" path="res://Scripts/component/ui_handler.gd" id="1_4lx54"]
 [ext_resource type="Texture2D" uid="uid://x71yae621dsr" path="res://Assets/wormhole (1)-Sheet.png" id="2_vslub"]
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="3_cj7l6"]
-[ext_resource type="Script" uid="uid://b0e7xopaj61st" path="res://Scripts/ui/main_menu.gd" id="4_exohx"]
 [ext_resource type="Texture2D" uid="uid://c284erqqs1py8" path="res://Assets/ui/gametitle.png" id="4_iwsb4"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="4_j1hp8"]
+[ext_resource type="Script" uid="uid://j3auo12ggp7k" path="res://Scripts/ui/ui_layout.gd" id="4_nol8b"]
 [ext_resource type="Texture2D" uid="uid://b4b5idm0212da" path="res://Assets/ui/tutorial_button.png" id="5_4r7hv"]
 [ext_resource type="Script" path="res://Scripts/ui/custom_cursor.gd" id="5_rmsqe"]
 [ext_resource type="Texture2D" uid="uid://c2dq7rfpmpmqb" path="res://Assets/ui/keys_elements.png" id="6_p4mwq"]
@@ -664,17 +664,26 @@ position = Vector2(655.5, 360)
 scale = Vector2(5.57917, 5.5)
 sprite_frames = SubResource("SpriteFrames_hu5x7")
 
-[node name="main_menu" type="Control" parent="."]
+[node name="ui_layout" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_exohx")
+script = ExtResource("4_nol8b")
 metadata/_edit_use_anchors_ = true
 
-[node name="game_title" type="TextureRect" parent="main_menu"]
+[node name="main_menu" type="Control" parent="ui_layout"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="game_title" type="TextureRect" parent="ui_layout/main_menu"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
@@ -689,7 +698,7 @@ rotation = 0.0409988
 texture = ExtResource("4_iwsb4")
 expand_mode = 1
 
-[node name="tutorial_button" type="TextureButton" parent="main_menu"]
+[node name="tutorial_button" type="TextureButton" parent="ui_layout/main_menu"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -702,7 +711,7 @@ texture_hover = ExtResource("6_y4w7x")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="start_button" type="TextureButton" parent="main_menu"]
+[node name="start_button" type="TextureButton" parent="ui_layout/main_menu"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -717,7 +726,7 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="credits_button" type="TextureButton" parent="main_menu"]
+[node name="credits_button" type="TextureButton" parent="ui_layout/main_menu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.278906
@@ -728,13 +737,13 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="credits_animated_icon" type="AnimatedSprite2D" parent="main_menu/credits_button"]
+[node name="credits_animated_icon" type="AnimatedSprite2D" parent="ui_layout/main_menu/credits_button"]
 position = Vector2(76, 115)
 scale = Vector2(5.47222, 6)
 sprite_frames = SubResource("SpriteFrames_iwsb4")
 frame_progress = 0.147243
 
-[node name="game_ui_elements" type="Control" parent="."]
+[node name="game_ui_elements" type="Control" parent="ui_layout"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -744,7 +753,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="keys_elements" type="TextureRect" parent="game_ui_elements"]
+[node name="keys_elements" type="TextureRect" parent="ui_layout/game_ui_elements"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
@@ -760,7 +769,7 @@ texture = ExtResource("6_p4mwq")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="tutorial_button" type="TextureButton" parent="game_ui_elements"]
+[node name="tutorial_button" type="TextureButton" parent="ui_layout/game_ui_elements"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
@@ -778,7 +787,7 @@ texture_hover = ExtResource("12_hu5x7")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="hint_button" type="TextureButton" parent="game_ui_elements"]
+[node name="hint_button" type="TextureButton" parent="ui_layout/game_ui_elements"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -792,14 +801,14 @@ texture_hover = ExtResource("14_0n0xc")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="time_indicator" type="AnimatedSprite2D" parent="game_ui_elements"]
+[node name="time_indicator" type="AnimatedSprite2D" parent="ui_layout/game_ui_elements"]
 texture_filter = 1
 position = Vector2(1178, 591)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_taira")
 animation = &"fixed"
 
-[node name="overlay" type="Control" parent="."]
+[node name="overlay" type="Control" parent="ui_layout"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -808,7 +817,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="tutorial" type="Control" parent="overlay"]
+[node name="tutorial" type="Control" parent="ui_layout/overlay"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -818,7 +827,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="tutorial_bg" type="TextureRect" parent="overlay/tutorial"]
+[node name="tutorial_bg" type="TextureRect" parent="ui_layout/overlay/tutorial"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -831,7 +840,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_4db0x")
 
-[node name="tutorial_overlay" type="TextureRect" parent="overlay/tutorial"]
+[node name="tutorial_overlay" type="TextureRect" parent="ui_layout/overlay/tutorial"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -848,7 +857,7 @@ grow_vertical = 2
 texture = ExtResource("9_0b04p")
 stretch_mode = 4
 
-[node name="credits" type="Control" parent="overlay"]
+[node name="credits" type="Control" parent="ui_layout/overlay"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -858,7 +867,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="credits_overlay" type="TextureRect" parent="overlay/credits"]
+[node name="credits_overlay" type="TextureRect" parent="ui_layout/overlay/credits"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -873,7 +882,7 @@ grow_vertical = 2
 texture = ExtResource("9_4db0x")
 expand_mode = 1
 
-[node name="hint" type="Control" parent="overlay"]
+[node name="hint" type="Control" parent="ui_layout/overlay"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -883,7 +892,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_bg" type="TextureRect" parent="overlay/hint"]
+[node name="hint_bg" type="TextureRect" parent="ui_layout/overlay/hint"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -892,14 +901,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_4db0x")
 
-[node name="plooy" type="AnimatedSprite2D" parent="overlay/hint"]
+[node name="plooy" type="AnimatedSprite2D" parent="ui_layout/overlay/hint"]
 texture_filter = 1
 position = Vector2(141.969, 587.186)
 scale = Vector2(10.9193, 10.0155)
 sprite_frames = SubResource("SpriteFrames_bo42c")
 flip_h = true
 
-[node name="hint_overlay" type="Control" parent="overlay/hint"]
+[node name="hint_overlay" type="Control" parent="ui_layout/overlay/hint"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -911,7 +920,7 @@ offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="hint_container_1" type="TextureRect" parent="overlay/hint/hint_overlay"]
+[node name="hint_container_1" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -925,7 +934,7 @@ texture = ExtResource("16_p5p3o")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_container_2" type="TextureRect" parent="overlay/hint/hint_overlay"]
+[node name="hint_container_2" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -940,7 +949,7 @@ texture = ExtResource("17_4oq6o")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_container_3" type="TextureRect" parent="overlay/hint/hint_overlay"]
+[node name="hint_container_3" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -955,7 +964,7 @@ texture = ExtResource("18_1mbbf")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_container_4" type="TextureRect" parent="overlay/hint/hint_overlay"]
+[node name="hint_container_4" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -970,7 +979,7 @@ texture = ExtResource("19_fw52k")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="close_button" type="TextureButton" parent="overlay"]
+[node name="close_button" type="TextureButton" parent="ui_layout/overlay"]
 visible = false
 texture_filter = 1
 layout_mode = 1
