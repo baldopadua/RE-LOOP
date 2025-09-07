@@ -31,7 +31,7 @@ func play_plooy_falling_animation():
 	).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 	
 	# Delay bago mag spin/shrink
-	plooy_tween.tween_interval(0.25)
+	plooy_tween.tween_interval(0.1)
 	# Spin/shrink/fade papuntang shrink_position
 	plooy_tween.tween_callback(Callable(self, "_plooy_spin_and_shrink").bind(plooy, shrink_marker.position))
 

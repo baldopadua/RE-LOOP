@@ -282,7 +282,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="top_position" type="Marker2D" parent="transition_layout/main_to_game/plooy"]
-position = Vector2(394.001, -83.9989)
+position = Vector2(401.002, -287.999)
 
 [node name="fall_position" type="Marker2D" parent="transition_layout/main_to_game/plooy"]
 position = Vector2(419.999, 276.001)

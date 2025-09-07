@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://wvr0ph3yi7o1"]
+[gd_scene load_steps=42 format=3 uid="uid://bcri7p5apbme4"]
 
 [ext_resource type="Script" uid="uid://dwfjc4wc808h0" path="res://Scripts/ui/game_ui_elements.gd" id="1_ev2l3"]
 [ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="3_8fl4t"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dn8g7surbovjv" path="res://Assets/ui/hint_button_icon.png" id="8_ovp1g"]
 [ext_resource type="Texture2D" uid="uid://dgtpfwvyxwquw" path="res://Assets/ui/hint_button_icon_hover.png" id="9_ihimg"]
 [ext_resource type="PackedScene" uid="uid://c221xvoh8em1d" path="res://Scenes/ui/hint.tscn" id="10_0phbq"]
-[ext_resource type="PackedScene" uid="uid://bnrnr4wjbytbv" path="res://Scenes/ui/tutorial.tscn" id="11_smuvt"]
+[ext_resource type="PackedScene" uid="uid://dkb34nngclnmy" path="res://Scenes/ui/tutorial.tscn" id="11_smuvt"]
 [ext_resource type="PackedScene" uid="uid://h6nnskumaw0c" path="res://Scenes/screen_effects/level_title_name.tscn" id="13_ihimg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xvw7"]
