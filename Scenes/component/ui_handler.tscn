@@ -365,7 +365,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -388,7 +388,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"hover",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xvw7"]
@@ -720,19 +720,19 @@ metadata/_edit_use_anchors_ = true
 [node name="credits_button" type="TextureButton" parent="main_menu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.279687
-anchor_top = 0.490278
-anchor_right = 0.4
-anchor_bottom = 0.741667
+anchor_left = 0.278906
+anchor_top = 0.4
+anchor_right = 0.399219
+anchor_bottom = 0.693056
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="credits_animated_icon" type="AnimatedSprite2D" parent="main_menu/credits_button"]
-position = Vector2(73.875, 66)
+position = Vector2(76, 115)
 scale = Vector2(5.47222, 6)
 sprite_frames = SubResource("SpriteFrames_iwsb4")
-animation = &"hover"
+frame_progress = 0.147243
 
 [node name="game_ui_elements" type="Control" parent="."]
 visible = false

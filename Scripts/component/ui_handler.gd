@@ -1,5 +1,7 @@
 extends Control
 
+@onready var sound_manager = get_node("SoundManager")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -39,7 +41,16 @@ func show_cursor():
 		$custom_cursor.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
+# Auto-play all AnimatedSprite2D nodes that are visible under parent
+func auto_play_visible_sprites(parent: Node) -> void:
+	for node in _get_all_nodes(parent):
+		if node is AnimatedSprite2D and node.visible:
+			if node.has_method("play"):
+				node.play()
+
 func show_main_menu():
+	if sound_manager:
+		sound_manager.play_music("main_bgm")
 	# Hide all children of background and main_menu first
 	if $background:
 		hide_all_children($background)
@@ -57,6 +68,8 @@ func show_main_menu():
 		for child in $main_menu.get_children():
 			if child.has_method("set_visible"):
 				child.visible = true
+		# Auto-play visible sprites in main_menu
+		auto_play_visible_sprites($main_menu)
 	# Hide other direct children (custom_cursor no longer handled here)
 	for child in get_children():
 		if child.name not in ["background", "main_menu"]:

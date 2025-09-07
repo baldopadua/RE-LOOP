@@ -166,4 +166,4 @@ pitch_scale = 4.0
 
 [node name="main_bgm" type="AudioStreamPlayer2D" parent="music"]
 stream = ExtResource("29_fwa5o")
-volume_db = 7.336
+volume_db = 10.0
