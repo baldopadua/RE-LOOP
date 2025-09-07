@@ -1,8 +1,9 @@
-[gd_scene load_steps=115 format=3 uid="uid://yi6b7rc6mnj6"]
+[gd_scene load_steps=116 format=3 uid="uid://yi6b7rc6mnj6"]
 
 [ext_resource type="Script" uid="uid://c4y00npx7l6j5" path="res://Scripts/component/ui_handler.gd" id="1_4lx54"]
 [ext_resource type="Texture2D" uid="uid://x71yae621dsr" path="res://Assets/wormhole (1)-Sheet.png" id="2_vslub"]
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="3_cj7l6"]
+[ext_resource type="Script" uid="uid://b0e7xopaj61st" path="res://Scripts/ui/main_menu.gd" id="4_exohx"]
 [ext_resource type="Texture2D" uid="uid://c284erqqs1py8" path="res://Assets/ui/gametitle.png" id="4_iwsb4"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="4_j1hp8"]
 [ext_resource type="Texture2D" uid="uid://b4b5idm0212da" path="res://Assets/ui/tutorial_button.png" id="5_4r7hv"]
@@ -670,6 +671,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_exohx")
 metadata/_edit_use_anchors_ = true
 
 [node name="game_title" type="TextureRect" parent="main_menu"]
