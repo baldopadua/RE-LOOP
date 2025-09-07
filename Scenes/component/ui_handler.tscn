@@ -809,6 +809,7 @@ sprite_frames = SubResource("SpriteFrames_taira")
 animation = &"fixed"
 
 [node name="overlay" type="Control" parent="ui_layout"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -818,7 +819,6 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="tutorial" type="Control" parent="ui_layout/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -858,7 +858,6 @@ texture = ExtResource("9_0b04p")
 stretch_mode = 4
 
 [node name="credits" type="Control" parent="ui_layout/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -883,7 +882,6 @@ texture = ExtResource("9_4db0x")
 expand_mode = 1
 
 [node name="hint" type="Control" parent="ui_layout/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -980,14 +978,13 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="close_button" type="TextureButton" parent="ui_layout/overlay"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.890625
-anchor_top = 0.0541667
-anchor_right = 0.976391
-anchor_bottom = 0.21837
+anchor_left = 0.910937
+anchor_top = 0.0416667
+anchor_right = 0.976563
+anchor_bottom = 0.166667
 grow_horizontal = 0
 pivot_offset = Vector2(110, -10)
 texture_normal = ExtResource("18_p4mwq")

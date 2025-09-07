@@ -1,5 +1,7 @@
 extends Control
 
+
+
 @onready var credits_button = $main_menu/credits_button
 var animated_icon: AnimatedSprite2D = null
 
@@ -41,3 +43,5 @@ func _on_credits_button_mouse_exited():
 		animated_icon.animation = "default"
 		animated_icon.frame = current_frame
 		animated_icon.play()
+
+

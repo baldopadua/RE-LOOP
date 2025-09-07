@@ -4,9 +4,13 @@ extends Control
 @onready var ui_layout = $ui_layout
 @onready var background = $background
 
+var bg_node: Node = null
+var main_menu: Node = null
+
 # CALLED WHEN THE NODE ENTERS THE SCENE TREE FOR THE FIRST TIME.
 func _ready() -> void:
 	_connect_hover_sound(self)
+	
 
 
 # CALLED EVERY FRAME. 'DELTA' IS THE ELAPSED TIME SINCE THE PREVIOUS FRAME.
@@ -89,10 +93,15 @@ func show_background(bg_name: String) -> void:
 		hide_all_children(background)
 		background.visible = true
 		if background.has_node(bg_name):
-			var bg_node = background.get_node(bg_name)
+			bg_node = background.get_node(bg_name)
 			bg_node.visible = true
 			if bg_node is AnimatedSprite2D and bg_node.has_method("play"):
 				bg_node.play("default")
+
+func hide_background(bg_name: String) -> void:
+	if background and background.has_node(bg_name):
+		bg_node = background.get_node(bg_name)
+		bg_node.visible = false
 
 # SHOW/HIDE/REMOVE MAIN MENU
 func show_main_menu():
@@ -102,7 +111,7 @@ func show_main_menu():
 	show_background("game_animated_bg")
 	# USE NEW HIERARCHY FOR MAIN_MENU
 	if ui_layout.has_node("main_menu"):
-		var main_menu = ui_layout.get_node("main_menu")
+		main_menu = ui_layout.get_node("main_menu")
 		hide_all_children(main_menu)
 		main_menu.visible = true
 		for child in main_menu.get_children():
@@ -122,11 +131,63 @@ func show_main_menu():
 				child.visible = false
 
 func remove_main_menu():
-	if ui_layout.has_node("main_menu"):
-		var main_menu = ui_layout.get_node("main_menu")
+	if main_menu:
+		sound_manager.stop_music("main_bgm")
 		main_menu.queue_free()
 
 func hide_main_menu():
-	if ui_layout.has_node("main_menu"):
-		var main_menu = ui_layout.get_node("main_menu")
+	if main_menu:
 		main_menu.visible = false
+		main_menu.visible = false
+
+func unhide_main_menu():
+	if main_menu:
+		main_menu.visible = true
+		main_menu.visible = true
+
+# OVERLAY 
+
+func show_close_button():
+	if ui_layout.has_node("overlay"):
+		var overlay = ui_layout.get_node("overlay")
+		if overlay.has_node("close_button"):
+			var close_btn = overlay.get_node("close_button")
+			close_btn.visible = true
+
+func show_overlay_tutorial():
+	if ui_layout.has_node("overlay"):
+		var overlay = ui_layout.get_node("overlay")
+		overlay.visible = true
+		hide_all_children(overlay)
+		if overlay.has_node("tutorial"):
+			var tutorial = overlay.get_node("tutorial")
+			tutorial.visible = true
+			show_close_button()
+
+func show_overlay_credits():
+	if ui_layout.has_node("overlay"):
+		var overlay = ui_layout.get_node("overlay")
+		overlay.visible = true
+		hide_all_children(overlay)
+		if overlay.has_node("credits"):
+			var credits = overlay.get_node("credits")
+			credits.visible = true
+			show_close_button()
+
+func close_overlay_button(node):
+	var overlay = null
+	if ui_layout.has_node("overlay"):
+		overlay = ui_layout.get_node("overlay")
+	if not overlay:
+		return
+	var current = node.get_parent()
+	while current and current != overlay:
+		var to_free = current
+		current = current.get_parent()
+		to_free.visible = false
+		to_free.queue_free()
+	# After closing the child, hide the overlay itself
+	overlay.visible = false
+
+
+

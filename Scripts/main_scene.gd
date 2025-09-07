@@ -7,6 +7,7 @@ func _ready():
 	ui_handler.show_main_menu()
 	ui_handler.show_cursor()
 	_connect_main_menu_buttons()
+	_connect_overlay_close_button()
 
 func _connect_main_menu_buttons():
 	if ui_handler.ui_layout.has_node("main_menu"):
@@ -27,20 +28,33 @@ func _connect_main_menu_buttons():
 			if not credits_btn.is_connected("pressed", Callable(self, "_on_main_menu_button_pressed")):
 				credits_btn.connect("pressed", Callable(self, "_on_main_menu_button_pressed").bind("credits"))
 
+func _connect_overlay_close_button():
+	if ui_handler.ui_layout.has_node("overlay"):
+		var overlay = ui_handler.ui_layout.get_node("overlay")
+		if overlay.has_node("close_button"):
+			var close_btn = overlay.get_node("close_button")
+			if not close_btn.is_connected("pressed", Callable(self, "_on_overlay_close_button_pressed")):
+				close_btn.connect("pressed", Callable(self, "_on_overlay_close_button_pressed").bind(close_btn))
+
+func _on_overlay_close_button_pressed(close_btn):
+	ui_handler.sound_manager.play_ui("page_turn")
+	ui_handler.close_overlay_button(close_btn)
+	ui_handler.unhide_main_menu()
+
 func _on_main_menu_button_pressed(button_type):
-	if button_type == "start" and ui_handler.sound_manager:
-		ui_handler.sound_manager.stop_music("main_bgm")
-		ui_handler.remove_main_menu()
-		# TODO: Add start game logic here
-		pass
-	elif button_type == "tutorial":
-		ui_handler.hide_main_menu()
-		# TODO: Show tutorial overlay logic here
-		pass
-	elif button_type == "credits":
-		ui_handler.hide_main_menu()
-		# TODO: Show credits overlay logic here
-		pass
+	if ui_handler.sound_manager:
+		if button_type == "start":
+			ui_handler.sound_manager.play_ui("click")
+			ui_handler.remove_main_menu()
+		elif button_type == "tutorial":
+			ui_handler.sound_manager.play_ui("page_turn")
+			ui_handler.hide_main_menu()
+			ui_handler.show_overlay_tutorial()
+		elif button_type == "credits":
+			ui_handler.sound_manager.play_ui("page_turn")
+			ui_handler.hide_main_menu()
+			ui_handler.show_overlay_credits()
+
 
 
 
