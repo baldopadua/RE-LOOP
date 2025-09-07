@@ -1,8 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://debft45ici3wd"]
+[gd_scene load_steps=36 format=3 uid="uid://debft45ici3wd"]
 
 [ext_resource type="Script" uid="uid://c2ygnpikpv08e" path="res://Scripts/component/transition_handler.gd" id="1_6twhv"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="2_feglm"]
 [ext_resource type="Texture2D" uid="uid://x71yae621dsr" path="res://Assets/wormhole (1)-Sheet.png" id="2_yvx2s"]
+[ext_resource type="Script" uid="uid://hp0x134m7qsx" path="res://Scripts/component/transition_layout.gd" id="3_1gjgp"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="4_wvfoe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urcnp"]
@@ -250,6 +251,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_1gjgp")
 metadata/_edit_use_anchors_ = true
 
 [node name="main_to_game" type="Control" parent="transition_layout"]
@@ -259,24 +261,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="plooy" type="TextureRect" parent="transition_layout/main_to_game"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
+anchors_preset = -1
+anchor_left = 0.349218
+anchor_top = 0.256945
+anchor_right = 0.471094
+anchor_bottom = 0.491667
+offset_left = 0.000610352
+offset_top = -0.000671387
+offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -6.28319
 pivot_offset = Vector2(150, 150)
 texture = ExtResource("2_feglm")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="top_position" type="Marker2D" parent="transition_layout/main_to_game/plooy"]
+position = Vector2(394.001, -83.9989)
+
+[node name="fall_position" type="Marker2D" parent="transition_layout/main_to_game/plooy"]
+position = Vector2(419.999, 276.001)
+
+[node name="shrink_position" type="Marker2D" parent="transition_layout/main_to_game/plooy"]
+position = Vector2(639, 163.002)
 
 [node name="SoundManager" parent="." instance=ExtResource("4_wvfoe")]

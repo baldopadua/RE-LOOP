@@ -1,8 +1,10 @@
 extends Control
 
+var layout: Control
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	layout = get_node("transition_layout")
 
 func show_background() -> void:
 	var bg = get_node("background")
@@ -13,27 +15,28 @@ func show_background() -> void:
 			anim.frame = 0
 			anim.play("default")
 			
-func remove_transition(transition_name: String) -> void:
-	# Hide and queue_free the transition node after animation
-	var layout = get_node("transition_layout")
-	if layout.has_node(transition_name):
-		var node = layout.get_node(transition_name)
-		node.visible = false
-		node.queue_free()
+# func remove_transition(transition_name: String) -> void:
+# 	if layout and layout.has_node(transition_name):
+# 		var node = layout.get_node(transition_name)
+# 		node.visible = false
+# 		node.queue_free()
 
-func show_node_child(node: Node) -> void:
+func show_child_node(node_name: String) -> void:
+	if layout and layout.has_node(node_name):
+		var node = layout.get_node(node_name)
+		_show_node_and_children(node)
+
+func _show_node_and_children(node: Node) -> void:
+	node.visible = true
 	for child in node.get_children():
-		if child.has_method("set_visible"):
-			child.visible = true
-		show_node_child(child)
+		_show_node_and_children(child)
 
-func show_transition (transition_name: String) -> void:
-	var layout = get_node("transition_layout")
-	if layout.has_node(transition_name):
-		var node = layout.get_node(transition_name)
-		node.visible = true 
-		show_node_child(node)
-		show_background()
+func show_main_to_game_transition() -> void:
+	show_background()
+	show_child_node("main_to_game")
+	if layout:
+		layout.play_plooy_falling_animation()
+
 
 
 

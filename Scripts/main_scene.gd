@@ -7,7 +7,7 @@ func _ready():
 	#ui_handler.show_only_children(ui_handler.ui_layout, ["overlay"])
 	ui_handler.show_main_menu()
 	ui_handler.show_cursor()
-	transition_handler.show_transition("main_to_game") 
+	transition_handler.show_main_to_game_transition()
 	_connect_main_menu_buttons()
 	_connect_overlay_close_button()
 
@@ -50,9 +50,8 @@ func _on_main_menu_button_pressed(button_type):
 			ui_handler.remove_cursor()
 			ui_handler.remove_main_menu()
 			transition_handler.visible = true 
-			transition_handler.show_transition("main_to_game")
+			transition_handler.show_main_to_game_transition()
 			await get_tree().create_timer(4.5).timeout 
-			transition_handler.remove_transition("main_to_game")
 			transition_handler.visible = false 
 			$GameScene.visible = true
 		elif button_type == "tutorial":
