@@ -563,7 +563,6 @@ offset_right = -8.0
 offset_bottom = 110.0
 grow_horizontal = 0
 pivot_offset = Vector2(110, -10)
-mouse_filter = 0
 texture_normal = ExtResource("11_fw52k")
 texture_hover = ExtResource("12_hu5x7")
 ignore_texture_size = true
