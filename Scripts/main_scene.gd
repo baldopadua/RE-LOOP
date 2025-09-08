@@ -54,6 +54,7 @@ func _on_main_menu_button_pressed(button_type):
 			await get_tree().create_timer(4.5).timeout 
 			transition_handler.visible = false 
 			$GameScene.visible = true
+			ui_handler.show_game_ui_elements()
 		elif button_type == "tutorial":
 			ui_handler.sound_manager.play_ui("page_turn")
 			ui_handler.hide_main_menu()

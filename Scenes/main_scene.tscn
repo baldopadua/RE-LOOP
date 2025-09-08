@@ -14,11 +14,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6ev3c")
 
-[node name="UiHandler" parent="." instance=ExtResource("5_psl12")]
-layout_mode = 1
-
 [node name="GameScene" parent="." instance=ExtResource("3_jv6wh")]
 visible = false
+layout_mode = 1
+
+[node name="UiHandler" parent="." instance=ExtResource("5_psl12")]
 layout_mode = 1
 
 [node name="TransitionHandler" parent="." instance=ExtResource("4_x6ack")]

@@ -195,5 +195,25 @@ func close_overlay_button(node):
 		to_free.queue_free()
 	overlay.visible = false
 
+func show_game_ui_elements():
+	if ui_layout.has_node("game_ui_elements"):
+		var game_ui = ui_layout.get_node("game_ui_elements")
+		hide_all_children(game_ui)
+		game_ui.visible = true
+		for child in game_ui.get_children():
+			if child.has_method("set_visible"):
+				child.visible = true
+		auto_play_visible_sprites(game_ui)
+	# ONLY SHOW BACKGROUND AND UI_LAYOUT, HIDE OTHER DIRECT CHILDREN
+	show_only_nodes(["background", "ui_layout"])
+	# ONLY SHOW game_ui_elements INSIDE UI_LAYOUT, HIDE OTHERS
+	for child in ui_layout.get_children():
+		if child.name == "game_ui_elements":
+			if child.has_method("set_visible"):
+				child.visible = true
+		else:
+			if child.has_method("set_visible"):
+				child.visible = false
+
 
 
