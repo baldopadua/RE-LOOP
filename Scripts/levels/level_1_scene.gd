@@ -17,6 +17,7 @@ var tween_rotate: Tween
 var tween_scale: Tween
 
 func _ready():
+	
 	GlobalVariables.is_looping = true
 	
 	# INITIALLY ROTATE TO 360 DEGREES

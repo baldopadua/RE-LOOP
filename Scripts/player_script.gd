@@ -54,6 +54,8 @@ var moves: int = 0
 @onready var object_drop_position := $object_drop_position
 @onready var sound_manager = $SoundManager
 var area_handler: Node2D
+var ui_handler: Node = null
+var previous_direction: GlobalVariables.player_direction = player_directions.CLOCKWISE
 
 
 func _ready() -> void:
@@ -63,7 +65,13 @@ func _ready() -> void:
 		# PLAY RESTART SFX AND CUTSCENES
 	object_pos = get_node("object_position")
 	sprite.play("idle")
-	
+	# Debug: print all children of root
+	var root = get_tree().root
+	for child in root.get_children():
+		print("Root child: ", child.name)
+	# Try to get UiHandler under MainScene
+	if root.has_node("MainScene/UiHandler"):
+		ui_handler = root.get_node("MainScene/UiHandler")
 	# MAP HANDLER
 	area_handler = get_parent().get_node("AreaHandler") 
 
@@ -108,19 +116,32 @@ func _input(event: InputEvent) -> void:
 			sprite.play("idle")
 
 func _tween_finished():
+	print("_tween_finished called")
 	# RESET THE SFX PITCH SCALE WHEN REACHING BOTH ENDS
 	if round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0 or round(rad_to_deg(rotation)) == 0.0:
 		sound_manager.set_sfx_pitch_scale("time_manip", 1.0)
 		sound_manager.set_sfx_pitch_scale("clank", 1.0)
-	
 	# SWITCH THE MONOLITH
-	
-	
+	# INITIAL VALUE NO ENERGY and # POSITIVE MEANS CLOCKWISE
+	if GlobalVariables.is_looping and ui_handler:
+		if moves >= 0:
+			ui_handler.set_time_indicator_animation("clockwise_time_indicator")
+			if moves > 0:
+				for i in range(moves):
+					ui_handler.move_time_indicator_frame(true)
+			ui_handler.time_indicator.pause()
+		else:
+			ui_handler.set_time_indicator_animation("counterclockwise_time_indicator")
+			if abs(moves) > 0:
+				for i in range(abs(moves)):
+					ui_handler.move_time_indicator_frame(true)
+			ui_handler.time_indicator.pause()
 	# RESET THE LEVEL IF LOOPED
 	if (round(rad_to_deg(rotation)) == 0.0 or round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0) and (prev_deg == 330.0 or prev_deg == -330.0) and GlobalVariables.is_looping:
 		GlobalVariables.is_restarting = true
 		GlobalVariables.restart_level(get_parent().get_parent())
-	
+		if ui_handler:
+			ui_handler.update_time_indicator_by_move(0)
 	# RESET THE ANGLE TO 30
 	if round(rad_to_deg(rotation)) == 390.0 and direction == player_directions.CLOCKWISE:
 		rotation = deg_to_rad(30.0)
@@ -166,26 +187,26 @@ func _tween_finished():
 # Movement of Player
 func rotate_player():
 	sprite.play("walk")
-	# Player is moving and create a tween to smooth animation
 	is_moving = true
 	tween = create_tween()
-	
-	# Connect tween_finished if not yet connected
 	if not tween.is_connected("finished", _tween_finished):
 		tween.connect("finished", _tween_finished)
-		
-	# Rotate based on direction
 	var rotation_tween: float
+	var dir_str: String
 	if direction == player_directions.CLOCKWISE:
 		rotation_tween = rotation + deg_to_rad(angle_per_move)
 		sprite.flip_h = false
 		moves += 1
+		dir_str = "Clockwise"
 	else:
 		rotation_tween = rotation - deg_to_rad(angle_per_move)
 		sprite.flip_h = true
 		moves -= 1
-		
-	# set the tween
+		dir_str = "Counterclockwise"
+	print("Current moves: ", moves, " Direction: ", dir_str)
+	if GlobalVariables.is_looping and ui_handler:
+		ui_handler.update_time_indicator_by_move(moves)
+	previous_direction = direction
 	tween.tween_property(self, "rotation", rotation_tween, transition_time).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	
 func _process(_delta):

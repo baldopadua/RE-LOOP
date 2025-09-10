@@ -3,13 +3,19 @@ extends Control
 @onready var sound_manager = get_node("SoundManager")
 @onready var ui_layout = $ui_layout
 @onready var background = $background
+@onready var time_indicator = $ui_layout/game_ui_elements/time_indicator
 
 var bg_node: Node = null
 var main_menu: Node = null
+var player = null
+var last_anim_type: String = ""
 
 # CALLED WHEN THE NODE ENTERS THE SCENE TREE FOR THE FIRST TIME.
 func _ready() -> void:
 	_connect_hover_sound(self)
+	# Find player node if exists
+	if get_tree().get_root().has_node("PlayerScene"):
+		player = get_tree().get_root().get_node("PlayerScene")
 	
 
 
@@ -203,7 +209,7 @@ func show_game_ui_elements():
 		for child in game_ui.get_children():
 			if child.has_method("set_visible"):
 				child.visible = true
-		auto_play_visible_sprites(game_ui)
+		
 	# ONLY SHOW BACKGROUND AND UI_LAYOUT, HIDE OTHER DIRECT CHILDREN
 	show_only_nodes(["background", "ui_layout"])
 	# ONLY SHOW game_ui_elements INSIDE UI_LAYOUT, HIDE OTHERS
@@ -214,6 +220,60 @@ func show_game_ui_elements():
 		else:
 			if child.has_method("set_visible"):
 				child.visible = false
+
+# TIME INDICATOR LOGIC
+func refresh_time_indicator():
+	if ui_layout.has_node("game_ui_elements"):
+		var game_ui = ui_layout.get_node("game_ui_elements")
+		if game_ui.has_node("time_indicator"):
+			time_indicator = game_ui.get_node("time_indicator")
+
+# Set the animation type: "clockwise_time_indicator", "counterclockwise_time_indicator", "fixed"
+func set_time_indicator_animation(anim_type: String) -> void:
+	refresh_time_indicator()
+	if time_indicator and time_indicator.is_visible_in_tree():
+		time_indicator.animation = anim_type
+		time_indicator.frame = 0
+		time_indicator.pause()
+
+# Move the time indicator frame forward or backward
+func move_time_indicator_frame(forward: bool = true) -> void:
+	refresh_time_indicator()
+	if not time_indicator or not time_indicator.is_visible_in_tree():
+		return
+	# Only move if player is present in the same node
+	var frame_count = time_indicator.sprite_frames.get_frame_count(time_indicator.animation)
+	if frame_count <= 1:
+		return
+	var current_frame = time_indicator.frame
+	if forward:
+		current_frame += 1
+		if current_frame >= frame_count:
+			current_frame = frame_count - 1
+	else:
+		current_frame -= 1
+		if current_frame < 0:
+			current_frame = 0
+	time_indicator.frame = current_frame
+	time_indicator.pause()
+
+# Reset time indicator to first frame
+func reset_time_indicator() -> void:
+	refresh_time_indicator()
+	if time_indicator:
+		time_indicator.frame = 0
+
+func update_time_indicator_by_move(move: int) -> void:
+	refresh_time_indicator()
+	if not time_indicator or not time_indicator.is_visible_in_tree():
+		return
+	var anim_type = "clockwise_time_indicator" if move >= 0 else "counterclockwise_time_indicator"
+	if anim_type != last_anim_type:
+		time_indicator.animation = anim_type
+		last_anim_type = anim_type
+	var frame = abs(move) % 12
+	time_indicator.frame = frame
+	
 
 
 
