@@ -584,7 +584,7 @@ stretch_mode = 0
 
 [node name="time_indicator" type="AnimatedSprite2D" parent="ui_layout/game_ui_elements"]
 texture_filter = 1
-position = Vector2(780, 432)
+position = Vector2(1159, 572)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_taira")
 animation = &"clockwise_time_indicator"

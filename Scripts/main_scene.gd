@@ -2,7 +2,7 @@ extends Control
 
 @onready var ui_handler = $UiHandler
 @onready var transition_handler = $TransitionHandler
-var game_scene_instance: Node = null
+@onready var game_scene: Node = $GameScene
 
 func _ready():
 	#ui_handler.show_only_children(ui_handler.ui_layout, ["overlay"])
@@ -12,7 +12,7 @@ func _ready():
 	_connect_main_menu_buttons()
 	_connect_overlay_close_button()
 	_connect_game_ui_elements_buttons()
-	# GameScene is not loaded at startup
+	$GameScene.visible= false;
 
 func _connect_main_menu_buttons():
 	if ui_handler.ui_layout.has_node("main_menu"):
@@ -70,10 +70,7 @@ func _on_main_menu_button_pressed(button_type):
 			transition_handler.show_main_to_game_transition()
 			await get_tree().create_timer(4.5).timeout 
 			transition_handler.visible = false 
-			if not game_scene_instance:
-				var game_scene = preload("res://Scenes/game_scene.tscn")
-				game_scene_instance = game_scene.instantiate()
-				add_child(game_scene_instance)
+			$GameScene.visible= true;
 			ui_handler.show_game_ui_elements()
 		elif button_type == "tutorial":
 			ui_handler.sound_manager.play_ui("page_turn")
