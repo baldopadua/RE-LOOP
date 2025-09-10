@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://clmxq6e31gwm8"]
+[gd_scene load_steps=11 format=3 uid="uid://clmxq6e31gwm8"]
 
 [ext_resource type="Script" uid="uid://cq7q8j32eespg" path="res://Scripts/game_scene.gd" id="1_6h5vk"]
 [ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="1_x87qo"]
-[ext_resource type="PackedScene" uid="uid://bcri7p5apbme4" path="res://Scenes/ui/game_ui_elements.tscn" id="3_fiftr"]
 [ext_resource type="PackedScene" uid="uid://cbl4k6bkjnggc" path="res://Scenes/levels/level_1_scene.tscn" id="4_fiftr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6fju"]
@@ -77,11 +76,3 @@ sprite_frames = SubResource("SpriteFrames_7iton")
 position = Vector2(640, 360)
 
 [node name="level_1" parent="levels_frame" instance=ExtResource("4_fiftr")]
-
-[node name="CanvasLayerGameUi" type="CanvasLayer" parent="."]
-layer = 2
-visible = false
-
-[node name="game_ui_elements" parent="CanvasLayerGameUi" instance=ExtResource("3_fiftr")]
-texture_filter = 1
-pivot_offset = Vector2(640, 360)

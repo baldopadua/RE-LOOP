@@ -20,7 +20,7 @@ var default_geyser_played: bool = false
 # Remove direct SFX node references
 
 func _ready() -> void:
-	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
+	pass
 
 func _process(_delta: float) -> void:
 	if is_player_in_geyser:
@@ -32,10 +32,7 @@ func _process(_delta: float) -> void:
 				# Play all finish_level_sfx SFX at once
 				if sound_manager.has_method("play_finish_level_sfx"):
 					sound_manager.play_finish_level_sfx()
-			# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
-			time_indicator.animation = "fixed"
-			time_indicator.frame = 0
-			time_indicator.pause()
+			
 			
 			animate_geyser.play("loop_break")
 			

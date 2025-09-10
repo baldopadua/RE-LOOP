@@ -16,7 +16,7 @@ var tween_scale: Tween
 var time_indicator: AnimatedSprite2D
 
 func _ready() -> void:
-	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
+	pass
 
 func _process(_delta: float) -> void:
 	if has_node("old_man") and GlobalVariables.is_looping and not is_playing:
@@ -65,9 +65,8 @@ func _on_body_entered(body) -> void:
 		GlobalVariables.player_stopped = true
 		await get_tree().create_timer(1).timeout
 
-		time_indicator.animation = "fixed"
-		time_indicator.frame = 0
-		time_indicator.pause()
+		
+		
 
 		if body.has_node("AnimatedSprite2D"):
 			var sprite = body.get_node("AnimatedSprite2D")

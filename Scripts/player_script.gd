@@ -54,7 +54,7 @@ var moves: int = 0
 @onready var object_drop_position := $object_drop_position
 @onready var sound_manager = $SoundManager
 var area_handler: Node2D
-var time_indicator: AnimatedSprite2D
+
 
 func _ready() -> void:
 	if GlobalVariables.is_restarting:
@@ -63,9 +63,7 @@ func _ready() -> void:
 		# PLAY RESTART SFX AND CUTSCENES
 	object_pos = get_node("object_position")
 	sprite.play("idle")
-	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
-	time_indicator.animation = "clockwise_time_indicator"
-	time_indicator.frame = moves
+	
 	# MAP HANDLER
 	area_handler = get_parent().get_node("AreaHandler") 
 
@@ -116,17 +114,7 @@ func _tween_finished():
 		sound_manager.set_sfx_pitch_scale("clank", 1.0)
 	
 	# SWITCH THE MONOLITH
-	# INITIAL VALUE NO ENERGY and # POSITIVE MEANS CLOCKWISE
-	if GlobalVariables.is_looping:
-		if moves >= 0:
-			time_indicator.animation = "clockwise_time_indicator"
-			time_indicator.frame = moves
-			time_indicator.pause()
-		# ANYTHING LOWER THAN 0, NEGATIVE, MEANS COUNTERCLOCKWISE
-		else:
-			time_indicator.animation = "counterclockwise_time_indicator"
-			time_indicator.frame = abs(moves)
-			time_indicator.pause()
+	
 	
 	# RESET THE LEVEL IF LOOPED
 	if (round(rad_to_deg(rotation)) == 0.0 or round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0) and (prev_deg == 330.0 or prev_deg == -330.0) and GlobalVariables.is_looping:
