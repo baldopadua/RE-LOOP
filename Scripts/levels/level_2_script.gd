@@ -37,7 +37,7 @@ func _ready():
 	
 	objects.append(old_man)
 	objects.append(sword)
-
+	
 func _tween_rotation_finished():
 	tween_rotate.kill()
 

@@ -30,6 +30,7 @@ func _on_body_entered(body) -> void:
 			print("[DEBUG] Found UiHandler node:", ui_handler)
 			if ui_handler.has_method("set_time_indicator_fixed"):
 				ui_handler.set_time_indicator_fixed()
+				ui_handler.set_default_time_indicator()
 			else:
 				print("[DEBUG] UiHandler has no method set_time_indicator_fixed.")
 		else:

@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dypu05rngiwmu"]
+[gd_scene load_steps=4 format=3 uid="uid://dypu05rngiwmu"]
 
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
-[ext_resource type="PackedScene" uid="uid://clmxq6e31gwm8" path="res://Scenes/game_scene.tscn" id="3_jv6wh"]
 [ext_resource type="PackedScene" uid="uid://debft45ici3wd" path="res://Scenes/component/transition_handler.tscn" id="4_x6ack"]
 [ext_resource type="PackedScene" uid="uid://yi6b7rc6mnj6" path="res://Scenes/component/ui_handler.tscn" id="5_psl12"]
 
@@ -14,13 +13,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6ev3c")
 
-[node name="GameScene" parent="." instance=ExtResource("3_jv6wh")]
+[node name="TransitionHandler" parent="." instance=ExtResource("4_x6ack")]
 visible = false
 layout_mode = 1
 
 [node name="UiHandler" parent="." instance=ExtResource("5_psl12")]
-layout_mode = 1
-
-[node name="TransitionHandler" parent="." instance=ExtResource("4_x6ack")]
-visible = false
 layout_mode = 1

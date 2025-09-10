@@ -526,7 +526,7 @@ sprite_frames = SubResource("SpriteFrames_iwsb4")
 frame_progress = 0.147243
 
 [node name="game_ui_elements" type="Control" parent="ui_layout"]
-visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -584,13 +584,14 @@ stretch_mode = 0
 
 [node name="time_indicator" type="AnimatedSprite2D" parent="ui_layout/game_ui_elements"]
 texture_filter = 1
-position = Vector2(689, 338)
+position = Vector2(780, 432)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_taira")
 animation = &"clockwise_time_indicator"
 
 [node name="overlay" type="Control" parent="ui_layout"]
 visible = false
+z_index = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

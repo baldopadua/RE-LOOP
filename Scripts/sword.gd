@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func break_loop():
+	
 	var old_man = get_node("old_man")
 	if old_man.current_state == 2:
 		is_playing = true
@@ -64,9 +65,20 @@ func _on_body_entered(body) -> void:
 		is_playing_two = true
 		GlobalVariables.player_stopped = true
 		await get_tree().create_timer(1).timeout
-
 		
-		
+		# Set time_indicator to fixed and reset to frame 0 using ui_handler
+		var root = get_tree().root
+		print("[DEBUG] root node:", root)
+		if root.has_node("MainScene/UiHandler"):
+			var ui_handler = root.get_node("MainScene/UiHandler")
+			print("[DEBUG] Found UiHandler node:", ui_handler)
+			if ui_handler.has_method("set_time_indicator_fixed"):
+				ui_handler.set_time_indicator_fixed()
+				ui_handler.set_default_time_indicator()
+			else:
+				print("[DEBUG] UiHandler has no method set_time_indicator_fixed.")
+		else:
+			print("[DEBUG] MainScene/UiHandler not found in root.")
 
 		if body.has_node("AnimatedSprite2D"):
 			var sprite = body.get_node("AnimatedSprite2D")
@@ -76,7 +88,7 @@ func _on_body_entered(body) -> void:
 		tween_climb = create_tween()
 		if not tween_climb.is_connected("finished", _tween_climb_finished):
 			tween_climb.connect("finished", _tween_climb_finished)
-
+  
 		# PLAY CLIMB SFX via SoundManager
 		if sound_manager and sound_manager.sfx.has("Climb"):
 			sound_manager.play_sfx("Climb")
@@ -87,6 +99,10 @@ func _on_body_entered(body) -> void:
 
 		body.visible = false
 		go_to_level_3()
+
+		
+
+		
 
 func go_to_level_3():
 	# CREATE TWEEN FOR ROTATE

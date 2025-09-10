@@ -36,6 +36,20 @@ func _process(_delta: float) -> void:
 			
 			animate_geyser.play("loop_break")
 			
+			# Set time_indicator to fixed and reset to frame 0 using ui_handler
+			var root = get_tree().root
+			print("[DEBUG] root node:", root)
+			if root.has_node("MainScene/UiHandler"):
+				var ui_handler = root.get_node("MainScene/UiHandler")
+				print("[DEBUG] Found UiHandler node:", ui_handler)
+				if ui_handler.has_method("set_time_indicator_fixed"):
+					ui_handler.set_time_indicator_fixed()
+					ui_handler.set_default_time_indicator()
+				else:
+					print("[DEBUG] UiHandler has no method set_time_indicator_fixed.")
+			else:
+				print("[DEBUG] MainScene/UiHandler not found in root.")
+
 			# SPRUNG ALONG WITH GEYSER EXPLOSION
 			sprung_tween = create_tween()
 				
@@ -45,7 +59,8 @@ func _process(_delta: float) -> void:
 			sprung_tween.kill()
 			
 			player.visible = false
-			# SWITCH SCENE TO LEVEL 2
+			# SWITCH SCENE TO LEVEL 4
+
 			go_to_level_4()
 			
 	
@@ -151,7 +166,9 @@ func _on_body_entered(body) -> void:
 		GlobalVariables.player_stopped = true
 		rocks.clear()
 		
-		is_player_in_geyser = true			
+		is_player_in_geyser = true	
+
+			
 
 func go_to_level_4():
 	# CREATE TWEEN FOR ROTATE
