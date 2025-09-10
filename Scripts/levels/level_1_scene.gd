@@ -69,7 +69,7 @@ func update_tree_visibility(stage: int) -> void:
 	for i in range(states.size()):
 		tree.get_node(states[i]).visible = (i == index)
 	if stage == 4:
-		# Stop
+		print("[DEBUG] update_tree_visibility: stage 4 reached")
 		area_handler.show_loop_break(1)
 		GlobalVariables.is_looping = false
 		GlobalVariables.player_stopped = true
@@ -79,5 +79,13 @@ func update_tree_visibility(stage: int) -> void:
 		await get_tree().create_timer(1.0).timeout
 		GlobalVariables.player_stopped = false
 		return
+	# Continue updating time_indicator even after stage 4
+	var root = get_tree().root
+	if root.has_node("MainScene/UiHandler"):
+		var ui_handler = root.get_node("MainScene/UiHandler")
+		if ui_handler and ui_handler.time_indicator:
+			if ui_handler.has_method("update_time_indicator_by_move"):
+				ui_handler.update_time_indicator_by_move(player.moves)
+				ui_handler.time_indicator.visible = true # Ensure time_indicator is visible
 
 

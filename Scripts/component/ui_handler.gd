@@ -273,7 +273,15 @@ func update_time_indicator_by_move(move: int) -> void:
 		last_anim_type = anim_type
 	var frame = abs(move) % 12
 	time_indicator.frame = frame
-	
+
+func set_time_indicator_fixed() -> void:
+	refresh_time_indicator()
+	if time_indicator:
+		print("[DEBUG] set_time_indicator_fixed: time_indicator before set:", time_indicator)
+		time_indicator.animation = "fixed"
+		time_indicator.frame = 0
+		print("[DEBUG] set_time_indicator_fixed: time_indicator set to fixed, frame 0.")
+
 
 
 
