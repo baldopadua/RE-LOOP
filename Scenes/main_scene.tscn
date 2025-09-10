@@ -19,6 +19,7 @@ visible = false
 layout_mode = 1
 
 [node name="GameScene" parent="." instance=ExtResource("4_iacmt")]
+visible = false
 layout_mode = 1
 
 [node name="UiHandler" parent="." instance=ExtResource("5_psl12")]
