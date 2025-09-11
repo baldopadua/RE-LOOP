@@ -22,5 +22,7 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="UiHandler" parent="." instance=ExtResource("17_psl12")]
-layout_mode = 1
+[node name="CanvasLayerUi" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="UiHandler" parent="CanvasLayerUi" instance=ExtResource("17_psl12")]

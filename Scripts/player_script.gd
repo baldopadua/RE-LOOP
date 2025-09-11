@@ -71,8 +71,8 @@ func _ready() -> void:
 	for child in root.get_children():
 		print("Root child: ", child.name)
 	# Try to get UiHandler under MainScene
-	if root.has_node("MainScene/UiHandler"):
-		ui_handler = root.get_node("MainScene/UiHandler")
+	if root.has_node("MainScene/CanvasLayerUi/UiHandler"):
+		ui_handler = root.get_node("MainScene/CanvasLayerUi/UiHandler")
 	# MAP HANDLER
 	area_handler = get_parent().get_node("AreaHandler") 
 

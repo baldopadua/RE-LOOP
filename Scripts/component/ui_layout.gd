@@ -3,7 +3,6 @@ extends Control
 
 
 @onready var credits_button = $main_menu/credits_button
-@onready var hint_button = $game_ui_elements/hint_button
 @onready var ui_handler = get_parent() # Assumes ui_layout is child of UiHandler
 var animated_icon: AnimatedSprite2D = null
 
@@ -13,8 +12,7 @@ func _ready() -> void:
 		animated_icon = credits_button.get_node("credits_animated_icon")
 	if credits_button:
 		setup_credits_button()
-	if hint_button:
-		hint_button.connect("pressed", Callable(self, "_on_hint_button_pressed"))
+	
 
 # CALLED EVERY FRAME. 'DELTA' IS THE ELAPSED TIME SINCE THE PREVIOUS FRAME.
 func _process(_delta: float) -> void:
@@ -47,11 +45,6 @@ func _on_credits_button_mouse_exited():
 		animated_icon.animation = "default"
 		animated_icon.frame = current_frame
 		animated_icon.play()
-
-func _on_hint_button_pressed():
-	ui_handler.sound_manager.play_ui("page_turn")
-	if ui_handler and ui_handler.has_method("show_overlay_hint"):
-		ui_handler.show_overlay_hint()
 
 # Animate overlay open: slide in from right to center
 func animate_overlay_open_from_right(node: Control) -> void:

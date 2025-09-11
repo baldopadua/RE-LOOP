@@ -26,7 +26,7 @@ var tween_scale: Tween
 var allowed_angles: Array = [0.0, 360.0, -360.0, 90.0, -90.0, 180.0, -180.0, 270.0, -270.0]
 
 # TIME INDICATOR
-@onready var ui_handler = get_tree().root.get_node("MainScene/UiHandler")
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 func _ready() -> void:
 	# ang haba bruh, atleast it works ahhahahah

@@ -685,7 +685,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("19_bo42c")
 
-[node name="hint_overlay" type="Control" parent="ui_layout/overlay/hint"]
+[node name="hint_image" type="Control" parent="ui_layout/overlay/hint"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -697,7 +697,7 @@ offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="hint_container_1" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
+[node name="hint_container_1" type="TextureRect" parent="ui_layout/overlay/hint/hint_image"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -711,7 +711,7 @@ texture = ExtResource("25_nol8b")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_container_2" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
+[node name="hint_container_2" type="TextureRect" parent="ui_layout/overlay/hint/hint_image"]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -726,7 +726,7 @@ texture = ExtResource("26_us0vv")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_container_3" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
+[node name="hint_container_3" type="TextureRect" parent="ui_layout/overlay/hint/hint_image"]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -741,7 +741,7 @@ texture = ExtResource("27_0vcng")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_container_4" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
+[node name="hint_container_4" type="TextureRect" parent="ui_layout/overlay/hint/hint_image"]
 visible = false
 texture_filter = 1
 layout_mode = 1
@@ -756,7 +756,7 @@ texture = ExtResource("28_5ue8t")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="plooy_hint" type="AnimatedSprite2D" parent="ui_layout/overlay/hint/hint_overlay"]
+[node name="plooy_hint" type="AnimatedSprite2D" parent="ui_layout/overlay/hint/hint_image"]
 texture_filter = 1
 position = Vector2(102.969, 531.186)
 scale = Vector2(10.9193, 10.0155)

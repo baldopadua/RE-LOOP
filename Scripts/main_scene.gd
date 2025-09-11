@@ -1,8 +1,9 @@
 extends Control
 
-@onready var ui_handler = $UiHandler
+@onready var ui_handler = $CanvasLayerUi/UiHandler
 @onready var transition_handler = $TransitionHandler
 @onready var game_scene: Node = $GameScene
+
 
 func _ready():
 	#ui_handler.show_only_children(ui_handler.ui_layout, ["overlay"])
@@ -91,4 +92,5 @@ func _on_game_ui_elements_button_pressed(button_type):
 			ui_handler.sound_manager.play_ui("page_turn")
 			ui_handler.show_overlay_tutorial()
 		elif button_type == "hint":
-			pass
+			ui_handler.sound_manager.play_ui("page_turn")
+			ui_handler.show_overlay_hint()

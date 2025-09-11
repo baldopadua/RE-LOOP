@@ -10,7 +10,7 @@ extends object_class
 @onready var sound_manager = get_parent().get_node("SoundManager")
 @onready var area_handler = get_parent().get_node("AreaHandler")
 @onready var level_handler = $"../LevelHandler"
-@onready var ui_handler = get_tree().root.get_node("MainScene/UiHandler")
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 # BOOLEANS
 var is_playing: bool = false
