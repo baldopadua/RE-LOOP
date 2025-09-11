@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://bn1u7rxapvdbv"]
 
-[ext_resource type="Script" uid="uid://bvkjbo5mnux15" path="res://Scripts/dog.gd" id="1_26f7n"]
+[ext_resource type="Script" uid="uid://bvkjbo5mnux15" path="res://Scripts/object-level/level_4/dog.gd" id="1_26f7n"]
 [ext_resource type="Texture2D" uid="uid://it0nf1j8lb0e" path="res://Assets/levels/level_4/Dog_Stick-Sheet.png" id="2_26f7n"]
 [ext_resource type="Texture2D" uid="uid://bqwh7gkydtdad" path="res://Assets/levels/level_4/Dog_Bone-Sheet.png" id="3_o0ar0"]
 

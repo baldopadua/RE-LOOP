@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://bxrvbyampevae"]
 
-[ext_resource type="Script" uid="uid://duwrai3v0b7l7" path="res://Scripts/statues_3.gd" id="1_bd8td"]
+[ext_resource type="Script" uid="uid://duwrai3v0b7l7" path="res://Scripts/object-level/level_4/statues_3.gd" id="1_bd8td"]
 [ext_resource type="Texture2D" uid="uid://dm2vjj7hkf2ky" path="res://Assets/levels/level_4/statue_geyser-Sheet.png" id="2_uy724"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p06ri"]

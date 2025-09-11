@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://dfuqimqiipdvc"]
 
-[ext_resource type="Script" uid="uid://hp2l0bf61ho6" path="res://Scripts/lizard.gd" id="1_8cgbs"]
+[ext_resource type="Script" uid="uid://hp2l0bf61ho6" path="res://Scripts/object-level/level_4/lizard.gd" id="1_8cgbs"]
 [ext_resource type="Texture2D" uid="uid://booscc74vlv88" path="res://Assets/levels/level_4/Lizard-Sheet.png" id="2_8cgbs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxcvp"]

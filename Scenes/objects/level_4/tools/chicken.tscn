@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://b4fhx7cv5bnqd"]
 
-[ext_resource type="Script" uid="uid://c41pep8mnkrp4" path="res://Scripts/chicken.gd" id="1_fqtwt"]
+[ext_resource type="Script" uid="uid://c41pep8mnkrp4" path="res://Scripts/object-level/level_4/chicken.gd" id="1_fqtwt"]
 [ext_resource type="Texture2D" uid="uid://bn0qkkhg5vv4l" path="res://Assets/levels/level_4/chicken-Sheet.png" id="2_fqtwt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gehde"]

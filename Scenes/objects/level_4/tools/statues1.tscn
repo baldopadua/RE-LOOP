@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://b8rqtsafw44ge"]
 
-[ext_resource type="Script" uid="uid://bm2aorii10uex" path="res://Scripts/statues_1.gd" id="1_fduql"]
+[ext_resource type="Script" uid="uid://bm2aorii10uex" path="res://Scripts/object-level/level_4/statues_1.gd" id="1_fduql"]
 [ext_resource type="Texture2D" uid="uid://8upgaesewq0i" path="res://Assets/levels/level_4/statue_tree-Sheet.png" id="2_fduql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e6v3c"]

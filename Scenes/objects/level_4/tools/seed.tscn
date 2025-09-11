@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://drft7kjr45005"]
 
-[ext_resource type="Script" uid="uid://b0lyohy7ijs7x" path="res://Scripts/seed_lvl_4.gd" id="1_jgu8f"]
+[ext_resource type="Script" uid="uid://b0lyohy7ijs7x" path="res://Scripts/object-level/level_4/seed_lvl_4.gd" id="1_jgu8f"]
 [ext_resource type="Texture2D" uid="uid://dfdbkhqn5goip" path="res://Assets/levels/level_1/seed.png" id="2_jgu8f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hta4s"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=56 format=3 uid="uid://dco164x5ft03"]
 
-[ext_resource type="Script" uid="uid://d2ylasi2i2wul" path="res://Scripts/geyser.gd" id="1_bdyfl"]
+[ext_resource type="Script" uid="uid://d2ylasi2i2wul" path="res://Scripts/object-level/level_3/geyser.gd" id="1_bdyfl"]
 [ext_resource type="Texture2D" uid="uid://na4wdb48d0od" path="res://Assets/levels/level_3/Geiser_Sheet.png" id="2_s6ip8"]
 [ext_resource type="Texture2D" uid="uid://bhaby2nt2fpee" path="res://Assets/levels/level_3/Geiser_Single.png" id="3_s6ip8"]
 [ext_resource type="Texture2D" uid="uid://c1cupw7xanj5v" path="res://Assets/levels/level_3/Geiser_Rock_1.png" id="4_bdyfl"]

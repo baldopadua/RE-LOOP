@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://b7k8hh85s26ag"]
 
-[ext_resource type="Script" uid="uid://c7gkgdue40cij" path="res://Scripts/soil_lvl_4.gd" id="1_w47xb"]
+[ext_resource type="Script" uid="uid://c7gkgdue40cij" path="res://Scripts/object-level/level_1/soil_lvl_4.gd" id="1_w47xb"]
 [ext_resource type="Texture2D" uid="uid://bdnfiuumni1te" path="res://Assets/levels/level_1/DirtMound.png" id="2_64hiw"]
 [ext_resource type="Texture2D" uid="uid://dsim370olw30d" path="res://Assets/levels/level_4/branch-Sheet.png" id="3_fpd43"]
 [ext_resource type="PackedScene" uid="uid://djdtr07cgv0co" path="res://Scenes/objects/level_4/tools/stick.tscn" id="4_w47xb"]

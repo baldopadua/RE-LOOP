@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://ceifb3xl03qsu"]
 
-[ext_resource type="Script" uid="uid://ryovgb8y82jv" path="res://Scripts/old_man.gd" id="1_yvfy2"]
+[ext_resource type="Script" uid="uid://ryovgb8y82jv" path="res://Scripts/object-level/level_2/old_man.gd" id="1_yvfy2"]
 [ext_resource type="Texture2D" uid="uid://ybg1xg2tebka" path="res://Assets/levels/level_2/oldman_allCycles-Sheet.png" id="2_f5f34"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8m304"]
