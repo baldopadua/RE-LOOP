@@ -5,14 +5,22 @@ extends object_class
 # ANIMATESPRITE2D.aVISIBLE = TRUE THEN PLAY ANIMATION
 @onready var loop_break_animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sword_sprite: Sprite2D = $SwordSprite
+
+# HANDLERS
 @onready var sound_manager = get_parent().get_node("SoundManager")
 @onready var area_handler = get_parent().get_node("AreaHandler")
+@onready var level_handler = $"../LevelHandler"
 
+# BOOLEANS
 var is_playing: bool = false
 var is_playing_two: bool = false
+
+# TWEENS
 var tween_climb: Tween
 var tween_rotate: Tween
 var tween_scale: Tween
+
+# TIME INDICTAOR
 var time_indicator: AnimatedSprite2D
 
 func _ready() -> void:
@@ -87,36 +95,7 @@ func _on_body_entered(body) -> void:
 		await tween_climb.finished
 
 		body.visible = false
-		go_to_level_3()
-
-func go_to_level_3():
-	# CREATE TWEEN FOR ROTATE
-	tween_rotate = create_tween()
-	# Connect tween_finished if not yet connected
-	if not tween_rotate.is_connected("finished", _tween_rotation_finished):
-		tween_rotate.connect("finished", _tween_rotation_finished)
-	var rotation_tween = get_parent().rotation - deg_to_rad(-360.0)
-	tween_rotate.tween_property(get_parent(), "rotation", rotation_tween, 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	
-	# CREATE TWEEN FOR SCALE
-	tween_scale = create_tween()
-	# Connect tween_finished if not yet connected
-	if not tween_scale.is_connected("finished", _tween_scale_finished):
-		tween_scale.connect("finished", _tween_scale_finished)
-	tween_scale.tween_property(get_parent(), "scale", Vector2(0.0,0.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
-	await tween_scale.finished
-	await get_tree().create_timer(1).timeout
-
-	# NEXT LEVEL
-	GlobalVariables.change_level("res://Scenes/levels/level_3_scene.tscn", get_parent().get_parent())
+		level_handler.next_level(get_parent(), tween_rotate, tween_scale, "res://Scenes/levels/level_3_scene.tscn")
 
 func _tween_climb_finished():
 	tween_climb.kill()
-
-func _tween_rotation_finished():
-	tween_rotate.kill()
-
-func _tween_scale_finished():
-	tween_scale.kill()
-
-

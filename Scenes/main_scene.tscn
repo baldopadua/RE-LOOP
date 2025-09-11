@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="16_gnsmo"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="18_2ebs2"]
-[ext_resource type="Script" path="res://Scripts/ui/custom_cursor.gd" id="19_oyb3p"]
+[ext_resource type="Script" uid="uid://bdxwx60b8pdlx" path="res://Scripts/ui/custom_cursor.gd" id="19_oyb3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urcnp"]
 atlas = ExtResource("3_psl12")

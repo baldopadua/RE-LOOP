@@ -206,6 +206,8 @@ scale = Vector2(2.12857, 2.17714)
 
 [node name="map" type="AnimatedSprite2D" parent="world_environment"]
 sprite_frames = SubResource("SpriteFrames_x3fpq")
+frame = 1
+frame_progress = 0.293463
 
 [node name="loop_break" type="Node2D" parent="."]
 visible = false

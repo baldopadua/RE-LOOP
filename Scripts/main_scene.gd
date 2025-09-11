@@ -133,13 +133,13 @@ func _set_buttons_disabled(disabled: bool) -> void:
 # --- Transition Helpers ---
 func _fade_out(node: CanvasItem, duration: float, callback: Callable) -> void:
 	var tween := create_tween()
-	tween.tween_property(node, "modulate:a", 0.0, duration)\
+	tween.tween_property(node, "modulate:a", 0.0, duration) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(callback)
 
 func _fade_in(node: CanvasItem, duration: float) -> void:
 	var tween := create_tween()
-	tween.tween_property(node, "modulate:a", 1.0, duration)\
+	tween.tween_property(node, "modulate:a", 1.0, duration) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 
 # --- Hover Logic ---
@@ -157,7 +157,7 @@ func _on_button_hovered(btn: TextureButton) -> void:
 		sound_manager.play_ui("hover")
 	btn.disabled = true
 	var tween := create_tween()
-	tween.tween_property(btn, "scale", Vector2(1.05, 1.05), 0.12)\
+	tween.tween_property(btn, "scale", Vector2(1.05, 1.05), 0.12) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(Callable(self, "_enable_button").bind(btn))
 
@@ -166,7 +166,7 @@ func _enable_button(btn: TextureButton) -> void:
 
 func _on_button_unhovered(btn: TextureButton) -> void:
 	var tween := create_tween()
-	tween.tween_property(btn, "scale", Vector2(1, 1), 0.12)\
+	tween.tween_property(btn, "scale", Vector2(1, 1), 0.12) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 
 func _process(_delta: float) -> void:

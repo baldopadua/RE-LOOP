@@ -1,25 +1,35 @@
 extends object_class
 
-# CURRENT STATE = 1
-# MIN THRESHOLD 1 AND MAX THRESHOLD 2
-# EVERY INCREMENTAL OF STATE, EXPLODE THE GEYSER, PLAY SOME ANIMATIONS THEN IMMEDIATELY DECREMENT
-
-var is_exploded: bool = false
+# ROCKS PLACED IN THE GEYSER
 var rocks: Array = []
+
+# ANIMATEDSPRITE2D and PLAYER
 @onready var animate_geyser: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player = $"../PlayerScene"
+
+# HANDLERS
 @onready var sound_manager = get_parent().get_node("SoundManager")
+@onready var level_manager = $"../LevelHandler"
+
+# BOOLEANS
 var is_playing_two: bool = false
+var is_player_in_geyser: bool = false
+var default_geyser_played: bool = false
+var is_exploded: bool = false
+
+# TWEENS
 var sprung_tween: Tween
 var tween_rotate: Tween
 var tween_scale: Tween
+
+# ALLOWED ANGLES
 var allowed_angles: Array = [0.0, 360.0, -360.0, 90.0, -90.0, 180.0, -180.0, 270.0, -270.0]
-var is_player_in_geyser: bool = false
+
+# TIME INDICATOR
 var time_indicator: AnimatedSprite2D
-var default_geyser_played: bool = false
-# Remove direct SFX node references
 
 func _ready() -> void:
+	# ang haba bruh, atleast it works ahhahahah
 	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
 
 func _process(_delta: float) -> void:
@@ -48,9 +58,8 @@ func _process(_delta: float) -> void:
 			sprung_tween.kill()
 			
 			player.visible = false
-			# SWITCH SCENE TO LEVEL 2
-			go_to_level_4()
-			
+			# SWITCH SCENE TO LEVEL 4
+			level_manager.next_level(get_parent(), tween_rotate, tween_scale, "res://Scenes/levels/level_4_scene.tscn")
 	
 	# IF ANGLE OF PLAYER IS IN 3,6,9,12 AND ROCK SIZE IS GREATER THAN 0
 	if round(rad_to_deg(player.rotation)) in allowed_angles and rocks.size() > 0 and not is_playing_two and player.direction == GlobalVariables.player_direction.CLOCKWISE:
@@ -155,33 +164,3 @@ func _on_body_entered(body) -> void:
 		rocks.clear()
 		
 		is_player_in_geyser = true			
-
-func go_to_level_4():
-	# CREATE TWEEN FOR ROTATE
-	tween_rotate = create_tween()
-	# Connect tween_finished if not yet connected
-	if not tween_rotate.is_connected("finished", _tween_rotation_finished):
-		tween_rotate.connect("finished", _tween_rotation_finished)
-	var rotation_tween = get_parent().rotation - deg_to_rad(-360.0)
-	tween_rotate.tween_property(get_parent(), "rotation", rotation_tween, 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	
-	# CREATE TWEEN FOR SCALE
-	tween_scale = create_tween()
-	# Connect tween_finished if not yet connected
-	if not tween_scale.is_connected("finished", _tween_scale_finished):
-		tween_scale.connect("finished", _tween_scale_finished)
-	tween_scale.tween_property(get_parent(), "scale", Vector2(0.0,0.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
-	await tween_scale.finished
-	await get_tree().create_timer(1).timeout
-	
-	# NEXT LEVEL
-	GlobalVariables.change_level("res://Scenes/levels/level_4_scene.tscn", get_parent().get_parent())
-
-func _tween_rotation_finished():
-	tween_rotate.kill()
-
-func _tween_scale_finished():
-	tween_scale.kill()
-
-
-

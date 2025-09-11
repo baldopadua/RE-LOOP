@@ -53,6 +53,7 @@ var moves: int = 0
 @onready var sprite = $AnimatedSprite2D
 @onready var object_drop_position := $object_drop_position
 @onready var sound_manager = $SoundManager
+@onready var level_handler = $"../LevelHandler"
 var area_handler: Node2D
 var time_indicator: AnimatedSprite2D
 
@@ -131,7 +132,7 @@ func _tween_finished():
 	# RESET THE LEVEL IF LOOPED
 	if (round(rad_to_deg(rotation)) == 0.0 or round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0) and (prev_deg == 330.0 or prev_deg == -330.0) and GlobalVariables.is_looping:
 		GlobalVariables.is_restarting = true
-		GlobalVariables.restart_level(get_parent().get_parent())
+		level_handler.restart_level(get_parent().get_parent())
 	
 	# RESET THE ANGLE TO 30
 	if round(rad_to_deg(rotation)) == 390.0 and direction == player_directions.CLOCKWISE:
@@ -166,10 +167,10 @@ func _tween_finished():
 			#maps_dict[entered_clock_area].visible = true
 			
 	
-	for obj in get_parent().get_children():
-		if obj is object_class:
-			print(obj.name, " STATE: ", obj.current_state)
-			print("PARENT NAME: ", str(get_parent().name))
+	#for obj in get_parent().get_children():
+		#if obj is object_class:
+			#print(obj.name, " STATE: ", obj.current_state)
+			#print("PARENT NAME: ", str(get_parent().name))
 	
 	tween.kill()
 	is_moving = false

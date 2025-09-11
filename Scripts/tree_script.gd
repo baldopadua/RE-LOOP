@@ -1,22 +1,26 @@
 extends object_class
 
+# TWEENS
 var tween_climb: Tween
 var tween_rotate: Tween
 var tween_scale: Tween
+
 var level_2 = preload("res://Scenes/levels/level_2_scene.tscn")
 var time_indicator: AnimatedSprite2D
-var is_playing: bool = false	
+var is_playing: bool = false
+
+# HANDLERS
 @onready var sound_manager = $SoundManager
+@onready var level_handler = $"../LevelHandler"
 
 func _ready() -> void:
 	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
 
 func _on_body_entered(body) -> void:
-	handle_body_entered(body) 
+	handle_body_entered(body)
 	
 	# CLIMB THE TREE
 	if not GlobalVariables.is_looping and not is_playing:
-		
 		# SO THAT IT ONLY EXECUTES ONCE
 		is_playing = true
 		# DISABLE PLAYER MOVEMENT
@@ -49,35 +53,10 @@ func _on_body_entered(body) -> void:
 		await tween_climb.finished
 		
 		body.visible = false
-		# SWITCH SCENE TO LEVEL 2
-		go_to_level_2()
-		
-func go_to_level_2():
-	# CREATE TWEEN FOR ROTATE
-	tween_rotate = create_tween()
-	# Connect tween_finished if not yet connected
-	if not tween_rotate.is_connected("finished", _tween_rotation_finished):
-		tween_rotate.connect("finished", _tween_rotation_finished)
-	var rotation_tween = get_parent().rotation - deg_to_rad(-360.0)
-	tween_rotate.tween_property(get_parent(), "rotation", rotation_tween, 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	
-	# CREATE TWEEN FOR SCALE
-	tween_scale = create_tween()
-	# Connect tween_finished if not yet connected
-	if not tween_scale.is_connected("finished", _tween_scale_finished):
-		tween_scale.connect("finished", _tween_scale_finished)
-	tween_scale.tween_property(get_parent(), "scale", Vector2(0.0,0.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
-	await tween_scale.finished
-	await get_tree().create_timer(1).timeout
-	
-	# NEXT LEVEL
-	GlobalVariables.change_level("res://Scenes/levels/level_2_scene.tscn", get_parent().get_parent())
+
+		# DECLARE LEVEL TO BE FINISHED
+		var level_1 = get_parent()
+		level_handler.next_level(level_1, tween_rotate, tween_scale, "res://Scenes/levels/level_2_scene.tscn")
 
 func _tween_climb_finished():
 	tween_climb.kill()
-
-func _tween_rotation_finished():
-	tween_rotate.kill()
-
-func _tween_scale_finished():
-	tween_scale.kill()

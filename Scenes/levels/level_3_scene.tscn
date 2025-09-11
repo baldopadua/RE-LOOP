@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkklrol1yda1l"]
+[gd_scene load_steps=8 format=3 uid="uid://bkklrol1yda1l"]
 
 [ext_resource type="Script" uid="uid://w412f5j4febn" path="res://Scripts/levels/level_3_script.gd" id="1_thi73"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_p0m6i"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="4_6xexh"]
+[ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="7_ipdqe"]
 [ext_resource type="PackedScene" uid="uid://dco164x5ft03" path="res://Scenes/objects/level_3/geyser.tscn" id="16_symai"]
 [ext_resource type="PackedScene" uid="uid://lftn8e82jmja" path="res://Scenes/objects/level_3/rock.tscn" id="17_4srx3"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="22_3gnya"]
@@ -52,3 +53,5 @@ orig_pos = Vector2(-145, -251)
 orig_rotation = 150.0
 
 [node name="SoundManager" parent="." instance=ExtResource("22_3gnya")]
+
+[node name="LevelHandler" parent="." instance=ExtResource("7_ipdqe")]
