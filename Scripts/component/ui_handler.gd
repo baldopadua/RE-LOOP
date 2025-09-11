@@ -19,6 +19,7 @@ func _ready() -> void:
 	# Find player node if exists
 	if get_tree().get_root().has_node("PlayerScene"):
 		player = get_tree().get_root().get_node("PlayerScene")
+	show_overlay_hint()
 	
 
 
@@ -172,10 +173,11 @@ func show_close_button():
 func show_overlay_tutorial():
 	if ui_layout.has_node("overlay"):
 		var overlay = ui_layout.get_node("overlay")
-		overlay.visible = true
-		hide_all_children(overlay)
 		if overlay.has_node("tutorial"):
 			var tutorial = overlay.get_node("tutorial")
+			ui_layout.animate_overlay_open_from_right(tutorial)
+			overlay.visible = true
+			hide_all_children(overlay)
 			tutorial.visible = true
 			show_close_button()
 
@@ -186,7 +188,11 @@ func show_overlay_credits():
 		hide_all_children(overlay)
 		if overlay.has_node("credits"):
 			var credits = overlay.get_node("credits")
+			var button = ui_layout.credits_button
+			var tween = ui_layout.popup_overlay_from_button(button, credits)
 			credits.visible = true
+			if tween:
+				await tween.finished
 			show_close_button()
 
 func close_overlay_button(node):
@@ -195,6 +201,27 @@ func close_overlay_button(node):
 		overlay = ui_layout.get_node("overlay")
 	if not overlay:
 		return
+	# Find which overlay child is currently visible
+	var visible_child = null
+	for child in overlay.get_children():
+		if child.visible:
+			visible_child = child
+			break
+	# Animate close based on overlay name
+	if visible_child:
+		if visible_child.name == "tutorial":
+			ui_layout.animate_overlay_close_to_right(visible_child)
+		elif visible_child.name == "credits":
+			ui_layout.animate_overlay_close_to_left(visible_child)
+		else:
+			ui_layout.animate_overlay_close_to_right(visible_child)
+		# Optionally, hide after animation (add callback if needed)
+		# You can add a callback to hide overlay after animation if you want
+		# Example:
+		# ui_layout.animate_overlay_close_to_right(visible_child, Callable(self, "_after_overlay_closed").bind(overlay))
+	else:
+		overlay.visible = false
+	# Hide and free overlay child
 	var current = node.get_parent()
 	while current and current != overlay:
 		var to_free = current
@@ -291,3 +318,17 @@ func set_default_time_indicator() -> void:
 		time_indicator.animation = "clockwise_time_indicator"
 		time_indicator.frame = 0
 		print("[DEBUG] set_default_time_indicator: time_indicator set to clockwise_time_indicator, frame 0.")
+
+func show_overlay_hint():
+	if ui_layout.has_node("overlay"):
+		var overlay = ui_layout.get_node("overlay")
+		overlay.visible = true
+		hide_all_children(overlay)
+		if overlay.has_node("hint"):
+			var hint = overlay.get_node("hint")
+			hint.visible = true
+			show_close_button()
+
+
+
+

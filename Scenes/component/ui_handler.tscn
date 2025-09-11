@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://m46y1wd88uf1"]
+[gd_scene load_steps=85 format=3 uid="uid://m46y1wd88uf1"]
 
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="1_fmqw2"]
 [ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
@@ -10,13 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://cwndswkyv0b33" path="res://Assets/ui/start_button_hover.png" id="6_f7f2r"]
 [ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="7_vdxet"]
 [ext_resource type="Texture2D" uid="uid://dycrhdnxrjgsl" path="res://Assets/ui/credits_animated_icon.png" id="8_8crwb"]
-[ext_resource type="PackedScene" uid="uid://c221xvoh8em1d" path="res://Scenes/ui/hint.tscn" id="9_2uxee"]
 [ext_resource type="Texture2D" uid="uid://c2dq7rfpmpmqb" path="res://Assets/ui/keys_elements.png" id="9_8crwb"]
 [ext_resource type="Texture2D" uid="uid://oxutfru2ik0r" path="res://Assets/ui/brochure_unhovered.png" id="10_wyu2o"]
 [ext_resource type="Texture2D" uid="uid://3vkvbxe40udp" path="res://Assets/ui/brochure_hovered.png" id="11_tocme"]
 [ext_resource type="Texture2D" uid="uid://dn8g7surbovjv" path="res://Assets/ui/hint_button_icon.png" id="12_ktfc8"]
 [ext_resource type="Texture2D" uid="uid://dgtpfwvyxwquw" path="res://Assets/ui/hint_button_icon_hover.png" id="13_2uxee"]
-[ext_resource type="PackedScene" uid="uid://h6nnskumaw0c" path="res://Scenes/screen_effects/level_title_name.tscn" id="15_aaknn"]
 [ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="16_gvmfu"]
 [ext_resource type="Texture2D" uid="uid://dmlkwrmka11h8" path="res://Assets/ui/counterclockwise_time_indicator.png" id="17_otg63"]
 [ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="18_dumc0"]
@@ -28,6 +26,11 @@
 [ext_resource type="Texture2D" uid="uid://cg2l84tao5f1l" path="res://Assets/ui/credits_bg.png" id="21_taira"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="22_iwsb4"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="23_4r7hv"]
+[ext_resource type="Texture2D" uid="uid://daox43ock3lf7" path="res://Assets/ui/hint/hint_1.png" id="25_nol8b"]
+[ext_resource type="Texture2D" uid="uid://woq1l326oxns" path="res://Assets/ui/hint/hint_2.png" id="26_us0vv"]
+[ext_resource type="Texture2D" uid="uid://wg21y0rbjlo2" path="res://Assets/ui/hint/hint_3.png" id="27_0vcng"]
+[ext_resource type="Texture2D" uid="uid://loktk8i0xmn" path="res://Assets/ui/hint/hint_4.png" id="28_5ue8t"]
+[ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="29_g2hc1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
 atlas = ExtResource("1_fmqw2")
@@ -383,6 +386,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhjfp"]
+atlas = ExtResource("29_g2hc1")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wecr"]
+atlas = ExtResource("29_g2hc1")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l46pk"]
+atlas = ExtResource("29_g2hc1")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fite"]
+atlas = ExtResource("29_g2hc1")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkpeg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhjfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wecr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l46pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fite")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="UiHandler" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -555,7 +594,6 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="overlay" type="Control" parent="ui_layout"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -629,13 +667,101 @@ grow_vertical = 2
 texture = ExtResource("21_taira")
 expand_mode = 1
 
-[node name="hint" parent="ui_layout/overlay" instance=ExtResource("9_2uxee")]
-visible = false
+[node name="hint" type="Control" parent="ui_layout/overlay"]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="level_title_name" parent="ui_layout/overlay" instance=ExtResource("15_aaknn")]
-visible = false
+[node name="hint_bg" type="TextureRect" parent="ui_layout/overlay/hint"]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_bo42c")
+
+[node name="hint_overlay" type="Control" parent="ui_layout/overlay/hint"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 56.0
+offset_right = -75.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="hint_container_1" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17753
+anchor_top = 0.0361248
+anchor_right = 0.922813
+anchor_bottom = 0.912972
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_nol8b")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_container_2" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185249
+anchor_top = 0.0591133
+anchor_right = 0.921098
+anchor_bottom = 0.893268
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_us0vv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_container_3" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.197256
+anchor_top = 0.0935961
+anchor_right = 0.922813
+anchor_bottom = 0.875205
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_0vcng")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_container_4" type="TextureRect" parent="ui_layout/overlay/hint/hint_overlay"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.140652
+anchor_top = -0.0328407
+anchor_right = 1.03945
+anchor_bottom = 0.975369
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("28_5ue8t")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="plooy_hint" type="AnimatedSprite2D" parent="ui_layout/overlay/hint/hint_overlay"]
+texture_filter = 1
+position = Vector2(102.969, 531.186)
+scale = Vector2(10.9193, 10.0155)
+sprite_frames = SubResource("SpriteFrames_tkpeg")
+flip_h = true
 
 [node name="close_button" type="TextureButton" parent="ui_layout/overlay"]
 visible = false
