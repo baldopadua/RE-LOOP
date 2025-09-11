@@ -74,7 +74,6 @@ func _on_main_menu_button_pressed(button_type):
 			$GameScene.visible= true;
 			$GameScene.process_mode = Node.PROCESS_MODE_INHERIT
 			ui_handler.show_game_ui_elements()
-			
 		elif button_type == "tutorial":
 			ui_handler.sound_manager.play_ui("page_turn")
 			ui_handler.hide_main_menu()

@@ -26,11 +26,11 @@ var tween_scale: Tween
 var allowed_angles: Array = [0.0, 360.0, -360.0, 90.0, -90.0, 180.0, -180.0, 270.0, -270.0]
 
 # TIME INDICATOR
-var time_indicator: AnimatedSprite2D
+@onready var ui_handler = get_tree().root.get_node("MainScene/UiHandler")
 
 func _ready() -> void:
 	# ang haba bruh, atleast it works ahhahahah
-	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
+	pass
 
 func _process(_delta: float) -> void:
 	if is_player_in_geyser:
@@ -43,9 +43,8 @@ func _process(_delta: float) -> void:
 				if sound_manager.has_method("play_finish_level_sfx"):
 					sound_manager.play_finish_level_sfx()
 			# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
-			time_indicator.animation = "fixed"
-			time_indicator.frame = 0
-			time_indicator.pause()
+			ui_handler.set_time_indicator_fixed()
+			ui_handler.set_default_time_indicator()
 			
 			animate_geyser.play("loop_break")
 			

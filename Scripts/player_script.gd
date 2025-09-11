@@ -57,6 +57,8 @@ var moves: int = 0
 var area_handler: Node2D
 var time_indicator: AnimatedSprite2D
 
+var ui_handler: Node = null
+
 func _ready() -> void:
 	if GlobalVariables.is_restarting:
 		GlobalVariables.is_restarting = false
@@ -64,9 +66,13 @@ func _ready() -> void:
 		# PLAY RESTART SFX AND CUTSCENES
 	object_pos = get_node("object_position")
 	sprite.play("idle")
-	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
-	time_indicator.animation = "clockwise_time_indicator"
-	time_indicator.frame = moves
+	# Debug: print all children of root
+	var root = get_tree().root
+	for child in root.get_children():
+		print("Root child: ", child.name)
+	# Try to get UiHandler under MainScene
+	if root.has_node("MainScene/UiHandler"):
+		ui_handler = root.get_node("MainScene/UiHandler")
 	# MAP HANDLER
 	area_handler = get_parent().get_node("AreaHandler") 
 
@@ -118,16 +124,19 @@ func _tween_finished():
 	
 	# SWITCH THE MONOLITH
 	# INITIAL VALUE NO ENERGY and # POSITIVE MEANS CLOCKWISE
-	if GlobalVariables.is_looping:
+	if GlobalVariables.is_looping and ui_handler:
 		if moves >= 0:
-			time_indicator.animation = "clockwise_time_indicator"
-			time_indicator.frame = moves
-			time_indicator.pause()
-		# ANYTHING LOWER THAN 0, NEGATIVE, MEANS COUNTERCLOCKWISE
+			ui_handler.set_time_indicator_animation("clockwise_time_indicator")
+			if moves > 0:
+				for i in range(moves):
+					ui_handler.move_time_indicator_frame(true)
+			ui_handler.time_indicator.pause()
 		else:
-			time_indicator.animation = "counterclockwise_time_indicator"
-			time_indicator.frame = abs(moves)
-			time_indicator.pause()
+			ui_handler.set_time_indicator_animation("counterclockwise_time_indicator")
+			if abs(moves) > 0:
+				for i in range(abs(moves)):
+					ui_handler.move_time_indicator_frame(true)
+			ui_handler.time_indicator.pause()
 	
 	# RESET THE LEVEL IF LOOPED
 	if (round(rad_to_deg(rotation)) == 0.0 or round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0) and (prev_deg == 330.0 or prev_deg == -330.0) and GlobalVariables.is_looping:

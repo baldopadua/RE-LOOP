@@ -492,7 +492,6 @@ animation = &"hover"
 autoplay = "default"
 
 [node name="game_ui_elements" type="Control" parent="ui_layout"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -520,13 +519,11 @@ metadata/_edit_use_anchors_ = true
 [node name="tutorial_button" type="TextureButton" parent="ui_layout/game_ui_elements"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -106.0
-offset_top = 3.0
-offset_right = -6.0
-offset_bottom = 103.0
+anchors_preset = -1
+anchor_left = 0.903125
+anchor_top = 0.0236111
+anchor_right = 0.98125
+anchor_bottom = 0.1625
 grow_horizontal = 0
 pivot_offset = Vector2(110, -10)
 mouse_filter = 2
@@ -534,6 +531,7 @@ texture_normal = ExtResource("10_wyu2o")
 texture_hover = ExtResource("11_tocme")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="hint_button" type="TextureButton" parent="ui_layout/game_ui_elements"]
 texture_filter = 1
@@ -541,10 +539,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 3.0
-offset_right = -1166.0
-offset_bottom = -625.0
+offset_left = 23.0
+offset_top = 17.0
+offset_right = -1176.0
+offset_bottom = -636.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(-10, -10)
@@ -558,7 +556,7 @@ texture_filter = 1
 position = Vector2(1155, 582)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_qpkpn")
-animation = &"fixed"
+animation = &"clockwise_time_indicator"
 
 [node name="overlay" type="Control" parent="ui_layout"]
 visible = false
