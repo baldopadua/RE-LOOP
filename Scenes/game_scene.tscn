@@ -80,6 +80,7 @@ position = Vector2(640, 360)
 
 [node name="CanvasLayerGameUi" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 
 [node name="game_ui_elements" parent="CanvasLayerGameUi" instance=ExtResource("3_fiftr")]
 texture_filter = 1

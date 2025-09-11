@@ -1,192 +1,95 @@
 extends Control
 
-@onready var sound_manager := $SoundManager
-@onready var main_bg := $main_bg
-@onready var start_button := $start_button
-@onready var tutorial_button := $tutorial_button
-@onready var game_animated_bg := $game_animated_bg
-@onready var game_animated_explosion_bg := $game_animated_explosion_bg
-@onready var gametitle := $gametitle
-@onready var tutorial_scene_packed := preload("res://Scenes/ui/tutorial.tscn")
-@onready var transition_scene_packed := preload("res://Scenes/screen_effects/game_scene_transition.tscn")
-var tutorial_instance: Control = null
-var transition_instance: Control = null
+@onready var ui_handler = $UiHandler
+@onready var transition_handler = $TransitionHandler
+@onready var game_scene: Node = $GameScene
 
-# --- Initialization & Connections ---
-func _ready() -> void:
-	_play_bgm()
-	_connect_buttons()
-	if game_animated_bg:
-		game_animated_bg.visible = true
-		game_animated_bg.play()
-	if game_animated_explosion_bg:
-		game_animated_explosion_bg.visible = false
-	update_sprite_scale()
-	# Restore custom cursor and hide system mouse when returning to main scene
-	if has_node("custom_cursor"):
-		$custom_cursor.visible = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+func _ready():
+	#ui_handler.show_only_children(ui_handler.ui_layout, ["overlay"])
+	ui_handler.show_main_menu()
+	ui_handler.show_cursor()
+	transition_handler.show_main_to_game_transition()
+	_connect_main_menu_buttons()
+	_connect_overlay_close_button()
+	_connect_game_ui_elements_buttons()
+	$GameScene.visible= false;
+	$GameScene.process_mode = Node.PROCESS_MODE_DISABLED
 
+func _connect_main_menu_buttons():
+	if ui_handler.ui_layout.has_node("main_menu"):
+		var main_menu = ui_handler.ui_layout.get_node("main_menu")
+		# Start Button
+		if main_menu.has_node("start_button"):
+			var start_btn = main_menu.get_node("start_button")
+			if not start_btn.is_connected("pressed", Callable(self, "_on_main_menu_button_pressed")):
+				start_btn.connect("pressed", Callable(self, "_on_main_menu_button_pressed").bind("start"))
+		# Tutorial Button
+		if main_menu.has_node("tutorial_button"):
+			var tutorial_btn = main_menu.get_node("tutorial_button")
+			if not tutorial_btn.is_connected("pressed", Callable(self, "_on_main_menu_button_pressed")):
+				tutorial_btn.connect("pressed", Callable(self, "_on_main_menu_button_pressed").bind("tutorial"))
+		# Credits Button
+		if main_menu.has_node("credits_button"):
+			var credits_btn = main_menu.get_node("credits_button")
+			if not credits_btn.is_connected("pressed", Callable(self, "_on_main_menu_button_pressed")):
+				credits_btn.connect("pressed", Callable(self, "_on_main_menu_button_pressed").bind("credits"))
 
-func _play_bgm() -> void:
-	if sound_manager:
-		sound_manager.play_music("main_bgm")
+func _connect_game_ui_elements_buttons():
+	if ui_handler.ui_layout.has_node("game_ui_elements"):
+		var game_ui = ui_handler.ui_layout.get_node("game_ui_elements")
+		# Tutorial Button
+		if game_ui.has_node("tutorial_button"):
+			var tutorial_btn = game_ui.get_node("tutorial_button")
+			if not tutorial_btn.is_connected("pressed", Callable(self, "_on_game_ui_elements_button_pressed")):
+				tutorial_btn.connect("pressed", Callable(self, "_on_game_ui_elements_button_pressed").bind("tutorial"))
+		# Hint Button
+		if game_ui.has_node("hint_button"):
+			var hint_btn = game_ui.get_node("hint_button")
+			if not hint_btn.is_connected("pressed", Callable(self, "_on_game_ui_elements_button_pressed")):
+				hint_btn.connect("pressed", Callable(self, "_on_game_ui_elements_button_pressed").bind("hint"))
 
-func _connect_buttons() -> void:
-	_connect_button(start_button, "_on_start_button_pressed")
-	_connect_button(tutorial_button, "_on_tutorial_button_pressed")
-	_connect_hover_signals()
+func _connect_overlay_close_button():
+	if ui_handler.ui_layout.has_node("overlay"):
+		var overlay = ui_handler.ui_layout.get_node("overlay")
+		if overlay.has_node("close_button"):
+			var close_btn = overlay.get_node("close_button")
+			if not close_btn.is_connected("pressed", Callable(self, "_on_overlay_close_button_pressed")):
+				close_btn.connect("pressed", Callable(self, "_on_overlay_close_button_pressed").bind(close_btn))
 
-func _connect_button(btn: Object, method: String) -> void:
-	if btn and (btn is Button or btn is TextureButton):
-		btn.connect("pressed", Callable(self, method))
+func _on_overlay_close_button_pressed(close_btn):
+	ui_handler.sound_manager.play_ui("page_turn")
+	ui_handler.close_overlay_button(close_btn)
+	ui_handler.unhide_main_menu()
 
-# --- Utility: Hide Main Menu Elements ---
-func _hide_main_menu_elements() -> void:
-	if main_bg:
-		main_bg.visible = false
-	if gametitle:
-		gametitle.visible = false
-	if start_button:
-		start_button.visible = false
-	if tutorial_button:
-		tutorial_button.visible = false
-	if has_node("credits"):
-		get_node("credits").visible = false
+func _on_main_menu_button_pressed(button_type):
+	if ui_handler.sound_manager:
+		if button_type == "start":
+			ui_handler.sound_manager.play_ui("click")
+			ui_handler.remove_cursor()
+			ui_handler.remove_main_menu()
+			transition_handler.visible = true 
+			transition_handler.show_main_to_game_transition()
+			await get_tree().create_timer(4.5).timeout 
+			transition_handler.visible = false 
+			$GameScene.visible= true;
+			$GameScene.process_mode = Node.PROCESS_MODE_INHERIT
+			ui_handler.show_game_ui_elements()
+			
+		elif button_type == "tutorial":
+			ui_handler.sound_manager.play_ui("page_turn")
+			ui_handler.hide_main_menu()
+			ui_handler.show_overlay_tutorial()
+		elif button_type == "credits":
+			ui_handler.sound_manager.play_ui("page_turn")
+			ui_handler.hide_main_menu()
+			ui_handler.show_overlay_credits()
+			ui_handler.hide_main_menu()
+			ui_handler.show_overlay_credits()
 
-# --- Button Event Handlers ---
-func _on_start_button_pressed() -> void:
-	start_button.disabled = true
-	if sound_manager:
-		sound_manager.play_ui("click")
-	# Hide normal bg, show explosion bg
-	if game_animated_bg:
-		game_animated_bg.visible = false
-	if game_animated_explosion_bg:
-		game_animated_explosion_bg.visible = true
-		game_animated_explosion_bg.play()
-	# Hide custom cursor and show system mouse
-	if has_node("custom_cursor"):
-		$custom_cursor.visible = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	_show_transition_and_go_to_game_scene()
-
-
-func _show_transition_and_go_to_game_scene():
-	_hide_main_menu_elements()
-	# Stop background music
-	if sound_manager:
-		sound_manager.stop_music("main_bgm")
-	# Instance and show the transition scene
-	transition_instance = transition_scene_packed.instantiate()
-	add_child(transition_instance)
-	transition_instance.z_index = 999
-
-	# Call the transition's play_and_continue method, or fallback to timer
-	if transition_instance.has_method("play_and_continue"):
-		transition_instance.play_and_continue(Callable(self, "_go_to_next_scene"))
-	else:
-		# fallback: wait 0.7s then continue
-		await get_tree().create_timer(0.7).timeout
-		_go_to_next_scene()
-
-func _go_to_next_scene() -> void:
-	get_tree().change_scene_to_file('res://Scenes/game_scene.tscn')
-
-func _on_tutorial_button_pressed() -> void:
-	_set_buttons_disabled(true)
-	if sound_manager:
-		sound_manager.play_ui("page_turn")
-	_hide_main_menu_elements()
-	_fade_in_tutorial_overlay()
-
-func _fade_in_tutorial_overlay():
-	var fade_rect := ColorRect.new()
-	fade_rect.color = Color(0, 0, 0, 1)
-	fade_rect.anchor_right = 1.0
-	fade_rect.anchor_bottom = 1.0
-	fade_rect.z_index = 999
-	add_child(fade_rect)
-	var tween := create_tween()
-	tween.tween_property(fade_rect, "color:a", 0.0, 0.2)
-	tween.tween_callback(Callable(self, "_show_tutorial_overlay"))
-	tween.tween_callback(Callable(fade_rect, "queue_free"))
-
-func _show_tutorial_overlay():
-	if tutorial_instance == null or not is_instance_valid(tutorial_instance):
-		tutorial_instance = tutorial_scene_packed.instantiate()
-		add_child(tutorial_instance)
-		tutorial_instance.z_index = 100
-		# Hide tutorial_bg when shown from main scene
-		if tutorial_instance.has_node("tutorial_bg"):
-			tutorial_instance.get_node("tutorial_bg").visible = false
-	else:
-		tutorial_instance.visible = true
-		# Hide tutorial_bg when shown from main scene
-		if tutorial_instance.has_node("tutorial_bg"):
-			tutorial_instance.get_node("tutorial_bg").visible = false
-
-func _set_buttons_disabled(disabled: bool) -> void:
-	start_button.disabled = disabled
-	tutorial_button.disabled = disabled
-
-# --- Transition Helpers ---
-func _fade_out(node: CanvasItem, duration: float, callback: Callable) -> void:
-	var tween := create_tween()
-	tween.tween_property(node, "modulate:a", 0.0, duration) \
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(callback)
-
-func _fade_in(node: CanvasItem, duration: float) -> void:
-	var tween := create_tween()
-	tween.tween_property(node, "modulate:a", 1.0, duration) \
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-
-# --- Hover Logic ---
-func _connect_hover_signals() -> void:
-	var btns = [start_button, tutorial_button]
-	for btn in btns:
-		if btn:
-			btn.connect("mouse_entered",
-				Callable(self, "_on_button_hovered").bind(btn))
-			btn.connect("mouse_exited",
-				Callable(self, "_on_button_unhovered").bind(btn))
-
-func _on_button_hovered(btn: TextureButton) -> void:
-	if sound_manager:
-		sound_manager.play_ui("hover")
-	btn.disabled = true
-	var tween := create_tween()
-	tween.tween_property(btn, "scale", Vector2(1.05, 1.05), 0.12) \
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(Callable(self, "_enable_button").bind(btn))
-
-func _enable_button(btn: TextureButton) -> void:
-	btn.disabled = false
-
-func _on_button_unhovered(btn: TextureButton) -> void:
-	var tween := create_tween()
-	tween.tween_property(btn, "scale", Vector2(1, 1), 0.12) \
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-
-func _process(_delta: float) -> void:
-	pass
-
-
-func _notification(what):
-	if what == NOTIFICATION_RESIZED:
-		update_sprite_scale()
-
-func update_sprite_scale():
-	var viewport_size = get_viewport_rect().size
-	var sprite_size = $game_animated_bg.sprite_frames.get_frame_texture("default", 0).get_size()
-
-	# Calculate scale while keeping aspect ratio
-	var scale_factor = min(viewport_size.x / sprite_size.x, viewport_size.y / sprite_size.y)
-	$game_animated_bg.scale = Vector2(scale_factor, scale_factor)
-	$game_animated_bg.position = viewport_size / 2
-
-	# Also update explosion bg if present
-	if $game_animated_explosion_bg:
-		$game_animated_explosion_bg.scale = Vector2(scale_factor, scale_factor)
-		$game_animated_explosion_bg.position = viewport_size / 2
+func _on_game_ui_elements_button_pressed(button_type):
+	if ui_handler.sound_manager:
+		if button_type == "tutorial":
+			ui_handler.sound_manager.play_ui("page_turn")
+			ui_handler.show_overlay_tutorial()
+		elif button_type == "hint":
+			pass

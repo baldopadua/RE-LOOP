@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dypu05rngiwmu"]
+[gd_scene load_steps=70 format=3 uid="uid://dypu05rngiwmu"]
 
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="2_ioaeq"]
@@ -14,7 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://bnrnr4wjbytbv" path="res://Scenes/ui/tutorial.tscn" id="10_ioaeq"]
 [ext_resource type="PackedScene" uid="uid://cfk6vdandqjxj" path="res://Scenes/ui/credits.tscn" id="12_psl12"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="16_gnsmo"]
+[ext_resource type="PackedScene" uid="uid://m46y1wd88uf1" path="res://Scenes/component/ui_handler.tscn" id="17_psl12"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="18_2ebs2"]
+[ext_resource type="PackedScene" uid="uid://cwepv63cdd6be" path="res://Scenes/component/transition_handler.tscn" id="18_oyb3p"]
+[ext_resource type="PackedScene" uid="uid://clmxq6e31gwm8" path="res://Scenes/game_scene.tscn" id="19_jvnna"]
 [ext_resource type="Script" uid="uid://bdxwx60b8pdlx" path="res://Scripts/ui/custom_cursor.gd" id="19_oyb3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urcnp"]
@@ -501,3 +504,14 @@ texture = ExtResource("18_2ebs2")
 script = ExtResource("19_oyb3p")
 
 [node name="SoundManager" parent="." instance=ExtResource("16_gnsmo")]
+
+[node name="TransitionHandler" parent="." instance=ExtResource("18_oyb3p")]
+visible = false
+layout_mode = 1
+
+[node name="GameScene" parent="." instance=ExtResource("19_jvnna")]
+visible = false
+layout_mode = 1
+
+[node name="UiHandler" parent="." instance=ExtResource("17_psl12")]
+layout_mode = 1
