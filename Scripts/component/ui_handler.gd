@@ -19,8 +19,6 @@ func _ready() -> void:
 	# Find player node if exists
 	if get_tree().get_root().has_node("PlayerScene"):
 		player = get_tree().get_root().get_node("PlayerScene")
-	show_overlay_hint()
-	
 
 
 # CALLED EVERY FRAME. 'DELTA' IS THE ELAPSED TIME SINCE THE PREVIOUS FRAME.

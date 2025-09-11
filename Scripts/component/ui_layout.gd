@@ -49,6 +49,7 @@ func _on_credits_button_mouse_exited():
 		animated_icon.play()
 
 func _on_hint_button_pressed():
+	ui_handler.sound_manager.play_ui("page_turn")
 	if ui_handler and ui_handler.has_method("show_overlay_hint"):
 		ui_handler.show_overlay_hint()
 
@@ -103,13 +104,13 @@ func animate_overlay_close_to_right(node: Control, callback: Callable = Callable
 func popup_overlay_from_button(button: Control, overlay: Control, duration: float = 0.18) -> Tween:
 	if not button or not overlay:
 		return null
+	overlay.visible = true
+	overlay.scale = Vector2(0.2, 0.2)
 	var viewport_size = get_viewport_rect().size
 	var overlay_size = overlay.size
 	var final_pos = (viewport_size / 2) - (overlay_size / 2)
 	var start_pos = button.get_global_position() - overlay.get_parent().get_global_position()
 	overlay.position = start_pos
-	overlay.scale = Vector2(0.2, 0.2) # start small
-	overlay.visible = true
 	var tween = create_tween()
 	tween.tween_property(overlay, "position", final_pos, duration)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
