@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq2lt2guqccb8"]
+
+[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_r3h64"]
+[ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_8r447"]
+[ext_resource type="PackedScene" uid="uid://io262b3r7rqv" path="res://Scenes/component/object_handler.tscn" id="3_1idbe"]
+
+[node name="LevelManager" type="Node2D"]
+
+[node name="main_camera" type="Camera2D" parent="."]
+self_modulate = Color(0, 1, 1, 1)
+
+[node name="rotation_camera" type="Camera2D" parent="main_camera"]
+zoom = Vector2(1.875, 1)
+
+[node name="AreaHandler" parent="main_camera/rotation_camera" instance=ExtResource("1_r3h64")]
+
+[node name="PlayerScene" parent="main_camera/rotation_camera" instance=ExtResource("2_8r447")]
+
+[node name="ObjectHandler" parent="main_camera/rotation_camera" instance=ExtResource("3_1idbe")]

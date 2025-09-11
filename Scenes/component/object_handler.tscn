@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://io262b3r7rqv"]
+
+[ext_resource type="Script" path="res://Scripts/component/object_handler.gd" id="1_atcyh"]
+
+[node name="ObjectHandler" type="Node2D"]
+script = ExtResource("1_atcyh")
+
+[node name="level_1" type="Node2D" parent="."]
