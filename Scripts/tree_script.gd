@@ -12,6 +12,7 @@ var is_playing: bool = false
 # HANDLERS
 @onready var sound_manager = $SoundManager
 @onready var level_handler = $"../LevelHandler"
+@onready var anim_handler = $"../AnimationPlayer"
 
 func _ready() -> void:
 	time_indicator = get_parent().get_parent().get_parent().get_node("CanvasLayerGameUi").get_node("game_ui_elements").get_node("ui_frame").get_node("time_indicator")
@@ -40,23 +41,19 @@ func _on_body_entered(body) -> void:
 			sprite.play("climb")
 		
 		# CLIMB
-		tween_climb = create_tween()
 		
-		# Connect tween_finished if not yet connected
-		if not tween_climb.is_connected("finished", _tween_climb_finished):
-			tween_climb.connect("finished", _tween_climb_finished)
+		# 1. REMOVE TWEEN 
 	
 		sound_manager.play_player_sfx("Climb")
+		anim_handler.play("ClimbingAnimation")
 		
-		var screen_center = Vector2(0.0, 250.0)
-		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)
-		await tween_climb.finished
-		
-		body.visible = false
-
-		# DECLARE LEVEL TO BE FINISHED
-		var level_1 = get_parent()
-		level_handler.next_level(level_1, tween_rotate, tween_scale, "res://Scenes/levels/level_2_scene.tscn")
+		# Wait for climbing animation to be finished
 
 func _tween_climb_finished():
 	tween_climb.kill()
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "ClimbingAnimation":
+		# DECLARE LEVEL TO BE FINISHED
+		var level_1 = get_parent()
+		level_handler.next_level(level_1, tween_rotate, tween_scale, "res://Scenes/levels/level_2_scene.tscn")

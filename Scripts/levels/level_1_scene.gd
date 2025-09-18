@@ -16,6 +16,7 @@ extends Node2D
 @onready var area_handler = $AreaHandler
 @onready var level_handler = $LevelHandler
 @onready var sound_manager = $SoundManager
+#@onready var anim_handler = $AnimationHandler
 
 var states := ["State1", "State2", "State3", "State4"]
 var center_circle: Vector2i = Vector2i(0, 0)

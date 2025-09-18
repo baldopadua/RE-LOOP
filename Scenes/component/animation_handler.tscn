@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6ijbrck3rnok"]
+
+[ext_resource type="Script" uid="uid://duq31e2jvypol" path="res://Scripts/component_handlers/animation_handler.gd" id="1_vrtr1"]
+
+[node name="AnimationHandler" type="AnimationPlayer"]
+script = ExtResource("1_vrtr1")
