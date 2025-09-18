@@ -304,10 +304,9 @@ func update_time_indicator_by_move(move: int) -> void:
 func set_time_indicator_fixed() -> void:
 	refresh_time_indicator()
 	if time_indicator:
-		print("[DEBUG] set_time_indicator_fixed: time_indicator before set:", time_indicator)
 		time_indicator.animation = "fixed"
 		time_indicator.frame = 0
-		print("[DEBUG] set_time_indicator_fixed: time_indicator set to fixed, frame 0.")
+		
 
 func set_default_time_indicator() -> void:
 	refresh_time_indicator()
@@ -315,7 +314,7 @@ func set_default_time_indicator() -> void:
 	if time_indicator:
 		time_indicator.animation = "clockwise_time_indicator"
 		time_indicator.frame = 0
-		print("[DEBUG] set_default_time_indicator: time_indicator set to clockwise_time_indicator, frame 0.")
+		
 
 func show_overlay_hint():
 	if ui_layout.has_node("overlay"):

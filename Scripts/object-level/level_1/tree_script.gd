@@ -12,6 +12,7 @@ var is_playing: bool = false
 # HANDLERS
 @onready var sound_manager = $SoundManager
 @onready var level_handler = $"../LevelHandler"
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 @onready var anim_handler = $"../AnimationPlayer"
 
 func _ready() -> void:
