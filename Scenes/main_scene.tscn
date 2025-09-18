@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dypu05rngiwmu"]
 
 [ext_resource type="Script" uid="uid://cdg1swkpe7iy4" path="res://Scripts/main_scene.gd" id="1_6ev3c"]
-[ext_resource type="PackedScene" path="res://Scenes/component/ui_handler.tscn" id="17_psl12"]
-[ext_resource type="PackedScene" path="res://Scenes/component/transition_handler.tscn" id="18_oyb3p"]
+[ext_resource type="PackedScene" uid="uid://m46y1wd88uf1" path="res://Scenes/component/ui_handler.tscn" id="17_psl12"]
+[ext_resource type="PackedScene" uid="uid://cwepv63cdd6be" path="res://Scenes/component/transition_handler.tscn" id="18_oyb3p"]
 [ext_resource type="PackedScene" uid="uid://clmxq6e31gwm8" path="res://Scenes/game_scene.tscn" id="19_jvnna"]
 
 [node name="MainScene" type="Control"]
