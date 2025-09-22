@@ -59,6 +59,13 @@ var time_indicator: AnimatedSprite2D
 
 var ui_handler: Node = null
 
+#	Camera for Cam Shake
+@onready var camera2d : Camera2D = $"../Camera2D"
+var cameraShakeNoise : FastNoiseLite
+
+#	To Intensity of Cam Shake
+var to_intensity : float = 0.0
+
 func _ready() -> void:
 	if GlobalVariables.is_restarting:
 		GlobalVariables.is_restarting = false
@@ -75,6 +82,8 @@ func _ready() -> void:
 		ui_handler = root.get_node("MainScene/CanvasLayerUi/UiHandler")
 	# MAP HANDLER
 	area_handler = get_parent().get_node("AreaHandler") 
+	
+	cameraShakeNoise = FastNoiseLite.new()
 
 func _input(event: InputEvent) -> void:
 	# MOVEMENT round(rad_to_deg(rotation)) < 180.0
@@ -202,13 +211,19 @@ func rotate_player():
 		rotation_tween = rotation + deg_to_rad(angle_per_move)
 		sprite.flip_h = false
 		moves += 1
+		to_intensity += 0.2
 	else:
 		rotation_tween = rotation - deg_to_rad(angle_per_move)
 		sprite.flip_h = true
 		moves -= 1
+		to_intensity -= 0.2
 		
 	# set the tween
 	tween.tween_property(self, "rotation", rotation_tween, transition_time).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	print(moves)
+	
+	#	Shakes the camera
+	shake_camera(float(moves), to_intensity, 0.5)
 	
 func _process(_delta):
 	pass
@@ -272,3 +287,12 @@ func item_drop() -> void:
 		is_holding_object = false
 		print("Object dropped")
 		interactable_objects.clear()
+
+func start_camera_shake(intensity : float):
+	var camera_offset = cameraShakeNoise.get_noise_1d(Time.get_ticks_msec()) * intensity
+	camera2d.offset.x = camera_offset
+	camera2d.offset.y = camera_offset
+
+func shake_camera(intesity_from : float, intesity_to : float, duration : float):
+	var camera_tween = get_tree().create_tween()
+	camera_tween.tween_method(start_camera_shake, intesity_from, intesity_to, duration)
