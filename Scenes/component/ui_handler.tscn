@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://m46y1wd88uf1"]
+[gd_scene load_steps=86 format=3 uid="uid://m46y1wd88uf1"]
 
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="1_fmqw2"]
 [ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://bdxwx60b8pdlx" path="res://Scripts/ui/custom_cursor.gd" id="20_qpkpn"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="21_qpkpn"]
 [ext_resource type="Texture2D" uid="uid://cg2l84tao5f1l" path="res://Assets/ui/credits_bg.png" id="21_taira"]
+[ext_resource type="Script" uid="uid://qyn6g7sbegxs" path="res://Scripts/ui/hint.gd" id="22_exohx"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="22_iwsb4"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="23_4r7hv"]
 [ext_resource type="Texture2D" uid="uid://daox43ock3lf7" path="res://Assets/ui/hint/hint_1.png" id="25_nol8b"]
@@ -531,6 +532,7 @@ animation = &"hover"
 autoplay = "default"
 
 [node name="game_ui_elements" type="Control" parent="ui_layout"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -594,7 +596,6 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="overlay" type="Control" parent="ui_layout"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -669,12 +670,14 @@ texture = ExtResource("21_taira")
 expand_mode = 1
 
 [node name="hint" type="Control" parent="ui_layout/overlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("22_exohx")
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_bg" type="TextureRect" parent="ui_layout/overlay/hint"]
