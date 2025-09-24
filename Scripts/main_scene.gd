@@ -6,7 +6,7 @@ extends Control
 
 
 func _ready():
-	#ui_handler.show_only_children(ui_handler.ui_layout, ["overlay"])
+	#ui_handler.show_only_children(ui_handler.ui_logic, ["overlay"])
 	ui_handler.show_main_menu()
 	ui_handler.show_cursor()
 	transition_handler.show_main_to_game_transition()
@@ -17,8 +17,8 @@ func _ready():
 	$GameScene.process_mode = Node.PROCESS_MODE_DISABLED
 
 func _connect_main_menu_buttons():
-	if ui_handler.ui_layout.has_node("main_menu"):
-		var main_menu = ui_handler.ui_layout.get_node("main_menu")
+	if ui_handler.ui_logic.has_node("main_menu"):
+		var main_menu = ui_handler.ui_logic.get_node("main_menu")
 		# Start Button
 		if main_menu.has_node("start_button"):
 			var start_btn = main_menu.get_node("start_button")
@@ -36,8 +36,8 @@ func _connect_main_menu_buttons():
 				credits_btn.connect("pressed", Callable(self, "_on_main_menu_button_pressed").bind("credits"))
 
 func _connect_game_ui_elements_buttons():
-	if ui_handler.ui_layout.has_node("game_ui_elements"):
-		var game_ui = ui_handler.ui_layout.get_node("game_ui_elements")
+	if ui_handler.ui_logic.has_node("game_ui_elements"):
+		var game_ui = ui_handler.ui_logic.get_node("game_ui_elements")
 		# Tutorial Button
 		if game_ui.has_node("tutorial_button"):
 			var tutorial_btn = game_ui.get_node("tutorial_button")
@@ -50,8 +50,8 @@ func _connect_game_ui_elements_buttons():
 				hint_btn.connect("pressed", Callable(self, "_on_game_ui_elements_button_pressed").bind("hint"))
 
 func _connect_overlay_close_button():
-	if ui_handler.ui_layout.has_node("overlay"):
-		var overlay = ui_handler.ui_layout.get_node("overlay")
+	if ui_handler.ui_logic.has_node("overlay"):
+		var overlay = ui_handler.ui_logic.get_node("overlay")
 		if overlay.has_node("close_button"):
 			var close_btn = overlay.get_node("close_button")
 			if not close_btn.is_connected("pressed", Callable(self, "_on_overlay_close_button_pressed")):

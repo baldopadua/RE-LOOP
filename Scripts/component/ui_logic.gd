@@ -1,7 +1,5 @@
 extends Control
 
-
-
 @onready var credits_button = $main_menu/credits_button
 @onready var ui_handler = get_parent() # Assumes ui_layout is child of UiHandler
 var animated_icon: AnimatedSprite2D = null

@@ -1,9 +1,9 @@
 extends Control
 
 @onready var sound_manager = get_node("SoundManager")
-@onready var ui_layout = $ui_layout
+@onready var ui_logic = $ui_logic
 @onready var background = $background
-@onready var time_indicator = $ui_layout/game_ui_elements/time_indicator
+@onready var time_indicator = $ui_logic/game_ui_elements/time_indicator
 
 var bg_node: Node = null
 var main_menu: Node = null
@@ -123,18 +123,18 @@ func show_main_menu():
 	# SHOW ONLY SPECIFIC BACKGROUND
 	show_background("game_animated_bg")
 	# USE NEW HIERARCHY FOR MAIN_MENU
-	if ui_layout.has_node("main_menu"):
-		main_menu = ui_layout.get_node("main_menu")
+	if ui_logic.has_node("main_menu"):
+		main_menu = ui_logic.get_node("main_menu")
 		hide_all_children(main_menu)
 		main_menu.visible = true
 		for child in main_menu.get_children():
 			if child.has_method("set_visible"):
 				child.visible = true
 		auto_play_visible_sprites(main_menu)
-	# ONLY SHOW BACKGROUND AND UI_LAYOUT, HIDE OTHER DIRECT CHILDREN
-	show_only_nodes(["background", "ui_layout"])
-	# ONLY SHOW MAIN_MENU INSIDE UI_LAYOUT, HIDE OTHERS
-	for child in ui_layout.get_children():
+	# ONLY SHOW BACKGROUND AND UI_logic, HIDE OTHER DIRECT CHILDREN
+	show_only_nodes(["background", "ui_logic"])
+	# ONLY SHOW MAIN_MENU INSIDE UI_logic, HIDE OTHERS
+	for child in ui_logic.get_children():
 		if child.name == "main_menu":
 			if child.has_method("set_visible"):
 				child.visible = true
@@ -162,32 +162,32 @@ func unhide_main_menu():
 
 # --------------------------OVERLAY 
 func show_close_button():
-	if ui_layout.has_node("overlay"):
-		var overlay = ui_layout.get_node("overlay")
+	if ui_logic.has_node("overlay"):
+		var overlay = ui_logic.get_node("overlay")
 		if overlay.has_node("close_button"):
 			var close_btn = overlay.get_node("close_button")
 			close_btn.visible = true
 
 func show_overlay_tutorial():
-	if ui_layout.has_node("overlay"):
-		var overlay = ui_layout.get_node("overlay")
+	if ui_logic.has_node("overlay"):
+		var overlay = ui_logic.get_node("overlay")
 		if overlay.has_node("tutorial"):
 			var tutorial = overlay.get_node("tutorial")
-			ui_layout.animate_overlay_open_from_right(tutorial)
+			ui_logic.animate_overlay_open_from_right(tutorial)
 			overlay.visible = true
 			hide_all_children(overlay)
 			tutorial.visible = true
 			show_close_button()
 
 func show_overlay_credits():
-	if ui_layout.has_node("overlay"):
-		var overlay = ui_layout.get_node("overlay")
+	if ui_logic.has_node("overlay"):
+		var overlay = ui_logic.get_node("overlay")
 		overlay.visible = true
 		hide_all_children(overlay)
 		if overlay.has_node("credits"):
 			var credits = overlay.get_node("credits")
-			var button = ui_layout.credits_button
-			var tween = ui_layout.popup_overlay_from_button(button, credits)
+			var button = ui_logic.credits_button
+			var tween = ui_logic.popup_overlay_from_button(button, credits)
 			credits.visible = true
 			if tween:
 				await tween.finished
@@ -195,8 +195,8 @@ func show_overlay_credits():
 
 func close_overlay_button(node):
 	var overlay = null
-	if ui_layout.has_node("overlay"):
-		overlay = ui_layout.get_node("overlay")
+	if ui_logic.has_node("overlay"):
+		overlay = ui_logic.get_node("overlay")
 	if not overlay:
 		return
 	# Find which overlay child is currently visible
@@ -208,15 +208,15 @@ func close_overlay_button(node):
 	# Animate close based on overlay name
 	if visible_child:
 		if visible_child.name == "tutorial":
-			ui_layout.animate_overlay_close_to_right(visible_child)
+			ui_logic.animate_overlay_close_to_right(visible_child)
 		elif visible_child.name == "credits":
-			ui_layout.animate_overlay_close_to_left(visible_child)
+			ui_logic.animate_overlay_close_to_left(visible_child)
 		else:
-			ui_layout.animate_overlay_close_to_right(visible_child)
+			ui_logic.animate_overlay_close_to_right(visible_child)
 		# Optionally, hide after animation (add callback if needed)
 		# You can add a callback to hide overlay after animation if you want
 		# Example:
-		# ui_layout.animate_overlay_close_to_right(visible_child, Callable(self, "_after_overlay_closed").bind(overlay))
+		# ui_logic.animate_overlay_close_to_right(visible_child, Callable(self, "_after_overlay_closed").bind(overlay))
 	else:
 		overlay.visible = false
 	# Hide and free overlay child
@@ -229,18 +229,18 @@ func close_overlay_button(node):
 	overlay.visible = false
 
 func show_game_ui_elements():
-	if ui_layout.has_node("game_ui_elements"):
-		var game_ui = ui_layout.get_node("game_ui_elements")
+	if ui_logic.has_node("game_ui_elements"):
+		var game_ui = ui_logic.get_node("game_ui_elements")
 		hide_all_children(game_ui)
 		game_ui.visible = true
 		for child in game_ui.get_children():
 			if child.has_method("set_visible"):
 				child.visible = true
 		
-	# ONLY SHOW BACKGROUND AND UI_LAYOUT, HIDE OTHER DIRECT CHILDREN
-	show_only_nodes(["background", "ui_layout"])
-	# ONLY SHOW game_ui_elements INSIDE UI_LAYOUT, HIDE OTHERS
-	for child in ui_layout.get_children():
+	# ONLY SHOW BACKGROUND AND UI_logic, HIDE OTHER DIRECT CHILDREN
+	show_only_nodes(["background", "ui_logic"])
+	# ONLY SHOW game_ui_elements INSIDE UI_logic, HIDE OTHERS
+	for child in ui_logic.get_children():
 		if child.name == "game_ui_elements":
 			if child.has_method("set_visible"):
 				child.visible = true
@@ -250,8 +250,8 @@ func show_game_ui_elements():
 
 # TIME INDICATOR LOGIC
 func refresh_time_indicator():
-	if ui_layout.has_node("game_ui_elements"):
-		var game_ui = ui_layout.get_node("game_ui_elements")
+	if ui_logic.has_node("game_ui_elements"):
+		var game_ui = ui_logic.get_node("game_ui_elements")
 		if game_ui.has_node("time_indicator"):
 			time_indicator = game_ui.get_node("time_indicator")
 
@@ -317,8 +317,8 @@ func set_default_time_indicator() -> void:
 		
 
 func show_overlay_hint():
-	if ui_layout.has_node("overlay"):
-		var overlay = ui_layout.get_node("overlay")
+	if ui_logic.has_node("overlay"):
+		var overlay = ui_logic.get_node("overlay")
 		overlay.visible = true
 		hide_all_children(overlay)
 		if overlay.has_node("hint"):
