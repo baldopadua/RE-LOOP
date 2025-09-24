@@ -9,7 +9,7 @@ var rocks: Array = []
 
 # HANDLERS
 @onready var sound_manager = get_parent().get_node("SoundManager")
-@onready var level_manager = $"../LevelHandler"
+@onready var level_handler = $"../LevelHandler"
 
 # BOOLEANS
 var is_playing_two: bool = false
@@ -57,12 +57,12 @@ func _process(_delta: float) -> void:
 			sprung_tween.kill()
 			
 			player.visible = false
-			
+
 			# NOTIFY LEVEL 3 IS COMPLETED
-			level_manager.complete_current_level(get_parent().get_parent())
+			level_handler.complete_current_level(get_parent().get_parent())
 
 			# SWITCH SCENE TO LEVEL 4
-			level_manager.next_level(get_parent(), tween_rotate, tween_scale, "res://Scenes/levels/level_4_scene.tscn")
+			level_handler.next_level(get_parent(), tween_rotate, tween_scale, "res://Scenes/levels/level_4_scene.tscn")
 	
 	# IF ANGLE OF PLAYER IS IN 3,6,9,12 AND ROCK SIZE IS GREATER THAN 0
 	if round(rad_to_deg(player.rotation)) in allowed_angles and rocks.size() > 0 and not is_playing_two and player.direction == GlobalVariables.player_direction.CLOCKWISE:
