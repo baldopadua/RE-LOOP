@@ -73,11 +73,8 @@ func _ready() -> void:
 		# PLAY RESTART SFX AND CUTSCENES
 	object_pos = get_node("object_position")
 	sprite.play("idle")
-	# Debug: print all children of root
-	var root = get_tree().root
-	for child in root.get_children():
-		print("Root child: ", child.name)
 	# Try to get UiHandler under MainScene
+	var root = get_tree().root
 	if root.has_node("MainScene/CanvasLayerUi/UiHandler"):
 		ui_handler = root.get_node("MainScene/CanvasLayerUi/UiHandler")
 	# MAP HANDLER
@@ -220,7 +217,7 @@ func rotate_player():
 		
 	# set the tween
 	tween.tween_property(self, "rotation", rotation_tween, transition_time).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-	print(moves)
+	#print(moves)
 	
 	#	Shakes the camera
 	shake_camera(float(moves), to_intensity, 0.5)

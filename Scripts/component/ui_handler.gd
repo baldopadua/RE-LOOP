@@ -193,39 +193,29 @@ func show_overlay_credits():
 				await tween.finished
 			show_close_button()
 
-func close_overlay_button(node):
+func close_overlay_button(_node):
 	var overlay = null
 	if ui_logic.has_node("overlay"):
 		overlay = ui_logic.get_node("overlay")
 	if not overlay:
 		return
+	
 	# Find which overlay child is currently visible
 	var visible_child = null
 	for child in overlay.get_children():
-		if child.visible:
+		if child.visible and child.name != "close_button":
 			visible_child = child
 			break
-	# Animate close based on overlay name
+	
+	# Hide the visible overlay child and close button
 	if visible_child:
-		if visible_child.name == "tutorial":
-			ui_logic.animate_overlay_close_to_right(visible_child)
-		elif visible_child.name == "credits":
-			ui_logic.animate_overlay_close_to_left(visible_child)
-		else:
-			ui_logic.animate_overlay_close_to_right(visible_child)
-		# Optionally, hide after animation (add callback if needed)
-		# You can add a callback to hide overlay after animation if you want
-		# Example:
-		# ui_logic.animate_overlay_close_to_right(visible_child, Callable(self, "_after_overlay_closed").bind(overlay))
-	else:
-		overlay.visible = false
-	# Hide and free overlay child
-	var current = node.get_parent()
-	while current and current != overlay:
-		var to_free = current
-		current = current.get_parent()
-		to_free.visible = false
-		to_free.queue_free()
+		visible_child.visible = false
+	
+	# Hide close button
+	if overlay.has_node("close_button"):
+		overlay.get_node("close_button").visible = false
+	
+	# Hide the entire overlay
 	overlay.visible = false
 
 func show_game_ui_elements():
@@ -247,6 +237,17 @@ func show_game_ui_elements():
 		else:
 			if child.has_method("set_visible"):
 				child.visible = false
+
+
+func show_overlay_hint():
+	if ui_logic.has_node("overlay"):
+		var overlay = ui_logic.get_node("overlay")
+		overlay.visible = true
+		hide_all_children(overlay)
+		if overlay.has_node("hint"):
+			var hint = overlay.get_node("hint")
+			hint.show_hint()  # Use the hint script's show_hint method
+			show_close_button()
 
 # TIME INDICATOR LOGIC
 func refresh_time_indicator():
@@ -314,17 +315,13 @@ func set_default_time_indicator() -> void:
 	if time_indicator:
 		time_indicator.animation = "clockwise_time_indicator"
 		time_indicator.frame = 0
-		
+		time_indicator.animation = "fixed"
+		time_indicator.frame = 0
 
-func show_overlay_hint():
-	if ui_logic.has_node("overlay"):
-		var overlay = ui_logic.get_node("overlay")
-		overlay.visible = true
-		hide_all_children(overlay)
-		if overlay.has_node("hint"):
-			var hint = overlay.get_node("hint")
-			hint.visible = true
-			show_close_button()
+
+
+
+
 
 
 

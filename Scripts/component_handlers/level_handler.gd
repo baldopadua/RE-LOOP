@@ -1,6 +1,7 @@
 extends Node2D
 
 signal level_instantiated(level_name: String)
+signal level_completed(level_name: String)
 
 # LEVEL INTRO GUIDE:
 #   1. Initialize Level Handler component in the level map and initialize as onready variable.
@@ -80,21 +81,35 @@ func change_level(scene_path: String, levels_frame):
 	levels_frame.add_child(new_level)
 	notify_level_instantiated(scene_path) # Notify that a new level has been instantiated
 	
-func notify_level_instantiated(scene_path: String):
-	var level_name := ""
-	if "seed" in scene_path:
-		level_name = "seed"
+func get_level_name_from_path(scene_path: String) -> String:
+	if "seed" in scene_path or "level_1" in scene_path:
+		return "level_1"
 	elif "old_man" in scene_path or "oldman" in scene_path \
 			or "level_2" in scene_path:
-		level_name = "old man"
+		return "level_2"
 	elif "rock" in scene_path or "level_3" in scene_path:
-		level_name = "rock"
+		return "level_3"
 	elif "dog" in scene_path or "level_4" in scene_path:
-		level_name = "dog"
+		return "level_4"
 	else:
-		level_name = scene_path
-	print(level_name)
+		return scene_path
+
+func notify_level_instantiated(scene_path: String):
+	var level_name = get_level_name_from_path(scene_path)
+	print("Level Handler: Current level is ", level_name)
 	emit_signal("level_instantiated", level_name)
+
+func notify_level_completed(scene_path: String):
+	var level_name = get_level_name_from_path(scene_path)
+	print("Level Handler: Level completed - ", level_name)
+	emit_signal("level_completed", level_name)
+
+# Call this method from the level scripts when the level objective is met
+func complete_current_level(levels_frame):
+	var current_level = levels_frame.get_child(0)
+	if current_level:
+		notify_level_completed(current_level.scene_file_path)
+	#put this "level_handler.complete_current_level(get_parent().get_parent())"
 
 func restart_level(levels_frame):
 	# Remove and Re-open current level

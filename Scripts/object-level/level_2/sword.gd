@@ -95,6 +95,10 @@ func _on_body_entered(body) -> void:
 		await tween_climb.finished
 
 		body.visible = false
+		
+		# NOTIFY LEVEL 2 IS COMPLETED
+		level_handler.complete_current_level(get_parent().get_parent())
+		
 		level_handler.next_level(get_parent(), tween_rotate, tween_scale, "res://Scenes/levels/level_3_scene.tscn")
 
 func _tween_climb_finished():

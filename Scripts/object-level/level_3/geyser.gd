@@ -57,6 +57,10 @@ func _process(_delta: float) -> void:
 			sprung_tween.kill()
 			
 			player.visible = false
+			
+			# NOTIFY LEVEL 3 IS COMPLETED
+			level_manager.complete_current_level(get_parent().get_parent())
+
 			# SWITCH SCENE TO LEVEL 4
 			level_manager.next_level(get_parent(), tween_rotate, tween_scale, "res://Scenes/levels/level_4_scene.tscn")
 	

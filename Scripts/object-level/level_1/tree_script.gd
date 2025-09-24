@@ -64,6 +64,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "JumpAnimation":
 		# DECLARE LEVEL TO BE FINISHED
 		var level_1 = get_parent()
+		
+		# NOTIFY LEVEL 1 IS COMPLETED
+		level_handler.complete_current_level(get_parent().get_parent())
+		
 		level_handler.next_level(level_1, tween_rotate, tween_scale, "res://Scenes/levels/level_2_scene.tscn")
 		
 		# CODE FOR PLAYING AnimatedSprite2D na nag jujump yung player sa hole.
