@@ -220,7 +220,7 @@ func rotate_player():
 	#print(moves)
 	
 	#	Shakes the camera
-	if GlobalVariables.is_looping:
+	if GlobalVariables.is_looping and moves > 8:
 		shake_camera(float(moves), to_intensity, 0.5)
 	
 func _process(_delta):
