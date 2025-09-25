@@ -5,12 +5,14 @@ extends object_class
 # ANIMATESPRITE2D.aVISIBLE = TRUE THEN PLAY ANIMATION
 @onready var loop_break_animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sword_sprite: Sprite2D = $SwordSprite
+@onready var player = $"../PlayerScene"
 
 # HANDLERS
 @onready var sound_manager = get_parent().get_node("SoundManager")
 @onready var area_handler = get_parent().get_node("AreaHandler")
 @onready var level_handler = $"../LevelHandler"
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+@onready var anim_handler = $"../AnimationPlayer"
 
 # BOOLEANS
 var is_playing: bool = false
@@ -77,29 +79,37 @@ func _on_body_entered(body) -> void:
 		ui_handler.set_time_indicator_fixed()
 		ui_handler.set_default_time_indicator()
 
+		# Play the climbing sprite animation
+
 		if body.has_node("AnimatedSprite2D"):
 			var sprite = body.get_node("AnimatedSprite2D")
 			sprite.stop()
 			sprite.play("climb")
-
-		tween_climb = create_tween()
-		if not tween_climb.is_connected("finished", _tween_climb_finished):
-			tween_climb.connect("finished", _tween_climb_finished)
-
-		# PLAY CLIMB SFX via SoundManager
-		if sound_manager and sound_manager.sfx.has("Climb"):
-			sound_manager.play_sfx("Climb")
-
-		var screen_center = Vector2(-150.0, 250.0)
-		tween_climb.tween_property(body, "position", screen_center, 1.5).set_trans(Tween.TRANS_LINEAR)
-		await tween_climb.finished
-
-		body.visible = false
 		
-		# NOTIFY LEVEL 2 IS COMPLETED
-		level_handler.complete_current_level(get_parent().get_parent())
+		# Play the Sound for climbing and Climb keyframe animation
 		
-		level_handler.next_level(get_parent(), tween_rotate, tween_scale, "res://Scenes/levels/level_3_scene.tscn")
+		sound_manager.play_player_sfx("Climb")
+		anim_handler.play("ClimbingAnimation_2")
 
 func _tween_climb_finished():
 	tween_climb.kill()
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "ClimbingAnimation_2":
+		# Play jump animation on player sprite after climbing finishes
+		if player and player.has_node("AnimatedSprite2D"):
+			var sprite = player.get_node("AnimatedSprite2D")
+			sprite.stop()
+			sprite.play("jump")
+		
+		# Play jump animation in AnimationPlayer
+		anim_handler.play("JumpAnimation_2")
+	elif anim_name == "JumpAnimation_2":
+		# DECLARE LEVEL TO BE FINISHED
+		var cur_level = get_parent()
+		
+		# NOTIFY LEVEL IS COMPLETED
+		level_handler.complete_current_level(get_parent().get_parent())
+		level_handler.next_level(cur_level, tween_rotate, tween_scale, "res://Scenes/levels/level_3_scene.tscn")
+		
+		# CODE FOR PLAYING AnimatedSprite2D na nag jujump yung player sa hole.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=15 format=3 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/levels/level_1_scene.gd" id="1_pxia2"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_cmquk"]
@@ -80,10 +80,56 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_70ox2"]
+resource_name = "ClimbingAnimation_2"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-150, 260)]
+}
+
+[sub_resource type="Animation" id="Animation_wegfx"]
+resource_name = "JumpAnimation_2"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-150, 260), Vector2(-150, 260), Vector2(-150, 350), Vector2(-150, 260)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmquk"]
 _data = {
 &"ClimbingAnimation": SubResource("Animation_pxia2"),
+&"ClimbingAnimation_2": SubResource("Animation_70ox2"),
 &"JumpAnimation": SubResource("Animation_cmquk"),
+&"JumpAnimation_2": SubResource("Animation_wegfx"),
 &"RESET": SubResource("Animation_l4q40")
 }
 

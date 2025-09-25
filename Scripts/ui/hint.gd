@@ -123,7 +123,3 @@ func show_appropriate_container():
 		_:
 			# Default to level_1 if unknown level
 			hint_container_1.visible = true
-
-
-
-

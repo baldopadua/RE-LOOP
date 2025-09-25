@@ -317,12 +317,3 @@ func set_default_time_indicator() -> void:
 		time_indicator.frame = 0
 		time_indicator.animation = "fixed"
 		time_indicator.frame = 0
-
-
-
-
-
-
-
-
-

@@ -128,7 +128,7 @@ func _tween_finished():
 		sound_manager.set_sfx_pitch_scale("time_manip", 1.0)
 		sound_manager.set_sfx_pitch_scale("clank", 1.0)
 	
-	# SWITCH THE MONOLITH
+	# SWITCH THE TIME INDICATOR
 	# INITIAL VALUE NO ENERGY and # POSITIVE MEANS CLOCKWISE
 	if GlobalVariables.is_looping and ui_handler:
 		if moves >= 0:
@@ -220,7 +220,8 @@ func rotate_player():
 	#print(moves)
 	
 	#	Shakes the camera
-	shake_camera(float(moves), to_intensity, 0.5)
+	if GlobalVariables.is_looping:
+		shake_camera(float(moves), to_intensity, 0.5)
 	
 func _process(_delta):
 	pass
