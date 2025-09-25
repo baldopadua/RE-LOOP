@@ -73,6 +73,7 @@ func geyser_ekusproshon():
 		# MAKE THE PLAYER ABLE TO MOVE AGAIN
 		GlobalVariables.player_stopped = false
 		can_now_enter_geyser = true	
+		
 
 func return_rocks():
 		# DISABLE VISIBILITY OF EVERY STATE
@@ -140,6 +141,9 @@ func _on_body_entered(body) -> void:
 
 # EXECUTE AFTER PLAYER FINISHES MOVING
 func _on_player_scene_player_finished_moving() -> void:
+	if can_now_enter_geyser:
+		return
+	
 	# DEBUG PRINT CHECK PLAYER MOVES
 	#print("MOVES: ")
 	#print(player.moves)
