@@ -21,16 +21,13 @@ func _ready():
 	
 	# INTRO OF MAP ROTATE AND SCALE PLUS TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
-	
+
 	# INITIALIE OBJECTS
 	objects_initialize()
 	
 func objects_initialize():
 	objects.append(old_man)
 	objects.append(sword)
-	
-func _process(_delta: float) -> void:
-	pass
 
 # Example function to play a sound effect using the centralized sound manager
 func play_level2_sfx(sfx_name: String):

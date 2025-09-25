@@ -1,12 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=23 format=4 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/levels/level_1_scene.gd" id="1_pxia2"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_cmquk"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_xkn6d"]
-[ext_resource type="PackedScene" uid="uid://c70cg6ape7qus" path="res://Scenes/objects/level_1/seed.tscn" id="6_ystme"]
-[ext_resource type="PackedScene" uid="uid://crgcfnjvowrjv" path="res://Scenes/objects/level_1/soil.tscn" id="8_cd6w3"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="8_pxia2"]
-[ext_resource type="PackedScene" uid="uid://3ytk6p6f2w23" path="res://Scenes/objects/level_1/tree.tscn" id="10_cmquk"]
+[ext_resource type="Script" uid="uid://c5sevvwh55kxw" path="res://Scripts/object-level/level_1/seed.gd" id="9_cmquk"]
+[ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="9_l4q40"]
+[ext_resource type="Texture2D" uid="uid://dfdbkhqn5goip" path="res://Assets/levels/level_1/seed.png" id="10_70ox2"]
+[ext_resource type="Texture2D" uid="uid://bdnfiuumni1te" path="res://Assets/levels/level_1/DirtMound.png" id="11_70ox2"]
+[ext_resource type="Script" uid="uid://dxhkvoxn1q5vy" path="res://Scripts/object-level/level_1/tree_script.gd" id="11_xkn6d"]
+[ext_resource type="Texture2D" uid="uid://vpgh1vjh3ndt" path="res://Assets/levels/level_1/tree_spritesheet.png" id="12_ystme"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="23_gu1y6"]
 
 [sub_resource type="Animation" id="Animation_pxia2"]
@@ -25,6 +28,22 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 260)]
 }
 
+[sub_resource type="Animation" id="Animation_70ox2"]
+resource_name = "ClimbingAnimation_2"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-150, 260)]
+}
+
 [sub_resource type="Animation" id="Animation_cmquk"]
 resource_name = "JumpAnimation"
 length = 1.5
@@ -39,6 +58,34 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 260), Vector2(0, 260), Vector2(0, 350), Vector2(0, 260)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wegfx"]
+resource_name = "JumpAnimation_2"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-150, 260), Vector2(-150, 260), Vector2(-150, 350), Vector2(-150, 260)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -80,50 +127,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_70ox2"]
-resource_name = "ClimbingAnimation_2"
-length = 2.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerScene:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-150, 260)]
-}
-
-[sub_resource type="Animation" id="Animation_wegfx"]
-resource_name = "JumpAnimation_2"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerScene:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-150, 260), Vector2(-150, 260), Vector2(-150, 350), Vector2(-150, 260)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerScene:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cmquk"]
 _data = {
 &"ClimbingAnimation": SubResource("Animation_pxia2"),
@@ -132,6 +135,80 @@ _data = {
 &"JumpAnimation_2": SubResource("Animation_wegfx"),
 &"RESET": SubResource("Animation_l4q40")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkn6d"]
+size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ystme"]
+size = Vector2(31, 18)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l05gj"]
+texture = ExtResource("12_ystme")
+21:0/0 = 0
+22:0/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+6:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+2:6/0 = 0
+6:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+20:6/0 = 0
+21:6/0 = 0
+22:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cd6w3"]
+sources/0 = SubResource("TileSetAtlasSource_l05gj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl30"]
+size = Vector2(31, 18)
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_pxia2")
@@ -142,18 +219,9 @@ script = ExtResource("1_pxia2")
 self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
 
-[node name="Seed" parent="." instance=ExtResource("6_ystme")]
-position = Vector2(0, 290)
-
-[node name="Soil" parent="." instance=ExtResource("8_cd6w3")]
-position = Vector2(1, -307)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 2)
 position_smoothing_enabled = true
-
-[node name="tree" parent="." instance=ExtResource("10_cmquk")]
-position = Vector2(0, -296.43)
 
 [node name="SoundManager" parent="." instance=ExtResource("23_gu1y6")]
 
@@ -163,5 +231,89 @@ position = Vector2(0, -296.43)
 libraries = {
 &"": SubResource("AnimationLibrary_cmquk")
 }
+
+[node name="Seed" parent="." instance=ExtResource("9_l4q40")]
+position = Vector2(0, 290)
+script = ExtResource("9_cmquk")
+object_name = "seed"
+is_pickupable = true
+usable_targets = Array[String](["soil"])
+
+[node name="Sprite2D" type="Sprite2D" parent="Seed"]
+texture_filter = 1
+position = Vector2(-1, 1)
+texture = ExtResource("10_70ox2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Seed"]
+light_mask = 3
+visibility_layer = 3
+z_index = 1
+shape = SubResource("RectangleShape2D_xkn6d")
+
+[node name="Soil" parent="." instance=ExtResource("9_l4q40")]
+position = Vector2(0, -307)
+object_name = "soil"
+object_type = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Soil"]
+texture_filter = 1
+position = Vector2(-0.5, -7)
+scale = Vector2(2, 2)
+texture = ExtResource("11_70ox2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soil"]
+light_mask = 3
+visibility_layer = 3
+z_index = 1
+position = Vector2(-0.5, 1)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ystme")
+
+[node name="tree" parent="." instance=ExtResource("9_l4q40")]
+position = Vector2(0, -296.43)
+script = ExtResource("11_xkn6d")
+object_type = 1
+
+[node name="State1" type="TileMapLayer" parent="tree"]
+visible = false
+texture_filter = 1
+rotation = 3.14159
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAD/////AAABAAUAAAAAAP//AAACAAUAAAAAAAAAAAACAAYAAAA=")
+tile_set = SubResource("TileSet_cd6w3")
+
+[node name="State2" type="TileMapLayer" parent="tree"]
+visible = false
+texture_filter = 1
+rotation = 3.14159
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAD///7/AAAJAAQAAAD/////AAAJAAUAAAD//wAAAAAJAAYAAAAAAP7/AAAKAAQAAAAAAP//AAAKAAUAAAAAAAAAAAAKAAYAAAA=")
+tile_set = SubResource("TileSet_cd6w3")
+
+[node name="State3" type="TileMapLayer" parent="tree"]
+visible = false
+texture_filter = 1
+rotation = 3.14159
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAD+//3/AAAMAAMAAAD+//7/AAAMAAQAAAD///3/AAANAAMAAAD///7/AAANAAQAAAD/////AAANAAUAAAD//wAAAAANAAYAAAAAAP3/AAAOAAMAAAAAAP7/AAAOAAQAAAAAAP//AAAOAAUAAAAAAAAAAAAOAAYAAAA=")
+tile_set = SubResource("TileSet_cd6w3")
+
+[node name="State4" type="TileMapLayer" parent="tree"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -1)
+rotation = 3.14159
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAD+//v/AAAUAAEAAAD+//z/AAAUAAIAAAD+//3/AAAUAAMAAAD+/wAAAAAUAAYAAAD///r/AAAVAAAAAAD///v/AAAVAAEAAAD///z/AAAVAAIAAAD///3/AAAVAAMAAAD///7/AAAVAAQAAAD/////AAAVAAUAAAD//wAAAAAVAAYAAAAAAPr/AAAWAAAAAAAAAPv/AAAWAAEAAAAAAPz/AAAWAAIAAAAAAP3/AAAWAAMAAAAAAP7/AAAWAAQAAAAAAP//AAAWAAUAAAAAAAAAAAAWAAYAAAABAPv/AAAXAAEAAAABAPz/AAAXAAIAAAA=")
+tile_set = SubResource("TileSet_cd6w3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tree"]
+light_mask = 3
+visibility_layer = 3
+z_index = 1
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_7hl30")
+
+[node name="SoundManager" parent="tree" instance=ExtResource("23_gu1y6")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="tree" method="_on_animation_player_animation_finished"]

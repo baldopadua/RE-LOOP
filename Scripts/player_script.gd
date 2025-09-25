@@ -1,8 +1,9 @@
-extends CharacterBody2D
+extends CharacterBody2D 
+
+signal player_finished_moving
 
 var player_directions = GlobalVariables.player_direction
 @export var direction: GlobalVariables.player_direction
-@export var player_clock_position: int = 0 # Default to 0, nasa top
 
 const angle_per_move := 30 # The that will be added everytime player rotates
 var is_moving: bool = false
@@ -189,6 +190,7 @@ func _tween_finished():
 	
 	tween.kill()
 	is_moving = false
+	player_finished_moving.emit()
 	sprite.play("idle")
 
 # Movement of Player
@@ -220,11 +222,8 @@ func rotate_player():
 	#print(moves)
 	
 	#	Shakes the camera
-	if GlobalVariables.is_looping and moves > 8:
+	if GlobalVariables.is_looping and (moves > 8 or moves < -8):
 		shake_camera(float(moves), to_intensity, 0.5)
-	
-func _process(_delta):
-	pass
 
 func update_held_object_direction():
 	if held_object:

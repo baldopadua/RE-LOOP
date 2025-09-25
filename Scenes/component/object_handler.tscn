@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp0rlhiddiiji"]
+
+[ext_resource type="Script" uid="uid://d1t303evbdwox" path="res://Scripts/object_class.gd" id="1_l2n2c"]
+
+[node name="ObjectHandler" type="Area2D"]
+light_mask = 3
+visibility_layer = 3
+disable_mode = 2
+script = ExtResource("1_l2n2c")
+object_name = "generic object"
+is_pickupable = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

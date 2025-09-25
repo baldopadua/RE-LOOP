@@ -19,7 +19,7 @@ var objects: Array = []
 @onready var lizard = $lizard
 @onready var dog = $dog
 @onready var incubator = $incubator
-@onready var seed = $seed
+@onready var seed_plant = $seed
 
 func _ready():
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
@@ -39,4 +39,4 @@ func objects_initialize():
 	objects.append(lizard)
 	objects.append(dog)
 	objects.append(incubator)
-	objects.append(seed)
+	objects.append(seed_plant)
