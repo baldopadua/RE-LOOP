@@ -109,4 +109,4 @@ func restart_level(levels_frame):
 		current_level.queue_free()
 		var new_level = level_scene.instantiate()
 		levels_frame.add_child(new_level)
-		#notify_level_instantiated(current_level.scene_file_path) # Notify that the level has been restarted
+		

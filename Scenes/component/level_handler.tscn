@@ -1,6 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkpnl1djf5yd3"]
+[gd_scene load_steps=4 format=3 uid="uid://dkpnl1djf5yd3"]
 
 [ext_resource type="Script" uid="uid://deh8lrhrpllft" path="res://Scripts/component_handlers/level_handler.gd" id="1_sijlw"]
+[ext_resource type="Texture2D" uid="uid://dt7ntblyxpwin" path="res://Assets/level_clock.png" id="2_svrni"]
+[ext_resource type="Texture2D" uid="uid://bwra7yuokj1p5" path="res://Assets/long_hand_clock.png" id="3_syl1f"]
 
 [node name="LevelHandler" type="Node2D"]
 script = ExtResource("1_sijlw")
+
+[node name="level_select" type="Node2D" parent="."]
+
+[node name="level_clock" type="TextureRect" parent="level_select"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -355.0
+offset_right = 382.0
+offset_bottom = 353.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_svrni")
+expand_mode = 1
+
+[node name="long_hand_rotation" type="Camera2D" parent="level_select"]
+position = Vector2(0, 0.135)
+ignore_rotation = false
+zoom = Vector2(33.12, 1.91)
+rotation_smoothing_enabled = true
+
+[node name="long_hand_clock" type="TextureRect" parent="level_select/long_hand_rotation"]
+offset_left = -11.0
+offset_top = -185.135
+offset_right = 8.0
+offset_bottom = 1.86501
+texture = ExtResource("3_syl1f")
+expand_mode = 1
