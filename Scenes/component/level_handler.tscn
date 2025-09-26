@@ -1,13 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkpnl1djf5yd3"]
+[gd_scene load_steps=9 format=3 uid="uid://dkpnl1djf5yd3"]
 
 [ext_resource type="Script" uid="uid://deh8lrhrpllft" path="res://Scripts/component_handlers/level_handler.gd" id="1_sijlw"]
+[ext_resource type="Script" uid="uid://8j4hncnj3jfg" path="res://Scripts/ui/level_select.gd" id="2_bicrg"]
 [ext_resource type="Texture2D" uid="uid://dt7ntblyxpwin" path="res://Assets/level_clock.png" id="2_svrni"]
-[ext_resource type="Texture2D" uid="uid://bwra7yuokj1p5" path="res://Assets/long_hand_clock.png" id="3_syl1f"]
+[ext_resource type="Texture2D" uid="uid://bllrafordg541" path="res://Assets/long_hand_clock_lock.png" id="3_wbj5g"]
+[ext_resource type="Texture2D" uid="uid://bh5j2ukfjbaee" path="res://Assets/long_hand_clock_unlock.png" id="4_bicrg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d8r2"]
+atlas = ExtResource("3_wbj5g")
+region = Rect2(0, 0, 55, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68ave"]
+atlas = ExtResource("4_bicrg")
+region = Rect2(0, 0, 21, 260)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_syl1f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d8r2")
+}],
+"loop": true,
+"name": &"lock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68ave")
+}],
+"loop": true,
+"name": &"unlock",
+"speed": 5.0
+}]
 
 [node name="LevelHandler" type="Node2D"]
 script = ExtResource("1_sijlw")
 
 [node name="level_select" type="Node2D" parent="."]
+script = ExtResource("2_bicrg")
+
+[node name="clock_camera" type="Camera2D" parent="level_select"]
+self_modulate = Color(0, 1, 1, 1)
+ignore_rotation = false
 
 [node name="level_clock" type="TextureRect" parent="level_select"]
 anchors_preset = 15
@@ -28,10 +62,8 @@ ignore_rotation = false
 zoom = Vector2(33.12, 1.91)
 rotation_smoothing_enabled = true
 
-[node name="long_hand_clock" type="TextureRect" parent="level_select/long_hand_rotation"]
-offset_left = -11.0
-offset_top = -185.135
-offset_right = 8.0
-offset_bottom = 1.86501
-texture = ExtResource("3_syl1f")
-expand_mode = 1
+[node name="long_hand_clock" type="AnimatedSprite2D" parent="level_select/long_hand_rotation"]
+position = Vector2(-2, -100.135)
+scale = Vector2(0.690476, 0.717308)
+sprite_frames = SubResource("SpriteFrames_syl1f")
+animation = &"unlock"
