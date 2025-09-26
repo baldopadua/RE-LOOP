@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bkklrol1yda1l"]
+[gd_scene load_steps=68 format=3 uid="uid://bkklrol1yda1l"]
 
 [ext_resource type="Script" uid="uid://w412f5j4febn" path="res://Scripts/levels/level_3_script.gd" id="1_thi73"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_p0m6i"]
@@ -368,7 +368,7 @@ size = Vector2(26, 26)
 
 [sub_resource type="Animation" id="Animation_symai"]
 resource_name = "ride_the_water"
-length = 2.5
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -376,14 +376,54 @@ tracks/0/path = NodePath("PlayerScene:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": []
+"values": [Vector2(0, 0), Vector2(-150, 260)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4srx3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4srx3"]
 _data = {
+&"RESET": SubResource("Animation_4srx3"),
 &"ride_the_water": SubResource("Animation_symai")
 }
 
@@ -587,3 +627,4 @@ libraries = {
 }
 
 [connection signal="player_finished_moving" from="PlayerScene" to="geyser" method="_on_player_scene_player_finished_moving"]
+[connection signal="animation_finished" from="AnimationPlayer" to="geyser" method="_on_animation_player_animation_finished"]

@@ -15,11 +15,11 @@ var rocks: Array = []
 var can_now_enter_geyser: bool = false
 var default_geyser_played: bool = false
 var is_exploded: bool = false
+var is_playing: bool = false
+var player_body: Node 
 
-# TWEENS
-var sprung_tween: Tween
-var tween_rotate: Tween
-var tween_scale: Tween
+# ANIMATION PLAYER
+@onready var anim_handler = $"../AnimationPlayer"
 
 # TIME INDICATOR
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
@@ -73,7 +73,6 @@ func geyser_ekusproshon():
 		# MAKE THE PLAYER ABLE TO MOVE AGAIN
 		GlobalVariables.player_stopped = false
 		can_now_enter_geyser = true	
-		
 
 func return_rocks():
 		# DISABLE VISIBILITY OF EVERY STATE
@@ -116,28 +115,28 @@ func _on_body_entered(body) -> void:
 	handle_body_entered(body) 
 	
 	# IF LOOP BREAK IS PLAYING AND ROCKS SIZE IS 5
-	if (animate_geyser.animation == "loop_break" and animate_geyser.is_playing()) and rocks.size() == 5:
+	if (animate_geyser.animation == "loop_break" and animate_geyser.is_playing()) and rocks.size() == 5 and not is_playing:
 	
 		# DISABLE PLAYER MOVEMENT
 		GlobalVariables.player_stopped = true
+		is_playing = true
 		
-		# SPRUNG BREAK LOOP TWEEN
-		sprung_tween = create_tween()
-			
-		var screen_center = Vector2(-150.0, 250.0)
-		sprung_tween.tween_property(player, "position", screen_center, 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-		await sprung_tween.finished
-		sprung_tween.kill()
+		# STORE THE PLAYER REFERENCE
+		player_body = body
 		
-		player.visible = false
+		# PLAY RIDE THE WATER ANIMATION
+		anim_handler.play("ride_the_water")
 
-		#TODO: Hi charles, dito yung next level ng level 3
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "ride_the_water":
+		# HIDE PLAYER AFTER RIDING THE WATER
+		player_body.visible = false
 
 		# NOTIFY LEVEL 3 IS COMPLETED
 		level_handler.complete_current_level(get_parent().get_parent())
 
 		# SWITCH SCENE TO LEVEL 4
-		level_handler.next_level(get_parent(), tween_rotate, tween_scale, "res://Scenes/levels/level_4_scene.tscn")
+		level_handler.next_level(get_parent(), null, null, "res://Scenes/levels/level_4_scene.tscn")
 
 # EXECUTE AFTER PLAYER FINISHES MOVING
 func _on_player_scene_player_finished_moving() -> void:
