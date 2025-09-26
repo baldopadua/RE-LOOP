@@ -22,6 +22,8 @@ var objects: Array = []
 @onready var seed_plant = $seed
 
 func _ready():
+	# SET LEVEL
+	level_handler.set_current_level(4)
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	
 	objects_initialize()

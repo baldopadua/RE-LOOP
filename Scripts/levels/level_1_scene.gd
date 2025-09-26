@@ -26,6 +26,8 @@ var center_circle: Vector2i = Vector2i(0, 0)
 @onready var tween_scale: Tween
 
 func _ready():
+	# SET LEVEL
+	level_handler.set_current_level(1)
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 

@@ -18,7 +18,7 @@ func _ready() -> void:
 	# Initial connection attempt
 	connect_to_level_handler()
 	
-	# Set up a timer to periodically check for new level handlers
+	# Set up a timer to periodically check for new level handlers and update current level
 	var timer = Timer.new()
 	timer.wait_time = 0.5
 	timer.timeout.connect(_check_for_level_handler)
@@ -30,6 +30,15 @@ func _check_for_level_handler():
 	var current_handler = find_level_handler()
 	if current_handler and current_handler != connected_level_handler:
 		connect_to_level_handler()
+	
+	# Update current level from level_handler's current_level_number
+	if connected_level_handler and is_instance_valid(connected_level_handler):
+		var level_number = connected_level_handler.current_level_number
+		if level_number > 0:
+			var new_level = "level_" + str(level_number)
+			if new_level != current_level:
+				current_level = new_level
+				print("Hint: Level updated to ", current_level)
 
 func find_level_handler() -> Node:
 	# Search the entire scene tree for the level_handler script
@@ -56,29 +65,14 @@ func _search_for_level_handler(node: Node) -> Node:
 
 func connect_to_level_handler():
 	var level_handler = find_level_handler()
-	if level_handler and level_handler != connected_level_handler:
-		# Disconnect from old handler if it exists and is still valid
-		if connected_level_handler and is_instance_valid(connected_level_handler):
-			if connected_level_handler.is_connected("level_instantiated", _on_level_changed):
-				connected_level_handler.disconnect("level_instantiated", _on_level_changed)
-				print("Hint: Disconnected from old level handler")
-		
-		# Connect to new handler
-		if level_handler.has_signal("level_instantiated"):
-			level_handler.connect("level_instantiated", _on_level_changed)
-			connected_level_handler = level_handler
-		else:
-			print("Hint: Level handler found but no signal available")
-	elif not level_handler:
+	if level_handler:
+		connected_level_handler = level_handler
+	else:
 		print("Hint: No level handler found")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
-func _on_level_changed(level_name: String):
-	current_level = level_name
-	#print("Hint: Level changed to ", level_name)
 
 func find_level_handler_upwards() -> Node:
 	# Searches up the scene tree for a node with the "level_instantiated" signal
@@ -123,3 +117,4 @@ func show_appropriate_container():
 		_:
 			# Default to level_1 if unknown level
 			hint_container_1.visible = true
+		

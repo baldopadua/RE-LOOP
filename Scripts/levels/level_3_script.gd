@@ -14,6 +14,8 @@ var tween_rotate: Tween
 var tween_scale: Tween
 
 func _ready():
+	# SET LEVEL
+	level_handler.set_current_level(3)
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	objects_initialize()
 
