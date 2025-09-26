@@ -14,15 +14,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6ev3c")
 
-[node name="TransitionHandler" parent="." instance=ExtResource("18_oyb3p")]
-visible = false
-layout_mode = 1
-
 [node name="GameScene" parent="." instance=ExtResource("19_jvnna")]
 visible = false
 layout_mode = 1
 
 [node name="CanvasLayerUi" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="TransitionHandler" parent="CanvasLayerUi" instance=ExtResource("18_oyb3p")]
+visible = false
 
 [node name="UiHandler" parent="CanvasLayerUi" instance=ExtResource("17_psl12")]

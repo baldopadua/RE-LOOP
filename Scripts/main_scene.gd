@@ -1,7 +1,7 @@
 extends Control
 
 @onready var ui_handler = $CanvasLayerUi/UiHandler
-@onready var transition_handler = $TransitionHandler
+@onready var transition_handler = $CanvasLayerUi/TransitionHandler
 @onready var game_scene: Node = $GameScene
 
 
