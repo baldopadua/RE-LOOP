@@ -149,6 +149,8 @@ func _tween_finished():
 	if (round(rad_to_deg(rotation)) == 0.0 or round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0) and (prev_deg == 330.0 or prev_deg == -330.0) and GlobalVariables.is_looping:
 		GlobalVariables.is_restarting = true
 		level_handler.restart_level(get_parent().get_parent())
+		ui_handler.show_last_frame_then_reset()
+		
 	
 	# RESET THE ANGLE TO 30
 	if round(rad_to_deg(rotation)) == 390.0 and direction == player_directions.CLOCKWISE:

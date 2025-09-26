@@ -302,6 +302,12 @@ func update_time_indicator_by_move(move: int) -> void:
 	var frame = abs(move) % 12
 	time_indicator.frame = frame
 
+func show_last_frame_then_reset():
+	time_indicator.frame = 12
+	# Wait briefly to show the last frame
+	await get_tree().create_timer(0.5).timeout  # Adjust timing as needed
+	time_indicator.frame = 0
+
 func set_time_indicator_fixed() -> void:
 	refresh_time_indicator()
 	if time_indicator:
