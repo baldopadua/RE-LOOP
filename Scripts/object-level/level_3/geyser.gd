@@ -131,11 +131,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		# HIDE PLAYER AFTER RIDING THE WATER
 		player_body.visible = false
 
-		# NOTIFY LEVEL 3 IS COMPLETED
+		# NOTIFY LEVEL 3 IS COMPLETED - this will handle cutscene and next level automatically
 		level_handler.complete_current_level(get_parent().get_parent())
 
-		# SWITCH SCENE TO LEVEL 4
-		level_handler.next_level(get_parent(), null, null, "res://Scenes/levels/level_4_scene.tscn")
 
 # EXECUTE AFTER PLAYER FINISHES MOVING
 func _on_player_scene_player_finished_moving() -> void:

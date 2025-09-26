@@ -6,8 +6,8 @@ var base_clock_position: int = 12 # Default base position
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	# Initially hide the level_select cutscene
+	visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -74,11 +74,86 @@ func update_hand_rotation():
 	# Get base rotation for the current level
 	var base_rotation = get_rotation_for_clock(base_clock_position)
 	
-	# Add player rotation to the base rotation
-	var hand_rotation = base_rotation + deg_to_rad(player_rotation_deg)
+	# Fix rotation direction - subtract instead of add to match player movement
+	var hand_rotation = base_rotation - deg_to_rad(player_rotation_deg)
 	
 	# Apply rotation to the long_hand_rotation camera
 	var tween = create_tween()
 	tween.tween_property(long_hand_rotation, "rotation", hand_rotation, 0.2)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_OUT)
+
+func show_level_complete_cutscene(_next_level_number: int):
+	# MAKE CUTSCENE VISIBLE
+	visible = true
+	
+	# HIDE ALL GAMEPLAY ELEMENTS DURING CUTSCENE
+	hide_gameplay_elements()
+
+func hide_cutscene():
+	visible = false
+	
+	# Restore gameplay elements when cutscene is hidden
+	show_gameplay_elements()
+
+func hide_gameplay_elements():
+	# NAVIGATE TO THE ACTUAL LEVEL SCENE
+	var level_scene = get_parent().get_parent().get_parent()
+	if level_scene:
+		# HIDE ALL LEVEL CHILDREN EXCEPT ESSENTIAL ONES
+		for child in level_scene.get_children():
+			if child.name not in ["SoundManager", "CanvasLayer", "Camera2D"]:
+				if child.has_method("set_visible") or "visible" in child:
+					child.visible = false
+
+func show_gameplay_elements():
+	# NAVIGATE TO THE ACTUAL LEVEL SCENE
+	var level_scene = get_parent().get_parent().get_parent()
+	if level_scene:
+		# RESTORE VISIBILITY OF ALL LEVEL CHILDREN
+		for child in level_scene.get_children():
+			if child.name not in ["SoundManager", "CanvasLayer", "Camera2D"]:
+				if child.has_method("set_visible") or "visible" in child:
+					child.visible = true
+
+func get_clock_position_for_level(level_number: int) -> int:
+	match level_number:
+		1:
+			return 12 # 12 o'clock for level 1
+		2:
+			return 3 # 3 o'clock for level 2
+		3:
+			return 6 # 6 o'clock for level 3
+		4:
+			return 9 # 9 o'clock for level 4
+		_:
+			return 12 # 12 o'clock for other levels
+
+func animate_hand_to_next_level(next_clock_position: int) -> Tween:
+	var current_rotation = long_hand_rotation.rotation
+	var target_rotation = get_rotation_for_clock(next_clock_position)
+	
+	# CALCULATE SHORTEST ROTATION PATH
+	var rotation_diff = target_rotation - current_rotation
+	
+	# NORMALIZE TO AVOID FULL CIRCLE ROTATIONS
+	while rotation_diff > PI:
+		rotation_diff -= 2 * PI
+	while rotation_diff < -PI:
+		rotation_diff += 2 * PI
+	
+	var final_rotation = current_rotation + rotation_diff
+	
+	# CREATE SMOOTH CUTSCENE ANIMATION
+	var tween = create_tween()
+	tween.tween_property(long_hand_rotation, "rotation", final_rotation, 2.0)
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	
+	# UPDATE BASE POSITION FOR NEXT LEVEL
+	base_clock_position = next_clock_position
+	
+	return tween
+	
+
+
