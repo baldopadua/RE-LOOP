@@ -225,7 +225,10 @@ position_smoothing_enabled = true
 
 [node name="SoundManager" parent="." instance=ExtResource("23_gu1y6")]
 
-[node name="LevelHandler" parent="." instance=ExtResource("8_pxia2")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("8_pxia2")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

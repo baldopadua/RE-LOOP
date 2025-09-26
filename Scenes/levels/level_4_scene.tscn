@@ -60,4 +60,6 @@ position = Vector2(0, 254)
 
 [node name="SoundManager" parent="." instance=ExtResource("14_yxj7a")]
 
-[node name="LevelHandler" parent="." instance=ExtResource("15_f0imo")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("15_f0imo")]

@@ -9,7 +9,7 @@ var rocks: Array = []
 
 # HANDLERS
 @onready var sound_manager = get_parent().get_node("SoundManager")
-@onready var level_handler = $"../LevelHandler"
+@onready var level_handler = $"../CanvasLayer/LevelHandler"
 
 # BOOLEANS
 var can_now_enter_geyser: bool = false

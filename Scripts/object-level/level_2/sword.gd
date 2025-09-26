@@ -10,7 +10,7 @@ extends object_class
 # HANDLERS
 @onready var sound_manager = get_parent().get_node("SoundManager")
 @onready var area_handler = get_parent().get_node("AreaHandler")
-@onready var level_handler = $"../LevelHandler"
+@onready var level_handler = $"../CanvasLayer/LevelHandler"
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 @onready var anim_handler = $"../AnimationPlayer"
 

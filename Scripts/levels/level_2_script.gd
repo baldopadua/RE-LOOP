@@ -11,7 +11,7 @@ var objects: Array = []
 
 # HANDLERS
 @onready var sound_manager = $SoundManager
-@onready var level_handler = $LevelHandler
+@onready var level_handler = $CanvasLayer/LevelHandler
 
 # TWEENS
 var tween_rotate: Tween

@@ -54,7 +54,7 @@ var moves: int = 0
 @onready var sprite = $AnimatedSprite2D
 @onready var object_drop_position := $object_drop_position
 @onready var sound_manager = $SoundManager
-@onready var level_handler = $"../LevelHandler"
+@onready var level_handler = $"../CanvasLayer/LevelHandler"
 var area_handler: Node2D
 var time_indicator: AnimatedSprite2D
 

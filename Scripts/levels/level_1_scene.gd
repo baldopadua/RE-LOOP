@@ -14,7 +14,7 @@ extends Node2D
 
 # HANDLERS
 @onready var area_handler = $AreaHandler
-@onready var level_handler = $LevelHandler
+@onready var level_handler = $CanvasLayer/LevelHandler
 @onready var sound_manager = $SoundManager
 #@onready var anim_handler = $AnimationHandler
 

@@ -5,6 +5,8 @@ signal level_completed(level_name: String)
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 var current_level_number: int = 0
+var current_player: CharacterBody2D = null
+@onready var level_select_node = $level_select
 
 # LEVEL INTRO GUIDE:
 #   1. Initialize Level Handler component in the level map and initialize as onready variable.
@@ -32,6 +34,19 @@ func map_initialize(this, tween_rotate, tween_scale):
 	tween_scale = create_tween()
 	tween_scale.connect("finished", Callable(self, "tween_scale_finished").bind(tween_scale))
 	tween_scale.tween_property(this, "scale", Vector2(1.0, 1.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+
+	# Connect to player after map initialization
+	call_deferred("connect_to_player", this)
+
+func connect_to_player(level_scene):
+	# Find the player in the current level
+	var player = level_scene.get_node_or_null("PlayerScene")
+	if player:
+		current_player = player
+		# Connect player signals to level_select
+		if player.has_signal("player_finished_moving"):
+			player.player_finished_moving.connect(level_select_node._on_player_moved)
+		level_select_node.set_player_reference(player)
 
 # NEXT LEVEL GUIDE:
 #	1. If not done yet, initialize Level Handler component in the scene script and initialize as onready variable.
@@ -91,6 +106,17 @@ func set_current_level(level_number: int):
 	var level_name = "level_" + str(level_number)
 	print("Level Handler: Current level set to ", level_name)
 	emit_signal("level_instantiated", level_name)
+	
+	# Set hand position based on level
+	match level_number:
+		2:
+			level_select_node.set_hand_to_clock_position(3) # 3 o'clock for level 2
+		3:
+			level_select_node.set_hand_to_clock_position(6) # 6 o'clock for level 3
+		4:
+			level_select_node.set_hand_to_clock_position(9) # 9 o'clock for level 4
+		_:
+			level_select_node.set_hand_to_clock_position(12) # 12 o'clock for other levels
 
 # Call this method from the level scripts when the level objective is met
 func complete_current_level(_levels_frame):
@@ -109,4 +135,4 @@ func restart_level(levels_frame):
 		current_level.queue_free()
 		var new_level = level_scene.instantiate()
 		levels_frame.add_child(new_level)
-		
+

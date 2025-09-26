@@ -486,7 +486,9 @@ shape = SubResource("RectangleShape2D_rgji6")
 
 [node name="SoundManager" parent="." instance=ExtResource("27_0pbmp")]
 
-[node name="LevelHandler" parent="." instance=ExtResource("7_wegfx")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("7_wegfx")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

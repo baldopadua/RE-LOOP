@@ -41,29 +41,32 @@ script = ExtResource("2_bicrg")
 
 [node name="clock_camera" type="Camera2D" parent="level_select"]
 self_modulate = Color(0, 1, 1, 1)
+position = Vector2(637, 362)
 ignore_rotation = false
 
-[node name="level_clock" type="TextureRect" parent="level_select"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -384.0
-offset_top = -355.0
-offset_right = 382.0
-offset_bottom = 353.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_svrni")
-expand_mode = 1
-
 [node name="long_hand_rotation" type="Camera2D" parent="level_select"]
-position = Vector2(0, 0.135)
+position = Vector2(637, 362)
 ignore_rotation = false
 zoom = Vector2(33.12, 1.91)
 rotation_smoothing_enabled = true
 
 [node name="long_hand_clock" type="AnimatedSprite2D" parent="level_select/long_hand_rotation"]
-position = Vector2(-2, -100.135)
+position = Vector2(-2, -92.135)
 scale = Vector2(0.690476, 0.717308)
 sprite_frames = SubResource("SpriteFrames_syl1f")
 animation = &"unlock"
+
+[node name="level_clock" type="TextureRect" parent="level_select"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 251.0
+offset_top = 7.0
+offset_right = 1017.0
+offset_bottom = 715.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_svrni")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

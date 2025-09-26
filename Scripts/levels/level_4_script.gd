@@ -7,7 +7,7 @@ var tween_rotate: Tween
 var tween_scale: Tween
 var objects: Array = []
 
-@onready var level_handler = $LevelHandler
+@onready var level_handler = $CanvasLayer/LevelHandler
 
 @onready var soil = $soil
 @onready var stick = $soil/stick
