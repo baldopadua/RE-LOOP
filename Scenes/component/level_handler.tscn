@@ -47,7 +47,7 @@ ignore_rotation = false
 [node name="long_hand_rotation" type="Camera2D" parent="level_select"]
 position = Vector2(637, 362)
 ignore_rotation = false
-zoom = Vector2(33.12, 1.91)
+zoom = Vector2(33.12, 1.93)
 rotation_smoothing_enabled = true
 
 [node name="long_hand_clock" type="AnimatedSprite2D" parent="level_select/long_hand_rotation"]

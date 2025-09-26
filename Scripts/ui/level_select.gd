@@ -53,34 +53,41 @@ func set_hand_to_clock_position(clock_position: int):
 	base_clock_position = clock_position
 	var target_rotation = get_rotation_for_clock(clock_position)
 	
-	var tween = create_tween()
-	tween.tween_property(long_hand_rotation, "rotation", target_rotation, 0.3)
-	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.set_ease(Tween.EASE_OUT)
+	# Set hand directly to position without animation for level transitions
+	long_hand_rotation.rotation = target_rotation
 
 func update_hand_rotation():
 	if not current_player:
 		return
 	
-	# Get player's current rotation in degrees
-	var player_rotation_deg = rad_to_deg(current_player.rotation)
-	
-	# Normalize the rotation to 0-360 range
-	while player_rotation_deg < 0:
-		player_rotation_deg += 360
-	while player_rotation_deg >= 360:
-		player_rotation_deg -= 360
+	# Get player's current rotation in radians
+	var player_rotation = current_player.rotation
 	
 	# Get base rotation for the current level
 	var base_rotation = get_rotation_for_clock(base_clock_position)
 	
-	# Fix rotation direction - subtract instead of add to match player movement
-	var hand_rotation = base_rotation - deg_to_rad(player_rotation_deg)
+	# Calculate target hand rotation (same direction as player)
+	var target_hand_rotation = base_rotation + player_rotation
 	
-	# Apply rotation to the long_hand_rotation camera
+	# Get current hand rotation
+	var current_hand_rotation = long_hand_rotation.rotation
+	
+	# Calculate the shortest path to target rotation
+	var rotation_diff = target_hand_rotation - current_hand_rotation
+	
+	# Normalize to shortest path (-PI to PI)
+	while rotation_diff > PI:
+		rotation_diff -= 2 * PI
+	while rotation_diff < -PI:
+		rotation_diff += 2 * PI
+	
+	# Apply the shortest rotation path
+	var final_rotation = current_hand_rotation + rotation_diff
+	
+	# Apply rotation smoothly without doing full spins
 	var tween = create_tween()
-	tween.tween_property(long_hand_rotation, "rotation", hand_rotation, 0.2)
-	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(long_hand_rotation, "rotation", final_rotation, 0.15)
+	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_OUT)
 
 func show_level_complete_cutscene(_next_level_number: int):
@@ -133,27 +140,33 @@ func animate_hand_to_next_level(next_clock_position: int) -> Tween:
 	var current_rotation = long_hand_rotation.rotation
 	var target_rotation = get_rotation_for_clock(next_clock_position)
 	
-	# CALCULATE SHORTEST ROTATION PATH
+	# Calculate the shortest rotation path
 	var rotation_diff = target_rotation - current_rotation
 	
-	# NORMALIZE TO AVOID FULL CIRCLE ROTATIONS
+	# Normalize to shortest path (-PI to PI)
 	while rotation_diff > PI:
 		rotation_diff -= 2 * PI
 	while rotation_diff < -PI:
 		rotation_diff += 2 * PI
 	
+	# Apply the shortest rotation path
 	var final_rotation = current_rotation + rotation_diff
 	
-	# CREATE SMOOTH CUTSCENE ANIMATION
+	# CREATE SMOOTH CUTSCENE ANIMATION - SHORTEST PATH ONLY
 	var tween = create_tween()
 	tween.tween_property(long_hand_rotation, "rotation", final_rotation, 2.0)
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.set_ease(Tween.EASE_IN_OUT)
 	
-	# UPDATE BASE POSITION FOR NEXT LEVEL
+	# UPDATE BASE POSITION AND KEEP HAND AT TARGET AFTER ANIMATION
 	base_clock_position = next_clock_position
 	
-	return tween
+	# When animation finishes, set exact target rotation to prevent drift
+	tween.finished.connect(func(): 
+		long_hand_rotation.rotation = get_rotation_for_clock(next_clock_position)
+	)
 	
+	return tween
+
 
 
