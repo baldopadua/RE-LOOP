@@ -35,7 +35,6 @@ func _on_body_entered(body) -> void:
 		await get_tree().create_timer(1).timeout
 		
 		ui_handler.set_time_indicator_fixed()
-		ui_handler.set_default_time_indicator()
 		
 		# PLAY CLIMB ANIMATION ON PLAYER SPRITE
 		if body.has_node("AnimatedSprite2D"):

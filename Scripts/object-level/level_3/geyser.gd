@@ -65,7 +65,6 @@ func geyser_ekusproshon():
 				sound_manager.play_finish_level_sfx()
 		# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
 		ui_handler.set_time_indicator_fixed()
-		ui_handler.set_default_time_indicator()
 		
 		# PLAY LOOPING GEYSER AFTER BURST
 		animate_geyser.play("loop_break")

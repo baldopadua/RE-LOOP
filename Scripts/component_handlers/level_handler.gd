@@ -2,6 +2,7 @@ extends Node2D
 
 signal level_instantiated(level_name: String)
 signal level_completed(level_name: String)
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 # LEVEL INTRO GUIDE:
 #   1. Initialize Level Handler component in the level map and initialize as onready variable.
@@ -54,6 +55,7 @@ func next_level(this, tween_rotate, tween_scale, next_level_path):
 
 	# NEXT LEVEL
 	change_level(next_level_path, this.get_parent())
+	ui_handler.set_default_time_indicator()
 
 func tween_rotate_finished(tween_created):
 	print("Rotate Killed")

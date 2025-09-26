@@ -314,12 +314,10 @@ func set_time_indicator_fixed() -> void:
 		time_indicator.animation = "fixed"
 		time_indicator.frame = 0
 		
-
 func set_default_time_indicator() -> void:
 	refresh_time_indicator()
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(0.5).timeout
 	if time_indicator:
 		time_indicator.animation = "clockwise_time_indicator"
 		time_indicator.frame = 0
-		time_indicator.animation = "fixed"
-		time_indicator.frame = 0
+		
