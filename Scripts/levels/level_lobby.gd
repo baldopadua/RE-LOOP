@@ -22,6 +22,8 @@ var center_circle: Vector2i = Vector2i(0, 0)
 
 @onready var enter_1: object_class = $enter_1
 @onready var enter_2: object_class = $enter_2
+@onready var enter_3: object_class = $enter_3
+@onready var enter_4: object_class = $enter_4
 
 func _ready():
 	level_handler.set_current_lobby()
@@ -40,6 +42,8 @@ func _ready():
 func objects_initialize():
 	objects.append(enter_1)
 	objects.append(enter_2)
+	objects.append(enter_3)
+	objects.append(enter_4)
 
 func _process(_delta: float) -> void:
 	level_handler.visible = true
@@ -48,12 +52,14 @@ func _process(_delta: float) -> void:
 func enter_level(level_number: int):
 	print("Entering level ", level_number)
 	
+	# Get the levels_frame from the game scene structure
+	var levels_frame = get_parent()  # This should be the levels_frame
+	
 	# Kill the current lobby map with animation
 	level_handler.kill_current_level(self)
 	await get_tree().create_timer(1.0).timeout
 	
-	# Load the selected level
-	var level_path = "res://Scenes/levels/level_" + str(level_number) + "_scene.tscn"
-	get_tree().change_scene_to_file(level_path)
+	# Use level_handler's load_next_level method
+	level_handler.load_next_level(level_number, levels_frame)
 
 
