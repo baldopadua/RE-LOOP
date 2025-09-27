@@ -6,6 +6,7 @@ signal level_completed(level_name: String)
 
 var current_level_number: int = 0
 var current_player: CharacterBody2D = null
+var is_lobby: bool = false # Track if we're in the lobby scene
 # Make completed_levels static so it persists across scene changes
 static var completed_levels: Array[int] = [] # Track completed levels
 # Global level count - change this when adding more levels
@@ -90,6 +91,7 @@ func change_level(scene_path: String, levels_frame):
 # Example: level_handler.set_current_level(1)
 func set_current_level(level_number: int):
 	current_level_number = level_number
+	is_lobby = false # We're in a regular level, not lobby
 	var level_name = "level_" + str(level_number)
 	print("Level Handler: Current level set to ", level_name)
 	emit_signal("level_instantiated", level_name)
@@ -106,6 +108,17 @@ func set_current_level(level_number: int):
 			level_select_node.set_hand_to_clock_position(9)
 		_:
 			level_select_node.set_hand_to_clock_position(12) # 12 o'clock for other levels
+
+# Call this method from level_lobby script in its _ready() function to identify it as lobby
+# Example: level_handler.set_current_lobby()
+func set_current_lobby():
+	current_level_number = 0
+	is_lobby = true
+	print("Level Handler: Current scene set to lobby")
+	emit_signal("level_instantiated", "lobby")
+	
+	# Set hand to default position for lobby (12 o'clock)
+	level_select_node.set_hand_to_clock_position(12)
 
 # Call this method from the level scripts when the level objective is met
 # Example: level_handler.complete_current_level(get_parent().get_parent())

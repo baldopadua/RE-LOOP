@@ -33,7 +33,7 @@ func _ready():
 
 	# MANIPULATING OBJECTS APPENDED IN ARRAY
 	objects_initialize()
-	level_handler.visible = false
+	
 
 func objects_initialize():
 	objects.append(soil)
@@ -44,7 +44,7 @@ func objects_initialize():
 # Tree can now cycle
 
 func _process(_delta: float) -> void:
-	level_handler.visible = true
+	
 	if soil.has_node("Seed") and GlobalVariables.is_looping:
 		seed_obj.visible = false
 		tree.visible = true
