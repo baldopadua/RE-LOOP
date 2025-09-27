@@ -316,6 +316,7 @@ shape = SubResource("RectangleShape2D_7hl30")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("8_pxia2")]
 
