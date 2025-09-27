@@ -15,6 +15,9 @@ func _ready():
 	_connect_game_ui_elements_buttons()
 	$GameScene.visible= false;
 	$GameScene.process_mode = Node.PROCESS_MODE_DISABLED
+	# Hide level handler initially
+	if $GameScene.has_node("levels_frame/level_1/LevelHandler"):
+		$GameScene.get_node("levels_frame/level_1/LevelHandler").visible = false
 
 func _connect_main_menu_buttons():
 	if ui_handler.ui_logic.has_node("main_menu"):
@@ -74,6 +77,9 @@ func _on_main_menu_button_pressed(button_type):
 			transition_handler.visible = false 
 			$GameScene.visible= true;
 			$GameScene.process_mode = Node.PROCESS_MODE_INHERIT
+			# Show level handler when game starts
+			if $GameScene.has_node("levels_frame/level_1/LevelHandler"):
+				$GameScene.get_node("levels_frame/level_1/LevelHandler").visible = true
 			ui_handler.show_game_ui_elements()
 		elif button_type == "tutorial":
 			ui_handler.sound_manager.play_ui("page_turn")
