@@ -39,6 +39,12 @@ func _ready():
 	# MANIPULATING OBJECTS APPENDED IN ARRAY
 	objects_initialize()
 	
+	# UPDATE COMPLETED LEVELS VISUAL
+	update_completed_levels_visual()
+	
+	# CONNECT TO LEVEL COMPLETED SIGNAL
+	level_handler.level_completed.connect(_on_level_completed)
+
 func objects_initialize():
 	objects.append(enter_1)
 	objects.append(enter_2)
@@ -61,5 +67,25 @@ func enter_level(level_number: int):
 	
 	# Use level_handler's load_next_level method
 	level_handler.load_next_level(level_number, levels_frame)
+
+# Update visual indicators for completed levels
+func update_completed_levels_visual():
+	# Check each level and update glow color based on completion status
+	for level_num in level_handler.completed_levels:
+		match level_num:
+			1:
+				enter_1.create_glow_light_to_lobby(Color.GREEN)
+			2:
+				enter_2.create_glow_light_to_lobby(Color.GREEN)
+			3:
+				enter_3.create_glow_light_to_lobby(Color.GREEN)
+			4:
+				enter_4.create_glow_light_to_lobby(Color.GREEN)
+
+# Called when a level is completed
+func _on_level_completed(level_name: String):
+	print("Level completed: ", level_name)
+	# Update visual will happen when we return to lobby
+	call_deferred("update_completed_levels_visual")
 
 

@@ -130,20 +130,35 @@ func complete_current_level(levels_frame):
 		# Mark level as completed and print status
 		_mark_level_completed_and_print_status()
 		
-		# PROCEED TO NEXT LEVEL IF AVAILABLE
-		var next_level_number = current_level_number + 1
-		if next_level_number <= TOTAL_LEVEL_COUNT:
-			var level_scene = levels_frame.get_child(0) # Get current level scene
-			
-			# KILL THE CURRENT LEVEL WITH ANIMATION (TWEEN KILL)
-			kill_current_level(level_scene)
-			await get_tree().create_timer(1.0).timeout
+		# PROCEED TO NEXT LEVEL IF AVAILABLE (COMMENTED OUT - NOW RETURNS TO LOBBY)
+		# var next_level_number = current_level_number + 1
+		# if next_level_number <= TOTAL_LEVEL_COUNT:
+		var level_scene = levels_frame.get_child(0) # Get current level scene
+		
+		# KILL THE CURRENT LEVEL WITH ANIMATION (TWEEN KILL)
+		kill_current_level(level_scene)
+		await get_tree().create_timer(1.0).timeout
 
-			# SHOW TRANSITION CUTSCENE
-			await show_level_transition_cutscene(next_level_number)
+		# SHOW TRANSITION CUTSCENE
+		await show_level_transition_cutscene(current_level_number)
 
-			# LOAD THE NEW LEVEL
-			load_next_level(next_level_number, levels_frame)
+		# LOAD THE NEW LEVEL (COMMENTED OUT - NOW RETURNS TO LOBBY)
+		# load_next_level(next_level_number, levels_frame)
+
+		# RETURN TO LOBBY INSTEAD OF NEXT LEVEL
+		return_to_lobby(levels_frame)
+
+
+func load_next_level(next_level_number: int, levels_frame):
+	var next_level_path = "res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn"
+	change_level(next_level_path, levels_frame)
+	ui_handler.set_default_time_indicator()
+
+
+func return_to_lobby(levels_frame):
+	var lobby_path = "res://Scenes/levels/level_lobby.tscn"
+	change_level(lobby_path, levels_frame)
+	ui_handler.set_default_time_indicator()
 
 # Helper function to mark level as completed and print status
 func _mark_level_completed_and_print_status():
@@ -179,10 +194,7 @@ func show_level_transition_cutscene(next_level_number: int):
 	# HIDE THE CUTSCENE
 	level_select_node.hide_cutscene()
 
-func load_next_level(next_level_number: int, levels_frame):
-	var next_level_path = "res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn"
-	change_level(next_level_path, levels_frame)
-	ui_handler.set_default_time_indicator()
+
 
 func restart_level(levels_frame):
 	# Remove and Re-open current level
@@ -204,5 +216,6 @@ func kill_current_level(level_scene):
 	var tween_scale = create_tween()
 	tween_scale.connect("finished", Callable(self, "tween_next_scale_finished").bind(tween_scale))
 	tween_scale.tween_property(level_scene, "scale", Vector2(0.0, 0.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+
 
 

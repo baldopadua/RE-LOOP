@@ -118,11 +118,62 @@ func handle_body_entered(body):
 		
 		# ADD GLOW for enterable objects
 		if is_enterable:
-			create_glow_light_to_lobby(Color.RED)
+			# Check if this level is completed to determine glow color
+			var level_number = get_level_number_from_name()
+			var level_handler = get_level_handler()
+			
+			if level_handler:
+				print("Debug - Completed levels: ", level_handler.completed_levels)
+			if level_handler and level_number > 0 and level_handler.completed_levels.has(level_number):
+				create_glow_light_to_lobby(Color.GREEN)
+			else:
+				create_glow_light_to_lobby(Color.RED)
+
+# Helper function to get level number from object name
+func get_level_number_from_name() -> int:
+	var node_name = name  # Use the node's name instead of object_name
+	if "enter_1" in node_name:
+		return 1
+	elif "enter_2" in node_name:
+		return 2
+	elif "enter_3" in node_name:
+		return 3
+	elif "enter_4" in node_name:
+		return 4
+	return 0
+
+# Helper function to get level handler
+func get_level_handler():
+	# First check if it's a direct child of this object
+	var handler = get_node_or_null("LevelHandler")
+	if handler:
+		return handler
+	
+	# Try multiple possible paths to find the level handler
+	var possible_paths = [
+		"CanvasLayer/LevelHandler",
+		"../CanvasLayer/LevelHandler", 
+		str(get_parent().get_path()) + "/CanvasLayer/LevelHandler"
+	]
+	
+	for path in possible_paths:
+		handler = get_node_or_null(path)
+		if handler:
+			return handler
+	
+	# If not found, try to search in the scene tree
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		handler = current_scene.find_child("LevelHandler", true, false)
+		return handler
+	
+	return null
 
 func create_glow_light_to_lobby(color: Color = Color.YELLOW):
+	# Remove existing glow light first
 	if glow_light:
-		return
+		glow_light.queue_free()
+		glow_light = null
 		
 	glow_light = PointLight2D.new()
 	glow_light.position = Vector2(0, 0)

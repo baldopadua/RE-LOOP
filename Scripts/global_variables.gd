@@ -8,3 +8,15 @@ const transition_time: float = 0.1 # 0.25 Default
 var is_looping: bool = false
 var player_stopped: bool = false
 var is_restarting: bool = false
+
+# Extract level number from object names like "level_1_entrance", "level_2_door", etc.
+func get_level_number_from_name(object_name: String) -> int:
+	# Look for pattern "level_X" where X is a number
+	var regex = RegEx.new()
+	regex.compile("level_(\\d+)")
+	var result = regex.search(object_name)
+	
+	if result:
+		return result.get_string(1).to_int()
+	
+	return 0  # Return 0 if no level number found
