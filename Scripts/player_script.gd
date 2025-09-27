@@ -108,7 +108,7 @@ func _input(event: InputEvent) -> void:
 		if available_object != null and not is_moving:
 			item_pick_up()
 			sprite.play("idle")
-		# TRY INTERACTING WITH OBJECTS
+		# TRY INTERACTING WITH OBJECTS WHILE HOLDING SOMETHING
 		elif is_holding_object and interactable_objects.size() != 0 and not is_moving:
 			for obj in interactable_objects:
 				if obj.object_name in held_object.usable_targets:
@@ -117,6 +117,13 @@ func _input(event: InputEvent) -> void:
 					held_object = null
 					is_holding_object = false
 					sprite.play("idle")
+					break
+		# INTERACT WITH NON-PICKUPABLE OBJECTS (like lobby entrances) WHEN NOT HOLDING ANYTHING
+		elif not is_holding_object and interactable_objects.size() != 0 and not is_moving:
+			for obj in interactable_objects:
+				if not obj.is_pickupable and obj.has_method("interact"):
+					obj.interact(obj)  # Pass the object itself
+					sound_manager.play_sfx("pickup")
 					break
 		# DROP ITEMS
 		elif is_holding_object and not is_moving:

@@ -237,12 +237,12 @@ object_name = "seed"
 is_pickupable = true
 usable_targets = Array[String](["soil"])
 
-[node name="Sprite2D" type="Sprite2D" parent="Seed"]
+[node name="Sprite2D2" type="Sprite2D" parent="Seed"]
 texture_filter = 1
 position = Vector2(-1, 1)
 texture = ExtResource("10_70ox2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Seed"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Seed"]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
@@ -253,13 +253,13 @@ position = Vector2(0, -307)
 object_name = "soil"
 object_type = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="Soil"]
+[node name="Sprite2D2" type="Sprite2D" parent="Soil"]
 texture_filter = 1
 position = Vector2(-0.5, -7)
 scale = Vector2(2, 2)
 texture = ExtResource("11_70ox2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Soil"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Soil"]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
@@ -305,7 +305,7 @@ scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAD+//v/AAAUAAEAAAD+//z/AAAUAAIAAAD+//3/AAAUAAMAAAD+/wAAAAAUAAYAAAD///r/AAAVAAAAAAD///v/AAAVAAEAAAD///z/AAAVAAIAAAD///3/AAAVAAMAAAD///7/AAAVAAQAAAD/////AAAVAAUAAAD//wAAAAAVAAYAAAAAAPr/AAAWAAAAAAAAAPv/AAAWAAEAAAAAAPz/AAAWAAIAAAAAAP3/AAAWAAMAAAAAAP7/AAAWAAQAAAAAAP//AAAWAAUAAAAAAAAAAAAWAAYAAAABAPv/AAAXAAEAAAABAPz/AAAXAAIAAAA=")
 tile_set = SubResource("TileSet_cd6w3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tree"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="tree"]
 light_mask = 3
 visibility_layer = 3
 z_index = 1

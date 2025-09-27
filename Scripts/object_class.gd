@@ -4,6 +4,7 @@ class_name object_class
 @export var object_name: String = "Generic Object"
 @export var object_type: GlobalVariables.object_types
 @export var is_pickupable: bool = true
+@export var is_enterable: bool = false
 @export var usable_targets: Array[String] = [] 
 @export var max_state_threshold: int
 @export var min_state_threshold: int
@@ -51,6 +52,11 @@ func handle_body_exited(body):
 		if body.interactable_objects.has(self):
 			body.interactable_objects.erase(self)
 		#print("Out of Interactable Range")
+		
+		# DELETE POINTLIGHT for enterable objects
+		if is_enterable and glow_light:
+			glow_light.queue_free()
+			glow_light = null
 
 func _on_body_entered(body) -> void:
 	handle_body_entered(body)
@@ -67,7 +73,7 @@ func handle_body_entered(body):
 	if is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.TOOL:
 		#print("Player can pick up %s" % object_name)
 		
-		# CREATE POINT LIGHT
+		# CREATE POINT LIGHT (OLD METHOD FOR PICKUPABLES)
 		glow_light = PointLight2D.new()
 		glow_light.position = Vector2(0, 0)
 
@@ -102,6 +108,47 @@ func handle_body_entered(body):
 		body.interactable_objects.append(self)
 		#print(body.interactable_objects)
 
+	# INTERACTING WITH NON-PICKUPABLE OBJECTS WHEN NOT HOLDING ANYTHING (for lobby entrances)
+	if not is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.NONTOOL:
+		#print("%s is interactable when not holding anything" % object_name)
+		is_reachable = true
+		player_char = body
+		body.interactable_objects.append(self)
+		#print(body.interactable_objects)
+		
+		# ADD GLOW for enterable objects
+		if is_enterable:
+			create_glow_light_to_lobby(Color.RED)
+
+func create_glow_light_to_lobby(color: Color = Color.YELLOW):
+	if glow_light:
+		return
+		
+	glow_light = PointLight2D.new()
+	glow_light.position = Vector2(0, 0)
+
+	# CREATE GRADIENT with proper color intensity
+	var gradient = Gradient.new()
+	gradient.set_color(0, Color(color.r, color.g, color.b, 1.0))  
+	gradient.set_color(1, Color(color.r, color.g, color.b, 0.0)) 
+	gradient.offsets = [0.0, 1.0] 
+
+	# CREATE TEXTURE FROM GRADIENT
+	var gradient_texture = GradientTexture2D.new()
+	gradient_texture.gradient = gradient
+	gradient_texture.fill = GradientTexture2D.FILL_RADIAL
+	gradient_texture.fill_from = Vector2(0.5, 0.5)
+	gradient_texture.width = 128
+	gradient_texture.height = 128
+
+	# ASSIGN TO LIGHT with stronger settings
+	glow_light.texture = gradient_texture
+	glow_light.energy = 2.0
+	glow_light.texture_scale = 2.0
+	glow_light.color = color
+
+	add_child(glow_light)
+	
 func set_flipped(flip: bool):
 	if has_node("item_sprite"):   
 		$item_sprite.flip_h = flip
