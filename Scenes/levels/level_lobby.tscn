@@ -40,6 +40,11 @@ rotation = -0.0960442
 script = ExtResource("6_rqxun")
 object_name = "enter_1"
 object_type = 1
+is_enterable = null
+usable_targets = null
+max_state_threshold = null
+min_state_threshold = null
+current_state = null
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_1"]
 texture_filter = 1
@@ -54,12 +59,36 @@ rotation = 3.11311
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
+[node name="RichTextLabel" type="RichTextLabel" parent="enter_1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 69.9688
+offset_top = 87.1112
+offset_right = 363.969
+offset_bottom = 127.111
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "TEXT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
 [node name="enter_2" parent="." instance=ExtResource("6_1uaeg")]
 position = Vector2(284, -1)
 rotation = 1.55757
 script = ExtResource("8_hanr1")
 object_name = "enter_2"
 object_type = 1
+is_enterable = null
+usable_targets = null
+max_state_threshold = null
+min_state_threshold = null
+current_state = null
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_2"]
 texture_filter = 1
@@ -73,6 +102,25 @@ position = Vector2(-1, 6.99997)
 rotation = 3.11311
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="enter_2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 63.8436
+offset_top = 87.8521
+offset_right = 315.844
+offset_bottom = 127.852
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "TEXT"
+fit_content = true
+scroll_active = false
+tab_size = 2
 
 [node name="enter_3" parent="." instance=ExtResource("6_1uaeg")]
 position = Vector2(1, 289)
@@ -94,6 +142,25 @@ rotation = 3.11311
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
+[node name="RichTextLabel" type="RichTextLabel" parent="enter_3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 70.1354
+offset_top = 87.0117
+offset_right = 378.135
+offset_bottom = 127.012
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "TEXT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
 [node name="enter_4" parent="." instance=ExtResource("6_1uaeg")]
 position = Vector2(-299, 1.19209e-06)
 rotation = -1.64623
@@ -113,6 +180,25 @@ position = Vector2(-1, 6.99997)
 rotation = 3.11311
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="enter_4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 71.1289
+offset_top = 80.5896
+offset_right = 349.129
+offset_bottom = 120.59
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "TEXT"
+fit_content = true
+scroll_active = false
+tab_size = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2

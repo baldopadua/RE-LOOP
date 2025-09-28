@@ -13,13 +13,72 @@ var is_reachable: bool = false
 var player_char: CharacterBody2D = null
 var player_arrow_owner: CharacterBody2D
 var glow_light: PointLight2D = null
+var text_label: RichTextLabel = null
+var is_text_visible: bool = false
 
 func _ready():
 	print(object_name + " instantiated!")
+	# Wait a frame to ensure all nodes are ready, then get reference to RichTextLabel
+	call_deferred("setup_text_label")
+
 
 # Tinanggal ko muna ung static type ng body, but it should be CharacteerBody2D
 # Nag e-error kasi kapag naka staticly typed ewan pa kung bakit
 # Both body_entered tsaka body_exit ko tinanggal
+
+
+# Setup text label after scene is ready
+func setup_text_label():
+	if has_node("RichTextLabel"):
+		text_label = get_node("RichTextLabel")
+		print("Found RichTextLabel for: ", object_name)
+		# Reset the RichTextLabel properties to ensure it works properly
+		text_label.visible = false
+		text_label.modulate = Color.WHITE
+		text_label.text = ""
+		print("Text label setup complete for: ", object_name)
+	else:
+		print("No RichTextLabel found for: ", object_name)
+
+# Function to show text on hover/interaction
+func show_text(text: String = ""):
+	print("show_text called for ", object_name, " with text: ", text)
+	# Try to get text_label again if it's null
+	if not text_label and has_node("RichTextLabel"):
+		text_label = get_node("RichTextLabel")
+		print("Re-acquired text_label for: ", object_name)
+	
+	if text_label:
+		if text != "":
+			text_label.text = text
+		text_label.visible = true
+		text_label.modulate = Color.WHITE  # Ensure it's not transparent
+		is_text_visible = true
+		print("Text shown: ", text_label.text, " visible: ", text_label.visible)
+	else:
+		print("No text_label available for ", object_name)
+		# Debug: print all child nodes
+		print("Available child nodes for ", object_name, ":")
+		for child in get_children():
+			print("  - ", child.name, " (", child.get_class(), ")")
+
+# Function to hide text
+func hide_text():
+	if text_label:
+		text_label.visible = false
+		is_text_visible = false
+		print("Text hidden for: ", object_name)
+
+# Function to handle hover behavior
+func on_hover_enter():
+	# Override in extended classes for specific hover behavior
+	pass
+
+# Function to handle hover exit
+func on_hover_exit():
+	# Override in extended classes for specific hover exit behavior
+	if is_text_visible:
+		hide_text()
 
 func _on_body_exited(body) -> void:
 	handle_body_exited(body)
@@ -30,7 +89,7 @@ func handle_body_exited(body):
 	if body != player_char:
 		return
 	
-	#print("BODY EXITED: %s" % str(body))
+	print("BODY EXITED: %s for object: %s" % [str(body), object_name])
 	
 	# Tool behavior if out of rangea
 	if object_type == GlobalVariables.object_types.TOOL:
@@ -48,10 +107,12 @@ func handle_body_exited(body):
 	if object_type == GlobalVariables.object_types.NONTOOL:
 		is_reachable = false
 		player_char = null
-		#body.available_interactable_object = null
 		if body.interactable_objects.has(self):
 			body.interactable_objects.erase(self)
-		#print("Out of Interactable Range")
+		
+		# Hide text when exiting area
+		print("Calling on_hover_exit for: ", object_name)
+		on_hover_exit()
 		
 		# DELETE POINTLIGHT for enterable objects
 		if is_enterable and glow_light:
@@ -67,7 +128,7 @@ func handle_body_entered(body):
 	if body.name != "PlayerScene":
 		return
 	
-	#print("BODY ENTERED: %s" % str(body))
+	print("BODY ENTERED: %s for object: %s" % [str(body), object_name])
 	
 	# PICKING UP THINGS
 	if is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.TOOL:
@@ -110,6 +171,7 @@ func handle_body_entered(body):
 
 	# INTERACTING WITH NON-PICKUPABLE OBJECTS WHEN NOT HOLDING ANYTHING (for lobby entrances)
 	if not is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.NONTOOL:
+		print("Processing non-pickupable interaction for: ", object_name)
 		# Always set reachable and player_char for proper cleanup on exit
 		is_reachable = true
 		player_char = body
@@ -119,17 +181,11 @@ func handle_body_entered(body):
 			var level_number = get_level_number_from_name()
 			var level_handler = get_level_handler()
 			
-			# Check if level is accessible based on progression
-			if level_handler and not is_level_accessible(level_number, level_handler):
-				print("Level ", level_number, " is locked! Complete previous levels first.")
-				# Create red glow for locked level but don't add to interactable objects
-				create_glow_light_to_lobby(Color.RED)
-				# Don't return here - still need proper cleanup setup
-				return
+			print("Level entrance detected - Level: ", level_number, " Handler found: ", level_handler != null)
 		
-		#print("%s is interactable when not holding anything" % object_name)
 		body.interactable_objects.append(self)
-		#print(body.interactable_objects)
+		print("Calling on_hover_enter for: ", object_name)
+		on_hover_enter()  # Show level name on hover 
 		
 		# ADD GLOW for enterable objects when player enters area
 		if is_enterable:
@@ -140,11 +196,13 @@ func handle_body_entered(body):
 			if level_handler and level_number > 0 and level_handler.completed_levels.has(level_number):
 				# Green glow for completed levels
 				create_glow_light_to_lobby(Color.GREEN)
-			else:
+			elif level_handler and is_level_accessible(level_number, level_handler):
 				# Yellow glow for accessible but incomplete levels
 				create_glow_light_to_lobby(Color.YELLOW)
+			else:
+				# Red glow for locked levels
+				create_glow_light_to_lobby(Color.RED)
 
-# Check if a level is accessible based on progression requirements
 func is_level_accessible(level_number: int, level_handler) -> bool:
 	if not level_handler:
 		return false
@@ -165,7 +223,6 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 		_:
 			return false
 
-# Helper function to get level number from object name
 func get_level_number_from_name() -> int:
 	var node_name = name  # Use the node's name instead of object_name
 	if "enter_1" in node_name:
@@ -178,7 +235,6 @@ func get_level_number_from_name() -> int:
 		return 4
 	return 0
 
-# Helper function to get level handler
 func get_level_handler():
 	# First check if it's a direct child of this object
 	var handler = get_node_or_null("LevelHandler")
@@ -264,6 +320,8 @@ func create_glow_light_to_lobby(color: Color = Color.YELLOW):
 func set_flipped(flip: bool):
 	if has_node("item_sprite"):   
 		$item_sprite.flip_h = flip
-	
+
 func get_obj_name():
 	return object_name
+	
+

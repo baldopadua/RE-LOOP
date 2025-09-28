@@ -20,7 +20,7 @@ var center_circle: Vector2i = Vector2i(0, 0)
 @onready var tween_rotate: Tween
 @onready var tween_scale: Tween
 
-@onready var enter_1: object_class = $enter_1
+@onready var enter_1: object_class = $enter_1 
 @onready var enter_2: object_class = $enter_2
 @onready var enter_3: object_class = $enter_3
 @onready var enter_4: object_class = $enter_4
@@ -45,8 +45,21 @@ func _ready():
 	# CONNECT TO LEVEL COMPLETED SIGNAL
 	level_handler.level_completed.connect(_on_level_completed)
 	
+	# Initialize text labels for all entrance objects
+	call_deferred("initialize_text_labels")
+	
 	# POSITION PLAYER BASED ON LAST COMPLETED LEVEL
 	call_deferred("position_player_based_on_progress")
+
+# Initialize text labels for all entrance objects
+func initialize_text_labels():
+	var entrances = [enter_1, enter_2, enter_3, enter_4]
+	for entrance in entrances:
+		if entrance and entrance.has_node("RichTextLabel"):
+			var label = entrance.get_node("RichTextLabel")
+			label.visible = false
+			label.modulate = Color.WHITE
+			
 
 func objects_initialize():
 	objects.append(enter_1)
