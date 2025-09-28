@@ -2,12 +2,15 @@ extends Node2D
 
 @onready var short_hand_rotation = $short_hand_rotation
 @onready var short_hand_clock = $short_hand_rotation/short_hand_clock
+@onready var long_hand_rotation = $long_hand_rotation
+@onready var long_hand_clock = $long_hand_rotation/long_hand_clock
 var current_player: CharacterBody2D = null
 var base_clock_position: int = 12 # Default base position
 var should_follow_player: bool = true # Flag to control hand following
 
 # Static variable to preserve hand position between cutscenes
 static var preserved_hand_rotation: float = 0.0
+static var preserved_long_hand_rotation: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,8 +24,10 @@ func _on_short_hand_state_changed(level_number: int, is_unlocked: bool):
 	if level_number == level_for_current_position:
 		if is_unlocked:
 			short_hand_clock.play("unlock")
+			long_hand_clock.play("unlock")
 		else:
 			short_hand_clock.play("lock")
+			long_hand_clock.play("lock")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -68,12 +73,14 @@ func set_hand_to_clock_position(clock_position: int):
 	base_clock_position = clock_position
 	var target_rotation = get_rotation_for_clock(clock_position)
 	
-	# Set hand directly to position without animation for level transitions
+	# Set both hands directly to position without animation for level transitions
 	short_hand_rotation.rotation = target_rotation
+	long_hand_rotation.rotation = target_rotation
 	
-	# Preserve this position for cutscene use
+	# Preserve positions for cutscene use
 	preserved_hand_rotation = target_rotation
-	print("DEBUG: Hand force set to clock position ", clock_position, " at ", rad_to_deg(target_rotation), " degrees")
+	preserved_long_hand_rotation = target_rotation
+	print("DEBUG: Both hands force set to clock position ", clock_position, " at ", rad_to_deg(target_rotation), " degrees")
 	print("DEBUG: Position preserved for cutscene: ", rad_to_deg(preserved_hand_rotation), " degrees")
 	
 	# Update lock/unlock state based on current level completion
@@ -93,12 +100,13 @@ func update_hand_rotation():
 	
 	# In lobby: Follow player directly (override preserved position behavior)
 	if level_handler.is_lobby:
-		# In lobby, make hand follow player rotation directly
+		# In lobby, make both hands follow player rotation directly
 		var target_rotation = current_player.rotation
 		
-		# Apply rotation smoothly
+		# Apply rotation smoothly to both hands
 		var tween = create_tween()
-		tween.tween_property(short_hand_rotation, "rotation", target_rotation, 0.15)
+		tween.parallel().tween_property(short_hand_rotation, "rotation", target_rotation, 0.15)
+		tween.parallel().tween_property(long_hand_rotation, "rotation", target_rotation, 0.15)
 		tween.set_trans(Tween.TRANS_SINE)
 		tween.set_ease(Tween.EASE_OUT)
 		
@@ -107,29 +115,38 @@ func update_hand_rotation():
 		base_clock_position = get_clock_position_from_rotation(current_degrees)
 	
 	else:
-		# In regular levels: use base rotation + player rotation as before
+		# In regular levels: use base rotation + player rotation for both hands
 		var player_rotation = current_player.rotation
 		var base_rotation = get_rotation_for_clock(base_clock_position)
 		var target_hand_rotation = base_rotation + player_rotation
 		
-		# Get current hand rotation
-		var current_hand_rotation = short_hand_rotation.rotation
+		# Get current hand rotations
+		var current_short_rotation = short_hand_rotation.rotation
+		var current_long_rotation = long_hand_rotation.rotation
 		
-		# Calculate the shortest path to target rotation
-		var rotation_diff = target_hand_rotation - current_hand_rotation
+		# Calculate the shortest path to target rotation for both hands
+		var short_rotation_diff = target_hand_rotation - current_short_rotation
+		var long_rotation_diff = target_hand_rotation - current_long_rotation
 		
-		# Normalize to shortest path (-PI to PI)
-		while rotation_diff > PI:
-			rotation_diff -= 2 * PI
-		while rotation_diff < -PI:
-			rotation_diff += 2 * PI
+		# Normalize to shortest path (-PI to PI) for both hands
+		while short_rotation_diff > PI:
+			short_rotation_diff -= 2 * PI
+		while short_rotation_diff < -PI:
+			short_rotation_diff += 2 * PI
+			
+		while long_rotation_diff > PI:
+			long_rotation_diff -= 2 * PI
+		while long_rotation_diff < -PI:
+			long_rotation_diff += 2 * PI
 		
-		# Apply the shortest rotation path
-		var final_rotation = current_hand_rotation + rotation_diff
+		# Apply the shortest rotation path to both hands
+		var final_short_rotation = current_short_rotation + short_rotation_diff
+		var final_long_rotation = current_long_rotation + long_rotation_diff
 		
-		# Apply rotation smoothly without doing full spins
+		# Apply rotation smoothly to both hands
 		var tween = create_tween()
-		tween.tween_property(short_hand_rotation, "rotation", final_rotation, 0.15)
+		tween.parallel().tween_property(short_hand_rotation, "rotation", final_short_rotation, 0.15)
+		tween.parallel().tween_property(long_hand_rotation, "rotation", final_long_rotation, 0.15)
 		tween.set_trans(Tween.TRANS_SINE)
 		tween.set_ease(Tween.EASE_OUT)
 	
@@ -139,8 +156,9 @@ func update_hand_rotation():
 # Stop hand from following player (called when level is completed)
 func stop_following_player():
 	should_follow_player = false
-	# Preserve current hand position for cutscene
+	# Preserve current hand positions for cutscene
 	preserved_hand_rotation = short_hand_rotation.rotation
+	preserved_long_hand_rotation = long_hand_rotation.rotation
 	
 
 # Resume hand following player (called in lobby)
@@ -163,9 +181,11 @@ func show_level_complete_cutscene(_next_level_number: int):
 	# HIDE ALL GAMEPLAY ELEMENTS DURING CUTSCENE
 	hide_gameplay_elements()
 	
-	# FORCE SHOW LOCK STATE FIRST
+	# FORCE SHOW LOCK STATE FIRST for both hands
 	if short_hand_clock:
 		short_hand_clock.play("lock")
+	if long_hand_clock:
+		long_hand_clock.play("lock")
 		
 func hide_cutscene():
 	visible = false
@@ -212,18 +232,20 @@ func get_clock_position_for_level(level_number: int) -> int:
 			return 12 # 12 o'clock for other levels
 
 func animate_hand_to_next_level(next_clock_position: int) -> Tween:
-	# Use the preserved hand position as starting point (from level completion)
-	var current_rotation = preserved_hand_rotation if preserved_hand_rotation != 0.0 else short_hand_rotation.rotation
+	# Use the preserved hand positions as starting points
+	var current_short_rotation = preserved_hand_rotation if preserved_hand_rotation != 0.0 else short_hand_rotation.rotation
+	var current_long_rotation = preserved_long_hand_rotation if preserved_long_hand_rotation != 0.0 else long_hand_rotation.rotation
 	var target_rotation = get_rotation_for_clock(next_clock_position)
 	
-	# Set hand to preserved position first
-	short_hand_rotation.rotation = current_rotation
+	# Set both hands to preserved positions first
+	short_hand_rotation.rotation = current_short_rotation
+	long_hand_rotation.rotation = current_long_rotation
 	
-	
-	# SHOW UNLOCK ANIMATION FIRST BEFORE SLIDING
+	# SHOW UNLOCK ANIMATION FIRST BEFORE SLIDING for both hands
 	if short_hand_clock:
 		short_hand_clock.play("unlock")
-		
+	if long_hand_clock:
+		long_hand_clock.play("unlock")
 	
 	# Create a sequence tween that waits first, then slides
 	var sequence_tween = create_tween()
@@ -231,41 +253,70 @@ func animate_hand_to_next_level(next_clock_position: int) -> Tween:
 	# Use tween_callback with a timer instead of tween_delay
 	sequence_tween.tween_callback(func(): await get_tree().create_timer(0.5).timeout)
 	
-	# Calculate rotation difference
-	var rotation_diff = target_rotation - current_rotation
+	# Calculate rotation difference for short hand (minutes)
+	var short_rotation_diff = target_rotation - current_short_rotation
 	
 	# Normalize the difference to find the shortest path first
-	while rotation_diff > PI:
-		rotation_diff -= 2 * PI
-	while rotation_diff < -PI:
-		rotation_diff += 2 * PI
+	while short_rotation_diff > PI:
+		short_rotation_diff -= 2 * PI
+	while short_rotation_diff < -PI:
+		short_rotation_diff += 2 * PI
 	
 	# If the shortest path is counter-clockwise, make it clockwise instead
-	if rotation_diff < 0:
-		rotation_diff += 2 * PI
+	if short_rotation_diff < 0:
+		short_rotation_diff += 2 * PI
 	
-	# Apply the clockwise rotation path
-	var final_rotation = current_rotation + rotation_diff
+	# Apply the clockwise rotation path for short hand
+	var final_short_rotation = current_short_rotation + short_rotation_diff
 	
+	# Calculate long hand rotations (hours) - full 360° rotations + end at 12 o'clock
+	var current_clock_pos = get_clock_position_from_rotation(rad_to_deg(current_long_rotation))
+	var hours_to_rotate = calculate_hours_between_positions(current_clock_pos, next_clock_position)
+	var long_hand_additional_rotation = hours_to_rotate * 2 * PI  # Full rotations
 	
-	# CREATE SMOOTH CUTSCENE ANIMATION - ALWAYS CLOCKWISE
-	sequence_tween.tween_property(short_hand_rotation, "rotation", final_rotation, 2.0)
+	# Long hand should end at 12 o'clock (0 degrees) after rotations
+	var target_long_hand_position = get_rotation_for_clock(12)  # 12 o'clock = 0 degrees
+	var final_long_rotation = current_long_rotation + long_hand_additional_rotation
+	
+	# Adjust final long rotation to land exactly on 12 o'clock
+	# Normalize the final rotation to ensure it lands on 12 o'clock
+	var normalized_final = fmod(final_long_rotation, 2 * PI)
+	if normalized_final < 0:
+		normalized_final += 2 * PI
+	
+	# Calculate additional rotation needed to reach 12 o'clock exactly
+	var adjustment_to_12 = target_long_hand_position - normalized_final
+	if adjustment_to_12 < 0:
+		adjustment_to_12 += 2 * PI
+	
+	final_long_rotation += adjustment_to_12
+	
+	# CREATE SMOOTH CUTSCENE ANIMATION - SHORT HAND MOVES TO POSITION, LONG HAND DOES FULL ROTATIONS TO 12
+	sequence_tween.parallel().tween_property(short_hand_rotation, "rotation", final_short_rotation, 2.0)
+	sequence_tween.parallel().tween_property(long_hand_rotation, "rotation", final_long_rotation, 2.0)
 	sequence_tween.set_trans(Tween.TRANS_QUART)
 	sequence_tween.set_ease(Tween.EASE_IN_OUT)
 	
 	# FORCE SET BASE POSITION AND EXACT ROTATION AFTER ANIMATION
 	sequence_tween.finished.connect(func(): 
 		base_clock_position = next_clock_position
-		short_hand_rotation.rotation = get_rotation_for_clock(next_clock_position)
-		preserved_hand_rotation = short_hand_rotation.rotation # Save the position
-		update_lock_state() # Update lock state after animation
-	
+		var exact_target = get_rotation_for_clock(next_clock_position)
+		short_hand_rotation.rotation = exact_target
+		long_hand_rotation.rotation = get_rotation_for_clock(12)  # Long hand ends at 12 o'clock
+		preserved_hand_rotation = exact_target
+		preserved_long_hand_rotation = get_rotation_for_clock(12)  # Preserve 12 o'clock position
+		update_lock_state()
 	)
 	
 	return sequence_tween
 
+# New function to calculate hours between clock positions
+func calculate_hours_between_positions(_from_pos: int, _to_pos: int) -> int:
+	# Always do 1 full rotation (1 hour = 1 full 360° rotation) for any level transition
+	return 1
+
 func update_lock_state():
-	if not short_hand_clock:
+	if not short_hand_clock or not long_hand_clock:
 		return
 	
 	var level_handler = get_parent()
@@ -280,8 +331,10 @@ func update_lock_state():
 	# Check if the level at the CURRENT hand position is completed
 	if level_for_current_rotation > 0 and level_handler.completed_levels.has(level_for_current_rotation):
 		short_hand_clock.play("unlock")
+		long_hand_clock.play("unlock")
 	else:
 		short_hand_clock.play("lock")
+		long_hand_clock.play("lock")
 
 # New function to determine clock position from rotation degrees (based on your exact mapping)
 func get_clock_position_from_rotation(degrees: float) -> int:
@@ -326,11 +379,4 @@ func _on_level_instantiated(_level_name: String):
 	call_deferred("update_lock_state")
 	# Update lock state when any level is completed
 	update_lock_state()
-
-
-
-
-
-
-
-
+	

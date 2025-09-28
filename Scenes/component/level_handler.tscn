@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkpnl1djf5yd3"]
+[gd_scene load_steps=13 format=3 uid="uid://dkpnl1djf5yd3"]
 
 [ext_resource type="Script" uid="uid://deh8lrhrpllft" path="res://Scripts/component_handlers/level_handler.gd" id="1_sijlw"]
 [ext_resource type="Script" uid="uid://8j4hncnj3jfg" path="res://Scripts/levels/level_status.gd" id="2_bicrg"]
 [ext_resource type="Texture2D" uid="uid://dt7ntblyxpwin" path="res://Assets/level_clock.png" id="2_svrni"]
-[ext_resource type="Texture2D" uid="uid://bllrafordg541" path="res://Assets/long_hand_clock_lock.png" id="3_wbj5g"]
-[ext_resource type="Texture2D" uid="uid://bh5j2ukfjbaee" path="res://Assets/long_hand_clock_unlock.png" id="4_bicrg"]
+[ext_resource type="Texture2D" uid="uid://bfafojviloenq" path="res://Assets/lobby/long_hand_lock.png" id="3_wbj5g"]
+[ext_resource type="Texture2D" uid="uid://crokfqrgo62ht" path="res://Assets/lobby/short_hand_lock.png" id="4_6d8r2"]
+[ext_resource type="Texture2D" uid="uid://chhe5p3bv3njw" path="res://Assets/lobby/hand_clock_unlock.png" id="4_bicrg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6d8r2"]
 atlas = ExtResource("3_wbj5g")
-region = Rect2(0, 0, 55, 260)
+region = Rect2(0, 0, 21, 260)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_68ave"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bicrg"]
 atlas = ExtResource("4_bicrg")
 region = Rect2(0, 0, 21, 260)
 
@@ -26,7 +27,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bicrg")
+}],
+"loop": true,
+"name": &"unlock",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68ave"]
+atlas = ExtResource("4_6d8r2")
+region = Rect2(0, 0, 55, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn71y"]
+atlas = ExtResource("4_bicrg")
+region = Rect2(0, 0, 21, 260)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbj5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_68ave")
+}],
+"loop": true,
+"name": &"lock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn71y")
 }],
 "loop": true,
 "name": &"unlock",
@@ -54,7 +82,7 @@ rotation_smoothing_enabled = true
 position = Vector2(-2, -111.442)
 scale = Vector2(0.690476, 0.865827)
 sprite_frames = SubResource("SpriteFrames_syl1f")
-animation = &"unlock"
+animation = &"lock"
 
 [node name="short_hand_rotation" type="Camera2D" parent="level_status"]
 position = Vector2(637, 362)
@@ -63,9 +91,9 @@ zoom = Vector2(33.12, 1.93)
 rotation_smoothing_enabled = true
 
 [node name="short_hand_clock" type="AnimatedSprite2D" parent="level_status/short_hand_rotation"]
-position = Vector2(-2, -72.9425)
-scale = Vector2(0.690476, 0.569673)
-sprite_frames = SubResource("SpriteFrames_syl1f")
+position = Vector2(-2.00003, -82)
+scale = Vector2(0.69091, 0.648077)
+sprite_frames = SubResource("SpriteFrames_wbj5g")
 animation = &"lock"
 
 [node name="level_clock" type="TextureRect" parent="level_status"]
