@@ -8,6 +8,7 @@ signal long_hand_state_changed(level_number: int, is_unlocked: bool)
 var current_level_number: int = 0
 var current_player: CharacterBody2D = null
 var is_lobby: bool = false # Track if we're in the lobby scene
+var is_replaying_completed_level: bool = false # Track if current level was already completed
 # Make completed_levels static so it persists across scene changes
 static var completed_levels: Array[int] = [] # Track completed levels
 # Global level count - change this when adding more levels
@@ -97,8 +98,15 @@ func change_level(scene_path: String, levels_frame):
 func set_current_level(level_number: int):
 	current_level_number = level_number
 	is_lobby = false # We're in a regular level, not lobby
+	
+	# Check if this level was already completed before
+	is_replaying_completed_level = completed_levels.has(level_number)
+	
 	var level_name = "level_" + str(level_number)
 	print("Level Handler: Current level set to ", level_name)
+	if is_replaying_completed_level:
+		print("Level Handler: This is a replay of an already completed level")
+	
 	emit_signal("level_instantiated", level_name)
 	
 	# Remove automatic hand positioning - let player movement control it
@@ -157,13 +165,9 @@ func complete_current_level(levels_frame):
 		var level_name = "level_" + str(current_level_number)
 		emit_signal("level_completed", level_name)
 		
-		# Mark level as completed and print status
-		_mark_level_completed_and_print_status()
-		
-		# Calculate next level number for cutscene
-		var next_level_number = current_level_number + 1
-		if next_level_number > TOTAL_LEVEL_COUNT:
-			next_level_number = 1 # Loop back to level 1
+		# Mark level as completed and print status (only if not already completed)
+		if not is_replaying_completed_level:
+			_mark_level_completed_and_print_status()
 		
 		var level_scene = levels_frame.get_child(0) # Get current level scene
 		
@@ -171,11 +175,23 @@ func complete_current_level(levels_frame):
 		kill_current_level(level_scene)
 		await get_tree().create_timer(1.0).timeout
 
-		# SHOW TRANSITION CUTSCENE WITH NEXT LEVEL
-		await show_level_transition_cutscene(next_level_number)
+		# Check if this is a replay of an already completed level
+		if is_replaying_completed_level:
+			# Skip cutscene and go directly to lobby for replayed levels
+			print("Level Handler: Skipping cutscene for replayed level, going directly to lobby")
+			return_to_lobby(levels_frame)
+		else:
+			# Show cutscene for first-time completion
+			# Calculate next level number for cutscene
+			var next_level_number = current_level_number + 1
+			if next_level_number > TOTAL_LEVEL_COUNT:
+				next_level_number = 1 # Loop back to level 1
+			
+			# SHOW TRANSITION CUTSCENE WITH NEXT LEVEL
+			await show_level_transition_cutscene(next_level_number)
 
-		# RETURN TO LOBBY INSTEAD OF NEXT LEVEL
-		return_to_lobby(levels_frame)
+			# RETURN TO LOBBY AFTER CUTSCENE
+			return_to_lobby(levels_frame)
 
 
 func load_next_level(next_level_number: int, levels_frame):
@@ -188,6 +204,14 @@ func return_to_lobby(levels_frame):
 	var lobby_path = "res://Scenes/levels/level_lobby.tscn"
 	change_level(lobby_path, levels_frame)
 	ui_handler.set_default_time_indicator()
+	
+	# If we're returning from a replay, ensure hand can follow player again
+	if is_replaying_completed_level:
+		# Clear preserved hand rotation so lobby can sync properly to player
+		level_status_node.preserved_hand_rotation = 0.0
+		# Resume hand following for lobby
+		level_status_node.resume_following_player()
+		
 
 # Helper function to mark level as completed and print status
 func _mark_level_completed_and_print_status():
@@ -219,16 +243,9 @@ func update_long_hand_state_for_level(level_number: int):
 	emit_signal("long_hand_state_changed", level_number, is_unlocked)
 
 func show_level_transition_cutscene(next_level_number: int):
-	# DEBUG: Check current hand position before cutscene
-	var current_hand_degrees = rad_to_deg(level_status_node.long_hand_rotation.rotation)
-	print("DEBUG: Hand position BEFORE cutscene: ", current_hand_degrees, " degrees")
 	
 	# SHOW CLOCK CUTSCENE WITH LONG HAND ANIMATION
 	level_status_node.show_level_complete_cutscene(next_level_number)
-	
-	# DEBUG: Check hand position after showing cutscene (to see if it gets reset)
-	var hand_degrees_after_show = rad_to_deg(level_status_node.long_hand_rotation.rotation)
-	print("DEBUG: Hand position AFTER showing cutscene: ", hand_degrees_after_show, " degrees")
 	
 	# WAIT FOR LOCK STATE TO BE VISIBLE (show locked state first)
 	await get_tree().create_timer(1.0).timeout

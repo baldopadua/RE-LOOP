@@ -110,9 +110,24 @@ func handle_body_entered(body):
 
 	# INTERACTING WITH NON-PICKUPABLE OBJECTS WHEN NOT HOLDING ANYTHING (for lobby entrances)
 	if not is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.NONTOOL:
-		#print("%s is interactable when not holding anything" % object_name)
+		# Always set reachable and player_char for proper cleanup on exit
 		is_reachable = true
 		player_char = body
+		
+		# Check if this is a level entrance and if it's accessible
+		if is_enterable:
+			var level_number = get_level_number_from_name()
+			var level_handler = get_level_handler()
+			
+			# Check if level is accessible based on progression
+			if level_handler and not is_level_accessible(level_number, level_handler):
+				print("Level ", level_number, " is locked! Complete previous levels first.")
+				# Create red glow for locked level but don't add to interactable objects
+				create_glow_light_to_lobby(Color.RED)
+				# Don't return here - still need proper cleanup setup
+				return
+		
+		#print("%s is interactable when not holding anything" % object_name)
 		body.interactable_objects.append(self)
 		#print(body.interactable_objects)
 		
@@ -126,8 +141,29 @@ func handle_body_entered(body):
 				# Green glow for completed levels
 				create_glow_light_to_lobby(Color.GREEN)
 			else:
-				# Red glow for incomplete levels
-				create_glow_light_to_lobby(Color.RED)
+				# Yellow glow for accessible but incomplete levels
+				create_glow_light_to_lobby(Color.YELLOW)
+
+# Check if a level is accessible based on progression requirements
+func is_level_accessible(level_number: int, level_handler) -> bool:
+	if not level_handler:
+		return false
+		
+	match level_number:
+		1:
+			# Level 1 is always accessible
+			return true
+		2:
+			# Level 2 requires Level 1 to be completed
+			return level_handler.completed_levels.has(1)
+		3:
+			# Level 3 requires Level 1 AND Level 2 to be completed
+			return level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2)
+		4:
+			# Level 4 requires Level 1, 2, AND 3 to be completed
+			return level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2) and level_handler.completed_levels.has(3)
+		_:
+			return false
 
 # Helper function to get level number from object name
 func get_level_number_from_name() -> int:
@@ -173,16 +209,26 @@ func set_level_completion_visual(is_completed: bool):
 	# Change sprite color - use the correct node name from the scene
 	if has_node("Sprite2D2"):
 		var sprite = $Sprite2D2
+		var level_number = get_level_number_from_name()
+		var level_handler = get_level_handler()
+		
 		if is_completed:
 			sprite.modulate = Color.GREEN  # Make sprite green when completed
+		elif level_handler and is_level_accessible(level_number, level_handler):
+			sprite.modulate = Color.WHITE  # Keep original color when accessible but not completed
 		else:
-			sprite.modulate = Color.WHITE  # Keep original color when not completed
+			sprite.modulate = Color.DARK_GRAY  # Make sprite dark gray when locked
 	elif has_node("item_sprite"):  # Fallback for other objects
 		var sprite = $item_sprite
+		var level_number = get_level_number_from_name()
+		var level_handler = get_level_handler()
+		
 		if is_completed:
 			sprite.modulate = Color.GREEN
-		else:
+		elif level_handler and is_level_accessible(level_number, level_handler):
 			sprite.modulate = Color.WHITE
+		else:
+			sprite.modulate = Color.DARK_GRAY
 
 func create_glow_light_to_lobby(color: Color = Color.YELLOW):
 	# Remove existing glow light first

@@ -137,8 +137,7 @@ func connect_player_to_long_hand():
 		# Connect player movement to update long hand
 		if not player.player_finished_moving.is_connected(_on_player_moved_in_lobby):
 			player.player_finished_moving.connect(_on_player_moved_in_lobby)
-		print("Player movement connected to long hand in lobby")
-
+		
 # Handle player movement in lobby to update long hand
 func _on_player_moved_in_lobby():
 	if player and level_handler.level_status_node:
@@ -151,23 +150,28 @@ func _on_player_moved_in_lobby():
 		level_handler.level_status_node.base_clock_position = current_clock_pos
 		level_handler.level_status_node.update_lock_state()
 		
-		print("Lobby: Long hand updated to follow player at ", current_degrees, " degrees, clock position: ", current_clock_pos)
+		
 
 func sync_long_hand_to_player():
 	if player and level_handler.level_status_node:
-		# Always use preserved rotation from cutscene if available
-		if level_handler.level_status_node.preserved_hand_rotation != 0.0:
-			level_handler.level_status_node.long_hand_rotation.rotation = level_handler.level_status_node.preserved_hand_rotation
+		# Check if this is coming from a replay (preserved rotation will be 0.0)
+		if level_handler.level_status_node.preserved_hand_rotation == 0.0:
+			# Coming from replay or first time - sync to player position
+			level_handler.level_status_node.long_hand_rotation.rotation = player.rotation
 			
 		else:
-			# First time in lobby - sync to player position
-			level_handler.level_status_node.long_hand_rotation.rotation = player.rotation
+			# Coming from cutscene - use preserved rotation
+			level_handler.level_status_node.long_hand_rotation.rotation = level_handler.level_status_node.preserved_hand_rotation
+			
 		
 		# Update the base_clock_position to match current position for consistency
 		var current_degrees = rad_to_deg(level_handler.level_status_node.long_hand_rotation.rotation)
 		var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
 		level_handler.level_status_node.base_clock_position = current_clock_pos
 		level_handler.level_status_node.update_lock_state()
+		
+		# Always ensure hand following is enabled in lobby
+		level_handler.level_status_node.resume_following_player()
 
 
 

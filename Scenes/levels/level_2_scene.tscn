@@ -450,7 +450,7 @@ rotation = -2.61799
 scale = Vector2(2, 2)
 texture = ExtResource("10_jjhbo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sword"]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
@@ -475,7 +475,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jjhbo")
 animation = &"old_to_super_old"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="old_man"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="old_man"]
 light_mask = 3
 visibility_layer = 3
 z_index = 1

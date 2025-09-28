@@ -215,7 +215,7 @@ func animate_hand_to_next_level(next_clock_position: int) -> Tween:
 	# SHOW UNLOCK ANIMATION FIRST BEFORE SLIDING
 	if long_hand_clock:
 		long_hand_clock.play("unlock")
-		print("DEBUG: Playing unlock animation before slide")
+		
 	
 	# Create a sequence tween that waits first, then slides
 	var sequence_tween = create_tween()
@@ -239,8 +239,6 @@ func animate_hand_to_next_level(next_clock_position: int) -> Tween:
 	# Apply the clockwise rotation path
 	var final_rotation = current_rotation + rotation_diff
 	
-	print("DEBUG: Sliding clockwise by: ", rad_to_deg(rotation_diff), " degrees")
-	print("DEBUG: Final rotation will be: ", rad_to_deg(final_rotation), " degrees")
 	
 	# CREATE SMOOTH CUTSCENE ANIMATION - ALWAYS CLOCKWISE
 	sequence_tween.tween_property(long_hand_rotation, "rotation", final_rotation, 2.0)
