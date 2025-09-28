@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dkpnl1djf5yd3"]
 
 [ext_resource type="Script" uid="uid://deh8lrhrpllft" path="res://Scripts/component_handlers/level_handler.gd" id="1_sijlw"]
-[ext_resource type="Script" uid="uid://8j4hncnj3jfg" path="res://Scripts/ui/level_select.gd" id="2_bicrg"]
+[ext_resource type="Script" uid="uid://8j4hncnj3jfg" path="res://Scripts/levels/level_status.gd" id="2_bicrg"]
 [ext_resource type="Texture2D" uid="uid://dt7ntblyxpwin" path="res://Assets/level_clock.png" id="2_svrni"]
 [ext_resource type="Texture2D" uid="uid://bllrafordg541" path="res://Assets/long_hand_clock_lock.png" id="3_wbj5g"]
 [ext_resource type="Texture2D" uid="uid://bh5j2ukfjbaee" path="res://Assets/long_hand_clock_unlock.png" id="4_bicrg"]
@@ -36,27 +36,27 @@ animations = [{
 [node name="LevelHandler" type="Node2D"]
 script = ExtResource("1_sijlw")
 
-[node name="level_select" type="Node2D" parent="."]
+[node name="level_status" type="Node2D" parent="."]
 script = ExtResource("2_bicrg")
 
-[node name="clock_camera" type="Camera2D" parent="level_select"]
+[node name="clock_camera" type="Camera2D" parent="level_status"]
 self_modulate = Color(0, 1, 1, 1)
 position = Vector2(637, 362)
 ignore_rotation = false
 
-[node name="long_hand_rotation" type="Camera2D" parent="level_select"]
+[node name="long_hand_rotation" type="Camera2D" parent="level_status"]
 position = Vector2(637, 362)
 ignore_rotation = false
 zoom = Vector2(33.12, 1.93)
 rotation_smoothing_enabled = true
 
-[node name="long_hand_clock" type="AnimatedSprite2D" parent="level_select/long_hand_rotation"]
+[node name="long_hand_clock" type="AnimatedSprite2D" parent="level_status/long_hand_rotation"]
 position = Vector2(-2, -92.135)
 scale = Vector2(0.690476, 0.717308)
 sprite_frames = SubResource("SpriteFrames_syl1f")
 animation = &"unlock"
 
-[node name="level_clock" type="TextureRect" parent="level_select"]
+[node name="level_clock" type="TextureRect" parent="level_status"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

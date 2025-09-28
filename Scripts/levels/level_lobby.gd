@@ -31,8 +31,8 @@ func _ready():
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 
 	# Make clock visible in lobby for level selection but hide the clock texture
-	level_handler.level_select_node.visible = true
-	level_handler.level_select_node.get_node("level_clock").visible = false
+	level_handler.level_status_node.visible = true
+	level_handler.level_status_node.get_node("level_clock").visible = false
 	
 	level_handler.visible = false
 
@@ -44,6 +44,9 @@ func _ready():
 	
 	# CONNECT TO LEVEL COMPLETED SIGNAL
 	level_handler.level_completed.connect(_on_level_completed)
+	
+	# POSITION PLAYER BASED ON LAST COMPLETED LEVEL
+	call_deferred("position_player_based_on_progress")
 
 func objects_initialize():
 	objects.append(enter_1)
@@ -70,22 +73,101 @@ func enter_level(level_number: int):
 
 # Update visual indicators for completed levels
 func update_completed_levels_visual():
-	# Check each level and update glow color based on completion status
-	for level_num in level_handler.completed_levels:
+	# Check each level and update sprite color based on completion status
+	for level_num in range(1, 5):  # Levels 1-4
+		var is_completed = level_handler.completed_levels.has(level_num)
 		match level_num:
 			1:
-				enter_1.create_glow_light_to_lobby(Color.GREEN)
+				enter_1.set_level_completion_visual(is_completed)
 			2:
-				enter_2.create_glow_light_to_lobby(Color.GREEN)
+				enter_2.set_level_completion_visual(is_completed)
 			3:
-				enter_3.create_glow_light_to_lobby(Color.GREEN)
+				enter_3.set_level_completion_visual(is_completed)
 			4:
-				enter_4.create_glow_light_to_lobby(Color.GREEN)
+				enter_4.set_level_completion_visual(is_completed)
 
 # Called when a level is completed
 func _on_level_completed(level_name: String):
 	print("Level completed: ", level_name)
 	# Update visual will happen when we return to lobby
 	call_deferred("update_completed_levels_visual")
+
+# Position player based on completed levels progress
+func position_player_based_on_progress():
+	if not player:
+		return
+		
+	# Get the highest completed level to determine player position
+	var highest_completed_level = 0
+	for level_num in level_handler.completed_levels:
+		if level_num > highest_completed_level:
+			highest_completed_level = level_num
+	
+	# Position player at the next level's clock position
+	var target_rotation = 0.0
+	match highest_completed_level:
+		0:
+			# No levels completed, stay at default position (12 o'clock area)
+			target_rotation = deg_to_rad(0) # 0 degrees
+		1:
+			# Level 1 completed, position at level 2 clock position (3 o'clock)
+			target_rotation = deg_to_rad(90) # 3 o'clock = 90 degrees
+		2:
+			# Level 2 completed, position at level 3 clock position (6 o'clock)
+			target_rotation = deg_to_rad(180) # 6 o'clock = 180 degrees
+		3:
+			# Level 3 completed, position at level 4 clock position (9 o'clock)
+			target_rotation = deg_to_rad(270) # 9 o'clock = 270 degrees
+		4:
+			# All levels completed, position back at level 1 clock position (12 o'clock)
+			target_rotation = deg_to_rad(0) # 12 o'clock = 0 degrees
+		_:
+			target_rotation = deg_to_rad(0) # Default fallback
+	
+	# Set player rotation directly
+	player.rotation = target_rotation
+	
+	
+	# Set the long hand to match player's initial position
+	call_deferred("sync_long_hand_to_player")
+
+# Connect player movement to long hand in lobby
+func connect_player_to_long_hand():
+	if player and player.has_signal("player_finished_moving"):
+		# Connect player movement to update long hand
+		if not player.player_finished_moving.is_connected(_on_player_moved_in_lobby):
+			player.player_finished_moving.connect(_on_player_moved_in_lobby)
+		print("Player movement connected to long hand in lobby")
+
+# Handle player movement in lobby to update long hand
+func _on_player_moved_in_lobby():
+	if player and level_handler.level_status_node:
+		# In lobby, make long hand follow player directly
+		level_handler.level_status_node.long_hand_rotation.rotation = player.rotation
+		
+		# Update the base_clock_position to match current position
+		var current_degrees = rad_to_deg(player.rotation)
+		var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
+		level_handler.level_status_node.base_clock_position = current_clock_pos
+		level_handler.level_status_node.update_lock_state()
+		
+		print("Lobby: Long hand updated to follow player at ", current_degrees, " degrees, clock position: ", current_clock_pos)
+
+func sync_long_hand_to_player():
+	if player and level_handler.level_status_node:
+		# Always use preserved rotation from cutscene if available
+		if level_handler.level_status_node.preserved_hand_rotation != 0.0:
+			level_handler.level_status_node.long_hand_rotation.rotation = level_handler.level_status_node.preserved_hand_rotation
+			
+		else:
+			# First time in lobby - sync to player position
+			level_handler.level_status_node.long_hand_rotation.rotation = player.rotation
+		
+		# Update the base_clock_position to match current position for consistency
+		var current_degrees = rad_to_deg(level_handler.level_status_node.long_hand_rotation.rotation)
+		var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
+		level_handler.level_status_node.base_clock_position = current_clock_pos
+		level_handler.level_status_node.update_lock_state()
+
 
 

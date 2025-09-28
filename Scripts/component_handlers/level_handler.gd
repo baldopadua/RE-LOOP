@@ -2,6 +2,7 @@ extends Node2D
 
 signal level_instantiated(level_name: String)
 signal level_completed(level_name: String)
+signal long_hand_state_changed(level_number: int, is_unlocked: bool)
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 var current_level_number: int = 0
@@ -11,7 +12,7 @@ var is_lobby: bool = false # Track if we're in the lobby scene
 static var completed_levels: Array[int] = [] # Track completed levels
 # Global level count - change this when adding more levels
 const TOTAL_LEVEL_COUNT: int = 4
-@onready var level_select_node = $level_select
+@onready var level_status_node = $level_status
 
 # LEVEL INTRO GUIDE:
 #   1. Initialize Level Handler component in the level map and initialize as onready variable.
@@ -41,6 +42,10 @@ func map_initialize(this, tween_rotate, tween_scale):
 	tween_scale.connect("finished", Callable(self, "tween_scale_finished").bind(tween_scale))
 	tween_scale.tween_property(this, "scale", Vector2(1.0, 1.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 
+	# Connect level handler signals to level status
+	if not long_hand_state_changed.is_connected(level_status_node._on_long_hand_state_changed):
+		long_hand_state_changed.connect(level_status_node._on_long_hand_state_changed)
+
 	# Connect to player after map initialization
 	call_deferred("connect_to_player", this)
 
@@ -50,10 +55,10 @@ func connect_to_player(level_scene):
 	var player = level_scene.get_node_or_null("PlayerScene")
 	if player:
 		current_player = player
-		# Connect player signals to level_select
+		# Connect player signals to level_status
 		if player.has_signal("player_finished_moving"):
-			player.player_finished_moving.connect(level_select_node._on_player_moved)
-		level_select_node.set_player_reference(player)
+			player.player_finished_moving.connect(level_status_node._on_player_moved)
+		level_status_node.set_player_reference(player)
 
 # NEXT LEVEL GUIDE:
 #	1. If not done yet, initialize Level Handler component in the scene script and initialize as onready variable.
@@ -96,18 +101,21 @@ func set_current_level(level_number: int):
 	print("Level Handler: Current level set to ", level_name)
 	emit_signal("level_instantiated", level_name)
 	
-	# Set hand position based on level (in ui/level_select.gd)
-	match level_number:
-		1:
-			level_select_node.set_hand_to_clock_position(12) # 12 o'clock for level 1
-		2:
-			level_select_node.set_hand_to_clock_position(3)
-		3:
-			level_select_node.set_hand_to_clock_position(6)
-		4:
-			level_select_node.set_hand_to_clock_position(9)
-		_:
-			level_select_node.set_hand_to_clock_position(12) # 12 o'clock for other levels
+	# Remove automatic hand positioning - let player movement control it
+	# match level_number:
+	#	1:
+	#		level_status_node.set_hand_to_clock_position(12) # 12 o'clock for level 1
+	#	2:
+	#		level_status_node.set_hand_to_clock_position(3)
+	#	3:
+	#		level_status_node.set_hand_to_clock_position(6)
+	#	4:
+	#		level_status_node.set_hand_to_clock_position(9)
+	#	_:
+	#		level_status_node.set_hand_to_clock_position(12) # 12 o'clock for other levels
+	
+	# Update long hand state for current level
+	update_long_hand_state_for_level(level_number)
 
 # Call this method from level_lobby script in its _ready() function to identify it as lobby
 # Example: level_handler.set_current_lobby()
@@ -117,33 +125,54 @@ func set_current_lobby():
 	print("Level Handler: Current scene set to lobby")
 	emit_signal("level_instantiated", "lobby")
 	
-	# Set hand to default position for lobby (12 o'clock)
-	level_select_node.set_hand_to_clock_position(12)
+	# Resume hand following in lobby
+	level_status_node.resume_following_player()
+	
+	# Remove automatic hand positioning for lobby - let player movement control it
+	# level_status_node.set_hand_to_clock_position(12)
+	
+	# Update long hand state for level 1 (default lobby position)
+	update_long_hand_state_for_level(1)
 
 # Call this method from the level scripts when the level objective is met
 # Example: level_handler.complete_current_level(get_parent().get_parent())
 func complete_current_level(levels_frame):
 	if current_level_number > 0:
+		# Stop hand from following player and preserve position
+		level_status_node.stop_following_player()
+		
+		# Force set hand position to current level's clock position
+		match current_level_number:
+			1:
+				level_status_node.set_hand_to_clock_position(12) # 12 o'clock for level 1
+			2:
+				level_status_node.set_hand_to_clock_position(3) # 3 o'clock for level 2
+			3:
+				level_status_node.set_hand_to_clock_position(6) # 6 o'clock for level 3
+			4:
+				level_status_node.set_hand_to_clock_position(9) # 9 o'clock for level 4
+			_:
+				level_status_node.set_hand_to_clock_position(12) # 12 o'clock for other levels
+		
 		var level_name = "level_" + str(current_level_number)
 		emit_signal("level_completed", level_name)
 		
 		# Mark level as completed and print status
 		_mark_level_completed_and_print_status()
 		
-		# PROCEED TO NEXT LEVEL IF AVAILABLE (COMMENTED OUT - NOW RETURNS TO LOBBY)
-		# var next_level_number = current_level_number + 1
-		# if next_level_number <= TOTAL_LEVEL_COUNT:
+		# Calculate next level number for cutscene
+		var next_level_number = current_level_number + 1
+		if next_level_number > TOTAL_LEVEL_COUNT:
+			next_level_number = 1 # Loop back to level 1
+		
 		var level_scene = levels_frame.get_child(0) # Get current level scene
 		
 		# KILL THE CURRENT LEVEL WITH ANIMATION (TWEEN KILL)
 		kill_current_level(level_scene)
 		await get_tree().create_timer(1.0).timeout
 
-		# SHOW TRANSITION CUTSCENE
-		await show_level_transition_cutscene(current_level_number)
-
-		# LOAD THE NEW LEVEL (COMMENTED OUT - NOW RETURNS TO LOBBY)
-		# load_next_level(next_level_number, levels_frame)
+		# SHOW TRANSITION CUTSCENE WITH NEXT LEVEL
+		await show_level_transition_cutscene(next_level_number)
 
 		# RETURN TO LOBBY INSTEAD OF NEXT LEVEL
 		return_to_lobby(levels_frame)
@@ -166,6 +195,9 @@ func _mark_level_completed_and_print_status():
 	if not completed_levels.has(current_level_number):
 		completed_levels.append(current_level_number)
 	
+	# Update long hand state for completed level
+	update_long_hand_state_for_level(current_level_number)
+	
 	# Print completed levels with checkmarks
 	var completed_status = ""
 	for i in range(1, TOTAL_LEVEL_COUNT + 1):
@@ -178,21 +210,41 @@ func _mark_level_completed_and_print_status():
 	completed_status = completed_status.trim_suffix(", ")
 	print("Level Handler: ", completed_status)
 
+# Centralized function to update long hand state and notify listeners
+func update_long_hand_state_for_level(level_number: int):
+	if level_number <= 0:
+		return
+		
+	var is_unlocked = completed_levels.has(level_number)
+	emit_signal("long_hand_state_changed", level_number, is_unlocked)
+
 func show_level_transition_cutscene(next_level_number: int):
-	# SHOW CLOCK CUTSCENE WITH LONG HAND ANIMATION
-	level_select_node.show_level_complete_cutscene(next_level_number)
+	# DEBUG: Check current hand position before cutscene
+	var current_hand_degrees = rad_to_deg(level_status_node.long_hand_rotation.rotation)
+	print("DEBUG: Hand position BEFORE cutscene: ", current_hand_degrees, " degrees")
 	
-	# ANIMATE THE LONG HAND TO NEXT LEVEL POSITION
-	var animation_tween = level_select_node.animate_hand_to_next_level(level_select_node.get_clock_position_for_level(next_level_number))
+	# SHOW CLOCK CUTSCENE WITH LONG HAND ANIMATION
+	level_status_node.show_level_complete_cutscene(next_level_number)
+	
+	# DEBUG: Check hand position after showing cutscene (to see if it gets reset)
+	var hand_degrees_after_show = rad_to_deg(level_status_node.long_hand_rotation.rotation)
+	print("DEBUG: Hand position AFTER showing cutscene: ", hand_degrees_after_show, " degrees")
+	
+	# WAIT FOR LOCK STATE TO BE VISIBLE (show locked state first)
+	await get_tree().create_timer(1.0).timeout
+	
+	# ANIMATE THE LONG HAND TO NEXT LEVEL POSITION DURING CUTSCENE
+	var next_level_clock_position = level_status_node.get_clock_position_for_level(next_level_number)
+	var animation_tween = level_status_node.animate_hand_to_next_level(next_level_clock_position)
 	if animation_tween:
 		# WAIT FOR HAND ANIMATION TO COMPLETE
 		await animation_tween.finished
 	
-	# KEEP CUTSCENE VISIBLE FOR A MOMENT
-	await get_tree().create_timer(2.0).timeout
+	# KEEP CUTSCENE VISIBLE FOR A MOMENT AFTER ANIMATION
+	await get_tree().create_timer(1.0).timeout
 	
 	# HIDE THE CUTSCENE
-	level_select_node.hide_cutscene()
+	level_status_node.hide_cutscene()
 
 
 

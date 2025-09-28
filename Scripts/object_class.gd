@@ -116,17 +116,17 @@ func handle_body_entered(body):
 		body.interactable_objects.append(self)
 		#print(body.interactable_objects)
 		
-		# ADD GLOW for enterable objects
+		# ADD GLOW for enterable objects when player enters area
 		if is_enterable:
 			# Check if this level is completed to determine glow color
 			var level_number = get_level_number_from_name()
 			var level_handler = get_level_handler()
 			
-			if level_handler:
-				print("Debug - Completed levels: ", level_handler.completed_levels)
 			if level_handler and level_number > 0 and level_handler.completed_levels.has(level_number):
+				# Green glow for completed levels
 				create_glow_light_to_lobby(Color.GREEN)
 			else:
+				# Red glow for incomplete levels
 				create_glow_light_to_lobby(Color.RED)
 
 # Helper function to get level number from object name
@@ -169,6 +169,21 @@ func get_level_handler():
 	
 	return null
 
+func set_level_completion_visual(is_completed: bool):
+	# Change sprite color - use the correct node name from the scene
+	if has_node("Sprite2D2"):
+		var sprite = $Sprite2D2
+		if is_completed:
+			sprite.modulate = Color.GREEN  # Make sprite green when completed
+		else:
+			sprite.modulate = Color.WHITE  # Keep original color when not completed
+	elif has_node("item_sprite"):  # Fallback for other objects
+		var sprite = $item_sprite
+		if is_completed:
+			sprite.modulate = Color.GREEN
+		else:
+			sprite.modulate = Color.WHITE
+
 func create_glow_light_to_lobby(color: Color = Color.YELLOW):
 	# Remove existing glow light first
 	if glow_light:
@@ -184,18 +199,18 @@ func create_glow_light_to_lobby(color: Color = Color.YELLOW):
 	gradient.set_color(1, Color(color.r, color.g, color.b, 0.0)) 
 	gradient.offsets = [0.0, 1.0] 
 
-	# CREATE TEXTURE FROM GRADIENT
+	# CREATE TEXTURE FROM GRADIENT - SMALLER SIZE
 	var gradient_texture = GradientTexture2D.new()
 	gradient_texture.gradient = gradient
 	gradient_texture.fill = GradientTexture2D.FILL_RADIAL
 	gradient_texture.fill_from = Vector2(0.5, 0.5)
-	gradient_texture.width = 128
-	gradient_texture.height = 128
+	gradient_texture.width = 64  # Reduced from 128
+	gradient_texture.height = 64  # Reduced from 128
 
-	# ASSIGN TO LIGHT with stronger settings
+	# ASSIGN TO LIGHT with smaller scale and lower energy
 	glow_light.texture = gradient_texture
-	glow_light.energy = 2.0
-	glow_light.texture_scale = 2.0
+	glow_light.energy = 1.0  # Reduced from 2.0
+	glow_light.texture_scale = 0.8  # Reduced from 2.0
 	glow_light.color = color
 
 	add_child(glow_light)
