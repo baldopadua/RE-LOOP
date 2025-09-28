@@ -47,14 +47,26 @@ ignore_rotation = false
 [node name="long_hand_rotation" type="Camera2D" parent="level_status"]
 position = Vector2(637, 362)
 ignore_rotation = false
-zoom = Vector2(33.12, 1.93)
+zoom = Vector2(28.107, 1.638)
 rotation_smoothing_enabled = true
 
 [node name="long_hand_clock" type="AnimatedSprite2D" parent="level_status/long_hand_rotation"]
-position = Vector2(-2, -92.135)
-scale = Vector2(0.690476, 0.717308)
+position = Vector2(-2, -111.442)
+scale = Vector2(0.690476, 0.865827)
 sprite_frames = SubResource("SpriteFrames_syl1f")
 animation = &"unlock"
+
+[node name="short_hand_rotation" type="Camera2D" parent="level_status"]
+position = Vector2(637, 362)
+ignore_rotation = false
+zoom = Vector2(33.12, 1.93)
+rotation_smoothing_enabled = true
+
+[node name="short_hand_clock" type="AnimatedSprite2D" parent="level_status/short_hand_rotation"]
+position = Vector2(-2, -72.9425)
+scale = Vector2(0.690476, 0.569673)
+sprite_frames = SubResource("SpriteFrames_syl1f")
+animation = &"lock"
 
 [node name="level_clock" type="TextureRect" parent="level_status"]
 anchors_preset = 15

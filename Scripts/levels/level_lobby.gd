@@ -150,10 +150,10 @@ func position_player_based_on_progress():
 	
 	
 	# Set the long hand to match player's initial position
-	call_deferred("sync_long_hand_to_player")
+	call_deferred("sync_short_hand_to_player")
 
 # Connect player movement to long hand in lobby
-func connect_player_to_long_hand():
+func connect_player_to_short_hand():
 	if player and player.has_signal("player_finished_moving"):
 		# Connect player movement to update long hand
 		if not player.player_finished_moving.is_connected(_on_player_moved_in_lobby):
@@ -163,7 +163,7 @@ func connect_player_to_long_hand():
 func _on_player_moved_in_lobby():
 	if player and level_handler.level_status_node:
 		# In lobby, make long hand follow player directly
-		level_handler.level_status_node.long_hand_rotation.rotation = player.rotation
+		level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
 		
 		# Update the base_clock_position to match current position
 		var current_degrees = rad_to_deg(player.rotation)
@@ -173,20 +173,20 @@ func _on_player_moved_in_lobby():
 		
 		
 
-func sync_long_hand_to_player():
+func sync_short_hand_to_player():
 	if player and level_handler.level_status_node:
 		# Check if this is coming from a replay (preserved rotation will be 0.0)
 		if level_handler.level_status_node.preserved_hand_rotation == 0.0:
 			# Coming from replay or first time - sync to player position
-			level_handler.level_status_node.long_hand_rotation.rotation = player.rotation
+			level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
 			
 		else:
 			# Coming from cutscene - use preserved rotation
-			level_handler.level_status_node.long_hand_rotation.rotation = level_handler.level_status_node.preserved_hand_rotation
+			level_handler.level_status_node.short_hand_rotation.rotation = level_handler.level_status_node.preserved_hand_rotation
 			
 		
 		# Update the base_clock_position to match current position for consistency
-		var current_degrees = rad_to_deg(level_handler.level_status_node.long_hand_rotation.rotation)
+		var current_degrees = rad_to_deg(level_handler.level_status_node.short_hand_rotation.rotation)
 		var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
 		level_handler.level_status_node.base_clock_position = current_clock_pos
 		level_handler.level_status_node.update_lock_state()

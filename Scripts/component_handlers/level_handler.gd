@@ -2,7 +2,7 @@ extends Node2D
 
 signal level_instantiated(level_name: String)
 signal level_completed(level_name: String)
-signal long_hand_state_changed(level_number: int, is_unlocked: bool)
+signal short_hand_state_changed(level_number: int, is_unlocked: bool)
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 var current_level_number: int = 0
@@ -44,8 +44,8 @@ func map_initialize(this, tween_rotate, tween_scale):
 	tween_scale.tween_property(this, "scale", Vector2(1.0, 1.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 
 	# Connect level handler signals to level status
-	if not long_hand_state_changed.is_connected(level_status_node._on_long_hand_state_changed):
-		long_hand_state_changed.connect(level_status_node._on_long_hand_state_changed)
+	if not short_hand_state_changed.is_connected(level_status_node._on_short_hand_state_changed):
+		short_hand_state_changed.connect(level_status_node._on_short_hand_state_changed)
 
 	# Connect to player after map initialization
 	call_deferred("connect_to_player", this)
@@ -123,7 +123,7 @@ func set_current_level(level_number: int):
 	#		level_status_node.set_hand_to_clock_position(12) # 12 o'clock for other levels
 	
 	# Update long hand state for current level
-	update_long_hand_state_for_level(level_number)
+	update_short_hand_state_for_level(level_number)
 
 # Call this method from level_lobby script in its _ready() function to identify it as lobby
 # Example: level_handler.set_current_lobby()
@@ -140,7 +140,7 @@ func set_current_lobby():
 	# level_status_node.set_hand_to_clock_position(12)
 	
 	# Update long hand state for level 1 (default lobby position)
-	update_long_hand_state_for_level(1)
+	update_short_hand_state_for_level(1)
 
 # Call this method from the level scripts when the level objective is met
 # Example: level_handler.complete_current_level(get_parent().get_parent())
@@ -232,7 +232,7 @@ func _mark_level_completed_and_print_status():
 		completed_levels.append(current_level_number)
 	
 	# Update long hand state for completed level
-	update_long_hand_state_for_level(current_level_number)
+	update_short_hand_state_for_level(current_level_number)
 	
 	# Print completed levels with checkmarks
 	var completed_status = ""
@@ -247,12 +247,12 @@ func _mark_level_completed_and_print_status():
 	print("Level Handler: ", completed_status)
 
 # Centralized function to update long hand state and notify listeners
-func update_long_hand_state_for_level(level_number: int):
+func update_short_hand_state_for_level(level_number: int):
 	if level_number <= 0:
 		return
 		
 	var is_unlocked = completed_levels.has(level_number)
-	emit_signal("long_hand_state_changed", level_number, is_unlocked)
+	emit_signal("short_hand_state_changed", level_number, is_unlocked)
 
 func show_level_transition_cutscene(next_level_number: int):
 	

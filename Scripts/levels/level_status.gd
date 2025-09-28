@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var long_hand_rotation = $long_hand_rotation
-@onready var long_hand_clock = $long_hand_rotation/long_hand_clock
+@onready var short_hand_rotation = $short_hand_rotation
+@onready var short_hand_clock = $short_hand_rotation/short_hand_clock
 var current_player: CharacterBody2D = null
 var base_clock_position: int = 12 # Default base position
 var should_follow_player: bool = true # Flag to control hand following
@@ -15,14 +15,14 @@ func _ready() -> void:
 	visible = false
 
 # Signal handler for long hand state changes from level handler
-func _on_long_hand_state_changed(level_number: int, is_unlocked: bool):
+func _on_short_hand_state_changed(level_number: int, is_unlocked: bool):
 	# Only update if the state change is for the current clock position
 	var level_for_current_position = get_level_for_clock_position(base_clock_position)
 	if level_number == level_for_current_position:
 		if is_unlocked:
-			long_hand_clock.play("unlock")
+			short_hand_clock.play("unlock")
 		else:
-			long_hand_clock.play("lock")
+			short_hand_clock.play("lock")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -32,7 +32,7 @@ func set_player_reference(player: CharacterBody2D):
 	current_player = player
 
 func _on_player_moved():
-	if current_player and long_hand_rotation:
+	if current_player and short_hand_rotation:
 		update_hand_rotation()
 
 func get_rotation_for_clock(clock: int) -> float:
@@ -69,7 +69,7 @@ func set_hand_to_clock_position(clock_position: int):
 	var target_rotation = get_rotation_for_clock(clock_position)
 	
 	# Set hand directly to position without animation for level transitions
-	long_hand_rotation.rotation = target_rotation
+	short_hand_rotation.rotation = target_rotation
 	
 	# Preserve this position for cutscene use
 	preserved_hand_rotation = target_rotation
@@ -98,7 +98,7 @@ func update_hand_rotation():
 		
 		# Apply rotation smoothly
 		var tween = create_tween()
-		tween.tween_property(long_hand_rotation, "rotation", target_rotation, 0.15)
+		tween.tween_property(short_hand_rotation, "rotation", target_rotation, 0.15)
 		tween.set_trans(Tween.TRANS_SINE)
 		tween.set_ease(Tween.EASE_OUT)
 		
@@ -113,7 +113,7 @@ func update_hand_rotation():
 		var target_hand_rotation = base_rotation + player_rotation
 		
 		# Get current hand rotation
-		var current_hand_rotation = long_hand_rotation.rotation
+		var current_hand_rotation = short_hand_rotation.rotation
 		
 		# Calculate the shortest path to target rotation
 		var rotation_diff = target_hand_rotation - current_hand_rotation
@@ -129,7 +129,7 @@ func update_hand_rotation():
 		
 		# Apply rotation smoothly without doing full spins
 		var tween = create_tween()
-		tween.tween_property(long_hand_rotation, "rotation", final_rotation, 0.15)
+		tween.tween_property(short_hand_rotation, "rotation", final_rotation, 0.15)
 		tween.set_trans(Tween.TRANS_SINE)
 		tween.set_ease(Tween.EASE_OUT)
 	
@@ -140,7 +140,7 @@ func update_hand_rotation():
 func stop_following_player():
 	should_follow_player = false
 	# Preserve current hand position for cutscene
-	preserved_hand_rotation = long_hand_rotation.rotation
+	preserved_hand_rotation = short_hand_rotation.rotation
 	
 
 # Resume hand following player (called in lobby)
@@ -164,8 +164,8 @@ func show_level_complete_cutscene(_next_level_number: int):
 	hide_gameplay_elements()
 	
 	# FORCE SHOW LOCK STATE FIRST
-	if long_hand_clock:
-		long_hand_clock.play("lock")
+	if short_hand_clock:
+		short_hand_clock.play("lock")
 		
 func hide_cutscene():
 	visible = false
@@ -213,16 +213,16 @@ func get_clock_position_for_level(level_number: int) -> int:
 
 func animate_hand_to_next_level(next_clock_position: int) -> Tween:
 	# Use the preserved hand position as starting point (from level completion)
-	var current_rotation = preserved_hand_rotation if preserved_hand_rotation != 0.0 else long_hand_rotation.rotation
+	var current_rotation = preserved_hand_rotation if preserved_hand_rotation != 0.0 else short_hand_rotation.rotation
 	var target_rotation = get_rotation_for_clock(next_clock_position)
 	
 	# Set hand to preserved position first
-	long_hand_rotation.rotation = current_rotation
+	short_hand_rotation.rotation = current_rotation
 	
 	
 	# SHOW UNLOCK ANIMATION FIRST BEFORE SLIDING
-	if long_hand_clock:
-		long_hand_clock.play("unlock")
+	if short_hand_clock:
+		short_hand_clock.play("unlock")
 		
 	
 	# Create a sequence tween that waits first, then slides
@@ -249,15 +249,15 @@ func animate_hand_to_next_level(next_clock_position: int) -> Tween:
 	
 	
 	# CREATE SMOOTH CUTSCENE ANIMATION - ALWAYS CLOCKWISE
-	sequence_tween.tween_property(long_hand_rotation, "rotation", final_rotation, 2.0)
+	sequence_tween.tween_property(short_hand_rotation, "rotation", final_rotation, 2.0)
 	sequence_tween.set_trans(Tween.TRANS_QUART)
 	sequence_tween.set_ease(Tween.EASE_IN_OUT)
 	
 	# FORCE SET BASE POSITION AND EXACT ROTATION AFTER ANIMATION
 	sequence_tween.finished.connect(func(): 
 		base_clock_position = next_clock_position
-		long_hand_rotation.rotation = get_rotation_for_clock(next_clock_position)
-		preserved_hand_rotation = long_hand_rotation.rotation # Save the position
+		short_hand_rotation.rotation = get_rotation_for_clock(next_clock_position)
+		preserved_hand_rotation = short_hand_rotation.rotation # Save the position
 		update_lock_state() # Update lock state after animation
 	
 	)
@@ -265,7 +265,7 @@ func animate_hand_to_next_level(next_clock_position: int) -> Tween:
 	return sequence_tween
 
 func update_lock_state():
-	if not long_hand_clock:
+	if not short_hand_clock:
 		return
 	
 	var level_handler = get_parent()
@@ -273,15 +273,15 @@ func update_lock_state():
 		return
 	
 	# Get the level number based on CURRENT hand rotation, not base position
-	var current_hand_degrees = rad_to_deg(long_hand_rotation.rotation)
+	var current_hand_degrees = rad_to_deg(short_hand_rotation.rotation)
 	var current_clock_position = get_clock_position_from_rotation(current_hand_degrees)
 	var level_for_current_rotation = get_level_for_clock_position(current_clock_position)
 	
 	# Check if the level at the CURRENT hand position is completed
 	if level_for_current_rotation > 0 and level_handler.completed_levels.has(level_for_current_rotation):
-		long_hand_clock.play("unlock")
+		short_hand_clock.play("unlock")
 	else:
-		long_hand_clock.play("lock")
+		short_hand_clock.play("lock")
 
 # New function to determine clock position from rotation degrees (based on your exact mapping)
 func get_clock_position_from_rotation(degrees: float) -> int:
