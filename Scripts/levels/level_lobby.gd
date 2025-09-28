@@ -50,6 +50,9 @@ func _ready():
 	
 	# POSITION PLAYER BASED ON LAST COMPLETED LEVEL
 	call_deferred("position_player_based_on_progress")
+	
+	# PLAY FOREST AMBIENCE IN LOBBY
+	sound_manager.play_ambience_sfx("forest_sfx")
 
 # Initialize text labels for all entrance objects
 func initialize_text_labels():
@@ -75,6 +78,9 @@ func _process(_delta: float) -> void:
 # Add this method to handle level transitions from lobby
 func enter_level(level_number: int):
 	print("Entering level ", level_number)
+	
+	# STOP FOREST AMBIENCE WHEN LEAVING LOBBY
+	sound_manager.stop_ambience_sfx("forest_sfx")
 	
 	# Get the levels_frame from the game scene structure
 	var levels_frame = get_parent()  # This should be the levels_frame

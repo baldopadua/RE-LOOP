@@ -6,10 +6,13 @@ func _ready() -> void:
 	print("Lobby available: ", object_name)
 	# Text hiding is now handled in the base class setup_text_label()
 
-# Override hover behavior - show level name
+# Override hover behavior - show level name only if accessible
 func on_hover_enter():
 	print("on_hover_enter called for enter_1")
-	show_hover_text() 
+	# Check if level is accessible before showing hover
+	var level_handler = get_level_handler()
+	if level_handler and is_level_accessible(1, level_handler):
+		show_hover_text() 
 
 
 func interact(object_interacted: object_class):

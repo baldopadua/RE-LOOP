@@ -211,7 +211,14 @@ func return_to_lobby(levels_frame):
 		level_status_node.preserved_hand_rotation = 0.0
 		# Resume hand following for lobby
 		level_status_node.resume_following_player()
-		
+	
+	# RESTART FOREST AMBIENCE WHEN RETURNING TO LOBBY
+	await get_tree().create_timer(0.1).timeout  # Small delay to ensure scene is loaded
+	var lobby_scene = levels_frame.get_child(0)
+	if lobby_scene and lobby_scene.has_node("SoundManager"):
+		var sound_manager = lobby_scene.get_node("SoundManager")
+		sound_manager.play_ambience_sfx("forest_sfx")
+
 
 # Helper function to mark level as completed and print status
 func _mark_level_completed_and_print_status():

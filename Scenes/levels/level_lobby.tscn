@@ -275,6 +275,5 @@ scroll_active = false
 tab_size = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_7i53v")]
