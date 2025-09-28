@@ -8,7 +8,6 @@ func _ready() -> void:
 
 # Override hover behavior - show level name only if accessible
 func on_hover_enter():
-	print("on_hover_enter called for enter_1")
 	# Check if level is accessible before showing hover
 	var level_handler = get_level_handler()
 	if level_handler and is_level_accessible(1, level_handler):
@@ -16,7 +15,7 @@ func on_hover_enter():
 
 
 func interact(object_interacted: object_class):
-	print("enter_1 interact called with: ", object_interacted.object_name)
+	
 	if object_interacted.object_name == "enter_1":
 		# Hide hover text immediately when interacting
 		if hover_text_label:

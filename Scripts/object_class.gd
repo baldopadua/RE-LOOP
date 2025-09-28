@@ -37,14 +37,14 @@ func setup_text_labels():
 		interact_text_label = get_node("interact_text")
 		print("Found interact_text for: ", object_name)
 		interact_text_label.visible = false
-		# Don't override modulate - keep the GUI-set color
+		
 		interact_text_label.text = ""
 	else:
 		print("No interact_text found for: ", object_name)
 
 # Function to show hover text
 func show_hover_text(text: String = ""):
-	print("show_hover_text called for ", object_name, " with text: ", text)
+	
 	if not hover_text_label and has_node("hover_text"):
 		hover_text_label = get_node("hover_text")
 	
@@ -52,9 +52,9 @@ func show_hover_text(text: String = ""):
 		if text != "":
 			hover_text_label.text = text
 		hover_text_label.visible = true
-		# Don't override modulate - keep the GUI-set color
+		
 		is_text_visible = true
-		print("Hover text shown: ", hover_text_label.text)
+		
 	else:
 		print("No hover_text_label available for ", object_name)
 
@@ -68,13 +68,13 @@ func show_interact_text(text: String = ""):
 		if text != "":
 			interact_text_label.text = text
 		interact_text_label.visible = true
-		# Don't override modulate - keep the GUI-set color (red)
+		
 		is_text_visible = true
 		print("Interact text shown: ", interact_text_label.text)
 	else:
 		print("No interact_text_label available for ", object_name)
 
-# Legacy function for backward compatibility - now uses hover_text
+
 func show_text(text: String = ""):
 	show_hover_text(text)
 
@@ -85,8 +85,7 @@ func hide_text():
 	if interact_text_label:
 		interact_text_label.visible = false
 	is_text_visible = false
-	print("All text hidden for: ", object_name)
-
+	
 # Tinanggal ko muna ung static type ng body, but it should be CharacteerBody2D
 # Nag e-error kasi kapag naka staticly typed ewan pa kung bakit
 # Both body_entered tsaka body_exit ko tinanggal
@@ -101,7 +100,7 @@ func handle_body_exited(body):
 	if body != player_char:
 		return
 	
-	print("BODY EXITED: %s for object: %s" % [str(body), object_name])
+	
 	
 	# Tool behavior if out of rangea
 	if object_type == GlobalVariables.object_types.TOOL:
@@ -123,7 +122,6 @@ func handle_body_exited(body):
 			body.interactable_objects.erase(self)
 		
 		# Hide text when exiting area
-		print("Calling on_hover_exit for: ", object_name)
 		on_hover_exit()  # Add this line back!
 		
 		# DELETE POINTLIGHT for enterable objects
@@ -140,7 +138,7 @@ func handle_body_entered(body):
 	if body.name != "PlayerScene":
 		return
 	
-	print("BODY ENTERED: %s for object: %s" % [str(body), object_name])
+	
 	
 	# PICKING UP THINGS
 	if is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.TOOL:
@@ -183,21 +181,14 @@ func handle_body_entered(body):
 
 	# INTERACTING WITH NON-PICKUPABLE OBJECTS WHEN NOT HOLDING ANYTHING (for lobby entrances)
 	if not is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.NONTOOL:
-		print("Processing non-pickupable interaction for: ", object_name)
+		
 		# Always set reachable and player_char for proper cleanup on exit
 		is_reachable = true
 		player_char = body
 		
-		# Check if this is a level entrance and if it's accessible
-		if is_enterable:
-			var level_number = get_level_number_from_name()
-			var level_handler = get_level_handler()
-			
-			print("Level entrance detected - Level: ", level_number, " Handler found: ", level_handler != null)
-		
+
 		body.interactable_objects.append(self)
-		print("Calling on_hover_enter for: ", object_name)
-		on_hover_enter()  # Add this line back!
+		on_hover_enter()  
 		  
 		
 		# ADD GLOW for enterable objects when player enters area
@@ -282,12 +273,12 @@ func set_level_completion_visual(is_completed: bool):
 		var level_handler = get_level_handler()
 		
 		if is_completed:
-			sprite.modulate = Color.GREEN  # Make sprite green when completed
+			sprite.modulate = Color.GREEN  
 		elif level_handler and is_level_accessible(level_number, level_handler):
-			sprite.modulate = Color.WHITE  # Keep original color when accessible but not completed
+			sprite.modulate = Color.WHITE  
 		else:
-			sprite.modulate = Color.DARK_GRAY  # Make sprite dark gray when locked
-	elif has_node("item_sprite"):  # Fallback for other objects
+			sprite.modulate = Color.DARK_GRAY  
+	elif has_node("item_sprite"):  
 		var sprite = $item_sprite
 		var level_number = get_level_number_from_name()
 		var level_handler = get_level_handler()
@@ -319,13 +310,12 @@ func create_glow_light_to_lobby(color: Color = Color.YELLOW):
 	gradient_texture.gradient = gradient
 	gradient_texture.fill = GradientTexture2D.FILL_RADIAL
 	gradient_texture.fill_from = Vector2(0.5, 0.5)
-	gradient_texture.width = 64  # Reduced from 128
-	gradient_texture.height = 64  # Reduced from 128
-
+	gradient_texture.width = 64  
+	gradient_texture.height = 64  
 	# ASSIGN TO LIGHT with smaller scale and lower energy
 	glow_light.texture = gradient_texture
-	glow_light.energy = 1.0  # Reduced from 2.0
-	glow_light.texture_scale = 0.8  # Reduced from 2.0
+	glow_light.energy = 1.0 
+	glow_light.texture_scale = 0.8  
 	glow_light.color = color
 
 	add_child(glow_light)
