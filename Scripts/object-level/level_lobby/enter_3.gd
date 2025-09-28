@@ -9,15 +9,19 @@ func _ready() -> void:
 
 # Override hover behavior - show level name
 func on_hover_enter():
-	show_text("Enter Level 3: Under Pressure")
+	show_hover_text()
 
 func interact(object_interacted: object_class):
 	print("enter_3 interact called with: ", object_interacted.object_name)
 	if object_interacted.object_name == "enter_3":
+		# Hide hover text immediately when interacting
+		if hover_text_label:
+			hover_text_label.visible = false
+		
 		# Check if level is accessible before entering
 		var level_handler = get_level_handler()
 		if level_handler and not is_level_accessible(3, level_handler):
-			show_text("LOCKED")
+			show_interact_text("LOCKED")
 			await get_tree().create_timer(1.5).timeout
 			hide_text()
 			return

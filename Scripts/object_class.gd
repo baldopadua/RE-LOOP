@@ -13,72 +13,84 @@ var is_reachable: bool = false
 var player_char: CharacterBody2D = null
 var player_arrow_owner: CharacterBody2D
 var glow_light: PointLight2D = null
-var text_label: RichTextLabel = null
+var hover_text_label: RichTextLabel = null
+var interact_text_label: RichTextLabel = null
 var is_text_visible: bool = false
 
 func _ready():
 	print(object_name + " instantiated!")
-	# Wait a frame to ensure all nodes are ready, then get reference to RichTextLabel
-	call_deferred("setup_text_label")
+	# Wait a frame to ensure all nodes are ready, then get reference to text labels
+	call_deferred("setup_text_labels")
 
+# Setup text labels after scene is ready
+func setup_text_labels():
+	if has_node("hover_text"):
+		hover_text_label = get_node("hover_text")
+		print("Found hover_text for: ", object_name)
+		hover_text_label.visible = false
+		# Don't override modulate - keep the GUI-set color
+		hover_text_label.text = ""
+	else:
+		print("No hover_text found for: ", object_name)
+		
+	if has_node("interact_text"):
+		interact_text_label = get_node("interact_text")
+		print("Found interact_text for: ", object_name)
+		interact_text_label.visible = false
+		# Don't override modulate - keep the GUI-set color
+		interact_text_label.text = ""
+	else:
+		print("No interact_text found for: ", object_name)
+
+# Function to show hover text
+func show_hover_text(text: String = ""):
+	print("show_hover_text called for ", object_name, " with text: ", text)
+	if not hover_text_label and has_node("hover_text"):
+		hover_text_label = get_node("hover_text")
+	
+	if hover_text_label:
+		if text != "":
+			hover_text_label.text = text
+		hover_text_label.visible = true
+		# Don't override modulate - keep the GUI-set color
+		is_text_visible = true
+		print("Hover text shown: ", hover_text_label.text)
+	else:
+		print("No hover_text_label available for ", object_name)
+
+# Function to show interact text
+func show_interact_text(text: String = ""):
+	print("show_interact_text called for ", object_name, " with text: ", text)
+	if not interact_text_label and has_node("interact_text"):
+		interact_text_label = get_node("interact_text")
+	
+	if interact_text_label:
+		if text != "":
+			interact_text_label.text = text
+		interact_text_label.visible = true
+		# Don't override modulate - keep the GUI-set color (red)
+		is_text_visible = true
+		print("Interact text shown: ", interact_text_label.text)
+	else:
+		print("No interact_text_label available for ", object_name)
+
+# Legacy function for backward compatibility - now uses hover_text
+func show_text(text: String = ""):
+	show_hover_text(text)
+
+# Function to hide all text
+func hide_text():
+	if hover_text_label:
+		hover_text_label.visible = false
+	if interact_text_label:
+		interact_text_label.visible = false
+	is_text_visible = false
+	print("All text hidden for: ", object_name)
 
 # Tinanggal ko muna ung static type ng body, but it should be CharacteerBody2D
 # Nag e-error kasi kapag naka staticly typed ewan pa kung bakit
 # Both body_entered tsaka body_exit ko tinanggal
 
-
-# Setup text label after scene is ready
-func setup_text_label():
-	if has_node("RichTextLabel"):
-		text_label = get_node("RichTextLabel")
-		print("Found RichTextLabel for: ", object_name)
-		# Reset the RichTextLabel properties to ensure it works properly
-		text_label.visible = false
-		text_label.modulate = Color.WHITE
-		text_label.text = ""
-		print("Text label setup complete for: ", object_name)
-	else:
-		print("No RichTextLabel found for: ", object_name)
-
-# Function to show text on hover/interaction
-func show_text(text: String = ""):
-	print("show_text called for ", object_name, " with text: ", text)
-	# Try to get text_label again if it's null
-	if not text_label and has_node("RichTextLabel"):
-		text_label = get_node("RichTextLabel")
-		print("Re-acquired text_label for: ", object_name)
-	
-	if text_label:
-		if text != "":
-			text_label.text = text
-		text_label.visible = true
-		text_label.modulate = Color.WHITE  # Ensure it's not transparent
-		is_text_visible = true
-		print("Text shown: ", text_label.text, " visible: ", text_label.visible)
-	else:
-		print("No text_label available for ", object_name)
-		# Debug: print all child nodes
-		print("Available child nodes for ", object_name, ":")
-		for child in get_children():
-			print("  - ", child.name, " (", child.get_class(), ")")
-
-# Function to hide text
-func hide_text():
-	if text_label:
-		text_label.visible = false
-		is_text_visible = false
-		print("Text hidden for: ", object_name)
-
-# Function to handle hover behavior
-func on_hover_enter():
-	# Override in extended classes for specific hover behavior
-	pass
-
-# Function to handle hover exit
-func on_hover_exit():
-	# Override in extended classes for specific hover exit behavior
-	if is_text_visible:
-		hide_text()
 
 func _on_body_exited(body) -> void:
 	handle_body_exited(body)
@@ -112,7 +124,7 @@ func handle_body_exited(body):
 		
 		# Hide text when exiting area
 		print("Calling on_hover_exit for: ", object_name)
-		on_hover_exit()
+		on_hover_exit()  # Add this line back!
 		
 		# DELETE POINTLIGHT for enterable objects
 		if is_enterable and glow_light:
@@ -185,7 +197,8 @@ func handle_body_entered(body):
 		
 		body.interactable_objects.append(self)
 		print("Calling on_hover_enter for: ", object_name)
-		on_hover_enter()  # Show level name on hover 
+		on_hover_enter()  # Add this line back!
+		  
 		
 		# ADD GLOW for enterable objects when player enters area
 		if is_enterable:
@@ -323,5 +336,16 @@ func set_flipped(flip: bool):
 
 func get_obj_name():
 	return object_name
-	
+
+# Function to handle hover behavior
+func on_hover_enter():
+	# Override in extended classes for specific hover behavior
+	pass
+
+# Function to handle hover exit
+func on_hover_exit():
+	# Override in extended classes for specific hover exit behavior
+	if is_text_visible:
+		hide_text()
+
 

@@ -40,11 +40,6 @@ rotation = -0.0960442
 script = ExtResource("6_rqxun")
 object_name = "enter_1"
 object_type = 1
-is_enterable = null
-usable_targets = null
-max_state_threshold = null
-min_state_threshold = null
-current_state = null
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_1"]
 texture_filter = 1
@@ -59,21 +54,42 @@ rotation = 3.11311
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="enter_1"]
+[node name="hover_text" type="RichTextLabel" parent="enter_1"]
+modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 69.9688
-offset_top = 87.1112
-offset_right = 363.969
-offset_bottom = 127.111
+offset_left = 95.2736
+offset_top = 95.5769
+offset_right = 389.274
+offset_bottom = 135.577
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
 scale = Vector2(1.30259, 1.39847)
-text = "TEXT"
+text = "Level 1: Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_1"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.6368
+offset_top = 89.0195
+offset_right = 331.637
+offset_bottom = 129.02
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
 fit_content = true
 scroll_active = false
 tab_size = 2
@@ -84,11 +100,6 @@ rotation = 1.55757
 script = ExtResource("8_hanr1")
 object_name = "enter_2"
 object_type = 1
-is_enterable = null
-usable_targets = null
-max_state_threshold = null
-min_state_threshold = null
-current_state = null
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_2"]
 texture_filter = 1
@@ -103,21 +114,42 @@ rotation = 3.11311
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="enter_2"]
+[node name="hover_text" type="RichTextLabel" parent="enter_2"]
+modulate = Color(0.278431, 0.235294, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 63.8436
-offset_top = 87.8521
-offset_right = 315.844
-offset_bottom = 127.852
+offset_left = 70.7637
+offset_top = 93.9441
+offset_right = 364.764
+offset_bottom = 133.944
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
 scale = Vector2(1.30259, 1.39847)
-text = "TEXT"
+text = "Level 2: Old Man"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_2"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.6368
+offset_top = 89.0195
+offset_right = 331.637
+offset_bottom = 129.02
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
 fit_content = true
 scroll_active = false
 tab_size = 2
@@ -142,21 +174,42 @@ rotation = 3.11311
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="enter_3"]
+[node name="hover_text" type="RichTextLabel" parent="enter_3"]
+modulate = Color(0.278431, 0.235294, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 70.1354
-offset_top = 87.0117
-offset_right = 378.135
-offset_bottom = 127.012
+offset_left = 109.258
+offset_top = 96.253
+offset_right = 403.258
+offset_bottom = 136.253
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
 scale = Vector2(1.30259, 1.39847)
-text = "TEXT"
+text = "Level 3: Under Pressure"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_3"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.6368
+offset_top = 89.0195
+offset_right = 331.637
+offset_bottom = 129.02
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
 fit_content = true
 scroll_active = false
 tab_size = 2
@@ -181,21 +234,42 @@ rotation = 3.11311
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="enter_4"]
+[node name="hover_text" type="RichTextLabel" parent="enter_4"]
+modulate = Color(0.278431, 0.235294, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 71.1289
-offset_top = 80.5896
-offset_right = 349.129
-offset_bottom = 120.59
+offset_left = 69.8072
+offset_top = 124.615
+offset_right = 245.807
+offset_bottom = 186.615
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
 scale = Vector2(1.30259, 1.39847)
-text = "TEXT"
+text = "Level 4: The Theory of Evolution"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_4"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.6368
+offset_top = 89.0195
+offset_right = 331.637
+offset_bottom = 129.02
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
 fit_content = true
 scroll_active = false
 tab_size = 2

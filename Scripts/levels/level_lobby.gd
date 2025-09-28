@@ -55,11 +55,13 @@ func _ready():
 func initialize_text_labels():
 	var entrances = [enter_1, enter_2, enter_3, enter_4]
 	for entrance in entrances:
-		if entrance and entrance.has_node("RichTextLabel"):
-			var label = entrance.get_node("RichTextLabel")
-			label.visible = false
-			label.modulate = Color.WHITE
+		if entrance and entrance.has_node("hover_text"):
+			var hover_label = entrance.get_node("hover_text")
+			hover_label.visible = false
 			
+		if entrance and entrance.has_node("interact_text"):
+			var interact_label = entrance.get_node("interact_text")
+			interact_label.visible = false
 
 func objects_initialize():
 	objects.append(enter_1)
