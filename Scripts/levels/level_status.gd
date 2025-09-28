@@ -221,15 +221,15 @@ func show_gameplay_elements():
 func get_clock_position_for_level(level_number: int) -> int:
 	match level_number:
 		1:
-			return 12 # 12 o'clock for level 1
+			return 1 # 1 o'clock for level 1
 		2:
-			return 3 # 3 o'clock for level 2
+			return 2 # 2 o'clock for level 2
 		3:
-			return 6 # 6 o'clock for level 3
+			return 3 # 3 o'clock for level 3
 		4:
-			return 9 # 9 o'clock for level 4
+			return 4 # 4 o'clock for level 4
 		_:
-			return 12 # 12 o'clock for other levels
+			return 1 # 1 o'clock for other levels
 
 func animate_hand_to_next_level(next_clock_position: int) -> Tween:
 	# Use the preserved hand positions as starting points
@@ -344,29 +344,31 @@ func get_clock_position_from_rotation(degrees: float) -> int:
 	# Normalize degrees to 0-360 range
 	var normalized_degrees = fmod(rounded_degrees + 360.0, 360.0)
 	
-	# Map degrees directly to clock positions based on your requirements:
-	# 0° = 12 o'clock, 90° = 3 o'clock, 180° = 6 o'clock, 270° = 9 o'clock
-	if normalized_degrees >= 315.0 or normalized_degrees < 45.0:
-		return 12 # 0° ± 45° = 12 o'clock
-	elif normalized_degrees >= 45.0 and normalized_degrees < 135.0:
-		return 3 # 90° ± 45° = 3 o'clock
-	elif normalized_degrees >= 135.0 and normalized_degrees < 225.0:
-		return 6 # 180° ± 45° = 6 o'clock
-	elif normalized_degrees >= 225.0 and normalized_degrees < 315.0:
-		return 9 # 270° ± 45° = 9 o'clock
+	# Map degrees to new clock positions: 1, 2, 3, 4 o'clock
+	# 30° = 1 o'clock, 60° = 2 o'clock, 90° = 3 o'clock, 120° = 4 o'clock
+	if normalized_degrees >= 345.0 or normalized_degrees < 15.0:
+		return 12 # 0° ± 15° = 12 o'clock (default/starting position)
+	elif normalized_degrees >= 15.0 and normalized_degrees < 45.0:
+		return 1 # 30° ± 15° = 1 o'clock
+	elif normalized_degrees >= 45.0 and normalized_degrees < 75.0:
+		return 2 # 60° ± 15° = 2 o'clock
+	elif normalized_degrees >= 75.0 and normalized_degrees < 105.0:
+		return 3 # 90° ± 15° = 3 o'clock
+	elif normalized_degrees >= 105.0 and normalized_degrees < 135.0:
+		return 4 # 120° ± 15° = 4 o'clock
 	else:
-		return 12 # Default fallback
+		return 12 # Default fallback to 12 o'clock
 
 func get_level_for_clock_position(clock_position: int) -> int:
 	match clock_position:
-		12:
-			return 1 # Level 1 at 12 o'clock
+		1:
+			return 1 # Level 1 at 1 o'clock
+		2:
+			return 2 # Level 2 at 2 o'clock
 		3:
-			return 2 # Level 2 at 3 o'clock
-		6:
-			return 3 # Level 3 at 6 o'clock
-		9:
-			return 4 # Level 4 at 9 o'clock
+			return 3 # Level 3 at 3 o'clock
+		4:
+			return 4 # Level 4 at 4 o'clock
 		_:
 			return 0 # Unknown level
 
@@ -379,4 +381,80 @@ func _on_level_instantiated(_level_name: String):
 	call_deferred("update_lock_state")
 	# Update lock state when any level is completed
 	update_lock_state()
+
+# Function to show level 1 entry cutscene from lobby
+func show_level_1_entry_cutscene():
+	# Stop hand from following player during cutscene
+	should_follow_player = false
 	
+	# HIDE UI DURING CUTSCENE
+	var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+	if ui_handler:
+		ui_handler.visible = false
+	
+	# Set hands to 12 o'clock position first
+	var twelve_oclock_rotation = get_rotation_for_clock(12)
+	short_hand_rotation.rotation = twelve_oclock_rotation
+	long_hand_rotation.rotation = twelve_oclock_rotation
+	
+	# MAKE CUTSCENE VISIBLE
+	visible = true
+	
+	# HIDE ALL GAMEPLAY ELEMENTS DURING CUTSCENE
+	hide_gameplay_elements()
+	
+	# FORCE SHOW LOCK STATE FIRST for both hands
+	if short_hand_clock:
+		short_hand_clock.play("lock")
+	if long_hand_clock:
+		long_hand_clock.play("lock")
+
+# Function to animate hand from 12 o'clock to 1 o'clock for level 1 entry
+func animate_hand_from_12_to_1() -> Tween:
+	var current_rotation = get_rotation_for_clock(12)  # 12 o'clock = 0 degrees
+	var target_rotation = get_rotation_for_clock(1)    # 1 o'clock = 30 degrees
+	
+	# Set both hands to 12 o'clock position first
+	short_hand_rotation.rotation = current_rotation
+	long_hand_rotation.rotation = current_rotation
+	
+	# SHOW UNLOCK ANIMATION FIRST BEFORE SLIDING for both hands
+	if short_hand_clock:
+		short_hand_clock.play("unlock")
+	if long_hand_clock:
+		long_hand_clock.play("unlock")
+	
+	# Create a sequence tween that waits first, then slides
+	var sequence_tween = create_tween()
+	
+	# Wait before starting the slide animation
+	sequence_tween.tween_callback(func(): await get_tree().create_timer(0.5).timeout)
+	
+	# Calculate rotation difference - always go clockwise from 12 to 1
+	var rotation_diff = target_rotation - current_rotation  # 30 degrees clockwise
+	
+	# Apply the clockwise rotation for short hand (minutes hand)
+	var final_short_rotation = current_rotation + rotation_diff
+	
+	# For long hand (hours hand), do a full rotation and end at 12 o'clock
+	var long_hand_full_rotation = current_rotation + (2 * PI)  # One full 360° rotation
+	
+	# CREATE SMOOTH CUTSCENE ANIMATION
+	# Short hand moves from 12 to 1 o'clock, long hand does full rotation back to 12
+	sequence_tween.parallel().tween_property(short_hand_rotation, "rotation", final_short_rotation, 2.0)
+	sequence_tween.parallel().tween_property(long_hand_rotation, "rotation", long_hand_full_rotation, 2.0)
+	sequence_tween.set_trans(Tween.TRANS_QUART)
+	sequence_tween.set_ease(Tween.EASE_IN_OUT)
+	
+	# FORCE SET EXACT POSITIONS AFTER ANIMATION
+	sequence_tween.finished.connect(func(): 
+		base_clock_position = 1  # Set to 1 o'clock
+		short_hand_rotation.rotation = target_rotation  # Short hand at 1 o'clock
+		long_hand_rotation.rotation = get_rotation_for_clock(12)  # Long hand back at 12 o'clock
+		preserved_hand_rotation = target_rotation
+		preserved_long_hand_rotation = get_rotation_for_clock(12)
+		update_lock_state()
+	)
+	
+	return sequence_tween
+

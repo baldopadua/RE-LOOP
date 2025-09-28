@@ -152,15 +152,15 @@ func complete_current_level(levels_frame):
 		# Force set hand position to current level's clock position
 		match current_level_number:
 			1:
-				level_status_node.set_hand_to_clock_position(12) # 12 o'clock for level 1
+				level_status_node.set_hand_to_clock_position(1) # 1 o'clock for level 1
 			2:
-				level_status_node.set_hand_to_clock_position(3) # 3 o'clock for level 2
+				level_status_node.set_hand_to_clock_position(2) # 2 o'clock for level 2
 			3:
-				level_status_node.set_hand_to_clock_position(6) # 6 o'clock for level 3
+				level_status_node.set_hand_to_clock_position(3) # 3 o'clock for level 3
 			4:
-				level_status_node.set_hand_to_clock_position(9) # 9 o'clock for level 4
+				level_status_node.set_hand_to_clock_position(4) # 4 o'clock for level 4
 			_:
-				level_status_node.set_hand_to_clock_position(12) # 12 o'clock for other levels
+				level_status_node.set_hand_to_clock_position(1) # 1 o'clock for other levels
 		
 		var level_name = "level_" + str(current_level_number)
 		emit_signal("level_completed", level_name)

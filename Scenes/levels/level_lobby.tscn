@@ -95,8 +95,8 @@ scroll_active = false
 tab_size = 2
 
 [node name="enter_2" parent="." instance=ExtResource("6_1uaeg")]
-position = Vector2(284, -1)
-rotation = 1.55757
+position = Vector2(141, -246)
+rotation = 0.451709
 script = ExtResource("8_hanr1")
 object_name = "enter_2"
 object_type = 1
@@ -155,8 +155,8 @@ scroll_active = false
 tab_size = 2
 
 [node name="enter_3" parent="." instance=ExtResource("6_1uaeg")]
-position = Vector2(1, 289)
-rotation = 3.0093
+position = Vector2(244, -137)
+rotation = 0.97125
 script = ExtResource("11_itkrw")
 object_name = "enter_3"
 object_type = 1
@@ -215,8 +215,8 @@ scroll_active = false
 tab_size = 2
 
 [node name="enter_4" parent="." instance=ExtResource("6_1uaeg")]
-position = Vector2(-299, 1.19209e-06)
-rotation = -1.64623
+position = Vector2(271, -3)
+rotation = 1.5381
 script = ExtResource("11_rxb7l")
 object_name = "enter_4"
 object_type = 1

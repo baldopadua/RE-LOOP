@@ -30,8 +30,8 @@ func setup_text_labels():
 		hover_text_label.visible = false
 		# Don't override modulate - keep the GUI-set color
 		hover_text_label.text = ""
-	else:
-		print("No hover_text found for: ", object_name)
+	
+		
 		
 	if has_node("interact_text"):
 		interact_text_label = get_node("interact_text")
@@ -39,8 +39,7 @@ func setup_text_labels():
 		interact_text_label.visible = false
 		
 		interact_text_label.text = ""
-	else:
-		print("No interact_text found for: ", object_name)
+	
 
 # Function to show hover text
 func show_hover_text(text: String = ""):
@@ -55,8 +54,7 @@ func show_hover_text(text: String = ""):
 		
 		is_text_visible = true
 		
-	else:
-		print("No hover_text_label available for ", object_name)
+	
 
 # Function to show interact text
 func show_interact_text(text: String = ""):
@@ -71,8 +69,7 @@ func show_interact_text(text: String = ""):
 		
 		is_text_visible = true
 		print("Interact text shown: ", interact_text_label.text)
-	else:
-		print("No interact_text_label available for ", object_name)
+	
 
 
 func show_text(text: String = ""):

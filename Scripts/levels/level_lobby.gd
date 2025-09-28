@@ -85,12 +85,37 @@ func enter_level(level_number: int):
 	# Get the levels_frame from the game scene structure
 	var levels_frame = get_parent()  # This should be the levels_frame
 	
+	# Special handling for level 1 - show cutscene first
+	if level_number == 1:
+		await show_level_1_entry_cutscene()
+	
 	# Kill the current lobby map with animation
 	level_handler.kill_current_level(self)
 	await get_tree().create_timer(1.0).timeout
 	
 	# Use level_handler's load_next_level method
 	level_handler.load_next_level(level_number, levels_frame)
+
+# Show cutscene when entering level 1 from lobby
+func show_level_1_entry_cutscene():
+	print("Showing Level 1 entry cutscene")
+	level_handler.level_status_node.get_node("level_clock").visible = true
+	# Show the cutscene
+	level_handler.level_status_node.show_level_1_entry_cutscene()
+	
+	# Wait for the initial display
+	await get_tree().create_timer(1.0).timeout
+	
+	# Animate hand from 12 o'clock to 1 o'clock
+	var animation_tween = level_handler.level_status_node.animate_hand_from_12_to_1()
+	if animation_tween:
+		await animation_tween.finished
+	
+	# Keep cutscene visible for a moment after animation
+	await get_tree().create_timer(1.0).timeout
+	
+	# Hide the cutscene
+	level_handler.level_status_node.hide_cutscene()
 
 # Update visual indicators for completed levels
 func update_completed_levels_visual():
@@ -131,17 +156,17 @@ func position_player_based_on_progress():
 			# No levels completed, stay at default position (12 o'clock area)
 			target_rotation = deg_to_rad(0) # 0 degrees
 		1:
-			# Level 1 completed, position at level 2 clock position (3 o'clock)
-			target_rotation = deg_to_rad(90) # 3 o'clock = 90 degrees
+			# Level 1 completed, position at level 2 clock position (2 o'clock)
+			target_rotation = deg_to_rad(60) # 2 o'clock = 60 degrees
 		2:
-			# Level 2 completed, position at level 3 clock position (6 o'clock)
-			target_rotation = deg_to_rad(180) # 6 o'clock = 180 degrees
+			# Level 2 completed, position at level 3 clock position (3 o'clock)
+			target_rotation = deg_to_rad(90) # 3 o'clock = 90 degrees
 		3:
-			# Level 3 completed, position at level 4 clock position (9 o'clock)
-			target_rotation = deg_to_rad(270) # 9 o'clock = 270 degrees
+			# Level 3 completed, position at level 4 clock position (4 o'clock)
+			target_rotation = deg_to_rad(120) # 4 o'clock = 120 degrees
 		4:
-			# All levels completed, position back at level 1 clock position (12 o'clock)
-			target_rotation = deg_to_rad(0) # 12 o'clock = 0 degrees
+			# All levels completed, position back at level 1 clock position (1 o'clock)
+			target_rotation = deg_to_rad(30) # 1 o'clock = 30 degrees
 		_:
 			target_rotation = deg_to_rad(0) # Default fallback
 	
