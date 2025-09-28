@@ -190,20 +190,25 @@ func complete_current_level(levels_frame):
 			# SHOW TRANSITION CUTSCENE WITH NEXT LEVEL
 			await show_level_transition_cutscene(next_level_number)
 
-			# RETURN TO LOBBY AFTER CUTSCENE
-			return_to_lobby(levels_frame)
+			# LOAD NEXT LEVEL AFTER CUTSCENE
+			load_next_level(next_level_number, levels_frame)
 
 
 func load_next_level(next_level_number: int, levels_frame):
 	var next_level_path = "res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn"
 	change_level(next_level_path, levels_frame)
 	ui_handler.set_default_time_indicator()
-
+	
+	# ENSURE UI IS VISIBLE WHEN ENTERING NEXT LEVEL
+	ui_handler.visible = true
 
 func return_to_lobby(levels_frame):
 	var lobby_path = "res://Scenes/levels/level_lobby.tscn"
 	change_level(lobby_path, levels_frame)
 	ui_handler.set_default_time_indicator()
+	
+	# ENSURE UI IS VISIBLE WHEN RETURNING TO LOBBY
+	ui_handler.visible = true
 	
 	# If we're returning from a replay, ensure hand can follow player again
 	if is_replaying_completed_level:
