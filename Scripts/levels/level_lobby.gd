@@ -218,6 +218,3 @@ func sync_short_hand_to_player():
 		
 		# Always ensure hand following is enabled in lobby
 		level_handler.level_status_node.resume_following_player()
-
-
-

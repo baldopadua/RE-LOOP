@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3rxnkwijd1xu"
-path="res://.godot/imported/Dog_Bone-Sheet.png-5214014fba33011ec10e04ec0e9eb1e7.ctex"
+uid="uid://bmvy3o5xu55c2"
+path="res://.godot/imported/dinosaur_tail_whip.png-89066a84975de86eb41e809cbf1778ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/levels/level_4/Dog_Bone-Sheet.png"
-dest_files=["res://.godot/imported/Dog_Bone-Sheet.png-5214014fba33011ec10e04ec0e9eb1e7.ctex"]
+source_file="res://Assets/levels/level_4/dinosaur_tail_whip.png"
+dest_files=["res://.godot/imported/dinosaur_tail_whip.png-89066a84975de86eb41e809cbf1778ee.ctex"]
 
 [params]
 

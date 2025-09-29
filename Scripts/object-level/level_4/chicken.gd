@@ -42,9 +42,11 @@ func _process(_delta: float) -> void:
 				await sprite.animation_finished
 				is_pickupable = true
 	previous_state = current_state
+	
 func interact(object_interacted: object_class):
 	if object_interacted.object_name == "incubator":
 		position = Vector2(0, 50.0)
 		reparent(object_interacted)
 		is_pickupable = false
 		visible = false
+		object_interacted.item_put.emit(self)

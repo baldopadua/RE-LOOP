@@ -297,6 +297,3 @@ func kill_current_level(level_scene):
 	var tween_scale = create_tween()
 	tween_scale.connect("finished", Callable(self, "tween_next_scale_finished").bind(tween_scale))
 	tween_scale.tween_property(level_scene, "scale", Vector2(0.0, 0.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
-
-
-

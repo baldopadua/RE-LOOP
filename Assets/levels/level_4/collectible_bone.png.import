@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3rxnkwijd1xu"
-path="res://.godot/imported/Dog_Bone-Sheet.png-5214014fba33011ec10e04ec0e9eb1e7.ctex"
+uid="uid://usiy805w2ola"
+path="res://.godot/imported/collectible_bone.png-f417f1bf081361339610b22615606917.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/levels/level_4/Dog_Bone-Sheet.png"
-dest_files=["res://.godot/imported/Dog_Bone-Sheet.png-5214014fba33011ec10e04ec0e9eb1e7.ctex"]
+source_file="res://Assets/levels/level_4/collectible_bone.png"
+dest_files=["res://.godot/imported/collectible_bone.png-f417f1bf081361339610b22615606917.ctex"]
 
 [params]
 

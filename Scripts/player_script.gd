@@ -1,6 +1,7 @@
 extends CharacterBody2D 
 
 signal player_finished_moving
+signal near_obj
 
 var player_directions = GlobalVariables.player_direction
 @export var direction: GlobalVariables.player_direction
@@ -178,10 +179,15 @@ func _tween_finished():
 				# IF OBJECT_CLASS AND IS IN THE LEVEL SCENE NOT PLAYER
 				if obj is object_class and (obj.get_parent().name == "level_2" or obj.get_parent().name != "object_position"):
 					#print("PARENT: ", obj.get_parent())
-					if direction == player_directions.CLOCKWISE and obj.current_state < obj.max_state_threshold: 
+					if direction == player_directions.CLOCKWISE and obj.current_state < obj.max_state_threshold and obj.visible: 
 						obj.current_state += 1
-					elif direction == player_directions.COUNTERCLOCKWISE and obj.current_state > obj.min_state_threshold:  
+						# use signal if there is
+						if GlobalVariables.hasSignal(obj, "add_cur_state"):
+							obj.add_cur_state.emit(direction)
+					elif direction == player_directions.COUNTERCLOCKWISE and obj.current_state > obj.min_state_threshold and obj.visible:  
 						obj.current_state -= 1
+						if GlobalVariables.hasSignal(obj, "add_cur_state"):
+							obj.add_cur_state.emit(direction)
 			# SET THE ENTERED CLOCK AREA TO AREA KUNG NASAN PLAYER
 			#maps_dict[entered_clock_area].visible = false
 			previous_clock_area = entered_clock_area
@@ -302,3 +308,6 @@ func start_camera_shake(intensity : float):
 func shake_camera(intesity_from : float, intesity_to : float, duration : float):
 	var camera_tween = get_tree().create_tween()
 	camera_tween.tween_method(start_camera_shake, intesity_from, intesity_to, duration)
+
+func _on_near_obj() -> void:
+	sprite.play("antenna")

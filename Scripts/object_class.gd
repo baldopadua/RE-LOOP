@@ -31,8 +31,6 @@ func setup_text_labels():
 		# Don't override modulate - keep the GUI-set color
 		hover_text_label.text = ""
 	
-		
-		
 	if has_node("interact_text"):
 		interact_text_label = get_node("interact_text")
 		print("Found interact_text for: ", object_name)
@@ -40,7 +38,6 @@ func setup_text_labels():
 		
 		interact_text_label.text = ""
 	
-
 # Function to show hover text
 func show_hover_text(text: String = ""):
 	
@@ -53,8 +50,6 @@ func show_hover_text(text: String = ""):
 		hover_text_label.visible = true
 		
 		is_text_visible = true
-		
-	
 
 # Function to show interact text
 func show_interact_text(text: String = ""):
@@ -135,8 +130,6 @@ func handle_body_entered(body):
 	if body.name != "PlayerScene":
 		return
 	
-	
-	
 	# PICKING UP THINGS
 	if is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.TOOL:
 		#print("Player can pick up %s" % object_name)
@@ -167,6 +160,9 @@ func handle_body_entered(body):
 		player_char = body
 		body.available_object = self
 		
+		# Emit signal that player is near an object to play animation
+		body.near_obj.emit()
+		
 	# INTERACTING WHILE CARRYING PICKUPABLE THINGS
 	if not is_pickupable and body.is_holding_object and object_type == GlobalVariables.object_types.NONTOOL:
 		#print("%s is interactable" % object_name)
@@ -175,6 +171,10 @@ func handle_body_entered(body):
 		#body.available_interactable_object = self
 		body.interactable_objects.append(self)
 		#print(body.interactable_objects)
+		
+		# If this nontool is usable for the held object
+		if self.object_name in body.held_object.usable_targets:
+			body.near_obj.emit()
 
 	# INTERACTING WITH NON-PICKUPABLE OBJECTS WHEN NOT HOLDING ANYTHING (for lobby entrances)
 	if not is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.NONTOOL:
@@ -182,12 +182,10 @@ func handle_body_entered(body):
 		# Always set reachable and player_char for proper cleanup on exit
 		is_reachable = true
 		player_char = body
-		
 
 		body.interactable_objects.append(self)
 		on_hover_enter()  
 		  
-		
 		# ADD GLOW for enterable objects when player enters area
 		if is_enterable:
 			# Check if this level is completed to determine glow color
@@ -334,5 +332,3 @@ func on_hover_exit():
 	# Override in extended classes for specific hover exit behavior
 	if is_text_visible:
 		hide_text()
-
-

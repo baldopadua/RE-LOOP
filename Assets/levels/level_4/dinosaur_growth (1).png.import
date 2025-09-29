@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3rxnkwijd1xu"
-path="res://.godot/imported/Dog_Bone-Sheet.png-5214014fba33011ec10e04ec0e9eb1e7.ctex"
+uid="uid://dn0qbk6t4b8m6"
+path="res://.godot/imported/dinosaur_growth (1).png-09d824dd653520a53631c9f659429552.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/levels/level_4/Dog_Bone-Sheet.png"
-dest_files=["res://.godot/imported/Dog_Bone-Sheet.png-5214014fba33011ec10e04ec0e9eb1e7.ctex"]
+source_file="res://Assets/levels/level_4/dinosaur_growth (1).png"
+dest_files=["res://.godot/imported/dinosaur_growth (1).png-09d824dd653520a53631c9f659429552.ctex"]
 
 [params]
 

@@ -20,3 +20,11 @@ func get_level_number_from_name(object_name: String) -> int:
 		return result.get_string(1).to_int()
 	
 	return 0  # Return 0 if no level number found
+
+# returns true if the node has a signal with the passed name
+func hasSignal(node : Node, signalName : String) -> bool:
+	var signalList = node.get_signal_list()
+	for signalDictionary in signalList:
+		if signalDictionary.name == signalName:
+			return true
+	return false

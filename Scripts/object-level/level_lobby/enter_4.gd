@@ -41,4 +41,3 @@ func interact(object_interacted: object_class):
 			lobby_scene.enter_level(4)
 		else:
 			print("lobby_scene doesn't have enter_level method")
-

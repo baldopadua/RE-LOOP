@@ -25,3 +25,4 @@ func interact(object_interacted: object_class):
 		reparent(object_interacted)
 		is_pickupable = false
 		visible = false
+		object_interacted.item_put.emit(self)

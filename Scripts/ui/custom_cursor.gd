@@ -33,4 +33,3 @@ func _input(event):
 			update_cursor_direction(Directions.CLOCKWISE)
 		elif event.relative.x < -1:  # Moving left
 			update_cursor_direction(Directions.COUNTERCLOCKWISE)
-

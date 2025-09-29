@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3rxnkwijd1xu"
-path="res://.godot/imported/Dog_Bone-Sheet.png-5214014fba33011ec10e04ec0e9eb1e7.ctex"
+uid="uid://doh6g386h51e4"
+path="res://.godot/imported/Plooy Interactable (1)-Sheet.png-8a25a8fbdc3f6a08efa07d255f097610.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/levels/level_4/Dog_Bone-Sheet.png"
-dest_files=["res://.godot/imported/Dog_Bone-Sheet.png-5214014fba33011ec10e04ec0e9eb1e7.ctex"]
+source_file="res://Assets/Plooy Interactable (1)-Sheet.png"
+dest_files=["res://.godot/imported/Plooy Interactable (1)-Sheet.png-8a25a8fbdc3f6a08efa07d255f097610.ctex"]
 
 [params]
 
