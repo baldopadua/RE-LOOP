@@ -141,11 +141,6 @@ position_smoothing_enabled = true
 
 [node name="SoundManager" parent="." instance=ExtResource("4_ctghb")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("11_dw1n4")]
-
 [node name="science_project" parent="." instance=ExtResource("5_ryj1a")]
 position = Vector2(-250, -141)
 script = ExtResource("12_tahrn")
@@ -218,3 +213,7 @@ rotation = 2.0944
 sprite_frames = SubResource("SpriteFrames_5xm4r")
 animation = &"kid"
 metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("11_dw1n4")]

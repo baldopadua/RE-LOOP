@@ -26,14 +26,14 @@ func _ready():
 func setup_text_labels():
 	if has_node("hover_text"):
 		hover_text_label = get_node("hover_text")
-		print("Found hover_text for: ", object_name)
+		
 		hover_text_label.visible = false
 		# Don't override modulate - keep the GUI-set color
 		hover_text_label.text = ""
 	
 	if has_node("interact_text"):
 		interact_text_label = get_node("interact_text")
-		print("Found interact_text for: ", object_name)
+		
 		interact_text_label.visible = false
 		
 		interact_text_label.text = ""
@@ -192,14 +192,18 @@ func handle_body_entered(body):
 			var level_number = get_level_number_from_name()
 			var level_handler = get_level_handler()
 			
-			if level_handler and level_number > 0 and level_handler.completed_levels.has(level_number):
-				# Green glow for completed levels
-				create_glow_light_to_lobby(Color.GREEN)
-			elif level_handler and is_level_accessible(level_number, level_handler):
-				# Yellow glow for accessible but incomplete levels
-				create_glow_light_to_lobby(Color.YELLOW)
+			if level_handler and level_number > 0:
+				if level_handler.completed_levels.has(level_number):
+					# Green glow for completed levels
+					create_glow_light_to_lobby(Color.GREEN)
+				elif is_level_accessible(level_number, level_handler):
+					# Yellow glow for accessible but incomplete levels
+					create_glow_light_to_lobby(Color.YELLOW)
+				else:
+					# Red glow for locked levels
+					create_glow_light_to_lobby(Color.RED)
 			else:
-				# Red glow for locked levels
+				# Default red glow if no level handler or invalid level
 				create_glow_light_to_lobby(Color.RED)
 
 func is_level_accessible(level_number: int, level_handler) -> bool:
@@ -207,13 +211,10 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 		print("No level handler provided")
 		return false
 	
-	print("Checking accessibility for level: ", level_number)
-	print("Completed levels: ", level_handler.completed_levels)
-	
 	match level_number:
 		1:
 			# Level 1 is always accessible
-			print("Level 1 is always accessible")
+			
 			return true
 		2:
 			# Level 2 requires Level 1 to be completed
@@ -226,6 +227,38 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 		4:
 			# Level 4 requires Level 1, 2, AND 3 to be completed
 			var accessible = level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2) and level_handler.completed_levels.has(3)
+			return accessible
+		5:
+			# Level 5 requires previous levels to be completed
+			var accessible = level_handler.completed_levels.has(4)
+			return accessible
+		6:
+			# Level 6 requires previous levels to be completed
+			var accessible = level_handler.completed_levels.has(5)
+			return accessible
+		7:
+			# Level 7 requires previous levels to be completed
+			var accessible = level_handler.completed_levels.has(6)
+			return accessible
+		8:
+			# Level 8 requires previous levels to be completed
+			var accessible = level_handler.completed_levels.has(7)
+			return accessible
+		9:
+			# Level 9 requires previous levels to be completed
+			var accessible = level_handler.completed_levels.has(8)
+			return accessible
+		10:
+			# Level 10 requires previous levels to be completed
+			var accessible = level_handler.completed_levels.has(9)
+			return accessible
+		11:
+			# Level 11 requires previous levels to be completed
+			var accessible = level_handler.completed_levels.has(10)
+			return accessible
+		12:
+			# Level 12 requires previous levels to be completed
+			var accessible = level_handler.completed_levels.has(11)
 			return accessible
 		_:
 			print("Level ", level_number, " not implemented yet")
@@ -241,20 +274,35 @@ func get_level_number_from_name() -> int:
 		return 3
 	elif "enter_4" in node_name:
 		return 4
+	elif "enter_5" in node_name:
+		return 5
+	elif "enter_6" in node_name:
+		return 6
+	elif "enter_7" in node_name:
+		return 7
+	elif "enter_8" in node_name:
+		return 8
+	elif "enter_9" in node_name:
+		return 9
+	elif "enter_10" in node_name:
+		return 10
+	elif "enter_11" in node_name:
+		return 11
+	elif "enter_12" in node_name:
+		return 12
 	return 0
 
 func get_level_handler():
 	# For lobby entrance objects, try the direct parent path first
 	var handler = get_node_or_null("../CanvasLayer/LevelHandler")
 	if handler:
-		print("Found level handler at ../CanvasLayer/LevelHandler")
+		
 		return handler
 	
 	# Try finding it through the parent scene directly
 	var parent_scene = get_parent()
 	if parent_scene and parent_scene.has_node("CanvasLayer/LevelHandler"):
 		handler = parent_scene.get_node("CanvasLayer/LevelHandler")
-		print("Found level handler via parent scene")
 		return handler
 	
 	# If not found, try to search in the scene tree
@@ -262,7 +310,7 @@ func get_level_handler():
 	if current_scene:
 		handler = current_scene.find_child("LevelHandler", true, false)
 		if handler:
-			print("Found level handler via find_child")
+			
 			return handler
 	
 	print("No level handler found!")
@@ -270,21 +318,25 @@ func get_level_handler():
 
 func set_level_completion_visual(is_completed: bool):
 	# Change sprite color - use the correct node name from the scene
+	var level_number = get_level_number_from_name()
+	var level_handler = get_level_handler()
+	
+	
+	
 	if has_node("Sprite2D2"):
 		var sprite = $Sprite2D2
-		var level_number = get_level_number_from_name()
-		var level_handler = get_level_handler()
 		
 		if is_completed:
+			
 			sprite.modulate = Color.GREEN  
 		elif level_handler and is_level_accessible(level_number, level_handler):
+			
 			sprite.modulate = Color.WHITE  
 		else:
+			
 			sprite.modulate = Color.DARK_GRAY  
 	elif has_node("item_sprite"):  
 		var sprite = $item_sprite
-		var level_number = get_level_number_from_name()
-		var level_handler = get_level_handler()
 		
 		if is_completed:
 			sprite.modulate = Color.GREEN

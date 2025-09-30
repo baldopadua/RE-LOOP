@@ -29,9 +29,7 @@ var center_circle: Vector2i = Vector2i(0, 0)
 @onready var enter_7: object_class = $enter_7
 @onready var enter_8: object_class = $enter_8
 @onready var enter_9: object_class = $enter_9
-@onready var enter_10: object_class = $enter_10
-@onready var enter_11: object_class = $enter_11
-@onready var enter_12: object_class = $enter_12
+
 
 func _ready():
 	level_handler.set_current_lobby()
@@ -47,14 +45,14 @@ func _ready():
 	# MANIPULATING OBJECTS APPENDED IN ARRAY
 	objects_initialize()
 	
-	# UPDATE COMPLETED LEVELS VISUAL
-	update_completed_levels_visual()
+	# Initialize text labels for all entrance objects
+	call_deferred("initialize_text_labels")
+	
+	# UPDATE COMPLETED LEVELS VISUAL - moved to after text is always accessible
+	call_deferred("update_completed_levels_visual")
 	
 	# CONNECT TO LEVEL COMPLETED SIGNAL
 	level_handler.level_completed.connect(_on_level_completed)
-	
-	# Initialize text labels for all entrance objects
-	call_deferred("initialize_text_labels")
 	
 	# POSITION PLAYER BASED ON LAST COMPLETED LEVEL
 	call_deferred("position_player_based_on_progress")
@@ -64,7 +62,7 @@ func _ready():
 
 # Initialize text labels for all entrance objects
 func initialize_text_labels():
-	var entrances = [enter_1, enter_2, enter_3, enter_4, enter_5, enter_6, enter_7, enter_8, enter_9, enter_10, enter_11, enter_12]
+	var entrances = [enter_1, enter_2, enter_3, enter_4, enter_5, enter_6, enter_7, enter_8, enter_9]
 	for entrance in entrances:
 		# Check if entrance exists before trying to access it
 		if entrance and entrance.has_node("hover_text"):
@@ -95,12 +93,6 @@ func objects_initialize():
 		objects.append(enter_8)
 	if enter_9:
 		objects.append(enter_9)
-	if enter_10:
-		objects.append(enter_10)
-	if enter_11:
-		objects.append(enter_11)
-	if enter_12:
-		objects.append(enter_12)
 
 func _process(_delta: float) -> void:
 	level_handler.visible = true
@@ -155,9 +147,14 @@ func show_level_1_entry_cutscene():
 
 # Update visual indicators for completed levels
 func update_completed_levels_visual():
+	print("Updating completed levels visual...")
+	print("Completed levels: ", level_handler.completed_levels)
+	
 	# Check each level and update sprite color based on completion status
 	for level_num in range(1, 13):  # Levels 1-12
 		var is_completed = level_handler.completed_levels.has(level_num)
+		print("Level ", level_num, " - Completed: ", is_completed)
+		
 		match level_num:
 			1:
 				if enter_1:
@@ -186,15 +183,7 @@ func update_completed_levels_visual():
 			9:
 				if enter_9:
 					enter_9.set_level_completion_visual(is_completed)
-			10:
-				if enter_10:
-					enter_10.set_level_completion_visual(is_completed)
-			11:
-				if enter_11:
-					enter_11.set_level_completion_visual(is_completed)
-			12:
-				if enter_12:
-					enter_12.set_level_completion_visual(is_completed)
+			
 
 # Called when a level is completed
 func _on_level_completed(level_name: String):
