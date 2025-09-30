@@ -1,5 +1,6 @@
 extends object_class
 
+@warning_ignore("unused_signal")
 signal add_cur_state(direction)
 
 # Stick

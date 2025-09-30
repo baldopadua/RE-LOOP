@@ -159,6 +159,8 @@ func complete_current_level(levels_frame):
 				level_status_node.set_hand_to_clock_position(3) # 3 o'clock for level 3
 			4:
 				level_status_node.set_hand_to_clock_position(4) # 4 o'clock for level 4
+			5:
+				level_status_node.set_hand_to_clock_position(5) # 5 o'clock for level 5
 			_:
 				level_status_node.set_hand_to_clock_position(1) # 1 o'clock for other levels
 		
@@ -274,8 +276,6 @@ func show_level_transition_cutscene(next_level_number: int):
 	
 	# HIDE THE CUTSCENE
 	level_status_node.hide_cutscene()
-
-
 
 func restart_level(levels_frame):
 	# Remove and Re-open current level

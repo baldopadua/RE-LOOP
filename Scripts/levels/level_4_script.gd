@@ -34,3 +34,8 @@ func objects_initialize():
 	objects.append(incubator)
 	objects.append(trex)
 	objects.append(stick)
+
+# If the Plooy being tail whipped animation is finished go to level 5
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "tail_whipped":
+		level_handler.complete_current_level(get_parent())

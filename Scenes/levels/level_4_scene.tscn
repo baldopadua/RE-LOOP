@@ -1128,6 +1128,9 @@ visibility_layer = 3
 z_index = 1
 shape = SubResource("RectangleShape2D_56sg6")
 
+[node name="LevelHandler" parent="." instance=ExtResource("15_f0imo")]
+
 [connection signal="item_put" from="incubator" to="incubator" method="_on_item_put"]
 [connection signal="add_cur_state" from="stick" to="stick" method="_on_add_cur_state"]
 [connection signal="tree_exited" from="stick" to="stick" method="_on_tree_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

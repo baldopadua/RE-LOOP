@@ -9,7 +9,6 @@ extends Node2D
 
 # ALL THE OBJECTS FOR THE PLAYER
 @onready var objects: Array = []
-
 @onready var player = $PlayerScene
 
 # HANDLERS

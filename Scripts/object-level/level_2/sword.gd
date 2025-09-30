@@ -105,9 +105,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		anim_handler.play("JumpAnimation_2")
 	elif anim_name == "JumpAnimation_2":
 		
-		
 		# NOTIFY LEVEL 2 IS COMPLETED - this will handle cutscene and next level automatically
 		level_handler.complete_current_level(get_parent().get_parent())
-		
-		
-		# CODE FOR PLAYING AnimatedSprite2D na nag jujump yung player sa hole.

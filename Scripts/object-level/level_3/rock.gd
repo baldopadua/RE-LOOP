@@ -17,8 +17,9 @@ func interact(object_interacted: object_class):
 		var pos_drop = Vector2(0, 50.0)
 		
 		tween_drop.tween_property(self, "position", pos_drop, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-		await tween_drop.finished
-		tween_drop.kill()
+		tween_drop.finished.connect(func():
+			tween_drop.kill()	
+		)
 		
 		if sound_manager:
 			sound_manager.play_sfx("rock_water_drop")

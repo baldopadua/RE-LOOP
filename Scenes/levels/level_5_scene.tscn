@@ -1,0 +1,219 @@
+[gd_scene load_steps=33 format=3 uid="uid://c68gmkh2e26af"]
+
+[ext_resource type="Script" uid="uid://bht2nh4ymwmf5" path="res://Scripts/levels/level_5_script.gd" id="1_0li43"]
+[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_aql1r"]
+[ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="3_tahrn"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="4_ctghb"]
+[ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_ryj1a"]
+[ext_resource type="Texture2D" uid="uid://bh28au4it4xm" path="res://Assets/levels/level_5/placeholder_assets/kid.png" id="7_5xm4r"]
+[ext_resource type="Script" uid="uid://cex25lnpgh2tf" path="res://Scripts/object-level/level_5/dreamer.gd" id="7_cltmq"]
+[ext_resource type="Texture2D" uid="uid://tvr05twqwuu3" path="res://Assets/levels/level_5/placeholder_assets/astronaut.png" id="8_24mkd"]
+[ext_resource type="Texture2D" uid="uid://ciwijyqdtsur2" path="res://Assets/levels/level_5/placeholder_assets/depressed_salaryman.png" id="9_aql1r"]
+[ext_resource type="Texture2D" uid="uid://bno648rb3cryp" path="res://Assets/levels/level_5/placeholder_assets/kid_skeletal_remains.png" id="11_24mkd"]
+[ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="11_dw1n4"]
+[ext_resource type="Texture2D" uid="uid://d3spxoa5p206q" path="res://Assets/levels/level_5/placeholder_assets/Rocket_Stand.png" id="12_aql1r"]
+[ext_resource type="Script" uid="uid://6vc2vv34jju8" path="res://Scripts/object-level/level_5/science_project.gd" id="12_tahrn"]
+[ext_resource type="Script" uid="uid://dx7cjdgx1bqh8" path="res://Scripts/object-level/level_5/rocket.gd" id="14_ctghb"]
+[ext_resource type="Texture2D" uid="uid://d312ws4vc3ikt" path="res://Assets/levels/level_5/placeholder_assets/rocket_ship.png" id="15_h26wg"]
+[ext_resource type="Texture2D" uid="uid://c347xhjhyo3ul" path="res://Assets/levels/level_5/placeholder_assets/soda_big.png" id="16_h26wg"]
+[ext_resource type="Texture2D" uid="uid://ypxrqiwnlkmj" path="res://Assets/levels/level_5/placeholder_assets/vending_machine.png" id="17_ds2sm"]
+[ext_resource type="Script" uid="uid://pu00f16vh66k" path="res://Scripts/object-level/level_5/vending.gd" id="17_dtqwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tahrn"]
+size = Vector2(20, 34.55255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtqwf"]
+atlas = ExtResource("17_ds2sm")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ds2sm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtqwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h26wg"]
+size = Vector2(48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h26wg"]
+atlas = ExtResource("15_h26wg")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds2sm"]
+atlas = ExtResource("16_h26wg")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ryj1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h26wg")
+}],
+"loop": true,
+"name": &"rocket_ship",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds2sm")
+}],
+"loop": true,
+"name": &"soda",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctghb"]
+size = Vector2(32, 48.784607)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agu2x"]
+radius = 15.0
+height = 50.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tahrn"]
+atlas = ExtResource("8_24mkd")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctghb"]
+atlas = ExtResource("9_aql1r")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0whf"]
+atlas = ExtResource("7_5xm4r")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aql1r"]
+atlas = ExtResource("11_24mkd")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5xm4r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tahrn")
+}],
+"loop": false,
+"name": &"astronaut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctghb")
+}],
+"loop": false,
+"name": &"depressed_salaryman",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0whf")
+}],
+"loop": false,
+"name": &"kid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aql1r")
+}],
+"loop": true,
+"name": &"skeletal_remains",
+"speed": 5.0
+}]
+
+[node name="level_5" type="Node2D"]
+script = ExtResource("1_0li43")
+
+[node name="AreaHandler" parent="." instance=ExtResource("2_aql1r")]
+
+[node name="PlayerScene" parent="." instance=ExtResource("3_tahrn")]
+self_modulate = Color(1, 1, 1, 0)
+up_direction = Vector2(0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 2)
+position_smoothing_enabled = true
+
+[node name="SoundManager" parent="." instance=ExtResource("4_ctghb")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("11_dw1n4")]
+
+[node name="science_project" parent="." instance=ExtResource("5_ryj1a")]
+position = Vector2(-250, -141)
+script = ExtResource("12_tahrn")
+object_name = "science_project"
+object_type = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="science_project"]
+rotation = 2.0943952
+texture = ExtResource("12_aql1r")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="science_project"]
+position = Vector2(-6.3014526, -3.6381378)
+rotation = 2.0943952
+shape = SubResource("RectangleShape2D_tahrn")
+metadata/_edit_lock_ = true
+
+[node name="vending" parent="." instance=ExtResource("5_ryj1a")]
+position = Vector2(-137, 252)
+script = ExtResource("17_dtqwf")
+object_name = "vending"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="vending"]
+position = Vector2(4.7683716e-07, -7.5)
+rotation = 0.5235988
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_ds2sm")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vending"]
+position = Vector2(0, -8)
+rotation = 0.5235988
+shape = SubResource("RectangleShape2D_h26wg")
+metadata/_edit_lock_ = true
+
+[node name="rocket" parent="." instance=ExtResource("5_ryj1a")]
+position = Vector2(-208, -112)
+script = ExtResource("14_ctghb")
+object_name = "rocket"
+is_pickupable = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rocket"]
+position = Vector2(80.00001, 336)
+rotation = 0.5235988
+scale = Vector2(0.7430178, 0.7430178)
+sprite_frames = SubResource("SpriteFrames_ryj1a")
+animation = &"soda"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rocket"]
+position = Vector2(-36.19615, -21.803848)
+rotation = 2.0943952
+shape = SubResource("RectangleShape2D_ctghb")
+
+[node name="dreamer" parent="." instance=ExtResource("5_ryj1a")]
+position = Vector2(-248, -144)
+script = ExtResource("7_cltmq")
+object_name = "dreamer"
+max_state_threshold = 4
+min_state_threshold = 1
+current_state = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dreamer"]
+rotation = 2.0943952
+shape = SubResource("CapsuleShape2D_agu2x")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="dreamer"]
+rotation = 2.0943952
+sprite_frames = SubResource("SpriteFrames_5xm4r")
+animation = &"kid"
+metadata/_edit_lock_ = true
