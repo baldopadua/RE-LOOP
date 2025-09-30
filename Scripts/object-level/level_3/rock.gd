@@ -38,3 +38,6 @@ func interact(object_interacted: object_class):
 				#print("STATE IN NAME")
 				node.visible = true
 				break
+		return true
+		
+	return false

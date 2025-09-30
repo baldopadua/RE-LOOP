@@ -9,3 +9,5 @@ func interact(object_interacted: object_class):
 		is_pickupable = false
 		visible = false
 		stick.visible = true
+		return true
+	return false

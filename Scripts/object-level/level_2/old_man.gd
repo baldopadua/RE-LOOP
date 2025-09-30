@@ -74,3 +74,5 @@ func interact(object_interacted: object_class):
 		position = Vector2(0, 50.0)
 		is_pickupable = false
 		reparent(object_interacted)
+		return true
+	return false

@@ -15,9 +15,6 @@ var player_body: Node
 @onready var level_handler = $"../CanvasLayer/LevelHandler"
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 @onready var anim_handler = $"../AnimationPlayer"
-
-func _ready() -> void:
-	pass
 	
 func _on_body_entered(body) -> void:
 	handle_body_entered(body)
@@ -62,10 +59,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "JumpAnimation":
 		# DECLARE LEVEL TO BE FINISHED
 		
-		
 		# NOTIFY LEVEL 1 IS COMPLETED - this will handle cutscene and next level automatically
 		level_handler.complete_current_level(get_parent().get_parent())
-		
-		
-		
-		# CODE FOR PLAYING AnimatedSprite2D na nag jujump yung player sa hole.

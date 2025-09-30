@@ -25,6 +25,9 @@ func interact(interactable_obj):
 		# To immediately signal the player to pickup the bone
 		player.is_holding_object = false
 		bone.handle_body_entered(player)
+		
+		return true
+	return false
 
 func _on_add_cur_state(direction) -> void:
 	if is_removed:

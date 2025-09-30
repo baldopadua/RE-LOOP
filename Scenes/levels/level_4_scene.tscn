@@ -151,8 +151,17 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6kni4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2w5h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1rwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kni4")
 }],
-"loop": true,
+"loop": false,
 "name": &"correct",
 "speed": 5.0
 }, {
@@ -179,8 +188,17 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s7bhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcs1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be7mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7bhn")
 }],
-"loop": true,
+"loop": false,
 "name": &"wrong",
 "speed": 5.0
 }]
@@ -799,6 +817,33 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="Animation" id="Animation_oqr2g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_0bs5k"]
 resource_name = "tail_whipped"
 length = 0.3
@@ -825,33 +870,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_oqr2g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerScene:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerScene:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oqr2g"]
@@ -910,7 +928,6 @@ rotation = 2.61799
 sprite_frames = SubResource("SpriteFrames_0bs5k")
 animation = &"dino"
 autoplay = "dino"
-frame_progress = 0.718508
 
 [node name="chicken" parent="." instance=ExtResource("4_fiti8")]
 position = Vector2(251, -145)

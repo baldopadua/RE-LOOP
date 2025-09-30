@@ -1,6 +1,7 @@
 extends CharacterBody2D 
 
 signal player_finished_moving
+@warning_ignore("unused_signal")
 signal near_obj
 
 var player_directions = GlobalVariables.player_direction
@@ -113,11 +114,11 @@ func _input(event: InputEvent) -> void:
 		elif is_holding_object and interactable_objects.size() != 0 and not is_moving:
 			for obj in interactable_objects:
 				if obj.object_name in held_object.usable_targets:
-					held_object.interact(obj)
-					sound_manager.play_sfx("pickup")
-					held_object = null
-					is_holding_object = false
-					sprite.play("idle")
+					if held_object.interact(obj):
+						sound_manager.play_sfx("pickup")
+						held_object = null
+						is_holding_object = false
+						sprite.play("idle")
 					break
 		# INTERACT WITH NON-PICKUPABLE OBJECTS (like lobby entrances) WHEN NOT HOLDING ANYTHING
 		elif not is_holding_object and interactable_objects.size() != 0 and not is_moving:

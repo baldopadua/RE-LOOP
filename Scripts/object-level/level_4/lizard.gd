@@ -20,9 +20,13 @@ func _process(_delta: float) -> void:
 		is_pickupable = false
 		
 func interact(object_interacted: object_class):
-	if object_interacted.object_name == "incubator":
-		position = Vector2(0, 50.0)
-		reparent(object_interacted)
-		is_pickupable = false
-		visible = false
+	if object_interacted.object_name == "incubator" and current_state == 2:
 		object_interacted.item_put.emit(self)
+		print("MATERIAL COUNT: ", object_interacted.material_count)
+		if object_interacted.material_count == 2:
+			position = Vector2(0, 50.0)
+			reparent(object_interacted)
+			is_pickupable = false
+			visible = false
+			return true
+	return false
