@@ -228,6 +228,22 @@ func get_clock_position_for_level(level_number: int) -> int:
 			return 3 # 3 o'clock for level 3
 		4:
 			return 4 # 4 o'clock for level 4
+		5:
+			return 5 # 5 o'clock for level 5
+		6:
+			return 6 # 6 o'clock for level 6
+		7:
+			return 7 # 7 o'clock for level 7
+		8:
+			return 8 # 8 o'clock for level 8
+		9:
+			return 9 # 9 o'clock for level 9
+		10:
+			return 10 # 10 o'clock for level 10
+		11:
+			return 11 # 11 o'clock for level 11
+		12:
+			return 12 # 12 o'clock for level 12
 		_:
 			return 1 # 1 o'clock for other levels
 
@@ -344,10 +360,9 @@ func get_clock_position_from_rotation(degrees: float) -> int:
 	# Normalize degrees to 0-360 range
 	var normalized_degrees = fmod(rounded_degrees + 360.0, 360.0)
 	
-	# Map degrees to new clock positions: 1, 2, 3, 4 o'clock
-	# 30° = 1 o'clock, 60° = 2 o'clock, 90° = 3 o'clock, 120° = 4 o'clock
+	# Map degrees to clock positions: 1-12 o'clock (30° intervals)
 	if normalized_degrees >= 345.0 or normalized_degrees < 15.0:
-		return 12 # 0° ± 15° = 12 o'clock (default/starting position)
+		return 12 # 0° ± 15° = 12 o'clock
 	elif normalized_degrees >= 15.0 and normalized_degrees < 45.0:
 		return 1 # 30° ± 15° = 1 o'clock
 	elif normalized_degrees >= 45.0 and normalized_degrees < 75.0:
@@ -356,6 +371,20 @@ func get_clock_position_from_rotation(degrees: float) -> int:
 		return 3 # 90° ± 15° = 3 o'clock
 	elif normalized_degrees >= 105.0 and normalized_degrees < 135.0:
 		return 4 # 120° ± 15° = 4 o'clock
+	elif normalized_degrees >= 135.0 and normalized_degrees < 165.0:
+		return 5 # 150° ± 15° = 5 o'clock
+	elif normalized_degrees >= 165.0 and normalized_degrees < 195.0:
+		return 6 # 180° ± 15° = 6 o'clock
+	elif normalized_degrees >= 195.0 and normalized_degrees < 225.0:
+		return 7 # 210° ± 15° = 7 o'clock
+	elif normalized_degrees >= 225.0 and normalized_degrees < 255.0:
+		return 8 # 240° ± 15° = 8 o'clock
+	elif normalized_degrees >= 255.0 and normalized_degrees < 285.0:
+		return 9 # 270° ± 15° = 9 o'clock
+	elif normalized_degrees >= 285.0 and normalized_degrees < 315.0:
+		return 10 # 300° ± 15° = 10 o'clock
+	elif normalized_degrees >= 315.0 and normalized_degrees < 345.0:
+		return 11 # 330° ± 15° = 11 o'clock
 	else:
 		return 12 # Default fallback to 12 o'clock
 
@@ -369,6 +398,22 @@ func get_level_for_clock_position(clock_position: int) -> int:
 			return 3 # Level 3 at 3 o'clock
 		4:
 			return 4 # Level 4 at 4 o'clock
+		5:
+			return 5 # Level 5 at 5 o'clock
+		6:
+			return 6 # Level 6 at 6 o'clock
+		7:
+			return 7 # Level 7 at 7 o'clock
+		8:
+			return 8 # Level 8 at 8 o'clock
+		9:
+			return 9 # Level 9 at 9 o'clock
+		10:
+			return 10 # Level 10 at 10 o'clock
+		11:
+			return 11 # Level 11 at 11 o'clock
+		12:
+			return 12 # Level 12 at 12 o'clock
 		_:
 			return 0 # Unknown level
 

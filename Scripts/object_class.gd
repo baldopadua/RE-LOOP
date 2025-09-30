@@ -204,22 +204,31 @@ func handle_body_entered(body):
 
 func is_level_accessible(level_number: int, level_handler) -> bool:
 	if not level_handler:
+		print("No level handler provided")
 		return false
-		
+	
+	print("Checking accessibility for level: ", level_number)
+	print("Completed levels: ", level_handler.completed_levels)
+	
 	match level_number:
 		1:
 			# Level 1 is always accessible
+			print("Level 1 is always accessible")
 			return true
 		2:
 			# Level 2 requires Level 1 to be completed
-			return level_handler.completed_levels.has(1)
+			var accessible = level_handler.completed_levels.has(1)
+			return accessible
 		3:
 			# Level 3 requires Level 1 AND Level 2 to be completed
-			return level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2)
+			var accessible = level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2)
+			return accessible
 		4:
 			# Level 4 requires Level 1, 2, AND 3 to be completed
-			return level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2) and level_handler.completed_levels.has(3)
+			var accessible = level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2) and level_handler.completed_levels.has(3)
+			return accessible
 		_:
+			print("Level ", level_number, " not implemented yet")
 			return false
 
 func get_level_number_from_name() -> int:
@@ -235,29 +244,28 @@ func get_level_number_from_name() -> int:
 	return 0
 
 func get_level_handler():
-	# First check if it's a direct child of this object
-	var handler = get_node_or_null("LevelHandler")
+	# For lobby entrance objects, try the direct parent path first
+	var handler = get_node_or_null("../CanvasLayer/LevelHandler")
 	if handler:
+		print("Found level handler at ../CanvasLayer/LevelHandler")
 		return handler
 	
-	# Try multiple possible paths to find the level handler
-	var possible_paths = [
-		"CanvasLayer/LevelHandler",
-		"../CanvasLayer/LevelHandler", 
-		str(get_parent().get_path()) + "/CanvasLayer/LevelHandler"
-	]
-	
-	for path in possible_paths:
-		handler = get_node_or_null(path)
-		if handler:
-			return handler
+	# Try finding it through the parent scene directly
+	var parent_scene = get_parent()
+	if parent_scene and parent_scene.has_node("CanvasLayer/LevelHandler"):
+		handler = parent_scene.get_node("CanvasLayer/LevelHandler")
+		print("Found level handler via parent scene")
+		return handler
 	
 	# If not found, try to search in the scene tree
 	var current_scene = get_tree().current_scene
 	if current_scene:
 		handler = current_scene.find_child("LevelHandler", true, false)
-		return handler
+		if handler:
+			print("Found level handler via find_child")
+			return handler
 	
+	print("No level handler found!")
 	return null
 
 func set_level_completion_visual(is_completed: bool):

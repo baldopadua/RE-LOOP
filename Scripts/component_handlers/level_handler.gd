@@ -12,7 +12,7 @@ var is_replaying_completed_level: bool = false # Track if current level was alre
 # Make completed_levels static so it persists across scene changes
 static var completed_levels: Array[int] = [] # Track completed levels
 # Global level count - change this when adding more levels
-const TOTAL_LEVEL_COUNT: int = 4
+const TOTAL_LEVEL_COUNT: int = 12
 @onready var level_status_node = $level_status
 
 # LEVEL INTRO GUIDE:
@@ -85,6 +85,13 @@ func tween_next_scale_finished(tween_created):
 	tween_created.kill()
 
 func change_level(scene_path: String, levels_frame):
+	# Check if the scene file exists before trying to load it
+	if not ResourceLoader.exists(scene_path):
+		print("Level Handler: Scene file not found: ", scene_path)
+		print("Level Handler: Returning to lobby instead")
+		return_to_lobby(levels_frame)
+		return
+	
 	# Remove current level
 	for child in levels_frame.get_children():
 		child.queue_free()
@@ -109,19 +116,6 @@ func set_current_level(level_number: int):
 	
 	emit_signal("level_instantiated", level_name)
 	
-	# Remove automatic hand positioning - let player movement control it
-	# match level_number:
-	#	1:
-	#		level_status_node.set_hand_to_clock_position(12) # 12 o'clock for level 1
-	#	2:
-	#		level_status_node.set_hand_to_clock_position(3)
-	#	3:
-	#		level_status_node.set_hand_to_clock_position(6)
-	#	4:
-	#		level_status_node.set_hand_to_clock_position(9)
-	#	_:
-	#		level_status_node.set_hand_to_clock_position(12) # 12 o'clock for other levels
-	
 	# Update long hand state for current level
 	update_short_hand_state_for_level(level_number)
 
@@ -135,9 +129,6 @@ func set_current_lobby():
 	
 	# Resume hand following in lobby
 	level_status_node.resume_following_player()
-	
-	# Remove automatic hand positioning for lobby - let player movement control it
-	# level_status_node.set_hand_to_clock_position(12)
 	
 	# Update long hand state for level 1 (default lobby position)
 	update_short_hand_state_for_level(1)
@@ -161,6 +152,20 @@ func complete_current_level(levels_frame):
 				level_status_node.set_hand_to_clock_position(4) # 4 o'clock for level 4
 			5:
 				level_status_node.set_hand_to_clock_position(5) # 5 o'clock for level 5
+			6:
+				level_status_node.set_hand_to_clock_position(6) # 6 o'clock for level 6
+			7:
+				level_status_node.set_hand_to_clock_position(7) # 7 o'clock for level 7
+			8:
+				level_status_node.set_hand_to_clock_position(8) # 8 o'clock for level 8
+			9:
+				level_status_node.set_hand_to_clock_position(9) # 9 o'clock for level 9
+			10:
+				level_status_node.set_hand_to_clock_position(10) # 10 o'clock for level 10
+			11:
+				level_status_node.set_hand_to_clock_position(11) # 11 o'clock for level 11
+			12:
+				level_status_node.set_hand_to_clock_position(12) # 12 o'clock for level 12
 			_:
 				level_status_node.set_hand_to_clock_position(1) # 1 o'clock for other levels
 		
@@ -198,11 +203,18 @@ func complete_current_level(levels_frame):
 
 func load_next_level(next_level_number: int, levels_frame):
 	var next_level_path = "res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn"
-	change_level(next_level_path, levels_frame)
-	ui_handler.set_default_time_indicator()
 	
-	# ENSURE UI IS VISIBLE WHEN ENTERING NEXT LEVEL
-	ui_handler.visible = true
+	# Check if the level file exists before trying to load it
+	if ResourceLoader.exists(next_level_path):
+		change_level(next_level_path, levels_frame)
+		ui_handler.set_default_time_indicator()
+		
+		# ENSURE UI IS VISIBLE WHEN ENTERING NEXT LEVEL
+		ui_handler.visible = true
+	else:
+		# Level doesn't exist yet, return to lobby instead
+		print("Level Handler: Level ", next_level_number, " scene file not found, returning to lobby")
+		return_to_lobby(levels_frame)
 
 func return_to_lobby(levels_frame):
 	var lobby_path = "res://Scenes/levels/level_lobby.tscn"

@@ -38,4 +38,4 @@ func objects_initialize():
 # If the Plooy being tail whipped animation is finished go to level 5
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "tail_whipped":
-		level_handler.complete_current_level(get_parent())
+		level_handler.complete_current_level(get_parent().get_parent())

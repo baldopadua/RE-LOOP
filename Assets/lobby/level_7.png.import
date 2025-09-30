@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bno648rb3cryp"
-path="res://.godot/imported/kid_skeletal_remains.png-73404eb9610a644c00dc3923d9ac94bb.ctex"
+uid="uid://vo008hjrvaok"
+path="res://.godot/imported/level_7.png-3cd2f0b475610468c28b4cbce93bee38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/levels/level_5/placeholder_assets/kid_skeletal_remains.png"
-dest_files=["res://.godot/imported/kid_skeletal_remains.png-73404eb9610a644c00dc3923d9ac94bb.ctex"]
+source_file="res://Assets/lobby/level_7.png"
+dest_files=["res://.godot/imported/level_7.png-3cd2f0b475610468c28b4cbce93bee38.ctex"]
 
 [params]
 
