@@ -892,7 +892,7 @@ script = ExtResource("1_f0imo")
 [node name="PlayerScene" parent="." instance=ExtResource("4_be8ic")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-rotation = 1.5708
+rotation = 1.58881
 ignore_rotation = false
 position_smoothing_enabled = true
 
@@ -1062,10 +1062,6 @@ texture = ExtResource("18_be8ic")
 
 [node name="SoundManager" parent="." instance=ExtResource("14_yxj7a")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("15_f0imo")]
-
 [node name="trex" parent="." instance=ExtResource("4_fiti8")]
 visible = false
 position = Vector2(-152, -256)
@@ -1129,6 +1125,11 @@ z_index = 1
 shape = SubResource("RectangleShape2D_56sg6")
 
 [node name="LevelHandler" parent="." instance=ExtResource("15_f0imo")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("15_f0imo")]
 
 [connection signal="item_put" from="incubator" to="incubator" method="_on_item_put"]
 [connection signal="add_cur_state" from="stick" to="stick" method="_on_add_cur_state"]

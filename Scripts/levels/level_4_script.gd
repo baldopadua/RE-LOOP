@@ -8,6 +8,7 @@ var tween_scale: Tween
 var objects: Array = []
 
 @onready var level_handler = $CanvasLayer/LevelHandler
+@onready var area_handler = $AreaHandler
 
 @onready var bone = $bone
 @onready var chicken = $chicken

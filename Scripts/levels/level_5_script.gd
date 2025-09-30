@@ -8,7 +8,12 @@ extends Node2D
 @onready var area_handler = $AreaHandler
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var sound_manager = $SoundManager
-#@onready var anim_handler = $AnimationHandler
+
+# LEVEL 5 OBJECTS
+@onready var science_project = $science_project
+@onready var vending = $vending
+@onready var rocket = $rocket
+@onready var dreamer = $dreamer
 
 # TWEENS
 @onready var tween_rotate: Tween
@@ -24,4 +29,10 @@ func _ready():
 	objects_initialize()
 
 func objects_initialize():
-	pass
+	
+	objects.append(science_project)
+	objects.append(vending)
+	objects.append(rocket)
+	objects.append(dreamer)
+	
+	# AreaHandler works automatically - no manual initialization needed

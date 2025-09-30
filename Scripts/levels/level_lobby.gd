@@ -117,17 +117,17 @@ func enter_level(level_number: int):
 	
 	# STOP FOREST AMBIENCE WHEN LEAVING LOBBY
 	sound_manager.stop_ambience_sfx("forest_sfx")
-	
 	# Get the levels_frame from the game scene structure
 	var levels_frame = get_parent()  # This should be the levels_frame
+
+	# Kill the current lobby map with animation
+	level_handler.kill_current_level(self)
+	await get_tree().create_timer(1.0).timeout
 	
 	# Special handling for level 1 - show cutscene first
 	if level_number == 1:
 		await show_level_1_entry_cutscene()
 	
-	# Kill the current lobby map with animation
-	level_handler.kill_current_level(self)
-	await get_tree().create_timer(1.0).timeout
 	
 	# Use level_handler's load_next_level method
 	level_handler.load_next_level(level_number, levels_frame)

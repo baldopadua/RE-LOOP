@@ -199,21 +199,26 @@ func hide_cutscene():
 		ui_handler.visible = true
 
 func hide_gameplay_elements():
-	# NAVIGATE TO THE ACTUAL LEVEL SCENE
-	var level_scene = get_parent().get_parent().get_parent()
-	if level_scene:
-		# HIDE ALL LEVEL CHILDREN EXCEPT ESSENTIAL ONES
-		for child in level_scene.get_children():
+	# NAVIGATE TO THE ACTUAL LEVEL SCENE (skip CanvasLayer and LevelHandler)
+	var level_handler = get_parent()  # This is LevelHandler
+	var canvas_layer = level_handler.get_parent()  # This is CanvasLayer
+	var current_level = canvas_layer.get_parent()  # This is the actual level scene
+	
+	if current_level:
+		# HIDE ALL LEVEL CHILDREN EXCEPT ESSENTIAL ONES AND CANVASLAYER
+		for child in current_level.get_children():
 			if child.name not in ["SoundManager", "CanvasLayer", "Camera2D"]:
 				if child.has_method("set_visible") or "visible" in child:
 					child.visible = false
 
 func show_gameplay_elements():
-	# NAVIGATE TO THE ACTUAL LEVEL SCENE
-	var level_scene = get_parent().get_parent().get_parent()
-	if level_scene:
-		# RESTORE VISIBILITY OF ALL LEVEL CHILDREN
-		for child in level_scene.get_children():
+	# NAVIGATE TO THE ACTUAL LEVEL SCENE (skip CanvasLayer and LevelHandler)
+	var level_handler = get_parent()  # This is LevelHandler
+	var current_level = level_handler.get_parent().get_parent()   # This is the actual level scene
+	
+	if current_level:
+		# RESTORE VISIBILITY OF ALL LEVEL CHILDREN EXCEPT CANVASLAYER
+		for child in current_level.get_children():
 			if child.name not in ["SoundManager", "CanvasLayer", "Camera2D"]:
 				if child.has_method("set_visible") or "visible" in child:
 					child.visible = true
@@ -360,7 +365,7 @@ func get_clock_position_from_rotation(degrees: float) -> int:
 	# Normalize degrees to 0-360 range
 	var normalized_degrees = fmod(rounded_degrees + 360.0, 360.0)
 	
-	# Map degrees to clock positions: 1-12 o'clock (30° intervals)
+	# Map degrees to clock positions using exact 30° intervals to match get_rotation_for_clock()
 	if normalized_degrees >= 345.0 or normalized_degrees < 15.0:
 		return 12 # 0° ± 15° = 12 o'clock
 	elif normalized_degrees >= 15.0 and normalized_degrees < 45.0:
@@ -502,3 +507,5 @@ func animate_hand_from_12_to_1() -> Tween:
 	)
 	
 	return sequence_tween
+
+

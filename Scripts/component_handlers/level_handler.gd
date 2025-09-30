@@ -28,8 +28,8 @@ func map_initialize(this, tween_rotate, tween_scale):
 	# INITIALLY ROTATE TO 360 DEGREES
 	this.rotation = deg_to_rad(360.0)
 
-	# INITIALLY SET THE SCALE TO 0
-	this.scale = Vector2(0.0, 0.0)
+	# INITIALLY SET THE SCALE TO VERY SMALL (not 0 to avoid determinant issues)
+	this.scale = Vector2(0.01, 0.01)
 
 	# CREATE TWEEN FOR ROTATE
 	tween_rotate = create_tween()
@@ -137,6 +137,15 @@ func set_current_lobby():
 # Example: level_handler.complete_current_level(get_parent().get_parent())
 func complete_current_level(levels_frame):
 	if current_level_number > 0:
+		# KILL ANY EXISTING TWEENS FIRST
+		var current_level = levels_frame.get_child(0)
+		if current_level:
+			# Kill all tweens in the current level only
+			var tweens = get_tree().get_nodes_in_group("tweens")
+			for tween in tweens:
+				if tween and tween.is_valid():
+					tween.kill()
+		
 		# Stop hand from following player and preserve position
 		level_status_node.stop_following_player()
 		
@@ -176,11 +185,12 @@ func complete_current_level(levels_frame):
 		if not is_replaying_completed_level:
 			_mark_level_completed_and_print_status()
 		
-		var level_scene = levels_frame.get_child(0) # Get current level scene
+		# ENSURE BACKGROUND STAYS VISIBLE DURING TRANSITION
+		ensure_background_visible()
 		
-		# KILL THE CURRENT LEVEL WITH ANIMATION (TWEEN KILL)
-		kill_current_level(level_scene)
-		await get_tree().create_timer(1.0).timeout
+		# KILL THE CURRENT LEVEL WITH ANIMATION (TWEEN KILL) - Wait for completion
+		kill_current_level(current_level)
+		await get_tree().create_timer(1.2).timeout  # Increased wait time to ensure tween completion
 
 		# Check if this is a replay of an already completed level
 		if is_replaying_completed_level:
@@ -200,6 +210,14 @@ func complete_current_level(levels_frame):
 			# LOAD NEXT LEVEL AFTER CUTSCENE
 			load_next_level(next_level_number, levels_frame)
 
+# New function to ensure background stays visible
+func ensure_background_visible():
+	# Navigate to GameScene and ensure background is visible
+	var game_scene = get_tree().root.get_node("MainScene/GameScene")
+	if game_scene and game_scene.has_node("CanvasLayer/game_scene_bg"):
+		var background = game_scene.get_node("CanvasLayer/game_scene_bg")
+		background.visible = true
+		print("Level Handler: Ensured background visibility")
 
 func load_next_level(next_level_number: int, levels_frame):
 	var next_level_path = "res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn"
@@ -301,6 +319,13 @@ func restart_level(levels_frame):
 
 func kill_current_level(level_scene):
 	# PHASE 1: KILL THE CURRENT LEVEL WITH ROTATION AND SCALE TWEENS
+	# First, kill any existing tweens on the level scene
+	if level_scene.has_method("get_meta") and level_scene.has_meta("tweens"):
+		var scene_tweens = level_scene.get_meta("tweens")
+		for tween in scene_tweens:
+			if tween and tween.is_valid():
+				tween.kill()
+	
 	var tween_rotate = create_tween()
 	tween_rotate.connect("finished", Callable(self, "tween_next_rotate_finished").bind(tween_rotate))
 	var rotation_tween = level_scene.rotation - deg_to_rad(-360.0)
@@ -308,4 +333,5 @@ func kill_current_level(level_scene):
 
 	var tween_scale = create_tween()
 	tween_scale.connect("finished", Callable(self, "tween_next_scale_finished").bind(tween_scale))
-	tween_scale.tween_property(level_scene, "scale", Vector2(0.0, 0.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	# Scale to very small instead of 0 to avoid determinant issues
+	tween_scale.tween_property(level_scene, "scale", Vector2(0.01, 0.01), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)

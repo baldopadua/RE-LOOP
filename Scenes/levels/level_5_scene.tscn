@@ -135,10 +135,16 @@ self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 2)
+rotation = -0.000160575
+ignore_rotation = false
 position_smoothing_enabled = true
 
 [node name="SoundManager" parent="." instance=ExtResource("4_ctghb")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("11_dw1n4")]
 
 [node name="science_project" parent="." instance=ExtResource("5_ryj1a")]
 position = Vector2(-250, -141)
@@ -212,8 +218,3 @@ rotation = 2.0944
 sprite_frames = SubResource("SpriteFrames_5xm4r")
 animation = &"kid"
 metadata/_edit_lock_ = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("11_dw1n4")]
