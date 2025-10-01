@@ -230,7 +230,7 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 			return accessible
 		5:
 			# Level 5 requires previous levels to be completed
-			var accessible = level_handler.completed_levels.has(4)
+			var accessible = level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2) and level_handler.completed_levels.has(3) and level_handler.completed_levels.has(4)
 			return accessible
 		6:
 			# Level 6 requires previous levels to be completed

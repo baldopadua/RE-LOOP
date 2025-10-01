@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+
 @onready var short_hand_rotation = $short_hand_rotation
 @onready var short_hand_clock = $short_hand_rotation/short_hand_clock
 @onready var long_hand_rotation = $long_hand_rotation
@@ -171,7 +173,6 @@ func show_level_complete_cutscene(_next_level_number: int):
 	should_follow_player = false
 	
 	# HIDE UI DURING CUTSCENE
-	var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 	if ui_handler:
 		ui_handler.visible = false
 	
@@ -194,7 +195,6 @@ func hide_cutscene():
 	show_gameplay_elements()
 	
 	# SHOW UI AGAIN AFTER CUTSCENE
-	var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 	if ui_handler:
 		ui_handler.visible = true
 
@@ -437,8 +437,7 @@ func show_level_1_entry_cutscene():
 	# Stop hand from following player during cutscene
 	should_follow_player = false
 	
-	# HIDE UI DURING CUTSCENE
-	var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+	
 	if ui_handler:
 		ui_handler.visible = false
 	

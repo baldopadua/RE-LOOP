@@ -35,4 +35,4 @@ func objects_initialize():
 	objects.append(rocket)
 	objects.append(dreamer)
 	
-	# AreaHandler works automatically - no manual initialization needed
+
