@@ -172,8 +172,9 @@ func show_level_complete_cutscene(_next_level_number: int):
 	# Stop hand from following player during cutscene
 	should_follow_player = false
 	
-	# HIDE UI DURING CUTSCENE
+	# HIDE UI DURING CUTSCENE (including game UI elements)
 	if ui_handler:
+		ui_handler.hide_game_ui_during_cutscene()
 		ui_handler.visible = false
 	
 	# MAKE CUTSCENE VISIBLE - DO NOT RESET HAND POSITION
@@ -194,8 +195,9 @@ func hide_cutscene():
 	# Restore gameplay elements when cutscene is hidden
 	show_gameplay_elements()
 	
-	# SHOW UI AGAIN AFTER CUTSCENE
+	# SHOW UI AGAIN AFTER CUTSCENE (including game UI elements)
 	if ui_handler:
+		ui_handler.show_game_ui_after_cutscene()
 		ui_handler.visible = true
 
 func hide_gameplay_elements():
@@ -432,13 +434,13 @@ func _on_level_instantiated(_level_name: String):
 	# Update lock state when any level is completed
 	update_lock_state()
 
-# Function to show level 1 entry cutscene from lobby
+# Function to show level entry cutscene from lobby (generalized for any level)
 func show_level_1_entry_cutscene():
 	# Stop hand from following player during cutscene
 	should_follow_player = false
 	
-	
 	if ui_handler:
+		ui_handler.hide_game_ui_during_cutscene()
 		ui_handler.visible = false
 	
 	# Set hands to 12 o'clock position first

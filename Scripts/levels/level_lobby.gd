@@ -35,7 +35,15 @@ var center_circle: Vector2i = Vector2i(0, 0)
 
 
 func _ready():
-	level_handler.set_current_lobby()
+	# Wait for level_handler to be ready before calling set_current_lobby
+	await get_tree().process_frame
+	
+	if level_handler:
+		level_handler.set_current_lobby()
+	else:
+		print("Error: level_handler not found")
+		return
+		
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 
@@ -125,26 +133,25 @@ func enter_level(level_number: int):
 	level_handler.kill_current_level(self)
 	await get_tree().create_timer(1.0).timeout
 	
-	# Special handling for level 1 - show cutscene first
-	if level_number == 1:
-		await show_level_1_entry_cutscene()
-	
-	
-	# Use level_handler's load_next_level method
-	level_handler.load_next_level(level_number, levels_frame)
+	# Show story cutscene first, then clock animation, then level
+	var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+	if ui_handler:
+		ui_handler.show_level_cutscene(level_number, func(): _show_clock_animation_then_level(level_number, levels_frame))
 
-# Show cutscene when entering level 1 from lobby
-func show_level_1_entry_cutscene():
-	print("Showing Level 1 entry cutscene")
+# Show clock animation then proceed to level
+func _show_clock_animation_then_level(level_number: int, levels_frame):
+	print("Showing clock animation for level ", level_number)
+	
+	# Show clock animation cutscene
 	level_handler.level_status_node.get_node("level_clock").visible = true
-	# Show the cutscene
 	level_handler.level_status_node.show_level_1_entry_cutscene()
 	
 	# Wait for the initial display
 	await get_tree().create_timer(1.0).timeout
 	
-	# Animate hand from 12 o'clock to 1 o'clock
-	var animation_tween = level_handler.level_status_node.animate_hand_from_12_to_1()
+	# Animate hand from 12 o'clock to target level position
+	var target_clock_position = level_handler.level_status_node.get_clock_position_for_level(level_number)
+	var animation_tween = level_handler.level_status_node.animate_hand_to_next_level(target_clock_position)
 	if animation_tween:
 		await animation_tween.finished
 	
@@ -153,6 +160,10 @@ func show_level_1_entry_cutscene():
 	
 	# Hide the cutscene
 	level_handler.level_status_node.hide_cutscene()
+	
+	# Now proceed to level
+	level_handler.load_next_level_directly(level_number, levels_frame)
+
 
 # Update visual indicators for completed levels
 func update_completed_levels_visual():
@@ -312,3 +323,5 @@ func sync_short_hand_to_player():
 		
 		# Always ensure hand following is enabled in lobby
 		level_handler.level_status_node.resume_following_player()
+
+

@@ -1,0 +1,201 @@
+[gd_scene load_steps=5 format=3 uid="uid://b11bd22bl1hik"]
+
+[ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="1_ecwua"]
+[ext_resource type="Script" uid="uid://cg6w2psi5h5rg" path="res://Scripts/component/cutscene.gd" id="1_njedo"]
+[ext_resource type="Texture2D" uid="uid://drnejma6awybr" path="res://Assets/lobby/continue_unhover.png" id="3_l34s7"]
+[ext_resource type="Texture2D" uid="uid://b41v0lt0bm0rg" path="res://Assets/lobby/continue_hover.png" id="4_r77sh"]
+
+[node name="Cutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_njedo")
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_container" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_1" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_2" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_3" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_4" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_5" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_6" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_7" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_8" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_9" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_10" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_11" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="comics_level_12" type="TextureRect" parent="comics_container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00234375
+anchor_right = 1.003125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecwua")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="cutscene_labels" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.19453125
+anchor_top = 0.24027778
+anchor_right = 0.7953125
+anchor_bottom = 0.6486111
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "comics_level"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="press_to_continue" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7210938
+anchor_top = 0.8513889
+anchor_right = 0.9890625
+anchor_bottom = 0.93472224
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_l34s7")
+texture_hover = ExtResource("4_r77sh")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

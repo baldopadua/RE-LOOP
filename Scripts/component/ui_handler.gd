@@ -4,6 +4,7 @@ extends Control
 @onready var ui_logic = $ui_logic
 @onready var background = $background
 @onready var time_indicator = $ui_logic/game_ui_elements/time_indicator
+@onready var cutscene = $cutscene
 
 var bg_node: Node = null
 var main_menu: Node = null
@@ -320,4 +321,29 @@ func set_default_time_indicator() -> void:
 	if time_indicator:
 		time_indicator.animation = "clockwise_time_indicator"
 		time_indicator.frame = 0
-		
+
+# CUTSCENE FUNCTIONS
+func show_level_cutscene(level_number: int, continue_callback: Callable = Callable()):
+	if cutscene:
+		# Hide game UI when showing cutscene
+		hide_game_ui_during_cutscene()
+		cutscene.show_level_cutscene(level_number, continue_callback)
+
+func hide_level_cutscene():
+	if cutscene:
+		cutscene.hide_cutscene()
+		# Restore game UI when hiding cutscene
+		show_game_ui_after_cutscene()
+
+# Hide game UI elements during cutscene
+func hide_game_ui_during_cutscene():
+	if ui_logic and ui_logic.has_node("game_ui_elements"):
+		var game_ui = ui_logic.get_node("game_ui_elements")
+		game_ui.visible = false
+
+# Show game UI elements after cutscene
+func show_game_ui_after_cutscene():
+	if ui_logic and ui_logic.has_node("game_ui_elements"):
+		var game_ui = ui_logic.get_node("game_ui_elements")
+		game_ui.visible = true
+

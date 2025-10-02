@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://m46y1wd88uf1"]
+[gd_scene load_steps=87 format=3 uid="uid://m46y1wd88uf1"]
 
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="1_fmqw2"]
 [ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://wg21y0rbjlo2" path="res://Assets/ui/hint/hint_3.png" id="27_0vcng"]
 [ext_resource type="Texture2D" uid="uid://loktk8i0xmn" path="res://Assets/ui/hint/hint_4.png" id="28_5ue8t"]
 [ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="29_g2hc1"]
+[ext_resource type="PackedScene" uid="uid://b11bd22bl1hik" path="res://Scenes/component/cutscene.tscn" id="33_nol8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
 atlas = ExtResource("1_fmqw2")
@@ -784,6 +785,10 @@ texture_normal = ExtResource("22_iwsb4")
 texture_hover = ExtResource("23_4r7hv")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="cutscene" parent="." instance=ExtResource("33_nol8b")]
+visible = false
+layout_mode = 1
 
 [node name="custom_cursor" type="Sprite2D" parent="."]
 texture_filter = 1

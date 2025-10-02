@@ -100,7 +100,7 @@ func change_level(scene_path: String, levels_frame):
 	var new_level = load(scene_path).instantiate()
 	levels_frame.add_child(new_level)
 
-# Call this method from level scripts in their _ready() function to identify the level
+# Call this method from level scripts in the their _ready() function to identify the level
 # Example: level_handler.set_current_level(1)
 func set_current_level(level_number: int):
 	current_level_number = level_number
@@ -198,17 +198,23 @@ func complete_current_level(levels_frame):
 			print("Level Handler: Skipping cutscene for replayed level, going directly to lobby")
 			return_to_lobby(levels_frame)
 		else:
-			# Show cutscene for first-time completion
+			# Show story cutscene first, then clock animation, then next level
 			# Calculate next level number for cutscene
 			var next_level_number = current_level_number + 1
 			if next_level_number > TOTAL_LEVEL_COUNT:
 				next_level_number = 1 # Loop back to level 1
 			
-			# SHOW TRANSITION CUTSCENE WITH NEXT LEVEL
-			await show_level_transition_cutscene(next_level_number)
+			# SHOW STORY CUTSCENE FIRST
+			if ui_handler:
+				ui_handler.show_level_cutscene(next_level_number, func(): _show_clock_then_load_level(next_level_number, levels_frame))
 
-			# LOAD NEXT LEVEL AFTER CUTSCENE
-			load_next_level(next_level_number, levels_frame)
+# New function to show clock animation then load next level
+func _show_clock_then_load_level(next_level_number: int, levels_frame):
+	# Show clock animation cutscene
+	await show_level_transition_cutscene(next_level_number)
+	
+	# Load next level after clock animation
+	_continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame)
 
 # New function to ensure background stays visible
 func ensure_background_visible():
@@ -224,15 +230,33 @@ func load_next_level(next_level_number: int, levels_frame):
 	
 	# Check if the level file exists before trying to load it
 	if ResourceLoader.exists(next_level_path):
-		change_level(next_level_path, levels_frame)
-		ui_handler.set_default_time_indicator()
-		
-		# ENSURE UI IS VISIBLE WHEN ENTERING NEXT LEVEL
-		ui_handler.visible = true
+		# Show cutscene first before loading level
+		if ui_handler:
+			ui_handler.show_level_cutscene(next_level_number, func(): _continue_to_level(next_level_path, levels_frame))
 	else:
 		# Level doesn't exist yet, return to lobby instead
 		print("Level Handler: Level ", next_level_number, " scene file not found, returning to lobby")
 		return_to_lobby(levels_frame)
+
+# New function to load level directly without cutscene (for lobby transitions)
+func load_next_level_directly(next_level_number: int, levels_frame):
+	var next_level_path = "res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn"
+	
+	# Check if the level file exists before trying to load it
+	if ResourceLoader.exists(next_level_path):
+		_continue_to_level(next_level_path, levels_frame)
+	else:
+		# Level doesn't exist yet, return to lobby instead
+		print("Level Handler: Level ", next_level_number, " scene file not found, returning to lobby")
+		return_to_lobby(levels_frame)
+
+# Modified function to continue to level after cutscene
+func _continue_to_level(level_path: String, levels_frame):
+	change_level(level_path, levels_frame)
+	ui_handler.set_default_time_indicator()
+	
+	# ENSURE UI IS VISIBLE WHEN ENTERING NEXT LEVEL
+	ui_handler.visible = true
 
 func return_to_lobby(levels_frame):
 	var lobby_path = "res://Scenes/levels/level_lobby.tscn"
