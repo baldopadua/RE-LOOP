@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c68gmkh2e26af"]
+[gd_scene load_steps=39 format=3 uid="uid://c68gmkh2e26af"]
 
 [ext_resource type="Script" uid="uid://bht2nh4ymwmf5" path="res://Scripts/levels/level_5_script.gd" id="1_0li43"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_aql1r"]
@@ -38,6 +38,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h26wg"]
 size = Vector2(48, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tahrn"]
+size = Vector2(20, 34.5526)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_h26wg"]
 atlas = ExtResource("15_h26wg")
 region = Rect2(0, 0, 150, 150)
@@ -48,16 +51,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h26wg")
 }],
-"loop": true,
+"loop": false,
 "name": &"rocket_ship",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctghb"]
 size = Vector2(32, 48.7846)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tahrn"]
-size = Vector2(20, 34.5526)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agu2x"]
 radius = 15.0
@@ -131,6 +131,91 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_oyxes"]
+resource_name = "rocket_animation"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rocket:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.1, 0.16666667, 0.22085223, 0.26642492, 0.3119976, 0.3540647, 0.42073137, 0.48739803, 0.5415836, 0.5871563, 0.63272893, 0.6730735, 0.73974013, 0.8064068, 0.86059237, 0.90616506, 0.95173776, 1, 1.0666666, 1.1333333, 1.1875188, 1.2330916, 1.2786642, 1.3391358, 1.4058025, 1.4724691, 1.5266547, 1.5722274, 1.6178, 1.6686614, 1.735328, 1.8019947, 1.8561802, 1.901753, 1.9473256, 2.005198, 2.0718646, 2.1385314, 2.1927168, 2.2382896, 2.2838624, 2.3171957, 2.8833332, 5.983333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-224, -128), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128.505), Vector2(-224, -126.665), Vector2(-224, -128), Vector2(-224, -128), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rocket:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.9666667, 5.9666667),
+"transitions": PackedFloat32Array(1, 1.0717735),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rocket:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.0333333, 5.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0da36"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rocket:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-224, -128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rocket:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rocket:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0da36"]
+_data = {
+&"RESET": SubResource("Animation_0da36"),
+&"rocket_animation": SubResource("Animation_oyxes")
+}
+
 [node name="level_5" type="Node2D"]
 script = ExtResource("1_0li43")
 
@@ -140,6 +225,25 @@ metadata/_edit_lock_ = true
 [node name="PlayerScene" parent="." instance=ExtResource("3_tahrn")]
 self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
+
+[node name="Label" type="Label" parent="PlayerScene"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.5
+offset_top = -220.0
+offset_right = 156.5
+offset_bottom = -186.0
+grow_horizontal = 2
+rotation = 3.1415927
+pivot_offset = Vector2(156.5, 0)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 14
+text = "I didn't forget you, but you forgot me..."
+horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = -0.000160575
@@ -167,25 +271,6 @@ rotation = 0.523599
 shape = SubResource("RectangleShape2D_h26wg")
 metadata/_edit_lock_ = true
 
-[node name="rocket" parent="." instance=ExtResource("5_ryj1a")]
-visible = false
-position = Vector2(-224, -128)
-script = ExtResource("14_ctghb")
-object_name = "rocket"
-object_type = 1
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rocket"]
-rotation = 2.0943952
-scale = Vector2(0.743018, 0.743018)
-sprite_frames = SubResource("SpriteFrames_ryj1a")
-animation = &"rocket_ship"
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rocket"]
-position = Vector2(-24, -16)
-rotation = 2.0943952
-shape = SubResource("RectangleShape2D_ctghb")
-
 [node name="science_project" parent="." instance=ExtResource("5_ryj1a")]
 position = Vector2(-250, -141)
 script = ExtResource("12_tahrn")
@@ -202,6 +287,43 @@ position = Vector2(-6.30145, -3.63814)
 rotation = 2.0944
 shape = SubResource("RectangleShape2D_tahrn")
 metadata/_edit_lock_ = true
+
+[node name="rocket" parent="." instance=ExtResource("5_ryj1a")]
+visible = false
+position = Vector2(-224, -128)
+script = ExtResource("14_ctghb")
+object_name = "rocket"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rocket"]
+rotation = 2.0943952
+scale = Vector2(0.743018, 0.743018)
+sprite_frames = SubResource("SpriteFrames_ryj1a")
+animation = &"rocket_ship"
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="rocket/AnimatedSprite2D"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.0
+offset_top = -110.0
+offset_right = -55.0
+offset_bottom = -76.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rocket"]
+position = Vector2(-24, -16)
+rotation = 2.0943952
+shape = SubResource("RectangleShape2D_ctghb")
+
+[node name="Marker2D" type="Marker2D" parent="rocket"]
 
 [node name="dreamer" parent="." instance=ExtResource("5_ryj1a")]
 position = Vector2(-248, -144)
@@ -244,9 +366,20 @@ position = Vector2(-0.401932, -6.6961365)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_0da36")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0da36")
+}
+
+[node name="temp_timer" type="Timer" parent="."]
+
 [connection signal="area_shape_entered" from="science_project" to="science_project" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="science_project" to="science_project" method="_on_area_shape_exited"]
 [connection signal="add_cur_state" from="dreamer" to="dreamer" method="_on_add_cur_state"]
 [connection signal="area_shape_entered" from="dreamer" to="dreamer" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="dreamer" to="dreamer" method="_on_area_shape_exited"]
 [connection signal="animation_finished" from="dreamer/AnimatedSprite2D" to="dreamer" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="rocket" method="_on_animation_player_animation_finished"]

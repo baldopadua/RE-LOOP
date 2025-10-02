@@ -268,7 +268,7 @@ func item_pick_up() -> void:
 		held_object = available_object
 		available_object.reparent(object_pos)	 
 		update_held_object_direction()
-		print("Object picked up: " + held_object.object_name)
+		#print("Object picked up: " + held_object.object_name)
 		
 		# TWEEN TO ADD BOUNCE WHEN PICKING UP
 		var tween_pickup = create_tween()
@@ -305,21 +305,17 @@ func item_drop() -> void:
 			held_object.reparent(get_parent())
 			held_object = null
 			is_holding_object = false
-			print("Object dropped")
+			#print("Object dropped")
 			interactable_objects.clear()
-		held_object = null
-		is_holding_object = false
-		print("Object dropped")
-		interactable_objects.clear()
 
-func start_camera_shake(intensity : float):
+func start_shake(intensity : float):
 	var camera_offset = cameraShakeNoise.get_noise_1d(Time.get_ticks_msec()) * intensity
 	camera2d.offset.x = camera_offset
 	camera2d.offset.y = camera_offset
 
 func shake_camera(intesity_from : float, intesity_to : float, duration : float):
 	var camera_tween = get_tree().create_tween()
-	camera_tween.tween_method(start_camera_shake, intesity_from, intesity_to, duration)
+	camera_tween.tween_method(start_shake, intesity_from, intesity_to, duration)
 
 func _on_near_obj() -> void:
 	sprite.play("antenna")
