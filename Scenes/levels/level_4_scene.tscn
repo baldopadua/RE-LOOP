@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://fyqypy6fcyaf"]
+[gd_scene load_steps=148 format=3 uid="uid://fyqypy6fcyaf"]
 
 [ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/levels/level_4_script.gd" id="1_f0imo"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_lahvx"]
@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://bdnfiuumni1te" path="res://Assets/levels/level_1/DirtMound.png" id="27_oqr2g"]
 [ext_resource type="Script" uid="uid://uimo3i2ldyyp" path="res://Scripts/object-level/level_4/lvl4_seed.gd" id="28_56sg6"]
 [ext_resource type="Texture2D" uid="uid://dfdbkhqn5goip" path="res://Assets/levels/level_1/seed.png" id="28_yixdo"]
+[ext_resource type="Script" uid="uid://1wi0hik37old" path="res://Scripts/object-level/level_lobby/enter_5.gd" id="30_enhda"]
+[ext_resource type="Texture2D" uid="uid://c72nnu8ruare1" path="res://Assets/lobby/level_5.png" id="31_ceyy8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ajt6"]
 atlas = ExtResource("16_be8ic")
@@ -884,6 +886,10 @@ size = Vector2(31, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56sg6"]
 size = Vector2(18, 18)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_enhda"]
+radius = 12.1183
+height = 40.0368
+
 [node name="level_4" type="Node2D"]
 script = ExtResource("1_f0imo")
 
@@ -1127,6 +1133,67 @@ shape = SubResource("RectangleShape2D_56sg6")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("15_f0imo")]
+
+[node name="enter_5" parent="." instance=ExtResource("4_fiti8")]
+position = Vector2(247, 132)
+rotation = 1.93972
+script = ExtResource("30_enhda")
+object_name = "enter_5"
+object_type = 1
+is_enterable = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="enter_5"]
+texture_filter = 1
+position = Vector2(-0.999999, 9)
+rotation = -3.08868
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("31_ceyy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_5"]
+position = Vector2(-1, 6.99997)
+rotation = 3.11311
+shape = SubResource("CapsuleShape2D_enhda")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="hover_text" type="RichTextLabel" parent="enter_5"]
+modulate = Color(0.278431, 0.235294, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 97.9289
+offset_top = 122.959
+offset_right = 303.929
+offset_bottom = 184.959
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "Level 5: Rocket Science"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_5"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.6368
+offset_top = 89.0195
+offset_right = 331.637
+offset_bottom = 129.02
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
 
 [connection signal="item_put" from="incubator" to="incubator" method="_on_item_put"]
 [connection signal="add_cur_state" from="stick" to="stick" method="_on_add_cur_state"]

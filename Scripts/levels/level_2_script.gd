@@ -34,3 +34,11 @@ func objects_initialize():
 func play_level2_sfx(sfx_name: String):
 	if sound_manager and sound_manager.sfx.has(sfx_name):
 		sound_manager.play_sfx(sfx_name)
+
+# ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
+# TO WORK ON THE SCRIPT
+# ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
+func enter_level():
+	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
+	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
+	level_handler.complete_current_level(get_parent()) 

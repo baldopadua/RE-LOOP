@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c68gmkh2e26af"]
+[gd_scene load_steps=42 format=3 uid="uid://c68gmkh2e26af"]
 
 [ext_resource type="Script" uid="uid://bht2nh4ymwmf5" path="res://Scripts/levels/level_5_script.gd" id="1_0li43"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_aql1r"]
@@ -18,7 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://ypxrqiwnlkmj" path="res://Assets/levels/level_5/placeholder_assets/vending_machine.png" id="17_ds2sm"]
 [ext_resource type="Script" uid="uid://pu00f16vh66k" path="res://Scripts/object-level/level_5/vending.gd" id="17_dtqwf"]
 [ext_resource type="Texture2D" uid="uid://d4hls42etbvcm" path="res://Assets/levels/level_5/placeholder_assets/soda_small.png" id="18_dtqwf"]
-[ext_resource type="Script" path="res://Scripts/object-level/level_5/soda.gd" id="18_oyxes"]
+[ext_resource type="Script" uid="uid://b1gbqaimevnvo" path="res://Scripts/object-level/level_5/soda.gd" id="18_oyxes"]
+[ext_resource type="Script" uid="uid://ck07upapmng41" path="res://Scripts/object-level/level_lobby/enter_6.gd" id="20_dw1n4"]
+[ext_resource type="Texture2D" uid="uid://d1gv25rkrif8y" path="res://Assets/lobby/level_6.png" id="21_2dttu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtqwf"]
 atlas = ExtResource("17_ds2sm")
@@ -131,6 +133,45 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_0da36"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rocket:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-224, -128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rocket:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rocket:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_oyxes"]
 resource_name = "rocket_animation"
 length = 6.0
@@ -171,50 +212,15 @@ tracks/2/keys = {
 "values": [Vector2(1, 1), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_0da36"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("rocket:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-224, -128)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("rocket:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("rocket:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0da36"]
 _data = {
 &"RESET": SubResource("Animation_0da36"),
 &"rocket_animation": SubResource("Animation_oyxes")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dw1n4"]
+radius = 12.1183
+height = 40.0368
 
 [node name="level_5" type="Node2D"]
 script = ExtResource("1_0li43")
@@ -375,6 +381,68 @@ libraries = {
 }
 
 [node name="temp_timer" type="Timer" parent="."]
+
+[node name="enter_6" parent="." instance=ExtResource("5_ryj1a")]
+position = Vector2(142, 229)
+rotation = 2.59388
+script = ExtResource("20_dw1n4")
+object_name = "enter_6"
+object_type = 1
+is_enterable = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="enter_6"]
+texture_filter = 1
+position = Vector2(-0.999999, 9)
+rotation = -3.08868
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("21_2dttu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_6"]
+position = Vector2(-1, 6.99997)
+rotation = 3.11311
+shape = SubResource("CapsuleShape2D_dw1n4")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="hover_text" type="RichTextLabel" parent="enter_6"]
+modulate = Color(0.278431, 0.235294, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.055527
+offset_top = 103.79253
+offset_right = 234.05562
+offset_bottom = 165.79253
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "Level 6
+"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_6"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.15793
+offset_top = 74.91135
+offset_right = 336.1581
+offset_bottom = 114.91185
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
 
 [connection signal="area_shape_entered" from="science_project" to="science_project" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="science_project" to="science_project" method="_on_area_shape_exited"]

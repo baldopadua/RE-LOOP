@@ -38,3 +38,11 @@ func objects_initialize():
 	objects.append(rocket)
 	objects.append(dreamer)
 
+# ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
+# TO WORK ON THE SCRIPT
+# ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
+func enter_level():
+	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
+	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
+	level_handler.complete_current_level(get_parent()) 
+

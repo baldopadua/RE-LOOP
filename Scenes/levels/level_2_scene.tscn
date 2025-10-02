@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bfqg45e6qdyho"]
+[gd_scene load_steps=59 format=3 uid="uid://bfqg45e6qdyho"]
 
 [ext_resource type="Script" uid="uid://5bf1u063c7jk" path="res://Scripts/levels/level_2_script.gd" id="1_8wkhw"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="4_8chl0"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://ca700bvbms5kx" path="res://Scripts/object-level/level_2/sword.gd" id="9_jjhbo"]
 [ext_resource type="Texture2D" uid="uid://d2gt2huwh184d" path="res://Assets/levels/level_2/Sword.png" id="10_jjhbo"]
 [ext_resource type="Texture2D" uid="uid://ybg1xg2tebka" path="res://Assets/levels/level_2/oldman_allCycles-Sheet.png" id="11_7w76p"]
+[ext_resource type="Script" uid="uid://c5xw13yqdbkv3" path="res://Scripts/object-level/level_lobby/enter_3.gd" id="12_rgji6"]
+[ext_resource type="Texture2D" uid="uid://c1qyepipkdh6o" path="res://Assets/lobby/level_3.png" id="13_e2qdm"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="27_0pbmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjp23"]
@@ -416,6 +418,10 @@ _data = {
 &"RESET": SubResource("Animation_l4q40")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgji6"]
+radius = 12.1183
+height = 40.0368
+
 [node name="level_2" type="Node2D"]
 script = ExtResource("1_8wkhw")
 
@@ -494,5 +500,66 @@ shape = SubResource("RectangleShape2D_rgji6")
 libraries = {
 &"": SubResource("AnimationLibrary_cmquk")
 }
+
+[node name="enter_3" parent="." instance=ExtResource("8_44tic")]
+position = Vector2(244, -137)
+rotation = 0.97125
+script = ExtResource("12_rgji6")
+object_name = "enter_3"
+object_type = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="enter_3"]
+texture_filter = 1
+position = Vector2(-0.999999, 9)
+rotation = -3.08868
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("13_e2qdm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_3"]
+position = Vector2(-1, 6.99997)
+rotation = 3.11311
+shape = SubResource("CapsuleShape2D_rgji6")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="hover_text" type="RichTextLabel" parent="enter_3"]
+visible = false
+modulate = Color(0.278431, 0.235294, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 111.5613
+offset_top = 115.009
+offset_right = 405.5613
+offset_bottom = 155.00902
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "Level 3: Under Pressure"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_3"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 39.307034
+offset_top = 78.94908
+offset_right = 333.30722
+offset_bottom = 118.949585
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
 
 [connection signal="animation_finished" from="AnimationPlayer" to="Sword" method="_on_animation_player_animation_finished"]
