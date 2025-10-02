@@ -268,15 +268,17 @@ func item_pick_up() -> void:
 		held_object = available_object
 		available_object.reparent(object_pos)	 
 		update_held_object_direction()
-		print("Object picked up: " + held_object.object_name)
+		#print("Object picked up: " + held_object.object_name)
 		
 		# TWEEN TO ADD BOUNCE WHEN PICKING UP
 		var tween_pickup = create_tween()
 		var screen_center = Vector2.ZERO   
 		tween_pickup.tween_property(held_object, "position", screen_center, 0.1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-		await tween_pickup.finished
-		tween_pickup.kill()
 		
+		tween_pickup.finished.connect(func():
+			tween_pickup.kill()	
+		)
+	
 		sound_manager.play_sfx("pickup")
 		
 		# The player is currently holding an object
@@ -287,11 +289,14 @@ func item_drop() -> void:
 	if held_object and not is_moving:
 		# TWEEN TO ADD BOUNCE WHEN DROPPING DOWN
 		var tween_pickup = create_tween()
-		var screen_center = Vector2(0,50.0)  
-		tween_pickup.tween_property(held_object, "position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-		await tween_pickup.finished
-		tween_pickup.kill()
-
+		var screen_center = object_drop_position.global_position
+	
+		tween_pickup.tween_property(held_object, "global_position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+		
+		tween_pickup.finished.connect(func():
+			tween_pickup.kill()
+		)
+	
 		sound_manager.play_sfx("pickup")
 
 		# Only set properties and reparent if held_object is still valid
@@ -300,21 +305,17 @@ func item_drop() -> void:
 			held_object.reparent(get_parent())
 			held_object = null
 			is_holding_object = false
-			print("Object dropped")
+			#print("Object dropped")
 			interactable_objects.clear()
-		held_object = null
-		is_holding_object = false
-		print("Object dropped")
-		interactable_objects.clear()
 
-func start_camera_shake(intensity : float):
+func start_shake(intensity : float):
 	var camera_offset = cameraShakeNoise.get_noise_1d(Time.get_ticks_msec()) * intensity
 	camera2d.offset.x = camera_offset
 	camera2d.offset.y = camera_offset
 
 func shake_camera(intesity_from : float, intesity_to : float, duration : float):
 	var camera_tween = get_tree().create_tween()
-	camera_tween.tween_method(start_camera_shake, intesity_from, intesity_to, duration)
+	camera_tween.tween_method(start_shake, intesity_from, intesity_to, duration)
 
 func _on_near_obj() -> void:
 	sprite.play("antenna")
