@@ -326,7 +326,10 @@ func set_default_time_indicator() -> void:
 func show_level_cutscene(level_number: int, continue_callback: Callable = Callable()):
 	if cutscene:
 		# Hide game UI when showing cutscene
-		
+		hide_game_ui_during_cutscene()
+		# Play page turn sound effect
+		if sound_manager:
+			sound_manager.play_ui("page_turn")
 		cutscene.show_level_cutscene(level_number, continue_callback)
 
 func hide_level_cutscene():
