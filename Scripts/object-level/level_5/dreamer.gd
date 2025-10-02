@@ -4,15 +4,22 @@ extends object_class
 signal add_cur_state(direction)
 
 @onready var dreamer_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+# Keystone Objects
 @onready var soda = $"../soda"
+@onready var science_project = $"../science_project" 
+@onready var rocket = $"../rocket"
+
 var area_entered_objects : Array = []
 
 var is_soda_dispensed: bool = false
+var is_dream_reached: bool = false
 
 func _on_add_cur_state(_direction) -> void:
 	if current_state == 1:
 		dreamer_animated_sprite.play("skeletal_remains")
 	elif current_state == 2:
+		is_pickupable = false
 		dreamer_animated_sprite.play("kid")
 		if area_entered_objects.size() > 0:
 			dreamer_animated_sprite.animation_finished.connect(func():
@@ -32,10 +39,17 @@ func _on_add_cur_state(_direction) -> void:
 					# Then determine if the kid grows up to be an astronaut
 					# or a depressed salaryman
 					elif area.object_name == "science_project":
-						pass
+						if science_project.is_dreamer_here and science_project.is_soda_here:
+							is_dream_reached = true
+						else:
+							is_dream_reached = false
 		)
 	elif current_state == 3:
-		dreamer_animated_sprite.play("depressed_salaryman")
+		if is_dream_reached:
+			dreamer_animated_sprite.play("astronaut")
+			rocket.visible = true
+		else:
+			dreamer_animated_sprite.play("depressed_salaryman")
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if dreamer_animated_sprite.animation == "skeletal_remains":

@@ -20,9 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://d4hls42etbvcm" path="res://Assets/levels/level_5/placeholder_assets/soda_small.png" id="18_dtqwf"]
 [ext_resource type="Script" uid="uid://b1gbqaimevnvo" path="res://Scripts/object-level/level_5/soda.gd" id="18_oyxes"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tahrn"]
-size = Vector2(20, 34.5526)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtqwf"]
 atlas = ExtResource("17_ds2sm")
 region = Rect2(0, 0, 50, 50)
@@ -58,6 +55,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctghb"]
 size = Vector2(32, 48.7846)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tahrn"]
+size = Vector2(20, 34.5526)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agu2x"]
 radius = 15.0
@@ -148,23 +148,6 @@ position_smoothing_enabled = true
 
 [node name="SoundManager" parent="." instance=ExtResource("4_ctghb")]
 
-[node name="science_project" parent="." instance=ExtResource("5_ryj1a")]
-position = Vector2(-250, -141)
-script = ExtResource("12_tahrn")
-object_name = "science_project"
-object_type = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="science_project"]
-rotation = 2.0944
-texture = ExtResource("12_aql1r")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="science_project"]
-position = Vector2(-6.30145, -3.63814)
-rotation = 2.0944
-shape = SubResource("RectangleShape2D_tahrn")
-metadata/_edit_lock_ = true
-
 [node name="vending" parent="." instance=ExtResource("5_ryj1a")]
 position = Vector2(-137, 252)
 script = ExtResource("17_dtqwf")
@@ -202,6 +185,23 @@ metadata/_edit_lock_ = true
 position = Vector2(-24, -16)
 rotation = 2.0943952
 shape = SubResource("RectangleShape2D_ctghb")
+
+[node name="science_project" parent="." instance=ExtResource("5_ryj1a")]
+position = Vector2(-250, -141)
+script = ExtResource("12_tahrn")
+object_name = "science_project"
+object_type = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="science_project"]
+rotation = 2.0944
+texture = ExtResource("12_aql1r")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="science_project"]
+position = Vector2(-6.30145, -3.63814)
+rotation = 2.0944
+shape = SubResource("RectangleShape2D_tahrn")
+metadata/_edit_lock_ = true
 
 [node name="dreamer" parent="." instance=ExtResource("5_ryj1a")]
 position = Vector2(-248, -144)
@@ -244,8 +244,9 @@ position = Vector2(-0.401932, -6.6961365)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_0da36")
 
+[connection signal="area_shape_entered" from="science_project" to="science_project" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="science_project" to="science_project" method="_on_area_shape_exited"]
 [connection signal="add_cur_state" from="dreamer" to="dreamer" method="_on_add_cur_state"]
 [connection signal="area_shape_entered" from="dreamer" to="dreamer" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="dreamer" to="dreamer" method="_on_area_shape_exited"]
 [connection signal="animation_finished" from="dreamer/AnimatedSprite2D" to="dreamer" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="area_shape_entered" from="soda" to="soda" method="_on_area_shape_entered"]

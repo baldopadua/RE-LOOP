@@ -274,9 +274,11 @@ func item_pick_up() -> void:
 		var tween_pickup = create_tween()
 		var screen_center = Vector2.ZERO   
 		tween_pickup.tween_property(held_object, "position", screen_center, 0.1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-		await tween_pickup.finished
-		tween_pickup.kill()
 		
+		tween_pickup.finished.connect(func():
+			tween_pickup.kill()	
+		)
+	
 		sound_manager.play_sfx("pickup")
 		
 		# The player is currently holding an object
@@ -287,11 +289,14 @@ func item_drop() -> void:
 	if held_object and not is_moving:
 		# TWEEN TO ADD BOUNCE WHEN DROPPING DOWN
 		var tween_pickup = create_tween()
-		var screen_center = Vector2(0,50.0)  
-		tween_pickup.tween_property(held_object, "position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-		await tween_pickup.finished
-		tween_pickup.kill()
-
+		var screen_center = object_drop_position.global_position
+	
+		tween_pickup.tween_property(held_object, "global_position", screen_center, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+		
+		tween_pickup.finished.connect(func():
+			tween_pickup.kill()
+		)
+	
 		sound_manager.play_sfx("pickup")
 
 		# Only set properties and reparent if held_object is still valid
