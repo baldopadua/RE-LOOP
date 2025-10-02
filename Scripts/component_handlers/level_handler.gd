@@ -137,14 +137,18 @@ func set_current_lobby():
 # Example: level_handler.complete_current_level(get_parent().get_parent())
 func complete_current_level(levels_frame):
 	if current_level_number > 0:
-		# KILL ANY EXISTING TWEENS FIRST
+		# KILL ANY EXISTING TWEENS FIRST - More comprehensive tween killing
 		var current_level = levels_frame.get_child(0)
 		if current_level:
-			# Kill all tweens in the current level only
-			var tweens = get_tree().get_nodes_in_group("tweens")
-			for tween in tweens:
-				if tween and tween.is_valid():
-					tween.kill()
+			# Kill all tweens in the scene tree
+			_kill_all_level_tweens(current_level)
+		
+		# Stop player movement immediately
+		if current_player:
+			GlobalVariables.player_stopped = true
+			# Disable player input to prevent further movement
+			current_player.set_physics_process(false)
+			current_player.set_process_input(false)
 		
 		# Stop hand from following player and preserve position
 		level_status_node.stop_following_player()
@@ -185,9 +189,6 @@ func complete_current_level(levels_frame):
 		if not is_replaying_completed_level:
 			_mark_level_completed_and_print_status()
 		
-		# ENSURE BACKGROUND STAYS VISIBLE DURING TRANSITION
-		ensure_background_visible()
-		
 		# KILL THE CURRENT LEVEL WITH ANIMATION (TWEEN KILL) - Wait for completion
 		kill_current_level(current_level)
 		await get_tree().create_timer(1.2).timeout  # Increased wait time to ensure tween completion
@@ -215,15 +216,6 @@ func _show_clock_then_load_level(next_level_number: int, levels_frame):
 	
 	# Load next level after clock animation
 	_continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame)
-
-# New function to ensure background stays visible
-func ensure_background_visible():
-	# Navigate to GameScene and ensure background is visible
-	var game_scene = get_tree().root.get_node("MainScene/GameScene")
-	if game_scene and game_scene.has_node("CanvasLayer/game_scene_bg"):
-		var background = game_scene.get_node("CanvasLayer/game_scene_bg")
-		background.visible = true
-		print("Level Handler: Ensured background visibility")
 
 func load_next_level(next_level_number: int, levels_frame):
 	var next_level_path = "res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn"
@@ -363,3 +355,33 @@ func kill_current_level(level_scene):
 	tween_scale.connect("finished", Callable(self, "tween_next_scale_finished").bind(tween_scale))
 	# Scale to very small instead of 0 to avoid determinant issues
 	tween_scale.tween_property(level_scene, "scale", Vector2(0.01, 0.01), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+
+
+# Helper function to kill all tweens in a level scene
+func _kill_all_level_tweens(level_scene: Node):
+	# Kill tweens in the level scene and all its children recursively
+	_recursive_kill_tweens(level_scene)
+	
+	# Also kill any global tweens
+	var tweens = get_tree().get_nodes_in_group("tweens")
+	for tween in tweens:
+		if tween and tween.is_valid():
+			tween.kill()
+
+# Recursive function to kill tweens in all nodes
+func _recursive_kill_tweens(node: Node):
+	# Check if node has tweens and kill them
+	for child in node.get_children():
+		# Kill tweens on this child
+		if child.has_method("create_tween"):
+			# Try to access any tween properties that might exist
+			var properties = child.get_property_list()
+			for property in properties:
+				if property.name.contains("tween"):
+					var tween_obj = child.get(property.name)
+					if tween_obj and typeof(tween_obj) == TYPE_OBJECT and tween_obj.has_method("kill"):
+						if tween_obj.is_valid():
+							tween_obj.kill()
+		
+		# Recursively check children
+		_recursive_kill_tweens(child)

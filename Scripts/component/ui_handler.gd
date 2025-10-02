@@ -326,14 +326,14 @@ func set_default_time_indicator() -> void:
 func show_level_cutscene(level_number: int, continue_callback: Callable = Callable()):
 	if cutscene:
 		# Hide game UI when showing cutscene
-		hide_game_ui_during_cutscene()
+		
 		cutscene.show_level_cutscene(level_number, continue_callback)
 
 func hide_level_cutscene():
 	if cutscene:
 		cutscene.hide_cutscene()
 		# Restore game UI when hiding cutscene
-		show_game_ui_after_cutscene()
+		
 
 # Hide game UI elements during cutscene
 func hide_game_ui_during_cutscene():

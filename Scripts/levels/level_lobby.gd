@@ -12,6 +12,8 @@ extends Node2D
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var sound_manager = $SoundManager
 
+# LOBBY ACTIVE FLAG
+var lobby_active: bool = true
 
 var states := ["State1", "State2", "State3", "State4"]
 var center_circle: Vector2i = Vector2i(0, 0)
@@ -37,6 +39,9 @@ var center_circle: Vector2i = Vector2i(0, 0)
 func _ready():
 	# Wait for level_handler to be ready before calling set_current_lobby
 	await get_tree().process_frame
+	
+	# Ensure lobby starts as active
+	lobby_active = true
 	
 	if level_handler:
 		level_handler.set_current_lobby()
@@ -112,16 +117,23 @@ func objects_initialize():
 		objects.append(enter_12)
 
 func _process(_delta: float) -> void:
+	if not lobby_active:
+		return
 	level_handler.visible = true
 
 # Add this method to handle level transitions from lobby
 func enter_level(level_number: int):
+	# DISABLE ALL LOBBY FUNCTIONALITY IMMEDIATELY
+	disable_lobby_functionality()
+	
 	print("Entering level ", level_number)
 	
 	# Check if the level scene file exists before attempting to enter
 	var level_path = "res://Scenes/levels/level_" + str(level_number) + "_scene.tscn"
 	if not ResourceLoader.exists(level_path):
 		print("Level ", level_number, " is not ready yet!")
+		# Re-enable lobby if level doesn't exist
+		enable_lobby_functionality()
 		return  # Exit early if level doesn't exist
 	
 	# STOP FOREST AMBIENCE WHEN LEAVING LOBBY
@@ -179,40 +191,96 @@ func update_completed_levels_visual():
 			1:
 				if enter_1:
 					enter_1.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_1)
 			2:
 				if enter_2:
 					enter_2.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_2)
 			3:
 				if enter_3:
 					enter_3.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_3)
 			4:
 				if enter_4:
 					enter_4.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_4)
 			5:
 				if enter_5:
 					enter_5.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_5)
 			6:
 				if enter_6:
 					enter_6.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_6)
 			7:
 				if enter_7:
 					enter_7.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_7)
 			8:
 				if enter_8:
 					enter_8.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_8)
 			9:
 				if enter_9:
 					enter_9.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_9)
 			10:
 				if enter_10:
 					enter_10.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_10)
 			11:
 				if enter_11:
 					enter_11.set_level_completion_visual(is_completed)
+					if is_completed:
+						disable_entrance_completely(enter_11)
 			12:
 				if enter_12:
 					enter_12.set_level_completion_visual(is_completed)
-			
+					if is_completed:
+						disable_entrance_completely(enter_12)
+
+# Completely disable a completed entrance object
+func disable_entrance_completely(entrance_obj):
+	if not entrance_obj:
+		return
+		
+	print("Completely disabling entrance: ", entrance_obj.object_name)
+	
+	# Disable all processing
+	entrance_obj.set_process(false)
+	entrance_obj.set_physics_process(false)
+	entrance_obj.set_process_input(false)
+	entrance_obj.set_process_unhandled_input(false)
+	entrance_obj.set_process_unhandled_key_input(false)
+	
+	# Disable collision detection
+	if entrance_obj.has_node("CollisionShape2D"):
+		entrance_obj.get_node("CollisionShape2D").disabled = true
+	
+	# Hide all text labels permanently
+	if entrance_obj.has_node("hover_text"):
+		entrance_obj.get_node("hover_text").visible = false
+	if entrance_obj.has_node("interact_text"):
+		entrance_obj.get_node("interact_text").visible = false
+	
+	# Mark as not enterable if the property exists
+	if entrance_obj.has_method("set") and "is_enterable" in entrance_obj:
+		entrance_obj.is_enterable = false
+	
+	# Remove from area handler detection
+	if area_handler and area_handler.has_method("remove_object_from_detection"):
+		area_handler.remove_object_from_detection(entrance_obj)
+
 
 # Called when a level is completed
 func _on_level_completed(level_name: String):
@@ -291,6 +359,9 @@ func connect_player_to_short_hand():
 		
 # Handle player movement in lobby to update long hand
 func _on_player_moved_in_lobby():
+	if not lobby_active:
+		return
+		
 	if player and level_handler.level_status_node:
 		# In lobby, make long hand follow player directly
 		level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
@@ -300,28 +371,116 @@ func _on_player_moved_in_lobby():
 		var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
 		level_handler.level_status_node.base_clock_position = current_clock_pos
 		level_handler.level_status_node.update_lock_state()
-		
-		
 
 func sync_short_hand_to_player():
-	if player and level_handler.level_status_node:
-		# Check if this is coming from a replay (preserved rotation will be 0.0)
-		if level_handler.level_status_node.preserved_hand_rotation == 0.0:
-			# Coming from replay or first time - sync to player position
-			level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
-			
-		else:
-			# Coming from cutscene - use preserved rotation
-			level_handler.level_status_node.short_hand_rotation.rotation = level_handler.level_status_node.preserved_hand_rotation
-			
+	if not lobby_active:
+		return
 		
-		# Update the base_clock_position to match current position for consistency
-		var current_degrees = rad_to_deg(level_handler.level_status_node.short_hand_rotation.rotation)
-		var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
-		level_handler.level_status_node.base_clock_position = current_clock_pos
-		level_handler.level_status_node.update_lock_state()
+	# Check if this is coming from a replay (preserved rotation will be 0.0)
+	if level_handler.level_status_node.preserved_hand_rotation == 0.0:
+		# Coming from replay or first time - sync to player position
+		level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
 		
-		# Always ensure hand following is enabled in lobby
-		level_handler.level_status_node.resume_following_player()
+	else:
+		# Coming from cutscene - use preserved rotation
+		level_handler.level_status_node.short_hand_rotation.rotation = level_handler.level_status_node.preserved_hand_rotation
+	
+	# Update the base_clock_position to match current position for consistency
+	var current_degrees = rad_to_deg(level_handler.level_status_node.short_hand_rotation.rotation)
+	var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
+	level_handler.level_status_node.base_clock_position = current_clock_pos
+	level_handler.level_status_node.update_lock_state()
+	
+	# Always ensure hand following is enabled in lobby
+	level_handler.level_status_node.resume_following_player()
+
+# Disable all lobby functionality
+func disable_lobby_functionality():
+	lobby_active = false
+	
+	# Disable player input and movement
+	if player:
+		player.set_process(false)
+		player.set_physics_process(false)
+		player.set_process_input(false)
+	
+	# Disable area handler
+	if area_handler:
+		area_handler.set_process(false)
+		area_handler.set_physics_process(false)
+	
+	# Disable all entrance objects
+	for obj in objects:
+		if obj:
+			obj.set_process(false)
+			obj.set_physics_process(false)
+			obj.set_process_input(false)
+			# Hide text labels
+			if obj.has_node("hover_text"):
+				obj.get_node("hover_text").visible = false
+			if obj.has_node("interact_text"):
+				obj.get_node("interact_text").visible = false
+	
+	# Stop all tweens
+	if tween_rotate and tween_rotate.is_valid():
+		tween_rotate.kill()
+	if tween_scale and tween_scale.is_valid():
+		tween_scale.kill()
+	
+	# Disable level handler updates
+	if level_handler:
+		level_handler.set_process(false)
+	
+	# Disable sound manager
+	if sound_manager:
+		sound_manager.set_process(false)
+
+# Re-enable lobby functionality (for when returning from level)
+func enable_lobby_functionality():
+	lobby_active = true
+	
+	# Re-enable player
+	if player:
+		player.set_process(true)
+		player.set_physics_process(true)
+		player.set_process_input(true)
+	
+	# Re-enable area handler
+	if area_handler:
+		area_handler.set_process(true)
+		area_handler.set_physics_process(true)
+	
+	# Re-enable only non-completed entrance objects
+	for obj in objects:
+		if obj:
+			# Check if this level is completed
+			var level_number = get_level_number_from_entrance(obj)
+			var is_completed = level_handler.completed_levels.has(level_number)
+			
+			if not is_completed:
+				obj.set_process(true)
+				obj.set_physics_process(true)
+				obj.set_process_input(true)
+			# If completed, keep it disabled
+	
+	# Re-enable level handler
+	if level_handler:
+		level_handler.set_process(true)
+	
+	# Re-enable sound manager
+	if sound_manager:
+		sound_manager.set_process(true)
+
+# Helper function to get level number from entrance object name
+func get_level_number_from_entrance(entrance_obj) -> int:
+	if not entrance_obj or not entrance_obj.has_method("get") or not "object_name" in entrance_obj:
+		return 0
+		
+	var obj_name = entrance_obj.object_name
+	# Extract number from "enter_X" format
+	if obj_name.begins_with("enter_"):
+		var num_str = obj_name.substr(6) # Remove "enter_" prefix
+		return int(num_str)
+	return 0
 
 

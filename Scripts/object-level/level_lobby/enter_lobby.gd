@@ -28,10 +28,19 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 		# Check if we're in a level scene (not lobby)
 		var current_level_scene = _get_current_level_scene(object_interacted)
 		if current_level_scene:
-			# We're in a level scene, complete it
+			# We're in a level scene, complete it properly
 			print("Detected we're in level scene: ", current_level_scene.name)
-			if current_level_scene.has_method("enter_level"):
-				current_level_scene.enter_level()
+			
+			# Get level handler and trigger proper completion
+			var scene_level_handler = object_interacted.get_level_handler()
+			if scene_level_handler:
+				# Get the levels frame (usually the parent of the level scene)
+				var levels_frame = current_level_scene.get_parent()
+				scene_level_handler.complete_current_level(levels_frame)
+			else:
+				# Fallback to direct enter_level call
+				if current_level_scene.has_method("enter_level"):
+					current_level_scene.enter_level()
 			return
 		
 		# Check if level is accessible before entering (lobby behavior)
