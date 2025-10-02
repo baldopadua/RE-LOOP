@@ -51,3 +51,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			temp_timer.timeout.connect(func():
 				level_handler.restart_level(get_parent().get_parent())
 			)
+		else:
+			# Player successfully entered the rocket and animation finished
+			level_handler.complete_current_level(get_parent().get_parent())

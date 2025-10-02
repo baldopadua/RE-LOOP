@@ -15,6 +15,9 @@ extends Node2D
 @onready var rocket = $rocket
 @onready var dreamer = $dreamer
 
+# PLAYER STATE AND LABEL
+var player_has_entered: bool = false
+
 # TWEENS
 @onready var tween_rotate: Tween
 @onready var tween_scale: Tween
@@ -34,4 +37,4 @@ func objects_initialize():
 	objects.append(vending)
 	objects.append(rocket)
 	objects.append(dreamer)
-	
+
