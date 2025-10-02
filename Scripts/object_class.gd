@@ -238,28 +238,23 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 			return accessible
 		7:
 			# Level 7 requires previous levels to be completed
-			var accessible = level_handler.completed_levels.has(6)
-			return accessible
+			
+			return true
 		8:
 			# Level 8 requires previous levels to be completed
-			var accessible = level_handler.completed_levels.has(7)
-			return accessible
+			return true
 		9:
 			# Level 9 requires previous levels to be completed
-			var accessible = level_handler.completed_levels.has(8)
-			return accessible
+			return true
 		10:
 			# Level 10 requires previous levels to be completed
-			var accessible = level_handler.completed_levels.has(9)
-			return accessible
+			return true
 		11:
 			# Level 11 requires previous levels to be completed
-			var accessible = level_handler.completed_levels.has(10)
-			return accessible
+			return true
 		12:
 			# Level 12 requires previous levels to be completed
-			var accessible = level_handler.completed_levels.has(11)
-			return accessible
+			return true
 		_:
 			print("Level ", level_number, " not implemented yet")
 			return false

@@ -8,12 +8,11 @@ static var level_titles = {
 	4: "Level 4: The Theory of Evolution",
 	5: "Level 5: Rocket Science",
 	6: "Level 6: Variance",
-	7: "Level 7",  # Placeholder until decided
-	8: "Level 8",  # Placeholder until decided
-	9: "Level 9",  # Placeholder until decided
-	10: "Level 10", # Placeholder until decided
-	11: "Level 11", # Placeholder until decided
-	12: "Level 12"  # Placeholder until decided
+	7: "Level 7",  
+	8: "Level 8", 
+	9: "Level 9",  
+	10: "Level 10",
+	12: "Level 12"  
 }
 
 # General function to handle level entrance for any level (1-12)
@@ -25,7 +24,16 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 		if object_interacted.hover_text_label:
 			object_interacted.hover_text_label.visible = false
 		
-		# Check if level is accessible before entering
+		# Check if we're in a level scene (not lobby)
+		var current_level_scene = _get_current_level_scene(object_interacted)
+		if current_level_scene:
+			# We're in a level scene, complete it
+			print("Detected we're in level scene: ", current_level_scene.name)
+			if current_level_scene.has_method("enter_level"):
+				current_level_scene.enter_level()
+			return
+		
+		# Check if level is accessible before entering (lobby behavior)
 		var level_handler = object_interacted.get_level_handler()
 		if level_handler and not object_interacted.is_level_accessible(level_number, level_handler):
 			object_interacted.show_interact_text("LOCKED")
@@ -45,6 +53,16 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 			lobby_scene.enter_level(level_number)
 		else:
 			print("lobby_scene doesn't have enter_level method")
+
+# Helper function to detect if we're in a level scene
+static func _get_current_level_scene(object_ref: object_class) -> Node:
+	var current = object_ref.get_parent()
+	while current != null:
+		# Check if this node has characteristics of a level scene
+		if current.has_method("enter_level") and current.name.contains("level_") and not current.name.contains("lobby"):
+			return current
+		current = current.get_parent()
+	return null
 
 # General function to handle hover behavior for any level
 static func handle_level_hover(level_number: int, object_ref: object_class):

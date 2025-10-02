@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://bg2xip755v06g"]
+
+[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_7glvm"]
+[ext_resource type="Script" uid="uid://cr0pwvu6h53ym" path="res://Scripts/levels/level_7_script.gd" id="1_y76yc"]
+[ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_qi7jl"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_e7h5n"]
+[ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_ltkbt"]
+[ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_qi7jl"]
+[ext_resource type="Script" uid="uid://bu5sa4rvqv5gf" path="res://Scripts/object-level/level_lobby/enter_8.gd" id="7_e7h5n"]
+[ext_resource type="Texture2D" uid="uid://ba6w75c3euhid" path="res://Assets/lobby/level_8.png" id="8_ltkbt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lrbu4"]
+radius = 12.1183
+height = 40.0368
+
+[node name="level_7_scene" type="Node2D"]
+script = ExtResource("1_y76yc")
+
+[node name="AreaHandler" parent="." instance=ExtResource("1_7glvm")]
+metadata/_edit_lock_ = true
+
+[node name="PlayerScene" parent="." instance=ExtResource("2_qi7jl")]
+self_modulate = Color(1, 1, 1, 0)
+up_direction = Vector2(0, 1)
+
+[node name="Label" type="Label" parent="PlayerScene"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.5
+offset_top = -220.0
+offset_right = 156.5
+offset_bottom = -186.0
+grow_horizontal = 2
+rotation = 3.1415927
+pivot_offset = Vector2(156.5, 0)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 14
+text = "I didn't forget you, but you forgot me..."
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = -3.1362858
+ignore_rotation = false
+position_smoothing_enabled = true
+
+[node name="SoundManager" parent="." instance=ExtResource("3_e7h5n")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_ltkbt")]
+
+[node name="enter_8" parent="." instance=ExtResource("6_qi7jl")]
+position = Vector2(-3.0000076, 293)
+rotation = 3.2317152
+script = ExtResource("7_e7h5n")
+object_name = "enter_8"
+object_type = 1
+is_enterable = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="enter_8"]
+texture_filter = 1
+position = Vector2(-0.999999, 9)
+rotation = -3.08868
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("8_ltkbt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_8"]
+position = Vector2(-1, 6.99997)
+rotation = 3.11311
+shape = SubResource("CapsuleShape2D_lrbu4")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="hover_text" type="RichTextLabel" parent="enter_8"]
+visible = false
+modulate = Color(0.278431, 0.235294, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.250374
+offset_top = 92.11097
+offset_right = 219.25046
+offset_bottom = 154.11096
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.9458866
+scale = Vector2(1.30259, 1.39847)
+text = "Level 8
+"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_8"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 27.178722
+offset_top = 69.08921
+offset_right = 321.1789
+offset_bottom = 109.089714
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.9072394
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2

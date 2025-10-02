@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://3tla2n3edqkn"]
+[gd_scene load_steps=10 format=3 uid="uid://3tla2n3edqkn"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_2r23t"]
 [ext_resource type="Script" uid="uid://ds7lwxirvmjvs" path="res://Scripts/levels/level_6_script.gd" id="1_odmpw"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_et41i"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_5j0bc"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_jmy7j"]
+[ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_kapnr"]
+[ext_resource type="Script" uid="uid://bumd8q35oybex" path="res://Scripts/object-level/level_lobby/enter_7.gd" id="7_sh2gb"]
+[ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/lobby/level_7.png" id="8_pwedw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ov81m"]
+radius = 12.1183
+height = 40.0368
 
 [node name="level_6_scene" type="Node2D"]
 script = ExtResource("1_odmpw")
@@ -45,3 +52,67 @@ position_smoothing_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_jmy7j")]
+
+[node name="enter_7" parent="." instance=ExtResource("6_kapnr")]
+position = Vector2(1.00003, 269)
+rotation = 3.10266
+script = ExtResource("7_sh2gb")
+object_name = "enter_7"
+object_type = 1
+is_enterable = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="enter_7"]
+texture_filter = 1
+position = Vector2(-0.999999, 9)
+rotation = -3.08868
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("8_pwedw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_7"]
+position = Vector2(-1, 6.99997)
+rotation = 3.11311
+shape = SubResource("CapsuleShape2D_ov81m")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="hover_text" type="RichTextLabel" parent="enter_7"]
+visible = false
+modulate = Color(0.278431, 0.235294, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.888115
+offset_top = 106.20489
+offset_right = 234.88821
+offset_bottom = 168.2049
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.0987384
+scale = Vector2(1.30259, 1.39847)
+text = "Level 7
+"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_7"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 46.043682
+offset_top = 76.85039
+offset_right = 340.04385
+offset_bottom = 116.85089
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2

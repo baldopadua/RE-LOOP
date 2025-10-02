@@ -5,7 +5,6 @@ var tween_climb: Tween
 var tween_rotate: Tween
 var tween_scale: Tween
 
-var level_2 = preload("res://Scenes/levels/level_2_scene.tscn")
 var time_indicator: AnimatedSprite2D
 var is_playing: bool = false
 var player_body: Node 
