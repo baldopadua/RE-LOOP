@@ -12,7 +12,7 @@ config_version=5
 
 config/name="RE:LOOP"
 run/main_scene="uid://dypu05rngiwmu"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/image="uid://dqxv8sy5omreg"
 config/icon="uid://dqxv8sy5omreg"
 config/image=""

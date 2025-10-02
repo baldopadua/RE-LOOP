@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cq7q8j32eespg" path="res://Scripts/game_scene.gd" id="1_6h5vk"]
 [ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="1_x87qo"]
-[ext_resource type="PackedScene" uid="uid://fyqypy6fcyaf" path="res://Scenes/levels/level_4_scene.tscn" id="3_6h5vk"]
+[ext_resource type="PackedScene" uid="uid://c68gmkh2e26af" path="res://Scenes/levels/level_5_scene.tscn" id="3_6h5vk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6fju"]
 atlas = ExtResource("1_x87qo")
@@ -74,4 +74,4 @@ sprite_frames = SubResource("SpriteFrames_7iton")
 [node name="levels_frame" type="Node2D" parent="."]
 position = Vector2(640, 360)
 
-[node name="level_4" parent="levels_frame" instance=ExtResource("3_6h5vk")]
+[node name="level_5" parent="levels_frame" instance=ExtResource("3_6h5vk")]

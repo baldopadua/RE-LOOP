@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c68gmkh2e26af"]
+[gd_scene load_steps=36 format=3 uid="uid://c68gmkh2e26af"]
 
 [ext_resource type="Script" uid="uid://bht2nh4ymwmf5" path="res://Scripts/levels/level_5_script.gd" id="1_0li43"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_aql1r"]
@@ -15,9 +15,10 @@
 [ext_resource type="Script" uid="uid://6vc2vv34jju8" path="res://Scripts/object-level/level_5/science_project.gd" id="12_tahrn"]
 [ext_resource type="Script" uid="uid://dx7cjdgx1bqh8" path="res://Scripts/object-level/level_5/rocket.gd" id="14_ctghb"]
 [ext_resource type="Texture2D" uid="uid://d312ws4vc3ikt" path="res://Assets/levels/level_5/placeholder_assets/rocket_ship.png" id="15_h26wg"]
-[ext_resource type="Texture2D" uid="uid://c347xhjhyo3ul" path="res://Assets/levels/level_5/placeholder_assets/soda_big.png" id="16_h26wg"]
 [ext_resource type="Texture2D" uid="uid://ypxrqiwnlkmj" path="res://Assets/levels/level_5/placeholder_assets/vending_machine.png" id="17_ds2sm"]
 [ext_resource type="Script" uid="uid://pu00f16vh66k" path="res://Scripts/object-level/level_5/vending.gd" id="17_dtqwf"]
+[ext_resource type="Texture2D" uid="uid://d4hls42etbvcm" path="res://Assets/levels/level_5/placeholder_assets/soda_small.png" id="18_dtqwf"]
+[ext_resource type="Script" uid="uid://b1gbqaimevnvo" path="res://Scripts/object-level/level_5/soda.gd" id="18_oyxes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tahrn"]
 size = Vector2(20, 34.5526)
@@ -44,10 +45,6 @@ size = Vector2(48, 64)
 atlas = ExtResource("15_h26wg")
 region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ds2sm"]
-atlas = ExtResource("16_h26wg")
-region = Rect2(0, 0, 150, 150)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ryj1a"]
 animations = [{
 "frames": [{
@@ -56,14 +53,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"rocket_ship",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ds2sm")
-}],
-"loop": true,
-"name": &"soda",
 "speed": 5.0
 }]
 
@@ -120,8 +109,25 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_aql1r")
 }],
-"loop": true,
+"loop": false,
 "name": &"skeletal_remains",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds2sm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyxes"]
+atlas = ExtResource("18_dtqwf")
+region = Rect2(0, 0, 14, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0da36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyxes")
+}],
+"loop": true,
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -129,6 +135,7 @@ animations = [{
 script = ExtResource("1_0li43")
 
 [node name="AreaHandler" parent="." instance=ExtResource("2_aql1r")]
+metadata/_edit_lock_ = true
 
 [node name="PlayerScene" parent="." instance=ExtResource("3_tahrn")]
 self_modulate = Color(1, 1, 1, 0)
@@ -178,28 +185,30 @@ shape = SubResource("RectangleShape2D_h26wg")
 metadata/_edit_lock_ = true
 
 [node name="rocket" parent="." instance=ExtResource("5_ryj1a")]
-position = Vector2(-208, -112)
+visible = false
+position = Vector2(-224, -128)
 script = ExtResource("14_ctghb")
 object_name = "rocket"
-is_pickupable = true
+object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rocket"]
-position = Vector2(80, 336)
-rotation = 0.523599
+rotation = 2.0943952
 scale = Vector2(0.743018, 0.743018)
 sprite_frames = SubResource("SpriteFrames_ryj1a")
-animation = &"soda"
+animation = &"rocket_ship"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rocket"]
-position = Vector2(-36.1962, -21.8038)
-rotation = 2.0944
+position = Vector2(-24, -16)
+rotation = 2.0943952
 shape = SubResource("RectangleShape2D_ctghb")
 
 [node name="dreamer" parent="." instance=ExtResource("5_ryj1a")]
 position = Vector2(-248, -144)
 script = ExtResource("7_cltmq")
 object_name = "dreamer"
-max_state_threshold = 4
+usable_targets = Array[String](["science_project", "vending"])
+max_state_threshold = 3
 min_state_threshold = 1
 current_state = 2
 
@@ -217,3 +226,26 @@ metadata/_edit_lock_ = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("11_dw1n4")]
+
+[node name="soda" parent="." instance=ExtResource("5_ryj1a")]
+visible = false
+position = Vector2(-152.00002, 264)
+rotation = 0.5235988
+script = ExtResource("18_oyxes")
+object_name = "soda"
+usable_targets = Array[String](["science_project"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="soda"]
+shape = SubResource("RectangleShape2D_ds2sm")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="soda"]
+position = Vector2(-0.401932, -6.6961365)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_0da36")
+
+[connection signal="add_cur_state" from="dreamer" to="dreamer" method="_on_add_cur_state"]
+[connection signal="area_shape_entered" from="dreamer" to="dreamer" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="dreamer" to="dreamer" method="_on_area_shape_exited"]
+[connection signal="animation_finished" from="dreamer/AnimatedSprite2D" to="dreamer" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_shape_entered" from="soda" to="soda" method="_on_area_shape_entered"]

@@ -35,4 +35,3 @@ func objects_initialize():
 	objects.append(rocket)
 	objects.append(dreamer)
 	
-

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d312ws4vc3ikt"
-path="res://.godot/imported/rocket_ship.png-81135d12845e2675642ed25b542eea42.ctex"
+uid="uid://d4hls42etbvcm"
+path="res://.godot/imported/soda_small.png-b74ca8fb7992b684c3ae8456cf594117.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/levels/level_5/placeholder_assets/rocket_ship.png"
-dest_files=["res://.godot/imported/rocket_ship.png-81135d12845e2675642ed25b542eea42.ctex"]
+source_file="res://Assets/levels/level_5/placeholder_assets/soda_small.png"
+dest_files=["res://.godot/imported/soda_small.png-b74ca8fb7992b684c3ae8456cf594117.ctex"]
 
 [params]
 
