@@ -327,6 +327,8 @@ func show_level_cutscene(level_number: int, continue_callback: Callable = Callab
 	if cutscene:
 		# Hide game UI when showing cutscene
 		hide_game_ui_during_cutscene()
+		# Show custom cursor during cutscene
+		show_cursor()
 		# Play page turn sound effect
 		if sound_manager:
 			sound_manager.play_ui("page_turn")
@@ -335,6 +337,8 @@ func show_level_cutscene(level_number: int, continue_callback: Callable = Callab
 func hide_level_cutscene():
 	if cutscene:
 		cutscene.hide_cutscene()
+		# Hide custom cursor when cutscene ends
+		remove_cursor()
 		# Restore game UI when hiding cutscene
 		
 

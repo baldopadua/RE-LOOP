@@ -48,9 +48,10 @@ func _on_continue_pressed():
 	# Hide the cutscene
 	visible = false
 	
-	# Restore game UI through ui_handler
+	# Hide custom cursor when cutscene ends
 	var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 	if ui_handler:
+		ui_handler.remove_cursor()
 		ui_handler.show_game_ui_after_cutscene()
 	
 	# Call the continue callback if provided
@@ -60,7 +61,11 @@ func _on_continue_pressed():
 func hide_cutscene():
 	visible = false
 	
-	# Restore game UI through ui_handler
+	# Reset scale for next time
+	scale = Vector2(1.0, 1.0)
+	
+	# Hide custom cursor and restore game UI through ui_handler
 	var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 	if ui_handler:
+		ui_handler.remove_cursor()
 		ui_handler.show_game_ui_after_cutscene()
