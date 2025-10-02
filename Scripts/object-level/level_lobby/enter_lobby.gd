@@ -12,6 +12,7 @@ static var level_titles = {
 	8: "Level 8", 
 	9: "Level 9",  
 	10: "Level 10",
+	11: "Level 11",
 	12: "Level 12"  
 }
 
@@ -73,6 +74,8 @@ static func handle_level_hover(level_number: int, object_ref: object_class):
 	print("Level handler found: ", level_handler != null)
 	
 	if level_handler:
+		
+		
 		var is_accessible = object_ref.is_level_accessible(level_number, level_handler)
 		print("Level ", level_number, " is accessible: ", is_accessible)
 		

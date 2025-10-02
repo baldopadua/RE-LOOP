@@ -166,22 +166,6 @@ animations = [{
 [node name="AreaHandler" type="Node2D"]
 script = ExtResource("1_hhhxy")
 
-[node name="Clock" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -300.0
-offset_right = 300.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_26ycf")
-expand_mode = 1
-
 [node name="SampleMap" type="TextureRect" parent="."]
 visible = false
 anchors_preset = 8
@@ -228,3 +212,18 @@ frame_progress = 1.0
 
 [node name="SoundManager" parent="." instance=ExtResource("7_7c312")]
 position = Vector2(-375, -375)
+
+[node name="Clock" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_26ycf")
+expand_mode = 1

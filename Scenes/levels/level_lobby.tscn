@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://y4on1fq1mgnm"]
+[gd_scene load_steps=32 format=3 uid="uid://y4on1fq1mgnm"]
 
 [ext_resource type="Script" uid="uid://cej80lpoc3wmr" path="res://Scripts/levels/level_lobby.gd" id="1_6t7hq"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_x2la1"]
@@ -23,7 +23,13 @@
 [ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/lobby/level_7.png" id="20_2qbue"]
 [ext_resource type="Script" uid="uid://crfxvja874dy6" path="res://Scripts/object-level/level_lobby/enter_9.gd" id="20_igr4h"]
 [ext_resource type="Texture2D" uid="uid://ba6w75c3euhid" path="res://Assets/lobby/level_8.png" id="22_me8nm"]
+[ext_resource type="Script" uid="uid://dd3tduwqbdl6b" path="res://Scripts/object-level/level_lobby/enter_10.gd" id="24_2qbue"]
 [ext_resource type="Texture2D" uid="uid://ctnnsyuu5actf" path="res://Assets/lobby/level_9.png" id="24_m35q0"]
+[ext_resource type="Texture2D" uid="uid://drwtiaj6m5wpq" path="res://Assets/lobby/level_10.png" id="25_kgpvv"]
+[ext_resource type="Script" uid="uid://bbcpmbnrab0bp" path="res://Scripts/object-level/level_lobby/enter_11.gd" id="26_m35q0"]
+[ext_resource type="Texture2D" uid="uid://cuydu40e70ckk" path="res://Assets/lobby/level_11.png" id="27_me8nm"]
+[ext_resource type="Texture2D" uid="uid://d1sh6ravdkyq3" path="res://Assets/lobby/level_12.png" id="28_6wcj2"]
+[ext_resource type="Script" uid="uid://bas5gb83ndkkg" path="res://Scripts/object-level/level_lobby/enter_12.gd" id="28_bbn7t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uaeg"]
 radius = 12.1183
@@ -373,10 +379,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 97.9289
-offset_top = 122.959
-offset_right = 303.929
-offset_bottom = 184.959
+offset_left = 28.055527
+offset_top = 103.79253
+offset_right = 234.05562
+offset_bottom = 165.79253
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
@@ -394,10 +400,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 37.6368
-offset_top = 89.0195
-offset_right = 331.637
-offset_bottom = 129.02
+offset_left = 42.15793
+offset_top = 74.91135
+offset_right = 336.1581
+offset_bottom = 114.91185
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
@@ -435,10 +441,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 97.9289
-offset_top = 122.959
-offset_right = 303.929
-offset_bottom = 184.959
+offset_left = 31.846916
+offset_top = 107.32089
+offset_right = 237.84702
+offset_bottom = 169.32089
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
@@ -456,10 +462,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 37.6368
-offset_top = 89.0195
-offset_right = 331.637
-offset_bottom = 129.02
+offset_left = 42.124565
+offset_top = 74.6962
+offset_right = 336.12476
+offset_bottom = 114.6967
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
@@ -471,7 +477,7 @@ tab_size = 2
 
 [node name="enter_8" parent="." instance=ExtResource("6_1uaeg")]
 position = Vector2(-131, 228)
-rotation = 3.43548
+rotation = 3.592434
 script = ExtResource("19_11bkw")
 object_name = "enter_8"
 object_type = 1
@@ -497,10 +503,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 97.9289
-offset_top = 122.959
-offset_right = 303.929
-offset_bottom = 184.959
+offset_left = 24.727856
+offset_top = 94.68651
+offset_right = 230.72795
+offset_bottom = 156.68652
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
@@ -518,13 +524,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 37.6368
-offset_top = 89.0195
-offset_right = 331.637
-offset_bottom = 129.02
+offset_left = 38.486794
+offset_top = 68.027695
+offset_right = 332.48697
+offset_bottom = 108.0282
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -3.07267
+rotation = -3.0706613
 scale = Vector2(1.30259, 1.39847)
 text = "INTERACT"
 fit_content = true
@@ -532,8 +538,8 @@ scroll_active = false
 tab_size = 2
 
 [node name="enter_9" parent="." instance=ExtResource("6_1uaeg")]
-position = Vector2(-220, 145)
-rotation = 3.74062
+position = Vector2(-233, 140)
+rotation = 4.110304
 script = ExtResource("20_igr4h")
 object_name = "enter_9"
 object_type = 1
@@ -559,10 +565,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 97.9289
-offset_top = 122.959
-offset_right = 303.929
-offset_bottom = 184.959
+offset_left = 15.796333
+offset_top = 99.40058
+offset_right = 221.79642
+offset_bottom = 161.40057
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
@@ -580,10 +586,199 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 37.6368
-offset_top = 89.0195
-offset_right = 331.637
-offset_bottom = 129.02
+offset_left = 38.762127
+offset_top = 69.19176
+offset_right = 332.7623
+offset_bottom = 109.19226
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="enter_10" parent="." instance=ExtResource("6_1uaeg")]
+position = Vector2(-268.99997, 0)
+rotation = -1.5292596
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("24_2qbue")
+object_name = "enter_10"
+object_type = 1
+is_enterable = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="enter_10"]
+texture_filter = 1
+position = Vector2(-0.999999, 9)
+rotation = -3.08868
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("25_kgpvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_10"]
+position = Vector2(-1, 6.99997)
+rotation = 3.11311
+shape = SubResource("CapsuleShape2D_1uaeg")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="hover_text" type="RichTextLabel" parent="enter_10"]
+modulate = Color(0.278431, 0.235294, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 27.298744
+offset_top = 102.95521
+offset_right = 233.29883
+offset_bottom = 164.9552
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "Level 10
+"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_10"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.126564
+offset_top = 74.522575
+offset_right = 331.12674
+offset_bottom = 114.52308
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="enter_11" parent="." instance=ExtResource("6_1uaeg")]
+position = Vector2(-250, -136.00002)
+rotation = -1.1889418
+scale = Vector2(0.9999999, 0.9999999)
+script = ExtResource("26_m35q0")
+object_name = "enter_11"
+object_type = 1
+is_enterable = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="enter_11"]
+texture_filter = 1
+position = Vector2(-0.999999, 9)
+rotation = -3.08868
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("27_me8nm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_11"]
+position = Vector2(-1, 6.99997)
+rotation = 3.11311
+shape = SubResource("CapsuleShape2D_1uaeg")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="hover_text" type="RichTextLabel" parent="enter_11"]
+modulate = Color(0.278431, 0.235294, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 27.298744
+offset_top = 102.95521
+offset_right = 233.29883
+offset_bottom = 164.9552
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "Level 11
+"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_11"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.126564
+offset_top = 74.522575
+offset_right = 331.12674
+offset_bottom = 114.52308
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="enter_12" parent="." instance=ExtResource("6_1uaeg")]
+position = Vector2(-155, -244)
+rotation = -0.8381282
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("28_bbn7t")
+object_name = "enter_12"
+object_type = 1
+is_enterable = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="enter_12"]
+texture_filter = 1
+position = Vector2(-0.999999, 9)
+rotation = -3.08868
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("28_6wcj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_12"]
+position = Vector2(-1, 6.99997)
+rotation = 3.11311
+shape = SubResource("CapsuleShape2D_1uaeg")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="hover_text" type="RichTextLabel" parent="enter_12"]
+modulate = Color(0.278431, 0.235294, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 27.298744
+offset_top = 102.95521
+offset_right = 233.29883
+offset_bottom = 164.9552
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "Level 12
+"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_12"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.126564
+offset_top = 74.522575
+offset_right = 331.12674
+offset_bottom = 114.52308
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267

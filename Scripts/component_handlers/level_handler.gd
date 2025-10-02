@@ -267,6 +267,10 @@ func _mark_level_completed_and_print_status():
 	update_short_hand_state_for_level(current_level_number)
 	
 	# Print completed levels with checkmarks
+	print_completion_status()
+
+# Public function to print completion status
+func print_completion_status():
 	var completed_status = ""
 	for i in range(1, TOTAL_LEVEL_COUNT + 1):
 		if completed_levels.has(i):

@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6w56va7ypoav"]
+
+[ext_resource type="Script" uid="uid://bn68f804f0j7u" path="res://Scripts/levels/level_11_script.gd" id="1_k2n1d"]
+[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_rvkxo"]
+[ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_54g7f"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_xr6bj"]
+[ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_ngdtp"]
+[ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_ngdtp"]
+[ext_resource type="Script" uid="uid://bas5gb83ndkkg" path="res://Scripts/object-level/level_lobby/enter_12.gd" id="7_k2n1d"]
+[ext_resource type="Texture2D" uid="uid://d1sh6ravdkyq3" path="res://Assets/lobby/level_12.png" id="7_ob8a3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2n1d"]
+radius = 12.1183
+height = 40.0368
+
+[node name="level_11_scene" type="Node2D"]
+script = ExtResource("1_k2n1d")
+
+[node name="AreaHandler" parent="." instance=ExtResource("1_rvkxo")]
+metadata/_edit_lock_ = true
+
+[node name="PlayerScene" parent="." instance=ExtResource("2_54g7f")]
+self_modulate = Color(1, 1, 1, 0)
+up_direction = Vector2(0, 1)
+
+[node name="Label" type="Label" parent="PlayerScene"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.5
+offset_top = -220.0
+offset_right = 156.5
+offset_bottom = -186.0
+grow_horizontal = 2
+rotation = 3.1415927
+pivot_offset = Vector2(156.5, 0)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 14
+text = "TEXT"
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = 3.143091
+scale = Vector2(0.99999994, 0.99999994)
+ignore_rotation = false
+position_smoothing_enabled = true
+
+[node name="SoundManager" parent="." instance=ExtResource("3_xr6bj")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_ngdtp")]
+
+[node name="enter_12" parent="." instance=ExtResource("5_ngdtp")]
+position = Vector2(-2.999999, 270)
+rotation = -3.1817818
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("7_k2n1d")
+object_name = "enter_12"
+object_type = 1
+is_enterable = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="enter_12"]
+texture_filter = 1
+position = Vector2(-0.999999, 9)
+rotation = -3.08868
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("7_ob8a3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_12"]
+position = Vector2(-1, 6.99997)
+rotation = 3.11311
+shape = SubResource("CapsuleShape2D_k2n1d")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="hover_text" type="RichTextLabel" parent="enter_12"]
+modulate = Color(0.278431, 0.235294, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 27.298744
+offset_top = 102.95521
+offset_right = 233.29883
+offset_bottom = 164.9552
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "Level 12
+"
+fit_content = true
+scroll_active = false
+tab_size = 2
+
+[node name="interact_text" type="RichTextLabel" parent="enter_12"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.126564
+offset_top = 74.522575
+offset_right = 331.12674
+offset_bottom = 114.52308
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.07267
+scale = Vector2(1.30259, 1.39847)
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2

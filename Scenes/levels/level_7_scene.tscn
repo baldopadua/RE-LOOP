@@ -39,7 +39,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 14
-text = "I didn't forget you, but you forgot me..."
+text = "TEXT"
 horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -82,13 +82,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 13.250374
-offset_top = 92.11097
-offset_right = 219.25046
-offset_bottom = 154.11096
+offset_left = 39.970184
+offset_top = 86.754745
+offset_right = 245.97028
+offset_bottom = 148.75473
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -2.9458866
+rotation = -3.2664678
 scale = Vector2(1.30259, 1.39847)
 text = "Level 8
 "

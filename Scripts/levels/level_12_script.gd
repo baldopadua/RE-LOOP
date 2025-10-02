@@ -12,12 +12,12 @@ var objects: Array = []
 
 func _ready():
 	# SET LEVEL
-	level_handler.set_current_level(6)
+	level_handler.set_current_level(12)
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 
 
-# ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
+# ADD THIS METHOD AS A TEMPORARY WAY TO FINISH LEVEL, REMOVE IT WHEN STARTING 
 # TO WORK ON THE SCRIPT
 # ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
 func enter_level():
