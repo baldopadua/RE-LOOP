@@ -7,16 +7,14 @@ extends Node2D
 @onready var long_hand_rotation = $long_hand_rotation
 @onready var long_hand_clock = $long_hand_rotation/long_hand_clock
 var current_player: CharacterBody2D = null
-var base_clock_position: int = 12 # Default base position
-var should_follow_player: bool = true # Flag to control hand following
+var base_clock_position: int = 12 
+var should_follow_player: bool = true 
 
 # Static variable to preserve hand position between cutscenes
 static var preserved_hand_rotation: float = 0.0
 static var preserved_long_hand_rotation: float = 0.0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Initially hide the level_select cutscene
 	visible = false
 
 # Signal handler for long hand state changes from level handler
@@ -43,33 +41,11 @@ func _on_player_moved():
 		update_hand_rotation()
 
 func get_rotation_for_clock(clock: int) -> float:
-	match clock:
-		12:
-			return 0.0 # 12 o'clock, 0 degrees
-		1:
-			return deg_to_rad(30) # 1 o'clock, 30 degrees
-		2:
-			return deg_to_rad(60) # 2 o'clock, 60 degrees
-		3:
-			return deg_to_rad(90) # 3 o'clock, 90 degrees
-		4:
-			return deg_to_rad(120) # 4 o'clock, 120 degrees
-		5:
-			return deg_to_rad(150) # 5 o'clock, 150 degrees
-		6:
-			return deg_to_rad(180) # 6 o'clock, 180 degrees
-		7:
-			return deg_to_rad(210) # 7 o'clock, 210 degrees
-		8:
-			return deg_to_rad(240) # 8 o'clock, 240 degrees
-		9:
-			return deg_to_rad(270) # 9 o'clock, 270 degrees
-		10:
-			return deg_to_rad(300) # 10 o'clock, 300 degrees
-		11:
-			return deg_to_rad(330) # 11 o'clock, 330 degrees
-		_:
-			return 0.0
+	# Handle 12 o'clock as special case (0 degrees)
+	if clock == 12:
+		return 0.0
+	# Calculate rotation: each hour = 30 degrees
+	return deg_to_rad(clock * 30.0)
 
 func set_hand_to_clock_position(clock_position: int):
 	base_clock_position = clock_position
@@ -226,33 +202,11 @@ func show_gameplay_elements():
 					child.visible = true
 
 func get_clock_position_for_level(level_number: int) -> int:
-	match level_number:
-		1:
-			return 1 # 1 o'clock for level 1
-		2:
-			return 2 # 2 o'clock for level 2
-		3:
-			return 3 # 3 o'clock for level 3
-		4:
-			return 4 # 4 o'clock for level 4
-		5:
-			return 5 # 5 o'clock for level 5
-		6:
-			return 6 # 6 o'clock for level 6
-		7:
-			return 7 # 7 o'clock for level 7
-		8:
-			return 8 # 8 o'clock for level 8
-		9:
-			return 9 # 9 o'clock for level 9
-		10:
-			return 10 # 10 o'clock for level 10
-		11:
-			return 11 # 11 o'clock for level 11
-		12:
-			return 12 # 12 o'clock for level 12
-		_:
-			return 1 # 1 o'clock for other levels
+	# Direct 1:1 mapping: level number equals clock position
+	# Clamp to valid range 1-12, default to 1 for invalid levels
+	if level_number >= 1 and level_number <= 12:
+		return level_number
+	return 1
 
 func animate_hand_to_next_level(next_clock_position: int) -> Tween:
 	# Use the preserved hand positions as starting points
@@ -367,62 +321,30 @@ func get_clock_position_from_rotation(degrees: float) -> int:
 	# Normalize degrees to 0-360 range
 	var normalized_degrees = fmod(rounded_degrees + 360.0, 360.0)
 	
-	# Map degrees to clock positions using exact 30° intervals to match get_rotation_for_clock()
-	if normalized_degrees >= 345.0 or normalized_degrees < 15.0:
-		return 12 # 0° ± 15° = 12 o'clock
-	elif normalized_degrees >= 15.0 and normalized_degrees < 45.0:
-		return 1 # 30° ± 15° = 1 o'clock
-	elif normalized_degrees >= 45.0 and normalized_degrees < 75.0:
-		return 2 # 60° ± 15° = 2 o'clock
-	elif normalized_degrees >= 75.0 and normalized_degrees < 105.0:
-		return 3 # 90° ± 15° = 3 o'clock
-	elif normalized_degrees >= 105.0 and normalized_degrees < 135.0:
-		return 4 # 120° ± 15° = 4 o'clock
-	elif normalized_degrees >= 135.0 and normalized_degrees < 165.0:
-		return 5 # 150° ± 15° = 5 o'clock
-	elif normalized_degrees >= 165.0 and normalized_degrees < 195.0:
-		return 6 # 180° ± 15° = 6 o'clock
-	elif normalized_degrees >= 195.0 and normalized_degrees < 225.0:
-		return 7 # 210° ± 15° = 7 o'clock
-	elif normalized_degrees >= 225.0 and normalized_degrees < 255.0:
-		return 8 # 240° ± 15° = 8 o'clock
-	elif normalized_degrees >= 255.0 and normalized_degrees < 285.0:
-		return 9 # 270° ± 15° = 9 o'clock
-	elif normalized_degrees >= 285.0 and normalized_degrees < 315.0:
-		return 10 # 300° ± 15° = 10 o'clock
-	elif normalized_degrees >= 315.0 and normalized_degrees < 345.0:
-		return 11 # 330° ± 15° = 11 o'clock
-	else:
-		return 12 # Default fallback to 12 o'clock
+	# Calculate clock position mathematically
+	# Each clock position spans 30° (360° / 12 positions)
+	# Add 15° offset to center the ranges around each hour mark
+	var adjusted_degrees = normalized_degrees + 15.0
+	
+	# Handle wraparound for 12 o'clock
+	if adjusted_degrees >= 360.0:
+		adjusted_degrees -= 360.0
+	
+	# Calculate position: divide by 30° and add 1 (since clock starts at 1, not 0)
+	var clock_pos = int(adjusted_degrees / 30.0) + 1
+	
+	# Handle edge case: clock_pos 13 should be 1 (12 o'clock)
+	if clock_pos > 12:
+		clock_pos = 1
+	
+	return clock_pos
 
 func get_level_for_clock_position(clock_position: int) -> int:
-	match clock_position:
-		1:
-			return 1 # Level 1 at 1 o'clock
-		2:
-			return 2 # Level 2 at 2 o'clock
-		3:
-			return 3 # Level 3 at 3 o'clock
-		4:
-			return 4 # Level 4 at 4 o'clock
-		5:
-			return 5 # Level 5 at 5 o'clock
-		6:
-			return 6 # Level 6 at 6 o'clock
-		7:
-			return 7 # Level 7 at 7 o'clock
-		8:
-			return 8 # Level 8 at 8 o'clock
-		9:
-			return 9 # Level 9 at 9 o'clock
-		10:
-			return 10 # Level 10 at 10 o'clock
-		11:
-			return 11 # Level 11 at 11 o'clock
-		12:
-			return 12 # Level 12 at 12 o'clock
-		_:
-			return 0 # Unknown level
+	# Direct 1:1 mapping: clock position equals level number
+	# Return 0 for invalid positions (unknown level)
+	if clock_position >= 1 and clock_position <= 12:
+		return clock_position
+	return 0
 
 func _on_level_completed(_level_name: String):
 	# Update lock state when any level is completed
@@ -508,3 +430,4 @@ func animate_hand_from_12_to_1() -> Tween:
 	)
 	
 	return sequence_tween
+

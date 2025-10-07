@@ -55,8 +55,8 @@ position_smoothing_enabled = true
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_u54cp")]
 
 [node name="enter_10" parent="." instance=ExtResource("5_u54cp")]
-position = Vector2(-7.9999695, 271.00003)
-rotation = -2.833673
+position = Vector2(-6.9999695, 279.00003)
+rotation = -3.1604843
 scale = Vector2(0.99999994, 0.99999994)
 script = ExtResource("6_pn0o0")
 object_name = "enter_10"
@@ -77,17 +77,16 @@ shape = SubResource("CapsuleShape2D_pn0o0")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_10"]
-visible = false
 modulate = Color(0.278431, 0.235294, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 36.70877
-offset_top = 88.55203
-offset_right = 242.70886
-offset_bottom = 150.55203
+offset_left = 27.298744
+offset_top = 102.95521
+offset_right = 233.29883
+offset_bottom = 164.9552
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.07267
@@ -99,7 +98,6 @@ scroll_active = false
 tab_size = 2
 
 [node name="interact_text" type="RichTextLabel" parent="enter_10"]
-visible = false
 modulate = Color(1, 0, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
