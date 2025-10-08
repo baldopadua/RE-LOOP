@@ -59,17 +59,25 @@ func _ready() -> void:
 
 # Update timer displays
 func _update_timer_displays():
-	# Update hint 2 timer display
-	if hint_2_timer and hint_2_timer.time_left > 0:
+	# Update hint 2 timer display 
+	if hint_2_timer:
 		var label = hint_2_timer.get_node("timer_label")
 		if label:
-			label.text = str(ceil(hint_2_timer.time_left))
+			if hint_2_timer.time_left > 0:
+				label.text = str(int(hint_2_timer.time_left))
+			else:
+				# Show wait_time when timer is not running
+				label.text = str(int(hint_2_timer.wait_time))
 			
 	# Update solution timer display
-	if solution_timer and solution_timer.time_left > 0:
+	if solution_timer:
 		var label = solution_timer.get_node("timer_label")
 		if label:
-			label.text = str(ceil(solution_timer.time_left))
+			if solution_timer.time_left > 0:
+				label.text = str(int(solution_timer.time_left))
+			else:
+				# Show wait_time when timer is not running
+				label.text = str(int(solution_timer.wait_time))
 
 # Helper function to fade out elements
 func fade_out_elements(elements: Array[Node]) -> void:
@@ -137,6 +145,10 @@ func update_hint_text(difficulty: String):
 				hint_node.visible = true
 
 func show_appropriate_container():
+	# Don't show any hints in lobby
+	if connected_level_handler and connected_level_handler.is_lobby:
+		return
+		
 	# Hide all level hint containers first
 	for level in range(1, 13):  # Assuming 12 levels
 		var container = get_node_or_null("level_" + str(level) + "_hint")
@@ -148,20 +160,20 @@ func show_appropriate_container():
 	if current_container:
 		current_container.visible = true
 		
-		# Check if this is a new level without progress
+		# Initialize progress for new level
 		if not hint_progress.has(current_level):
 			hint_progress[current_level] = "hard"
 		
 		var last_difficulty = hint_progress[current_level]
 		update_hint_text(last_difficulty)
 		
-		# Update status bar position based on difficulty
+		# Only proceed with UI updates if not in lobby
 		if hint_status_bar:
 			match last_difficulty:
 				"hard":
 					hint_status_bar.position = hint_1_mark.position
-					# Only start hint_2_timer if we're on hard difficulty and timer isn't running
-					if hint_2_timer and hint_2_timer.time_left <= 0:
+					# Only start hint_2_timer if in a level and on hard difficulty
+					if hint_2_timer and hint_2_timer.time_left <= 0 and not connected_level_handler.is_lobby:
 						hint_2_timer.start()
 				"medium":
 					hint_status_bar.position = hint_2_mark.position
@@ -195,13 +207,19 @@ func _check_for_level_handler():
 	
 	# Update current level from level_handler's current_level_number
 	if connected_level_handler and is_instance_valid(connected_level_handler):
+		# Skip processing if we're in lobby
+		if connected_level_handler.is_lobby:
+			return
+			
 		var level_number = connected_level_handler.current_level_number
+		# Only update if we're not in lobby (level_number > 0)
 		if level_number > 0:
 			var new_level = "level_" + str(level_number)
 			if new_level != current_level:
 				# Level changed - reset hint progress and UI
 				current_level = new_level
 				_reset_hint_state()
+				show_appropriate_container()
 				print("Hint: Level updated to ", current_level)
 
 # Reset hint progress and UI state when changing levels
@@ -215,21 +233,26 @@ func _reset_hint_state():
 	
 	# Reset overlays visibility
 	if hint_2_lock and hint_2_overlay:
-		hint_2_lock.modulate.a = 1
-		hint_2_overlay.modulate.a = 1
+		hint_2_lock.modulate = Color(1, 1, 1, 1)
+		hint_2_overlay.modulate = Color(1, 1, 1, 1)
 	if solution_lock and solution_overlay:
-		solution_lock.modulate.a = 1
-		solution_overlay.modulate.a = 1
+		solution_lock.modulate = Color(1, 1, 1, 1)
+		solution_overlay.modulate = Color(1, 1, 1, 1)
 	
-	# Reset and hide timer labels
+	# Reset timers and show initial wait_time on labels
 	if hint_2_timer:
 		hint_2_timer.stop()
 		if hint_2_timer.has_node("timer_label"):
-			hint_2_timer.get_node("timer_label").visible = false
+			var label = hint_2_timer.get_node("timer_label")
+			label.visible = true
+			label.text = str(int(hint_2_timer.wait_time))
+			
 	if solution_timer:
 		solution_timer.stop()
 		if solution_timer.has_node("timer_label"):
-			solution_timer.get_node("timer_label").visible = false
+			var label = solution_timer.get_node("timer_label")
+			label.visible = false
+			label.text = str(int(solution_timer.wait_time))
 
 func find_level_handler() -> Node:
 	# Search the entire scene tree for the level_handler script
@@ -275,8 +298,15 @@ func find_level_handler_upwards() -> Node:
 	return null
 
 func show_hint():
+	# Don't show hints in lobby
+	if connected_level_handler and connected_level_handler.is_lobby:
+		return
+		
 	visible = true
-	
+	# Only start timers if we're not in lobby
+	if connected_level_handler and connected_level_handler.current_level_number > 0:
+		if hint_2_timer and hint_2_timer.time_left <= 0:
+			hint_2_timer.start()
 func hide_hint():
 	visible = false
 

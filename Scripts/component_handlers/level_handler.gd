@@ -119,10 +119,17 @@ func set_current_level(level_number: int):
 	# Update long hand state for current level
 	update_short_hand_state_for_level(level_number)
 	
-	# Start hint timers when entering a level
+	# Only start hint timers when entering a non-lobby level
 	if ui_handler and ui_handler.has_node("ui_logic/overlay/hint"):
 		var hint = ui_handler.get_node("ui_logic/overlay/hint")
-		hint.get_node("hint_dialog/hint_2/hint_2_timer").start()
+		# Force update the hint system for the new level first
+		hint.current_level = level_name
+		hint._reset_hint_state()
+		hint.show_appropriate_container()
+		# Then start the timer
+		var hint_2_timer = hint.get_node("hint_dialog/hint_2/hint_2_timer")
+		if hint_2_timer and hint_2_timer.time_left <= 0:
+			hint_2_timer.start()
 	
 
 # Call this method from level_lobby script in its _ready() function to identify it as lobby
@@ -155,6 +162,17 @@ func complete_current_level(levels_frame):
 			# Disable player input to prevent further movement
 			current_player.set_physics_process(false)
 			current_player.set_process_input(false)
+		
+		# Stop hint timers if they exist
+		if ui_handler and ui_handler.has_node("ui_logic/overlay/hint"):
+			var hint = ui_handler.get_node("ui_logic/overlay/hint")
+			var hint_2_timer = hint.get_node_or_null("hint_dialog/hint_2/hint_2_timer")
+			var solution_timer = hint.get_node_or_null("hint_dialog/solution/solution_timer")
+			
+			if hint_2_timer:
+				hint_2_timer.stop()
+			if solution_timer:
+				solution_timer.stop()
 		
 		# Stop hand from following player and preserve position
 		level_status_node.stop_following_player()

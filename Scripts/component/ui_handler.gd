@@ -284,13 +284,8 @@ func show_overlay_hint():
 		if status_bar:
 			status_bar.visible = true
 			
-		var hint_2_timer = hint_dialog.get_node_or_null("hint_2/hint_2_timer")
-		if hint_2_timer and hint_2_timer.has_node("timer_label"):
-			hint_2_timer.get_node("timer_label").visible = true
-			
-		var solution_timer = hint_dialog.get_node_or_null("solution/solution_timer")
-		if solution_timer and solution_timer.has_node("timer_label"):
-			solution_timer.get_node("timer_label").visible = true
+		# Let the hint system handle timer label visibility based on difficulty
+		hint.show_appropriate_container()
 	
 	hint.show_appropriate_container()
 	show_close_button()
@@ -398,4 +393,5 @@ func show_game_ui_after_cutscene():
 	if ui_logic and ui_logic.has_node("game_ui_elements"):
 		var game_ui = ui_logic.get_node("game_ui_elements")
 		game_ui.visible = true
+
 

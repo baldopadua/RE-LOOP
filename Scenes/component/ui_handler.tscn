@@ -739,7 +739,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_dialog/hint_2"]
-wait_time = 10.0
+wait_time = 11.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_dialog/hint_2/hint_2_timer"]
 anchors_preset = -1
@@ -754,7 +754,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 24
-text = "10"
+text = "11"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -843,18 +843,22 @@ position = Vector2(700, 214)
 
 [node name="level_1_hint" type="Control" parent="ui_logic/overlay/hint"]
 visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="hint_1_hard" type="Label" parent="ui_logic/overlay/hint/level_1_hint"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 6.925
-anchor_top = 7.0
-anchor_right = 28.6
-anchor_bottom = 16.4
+anchor_left = 0.2546875
+anchor_top = 0.40833333
+anchor_right = 0.8648437
+anchor_bottom = 0.86944443
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -873,10 +877,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 7.825
-anchor_top = 9.0
-anchor_right = 27.625
-anchor_bottom = 12.025
+anchor_left = 0.2609375
+anchor_top = 0.3013889
+anchor_right = 0.82734376
+anchor_bottom = 0.8402778
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -893,10 +897,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 7.95
-anchor_top = 8.575
-anchor_right = 28.175
-anchor_bottom = 11.875
+anchor_left = 0.253125
+anchor_top = 0.3986111
+anchor_right = 0.8226563
+anchor_bottom = 0.78194445
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -909,27 +913,24 @@ vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="plooy_hint" type="AnimatedSprite2D" parent="ui_logic/overlay/hint"]
-texture_filter = 1
-position = Vector2(142, 546)
-scale = Vector2(10.9193, 10.0155)
-sprite_frames = SubResource("SpriteFrames_tkpeg")
-flip_h = true
-
 [node name="level_2_hint" type="Control" parent="ui_logic/overlay/hint"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="hint_1_hard" type="Label" parent="ui_logic/overlay/hint/level_2_hint"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 6.825
-anchor_top = 6.25
-anchor_right = 29.15
-anchor_bottom = 15.65
+anchor_left = 0.19765624
+anchor_top = 0.4263889
+anchor_right = 0.89453125
+anchor_bottom = 0.76666665
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -943,14 +944,13 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_1_medium" type="Label" parent="ui_logic/overlay/hint/level_2_hint"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 6.975
-anchor_top = 7.35
-anchor_right = 28.425
-anchor_bottom = 15.625
+anchor_left = 0.2765625
+anchor_top = 0.40833333
+anchor_right = 0.83203125
+anchor_bottom = 0.82222223
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -965,14 +965,13 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_1_easy" type="Label" parent="ui_logic/overlay/hint/level_2_hint"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 7.95
-anchor_top = 7.8
-anchor_right = 28.175
-anchor_bottom = 13.925
+anchor_left = 0.28203124
+anchor_top = 0.41527778
+anchor_right = 0.8140625
+anchor_bottom = 0.84166664
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -987,6 +986,88 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="level_3_hint" type="Control" parent="ui_logic/overlay/hint"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_hard" type="Label" parent="ui_logic/overlay/hint/level_3_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2171875
+anchor_top = 0.41944444
+anchor_right = 0.8960937
+anchor_bottom = 0.75972223
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "\"Block the roaring path where water longs to escape. The mountain hides the key—place each heavy heart where it belongs.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_medium" type="Label" parent="ui_logic/overlay/hint/level_3_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24765626
+anchor_top = 0.4097222
+anchor_right = 0.84375
+anchor_bottom = 0.8361111
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "
+\"Water runs away, stones must block its path.\"
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_easy" type="Label" parent="ui_logic/overlay/hint/level_3_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2078125
+anchor_top = 0.4611111
+anchor_right = 0.8882812
+anchor_bottom = 0.8875
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "Stop the flowing water by placing the stones in the right spots.
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="plooy_hint" type="AnimatedSprite2D" parent="ui_logic/overlay/hint"]
+texture_filter = 1
+position = Vector2(142, 599.99994)
+scale = Vector2(10.9193, 10.0155)
+sprite_frames = SubResource("SpriteFrames_tkpeg")
+flip_h = true
 
 [node name="close_button" type="TextureButton" parent="ui_logic/overlay"]
 visible = false
