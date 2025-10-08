@@ -739,7 +739,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_dialog/hint_2"]
-wait_time = 11.0
+wait_time = 10.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_dialog/hint_2/hint_2_timer"]
 anchors_preset = -1
@@ -754,7 +754,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 24
-text = "11"
+text = "10"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 

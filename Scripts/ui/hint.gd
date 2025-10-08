@@ -28,11 +28,8 @@ func _ready() -> void:
 	if plooy_hint:
 		plooy_hint.play()
 	
-	# Set initial timer label visibility to false
-	if hint_2_timer and hint_2_timer.has_node("timer_label"):
-		hint_2_timer.get_node("timer_label").visible = false
-	if solution_timer and solution_timer.has_node("timer_label"):
-		solution_timer.get_node("timer_label").visible = false
+	# Set initial timer label visibility using deferred call to ensure it works
+	call_deferred("_init_timer_labels")
 	
 	# Initial connection attempt
 	connect_to_level_handler()
@@ -56,6 +53,18 @@ func _ready() -> void:
 	update_timer.timeout.connect(_update_timer_displays)
 	update_timer.autostart = true
 	add_child(update_timer)
+
+# New function to initialize timer labels
+func _init_timer_labels() -> void:
+	if hint_2_timer and hint_2_timer.has_node("timer_label"):
+		var label = hint_2_timer.get_node("timer_label") 
+		label.visible = false
+		label.modulate.a = 0
+	
+	if solution_timer and solution_timer.has_node("timer_label"):
+		var label = solution_timer.get_node("timer_label")
+		label.visible = false 
+		label.modulate.a = 0
 
 # Update timer displays
 func _update_timer_displays():
@@ -81,10 +90,35 @@ func _update_timer_displays():
 
 # Helper function to fade out elements
 func fade_out_elements(elements: Array[Node]) -> void:
-	var tween = create_tween()
 	for element in elements:
-		if element:
-			tween.parallel().tween_property(element, "modulate", Color(1, 1, 1, 0), 0.5)
+		if not element:
+			continue
+			
+		# Create shake animation
+		var shake_tween = create_tween()
+		var original_pos = element.position
+		var shake_strength = 5.0
+		var shake_duration = 0.05
+		var shake_count = 4
+		
+		# Add multiple shake movements
+		for i in range(shake_count):
+			# Shake right
+			shake_tween.tween_property(element, "position", 
+				original_pos + Vector2(shake_strength, 0), shake_duration)
+			# Shake left
+			shake_tween.tween_property(element, "position", 
+				original_pos + Vector2(-shake_strength, 0), shake_duration)
+		
+		# Return to original position
+		shake_tween.tween_property(element, "position", original_pos, shake_duration)
+		
+		# Wait for shake to finish before fading
+		await shake_tween.finished
+		
+		# Fade out
+		var fade_tween = create_tween()
+		fade_tween.tween_property(element, "modulate", Color(1, 1, 1, 0), 0.3)
 			
 # Handle hint 2 timer completion
 func _on_hint_2_timer_timeout():
@@ -239,12 +273,13 @@ func _reset_hint_state():
 		solution_lock.modulate = Color(1, 1, 1, 1)
 		solution_overlay.modulate = Color(1, 1, 1, 1)
 	
-	# Reset timers and show initial wait_time on labels
+	# Reset timers and initialize labels
 	if hint_2_timer:
 		hint_2_timer.stop()
 		if hint_2_timer.has_node("timer_label"):
 			var label = hint_2_timer.get_node("timer_label")
-			label.visible = true
+			label.visible = false
+			label.modulate.a = 0
 			label.text = str(int(hint_2_timer.wait_time))
 			
 	if solution_timer:
@@ -252,6 +287,7 @@ func _reset_hint_state():
 		if solution_timer.has_node("timer_label"):
 			var label = solution_timer.get_node("timer_label")
 			label.visible = false
+			label.modulate.a = 0
 			label.text = str(int(solution_timer.wait_time))
 
 func find_level_handler() -> Node:

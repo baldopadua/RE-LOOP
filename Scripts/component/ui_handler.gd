@@ -280,12 +280,19 @@ func show_overlay_hint():
 	if hint_dialog:
 		hint_dialog.visible = true
 		
+		# Show timer labels with full opacity
+		if hint_dialog.has_node("hint_2/hint_2_timer/timer_label"):
+			var timer_label = hint_dialog.get_node("hint_2/hint_2_timer/timer_label")
+			timer_label.modulate.a = 1
+			timer_label.visible = true
+		if hint_dialog.has_node("solution/solution_timer/timer_label"):
+			var solution_label = hint_dialog.get_node("solution/solution_timer/timer_label")
+			solution_label.modulate.a = 1
+			solution_label.visible = true	
+			
 		var status_bar = hint_dialog.get_node_or_null("hint_status_bar")
 		if status_bar:
 			status_bar.visible = true
-			
-		# Let the hint system handle timer label visibility based on difficulty
-		hint.show_appropriate_container()
 	
 	hint.show_appropriate_container()
 	show_close_button()
