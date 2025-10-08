@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://m46y1wd88uf1"]
+[gd_scene load_steps=88 format=3 uid="uid://m46y1wd88uf1"]
 
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="1_fmqw2"]
 [ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
@@ -27,10 +27,11 @@
 [ext_resource type="Script" uid="uid://qyn6g7sbegxs" path="res://Scripts/ui/hint.gd" id="22_exohx"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="22_iwsb4"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="23_4r7hv"]
-[ext_resource type="Texture2D" uid="uid://daox43ock3lf7" path="res://Assets/ui/hint/hint_1.png" id="25_nol8b"]
-[ext_resource type="Texture2D" uid="uid://woq1l326oxns" path="res://Assets/ui/hint/hint_2.png" id="26_us0vv"]
-[ext_resource type="Texture2D" uid="uid://wg21y0rbjlo2" path="res://Assets/ui/hint/hint_3.png" id="27_0vcng"]
-[ext_resource type="Texture2D" uid="uid://loktk8i0xmn" path="res://Assets/ui/hint/hint_4.png" id="28_5ue8t"]
+[ext_resource type="Texture2D" uid="uid://jw443ugyumsw" path="res://Assets/ui/hint/hint_dialog.png" id="23_y4w7x"]
+[ext_resource type="Texture2D" uid="uid://cgs10454tk44a" path="res://Assets/ui/hint/lock.png" id="24_y4w7x"]
+[ext_resource type="Texture2D" uid="uid://coq0k521hiqir" path="res://Assets/ui/hint/hint_2_overlay.png" id="26_exohx"]
+[ext_resource type="Texture2D" uid="uid://d0q68tpidyitt" path="res://Assets/ui/hint/solution_overlay.png" id="27_nol8b"]
+[ext_resource type="Texture2D" uid="uid://b8yg1u36ng1al" path="res://Assets/ui/hint/unlock_status_bar.png" id="27_us0vv"]
 [ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="29_g2hc1"]
 [ext_resource type="PackedScene" uid="uid://b11bd22bl1hik" path="res://Scenes/component/cutscene.tscn" id="33_nol8b"]
 
@@ -432,6 +433,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hoadv")
+metadata/_edit_use_anchors_ = true
 
 [node name="background" type="Control" parent="."]
 layout_mode = 1
@@ -671,7 +673,6 @@ texture = ExtResource("21_taira")
 expand_mode = 1
 
 [node name="hint" type="Control" parent="ui_logic/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -690,80 +691,227 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("19_bo42c")
 
-[node name="hint_image" type="Control" parent="ui_logic/overlay/hint"]
+[node name="hint_dialog" type="TextureRect" parent="ui_logic/overlay/hint"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15546875
+anchor_top = 0.04027778
+anchor_right = 0.9453125
+anchor_bottom = 0.96805555
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_y4w7x")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2" type="Control" parent="ui_logic/overlay/hint/hint_dialog"]
+layout_mode = 1
+anchor_left = 0.43818003
+anchor_top = 0.077844314
+anchor_right = 0.68051434
+anchor_bottom = 0.3203593
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2_overlay" type="TextureRect" parent="ui_logic/overlay/hint/hint_dialog/hint_2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 39.0
-offset_top = 56.0
-offset_right = -75.0
-offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="hint_container_1" type="TextureRect" parent="ui_logic/overlay/hint/hint_image"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.17753
-anchor_top = 0.0361248
-anchor_right = 0.922813
-anchor_bottom = 0.912972
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("25_nol8b")
+texture = ExtResource("26_exohx")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_container_2" type="TextureRect" parent="ui_logic/overlay/hint/hint_image"]
+[node name="hint_2_lock" type="TextureRect" parent="ui_logic/overlay/hint/hint_dialog/hint_2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.278481
+anchor_top = 0.10493827
+anchor_right = 0.7299578
+anchor_bottom = 0.8580247
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_y4w7x")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_dialog/hint_2"]
+wait_time = 10.0
+
+[node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_dialog/hint_2/hint_2_timer"]
+anchors_preset = -1
+anchor_left = 0.5859375
+anchor_top = 0.27638888
+anchor_right = 0.6171875
+anchor_bottom = 0.3236111
+offset_left = -5.0
+offset_right = -5.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="solution" type="Control" parent="ui_logic/overlay/hint/hint_dialog"]
+layout_mode = 1
+anchor_left = 0.6795252
+anchor_top = 0.07634731
+anchor_right = 0.9208704
+anchor_bottom = 0.3188623
+offset_bottom = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="solution_overlay" type="TextureRect" parent="ui_logic/overlay/hint/hint_dialog/solution"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_nol8b")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="solution_lock" type="TextureRect" parent="ui_logic/overlay/hint/hint_dialog/solution"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28688523
+anchor_top = 0.11111111
+anchor_right = 0.7581967
+anchor_bottom = 0.8703704
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_y4w7x")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_dialog/solution"]
+wait_time = 10.0
+
+[node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_dialog/solution/solution_timer"]
+anchors_preset = -1
+anchor_left = 0.578125
+anchor_top = 0.28055555
+anchor_right = 0.609375
+anchor_bottom = 0.32777777
+offset_left = 252.0
+offset_top = -4.0
+offset_right = 252.0
+offset_bottom = -4.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_status_bar" type="TextureRect" parent="ui_logic/overlay/hint/hint_dialog"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.31541714
+anchor_top = 0.33717567
+anchor_right = 0.5330235
+anchor_bottom = 0.34828675
+offset_left = -113.88672
+offset_top = -11.233337
+offset_right = -113.88672
+offset_bottom = -11.233337
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_us0vv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_mark" type="Marker2D" parent="ui_logic/overlay/hint/hint_dialog"]
+position = Vector2(200, 214)
+
+[node name="hint_2_mark" type="Marker2D" parent="ui_logic/overlay/hint/hint_dialog"]
+position = Vector2(462, 214)
+
+[node name="solution_mark" type="Marker2D" parent="ui_logic/overlay/hint/hint_dialog"]
+position = Vector2(700, 214)
+
+[node name="level_1_hint" type="Control" parent="ui_logic/overlay/hint"]
 visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="hint_1_hard" type="Label" parent="ui_logic/overlay/hint/level_1_hint"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.185249
-anchor_top = 0.0591133
-anchor_right = 0.921098
-anchor_bottom = 0.893268
+anchor_left = 6.925
+anchor_top = 7.0
+anchor_right = 28.6
+anchor_bottom = 16.4
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("26_us0vv")
-expand_mode = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "\"The smallest start holds the tallest end. Bring life to the barren ground, and time will repay your patience.\"
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_container_3" type="TextureRect" parent="ui_logic/overlay/hint/hint_image"]
-visible = false
+[node name="hint_1_medium" type="Label" parent="ui_logic/overlay/hint/level_1_hint"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.197256
-anchor_top = 0.0935961
-anchor_right = 0.922813
-anchor_bottom = 0.875205
+anchor_left = 7.825
+anchor_top = 9.0
+anchor_right = 27.625
+anchor_bottom = 12.025
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("27_0vcng")
-expand_mode = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "\"A seed waits in dry ground, cares for it, and it will grow.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_container_4" type="TextureRect" parent="ui_logic/overlay/hint/hint_image"]
-visible = false
+[node name="hint_1_easy" type="Label" parent="ui_logic/overlay/hint/level_1_hint"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.140652
-anchor_top = -0.0328407
-anchor_right = 1.03945
-anchor_bottom = 0.975369
+anchor_left = 7.95
+anchor_top = 8.575
+anchor_right = 28.175
+anchor_bottom = 11.875
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("28_5ue8t")
-expand_mode = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "“Plant a seed. Wait, and it will grow.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="plooy_hint" type="AnimatedSprite2D" parent="ui_logic/overlay/hint/hint_image"]
+[node name="plooy_hint" type="AnimatedSprite2D" parent="ui_logic/overlay/hint"]
 texture_filter = 1
-position = Vector2(102.969, 531.186)
+position = Vector2(142, 546)
 scale = Vector2(10.9193, 10.0155)
 sprite_frames = SubResource("SpriteFrames_tkpeg")
 flip_h = true

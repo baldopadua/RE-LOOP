@@ -118,6 +118,12 @@ func set_current_level(level_number: int):
 	
 	# Update long hand state for current level
 	update_short_hand_state_for_level(level_number)
+	
+	# Start hint timers when entering a level
+	if ui_handler and ui_handler.has_node("ui_logic/overlay/hint"):
+		var hint = ui_handler.get_node("ui_logic/overlay/hint")
+		hint.get_node("hint_dialog/hint_2/hint_2_timer").start()
+	
 
 # Call this method from level_lobby script in its _ready() function to identify it as lobby
 # Example: level_handler.set_current_lobby()

@@ -195,30 +195,45 @@ func show_overlay_credits():
 			show_close_button()
 
 func close_overlay_button(_node):
-	var overlay = null
-	if ui_logic.has_node("overlay"):
-		overlay = ui_logic.get_node("overlay")
+	var overlay = ui_logic.get_node_or_null("overlay")
 	if not overlay:
 		return
 	
-	# Find which overlay child is currently visible
+	# Find which overlay child is visible
 	var visible_child = null
 	for child in overlay.get_children():
 		if child.visible and child.name != "close_button":
 			visible_child = child
 			break
 	
-	# Hide the visible overlay child and close button
+	# Special handling for hint overlay
+	if visible_child and visible_child.name == "hint":
+		# Check if nodes exist before accessing
+		var hint_bg = visible_child.get_node_or_null("hint_bg")
+		var hint_dialog = visible_child.get_node_or_null("hint_dialog")
+		var status_bar = hint_dialog.get_node_or_null("hint_status_bar") if hint_dialog else null
+		var hint_2_timer = hint_dialog.get_node_or_null("hint_2/hint_2_timer") if hint_dialog else null
+		var solution_timer = hint_dialog.get_node_or_null("solution/solution_timer") if hint_dialog else null
+		
+		if hint_bg:
+			hint_bg.visible = false
+		if hint_dialog:
+			hint_dialog.visible = false
+		if status_bar:
+			status_bar.visible = false
+		if hint_2_timer and hint_2_timer.has_node("timer_label"):
+			hint_2_timer.get_node("timer_label").visible = false
+		if solution_timer and solution_timer.has_node("timer_label"):
+			solution_timer.get_node("timer_label").visible = false
+	
+	# Hide visible overlay and close button
 	if visible_child:
 		visible_child.visible = false
-	
-	# Hide close button
 	if overlay.has_node("close_button"):
 		overlay.get_node("close_button").visible = false
 	
-	# Hide the entire overlay
 	overlay.visible = false
-
+	
 func show_game_ui_elements():
 	if ui_logic.has_node("game_ui_elements"):
 		var game_ui = ui_logic.get_node("game_ui_elements")
@@ -241,16 +256,46 @@ func show_game_ui_elements():
 
 
 func show_overlay_hint():
-	if ui_logic.has_node("overlay"):
-		var overlay = ui_logic.get_node("overlay")
-		overlay.visible = true
-		hide_all_children(overlay)
-		if overlay.has_node("hint"):
-			var hint = overlay.get_node("hint")
-			hint.show_hint()  # Use the hint script's show_hint method
-			show_close_button()
+	if not ui_logic or not ui_logic.has_node("overlay"):
+		return
+		
+	var overlay = ui_logic.get_node("overlay")
+	if not overlay.has_node("hint"):
+		return
+		
+	# Show overlay
+	overlay.visible = true
+	hide_all_children(overlay)
+	
+	# Show hint and check all required nodes
+	var hint = overlay.get_node("hint")
+	hint.visible = true
+	
+	var hint_bg = hint.get_node_or_null("hint_bg")
+	var hint_dialog = hint.get_node_or_null("hint_dialog")
+	
+	if hint_bg:
+		hint_bg.visible = true
+	
+	if hint_dialog:
+		hint_dialog.visible = true
+		
+		var status_bar = hint_dialog.get_node_or_null("hint_status_bar")
+		if status_bar:
+			status_bar.visible = true
+			
+		var hint_2_timer = hint_dialog.get_node_or_null("hint_2/hint_2_timer")
+		if hint_2_timer and hint_2_timer.has_node("timer_label"):
+			hint_2_timer.get_node("timer_label").visible = true
+			
+		var solution_timer = hint_dialog.get_node_or_null("solution/solution_timer")
+		if solution_timer and solution_timer.has_node("timer_label"):
+			solution_timer.get_node("timer_label").visible = true
+	
+	hint.show_appropriate_container()
+	show_close_button()
 
-# TIME INDICATOR LOGIC
+# --------------------------------------TIME INDICATOR LOGIC
 func refresh_time_indicator():
 	if ui_logic.has_node("game_ui_elements"):
 		var game_ui = ui_logic.get_node("game_ui_elements")
@@ -322,7 +367,7 @@ func set_default_time_indicator() -> void:
 		time_indicator.animation = "clockwise_time_indicator"
 		time_indicator.frame = 0
 
-# CUTSCENE FUNCTIONS
+# -------------------------------------------CUTSCENE FUNCTIONS
 func show_level_cutscene(level_number: int, continue_callback: Callable = Callable()):
 	if cutscene:
 		# Hide game UI when showing cutscene
