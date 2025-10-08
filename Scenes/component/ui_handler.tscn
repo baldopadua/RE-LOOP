@@ -916,6 +916,78 @@ scale = Vector2(10.9193, 10.0155)
 sprite_frames = SubResource("SpriteFrames_tkpeg")
 flip_h = true
 
+[node name="level_2_hint" type="Control" parent="ui_logic/overlay/hint"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="hint_1_hard" type="Label" parent="ui_logic/overlay/hint/level_2_hint"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 6.825
+anchor_top = 6.25
+anchor_right = 29.15
+anchor_bottom = 15.65
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_medium" type="Label" parent="ui_logic/overlay/hint/level_2_hint"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 6.975
+anchor_top = 7.35
+anchor_right = 28.425
+anchor_bottom = 15.625
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "\"A skull of heroes rests in silence. Take it, and return it to the grave it belongs to.\"
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_easy" type="Label" parent="ui_logic/overlay/hint/level_2_hint"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.95
+anchor_top = 7.8
+anchor_right = 28.175
+anchor_bottom = 13.925
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "
+Get the skull and place it on the stone.
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="close_button" type="TextureButton" parent="ui_logic/overlay"]
 visible = false
 texture_filter = 1

@@ -71,43 +71,50 @@ func _update_timer_displays():
 		if label:
 			label.text = str(ceil(solution_timer.time_left))
 
+# Helper function to fade out elements
+func fade_out_elements(elements: Array[Node]) -> void:
+	var tween = create_tween()
+	for element in elements:
+		if element:
+			tween.parallel().tween_property(element, "modulate", Color(1, 1, 1, 0), 0.5)
+			
 # Handle hint 2 timer completion
 func _on_hint_2_timer_timeout():
-	# Stop the timer immediately to prevent further triggers
+	# Stop the timer and hide its label
 	hint_2_timer.stop()
-	hint_2_timer.queue_free()  # Remove the timer node
+	if hint_2_timer.has_node("timer_label"):
+		hint_2_timer.get_node("timer_label").visible = false
 	
 	# Save progress
 	hint_progress[current_level] = "medium"
 	
-	# Animate hint 2 elements disappearing
-	var tween = create_tween()
-	tween.tween_property(hint_2_lock, "modulate", Color(1, 1, 1, 0), 0.5)
-	tween.parallel().tween_property(hint_2_overlay, "modulate", Color(1, 1, 1, 0), 0.5)
+	# Fade out hint 2 elements
+	fade_out_elements([hint_2_lock, hint_2_overlay])
 	
 	# Move status bar to hint 2 mark
 	var bar_tween = create_tween()
 	bar_tween.tween_property(hint_status_bar, "position", hint_2_mark.position, 0.5)
 	
-	# Update hint text
+	# Update hint text and start solution timer
 	update_hint_text("medium")
-	
-	# Start solution timer
 	if solution_timer:
+		# Make solution timer label visible and start timer
+		if solution_timer.has_node("timer_label"):
+			solution_timer.get_node("timer_label").visible = true
 		solution_timer.start()
 
 # Handle solution timer completion
 func _on_solution_timer_timeout():
+	# Stop the timer and hide its label
 	solution_timer.stop()
-	solution_timer.queue_free()
-	
+	if solution_timer.has_node("timer_label"):
+		solution_timer.get_node("timer_label").visible = false
+
 	# Save progress
 	hint_progress[current_level] = "easy"
-
-	# Animate solution elements disappearing
-	var tween = create_tween()
-	tween.tween_property(solution_lock, "modulate", Color(1, 1, 1, 0), 0.5)
-	tween.parallel().tween_property(solution_overlay, "modulate", Color(1, 1, 1, 0), 0.5)
+	
+	# Fade out solution elements
+	fade_out_elements([solution_lock, solution_overlay])
 	
 	# Move status bar to solution mark
 	var bar_tween = create_tween()
@@ -136,13 +143,16 @@ func show_appropriate_container():
 		if container:
 			container.visible = false
 	
-	# Show current level's hint container
+	# Show current level's hint container and dynamically look for available hints
 	var current_container = get_node_or_null(current_level + "_hint")
 	if current_container:
 		current_container.visible = true
 		
-		# Show the last unlocked hint difficulty
-		var last_difficulty = hint_progress.get(current_level, "hard")
+		# Check if this is a new level without progress
+		if not hint_progress.has(current_level):
+			hint_progress[current_level] = "hard"
+		
+		var last_difficulty = hint_progress[current_level]
 		update_hint_text(last_difficulty)
 		
 		# Update status bar position based on difficulty
@@ -150,12 +160,17 @@ func show_appropriate_container():
 			match last_difficulty:
 				"hard":
 					hint_status_bar.position = hint_1_mark.position
+					# Only start hint_2_timer if we're on hard difficulty and timer isn't running
+					if hint_2_timer and hint_2_timer.time_left <= 0:
+						hint_2_timer.start()
 				"medium":
 					hint_status_bar.position = hint_2_mark.position
-					# Also make hint 2 elements invisible since they're unlocked
 					if hint_2_lock and hint_2_overlay:
 						hint_2_lock.modulate.a = 0
 						hint_2_overlay.modulate.a = 0
+					# Only start solution timer if we're on medium and timer isn't running
+					if solution_timer and solution_timer.time_left <= 0:
+						solution_timer.start()
 				"easy":
 					hint_status_bar.position = solution_mark.position
 					# Make both hint 2 and solution elements invisible
@@ -166,7 +181,7 @@ func show_appropriate_container():
 						solution_lock.modulate.a = 0
 						solution_overlay.modulate.a = 0
 		
-		# Only show timer labels if not yet unlocked
+		# Show timer labels based on current difficulty
 		if hint_2_timer and hint_2_timer.has_node("timer_label"):
 			hint_2_timer.get_node("timer_label").visible = last_difficulty == "hard"
 		if solution_timer and solution_timer.has_node("timer_label"):
@@ -184,8 +199,37 @@ func _check_for_level_handler():
 		if level_number > 0:
 			var new_level = "level_" + str(level_number)
 			if new_level != current_level:
+				# Level changed - reset hint progress and UI
 				current_level = new_level
+				_reset_hint_state()
 				print("Hint: Level updated to ", current_level)
+
+# Reset hint progress and UI state when changing levels
+func _reset_hint_state():
+	# Clear progress for new level
+	hint_progress[current_level] = "hard"
+	
+	# Reset UI elements
+	if hint_status_bar:
+		hint_status_bar.position = hint_1_mark.position
+	
+	# Reset overlays visibility
+	if hint_2_lock and hint_2_overlay:
+		hint_2_lock.modulate.a = 1
+		hint_2_overlay.modulate.a = 1
+	if solution_lock and solution_overlay:
+		solution_lock.modulate.a = 1
+		solution_overlay.modulate.a = 1
+	
+	# Reset and hide timer labels
+	if hint_2_timer:
+		hint_2_timer.stop()
+		if hint_2_timer.has_node("timer_label"):
+			hint_2_timer.get_node("timer_label").visible = false
+	if solution_timer:
+		solution_timer.stop()
+		if solution_timer.has_node("timer_label"):
+			solution_timer.get_node("timer_label").visible = false
 
 func find_level_handler() -> Node:
 	# Search the entire scene tree for the level_handler script
