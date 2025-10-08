@@ -81,20 +81,26 @@ func _update_timer_displays():
 		var label = hint_2_timer.get_node("timer_label")
 		if label:
 			if hint_2_timer.time_left > 0:
-				label.text = str(int(hint_2_timer.time_left))
+				label.text = format_time(hint_2_timer.time_left)
 			else:
 				# Show wait_time when timer is not running
-				label.text = str(int(hint_2_timer.wait_time))
+				label.text = format_time(hint_2_timer.wait_time)
 			
 	# Update solution timer display
 	if solution_timer:
 		var label = solution_timer.get_node("timer_label")
 		if label:
 			if solution_timer.time_left > 0:
-				label.text = str(int(solution_timer.time_left))
+				label.text = format_time(solution_timer.time_left)
 			else:
 				# Show wait_time when timer is not running
-				label.text = str(int(solution_timer.wait_time))
+				label.text = format_time(solution_timer.wait_time)
+
+# Helper function to format time as MM:SS
+func format_time(seconds: float) -> String:
+	var minutes = int(seconds) / 60
+	var remaining_seconds = int(seconds) % 60
+	return "%d:%02d" % [minutes, remaining_seconds]
 
 # Helper function to fade out elements
 func fade_out_elements(elements: Array[Node]) -> void:

@@ -1055,6 +1055,7 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="level_4_hint" type="Control" parent="ui_logic/overlay/hint"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1064,7 +1065,6 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_1_hard" type="Label" parent="ui_logic/overlay/hint/level_4_hint"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -1085,7 +1085,6 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_1_medium" type="Label" parent="ui_logic/overlay/hint/level_4_hint"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -1109,7 +1108,6 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_1_easy" type="Label" parent="ui_logic/overlay/hint/level_4_hint"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -1135,6 +1133,86 @@ position = Vector2(142, 599.99994)
 scale = Vector2(10.9193, 10.0155)
 sprite_frames = SubResource("SpriteFrames_tkpeg")
 flip_h = true
+
+[node name="level_5_hint" type="Control" parent="ui_logic/overlay/hint"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_hard" type="Label" parent="ui_logic/overlay/hint/level_5_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2140625
+anchor_top = 0.41944444
+anchor_right = 0.8929688
+anchor_bottom = 0.75972223
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "“Teach the child what time can be found. From bones and dreams, new paths align. What’s lost returns in wiser form, creation wakes where ages mourn.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_medium" type="Label" parent="ui_logic/overlay/hint/level_5_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16875
+anchor_top = 0.37638888
+anchor_right = 0.93671876
+anchor_bottom = 0.8888889
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "“The skeleton holds the place of the child.
+Use time to bring him back and
+ let him buy the soda.
+What he brings will matter later,
+return to where he once was.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_easy" type="Label" parent="ui_logic/overlay/hint/level_5_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2203125
+anchor_top = 0.35555556
+anchor_right = 0.8875
+anchor_bottom = 0.9152778
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "“Place the skeleton at the vending machine.
+Move back in time to bring the kid again,
+He'll buy the soda for his science project.
+Then, return to where he used to be,
+and leave the soda there... and see what happens.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="close_button" type="TextureButton" parent="ui_logic/overlay"]
 visible = false
