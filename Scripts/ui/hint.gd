@@ -4,6 +4,9 @@ var current_level: String = "level_1"  # Default to level_1 level
 var connected_level_handler: Node = null
 @onready var plooy_hint = $plooy_hint
 
+# Remove this line since we'll initialize in _ready
+# var ui_handler = get_parent().get_parent().get_parent()
+
 # Add hint progress tracking
 var hint_progress = {}  # Dictionary to store progress per level
 # Example: hint_progress = { "level_1": "medium", "level_2": "easy" }
@@ -22,11 +25,16 @@ var hint_progress = {}  # Dictionary to store progress per level
 @onready var hint_2_mark = $hint_dialog/hint_2_mark
 @onready var solution_mark = $hint_dialog/solution_mark
 
+var ui_handler = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Start plooy animation
 	if plooy_hint:
 		plooy_hint.play()
+	
+	# Initialize ui_handler reference here instead
+	ui_handler = get_parent().get_parent().get_parent()
 	
 	# Set initial timer label visibility using deferred call to ensure it works
 	call_deferred("_init_timer_labels")
@@ -145,6 +153,10 @@ func _on_hint_2_timer_timeout():
 			solution_timer.get_node("timer_label").visible = true
 		solution_timer.start()
 
+	
+	if ui_handler:
+		ui_handler.shake_hint_button()
+
 # Handle solution timer completion
 func _on_solution_timer_timeout():
 	# Stop the timer and hide its label
@@ -164,6 +176,10 @@ func _on_solution_timer_timeout():
 	
 	# Update hint text
 	update_hint_text("easy")
+
+	
+	if ui_handler:
+		ui_handler.shake_hint_button()
 
 func update_hint_text(difficulty: String):
 	# Hide all hint texts

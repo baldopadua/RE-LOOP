@@ -401,4 +401,43 @@ func show_game_ui_after_cutscene():
 		var game_ui = ui_logic.get_node("game_ui_elements")
 		game_ui.visible = true
 
+# Hint Notification 
+func shake_hint_button():
+	var hint_button = ui_logic.get_node_or_null("game_ui_elements/hint_button")
+	if not hint_button:
+		return
+	
+	# Store original texture and switch to hover texture
+	var original_texture = hint_button.texture_normal
+	hint_button.texture_normal = hint_button.texture_hover
+	
+	# Create repeating shake animation
+	for repeat in range(3):  # Repeat 3 times
+		var shake_tween = create_tween()
+		var original_pos = hint_button.position
+		var shake_strength = 5.0
+		var shake_duration = 0.05  # Faster shake
+		var shake_count = 4
+		
+		# Add multiple shake movements
+		for i in range(shake_count):
+			# Shake right
+			shake_tween.tween_property(hint_button, "position", 
+				original_pos + Vector2(shake_strength, 0), shake_duration)
+			# Shake left
+			shake_tween.tween_property(hint_button, "position", 
+				original_pos + Vector2(-shake_strength, 0), shake_duration)
+		
+		# Return to original position
+		shake_tween.tween_property(hint_button, "position", original_pos, shake_duration)
+		
+		# Add pause between repetitions
+		shake_tween.tween_interval(0.3)  # Wait before next shake
+		
+		# Wait for current shake to finish before starting next one
+		await shake_tween.finished
+	
+	# Reset texture after all shakes are done
+	hint_button.texture_normal = original_texture
+
 
