@@ -739,7 +739,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_dialog/hint_2"]
-wait_time = 10.0
+wait_time = 60.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_dialog/hint_2/hint_2_timer"]
 anchors_preset = -1
@@ -754,7 +754,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 24
-text = "10"
+text = "60"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -794,24 +794,20 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_dialog/solution"]
-wait_time = 10.0
+wait_time = 60.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_dialog/solution/solution_timer"]
 anchors_preset = -1
-anchor_left = 0.578125
-anchor_top = 0.28055555
-anchor_right = 0.609375
-anchor_bottom = 0.32777777
-offset_left = 252.0
-offset_top = -4.0
-offset_right = 252.0
-offset_bottom = -4.0
+anchor_left = 0.775
+anchor_top = 0.275
+anchor_right = 0.80625
+anchor_bottom = 0.32222223
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 24
-text = "10"
+text = "60"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -947,17 +943,18 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2765625
-anchor_top = 0.40833333
-anchor_right = 0.83203125
-anchor_bottom = 0.82222223
+anchor_left = 0.209375
+anchor_top = 0.4097222
+anchor_right = 0.896875
+anchor_bottom = 0.8361111
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 43
-text = "\"A skull of heroes rests in silence. Take it, and return it to the grave it belongs to.\"
+text = "“A skull of heroes rests in silence. Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -968,19 +965,19 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.28203124
-anchor_top = 0.41527778
-anchor_right = 0.8140625
-anchor_bottom = 0.84166664
+anchor_left = 0.21171875
+anchor_top = 0.38194445
+anchor_right = 0.89453125
+anchor_bottom = 0.80833334
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 43
-text = "
-Get the skull and place it on the stone.
-
+text = "“Find the skull and place it on the stone.
+Try shifting through time,
+the right moment will awaken what’s been waiting.”
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1011,7 +1008,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 43
-text = "\"Block the roaring path where water longs to escape. The mountain hides the key—place each heavy heart where it belongs.\""
+text = "\"Block the roaring path where water longs to escape. The mountain hides the key, placing each heavy heart where it belongs.\""
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1022,19 +1019,16 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.24765626
-anchor_top = 0.4097222
+anchor_top = 0.36805555
 anchor_right = 0.84375
-anchor_bottom = 0.8361111
+anchor_bottom = 0.79444444
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 43
-text = "
-\"Water runs away, stones must block its path.\"
-
-"
+text = "\"Water runs away, stones must block its path.\""
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1044,19 +1038,92 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2078125
-anchor_top = 0.4611111
-anchor_right = 0.8882812
-anchor_bottom = 0.8875
+anchor_left = 0.2109375
+anchor_top = 0.36527777
+anchor_right = 0.89140624
+anchor_bottom = 0.7916667
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 43
-text = "Stop the flowing water by placing the stones in the right spots.
+text = "“Stop the flowing water by placing the stones in the right spots.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
+[node name="level_4_hint" type="Control" parent="ui_logic/overlay/hint"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_hard" type="Label" parent="ui_logic/overlay/hint/level_4_hint"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.215625
+anchor_top = 0.39722222
+anchor_right = 0.89453125
+anchor_bottom = 0.7375
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "\"To break the loop, rewrite the thread, Awake the code that long lay dead revealed to you which may be asked for time itself will be unmasked\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_medium" type="Label" parent="ui_logic/overlay/hint/level_4_hint"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21484375
+anchor_top = 0.36527777
+anchor_right = 0.87109375
+anchor_bottom = 0.87777776
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "“Explore each time period and find what you can use.
+Bring everything to the incubator,
+combine what you’ve gathered to complete the creation.”
 "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_easy" type="Label" parent="ui_logic/overlay/hint/level_4_hint"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21796875
+anchor_top = 0.35277778
+anchor_right = 0.8851563
+anchor_bottom = 0.82916665
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "“Take the feather from the chicken and the tail left by the lizard. Plant the seed and let it grow into a bone, let the dog bite it, then take what’s left. Place them all into the incubator and see what it creates.”"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
