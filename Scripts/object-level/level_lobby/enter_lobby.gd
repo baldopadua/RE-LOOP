@@ -38,8 +38,9 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 				var levels_frame = current_level_scene.get_parent()
 				scene_level_handler.complete_current_level(levels_frame)
 			else:
-				# Fallback to direct enter_level call
+				# Fallback to direct enter_level call without arguments
 				if current_level_scene.has_method("enter_level"):
+					# Always call without parameters for level scenes
 					current_level_scene.enter_level()
 			return
 		
@@ -58,11 +59,29 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 		# Small delay for interaction feedback
 		await object_interacted.get_tree().create_timer(0.3).timeout
 		
-		# Trigger level selection
+		# Trigger level selection - lobby scene enter_level DOES take the level_number parameter
 		if lobby_scene.has_method("enter_level"):
-			lobby_scene.enter_level(level_number)
+			# Use reflection to check if the method expects parameters
+			var method_info = _get_method_info(lobby_scene, "enter_level")
+			if method_info and method_info.args.size() > 0:
+				# This scene's enter_level DOES take arguments
+				print("Calling parent scene's enter_level WITH level_number parameter: ", level_number)
+				lobby_scene.enter_level(level_number)
+			else:
+				# This scene's enter_level doesn't take arguments
+				print("Calling parent scene's enter_level with NO parameters")
+				lobby_scene.enter_level()
 		else:
 			print("lobby_scene doesn't have enter_level method")
+
+# Helper function to get method information
+static func _get_method_info(object_ref, method_name: String):
+	if object_ref and object_ref.has_method("get_method_list"):
+		var methods = object_ref.get_method_list()
+		for method in methods:
+			if method.name == method_name:
+				return method
+	return null
 
 # Helper function to detect if we're in a level scene
 static func _get_current_level_scene(object_ref: object_class) -> Node:
