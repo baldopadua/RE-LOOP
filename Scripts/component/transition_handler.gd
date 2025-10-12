@@ -2,7 +2,6 @@ extends Control
 
 var logic: Control
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	logic = get_node("transition_logic")
 

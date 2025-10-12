@@ -5,24 +5,20 @@ extends Control
 @onready var background = $background
 @onready var time_indicator = $ui_logic/game_ui_elements/time_indicator
 @onready var cutscene = $cutscene
+var hint_button = null 
 
 var bg_node: Node = null
 var main_menu: Node = null
-var player = null
+var player: Node = null
 var last_anim_type: String = ""
 
 var nodes = []
 var all_nodes = _get_all_nodes(self)
 
-# CALLED WHEN THE NODE ENTERS THE SCENE TREE FOR THE FIRST TIME.
 func _ready() -> void:
 	_connect_hover_sound(self)
-	# Find player node if exists
-	if get_tree().get_root().has_node("PlayerScene"):
-		player = get_tree().get_root().get_node("PlayerScene")
+	hint_button = ui_logic.get_node_or_null("game_ui_elements/hint_button")  
 
-
-# CALLED EVERY FRAME. 'DELTA' IS THE ELAPSED TIME SINCE THE PREVIOUS FRAME.
 func _process(_delta: float) -> void:
 	pass
 	
@@ -121,7 +117,6 @@ func hide_background(bg_name: String) -> void:
 func show_main_menu():
 	if sound_manager:
 		sound_manager.play_music("main_bgm")
-	# SHOW ONLY SPECIFIC BACKGROUND
 	show_background("game_animated_bg")
 	# USE NEW HIERARCHY FOR MAIN_MENU
 	if ui_logic.has_node("main_menu"):
@@ -199,14 +194,14 @@ func close_overlay_button(_node):
 	if not overlay:
 		return
 	
-	# Find which overlay child is visible
+	# FIND WHICH OVERLAY CHILD IS VISIBLE
 	var visible_child = null
 	for child in overlay.get_children():
 		if child.visible and child.name != "close_button":
 			visible_child = child
 			break
 	
-	# Special handling for hint overlay
+	# SPECIAL HANDLING FOR HINT OVERLAY
 	if visible_child and visible_child.name == "hint":
 		# Check if nodes exist before accessing
 		var hint_bg = visible_child.get_node_or_null("hint_bg")
@@ -226,7 +221,7 @@ func close_overlay_button(_node):
 		if solution_timer and solution_timer.has_node("timer_label"):
 			solution_timer.get_node("timer_label").visible = false
 	
-	# Hide visible overlay and close button
+	# HIDE VISIBLE OVERLAY AND CLOSE BUTTON
 	if visible_child:
 		visible_child.visible = false
 	if overlay.has_node("close_button"):
@@ -263,11 +258,11 @@ func show_overlay_hint():
 	if not overlay.has_node("hint"):
 		return
 		
-	# Show overlay
+	# SHOW OVERLAY
 	overlay.visible = true
 	hide_all_children(overlay)
 	
-	# Show hint and check all required nodes
+	# SHOW HINT AND CHECK ALL REQUIRED NODES
 	var hint = overlay.get_node("hint")
 	hint.visible = true
 	
@@ -280,7 +275,7 @@ func show_overlay_hint():
 	if hint_dialog:
 		hint_dialog.visible = true
 		
-		# Show timer labels with full opacity
+		# SHOW TIMER LABELS WITH FULL OPACITY
 		if hint_dialog.has_node("hint_2/hint_2_timer/timer_label"):
 			var timer_label = hint_dialog.get_node("hint_2/hint_2_timer/timer_label")
 			timer_label.modulate.a = 1
@@ -304,7 +299,7 @@ func refresh_time_indicator():
 		if game_ui.has_node("time_indicator"):
 			time_indicator = game_ui.get_node("time_indicator")
 
-# Set the animation type: "clockwise_time_indicator", "counterclockwise_time_indicator", "fixed"
+# SET THE ANIMATION TYPE: "CLOCKWISE_TIME_INDICATOR", "COUNTERCLOCKWISE_TIME_INDICATOR", "FIXED"
 func set_time_indicator_animation(anim_type: String) -> void:
 	refresh_time_indicator()
 	if time_indicator and time_indicator.is_visible_in_tree():
@@ -312,12 +307,12 @@ func set_time_indicator_animation(anim_type: String) -> void:
 		time_indicator.frame = 0
 		time_indicator.pause()
 
-# Move the time indicator frame forward or backward
+# MOVE THE TIME INDICATOR FRAME FORWARD OR BACKWARD
 func move_time_indicator_frame(forward: bool = true) -> void:
 	refresh_time_indicator()
 	if not time_indicator or not time_indicator.is_visible_in_tree():
 		return
-	# Only move if player is present in the same node
+	# ONLY MOVE IF PLAYER IS PRESENT IN THE SAME NODE
 	var frame_count = time_indicator.sprite_frames.get_frame_count(time_indicator.animation)
 	if frame_count <= 1:
 		return
@@ -333,7 +328,7 @@ func move_time_indicator_frame(forward: bool = true) -> void:
 	time_indicator.frame = current_frame
 	time_indicator.pause()
 
-# Reset time indicator to first frame
+# RESET TIME INDICATOR TO FIRST FRAME
 func reset_time_indicator() -> void:
 	refresh_time_indicator()
 	if time_indicator:
@@ -352,8 +347,7 @@ func update_time_indicator_by_move(move: int) -> void:
 
 func show_last_frame_then_reset():
 	time_indicator.frame = 12
-	# Wait briefly to show the last frame
-	await get_tree().create_timer(0.5).timeout  # Adjust timing as needed
+	await get_tree().create_timer(0.5).timeout  
 	time_indicator.frame = 0
 
 func set_time_indicator_fixed() -> void:
@@ -372,11 +366,8 @@ func set_default_time_indicator() -> void:
 # -------------------------------------------CUTSCENE FUNCTIONS
 func show_level_cutscene(level_number: int, continue_callback: Callable = Callable()):
 	if cutscene:
-		# Hide game UI when showing cutscene
 		hide_game_ui_during_cutscene()
-		# Show custom cursor during cutscene
 		show_cursor()
-		# Play page turn sound effect
 		if sound_manager:
 			sound_manager.play_ui("page_turn")
 		cutscene.show_level_cutscene(level_number, continue_callback)
@@ -384,60 +375,55 @@ func show_level_cutscene(level_number: int, continue_callback: Callable = Callab
 func hide_level_cutscene():
 	if cutscene:
 		cutscene.hide_cutscene()
-		# Hide custom cursor when cutscene ends
 		remove_cursor()
-		# Restore game UI when hiding cutscene
-		
 
-# Hide game UI elements during cutscene
+# HIDE GAME UI ELEMENTS DURING CUTSCENE
 func hide_game_ui_during_cutscene():
 	if ui_logic and ui_logic.has_node("game_ui_elements"):
 		var game_ui = ui_logic.get_node("game_ui_elements")
 		game_ui.visible = false
 
-# Show game UI elements after cutscene
+# SHOW GAME UI ELEMENTS AFTER CUTSCENE
 func show_game_ui_after_cutscene():
 	if ui_logic and ui_logic.has_node("game_ui_elements"):
 		var game_ui = ui_logic.get_node("game_ui_elements")
 		game_ui.visible = true
 
-# Hint Notification 
+# HINT NOTIFICATION 
 func shake_hint_button():
-	var hint_button = ui_logic.get_node_or_null("game_ui_elements/hint_button")
+	
 	if not hint_button:
 		return
 	
-	# Store original texture and switch to hover texture
+	# STORE ORIGINAL TEXTURE AND SWITCH TO HOVER TEXTURE
 	var original_texture = hint_button.texture_normal
 	hint_button.texture_normal = hint_button.texture_hover
 	
-	# Create repeating shake animation
-	for repeat in range(3):  # Repeat 3 times
+	# CREATE REPEATING SHAKE ANIMATION
+	for repeat in range(3): 
 		var shake_tween = create_tween()
 		var original_pos = hint_button.position
 		var shake_strength = 5.0
-		var shake_duration = 0.05  # Faster shake
+		var shake_duration = 0.05 
 		var shake_count = 4
 		
-		# Add multiple shake movements
+		# ADD MULTIPLE SHAKE MOVEMENTS
 		for i in range(shake_count):
-			# Shake right
+			# SHAKE RIGHT
 			shake_tween.tween_property(hint_button, "position", 
 				original_pos + Vector2(shake_strength, 0), shake_duration)
-			# Shake left
+			# SHAKE LEFT
 			shake_tween.tween_property(hint_button, "position", 
 				original_pos + Vector2(-shake_strength, 0), shake_duration)
 		
-		# Return to original position
+		# RETURN TO ORIGINAL POSITION
 		shake_tween.tween_property(hint_button, "position", original_pos, shake_duration)
 		
-		# Add pause between repetitions
-		shake_tween.tween_interval(0.3)  # Wait before next shake
-		
-		# Wait for current shake to finish before starting next one
+		# ADD PAUSE BETWEEN REPETITIONS
+		shake_tween.tween_interval(0.3)  
 		await shake_tween.finished
 	
-	# Reset texture after all shakes are done
+	# RESET TEXTURE AFTER ALL SHAKES ARE DONE
 	hint_button.texture_normal = original_texture
 
 

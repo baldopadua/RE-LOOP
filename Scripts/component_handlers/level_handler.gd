@@ -4,6 +4,7 @@ signal level_instantiated(level_name: String)
 signal level_completed(level_name: String)
 signal short_hand_state_changed(level_number: int, is_unlocked: bool)
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+var player = null # Will be set when level_scene is available
 
 var current_level_number: int = 0
 var current_player: CharacterBody2D = null
@@ -50,13 +51,12 @@ func map_initialize(this, tween_rotate, tween_scale):
 	# Connect to player after map initialization
 	call_deferred("connect_to_player", this)
 
-# Para sa level select, nakaconnect sa player input 'yung long hand ng clock movement
+# PARA SA LEVEL SELECT, NAKACONNECT SA PLAYER INPUT 'YUNG LONG HAND NG CLOCK MOVEMENT
 func connect_to_player(level_scene):
-	# Find the player in the current level
-	var player = level_scene.get_node_or_null("PlayerScene")
+	player = level_scene.get_node_or_null("PlayerScene")
 	if player:
 		current_player = player
-		# Connect player signals to level_status
+		# CONNECT PLAYER SIGNALS TO LEVEL_STATUS
 		if player.has_signal("player_finished_moving"):
 			player.player_finished_moving.connect(level_status_node._on_player_moved)
 		level_status_node.set_player_reference(player)
@@ -85,23 +85,21 @@ func tween_next_scale_finished(tween_created):
 	tween_created.kill()
 
 func change_level(scene_path: String, levels_frame):
-	# Check if the scene file exists before trying to load it
 	if not ResourceLoader.exists(scene_path):
 		print("Level Handler: Scene file not found: ", scene_path)
 		print("Level Handler: Returning to lobby instead")
 		return_to_lobby(levels_frame)
 		return
 	
-	# Remove current level
 	for child in levels_frame.get_children():
 		child.queue_free()
 
-	# Load and add new level
+	# LOAD AND ADD NEW LEVEL
 	var new_level = load(scene_path).instantiate()
 	levels_frame.add_child(new_level)
 
-# Call this method from level scripts in the their _ready() function to identify the level
-# Example: level_handler.set_current_level(1)
+# CALL THIS METHOD FROM LEVEL SCRIPTS IN THE THEIR _READY() FUNCTION TO IDENTIFY THE LEVEL
+# EXAMPLE: LEVEL_HANDLER.SET_CURRENT_LEVEL(1)
 func set_current_level(level_number: int):
 	current_level_number = level_number
 	is_lobby = false # We're in a regular level, not lobby
@@ -116,54 +114,50 @@ func set_current_level(level_number: int):
 	
 	emit_signal("level_instantiated", level_name)
 	
-	# Update long hand state for current level
 	update_short_hand_state_for_level(level_number)
 	
-	# Only start hint timers when entering a non-lobby level
+	# ONLY START HINT TIMERS WHEN ENTERING A NON-LOBBY LEVEL
 	if ui_handler and ui_handler.has_node("ui_logic/overlay/hint"):
 		var hint = ui_handler.get_node("ui_logic/overlay/hint")
-		# Force update the hint system for the new level first
+		# FORCE UPDATE THE HINT SYSTEM FOR THE NEW LEVEL FIRST
 		hint.current_level = level_name
 		hint._reset_hint_state()
 		hint.show_appropriate_container()
-		# Then start the timer
+		# THEN START THE TIMER
 		var hint_2_timer = hint.get_node("hint_dialog/hint_2/hint_2_timer")
 		if hint_2_timer and hint_2_timer.time_left <= 0:
 			hint_2_timer.start()
 	
 
-# Call this method from level_lobby script in its _ready() function to identify it as lobby
-# Example: level_handler.set_current_lobby()
+# CALL THIS METHOD FROM LEVEL_LOBBY SCRIPT IN ITS _READY() FUNCTION TO IDENTIFY IT AS LOBBY
+# EXAMPLE: LEVEL_HANDLER.SET_CURRENT_LOBBY()
 func set_current_lobby():
 	current_level_number = 0
 	is_lobby = true
 	print("Level Handler: Current scene set to lobby")
 	emit_signal("level_instantiated", "lobby")
 	
-	# Resume hand following in lobby
 	level_status_node.resume_following_player()
-	
-	# Update long hand state for level 1 (default lobby position)
 	update_short_hand_state_for_level(1)
 
-# Call this method from the level scripts when the level objective is met
-# Example: level_handler.complete_current_level(get_parent().get_parent())
+# CALL THIS METHOD FROM THE LEVEL SCRIPTS WHEN THE LEVEL OBJECTIVE IS MET
+# EXAMPLE: LEVEL_HANDLER.COMPLETE_CURRENT_LEVEL(GET_PARENT().GET_PARENT())
 func complete_current_level(levels_frame):
 	if current_level_number > 0:
 		# KILL ANY EXISTING TWEENS FIRST - More comprehensive tween killing
 		var current_level = levels_frame.get_child(0)
 		if current_level:
-			# Kill all tweens in the scene tree
+			# KILL ALL TWEENS IN THE SCENE TREE
 			_kill_all_level_tweens(current_level)
 		
-		# Stop player movement immediately
+		# STOP PLAYER MOVEMENT IMMEDIATELY
 		if current_player:
 			GlobalVariables.player_stopped = true
-			# Disable player input to prevent further movement
+			# DISABLE PLAYER INPUT TO PREVENT FURTHER MOVEMENT
 			current_player.set_physics_process(false)
 			current_player.set_process_input(false)
 		
-		# Stop hint timers if they exist
+		# STOP HINT TIMERS IF THEY EXIST
 		if ui_handler and ui_handler.has_node("ui_logic/overlay/hint"):
 			var hint = ui_handler.get_node("ui_logic/overlay/hint")
 			var hint_2_timer = hint.get_node_or_null("hint_dialog/hint_2/hint_2_timer")
@@ -174,10 +168,10 @@ func complete_current_level(levels_frame):
 			if solution_timer:
 				solution_timer.stop()
 		
-		# Stop hand from following player and preserve position
+		# STOP HAND FROM FOLLOWING PLAYER AND PRESERVE POSITION
 		level_status_node.stop_following_player()
 		
-		# Force set hand position to current level's clock position
+		# FORCE SET HAND POSITION TO CURRENT LEVEL'S CLOCK POSITION
 		match current_level_number:
 			1:
 				level_status_node.set_hand_to_clock_position(1) # 1 o'clock for level 1
@@ -209,7 +203,7 @@ func complete_current_level(levels_frame):
 		var level_name = "level_" + str(current_level_number)
 		emit_signal("level_completed", level_name)
 		
-		# Mark level as completed and print status (only if not already completed)
+		# MARK LEVEL AS COMPLETED AND PRINT STATUS (ONLY IF NOT ALREADY COMPLETED)
 		if not is_replaying_completed_level:
 			_mark_level_completed_and_print_status()
 		
@@ -217,14 +211,13 @@ func complete_current_level(levels_frame):
 		kill_current_level(current_level)
 		await get_tree().create_timer(1.2).timeout  # Increased wait time to ensure tween completion
 
-		# Check if this is a replay of an already completed level
+		# CHECK IF THIS IS A REPLAY OF AN ALREADY COMPLETED LEVEL
 		if is_replaying_completed_level:
-			# Skip cutscene and go directly to lobby for replayed levels
 			print("Level Handler: Skipping cutscene for replayed level, going directly to lobby")
 			return_to_lobby(levels_frame)
 		else:
-			# Show story cutscene first, then clock animation, then next level
-			# Calculate next level number for cutscene
+			# SHOW STORY CUTSCENE FIRST, THEN CLOCK ANIMATION, THEN NEXT LEVEL
+			# CALCULATE NEXT LEVEL NUMBER FOR CUTSCENE
 			var next_level_number = current_level_number + 1
 			if next_level_number > TOTAL_LEVEL_COUNT:
 				next_level_number = 1 # Loop back to level 1
@@ -233,7 +226,7 @@ func complete_current_level(levels_frame):
 			if ui_handler:
 				ui_handler.show_level_cutscene(next_level_number, func(): _show_clock_then_load_level(next_level_number, levels_frame))
 
-# New function to show clock animation then load next level
+# NEW FUNCTION TO SHOW CLOCK ANIMATION THEN LOAD NEXT LEVEL
 func _show_clock_then_load_level(next_level_number: int, levels_frame):
 	# Show clock animation cutscene
 	await show_level_transition_cutscene(next_level_number)
@@ -241,18 +234,18 @@ func _show_clock_then_load_level(next_level_number: int, levels_frame):
 	# Load next level after clock animation
 	_continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame)
 
-func load_next_level(next_level_number: int, levels_frame):
-	var next_level_path = "res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn"
+# func load_next_level(next_level_number: int, levels_frame):
+# 	var next_level_path = "res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn"
 	
-	# Check if the level file exists before trying to load it
-	if ResourceLoader.exists(next_level_path):
-		# Show cutscene first before loading level
-		if ui_handler:
-			ui_handler.show_level_cutscene(next_level_number, func(): _continue_to_level(next_level_path, levels_frame))
-	else:
-		# Level doesn't exist yet, return to lobby instead
-		print("Level Handler: Level ", next_level_number, " scene file not found, returning to lobby")
-		return_to_lobby(levels_frame)
+# 	# Check if the level file exists before trying to load it
+# 	if ResourceLoader.exists(next_level_path):
+# 		# Show cutscene first before loading level
+# 		if ui_handler:
+# 			ui_handler.show_level_cutscene(next_level_number, func(): _continue_to_level(next_level_path, levels_frame))
+# 	else:
+# 		# Level doesn't exist yet, return to lobby instead
+# 		print("Level Handler: Level ", next_level_number, " scene file not found, returning to lobby")
+# 		return_to_lobby(levels_frame)
 
 # New function to load level directly without cutscene (for lobby transitions)
 func load_next_level_directly(next_level_number: int, levels_frame):
@@ -290,26 +283,23 @@ func return_to_lobby(levels_frame):
 		level_status_node.resume_following_player()
 	
 	# RESTART FOREST AMBIENCE WHEN RETURNING TO LOBBY
-	await get_tree().create_timer(0.1).timeout  # Small delay to ensure scene is loaded
+	await get_tree().create_timer(0.1).timeout  
 	var lobby_scene = levels_frame.get_child(0)
 	if lobby_scene and lobby_scene.has_node("SoundManager"):
 		var sound_manager = lobby_scene.get_node("SoundManager")
 		sound_manager.play_ambience_sfx("forest_sfx")
 
 
-# Helper function to mark level as completed and print status
+# HELPER FUNCTION TO MARK LEVEL AS COMPLETED AND PRINT STATUS
 func _mark_level_completed_and_print_status():
 	# Add current level to completed levels FIRST
 	if not completed_levels.has(current_level_number):
 		completed_levels.append(current_level_number)
-	
-	# Update long hand state for completed level
+
 	update_short_hand_state_for_level(current_level_number)
-	
-	# Print completed levels with checkmarks
 	print_completion_status()
 
-# Public function to print completion status
+# PUBLIC FUNCTION TO PRINT COMPLETION STATUS
 func print_completion_status():
 	var completed_status = ""
 	for i in range(1, TOTAL_LEVEL_COUNT + 1):
@@ -318,11 +308,10 @@ func print_completion_status():
 		else:
 			completed_status += "level " + str(i) + " ✗, "
 	
-	# Remove the last comma and space
 	completed_status = completed_status.trim_suffix(", ")
 	print("Level Handler: ", completed_status)
 
-# Centralized function to update long hand state and notify listeners
+# CENTRALIZED FUNCTION TO UPDATE LONG HAND STATE AND NOTIFY LISTENERS
 func update_short_hand_state_for_level(level_number: int):
 	if level_number <= 0:
 		return
@@ -352,7 +341,7 @@ func show_level_transition_cutscene(next_level_number: int):
 	level_status_node.hide_cutscene()
 
 func restart_level(levels_frame):
-	# Remove and Re-open current level
+	# REMOVE AND RE-OPEN CURRENT LEVEL
 	var current_level = levels_frame.get_child(0)
 
 	if current_level:
