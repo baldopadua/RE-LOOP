@@ -98,7 +98,7 @@ func _update_timer_displays():
 
 # Helper function to format time as MM:SS
 func format_time(seconds: float) -> String:
-	var minutes = int(seconds) / 60
+	var minutes = int(seconds / 60.0)
 	var remaining_seconds = int(seconds) % 60
 	return "%d:%02d" % [minutes, remaining_seconds]
 
