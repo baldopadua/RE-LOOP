@@ -80,21 +80,25 @@ func _update_timer_displays():
 	if hint_2_timer:
 		var label = hint_2_timer.get_node("timer_label")
 		if label:
-			if hint_2_timer.time_left > 0:
-				label.text = format_time(hint_2_timer.time_left)
-			else:
-				# Show wait_time when timer is not running
-				label.text = format_time(hint_2_timer.wait_time)
+			# Only update text if the label is actually visible
+			if label.visible:
+				if hint_2_timer.time_left > 0:
+					label.text = format_time(hint_2_timer.time_left)
+				else:
+					# Show wait_time when timer is not running
+					label.text = format_time(hint_2_timer.wait_time)
 			
 	# Update solution timer display
 	if solution_timer:
 		var label = solution_timer.get_node("timer_label")
 		if label:
-			if solution_timer.time_left > 0:
-				label.text = format_time(solution_timer.time_left)
-			else:
-				# Show wait_time when timer is not running
-				label.text = format_time(solution_timer.wait_time)
+			# Only update text if the label is actually visible
+			if label.visible:
+				if solution_timer.time_left > 0:
+					label.text = format_time(solution_timer.time_left)
+				else:
+					# Show wait_time when timer is not running
+					label.text = format_time(solution_timer.wait_time)
 
 # Helper function to format time as MM:SS
 func format_time(seconds: float) -> String:
@@ -251,9 +255,24 @@ func show_appropriate_container():
 		
 		# Show timer labels based on current difficulty
 		if hint_2_timer and hint_2_timer.has_node("timer_label"):
-			hint_2_timer.get_node("timer_label").visible = last_difficulty == "hard"
+			# Don't make timer label visible here - let overlay control this
+			# Just update the text content
+			var label = hint_2_timer.get_node("timer_label")
+			if label:
+				if hint_2_timer.time_left > 0:
+					label.text = format_time(hint_2_timer.time_left)
+				else:
+					label.text = format_time(hint_2_timer.wait_time)
+				
 		if solution_timer and solution_timer.has_node("timer_label"):
-			solution_timer.get_node("timer_label").visible = last_difficulty == "medium"
+			# Don't make timer label visible here - let overlay control this
+			# Just update the text content
+			var label = solution_timer.get_node("timer_label")
+			if label:
+				if solution_timer.time_left > 0:
+					label.text = format_time(solution_timer.time_left)
+				else:
+					label.text = format_time(solution_timer.wait_time)
 
 func _check_for_level_handler():
 	# Always check for new level handlers since levels get destroyed/recreated
@@ -295,14 +314,14 @@ func _reset_hint_state():
 		solution_lock.modulate = Color(1, 1, 1, 1)
 		solution_overlay.modulate = Color(1, 1, 1, 1)
 	
-	# Reset timers and initialize labels
+	# Reset timers and ensure labels are hidden
 	if hint_2_timer:
 		hint_2_timer.stop()
 		if hint_2_timer.has_node("timer_label"):
 			var label = hint_2_timer.get_node("timer_label")
 			label.visible = false
 			label.modulate.a = 0
-			label.text = str(int(hint_2_timer.wait_time))
+			label.text = format_time(hint_2_timer.wait_time)
 			
 	if solution_timer:
 		solution_timer.stop()
@@ -310,7 +329,7 @@ func _reset_hint_state():
 			var label = solution_timer.get_node("timer_label")
 			label.visible = false
 			label.modulate.a = 0
-			label.text = str(int(solution_timer.wait_time))
+			label.text = format_time(solution_timer.wait_time)
 
 func find_level_handler() -> Node:
 	# Search the entire scene tree for the level_handler script
@@ -361,10 +380,13 @@ func show_hint():
 		return
 		
 	visible = true
-	# Only start timers if we're not in lobby
+	# Only start timers if we're not in lobby, but don't make timer labels visible yet
 	if connected_level_handler and connected_level_handler.current_level_number > 0:
-		if hint_2_timer and hint_2_timer.time_left <= 0:
+		var current_diff = hint_progress.get(current_level, "hard")
+		if current_diff == "hard" and hint_2_timer and hint_2_timer.time_left <= 0:
 			hint_2_timer.start()
+		elif current_diff == "medium" and solution_timer and solution_timer.time_left <= 0:
+			solution_timer.start()
 func hide_hint():
 	visible = false
 

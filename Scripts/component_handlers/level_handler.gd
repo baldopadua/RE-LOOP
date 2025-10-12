@@ -16,6 +16,9 @@ static var completed_levels: Array[int] = [] # Track completed levels
 const TOTAL_LEVEL_COUNT: int = 12
 @onready var level_status_node = $level_status
 
+# References for hint system
+var hint_component = null
+
 # LEVEL INTRO GUIDE:
 #   1. Initialize Level Handler component in the level map and initialize as onready variable.
 #   2. Add a tween_rotate and a tween_scale as tween type variables in the level map
@@ -113,21 +116,8 @@ func set_current_level(level_number: int):
 		print("Level Handler: This is a replay of an already completed level")
 	
 	emit_signal("level_instantiated", level_name)
-	
 	update_short_hand_state_for_level(level_number)
-	
-	# ONLY START HINT TIMERS WHEN ENTERING A NON-LOBBY LEVEL
-	if ui_handler and ui_handler.has_node("ui_logic/overlay/hint"):
-		var hint = ui_handler.get_node("ui_logic/overlay/hint")
-		# FORCE UPDATE THE HINT SYSTEM FOR THE NEW LEVEL FIRST
-		hint.current_level = level_name
-		hint._reset_hint_state()
-		hint.show_appropriate_container()
-		# THEN START THE TIMER
-		var hint_2_timer = hint.get_node("hint_dialog/hint_2/hint_2_timer")
-		if hint_2_timer and hint_2_timer.time_left <= 0:
-			hint_2_timer.start()
-	
+
 
 # CALL THIS METHOD FROM LEVEL_LOBBY SCRIPT IN ITS _READY() FUNCTION TO IDENTIFY IT AS LOBBY
 # EXAMPLE: LEVEL_HANDLER.SET_CURRENT_LOBBY()
@@ -370,24 +360,19 @@ func kill_current_level(level_scene):
 	tween_scale.tween_property(level_scene, "scale", Vector2(0.01, 0.01), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 
 
-# Helper function to kill all tweens in a level scene
+# HELPER FUNCTION TO KILL ALL TWEENS IN A LEVEL SCENE
 func _kill_all_level_tweens(level_scene: Node):
-	# Kill tweens in the level scene and all its children recursively
 	_recursive_kill_tweens(level_scene)
 	
-	# Also kill any global tweens
 	var tweens = get_tree().get_nodes_in_group("tweens")
 	for tween in tweens:
 		if tween and tween.is_valid():
 			tween.kill()
 
-# Recursive function to kill tweens in all nodes
+# RECURSIVE FUNCTION TO KILL TWEENS IN ALL NODES
 func _recursive_kill_tweens(node: Node):
-	# Check if node has tweens and kill them
 	for child in node.get_children():
-		# Kill tweens on this child
 		if child.has_method("create_tween"):
-			# Try to access any tween properties that might exist
 			var properties = child.get_property_list()
 			for property in properties:
 				if property.name.contains("tween"):
@@ -396,5 +381,51 @@ func _recursive_kill_tweens(node: Node):
 						if tween_obj.is_valid():
 							tween_obj.kill()
 		
-		# Recursively check children
 		_recursive_kill_tweens(child)
+
+func _ready() -> void:
+	if not ui_handler:
+		ui_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler")
+	
+	if ui_handler and ui_handler.has_node("ui_logic/overlay/hint"):
+		hint_component = ui_handler.get_node("ui_logic/overlay/hint")
+	
+	if not level_instantiated.is_connected(_on_level_instantiated):
+		level_instantiated.connect(_on_level_instantiated)
+	
+	call_deferred("_check_and_start_hint_timers")
+
+func _on_level_instantiated(_level_name: String) -> void:
+	_check_and_start_hint_timers()
+
+# HELPER FUNCTION TO CHECK AND START HINT TIMERS
+func _check_and_start_hint_timers() -> void:
+	if not is_lobby and current_level_number > 0 and hint_component:
+		
+		var hint_2_timer = hint_component.get_node_or_null("hint_dialog/hint_2/hint_2_timer")
+		if hint_2_timer and hint_2_timer.time_left <= 0:
+			
+			var level_key = "level_" + str(current_level_number)
+			var current_difficulty = "hard"  
+			
+			if hint_component.hint_progress.has(level_key):
+				current_difficulty = hint_component.hint_progress[level_key]
+			
+			if current_difficulty == "hard":
+				print("Level Handler: Starting hint timer for level ", current_level_number)
+				hint_2_timer.start()
+				
+				var timer_label = hint_2_timer.get_node_or_null("timer_label")
+				if timer_label:
+					timer_label.text = hint_component.format_time(hint_2_timer.time_left)
+					timer_label.visible = false
+					timer_label.modulate.a = 0
+	
+	elif is_lobby and hint_component:
+		var hint_2_timer = hint_component.get_node_or_null("hint_dialog/hint_2/hint_2_timer")
+		var solution_timer = hint_component.get_node_or_null("hint_dialog/solution/solution_timer")
+		
+		if hint_2_timer:
+			hint_2_timer.stop()
+		if solution_timer:
+			solution_timer.stop()

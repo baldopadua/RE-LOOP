@@ -203,10 +203,9 @@ func close_overlay_button(_node):
 	
 	# SPECIAL HANDLING FOR HINT OVERLAY
 	if visible_child and visible_child.name == "hint":
-		# Check if nodes exist before accessing
+		
 		var hint_bg = visible_child.get_node_or_null("hint_bg")
 		var hint_dialog = visible_child.get_node_or_null("hint_dialog")
-		var status_bar = hint_dialog.get_node_or_null("hint_status_bar") if hint_dialog else null
 		var hint_2_timer = hint_dialog.get_node_or_null("hint_2/hint_2_timer") if hint_dialog else null
 		var solution_timer = hint_dialog.get_node_or_null("solution/solution_timer") if hint_dialog else null
 		
@@ -214,12 +213,13 @@ func close_overlay_button(_node):
 			hint_bg.visible = false
 		if hint_dialog:
 			hint_dialog.visible = false
-		if status_bar:
-			status_bar.visible = false
+			
 		if hint_2_timer and hint_2_timer.has_node("timer_label"):
 			hint_2_timer.get_node("timer_label").visible = false
+			hint_2_timer.get_node("timer_label").modulate.a = 0
 		if solution_timer and solution_timer.has_node("timer_label"):
 			solution_timer.get_node("timer_label").visible = false
+			solution_timer.get_node("timer_label").modulate.a = 0
 	
 	# HIDE VISIBLE OVERLAY AND CLOSE BUTTON
 	if visible_child:
@@ -275,15 +275,22 @@ func show_overlay_hint():
 	if hint_dialog:
 		hint_dialog.visible = true
 		
-		# SHOW TIMER LABELS WITH FULL OPACITY
+		# Get the current level difficulty from hint component
+		var current_level = hint.current_level
+		var current_diff = "hard"
+		if hint.hint_progress.has(current_level):
+			current_diff = hint.hint_progress[current_level]
+		
+		# SHOW APPROPRIATE TIMER LABELS BASED ON DIFFICULTY
 		if hint_dialog.has_node("hint_2/hint_2_timer/timer_label"):
 			var timer_label = hint_dialog.get_node("hint_2/hint_2_timer/timer_label")
 			timer_label.modulate.a = 1
-			timer_label.visible = true
+			timer_label.visible = current_diff == "hard"
+			
 		if hint_dialog.has_node("solution/solution_timer/timer_label"):
 			var solution_label = hint_dialog.get_node("solution/solution_timer/timer_label")
 			solution_label.modulate.a = 1
-			solution_label.visible = true	
+			solution_label.visible = current_diff == "medium"
 			
 		var status_bar = hint_dialog.get_node_or_null("hint_status_bar")
 		if status_bar:
