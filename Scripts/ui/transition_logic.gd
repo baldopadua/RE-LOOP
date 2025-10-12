@@ -11,11 +11,11 @@ func play_plooy_falling_animation():
 	if not is_instance_valid(plooy):
 		return
 	
-	# Stop previous tween if running
+	# STOP PREVIOUS TWEEN IF RUNNING
 	if plooy_tween and plooy_tween.is_running():
 		plooy_tween.kill()
 	
-	# Set plooy to top_position marker (start ng hulog)
+	# SET PLOOY TO TOP_POSITION MARKER (START NG HULOG)
 	plooy.position = top_marker.position
 	plooy.rotation = 0.0
 	plooy.scale = Vector2(1, 1)
@@ -23,16 +23,16 @@ func play_plooy_falling_animation():
 	plooy.visible = true
 	
 	plooy_tween = create_tween()
-	# Delay bago magsimula ang hulog
+	# DELAY BAGO MAGSIMULA ANG HULOG
 	plooy_tween.tween_interval(0.1)
-	# Hulog: tween position from top_position to fall_position (bounce)
+	# HULOG: TWEEN POSITION FROM TOP_POSITION TO FALL_POSITION (BOUNCE)
 	plooy_tween.tween_property(
 		plooy, "position", fall_marker.position, 0.8
 	).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 	
-	# Delay bago mag spin/shrink
+	# DELAY BAGO MAG SPIN/SHRINK
 	plooy_tween.tween_interval(0.1)
-	# Spin/shrink/fade papuntang shrink_position
+	# SPIN/SHRINK/FADE PAPUNTANG SHRINK_POSITION
 	plooy_tween.tween_callback(Callable(self, "_plooy_spin_and_shrink").bind(plooy, shrink_marker.position))
 
 func _plooy_spin_and_shrink(plooy, shrink_pos):
@@ -41,7 +41,7 @@ func _plooy_spin_and_shrink(plooy, shrink_pos):
 	plooy.rotation = 0.0
 	plooy.scale = Vector2(1, 1)
 	
-	# Stop previous tween if running
+	# STOP PREVIOUS TWEEN IF RUNNING
 	if plooy_tween and plooy_tween.is_running():
 		plooy_tween.kill()
 	

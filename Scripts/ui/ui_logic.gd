@@ -1,18 +1,15 @@
 extends Control
 
 @onready var credits_button = $main_menu/credits_button
-@onready var ui_handler = get_parent() # Assumes ui_layout is child of UiHandler
+@onready var ui_handler = get_parent() 
 var animated_icon: AnimatedSprite2D = null
 
-# CALLED WHEN THE NODE ENTERS THE SCENE TREE FOR THE FIRST TIME.
 func _ready() -> void:
 	if credits_button and credits_button.has_node("credits_animated_icon"):
 		animated_icon = credits_button.get_node("credits_animated_icon")
 	if credits_button:
 		setup_credits_button()
 	
-
-# CALLED EVERY FRAME. 'DELTA' IS THE ELAPSED TIME SINCE THE PREVIOUS FRAME.
 func _process(_delta: float) -> void:
 	pass
 
@@ -44,7 +41,7 @@ func _on_credits_button_mouse_exited():
 		animated_icon.frame = current_frame
 		animated_icon.play()
 
-# Animate overlay open: slide in from right to center
+# ANIMATE OVERLAY OPEN: SLIDE IN FROM RIGHT TO CENTER
 func animate_overlay_open_from_right(node: Control) -> void:
 	var parent_size = get_viewport_rect().size
 	var overlay_size = node.size
@@ -56,7 +53,7 @@ func animate_overlay_open_from_right(node: Control) -> void:
 	tween.tween_property(node, "position", final_pos, 0.25)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-# Animate overlay open: slide in from left to center
+# ANIMATE OVERLAY OPEN: SLIDE IN FROM LEFT TO CENTER
 func animate_overlay_open_from_left(node: Control) -> void:
 	var parent_size = get_viewport_rect().size
 	var overlay_size = node.size
@@ -68,7 +65,7 @@ func animate_overlay_open_from_left(node: Control) -> void:
 	tween.tween_property(node, "position", final_pos, 0.25)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-# Animate overlay close: slide out to left, then call optional callback
+# ANIMATE OVERLAY CLOSE: SLIDE OUT TO LEFT, THEN CALL OPTIONAL CALLBACK
 func animate_overlay_close_to_left(node: Control, callback: Callable = Callable()) -> void:
 	var parent_size = get_viewport_rect().size
 	var overlay_size = node.size
@@ -79,7 +76,7 @@ func animate_overlay_close_to_left(node: Control, callback: Callable = Callable(
 	if callback:
 		tween.tween_callback(callback)
 
-# Animate overlay close: slide out to right, then call optional callback
+# ANIMATE OVERLAY CLOSE: SLIDE OUT TO RIGHT, THEN CALL OPTIONAL CALLBACK
 func animate_overlay_close_to_right(node: Control, callback: Callable = Callable()) -> void:
 	var parent_size = get_viewport_rect().size
 	var overlay_size = node.size
@@ -91,7 +88,7 @@ func animate_overlay_close_to_right(node: Control, callback: Callable = Callable
 		tween.tween_callback(callback)
 
 
-# Animate overlay: pop up from button position and small scale to center and full scale (async, returns tween)
+# ANIMATE OVERLAY: POP UP FROM BUTTON POSITION AND SMALL SCALE TO CENTER AND FULL SCALE (ASYNC, RETURNS TWEEN)
 func popup_overlay_from_button(button: Control, overlay: Control, duration: float = 0.18) -> Tween:
 	if not button or not overlay:
 		return null
