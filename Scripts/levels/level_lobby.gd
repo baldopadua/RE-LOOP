@@ -37,10 +37,7 @@ var center_circle: Vector2i = Vector2i(0, 0)
 
 
 func _ready():
-	# Wait for level_handler to be ready before calling set_current_lobby
 	await get_tree().process_frame
-	
-	# Ensure lobby starts as active
 	lobby_active = true
 	
 	if level_handler:
@@ -60,11 +57,7 @@ func _ready():
 
 	# MANIPULATING OBJECTS APPENDED IN ARRAY
 	objects_initialize()
-	
-	# Initialize text labels for all entrance objects
 	call_deferred("initialize_text_labels")
-	
-	# UPDATE COMPLETED LEVELS VISUAL - moved to after text is always accessible
 	call_deferred("update_completed_levels_visual")
 	
 	# CONNECT TO LEVEL COMPLETED SIGNAL
@@ -72,11 +65,9 @@ func _ready():
 	
 	# POSITION PLAYER BASED ON LAST COMPLETED LEVEL
 	call_deferred("position_player_based_on_progress")
-	
-	# PLAY FOREST AMBIENCE IN LOBBY
 	sound_manager.play_ambience_sfx("forest_sfx")
 
-# Initialize text labels for all entrance objects
+# INITIALIZE TEXT LABELS FOR ALL ENTRANCE OBJECTS
 func initialize_text_labels():
 	var entrances = [enter_1, enter_2, enter_3, enter_4, enter_5, enter_6, enter_7, enter_8, enter_9, enter_10, enter_11, enter_12]
 	for entrance in entrances:
@@ -90,283 +81,160 @@ func initialize_text_labels():
 			interact_label.visible = false
 
 func objects_initialize():
-	# Only append entrance objects that actually exist
-	if enter_1:
-		objects.append(enter_1)
-	if enter_2:
-		objects.append(enter_2)
-	if enter_3:
-		objects.append(enter_3)
-	if enter_4:
-		objects.append(enter_4)
-	if enter_5:
-		objects.append(enter_5)
-	if enter_6:
-		objects.append(enter_6)
-	if enter_7:
-		objects.append(enter_7)
-	if enter_8:
-		objects.append(enter_8)
-	if enter_9:
-		objects.append(enter_9)
-	if enter_10:
-		objects.append(enter_10)
-	if enter_11:
-		objects.append(enter_11)
-	if enter_12:
-		objects.append(enter_12)
+	# Dynamically add all entrance objects to the objects array
+	for i in range(1, 13):  # For levels 1-12
+		var entrance_var_name = "enter_" + str(i)
+		var entrance = get(entrance_var_name)
+		if entrance:
+			objects.append(entrance)
 
 func _process(_delta: float) -> void:
 	if not lobby_active:
 		return
 	level_handler.visible = true
 
-# Add this method to handle level transitions from lobby
+# ADD THIS METHOD TO HANDLE LEVEL TRANSITIONS FROM LOBBY
 func enter_level(level_number: int):
 	# DISABLE ALL LOBBY FUNCTIONALITY IMMEDIATELY
 	disable_lobby_functionality()
-	
 	print("Entering level ", level_number)
 	
-	# Check if the level scene file exists before attempting to enter
+	# CHECK IF THE LEVEL SCENE FILE EXISTS BEFORE ATTEMPTING TO ENTER
 	var level_path = "res://Scenes/levels/level_" + str(level_number) + "_scene.tscn"
 	if not ResourceLoader.exists(level_path):
 		print("Level ", level_number, " is not ready yet!")
-		# Re-enable lobby if level doesn't exist
+		# RE-ENABLE LOBBY IF LEVEL DOESN'T EXIST
 		enable_lobby_functionality()
-		return  # Exit early if level doesn't exist
+		return  
 	
 	# STOP FOREST AMBIENCE WHEN LEAVING LOBBY
 	sound_manager.stop_ambience_sfx("forest_sfx")
-	# Get the levels_frame from the game scene structure
-	var levels_frame = get_parent()  # This should be the levels_frame
+	# GET THE LEVELS_FRAME FROM THE GAME SCENE STRUCTURE
+	var levels_frame = get_parent() 
 
-	# Kill the current lobby map with animation
+	# KILL THE CURRENT LOBBY MAP WITH ANIMATION
 	level_handler.kill_current_level(self)
 	await get_tree().create_timer(1.0).timeout
 	
-	# Show story cutscene first, then clock animation, then level
+	# SHOW STORY CUTSCENE FIRST, THEN CLOCK ANIMATION, THEN LEVEL
 	var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 	if ui_handler:
 		ui_handler.show_level_cutscene(level_number, func(): _show_clock_animation_then_level(level_number, levels_frame))
 
-# Show clock animation then proceed to level
+# SHOW CLOCK ANIMATION THEN PROCEED TO LEVEL
 func _show_clock_animation_then_level(level_number: int, levels_frame):
 	print("Showing clock animation for level ", level_number)
-	
-	# Show clock animation cutscene
+	# SHOW CLOCK ANIMATION CUTSCENE
 	level_handler.level_status_node.get_node("level_clock").visible = true
 	level_handler.level_status_node.show_level_1_entry_cutscene()
-	
-	# Wait for the initial display
 	await get_tree().create_timer(1.0).timeout
 	
-	# Animate hand from 12 o'clock to target level position
+	# ANIMATE HAND FROM 12 O'CLOCK TO TARGET LEVEL POSITION
 	var target_clock_position = level_handler.level_status_node.get_clock_position_for_level(level_number)
 	var animation_tween = level_handler.level_status_node.animate_hand_to_next_level(target_clock_position)
 	if animation_tween:
 		await animation_tween.finished
 	
-	# Keep cutscene visible for a moment after animation
 	await get_tree().create_timer(1.0).timeout
-	
-	# Hide the cutscene
 	level_handler.level_status_node.hide_cutscene()
-	
-	# Now proceed to level
 	level_handler.load_next_level_directly(level_number, levels_frame)
 
 
-# Update visual indicators for completed levels
+# UPDATE VISUAL INDICATORS FOR COMPLETED LEVELS
 func update_completed_levels_visual():
 	print("Updating completed levels visual...")
 	print("Completed levels: ", level_handler.completed_levels)
 	
-	# Check each level and update sprite color based on completion status
-	for level_num in range(1, 13):  # Levels 1-12
+	# CHECK EACH LEVEL AND UPDATE SPRITE COLOR BASED ON COMPLETION STATUS
+	for level_num in range(1, 13):  # LEVELS 1-12
 		var is_completed = level_handler.completed_levels.has(level_num)
 		print("Level ", level_num, " - Completed: ", is_completed)
 		
-		match level_num:
-			1:
-				if enter_1:
-					enter_1.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_1)
-			2:
-				if enter_2:
-					enter_2.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_2)
-			3:
-				if enter_3:
-					enter_3.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_3)
-			4:
-				if enter_4:
-					enter_4.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_4)
-			5:
-				if enter_5:
-					enter_5.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_5)
-			6:
-				if enter_6:
-					enter_6.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_6)
-			7:
-				if enter_7:
-					enter_7.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_7)
-			8:
-				if enter_8:
-					enter_8.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_8)
-			9:
-				if enter_9:
-					enter_9.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_9)
-			10:
-				if enter_10:
-					enter_10.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_10)
-			11:
-				if enter_11:
-					enter_11.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_11)
-			12:
-				if enter_12:
-					enter_12.set_level_completion_visual(is_completed)
-					if is_completed:
-						disable_entrance_completely(enter_12)
+		# Dynamically access the entrance node using get()
+		var entrance_var_name = "enter_" + str(level_num)
+		var entrance = get(entrance_var_name)
+		
+		# Update the entrance if it exists
+		if entrance:
+			entrance.set_level_completion_visual(is_completed)
+			if is_completed:
+				disable_entrance_completely(entrance)
 
-# Completely disable a completed entrance object
+# COMPLETELY DISABLE A COMPLETED ENTRANCE OBJECT
 func disable_entrance_completely(entrance_obj):
 	if not entrance_obj:
 		return
 		
 	print("Completely disabling entrance: ", entrance_obj.object_name)
-	
-	# Disable all processing
 	entrance_obj.set_process(false)
 	entrance_obj.set_physics_process(false)
 	entrance_obj.set_process_input(false)
 	entrance_obj.set_process_unhandled_input(false)
 	entrance_obj.set_process_unhandled_key_input(false)
 	
-	# Disable collision detection
 	if entrance_obj.has_node("CollisionShape2D"):
 		entrance_obj.get_node("CollisionShape2D").disabled = true
-	
-	# Hide all text labels permanently
 	if entrance_obj.has_node("hover_text"):
 		entrance_obj.get_node("hover_text").visible = false
 	if entrance_obj.has_node("interact_text"):
 		entrance_obj.get_node("interact_text").visible = false
-	
-	# Mark as not enterable if the property exists
 	if entrance_obj.has_method("set") and "is_enterable" in entrance_obj:
 		entrance_obj.is_enterable = false
-	
-	# Remove from area handler detection
 	if area_handler and area_handler.has_method("remove_object_from_detection"):
 		area_handler.remove_object_from_detection(entrance_obj)
 
-
-# Called when a level is completed
 func _on_level_completed(level_name: String):
 	print("Level completed: ", level_name)
-	# Update visual will happen when we return to lobby
 	call_deferred("update_completed_levels_visual")
 
-# Position player based on completed levels progress
+# POSITION PLAYER BASED ON COMPLETED LEVELS PROGRESS
 func position_player_based_on_progress():
 	if not player:
 		return
 		
-	# Get the highest completed level to determine player position
+	# GET THE HIGHEST COMPLETED LEVEL TO DETERMINE PLAYER POSITION
 	var highest_completed_level = 0
 	for level_num in level_handler.completed_levels:
 		if level_num > highest_completed_level:
 			highest_completed_level = level_num
 	
-	# Position player at the next level's clock position
+	# POSITION PLAYER AT THE NEXT LEVEL'S CLOCK POSITION
 	var target_rotation = 0.0
-	match highest_completed_level:
-		0:
-			# No levels completed, stay at default position (12 o'clock area)
-			target_rotation = deg_to_rad(0) # 0 degrees
-		1:
-			# Level 1 completed, position at level 2 clock position (2 o'clock)
-			target_rotation = deg_to_rad(60) # 2 o'clock = 60 degrees
-		2:
-			# Level 2 completed, position at level 3 clock position (3 o'clock)
-			target_rotation = deg_to_rad(90) # 3 o'clock = 90 degrees
-		3:
-			# Level 3 completed, position at level 4 clock position (4 o'clock)
-			target_rotation = deg_to_rad(120) # 4 o'clock = 120 degrees
-		4:
-			# Level 4 completed, position at level 5 clock position (5 o'clock)
-			target_rotation = deg_to_rad(150) # 5 o'clock = 150 degrees
-		5:
-			# Level 5 completed, position at level 6 clock position (6 o'clock)
-			target_rotation = deg_to_rad(180) # 6 o'clock = 180 degrees
-		6:
-			# Level 6 completed, position at level 7 clock position (7 o'clock)
-			target_rotation = deg_to_rad(210) # 7 o'clock = 210 degrees
-		7:
-			# Level 7 completed, position at level 8 clock position (8 o'clock)
-			target_rotation = deg_to_rad(240) # 8 o'clock = 240 degrees
-		8:
-			# Level 8 completed, position at level 9 clock position (9 o'clock)
-			target_rotation = deg_to_rad(270) # 9 o'clock = 270 degrees
-		9:
-			# Level 9 completed, position at level 10 clock position (10 o'clock)
-			target_rotation = deg_to_rad(300) # 10 o'clock = 300 degrees
-		10:
-			# Level 10 completed, position at level 11 clock position (11 o'clock)
-			target_rotation = deg_to_rad(330) # 11 o'clock = 330 degrees
-		11:
-			# Level 11 completed, position at level 12 clock position (12 o'clock)
-			target_rotation = deg_to_rad(0) # 12 o'clock = 0 degrees
-		12:
-			# All levels completed, position back at level 1 clock position (1 o'clock)
-			target_rotation = deg_to_rad(30) # 1 o'clock = 30 degrees
-		_:
-			target_rotation = deg_to_rad(0) # Default fallback
 	
-	# Set player rotation directly
+	if highest_completed_level == 0:
+		target_rotation = deg_to_rad(0)
+	elif highest_completed_level == 12:
+		# ALL LEVELS COMPLETED, GO BACK TO LEVEL 1 POSITION
+		target_rotation = deg_to_rad(30)
+	else:
+		# NEXT LEVEL IS CURRENT LEVEL + 1
+		# EACH LEVEL IS POSITIONED AT (LEVEL_NUMBER * 30) DEGREES
+		var next_level = highest_completed_level + 1
+		target_rotation = deg_to_rad(next_level * 30)
+	
+	# SET PLAYER ROTATION DIRECTLY
 	player.rotation = target_rotation
 	
-	# Set the long hand to match player's initial position
+	# SET THE LONG HAND TO MATCH PLAYER'S INITIAL POSITION
 	call_deferred("sync_short_hand_to_player")
 
-# Connect player movement to long hand in lobby
+# CONNECT PLAYER MOVEMENT TO LONG HAND IN LOBBY
 func connect_player_to_short_hand():
 	if player and player.has_signal("player_finished_moving"):
-		# Connect player movement to update long hand
+		# CONNECT PLAYER MOVEMENT TO UPDATE LONG HAND
 		if not player.player_finished_moving.is_connected(_on_player_moved_in_lobby):
 			player.player_finished_moving.connect(_on_player_moved_in_lobby)
 		
-# Handle player movement in lobby to update long hand
+# HANDLE PLAYER MOVEMENT IN LOBBY TO UPDATE LONG HAND
 func _on_player_moved_in_lobby():
 	if not lobby_active:
 		return
 		
 	if player and level_handler.level_status_node:
-		# In lobby, make long hand follow player directly
+		# IN LOBBY, MAKE LONG HAND FOLLOW PLAYER DIRECTLY
 		level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
 		
-		# Update the base_clock_position to match current position
+		# UPDATE THE BASE_CLOCK_POSITION TO MATCH CURRENT POSITION
 		var current_degrees = rad_to_deg(player.rotation)
 		var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
 		level_handler.level_status_node.base_clock_position = current_clock_pos
@@ -376,84 +244,62 @@ func sync_short_hand_to_player():
 	if not lobby_active:
 		return
 		
-	# Check if this is coming from a replay (preserved rotation will be 0.0)
 	if level_handler.level_status_node.preserved_hand_rotation == 0.0:
-		# Coming from replay or first time - sync to player position
 		level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
-		
 	else:
-		# Coming from cutscene - use preserved rotation
 		level_handler.level_status_node.short_hand_rotation.rotation = level_handler.level_status_node.preserved_hand_rotation
 	
-	# Update the base_clock_position to match current position for consistency
 	var current_degrees = rad_to_deg(level_handler.level_status_node.short_hand_rotation.rotation)
 	var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
 	level_handler.level_status_node.base_clock_position = current_clock_pos
 	level_handler.level_status_node.update_lock_state()
 	
-	# Always ensure hand following is enabled in lobby
 	level_handler.level_status_node.resume_following_player()
 
-# Disable all lobby functionality
+# DISABLE ALL LOBBY FUNCTIONALITY
 func disable_lobby_functionality():
 	lobby_active = false
 	
-	# Disable player input and movement
 	if player:
 		player.set_process(false)
 		player.set_physics_process(false)
 		player.set_process_input(false)
-	
-	# Disable area handler
 	if area_handler:
 		area_handler.set_process(false)
 		area_handler.set_physics_process(false)
-	
-	# Disable all entrance objects
 	for obj in objects:
 		if obj:
 			obj.set_process(false)
 			obj.set_physics_process(false)
 			obj.set_process_input(false)
-			# Hide text labels
 			if obj.has_node("hover_text"):
 				obj.get_node("hover_text").visible = false
 			if obj.has_node("interact_text"):
 				obj.get_node("interact_text").visible = false
-	
-	# Stop all tweens
 	if tween_rotate and tween_rotate.is_valid():
 		tween_rotate.kill()
 	if tween_scale and tween_scale.is_valid():
 		tween_scale.kill()
-	
-	# Disable level handler updates
 	if level_handler:
 		level_handler.set_process(false)
-	
-	# Disable sound manager
 	if sound_manager:
 		sound_manager.set_process(false)
 
-# Re-enable lobby functionality (for when returning from level)
+# RE-ENABLE LOBBY FUNCTIONALITY (FOR WHEN RETURNING FROM LEVEL)
 func enable_lobby_functionality():
 	lobby_active = true
 	
-	# Re-enable player
 	if player:
 		player.set_process(true)
 		player.set_physics_process(true)
 		player.set_process_input(true)
 	
-	# Re-enable area handler
 	if area_handler:
 		area_handler.set_process(true)
 		area_handler.set_physics_process(true)
 	
-	# Re-enable only non-completed entrance objects
 	for obj in objects:
 		if obj:
-			# Check if this level is completed
 			var level_number = get_level_number_from_entrance(obj)
 			var is_completed = level_handler.completed_levels.has(level_number)
 			
@@ -461,25 +307,22 @@ func enable_lobby_functionality():
 				obj.set_process(true)
 				obj.set_physics_process(true)
 				obj.set_process_input(true)
-			# If completed, keep it disabled
 	
-	# Re-enable level handler
 	if level_handler:
 		level_handler.set_process(true)
 	
-	# Re-enable sound manager
 	if sound_manager:
 		sound_manager.set_process(true)
 
-# Helper function to get level number from entrance object name
+# HELPER FUNCTION TO GET LEVEL NUMBER FROM ENTRANCE OBJECT NAME
 func get_level_number_from_entrance(entrance_obj) -> int:
 	if not entrance_obj or not entrance_obj.has_method("get") or not "object_name" in entrance_obj:
 		return 0
 		
 	var obj_name = entrance_obj.object_name
-	# Extract number from "enter_X" format
+	# EXTRACT NUMBER FROM "ENTER_X" FORMAT
 	if obj_name.begins_with("enter_"):
-		var num_str = obj_name.substr(6) # Remove "enter_" prefix
+		var num_str = obj_name.substr(6) 
 		return int(num_str)
 	return 0
 
