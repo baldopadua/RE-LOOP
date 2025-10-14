@@ -127,3 +127,27 @@ func set_ambience_volume(sfx_name: String, volume: float) -> void:
 		var player = get_node("sfx/global_sfx/ambience_sfx/" + sfx_name)
 		if player is AudioStreamPlayer2D:
 			player.volume_db = volume
+
+# LEVEL 4 SFX: dinosaur evolution sounds
+func play_incubator_processing() -> void:
+	if has_node("sfx/level_4_sfx/incubator_processing"):
+		var player = get_node("sfx/level_4_sfx/incubator_processing")
+		if player is AudioStreamPlayer2D:
+			player.play()
+
+func play_trex_evolution() -> void:
+	if has_node("sfx/level_4_sfx/egg_crack"):
+		var egg_crack = get_node("sfx/level_4_sfx/egg_crack")
+		if egg_crack is AudioStreamPlayer2D:
+			egg_crack.play()
+	if has_node("sfx/level_4_sfx/trex_roar"):
+		var trex_roar = get_node("sfx/level_4_sfx/trex_roar")
+		if trex_roar is AudioStreamPlayer2D:
+			await get_tree().create_timer(0.5).timeout  # Delay for egg crack first
+			trex_roar.play()
+
+func play_level_4_sfx(sfx_name: String) -> void:
+	if has_node("sfx/level_4_sfx/" + sfx_name):
+		var player = get_node("sfx/level_4_sfx/" + sfx_name)
+		if player is AudioStreamPlayer2D:
+			player.play()
