@@ -37,6 +37,24 @@ func objects_initialize():
 	objects.append(vending)
 	objects.append(rocket)
 	objects.append(dreamer)
+	objects.append(sound_manager) # Add SoundManager to objects array
+
+# Example function to play a sound effect using the centralized sound manager
+func play_level5_sfx(sfx_name: String):
+	if sound_manager and sound_manager.sfx.has(sfx_name):
+		sound_manager.play_sfx(sfx_name)
+
+# Specialized functions for Level 5 space/science audio
+func play_rocket_countdown():
+	play_level5_sfx("rocket_countdown")
+
+func play_rocket_launch_sequence():
+	play_level5_sfx("rocket_ignition")
+	await get_tree().create_timer(2.0).timeout  # Wait for ignition
+	play_level5_sfx("rocket_launch")
+
+func play_science_project_activate():
+	play_level5_sfx("science_project_activate")
 
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
 # TO WORK ON THE SCRIPT
