@@ -5,6 +5,7 @@ signal item_put(obj)
 
 @onready var symbol_anim_sprite : AnimatedSprite2D = $symbol_anim_sprite
 @onready var trex = $"../trex"
+@onready var level_script = get_parent()  # Reference to level script for audio functions
 var material_count : int = 0
 
 func _on_item_put(obj) -> void:
@@ -14,16 +15,19 @@ func _on_item_put(obj) -> void:
 	#print("Material Count Incremented: ", material_count)
 	
 	if material_count == 1 and obj.object_name == "chicken":
+		level_script.play_incubator_processing()  # Play processing sound
 		symbol_anim_sprite.play("correct")
 		await symbol_anim_sprite.animation_finished
 		symbol_anim_sprite.play("dino")
 		return
 	elif material_count == 2 and obj.object_name == "lizard":
+		level_script.play_incubator_processing()  # Play processing sound
 		symbol_anim_sprite.play("correct")
 		await symbol_anim_sprite.animation_finished
 		symbol_anim_sprite.play("dino")	
 		return
 	elif material_count == 3 and obj.object_name == "bone":
+		level_script.play_incubator_processing()  # Play processing sound
 		symbol_anim_sprite.play("correct")
 		await symbol_anim_sprite.animation_finished
 		symbol_anim_sprite.play("dino")	
@@ -32,8 +36,10 @@ func _on_item_put(obj) -> void:
 		trex.visible = true
 		symbol_anim_sprite.visible = false
 		trex.is_processed = true
+		level_script.play_trex_evolution()  # Play T-Rex evolution sequence
 	else:
 		material_count -= 1
+		level_script.play_level4_sfx("incubator_error")  # Play error sound
 		symbol_anim_sprite.play("wrong")
 		await symbol_anim_sprite.animation_finished
 		symbol_anim_sprite.play("dino")	
