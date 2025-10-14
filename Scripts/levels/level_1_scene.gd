@@ -38,6 +38,12 @@ func objects_initialize():
 	objects.append(soil)
 	objects.append(tree)
 	objects.append(seed_obj)
+	objects.append(sound_manager) # Add SoundManager to objects array
+
+# Example function to play a sound effect using the centralized sound manager
+func play_level1_sfx(sfx_name: String):
+	if sound_manager and sound_manager.sfx.has(sfx_name):
+		sound_manager.play_sfx(sfx_name)
  
 # If seed is planted in soil
 # Tree can now cycle
@@ -69,9 +75,10 @@ func update_tree_visibility(stage: int) -> void:
 		GlobalVariables.is_looping = false
 		GlobalVariables.player_stopped = true
 
-		# Play SFX using SoundManager for finish_level_sfx nodes
+		# Play SFX using consistent level pattern
 		if sound_manager and sound_manager.has_method("play_finish_level_sfx"):
 			sound_manager.play_finish_level_sfx()
+		# Alternative: could also use play_level1_sfx("tree_growth_complete") for level-specific sounds
 
 		await get_tree().create_timer(1.0).timeout
 		GlobalVariables.player_stopped = false
