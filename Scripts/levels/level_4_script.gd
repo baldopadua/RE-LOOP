@@ -36,14 +36,12 @@ func objects_initialize():
 	objects.append(incubator)
 	objects.append(trex)
 	objects.append(stick)
-	objects.append(sound_manager) # Add SoundManager to objects array
+	objects.append(sound_manager)
 
-# Example function to play a sound effect using the centralized sound manager
 func play_level4_sfx(sfx_name: String):
 	if sound_manager and sound_manager.sfx.has(sfx_name):
 		sound_manager.play_sfx(sfx_name)
 
-# Specialized functions for Level 4 dinosaur evolution audio
 func play_incubator_processing():
 	play_level4_sfx("incubator_processing")
 
