@@ -151,3 +151,27 @@ func play_level_4_sfx(sfx_name: String) -> void:
 		var player = get_node("sfx/level_4_sfx/" + sfx_name)
 		if player is AudioStreamPlayer2D:
 			player.play()
+
+# LEVEL 5 SFX: space/science sounds  
+func play_rocket_countdown() -> void:
+	if has_node("sfx/level_5_sfx/rocket_countdown"):
+		var player = get_node("sfx/level_5_sfx/rocket_countdown")
+		if player is AudioStreamPlayer2D:
+			player.play()
+
+func play_rocket_launch_sequence() -> void:
+	if has_node("sfx/level_5_sfx/rocket_ignition"):
+		var ignition = get_node("sfx/level_5_sfx/rocket_ignition")
+		if ignition is AudioStreamPlayer2D:
+			ignition.play()
+	if has_node("sfx/level_5_sfx/rocket_launch"):
+		var launch = get_node("sfx/level_5_sfx/rocket_launch")  
+		if launch is AudioStreamPlayer2D:
+			await get_tree().create_timer(2.0).timeout  # Wait for ignition
+			launch.play()
+
+func play_level_5_sfx(sfx_name: String) -> void:
+	if has_node("sfx/level_5_sfx/" + sfx_name):
+		var player = get_node("sfx/level_5_sfx/" + sfx_name)
+		if player is AudioStreamPlayer2D:
+			player.play()
