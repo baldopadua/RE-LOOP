@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1tjd7nf23n8s"]
 
-[ext_resource type="AudioStream" uid="uid://jp54wk0pw6di" path="res://Audio/wavs/cinematic_impact.mp3" id="1_q0h8o"]
+[ext_resource type="AudioStream" uid="uid://jp54wk0pw6di" path="res://Audio/wavs-mp3/cinematic_impact.mp3" id="1_q0h8o"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyg4q"]
 random_pitch = 1.2
