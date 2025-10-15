@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://t9f3i6l8o2r5s"]
+
+[ext_resource type="AudioStream" uid="uid://u1g4j7m9q3t6v" path="res://Audio/wavs/water_eruption.wav" id="1_water_eruption"]
+
+[node name="water_eruption" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_water_eruption")
+volume_db = 1.0
+pitch_scale = 1.0
+max_polyphony = 3

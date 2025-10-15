@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://lkgup3yrmdri"
-path="res://.godot/imported/kid_transformation.wav-286ee203bf6d1c172317a018ae42a894.sample"
+path="res://.godot/imported/kid_transformation.wav-8e104fc68a5a544cf1b68259a3434cb5.sample"
 
 [deps]
 
-source_file="res://Audio/level-2/kid_transformation.wav"
-dest_files=["res://.godot/imported/kid_transformation.wav-286ee203bf6d1c172317a018ae42a894.sample"]
+source_file="res://Audio/wavs/kid_transformation.wav"
+dest_files=["res://.godot/imported/kid_transformation.wav-8e104fc68a5a544cf1b68259a3434cb5.sample"]
 
 [params]
 

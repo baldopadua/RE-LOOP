@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://i2cq15p5mllt"]
+
+[ext_resource type="AudioStream" uid="uid://j9v3x6z9b2d5e" path="res://Audio/wavs/old_man_transformation.wav" id="1_old_man"]
+
+[node name="old_man_transformation" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_old_man")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 2

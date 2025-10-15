@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4m7oap2q8s1t"]
+
+[ext_resource type="AudioStream" uid="uid://e5n8r1u4v7w2x" path="res://Audio/wavs/man_nagulat_sa_sword.wav" id="1_man_nagulat"]
+
+[node name="man_nagulat_sa_sword" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_man_nagulat")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 2

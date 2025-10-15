@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bgqoutks1wanx"
-path="res://.godot/imported/bones_collapse.wav-99c1bb3a2c286ad7516494102c1f0530.sample"
+path="res://.godot/imported/bones_collapse.wav-1edfad800b0d7f9a312adb56b0b8deb0.sample"
 
 [deps]
 
-source_file="res://Audio/level-2/bones_collapse.wav"
-dest_files=["res://.godot/imported/bones_collapse.wav-99c1bb3a2c286ad7516494102c1f0530.sample"]
+source_file="res://Audio/wavs/bones_collapse.wav"
+dest_files=["res://.godot/imported/bones_collapse.wav-1edfad800b0d7f9a312adb56b0b8deb0.sample"]
 
 [params]
 
