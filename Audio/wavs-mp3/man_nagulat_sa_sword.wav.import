@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c3nk4vsr5e80d"
-path="res://.godot/imported/man_nagulat_sa_sword.wav-46dbf2a1168686a447f356eeab6a2d29.sample"
+path="res://.godot/imported/man_nagulat_sa_sword.wav-1f4483f1272693dbd59a1d2d663f3b2c.sample"
 
 [deps]
 
-source_file="res://Audio/wavs/man_nagulat_sa_sword.wav"
-dest_files=["res://.godot/imported/man_nagulat_sa_sword.wav-46dbf2a1168686a447f356eeab6a2d29.sample"]
+source_file="res://Audio/wavs-mp3/man_nagulat_sa_sword.wav"
+dest_files=["res://.godot/imported/man_nagulat_sa_sword.wav-1f4483f1272693dbd59a1d2d663f3b2c.sample"]
 
 [params]
 

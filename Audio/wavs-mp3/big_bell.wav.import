@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://djspbs1k70j2x"
-path="res://.godot/imported/big_bell.wav-ced0ce90d7278f4aa089adee4f40db43.sample"
+path="res://.godot/imported/big_bell.wav-5b5d815784bb3d05a330fad66fdd641d.sample"
 
 [deps]
 
-source_file="res://Audio/wavs/big_bell.wav"
-dest_files=["res://.godot/imported/big_bell.wav-ced0ce90d7278f4aa089adee4f40db43.sample"]
+source_file="res://Audio/wavs-mp3/big_bell.wav"
+dest_files=["res://.godot/imported/big_bell.wav-5b5d815784bb3d05a330fad66fdd641d.sample"]
 
 [params]
 

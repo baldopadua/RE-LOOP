@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dk3o16h28soqe"
-path="res://.godot/imported/rock_ground_drop.wav-4003dafd95cab9b6d87739c01d1aad44.sample"
+path="res://.godot/imported/rock_ground_drop.wav-eba77016fde0a8d15a33f1feb8d88893.sample"
 
 [deps]
 
-source_file="res://Audio/level-3/rock_ground_drop.wav"
-dest_files=["res://.godot/imported/rock_ground_drop.wav-4003dafd95cab9b6d87739c01d1aad44.sample"]
+source_file="res://Audio/wavs-mp3/rock_ground_drop.wav"
+dest_files=["res://.godot/imported/rock_ground_drop.wav-eba77016fde0a8d15a33f1feb8d88893.sample"]
 
 [params]
 

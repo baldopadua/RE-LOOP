@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dg1gaurery53o"
-path="res://.godot/imported/Swhooop.wav-61672ca1a1836c811fd88c30e247f9df.sample"
+path="res://.godot/imported/Swhooop.wav-377af4d337d8b07525ff9469954cb115.sample"
 
 [deps]
 
-source_file="res://Audio/wavs/Swhooop.wav"
-dest_files=["res://.godot/imported/Swhooop.wav-61672ca1a1836c811fd88c30e247f9df.sample"]
+source_file="res://Audio/wavs-mp3/Swhooop.wav"
+dest_files=["res://.godot/imported/Swhooop.wav-377af4d337d8b07525ff9469954cb115.sample"]
 
 [params]
 

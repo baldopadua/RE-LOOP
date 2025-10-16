@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://g6e0s0udmlkh"
-path="res://.godot/imported/underwater_explosion.mp3-8e58ac09d4460842fc8e3bb8008cde96.mp3str"
+path="res://.godot/imported/underwater_explosion.mp3-310d6b8079db0c5508036918af073165.mp3str"
 
 [deps]
 
-source_file="res://Audio/wavs/underwater_explosion.mp3"
-dest_files=["res://.godot/imported/underwater_explosion.mp3-8e58ac09d4460842fc8e3bb8008cde96.mp3str"]
+source_file="res://Audio/wavs-mp3/underwater_explosion.mp3"
+dest_files=["res://.godot/imported/underwater_explosion.mp3-310d6b8079db0c5508036918af073165.mp3str"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dh87evicq78fk"
-path="res://.godot/imported/old_man_transformation.wav-894934d74fe5347063803ab9e1b6f6fa.sample"
+path="res://.godot/imported/old_man_transformation.wav-14f901839850a602d1e5d52da058b13f.sample"
 
 [deps]
 
-source_file="res://Audio/wavs/old_man_transformation.wav"
-dest_files=["res://.godot/imported/old_man_transformation.wav-894934d74fe5347063803ab9e1b6f6fa.sample"]
+source_file="res://Audio/wavs-mp3/old_man_transformation.wav"
+dest_files=["res://.godot/imported/old_man_transformation.wav-14f901839850a602d1e5d52da058b13f.sample"]
 
 [params]
 

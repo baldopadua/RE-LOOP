@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://r1p3goyqtthx"
-path="res://.godot/imported/rock_explode.wav-869e10d7f8c5c48ba22a166e8ae119e8.sample"
+path="res://.godot/imported/rock_explode.wav-baf09651ce50b2bc1200ef13632a2bf7.sample"
 
 [deps]
 
-source_file="res://Audio/level-3/rock_explode.wav"
-dest_files=["res://.godot/imported/rock_explode.wav-869e10d7f8c5c48ba22a166e8ae119e8.sample"]
+source_file="res://Audio/wavs-mp3/rock_explode.wav"
+dest_files=["res://.godot/imported/rock_explode.wav-baf09651ce50b2bc1200ef13632a2bf7.sample"]
 
 [params]
 

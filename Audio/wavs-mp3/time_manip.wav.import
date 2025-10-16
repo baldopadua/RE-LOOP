@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://2co3uykc3dwt"
-path="res://.godot/imported/time_manip.wav-7a630ea561b31903c3c816e5e0e64d17.sample"
+path="res://.godot/imported/time_manip.wav-5d685311ef1ab013333fd142234a7180.sample"
 
 [deps]
 
-source_file="res://Audio/wavs/time_manip.wav"
-dest_files=["res://.godot/imported/time_manip.wav-7a630ea561b31903c3c816e5e0e64d17.sample"]
+source_file="res://Audio/wavs-mp3/time_manip.wav"
+dest_files=["res://.godot/imported/time_manip.wav-5d685311ef1ab013333fd142234a7180.sample"]
 
 [params]
 
