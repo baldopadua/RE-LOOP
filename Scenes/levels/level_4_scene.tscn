@@ -684,7 +684,7 @@ animations = [{
 size = Vector2(45.641, 48.6769)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a32ov"]
-size = Vector2(42, 4)
+size = Vector2(42, 19.727417)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6d2y4"]
 size = Vector2(50, 9)
@@ -1042,7 +1042,7 @@ texture = ExtResource("19_trv2w")
 light_mask = 3
 visibility_layer = 3
 z_index = 1
-position = Vector2(-23, -16)
+position = Vector2(-16.18982, -12.068161)
 rotation = -1.0472
 shape = SubResource("RectangleShape2D_a32ov")
 
