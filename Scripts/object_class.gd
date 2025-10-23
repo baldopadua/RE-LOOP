@@ -5,7 +5,7 @@ class_name object_class
 @export var object_type: GlobalVariables.object_types
 @export var is_pickupable: bool = true
 @export var is_enterable: bool = false
-@export var usable_targets: Array[String] = [] 
+@export var usable_targets: Array[String] = []
 @export var max_state_threshold: int
 @export var min_state_threshold: int
 @export var current_state: int
@@ -20,38 +20,87 @@ var is_text_visible: bool = false
 var mat = ShaderMaterial.new()
 var shader_sprite = null
 
+# TOOL STACK ARRAY (e.g.: Stacking Rocks)
+var tool_stack: Array = []
+var is_stacked: bool = false
+var stack_base_object: object_class = null
+
 func _ready():
 	print(object_name + " instantiated!")
-	# Wait a frame to ensure all nodes are ready, then get reference to text labels
 	call_deferred("setup_text_labels")
 	
 	# FIND SPRITE2D or ANIMATEDSPRITE2D
-	if object_type == GlobalVariables.object_types.TOOL:	
+	if object_type == GlobalVariables.object_types.TOOL:
 		for child in get_children():
 			if child is Sprite2D or child is AnimatedSprite2D:
 				mat.shader = outline_shader
 				shader_sprite = child
 				break
+	configure_collision_for_stacking()
+
+# CONFIGURE THE OBJECT'S COLLISION SHAPE FOR PROPER STACKING BEHAVIOR
+func configure_collision_for_stacking():
+	if has_node("CollisionShape2D"):
+		var collision = get_node("CollisionShape2D")
+		# Ensure collision is enabled by default
+		collision.disabled = false
+
+# WHEN AN OBJECT IS ADDED TO A STACk
+func join_stack(base_object):
+	is_stacked = true
+	stack_base_object = base_object
+	
+	# Adjust collision to avoid physics issues when stacked
+	if has_node("CollisionShape2D"):
+		var collision = get_node("CollisionShape2D")
+		collision.disabled = true
+
+# WHEN AN OBJECT IS REMOVED FROM A STACK
+func leave_stack():
+	is_stacked = false
+	stack_base_object = null
+	
+	if has_node("CollisionShape2D"):
+		var collision = get_node("CollisionShape2D")
+		collision.disabled = false
+
+# ADD AN OBJECT TO THIS OBJECT'S STACK
+func add_to_stack(object_to_add):
+	if object_to_add is object_class:
+		tool_stack.push_back(object_to_add)
+		object_to_add.join_stack(self)
+		# ENSURE ALL OBJECTS IN THE STACK ARE PICKUPABLE AFTER DROP
+		for obj in tool_stack:
+			obj.is_pickupable = true
+		return true
+	return false
+
+# REMOVE AN OBJECT FROM THIS OBJECT'S STACK
+func remove_from_stack():
+	if tool_stack.size() > 0:
+		var popped = tool_stack.pop_back()
+		popped.leave_stack()
+		# ENSURE ALL REMAINING OBJECTS IN THE STACK ARE PICKUPABLE
+		for obj in tool_stack:
+			obj.is_pickupable = true
+		return popped
+	return null
+
 
 # Setup text labels after scene is ready
 func setup_text_labels():
 	if has_node("hover_text"):
 		hover_text_label = get_node("hover_text")
-		
 		hover_text_label.visible = false
-		# Don't override modulate - keep the GUI-set color
 		hover_text_label.text = ""
 	
 	if has_node("interact_text"):
 		interact_text_label = get_node("interact_text")
-		
 		interact_text_label.visible = false
-		
 		interact_text_label.text = ""
 	
-# Function to show hover text
+# FUNCTION TO SHOW HOVER TEXT
 func show_hover_text(text: String = ""):
-	
 	if not hover_text_label and has_node("hover_text"):
 		hover_text_label = get_node("hover_text")
 	
@@ -62,7 +111,7 @@ func show_hover_text(text: String = ""):
 		
 		is_text_visible = true
 
-# Function to show interact text
+# FUNCTION TO SHOW INTERACT TEXT
 func show_interact_text(text: String = ""):
 	print("show_interact_text called for ", object_name, " with text: ", text)
 	if not interact_text_label and has_node("interact_text"):
@@ -76,7 +125,6 @@ func show_interact_text(text: String = ""):
 		is_text_visible = true
 		print("Interact text shown: ", interact_text_label.text)
 	
-
 
 func show_text(text: String = ""):
 	show_hover_text(text)
@@ -98,7 +146,6 @@ func _on_body_exited(body) -> void:
 	handle_body_exited(body)
 	
 func handle_body_exited(body):
-	
 	# IF NOT PLAYER SCENE OR BEING PICKED UP DISABLE BODY ENTER AND EXIT
 	if body != player_char:
 		return
@@ -126,7 +173,7 @@ func handle_body_exited(body):
 			body.interactable_objects.erase(self)
 		
 		# Hide text when exiting area
-		on_hover_exit()  # Add this line back!
+		on_hover_exit() # Add this line back!
 		
 		# DELETE POINTLIGHT for enterable objects
 		if is_enterable and glow_light:
@@ -137,15 +184,19 @@ func _on_body_entered(body) -> void:
 	handle_body_entered(body)
 
 func handle_body_entered(body):
-	
 	# IF NOT PLAYER SCENE OR BEING PICKED UP DISABLE BODY ENTER AND EXIT
 	if body.name != "PlayerScene":
+		return
+	
+	# If this object is part of a stack and not the base object,
+	# redirect interaction to the base stack object
+	if is_stacked and stack_base_object != null:
+		stack_base_object.handle_body_entered(body)
 		return
 	
 	# PICKING UP THINGS
 	if is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.TOOL:
 		#print("Player can pick up %s" % object_name)
-		
 		# ADD OBJECT OUTLINE
 		shader_sprite.material = mat
 		
@@ -187,21 +238,19 @@ func handle_body_entered(body):
 		player_char = body
 		#body.available_interactable_object = self
 		body.interactable_objects.append(self)
-		#print(body.interactable_objects)
-		
+	
 		# If this nontool is usable for the held object
 		if self.object_name in body.held_object.usable_targets:
 			body.near_obj.emit()
 
 	# INTERACTING WITH NON-PICKUPABLE OBJECTS WHEN NOT HOLDING ANYTHING (for lobby entrances)
 	if not is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.NONTOOL:
-		
 		# Always set reachable and player_char for proper cleanup on exit
 		is_reachable = true
 		player_char = body
 
 		body.interactable_objects.append(self)
-		on_hover_enter()  
+		on_hover_enter()
 		  
 		# ADD GLOW for enterable objects when player enters area
 		if is_enterable:
@@ -231,7 +280,6 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 	match level_number:
 		1:
 			# Level 1 is always accessible
-			
 			return true
 		2:
 			# Level 2 requires Level 1 to be completed
@@ -260,7 +308,6 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 			return true
 		7:
 			# Level 7 requires previous levels to be completed
-			
 			return true
 		8:
 			# Level 8 requires previous levels to be completed
@@ -282,7 +329,7 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 			return false
 
 func get_level_number_from_name() -> int:
-	var node_name = name  # Use the node's name instead of object_name
+	var node_name = name # Use the node's name instead of object_name
 	if "enter_1" in node_name:
 		return 1
 	elif "enter_2" in node_name:
@@ -313,7 +360,6 @@ func get_level_handler():
 	# For lobby entrance objects, try the direct parent path first
 	var handler = get_node_or_null("../CanvasLayer/LevelHandler")
 	if handler:
-		
 		return handler
 	
 	# Try finding it through the parent scene directly
@@ -327,7 +373,6 @@ func get_level_handler():
 	if current_scene:
 		handler = current_scene.find_child("LevelHandler", true, false)
 		if handler:
-			
 			return handler
 	
 	print("No level handler found!")
@@ -339,20 +384,16 @@ func set_level_completion_visual(is_completed: bool):
 	var level_handler = get_level_handler()
 	
 	
-	
 	if has_node("Sprite2D2"):
 		var sprite = $Sprite2D2
 		
 		if is_completed:
-			
-			sprite.modulate = Color.GREEN  
+			sprite.modulate = Color.GREEN
 		elif level_handler and is_level_accessible(level_number, level_handler):
-			
-			sprite.modulate = Color.WHITE  
+			sprite.modulate = Color.WHITE
 		else:
-			
-			sprite.modulate = Color.DARK_GRAY  
-	elif has_node("item_sprite"):  
+			sprite.modulate = Color.DARK_GRAY
+	elif has_node("item_sprite"):
 		var sprite = $item_sprite
 		
 		if is_completed:
@@ -373,27 +414,27 @@ func create_glow_light_to_lobby(color: Color = Color.YELLOW):
 
 	# CREATE GRADIENT with proper color intensity
 	var gradient = Gradient.new()
-	gradient.set_color(0, Color(color.r, color.g, color.b, 1.0))  
-	gradient.set_color(1, Color(color.r, color.g, color.b, 0.0)) 
-	gradient.offsets = [0.0, 1.0] 
+	gradient.set_color(0, Color(color.r, color.g, color.b, 1.0))
+	gradient.set_color(1, Color(color.r, color.g, color.b, 0.0))
+	gradient.offsets = [0.0, 1.0]
 
 	# CREATE TEXTURE FROM GRADIENT - SMALLER SIZE
 	var gradient_texture = GradientTexture2D.new()
 	gradient_texture.gradient = gradient
 	gradient_texture.fill = GradientTexture2D.FILL_RADIAL
 	gradient_texture.fill_from = Vector2(0.5, 0.5)
-	gradient_texture.width = 64  
-	gradient_texture.height = 64  
+	gradient_texture.width = 64
+	gradient_texture.height = 64
 	# ASSIGN TO LIGHT with smaller scale and lower energy
 	glow_light.texture = gradient_texture
-	glow_light.energy = 1.0 
-	glow_light.texture_scale = 0.8  
+	glow_light.energy = 1.0
+	glow_light.texture_scale = 0.8
 	glow_light.color = color
 
 	add_child(glow_light)
 	
 func set_flipped(flip: bool):
-	if has_node("item_sprite"):   
+	if has_node("item_sprite"):
 		$item_sprite.flip_h = flip
 
 func get_obj_name():
