@@ -25,5 +25,3 @@ func enter_level():
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
 	level_handler.complete_current_level(get_parent()) 
 	
-
-

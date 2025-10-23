@@ -333,6 +333,3 @@ func show_hint():
 			solution_timer.start()
 func hide_hint():
 	visible = false
-
-
-

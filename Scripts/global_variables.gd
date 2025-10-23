@@ -2,7 +2,7 @@ extends Node
 
 enum Directions {COUNTERCLOCKWISE, CLOCKWISE}
 const player_direction = Directions
-enum object_types {TOOL, NONTOOL}
+enum object_types {TOOL, NONTOOL, DECORATIVE}
 
 const transition_time: float = 0.1 # 0.25 Default
 var is_looping: bool = false

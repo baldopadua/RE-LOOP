@@ -16,11 +16,22 @@ var glow_light: PointLight2D = null
 var hover_text_label: RichTextLabel = null
 var interact_text_label: RichTextLabel = null
 var is_text_visible: bool = false
+@onready var outline_shader = preload("res://Shaders/object_outline.gdshader")
+var mat = ShaderMaterial.new()
+var shader_sprite = null
 
 func _ready():
 	print(object_name + " instantiated!")
 	# Wait a frame to ensure all nodes are ready, then get reference to text labels
 	call_deferred("setup_text_labels")
+	
+	# FIND SPRITE2D or ANIMATEDSPRITE2D
+	if object_type == GlobalVariables.object_types.TOOL:	
+		for child in get_children():
+			if child is Sprite2D or child is AnimatedSprite2D:
+				mat.shader = outline_shader
+				shader_sprite = child
+				break
 
 # Setup text labels after scene is ready
 func setup_text_labels():
@@ -92,8 +103,6 @@ func handle_body_exited(body):
 	if body != player_char:
 		return
 	
-	
-	
 	# Tool behavior if out of rangea
 	if object_type == GlobalVariables.object_types.TOOL:
 		is_reachable = false
@@ -105,6 +114,9 @@ func handle_body_exited(body):
 		if glow_light:
 			glow_light.queue_free()
 			glow_light = null
+			
+		# REMOVE OUTLINE
+		shader_sprite.material = null
 		
 	# Interatable behavior if out of range
 	if object_type == GlobalVariables.object_types.NONTOOL:
@@ -134,27 +146,32 @@ func handle_body_entered(body):
 	if is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.TOOL:
 		#print("Player can pick up %s" % object_name)
 		
-		# CREATE POINT LIGHT (OLD METHOD FOR PICKUPABLES)
-		glow_light = PointLight2D.new()
-		glow_light.position = Vector2(0, 0)
-
-		# CREATE GRADIENT
-		var gradient = Gradient.new()
-		gradient.set_color(0, Color.YELLOW)
-		gradient.set_color(1, Color.TRANSPARENT)
-		gradient.offsets[1] = 0.5
-
-		# CREATE TEXTURE FROM GRADIENT
-		var gradient_texture = GradientTexture2D.new()
-		gradient_texture.gradient = gradient
-		gradient_texture.fill = GradientTexture2D.FILL_RADIAL
-		gradient_texture.fill_from = Vector2(0.5, 0.5)
-
-		# ASSIGN TO LIGHT
-		glow_light.texture = gradient_texture
-		glow_light.energy = 1.5
-
-		add_child(glow_light)
+		# ADD OBJECT OUTLINE
+		shader_sprite.material = mat
+		
+		print(shader_sprite.material)
+		
+		## CREATE POINT LIGHT (OLD METHOD FOR PICKUPABLES)
+		#glow_light = PointLight2D.new()
+		#glow_light.position = Vector2(0, 0)
+#
+		## CREATE GRADIENT
+		#var gradient = Gradient.new()
+		#gradient.set_color(0, Color.YELLOW)
+		#gradient.set_color(1, Color.TRANSPARENT)
+		#gradient.offsets[1] = 0.5
+#
+		## CREATE TEXTURE FROM GRADIENT
+		#var gradient_texture = GradientTexture2D.new()
+		#gradient_texture.gradient = gradient
+		#gradient_texture.fill = GradientTexture2D.FILL_RADIAL
+		#gradient_texture.fill_from = Vector2(0.5, 0.5)
+#
+		## ASSIGN TO LIGHT
+		#glow_light.texture = gradient_texture
+		#glow_light.energy = 1.5
+#
+		#add_child(glow_light)
 		
 		is_reachable = true
 		player_char = body

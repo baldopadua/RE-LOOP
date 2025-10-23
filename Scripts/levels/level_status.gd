@@ -362,4 +362,3 @@ func animate_hand_from_12_to_1() -> Tween:
 	)
 	
 	return sequence_tween
-

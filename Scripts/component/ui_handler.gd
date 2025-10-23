@@ -432,5 +432,3 @@ func shake_hint_button():
 	
 	# RESET TEXTURE AFTER ALL SHAKES ARE DONE
 	hint_button.texture_normal = original_texture
-
-

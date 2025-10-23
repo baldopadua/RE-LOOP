@@ -61,4 +61,3 @@ func enter_level():
 	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
 	level_handler.complete_current_level(get_parent()) 
-

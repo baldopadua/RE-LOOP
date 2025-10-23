@@ -43,7 +43,6 @@ text = "TEXT"
 horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-rotation = -1.5565009
 scale = Vector2(0.99999994, 0.99999994)
 ignore_rotation = false
 position_smoothing_enabled = true
@@ -55,6 +54,7 @@ position_smoothing_enabled = true
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_qcmyw")]
 
 [node name="enter_11" parent="." instance=ExtResource("6_ttbi8")]
+visible = false
 position = Vector2(-3.000001, 268.00003)
 rotation = -3.1028948
 scale = Vector2(0.9999999, 0.9999999)
