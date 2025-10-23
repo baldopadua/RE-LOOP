@@ -24,20 +24,17 @@ var stack_base_object: object_class = null
 
 func _ready():
 	print(object_name + " instantiated!")
-	# Wait a frame to ensure all nodes are ready, then get reference to text labels
 	call_deferred("setup_text_labels")
-	
-	# Initialize collision shape for proper physics
 	configure_collision_for_stacking()
 
-# Configure the object's collision shape for proper stacking behavior
+# CONFIGURE THE OBJECT'S COLLISION SHAPE FOR PROPER STACKING BEHAVIOR
 func configure_collision_for_stacking():
 	if has_node("CollisionShape2D"):
 		var collision = get_node("CollisionShape2D")
 		# Ensure collision is enabled by default
 		collision.disabled = false
 
-# When an object is added to a stack
+# WHEN AN OBJECT IS ADDED TO A STACk
 func join_stack(base_object):
 	is_stacked = true
 	stack_base_object = base_object
@@ -47,55 +44,51 @@ func join_stack(base_object):
 		var collision = get_node("CollisionShape2D")
 		collision.disabled = true
 
-# When an object is removed from a stack
+# WHEN AN OBJECT IS REMOVED FROM A STACK
 func leave_stack():
 	is_stacked = false
 	stack_base_object = null
 	
-	# Re-enable collision
 	if has_node("CollisionShape2D"):
 		var collision = get_node("CollisionShape2D")
 		collision.disabled = false
 
-# Add an object to this object's stack
+# ADD AN OBJECT TO THIS OBJECT'S STACK
 func add_to_stack(object_to_add):
 	if object_to_add is object_class:
 		tool_stack.push_back(object_to_add)
 		object_to_add.join_stack(self)
+		# ENSURE ALL OBJECTS IN THE STACK ARE PICKUPABLE AFTER DROP
+		for obj in tool_stack:
+			obj.is_pickupable = true
 		return true
 	return false
 
-# Remove an object from this object's stack
+# REMOVE AN OBJECT FROM THIS OBJECT'S STACK
 func remove_from_stack():
 	if tool_stack.size() > 0:
 		var popped = tool_stack.pop_back()
 		popped.leave_stack()
+		# ENSURE ALL REMAINING OBJECTS IN THE STACK ARE PICKUPABLE
+		for obj in tool_stack:
+			obj.is_pickupable = true
 		return popped
 	return null
 
-# Function to handle what happens when objects are stacked
-func handle_stack_physics():
-	# This would be called if implementing more complex stacking physics
-	# For now we're using the visual approach in player_script.gd
-	pass
 
 # Setup text labels after scene is ready
 func setup_text_labels():
 	if has_node("hover_text"):
 		hover_text_label = get_node("hover_text")
-		
 		hover_text_label.visible = false
-		# Don't override modulate - keep the GUI-set color
 		hover_text_label.text = ""
 	
 	if has_node("interact_text"):
 		interact_text_label = get_node("interact_text")
-		
 		interact_text_label.visible = false
-		
 		interact_text_label.text = ""
 	
-# Function to show hover text
+# FUNCTION TO SHOW HOVER TEXT
 func show_hover_text(text: String = ""):
 	
 	if not hover_text_label and has_node("hover_text"):
@@ -108,7 +101,7 @@ func show_hover_text(text: String = ""):
 		
 		is_text_visible = true
 
-# Function to show interact text
+# FUNCTION TO SHOW INTERACT TEXT
 func show_interact_text(text: String = ""):
 	print("show_interact_text called for ", object_name, " with text: ", text)
 	if not interact_text_label and has_node("interact_text"):
@@ -232,8 +225,7 @@ func handle_body_entered(body):
 		player_char = body
 		#body.available_interactable_object = self
 		body.interactable_objects.append(self)
-		#print(body.interactable_objects)
-		
+	
 		# If this nontool is usable for the held object
 		if self.object_name in body.held_object.usable_targets:
 			body.near_obj.emit()

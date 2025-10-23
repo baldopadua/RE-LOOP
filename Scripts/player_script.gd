@@ -55,6 +55,7 @@ var moves: int = 0
 # Changed from Sprite2D to AnimatedSprite2D
 @onready var sprite = $AnimatedSprite2D
 @onready var object_drop_position := $object_drop_position
+@onready var object_drop_position2ndlayer := $object_drop_position2ndlayer
 @onready var sound_manager = $SoundManager
 @onready var level_handler = $"../CanvasLayer/LevelHandler"
 var area_handler: Node2D
@@ -255,21 +256,27 @@ func update_held_object_direction():
 			
 func item_pick_up() -> void:
 	if not is_holding_object and available_object.is_reachable and not is_moving:
-		# Defer/Delay the reparenting to avoid error
-		# during physics callback or something
-		#call_deferred("_deferred_reparent", available_object)
-		
 		var popped_object = null
-		
-		# IF NOT NULL AND IS A TOOL AND STACK SIZE IS 1 AND ABOVE
-		if available_object and available_object.object_type == GlobalVariables.object_types.TOOL and available_object.tool_stack.size() > 0:
-			popped_object = available_object.tool_stack.pop_back()
-			
+		if available_object and available_object.object_type == GlobalVariables.object_types.TOOL:
+			var stack_size = available_object.tool_stack.size()
+			# Find all objects at the 2nd layer position
+			var second_layer_indices = []
+			for i in range(stack_size):
+				var obj = available_object.tool_stack[i]
+				if obj.global_position == object_drop_position2ndlayer.global_position:
+					second_layer_indices.append(i)
+			second_layer_indices.reverse()
+			if second_layer_indices.size() > 0:
+				# Only pick up objects at the 2nd layer if any exist
+				for i in second_layer_indices:
+					popped_object = available_object.tool_stack.pop_at(i)
+					break
+			elif stack_size > 0:
+				# Only if there are no objects at the 2nd layer, pick up from the first layer
+				popped_object = available_object.tool_stack.pop_back()
 			# INCREASE ROTATION OF AVAIL OBJ FIRST
 			available_object.position += Vector2(10,0)
-			
 			# DECREASE ROTATION OF EVERY OBJ IN STACK
-			# CHECK IF THERE ARE STILL OBJECTS IN STACK
 			if available_object.tool_stack.size() > 0:
 				for obj in available_object.tool_stack:
 					obj.position += Vector2(10,0)
@@ -280,12 +287,14 @@ func item_pick_up() -> void:
 			popped_object.reparent(object_pos)	 
 			update_held_object_direction()
 			print("Object picked up: " + held_object.object_name)
-		else:		
+		elif available_object and (not available_object.object_type == GlobalVariables.object_types.TOOL or available_object.tool_stack.size() < 1):
 			available_object.is_pickupable = false
 			held_object = available_object
 			available_object.reparent(object_pos)	 
 			update_held_object_direction()
 			print("Object picked up: " + held_object.object_name)
+		else:
+			return
 		
 		# TWEEN TO ADD BOUNCE WHEN PICKING UP
 		var tween_pickup = create_tween()
@@ -295,7 +304,6 @@ func item_pick_up() -> void:
 		tween_pickup.kill()
 		
 		sound_manager.play_sfx("pickup")
-		
 		# The player is currently holding an object
 		is_holding_object = true
 
@@ -319,25 +327,25 @@ func item_drop() -> void:
 # HANDLE DROPPING AN OBJECT ONTO A STACK
 func handle_stack_drop(target_object) -> void:
 	if held_object:
-		# ADD TO STACK ARRAY
 		target_object.tool_stack.push_back(held_object)
-		
-		# CALCULATE PROPER STACK POSITION WITH PHYSICS OFFSET
 		var stack_size = target_object.tool_stack.size()
-		var stack_offset = Vector2(0, -5 * stack_size)  
-
-		var stack_position = target_object.global_position + stack_offset
+		var stack_position = get_stack_layer_position(stack_size, target_object)
 		stack_position += Vector2(randf_range(-2, 2), randf_range(-1, 1))
-		
-		# TWEEN TO ANIMATE THE OBJECT MOVING TO ITS STACK POSITION
 		var stack_tween = create_tween()
 		stack_tween.tween_property(held_object, "global_position", stack_position, 0.2).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 		held_object.is_pickupable = true
 		held_object.reparent(get_parent())
-		
-		# SET Z-INDEX FOR PROPER LAYERING
 		held_object.z_index = target_object.z_index + 1
 		adjust_stack_visuals(target_object)
+		# Ensure all objects in the stack are pickupable after drop
+		for obj in target_object.tool_stack:
+			obj.is_pickupable = true
+
+func get_stack_layer_position(stack_size: int, _target_object) -> Vector2:
+	if stack_size <= 3:
+		return object_drop_position.global_position
+	else:
+		return object_drop_position2ndlayer.global_position
 
 # HANDLE NORMAL OBJECT DROP TO THE GROUND/SCENE
 func handle_normal_drop(drop_position) -> void:
