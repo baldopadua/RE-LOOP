@@ -17,10 +17,67 @@ var hover_text_label: RichTextLabel = null
 var interact_text_label: RichTextLabel = null
 var is_text_visible: bool = false
 
+# TOOL STACK ARRAY (e.g.: Stacking Rocks)
+var tool_stack: Array = []
+var is_stacked: bool = false
+var stack_base_object: object_class = null
+
 func _ready():
 	print(object_name + " instantiated!")
 	# Wait a frame to ensure all nodes are ready, then get reference to text labels
 	call_deferred("setup_text_labels")
+	
+	# Initialize collision shape for proper physics
+	configure_collision_for_stacking()
+
+# Configure the object's collision shape for proper stacking behavior
+func configure_collision_for_stacking():
+	if has_node("CollisionShape2D"):
+		var collision = get_node("CollisionShape2D")
+		# Ensure collision is enabled by default
+		collision.disabled = false
+
+# When an object is added to a stack
+func join_stack(base_object):
+	is_stacked = true
+	stack_base_object = base_object
+	
+	# Adjust collision to avoid physics issues when stacked
+	if has_node("CollisionShape2D"):
+		var collision = get_node("CollisionShape2D")
+		collision.disabled = true
+
+# When an object is removed from a stack
+func leave_stack():
+	is_stacked = false
+	stack_base_object = null
+	
+	# Re-enable collision
+	if has_node("CollisionShape2D"):
+		var collision = get_node("CollisionShape2D")
+		collision.disabled = false
+
+# Add an object to this object's stack
+func add_to_stack(object_to_add):
+	if object_to_add is object_class:
+		tool_stack.push_back(object_to_add)
+		object_to_add.join_stack(self)
+		return true
+	return false
+
+# Remove an object from this object's stack
+func remove_from_stack():
+	if tool_stack.size() > 0:
+		var popped = tool_stack.pop_back()
+		popped.leave_stack()
+		return popped
+	return null
+
+# Function to handle what happens when objects are stacked
+func handle_stack_physics():
+	# This would be called if implementing more complex stacking physics
+	# For now we're using the visual approach in player_script.gd
+	pass
 
 # Setup text labels after scene is ready
 func setup_text_labels():
@@ -125,9 +182,14 @@ func _on_body_entered(body) -> void:
 	handle_body_entered(body)
 
 func handle_body_entered(body):
-	
 	# IF NOT PLAYER SCENE OR BEING PICKED UP DISABLE BODY ENTER AND EXIT
 	if body.name != "PlayerScene":
+		return
+	
+	# If this object is part of a stack and not the base object,
+	# redirect interaction to the base stack object
+	if is_stacked and stack_base_object != null:
+		stack_base_object.handle_body_entered(body)
 		return
 	
 	# PICKING UP THINGS

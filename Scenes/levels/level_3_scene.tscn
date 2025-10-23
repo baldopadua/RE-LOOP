@@ -635,8 +635,8 @@ libraries = {
 }
 
 [node name="enter_4" parent="." instance=ExtResource("8_thi73")]
-position = Vector2(252, -148)
-rotation = 1.074834
+position = Vector2(244, 164)
+rotation = 2.088692
 script = ExtResource("17_oyt3y")
 object_name = "enter_4"
 object_type = 1
