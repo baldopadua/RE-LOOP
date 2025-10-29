@@ -313,4 +313,9 @@ position = Vector2(0, -288)
 
 [node name="SoundManager" parent="." instance=ExtResource("3_e13mc")]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -8.41)
+scale = Vector2(0.99999994, 0.99999994)
+position_smoothing_enabled = true
+
 [connection signal="near_obj" from="." to="." method="_on_near_obj"]

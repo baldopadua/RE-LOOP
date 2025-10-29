@@ -441,6 +441,7 @@ script = ExtResource("1_thi73")
 [node name="PlayerScene" parent="." instance=ExtResource("4_6xexh")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 rotation = -3.14159
 ignore_rotation = false

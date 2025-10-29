@@ -25,6 +25,8 @@ func _ready():
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	
 	objects_initialize()
+	
+	player.rotation = deg_to_rad(120.0)
 
 func objects_initialize():
 		# APPEND THE OBJECTS IN THE OBJECTS ARRAY HERE

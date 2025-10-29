@@ -64,7 +64,8 @@ var time_indicator: AnimatedSprite2D
 var ui_handler: Node = null
 
 #	Camera for Cam Shake
-@onready var camera2d : Camera2D = $"../Camera2D"
+#@onready var camera2d : Camera2D = $"../Camera2D"
+@onready var camera2d : Camera2D = $Camera2D
 var cameraShakeNoise : FastNoiseLite
 
 #	To Intensity of Cam Shake
@@ -162,7 +163,12 @@ func _tween_finished():
 			ui_handler.time_indicator.pause()
 	
 	# RESET THE LEVEL IF LOOPED
-	if (round(rad_to_deg(rotation)) == 0.0 or round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0) and (prev_deg == 330.0 or prev_deg == -330.0) and GlobalVariables.is_looping:
+	#if (round(rad_to_deg(rotation)) == 0.0 or round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0) and (prev_deg == 330.0 or prev_deg == -330.0) and GlobalVariables.is_looping:
+		#GlobalVariables.is_restarting = true
+		#level_handler.restart_level(get_parent().get_parent())
+		#ui_handler.show_last_frame_then_reset()
+		
+	if (moves == 12 or moves == -12) and GlobalVariables.is_looping:
 		GlobalVariables.is_restarting = true
 		level_handler.restart_level(get_parent().get_parent())
 		ui_handler.show_last_frame_then_reset()

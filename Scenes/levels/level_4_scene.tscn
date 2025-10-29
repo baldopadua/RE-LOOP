@@ -898,6 +898,7 @@ script = ExtResource("1_f0imo")
 [node name="PlayerScene" parent="." instance=ExtResource("4_be8ic")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 rotation = 1.58881
 ignore_rotation = false
 position_smoothing_enabled = true

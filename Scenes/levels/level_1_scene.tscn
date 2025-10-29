@@ -226,6 +226,7 @@ self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 position_smoothing_enabled = true
 
