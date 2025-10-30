@@ -28,6 +28,8 @@ func _ready():
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# MANIPULATING OBJECTS APPENDED IN ARRAY
 	objects_initialize()
+	
+	player.rotation = deg_to_rad(300.0)
 
 func objects_initialize():
 	objects.append(laser)

@@ -43,6 +43,7 @@ text = "I didn't forget you, but you forgot me..."
 horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 rotation = -4.7032766
 ignore_rotation = false
 position_smoothing_enabled = true

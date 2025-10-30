@@ -16,7 +16,6 @@ func _ready():
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 
-
 # ADD THIS METHOD AS A TEMPORARY WAY TO FINISH LEVEL, REMOVE IT WHEN STARTING 
 # TO WORK ON THE SCRIPT
 # ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
@@ -25,5 +24,3 @@ func enter_level():
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
 	level_handler.complete_current_level(get_parent()) 
 	
-
-

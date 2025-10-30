@@ -302,7 +302,7 @@ is_enterable = true
 texture_filter = 1
 position = Vector2(-0.999999, 9)
 rotation = -3.08868
-scale = Vector2(0.54803, 0.75198)
+scale = Vector2(0.54803, 0.75198007)
 texture = ExtResource("14_r86rd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_5"]

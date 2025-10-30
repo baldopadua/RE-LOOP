@@ -15,6 +15,9 @@ func _ready():
 	level_handler.set_current_level(6)
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
+	
+	
+	player.rotation = deg_to_rad(180.0)
 
 
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 

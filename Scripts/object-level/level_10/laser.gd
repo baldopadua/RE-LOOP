@@ -17,24 +17,25 @@ var did_franklin_successfully_invented_electricity: bool = false
 
 # ENABLE PROCEEDING IN DIFFERENT LEVEL
 
-func _on_keystone_complete(obj: object_class, enabled) -> void:
-	if obj.object_name == "tesla_coil":
-		if enabled: did_nicola_successfully_invented_tesla = true
-		else: did_nicola_successfully_invented_tesla = false
-	elif obj.object_name == "light_bulb":
-		if enabled: did_edison_successfully_invented_bulb = true
-		else: did_edison_successfully_invented_bulb = false
-	elif obj.object_name == "lightning_cloud":
-		if enabled: did_franklin_successfully_invented_electricity = true
-		else: did_franklin_successfully_invented_electricity = false	
+func _on_keystone_complete(obj_name: String, enabled: bool) -> void:
+	if obj_name == "nicola_tesla":
+		did_nicola_successfully_invented_tesla = enabled
+	elif obj_name == "thomas_edison":
+		did_edison_successfully_invented_bulb = enabled
+	elif obj_name == "benjamin_franklin":
+		did_franklin_successfully_invented_electricity = enabled	
+	
+	print("KEYSTONE SWITCHES: ", did_nicola_successfully_invented_tesla, " ", did_edison_successfully_invented_bulb, " ", did_franklin_successfully_invented_electricity)
 	
 	# IF ALL KEYSTONE ARE COMPLETE
 	if did_nicola_successfully_invented_tesla and did_edison_successfully_invented_bulb and did_franklin_successfully_invented_electricity:
 		animated_sprite.play("laser_fire")
+		# STOP PLOOY MOVEMENT
+		GlobalVariables.player_stopped = true
 		animated_sprite.animation_finished.connect(func():
 			# DO SOMETHING HERE
-			# STOP PLOOY MOVEMENT
-			GlobalVariables.player_stopped = true
+			
+			
 			# PLAY CAMERA CUTSCENE
 			
 			# PLAY SFX

@@ -10,12 +10,14 @@ var object_that_this_is_on = "tesla_coil"
 @onready var laser = $"../Laser"
 
 func _on_area_entered(area: Area2D) -> void:
-	is_in_another_object = true
-	object_that_this_is_on = area.object_name
+	if area.object_type == GlobalVariables.object_types.NONTOOL:
+		is_in_another_object = true
+		object_that_this_is_on = area.object_name
 
-func _on_area_exited(_area: Area2D) -> void:
-	is_in_another_object = false
-	object_that_this_is_on = "none"
+func _on_area_exited(area: Area2D) -> void:
+	if area.object_type == GlobalVariables.object_types.NONTOOL:
+		is_in_another_object = false
+		object_that_this_is_on = "none"
 
 func _on_add_cur_state(direction: Variant) -> void:
 	if object_that_this_is_on == "none":
@@ -57,13 +59,13 @@ func _on_add_cur_state(direction: Variant) -> void:
 				animated_sprite.play("thom_e_invented")
 				is_pickupable = false
 				# SET ONE OF LASER'S KEYSTONE TO SUCCESS
-				laser.emit_signal("keystone_complete", self, true)
+				laser.emit_signal("keystone_complete", object_name, true)
 		else:
 			if current_state == 1:
 				animated_sprite.play_backwards("default")
 				is_pickupable = false
 				# UNSET ONE OF LASER'S KEYSTONE TO SUCCESS
-				laser.emit_signal("keystone_complete", self, false)
+				laser.emit_signal("keystone_complete", object_name, false)
 			elif current_state == 2:
 				animated_sprite.play_backwards("thom_e_invented")
 				is_pickupable = false

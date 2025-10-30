@@ -325,5 +325,3 @@ func get_level_number_from_entrance(entrance_obj) -> int:
 		var num_str = obj_name.substr(6) 
 		return int(num_str)
 	return 0
-
-

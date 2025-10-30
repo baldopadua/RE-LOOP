@@ -33,6 +33,8 @@ func _ready():
 	# MANIPULATING OBJECTS APPENDED IN ARRAY
 	objects_initialize()
 	
+	player.rotation = deg_to_rad(30.0)
+	
 
 func objects_initialize():
 	objects.append(soil)
