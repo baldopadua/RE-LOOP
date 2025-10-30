@@ -168,6 +168,7 @@ func _tween_finished():
 		#level_handler.restart_level(get_parent().get_parent())
 		#ui_handler.show_last_frame_then_reset()
 		
+	# RESET LEVEL IN 12TH MOVE
 	if (moves == 12 or moves == -12) and GlobalVariables.is_looping:
 		GlobalVariables.is_restarting = true
 		level_handler.restart_level(get_parent().get_parent())
