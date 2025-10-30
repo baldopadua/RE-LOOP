@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyoxpcag56i3y"]
+[gd_scene load_steps=21 format=3 uid="uid://cyoxpcag56i3y"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_bkfv3"]
 [ext_resource type="Script" uid="uid://02trpnykd33h" path="res://Scripts/levels/level_8_script.gd" id="1_mqs6j"]
@@ -8,10 +8,72 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_tsmqx"]
 [ext_resource type="Script" uid="uid://crfxvja874dy6" path="res://Scripts/object-level/level_lobby/enter_9.gd" id="6_mqs6j"]
 [ext_resource type="Texture2D" uid="uid://ctnnsyuu5actf" path="res://Assets/lobby/level_9.png" id="7_3qsgw"]
+[ext_resource type="Texture2D" uid="uid://byu3u57wwx1t0" path="res://Assets/levels/level_8/placeholder_assets/turtle.png" id="9_3t05e"]
+[ext_resource type="Texture2D" uid="uid://b4toswyxai5af" path="res://Assets/levels/level_8/placeholder_assets/hare.png" id="10_85ltu"]
+[ext_resource type="Texture2D" uid="uid://vgsk8b4lijru" path="res://Assets/levels/level_8/placeholder_assets/carrot_patch.png" id="11_jvjwy"]
+[ext_resource type="Texture2D" uid="uid://ivsmrcju6ac0" path="res://Assets/levels/level_8/placeholder_assets/tree.png" id="12_bou3q"]
+[ext_resource type="Texture2D" uid="uid://c3fev08m45qd5" path="res://Assets/levels/level_8/placeholder_assets/chair.png" id="13_85ltu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hu5lx"]
 radius = 12.1183
 height = 40.0368
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqs6j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qsgw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tivvh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_85ltu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_plygp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_jvjwy")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mpdlk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_bou3q")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvjwy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_85ltu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="level_8_scene" type="Node2D"]
 script = ExtResource("1_mqs6j")
@@ -117,3 +179,60 @@ text = "INTERACT"
 fit_content = true
 scroll_active = false
 tab_size = 2
+
+[node name="Turtle" parent="." instance=ExtResource("5_tsmqx")]
+position = Vector2(-269.41, -15.07)
+rotation = 1.5707964
+object_name = "turtle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turtle"]
+shape = SubResource("RectangleShape2D_mqs6j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turtle"]
+sprite_frames = SubResource("SpriteFrames_3qsgw")
+
+[node name="Hare" parent="." instance=ExtResource("5_tsmqx")]
+position = Vector2(-270.295, 11.985)
+rotation = 1.5707964
+object_name = "hare"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hare"]
+shape = SubResource("RectangleShape2D_mqs6j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hare"]
+sprite_frames = SubResource("SpriteFrames_tivvh")
+
+[node name="CarrotPatch" parent="." instance=ExtResource("5_tsmqx")]
+position = Vector2(-117.36, 256.05)
+rotation = 0.5235988
+object_name = "carrot_patch"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CarrotPatch"]
+shape = SubResource("RectangleShape2D_mqs6j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CarrotPatch"]
+sprite_frames = SubResource("SpriteFrames_plygp")
+
+[node name="Tree" parent="." instance=ExtResource("5_tsmqx")]
+position = Vector2(0, 265.89)
+object_name = "tree"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree"]
+shape = SubResource("RectangleShape2D_mqs6j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tree"]
+sprite_frames = SubResource("SpriteFrames_mpdlk")
+
+[node name="Chair" parent="." instance=ExtResource("5_tsmqx")]
+position = Vector2(0, -290.18)
+rotation = 3.1415927
+object_name = "chair"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chair"]
+shape = SubResource("RectangleShape2D_mqs6j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Chair"]
+sprite_frames = SubResource("SpriteFrames_jvjwy")
