@@ -16,6 +16,10 @@ var nodes = []
 var all_nodes = _get_all_nodes(self)
 
 func _ready() -> void:
+	
+	#TODO: INITIALIZE LOGOS FIRST
+	#TODO: HERE INITIALIZE LOGOS HERE
+	
 	_connect_hover_sound(self)
 	hint_button = ui_logic.get_node_or_null("game_ui_elements/hint_button")  
 

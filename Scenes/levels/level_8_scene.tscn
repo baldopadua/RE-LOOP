@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cyoxpcag56i3y"]
+[gd_scene load_steps=23 format=3 uid="uid://cyoxpcag56i3y"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_bkfv3"]
 [ext_resource type="Script" uid="uid://02trpnykd33h" path="res://Scripts/levels/level_8_script.gd" id="1_mqs6j"]
@@ -13,6 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://vgsk8b4lijru" path="res://Assets/levels/level_8/placeholder_assets/carrot_patch.png" id="11_jvjwy"]
 [ext_resource type="Texture2D" uid="uid://ivsmrcju6ac0" path="res://Assets/levels/level_8/placeholder_assets/tree.png" id="12_bou3q"]
 [ext_resource type="Texture2D" uid="uid://c3fev08m45qd5" path="res://Assets/levels/level_8/placeholder_assets/chair.png" id="13_85ltu"]
+
+[sub_resource type="Gradient" id="Gradient_85ltu"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jvjwy"]
+gradient = SubResource("Gradient_85ltu")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3qsgw"]
 radius = 12.1183
@@ -115,6 +121,18 @@ position_smoothing_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_tsmqx")]
+
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.00006, -50)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_jvjwy")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.0001, 771)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_jvjwy")
 
 [node name="enter_9" parent="." instance=ExtResource("5_tsmqx")]
 rotation = 4.712389

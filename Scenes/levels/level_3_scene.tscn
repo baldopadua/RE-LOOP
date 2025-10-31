@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://bkklrol1yda1l"]
+[gd_scene load_steps=73 format=3 uid="uid://bkklrol1yda1l"]
 
 [ext_resource type="Script" uid="uid://w412f5j4febn" path="res://Scripts/levels/level_3_script.gd" id="1_thi73"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_p0m6i"]
@@ -368,6 +368,12 @@ size = Vector2(30.5167, 28.1506)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4srx3"]
 size = Vector2(26, 26)
 
+[sub_resource type="Gradient" id="Gradient_oyt3y"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_45cdh"]
+gradient = SubResource("Gradient_oyt3y")
+
 [sub_resource type="Animation" id="Animation_4srx3"]
 length = 0.001
 tracks/0/type = "value"
@@ -629,6 +635,18 @@ shape = SubResource("RectangleShape2D_4srx3")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("7_ipdqe")]
+
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.00006, -50)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_45cdh")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.0001, 771)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_45cdh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

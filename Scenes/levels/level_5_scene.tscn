@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c68gmkh2e26af"]
+[gd_scene load_steps=44 format=3 uid="uid://c68gmkh2e26af"]
 
 [ext_resource type="Script" uid="uid://bht2nh4ymwmf5" path="res://Scripts/levels/level_5_script.gd" id="1_0li43"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_aql1r"]
@@ -115,6 +115,12 @@ animations = [{
 "name": &"skeletal_remains",
 "speed": 5.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_dw1n4"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2dttu"]
+gradient = SubResource("Gradient_dw1n4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds2sm"]
 
@@ -355,6 +361,18 @@ metadata/_edit_lock_ = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("11_dw1n4")]
+
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.00006, -50)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_2dttu")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.0001, 771)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_2dttu")
 
 [node name="soda" parent="." instance=ExtResource("5_ryj1a")]
 visible = false

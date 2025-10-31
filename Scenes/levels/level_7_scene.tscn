@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg2xip755v06g"]
+[gd_scene load_steps=12 format=3 uid="uid://bg2xip755v06g"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_7glvm"]
 [ext_resource type="Script" uid="uid://cr0pwvu6h53ym" path="res://Scripts/levels/level_7_script.gd" id="1_y76yc"]
@@ -8,6 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_qi7jl"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_qi7jl"]
 [ext_resource type="Texture2D" uid="uid://ba6w75c3euhid" path="res://Assets/lobby/level_8.png" id="8_ltkbt"]
+
+[sub_resource type="Gradient" id="Gradient_qi7jl"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e7h5n"]
+gradient = SubResource("Gradient_qi7jl")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7h5n"]
 radius = 12.1183
@@ -52,6 +58,18 @@ position_smoothing_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_ltkbt")]
+
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.00006, -50)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_e7h5n")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.0001, 771)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_e7h5n")
 
 [node name="enter_8" parent="." instance=ExtResource("6_qi7jl")]
 rotation = 4.1887903

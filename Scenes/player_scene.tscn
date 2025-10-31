@@ -1,10 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://ch3clei25cbet"]
+[gd_scene load_steps=44 format=3 uid="uid://ch3clei25cbet"]
 
 [ext_resource type="Script" uid="uid://dc8173ksfevyx" path="res://Scripts/player_script.gd" id="1_8tj53"]
 [ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="2_7cibt"]
 [ext_resource type="Texture2D" uid="uid://doh6g386h51e4" path="res://Assets/Plooy Interactable (1)-Sheet.png" id="2_oirxf"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_e13mc"]
 [ext_resource type="Texture2D" uid="uid://ciskm1csg505j" path="res://Assets/Jump Sheep.png" id="3_q0huo"]
+[ext_resource type="Script" uid="uid://ddkt6xk5sru42" path="res://Scripts/component/camera_handler.gd" id="6_f11s3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uui1g"]
 atlas = ExtResource("2_oirxf")
@@ -317,5 +318,14 @@ position = Vector2(0, -288)
 position = Vector2(0, -8.41)
 scale = Vector2(0.99999994, 0.99999994)
 position_smoothing_enabled = true
+script = ExtResource("6_f11s3")
 
 [connection signal="near_obj" from="." to="." method="_on_near_obj"]
+[connection signal="cam_orig_zoom" from="Camera2D" to="Camera2D" method="_on_cam_orig_zoom"]
+[connection signal="cam_zoom" from="Camera2D" to="Camera2D" method="_on_cam_zoom"]
+[connection signal="cinematic_end" from="Camera2D" to="Camera2D" method="_on_cinematic_end"]
+[connection signal="cinematic_start" from="Camera2D" to="Camera2D" method="_on_cinematic_start"]
+[connection signal="hide_bars" from="Camera2D" to="Camera2D" method="_on_hide_bars"]
+[connection signal="pan_to_orig_pos" from="Camera2D" to="Camera2D" method="_on_pan_to_orig_pos"]
+[connection signal="pan_to_pos" from="Camera2D" to="Camera2D" method="_on_pan_to_pos"]
+[connection signal="reveal_bars" from="Camera2D" to="Camera2D" method="_on_reveal_bars"]

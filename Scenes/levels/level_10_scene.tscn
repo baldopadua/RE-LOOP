@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cvuyhsgfvpxwp"]
+[gd_scene load_steps=48 format=3 uid="uid://cvuyhsgfvpxwp"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_k7dlq"]
 [ext_resource type="Script" uid="uid://devjgm4fpge0o" path="res://Scripts/levels/level_10_script.gd" id="1_lnfvu"]
@@ -36,6 +36,12 @@
 [ext_resource type="Texture2D" uid="uid://ccuyqxt2yj0er" path="res://Assets/levels/level_10/placeholder_assets/ben-f-shocked.png" id="26_5i1by"]
 [ext_resource type="Script" uid="uid://0auyg2m5liyv" path="res://Scripts/object-level/level_10/lightning_cloud.gd" id="27_imt5e"]
 [ext_resource type="Script" uid="uid://2gvpdpwif2sn" path="res://Scripts/object-level/level_10/light_bulb.gd" id="30_5i1by"]
+
+[sub_resource type="Gradient" id="Gradient_5i1by"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3abkh"]
+gradient = SubResource("Gradient_5i1by")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4n6ah"]
 radius = 12.1183
@@ -317,6 +323,18 @@ horizontal_alignment = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_qcmyw")]
+
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.00006, -50)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_3abkh")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.0001, 771)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_3abkh")
 
 [node name="enter_11" parent="." instance=ExtResource("6_ttbi8")]
 rotation = 5.7595863

@@ -1,8 +1,7 @@
-[gd_scene load_steps=30 format=4 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=32 format=4 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/levels/level_1_scene.gd" id="1_pxia2"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_cmquk"]
-[ext_resource type="Script" path="res://Scripts/component/camera_handler.gd" id="4_l05gj"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_xkn6d"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="8_pxia2"]
 [ext_resource type="Script" uid="uid://c5sevvwh55kxw" path="res://Scripts/object-level/level_1/seed.gd" id="9_cmquk"]
@@ -216,11 +215,11 @@ sources/0 = SubResource("TileSetAtlasSource_l05gj")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl30"]
 size = Vector2(31, 18)
 
-[sub_resource type="Gradient" id="Gradient_l05gj"]
+[sub_resource type="Gradient" id="Gradient_7hl30"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cd6w3"]
-gradient = SubResource("Gradient_l05gj")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7hl30"]
+gradient = SubResource("Gradient_7hl30")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ystme"]
 radius = 12.1183
@@ -239,12 +238,6 @@ script = ExtResource("1_pxia2")
 [node name="PlayerScene" parent="." instance=ExtResource("5_xkn6d")]
 self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-position = Vector2(0, 2)
-position_smoothing_enabled = true
-script = ExtResource("4_l05gj")
 
 [node name="SoundManager" parent="." instance=ExtResource("23_gu1y6")]
 
@@ -293,6 +286,7 @@ shape = SubResource("RectangleShape2D_ystme")
 [node name="tree" parent="." instance=ExtResource("9_l4q40")]
 position = Vector2(0, -296.43)
 script = ExtResource("11_xkn6d")
+object_name = "tree"
 object_type = 1
 
 [node name="State1" type="TileMapLayer" parent="tree"]
@@ -343,17 +337,18 @@ shape = SubResource("RectangleShape2D_7hl30")
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(640, -48)
+position = Vector2(637.00006, -50)
 scale = Vector2(20, 1.5)
-texture = SubResource("GradientTexture2D_cd6w3")
+texture = SubResource("GradientTexture2D_7hl30")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(640, 771)
+position = Vector2(637.0001, 771)
 scale = Vector2(20, 1.5)
-texture = SubResource("GradientTexture2D_cd6w3")
+texture = SubResource("GradientTexture2D_7hl30")
 
 [node name="enter_2" parent="." instance=ExtResource("9_l4q40")]
+visible = false
 rotation = 1.0471976
 script = ExtResource("12_l05gj")
 object_name = "enter_2"
@@ -417,11 +412,16 @@ tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="cinematic_end" from="Camera2D" to="Camera2D" method="_on_cinematic_end"]
-[connection signal="cinematic_start" from="Camera2D" to="Camera2D" method="_on_cinematic_start"]
 [node name="Blackhole" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ggo0n")
 scale = Vector2(5.3125, 5.5)
 texture = ExtResource("15_7hl30")
 
+[node name="pos_to_focus" type="Marker2D" parent="."]
+position = Vector2(0, -150)
+
+[node name="initial_seed_focus" type="Marker2D" parent="."]
+position = Vector2(0, 250)
+
 [connection signal="animation_finished" from="AnimationPlayer" to="tree" method="_on_animation_player_animation_finished"]
+[connection signal="map_scale_tween_finished" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_map_scale_tween_finished"]

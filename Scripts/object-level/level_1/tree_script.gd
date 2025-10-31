@@ -15,6 +15,9 @@ var player_body: Node
 @onready var level_handler = $"../CanvasLayer/LevelHandler"
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 @onready var anim_handler = $"../AnimationPlayer"
+
+# POS TO FOCUS
+@onready var pos_to_focus = $"../pos_to_focus"
 	
 func _on_body_entered(body) -> void:
 	handle_body_entered(body)
@@ -28,6 +31,10 @@ func _on_body_entered(body) -> void:
 		
 		# STORE THE PLAYER REFERENCE
 		player_body = body
+		
+		player_body.get_node("Camera2D").emit_signal("pan_to_pos", player_body.get_node("AnimatedSprite2D").global_position)
+		player_body.get_node("Camera2D").emit_signal("reveal_bars")
+		player_body.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 			
 		await get_tree().create_timer(1).timeout
 		
@@ -82,5 +89,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			
 			end_bhole_tween.finished.connect(func():
 				end_bhole_tween.kill()
+				player_body.get_node("Camera2D").emit_signal("hide_bars")
+				player_body.get_node("Camera2D").emit_signal("cam_orig_zoom")
+				player_body.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 			)
 		)

@@ -2,18 +2,18 @@ extends Node
 
 # Level titles mapping
 static var level_titles = {
-	1: "Level 1: Ancient Tree",
-	2: "Level 2: Old Man", 
+	1: "Level 1: The Ancient Tree",
+	2: "Level 2: The Old Man", 
 	3: "Level 3: Under Pressure",
 	4: "Level 4: The Theory of Evolution",
 	5: "Level 5: Rocket Science",
-	6: "Level 6: Variance",
-	7: "Level 7",  
-	8: "Level 8", 
-	9: "Level 9",  
-	10: "Level 10",
-	11: "Level 11",
-	12: "Level 12"  
+	6: "Level 6: Gravity of the Situation",
+	7: "Level 7: The Butterfly Effect",  
+	8: "Level 8: The Turtle and The Hare", 
+	9: "Level 9: Schrödinger's Cat",  
+	10: "Level 10: Shock Therapy",
+	11: "Level 11: The Sanctuary",
+	12: "Level 12: Plooy"  
 }
 
 # GENERAL FUNCTION TO HANDLE LEVEL ENTRANCE FOR ANY LEVEL (1-12)

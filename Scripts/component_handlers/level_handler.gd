@@ -1,8 +1,11 @@
 extends Node2D
 
+# SIGNALS
 signal level_instantiated(level_name: String)
 signal level_completed(level_name: String)
 signal short_hand_state_changed(level_number: int, is_unlocked: bool)
+signal map_scale_tween_finished() 
+
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 var player = null # Will be set when level_scene is available
 
@@ -25,6 +28,7 @@ var hint_component = null
 #   3. In _onready(), call the map_initialize from level handler and pass, self, tween_rotate and tween_scale.
 
 func map_initialize(this, tween_rotate, tween_scale):
+	# TODO: MAP INITIALIZATION
 	
 	GlobalVariables.is_looping = true
 	GlobalVariables.player_stopped = false
@@ -46,6 +50,8 @@ func map_initialize(this, tween_rotate, tween_scale):
 	tween_scale = create_tween()
 	tween_scale.connect("finished", Callable(self, "tween_scale_finished").bind(tween_scale))
 	tween_scale.tween_property(this, "scale", Vector2(1.0, 1.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+
+	map_scale_tween_finished.emit()
 
 	# Connect level handler signals to level status
 	if not short_hand_state_changed.is_connected(level_status_node._on_short_hand_state_changed):

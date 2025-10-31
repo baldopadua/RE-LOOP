@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0bch0apbias6"]
+[gd_scene load_steps=8 format=3 uid="uid://d0bch0apbias6"]
 
 [ext_resource type="Script" uid="uid://cdwufukld6gqp" path="res://Scripts/levels/level_12_script.gd" id="1_1urvf"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_isc8s"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_1urvf"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_62p7t"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_8ftga"]
+
+[sub_resource type="Gradient" id="Gradient_1urvf"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_62p7t"]
+gradient = SubResource("Gradient_1urvf")
 
 [node name="level_12_scene" type="Node2D"]
 script = ExtResource("1_1urvf")
@@ -46,3 +52,15 @@ position_smoothing_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_8ftga")]
+
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.00006, -50)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_62p7t")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.0001, 771)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_62p7t")

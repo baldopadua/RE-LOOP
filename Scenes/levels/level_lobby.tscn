@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://y4on1fq1mgnm"]
+[gd_scene load_steps=23 format=3 uid="uid://y4on1fq1mgnm"]
 
 [ext_resource type="Script" uid="uid://cej80lpoc3wmr" path="res://Scripts/levels/level_lobby.gd" id="1_6t7hq"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_x2la1"]
@@ -24,12 +24,14 @@
 radius = 12.1183
 height = 40.0368
 
+[sub_resource type="Gradient" id="Gradient_11bkw"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_igr4h"]
+gradient = SubResource("Gradient_11bkw")
+
 [node name="LevelLobby" type="Node2D"]
 script = ExtResource("1_6t7hq")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 2)
-position_smoothing_enabled = true
 
 [node name="AreaHandler" parent="." instance=ExtResource("1_x2la1")]
 
@@ -810,3 +812,15 @@ vertical_alignment = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_7i53v")]
+
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(0, -409.59003)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_igr4h")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(0, 409.40997)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_igr4h")

@@ -50,7 +50,7 @@ func _ready():
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 
 	# Make clock visible in lobby for level selection but hide the clock texture
-	level_handler.level_status_node.visible = true
+	#level_handler.level_status_node.visible = true
 	level_handler.level_status_node.get_node("level_clock").visible = false
 	
 	level_handler.visible = false
@@ -59,9 +59,6 @@ func _ready():
 	objects_initialize()
 	call_deferred("initialize_text_labels")
 	call_deferred("update_completed_levels_visual")
-	
-	# SET PLAYER ROTATION TO INITIALLY 1 O CLOCK
-	player.rotation = deg_to_rad(30.0)
 	
 	# CONNECT TO LEVEL COMPLETED SIGNAL
 	level_handler.level_completed.connect(_on_level_completed)
@@ -208,10 +205,10 @@ func position_player_based_on_progress():
 	var target_rotation = 0.0
 	
 	if highest_completed_level == 0:
-		target_rotation = deg_to_rad(0)
+		target_rotation = deg_to_rad(30.0)
 	elif highest_completed_level == 12:
 		# ALL LEVELS COMPLETED, GO BACK TO LEVEL 1 POSITION
-		target_rotation = deg_to_rad(30)
+		target_rotation = deg_to_rad(360.0)
 	else:
 		# NEXT LEVEL IS CURRENT LEVEL + 1
 		# EACH LEVEL IS POSITIONED AT (LEVEL_NUMBER * 30) DEGREES
@@ -222,45 +219,45 @@ func position_player_based_on_progress():
 	player.rotation = target_rotation
 	
 	# SET THE LONG HAND TO MATCH PLAYER'S INITIAL POSITION
-	call_deferred("sync_short_hand_to_player")
+	#call_deferred("sync_short_hand_to_player")
 
 # CONNECT PLAYER MOVEMENT TO LONG HAND IN LOBBY
-func connect_player_to_short_hand():
-	if player and player.has_signal("player_finished_moving"):
-		# CONNECT PLAYER MOVEMENT TO UPDATE LONG HAND
-		if not player.player_finished_moving.is_connected(_on_player_moved_in_lobby):
-			player.player_finished_moving.connect(_on_player_moved_in_lobby)
+#func connect_player_to_short_hand():
+	#if player and player.has_signal("player_finished_moving"):
+		## CONNECT PLAYER MOVEMENT TO UPDATE LONG HAND
+		#if not player.player_finished_moving.is_connected(_on_player_moved_in_lobby):
+			#player.player_finished_moving.connect(_on_player_moved_in_lobby)
 		
 # HANDLE PLAYER MOVEMENT IN LOBBY TO UPDATE LONG HAND
-func _on_player_moved_in_lobby():
-	if not lobby_active:
-		return
-		
-	if player and level_handler.level_status_node:
-		# IN LOBBY, MAKE LONG HAND FOLLOW PLAYER DIRECTLY
-		level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
-		
-		# UPDATE THE BASE_CLOCK_POSITION TO MATCH CURRENT POSITION
-		var current_degrees = rad_to_deg(player.rotation)
-		var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
-		level_handler.level_status_node.base_clock_position = current_clock_pos
-		level_handler.level_status_node.update_lock_state()
+#func _on_player_moved_in_lobby():
+	#if not lobby_active:
+		#return
+		#
+	#if player and level_handler.level_status_node:
+		## IN LOBBY, MAKE LONG HAND FOLLOW PLAYER DIRECTLY
+		##level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
+		#
+		## UPDATE THE BASE_CLOCK_POSITION TO MATCH CURRENT POSITION
+		#var current_degrees = rad_to_deg(player.rotation)
+		#var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
+		#level_handler.level_status_node.base_clock_position = current_clock_pos
+		#level_handler.level_status_node.update_lock_state()
 
-func sync_short_hand_to_player():
-	if not lobby_active:
-		return
-		
-	if level_handler.level_status_node.preserved_hand_rotation == 0.0:
-		level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
-	else:
-		level_handler.level_status_node.short_hand_rotation.rotation = level_handler.level_status_node.preserved_hand_rotation
-	
-	var current_degrees = rad_to_deg(level_handler.level_status_node.short_hand_rotation.rotation)
-	var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
-	level_handler.level_status_node.base_clock_position = current_clock_pos
-	level_handler.level_status_node.update_lock_state()
-	
-	level_handler.level_status_node.resume_following_player()
+#func sync_short_hand_to_player():
+	#if not lobby_active:
+		#return
+		#
+	#if level_handler.level_status_node.preserved_hand_rotation == 0.0:
+		#level_handler.level_status_node.short_hand_rotation.rotation = player.rotation
+	#else:
+		#level_handler.level_status_node.short_hand_rotation.rotation = level_handler.level_status_node.preserved_hand_rotation
+	#
+	#var current_degrees = rad_to_deg(level_handler.level_status_node.short_hand_rotation.rotation)
+	#var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
+	#level_handler.level_status_node.base_clock_position = current_clock_pos
+	#level_handler.level_status_node.update_lock_state()
+	#
+	#level_handler.level_status_node.resume_following_player()
 
 # DISABLE ALL LOBBY FUNCTIONALITY
 func disable_lobby_functionality():

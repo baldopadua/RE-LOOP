@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3 uid="uid://fyqypy6fcyaf"]
+[gd_scene load_steps=150 format=3 uid="uid://fyqypy6fcyaf"]
 
 [ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/levels/level_4_script.gd" id="1_f0imo"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_lahvx"]
@@ -886,6 +886,12 @@ size = Vector2(31, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56sg6"]
 size = Vector2(18, 18)
 
+[sub_resource type="Gradient" id="Gradient_enhda"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ceyy8"]
+gradient = SubResource("Gradient_enhda")
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ceyy8"]
 radius = 12.1183
 height = 40.0368
@@ -1134,6 +1140,18 @@ shape = SubResource("RectangleShape2D_56sg6")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("15_f0imo")]
+
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.00006, -50)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_ceyy8")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.0001, 771)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_ceyy8")
 
 [node name="enter_5" parent="." instance=ExtResource("4_fiti8")]
 rotation = 2.6179938
