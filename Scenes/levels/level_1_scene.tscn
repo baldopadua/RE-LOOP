@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=30 format=4 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/levels/level_1_scene.gd" id="1_pxia2"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_cmquk"]
@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="12_l05gj"]
 [ext_resource type="Texture2D" uid="uid://vpgh1vjh3ndt" path="res://Assets/levels/level_1/tree_spritesheet.png" id="12_ystme"]
 [ext_resource type="Texture2D" uid="uid://bdvw57njg3aad" path="res://Assets/lobby/level_2.png" id="13_cd6w3"]
+[ext_resource type="Shader" uid="uid://6nni72ykvmy7" path="res://Shaders/black_hole.gdshader" id="14_cd6w3"]
+[ext_resource type="Texture2D" uid="uid://rjouqbpxr0qg" path="res://icon.svg" id="15_7hl30"]
+[ext_resource type="Texture2D" uid="uid://bacqpwmbkc6hy" path="res://Shaders/black_hole.tres" id="15_ggo0n"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="23_gu1y6"]
 
 [sub_resource type="Animation" id="Animation_pxia2"]
@@ -223,6 +226,11 @@ gradient = SubResource("Gradient_l05gj")
 radius = 12.1183
 height = 40.0368
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggo0n"]
+shader = ExtResource("14_cd6w3")
+shader_parameter/curve = ExtResource("15_ggo0n")
+shader_parameter/strength = 4.7499999933364734e-08
+
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_pxia2")
 
@@ -233,6 +241,8 @@ self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(0, 2)
 position_smoothing_enabled = true
 script = ExtResource("4_l05gj")
 
@@ -409,4 +419,9 @@ vertical_alignment = 1
 
 [connection signal="cinematic_end" from="Camera2D" to="Camera2D" method="_on_cinematic_end"]
 [connection signal="cinematic_start" from="Camera2D" to="Camera2D" method="_on_cinematic_start"]
+[node name="Blackhole" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ggo0n")
+scale = Vector2(5.3125, 5.5)
+texture = ExtResource("15_7hl30")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="tree" method="_on_animation_player_animation_finished"]

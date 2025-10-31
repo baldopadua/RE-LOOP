@@ -17,6 +17,8 @@ func _ready():
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 
 
+	player.rotation = deg_to_rad(210.0)
+
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
 # TO WORK ON THE SCRIPT
 # ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE

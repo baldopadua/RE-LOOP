@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvuyhsgfvpxwp"]
+[gd_scene load_steps=46 format=3 uid="uid://cvuyhsgfvpxwp"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_k7dlq"]
 [ext_resource type="Script" uid="uid://devjgm4fpge0o" path="res://Scripts/levels/level_10_script.gd" id="1_lnfvu"]
@@ -8,10 +8,280 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_ttbi8"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_ttbi8"]
 [ext_resource type="Texture2D" uid="uid://cuydu40e70ckk" path="res://Assets/lobby/level_11.png" id="8_l8jia"]
+[ext_resource type="Script" uid="uid://de7c74454l7fa" path="res://Scripts/object-level/level_10/laser.gd" id="9_hqhit"]
+[ext_resource type="Texture2D" uid="uid://b8uqlvui8sxln" path="res://Assets/levels/level_10/placeholder_assets/laser-no-light.png" id="9_l8jia"]
+[ext_resource type="Texture2D" uid="uid://lm5s61eelun8" path="res://Assets/levels/level_10/placeholder_assets/nic-t.png" id="10_6d810"]
+[ext_resource type="Script" uid="uid://6j62god66pi7" path="res://Scripts/object-level/level_10/nicola_tesla.gd" id="11_dm0a1"]
+[ext_resource type="Texture2D" uid="uid://w2r8f7slf6u2" path="res://Assets/levels/level_10/placeholder_assets/nic-t-question-mark.png" id="11_odd5e"]
+[ext_resource type="Texture2D" uid="uid://c7wx8eg6oo0mc" path="res://Assets/levels/level_10/placeholder_assets/laser-fire.png" id="11_xjo33"]
+[ext_resource type="Texture2D" uid="uid://c2iwgpnahoeos" path="res://Assets/levels/level_10/placeholder_assets/nic-t-shocked.png" id="11_xrgvw"]
+[ext_resource type="Texture2D" uid="uid://8uovq20ifxfa" path="res://Assets/levels/level_10/placeholder_assets/nic-t-skull.png" id="12_htemg"]
+[ext_resource type="Texture2D" uid="uid://bdc8j2yd8hb0" path="res://Assets/levels/level_10/placeholder_assets/nic-t-tesla-double.png" id="13_2i4re"]
+[ext_resource type="Texture2D" uid="uid://brvnhicngeryt" path="res://Assets/levels/level_10/placeholder_assets/thom-e.png" id="13_ehdct"]
+[ext_resource type="Texture2D" uid="uid://5qixc2dnputq" path="res://Assets/levels/level_10/placeholder_assets/thom-e-shocked.png" id="14_8if7a"]
+[ext_resource type="Texture2D" uid="uid://cn8y0v1677a54" path="res://Assets/levels/level_10/placeholder_assets/thom-e-skull.png" id="15_vx0b3"]
+[ext_resource type="Script" uid="uid://cb06hc578vh0y" path="res://Scripts/object-level/level_10/thomas_edison.gd" id="16_2i4re"]
+[ext_resource type="Texture2D" uid="uid://dowef6306iay7" path="res://Assets/levels/level_10/placeholder_assets/ben-f-question-mark.png" id="16_ttn1o"]
+[ext_resource type="Texture2D" uid="uid://cdkoyqbhwilmx" path="res://Assets/levels/level_10/placeholder_assets/ben-f-skull.png" id="17_qcf8u"]
+[ext_resource type="Texture2D" uid="uid://dpevjbvoyntfk" path="res://Assets/levels/level_10/placeholder_assets/ben-f.png" id="18_rmmn1"]
+[ext_resource type="Texture2D" uid="uid://drlm2yoph3qgk" path="res://Assets/levels/level_10/placeholder_assets/tesla-single.png" id="19_vx0b3"]
+[ext_resource type="Texture2D" uid="uid://m446mil4p1m5" path="res://Assets/levels/level_10/placeholder_assets/tesla-single-shock.png" id="20_ttn1o"]
+[ext_resource type="Script" uid="uid://bcnwj5j8jv0rr" path="res://Scripts/object-level/level_10/benjamin_franklin.gd" id="20_xjo33"]
+[ext_resource type="Texture2D" uid="uid://h5ww4m2kgpal" path="res://Assets/levels/level_10/placeholder_assets/thom-e-light-bulb-turn-on.png" id="20_ycb1u"]
+[ext_resource type="Texture2D" uid="uid://c0ma3fnlu08cs" path="res://Assets/levels/level_10/placeholder_assets/cloud.png" id="21_qcf8u"]
+[ext_resource type="Texture2D" uid="uid://bundo04bxcye4" path="res://Assets/levels/level_10/placeholder_assets/lightning-cloud.png" id="22_rmmn1"]
+[ext_resource type="Texture2D" uid="uid://ma6s07vnl8rj" path="res://Assets/levels/level_10/placeholder_assets/light-bulb-not-working.png" id="23_rmmn1"]
+[ext_resource type="Texture2D" uid="uid://ckht2ws5mlsb4" path="res://Assets/levels/level_10/placeholder_assets/ben-f-discovers-lightning-rod.png" id="24_imt5e"]
+[ext_resource type="Script" uid="uid://es32wevdl1wo" path="res://Scripts/object-level/level_10/tesla_coil.gd" id="24_ycb1u"]
+[ext_resource type="Texture2D" uid="uid://ccuyqxt2yj0er" path="res://Assets/levels/level_10/placeholder_assets/ben-f-shocked.png" id="26_5i1by"]
+[ext_resource type="Script" uid="uid://0auyg2m5liyv" path="res://Scripts/object-level/level_10/lightning_cloud.gd" id="27_imt5e"]
+[ext_resource type="Script" uid="uid://2gvpdpwif2sn" path="res://Scripts/object-level/level_10/light_bulb.gd" id="30_5i1by"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4n6ah"]
 radius = 12.1183
 height = 40.0368
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttbi8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrgvw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_l8jia")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xjo33")
+}],
+"loop": false,
+"name": &"laser_fire",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htemg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_6d810")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_2i4re")
+}],
+"loop": false,
+"name": &"nic_t_invented",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_odd5e")
+}],
+"loop": false,
+"name": &"nic_t_question_mark",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_xrgvw")
+}],
+"loop": false,
+"name": &"nic_t_shocked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_htemg")
+}],
+"loop": false,
+"name": &"nic_t_skull",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_krfte"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ehdct")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ycb1u")
+}],
+"loop": false,
+"name": &"thom_e_invented",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_8if7a")
+}],
+"loop": false,
+"name": &"thom_e_shocked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_vx0b3")
+}],
+"loop": false,
+"name": &"thom_e_skull",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_weo38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_imt5e")
+}],
+"loop": false,
+"name": &"ben_f_invented",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_ttn1o")
+}],
+"loop": false,
+"name": &"ben_f_question_mark",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_5i1by")
+}],
+"loop": true,
+"name": &"ben_f_shocked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_qcf8u")
+}],
+"loop": false,
+"name": &"ben_f_skull",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_rmmn1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qgud"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_vx0b3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ttn1o")
+}],
+"loop": false,
+"name": &"tesla_coil_shock",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4quvs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_qcf8u")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_rmmn1")
+}],
+"loop": false,
+"name": &"lightning_cloud",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehdct"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_rmmn1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="level_10_scene" type="Node2D"]
 script = ExtResource("1_lnfvu")
@@ -41,11 +311,6 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 14
 text = "TEXT"
 horizontal_alignment = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(0.99999994, 0.99999994)
-ignore_rotation = false
-position_smoothing_enabled = true
 
 [node name="SoundManager" parent="." instance=ExtResource("3_geapq")]
 
@@ -116,3 +381,121 @@ scroll_active = false
 tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Laser" parent="." instance=ExtResource("6_ttbi8")]
+position = Vector2(-147.975, -256.465)
+rotation = 2.6179938
+script = ExtResource("9_hqhit")
+object_name = "laser"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser"]
+shape = SubResource("RectangleShape2D_ttbi8")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Laser"]
+sprite_frames = SubResource("SpriteFrames_xrgvw")
+metadata/_edit_lock_ = true
+
+[node name="NicolaTesla" parent="." instance=ExtResource("6_ttbi8")]
+position = Vector2(148.24, -257.14)
+rotation = -2.6179938
+script = ExtResource("11_dm0a1")
+object_name = "nicola_tesla"
+max_state_threshold = 2
+min_state_threshold = 1
+current_state = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NicolaTesla"]
+shape = SubResource("RectangleShape2D_ttbi8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NicolaTesla"]
+sprite_frames = SubResource("SpriteFrames_htemg")
+
+[node name="ThomasEdison" parent="." instance=ExtResource("6_ttbi8")]
+position = Vector2(151.59, 259.955)
+rotation = -0.5235988
+script = ExtResource("16_2i4re")
+object_name = "thomas_edison"
+max_state_threshold = 2
+min_state_threshold = 1
+current_state = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThomasEdison"]
+shape = SubResource("RectangleShape2D_ttbi8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ThomasEdison"]
+sprite_frames = SubResource("SpriteFrames_krfte")
+
+[node name="BenjaminFranklin" parent="." instance=ExtResource("6_ttbi8")]
+position = Vector2(-149.33, 264.685)
+rotation = 0.5235988
+script = ExtResource("20_xjo33")
+object_name = "benjamin_franklin"
+max_state_threshold = 2
+min_state_threshold = 1
+current_state = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BenjaminFranklin"]
+shape = SubResource("RectangleShape2D_ttbi8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BenjaminFranklin"]
+sprite_frames = SubResource("SpriteFrames_weo38")
+animation = &"ben_f_shocked"
+
+[node name="TeslaCoil" parent="." instance=ExtResource("6_ttbi8")]
+position = Vector2(151.59, 259.955)
+rotation = -0.5235988
+script = ExtResource("24_ycb1u")
+object_name = "tesla_coil"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeslaCoil"]
+shape = SubResource("RectangleShape2D_ttbi8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TeslaCoil"]
+sprite_frames = SubResource("SpriteFrames_2qgud")
+animation = &"tesla_coil_shock"
+
+[node name="LightningCloud" parent="." instance=ExtResource("6_ttbi8")]
+position = Vector2(148.24, -257.14)
+rotation = -2.6179938
+script = ExtResource("27_imt5e")
+object_name = "lightning_cloud"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightningCloud"]
+shape = SubResource("RectangleShape2D_ttbi8")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LightningCloud"]
+sprite_frames = SubResource("SpriteFrames_4quvs")
+animation = &"lightning_cloud"
+metadata/_edit_lock_ = true
+
+[node name="LightBulb" parent="." instance=ExtResource("6_ttbi8")]
+position = Vector2(-149.33, 264.685)
+rotation = 0.5235988
+script = ExtResource("30_5i1by")
+object_name = "light_bulb"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightBulb"]
+shape = SubResource("RectangleShape2D_ttbi8")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LightBulb"]
+sprite_frames = SubResource("SpriteFrames_ehdct")
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="Laser" to="Laser" method="_on_area_entered"]
+[connection signal="keystone_complete" from="Laser" to="Laser" method="_on_keystone_complete"]
+[connection signal="add_cur_state" from="NicolaTesla" to="NicolaTesla" method="_on_add_cur_state"]
+[connection signal="area_entered" from="NicolaTesla" to="NicolaTesla" method="_on_area_entered"]
+[connection signal="area_exited" from="NicolaTesla" to="NicolaTesla" method="_on_area_exited"]
+[connection signal="add_cur_state" from="ThomasEdison" to="ThomasEdison" method="_on_add_cur_state"]
+[connection signal="area_entered" from="ThomasEdison" to="ThomasEdison" method="_on_area_entered"]
+[connection signal="area_exited" from="ThomasEdison" to="ThomasEdison" method="_on_area_exited"]
+[connection signal="add_cur_state" from="BenjaminFranklin" to="BenjaminFranklin" method="_on_add_cur_state"]
+[connection signal="area_entered" from="BenjaminFranklin" to="BenjaminFranklin" method="_on_area_entered"]
+[connection signal="area_exited" from="BenjaminFranklin" to="BenjaminFranklin" method="_on_area_exited"]

@@ -8,6 +8,7 @@ var tween_scale: Tween
 var time_indicator: AnimatedSprite2D
 var is_playing: bool = false
 var player_body: Node 
+@onready var black_hole = $"../Blackhole"
 
 # HANDLERS
 @onready var sound_manager = $SoundManager
@@ -42,9 +43,6 @@ func _on_body_entered(body) -> void:
 		sound_manager.play_player_sfx("Climb")
 		anim_handler.play("ClimbingAnimation")
 
-func _tween_climb_finished():
-	tween_climb.kill()
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ClimbingAnimation":
 		# Play jump animation on player sprite after climbing finishes
@@ -56,7 +54,33 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		# Play jump animation in AnimationPlayer
 		anim_handler.play("JumpAnimation")
 	elif anim_name == "JumpAnimation":
-		# DECLARE LEVEL TO BE FINISHED
 		
-		# NOTIFY LEVEL 1 IS COMPLETED - this will handle cutscene and next level automatically
-		level_handler.complete_current_level(get_parent().get_parent())
+		var intro_bhole_tween : Tween = create_tween()
+		intro_bhole_tween.tween_method(
+			func(value):
+				black_hole.get_material().set_shader_parameter("strength", value),
+				0.0,
+				-0.6,
+				3.0
+		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		
+		intro_bhole_tween.finished.connect(func():
+			intro_bhole_tween.kill()
+			var end_bhole_tween: Tween = create_tween()
+			end_bhole_tween.tween_method(
+				func(value):
+					black_hole.get_material().set_shader_parameter("strength", value),
+					-0.6,
+					0.0,
+					0.5
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+			
+			# DECLARE LEVEL TO BE FINISHED
+		
+			# NOTIFY LEVEL 1 IS COMPLETED - this will handle cutscene and next level automatically
+			level_handler.complete_current_level(get_parent().get_parent())
+			
+			end_bhole_tween.finished.connect(func():
+				end_bhole_tween.kill()
+			)
+		)

@@ -69,6 +69,8 @@ func _ready():
 	# POSITION PLAYER BASED ON LAST COMPLETED LEVEL
 	call_deferred("position_player_based_on_progress")
 	sound_manager.play_ambience_sfx("forest_sfx")
+	
+	GlobalVariables.is_looping = false
 
 # INITIALIZE TEXT LABELS FOR ALL ENTRANCE OBJECTS
 func initialize_text_labels():
@@ -121,18 +123,19 @@ func enter_level(level_number: int):
 	
 	# SHOW STORY CUTSCENE FIRST, THEN CLOCK ANIMATION, THEN LEVEL
 	var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+	# TODO: Dito yung show clock anim then level
 	if ui_handler:
 		ui_handler.show_level_cutscene(level_number, func(): _show_clock_animation_then_level(level_number, levels_frame))
 
 # SHOW CLOCK ANIMATION THEN PROCEED TO LEVEL
 func _show_clock_animation_then_level(level_number: int, levels_frame):
 	print("Showing clock animation for level ", level_number)
-	# SHOW CLOCK ANIMATION CUTSCENE
+	 #SHOW CLOCK ANIMATION CUTSCENE
 	level_handler.level_status_node.get_node("level_clock").visible = true
 	level_handler.level_status_node.show_level_1_entry_cutscene()
 	await get_tree().create_timer(1.0).timeout
 	
-	# ANIMATE HAND FROM 12 O'CLOCK TO TARGET LEVEL POSITION
+	 #ANIMATE HAND FROM 12 O'CLOCK TO TARGET LEVEL POSITION
 	var target_clock_position = level_handler.level_status_node.get_clock_position_for_level(level_number)
 	var animation_tween = level_handler.level_status_node.animate_hand_to_next_level(target_clock_position)
 	if animation_tween:
