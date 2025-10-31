@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=4 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=29 format=4 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/levels/level_1_scene.gd" id="1_pxia2"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_cmquk"]
+[ext_resource type="Script" path="res://Scripts/component/camera_handler.gd" id="4_l05gj"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_xkn6d"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="8_pxia2"]
 [ext_resource type="Script" uid="uid://c5sevvwh55kxw" path="res://Scripts/object-level/level_1/seed.gd" id="9_cmquk"]
@@ -212,6 +213,12 @@ sources/0 = SubResource("TileSetAtlasSource_l05gj")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl30"]
 size = Vector2(31, 18)
 
+[sub_resource type="Gradient" id="Gradient_l05gj"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cd6w3"]
+gradient = SubResource("Gradient_l05gj")
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ystme"]
 radius = 12.1183
 height = 40.0368
@@ -226,8 +233,8 @@ self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 2)
 position_smoothing_enabled = true
+script = ExtResource("4_l05gj")
 
 [node name="SoundManager" parent="." instance=ExtResource("23_gu1y6")]
 
@@ -324,6 +331,18 @@ shape = SubResource("RectangleShape2D_7hl30")
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("8_pxia2")]
 
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(640, -48)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_cd6w3")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(640, 771)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_cd6w3")
+
 [node name="enter_2" parent="." instance=ExtResource("9_l4q40")]
 rotation = 1.0471976
 script = ExtResource("12_l05gj")
@@ -388,4 +407,6 @@ tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="cinematic_end" from="Camera2D" to="Camera2D" method="_on_cinematic_end"]
+[connection signal="cinematic_start" from="Camera2D" to="Camera2D" method="_on_cinematic_start"]
 [connection signal="animation_finished" from="AnimationPlayer" to="tree" method="_on_animation_player_animation_finished"]
