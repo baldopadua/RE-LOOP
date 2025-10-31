@@ -6,6 +6,7 @@ extends Node2D
 @onready var seed_obj = $Seed
 @onready var soil = $Soil
 @onready var tree = $tree
+@onready var camera = $Camera2D
 
 # ALL THE OBJECTS FOR THE PLAYER
 @onready var objects: Array = []
@@ -76,12 +77,19 @@ func update_tree_visibility(stage: int) -> void:
 		GlobalVariables.is_looping = false
 		GlobalVariables.player_stopped = true
 
+		# FOCUS ON TREE
+		camera.emit_signal("cinematic_start", tree)
+
 		# Play SFX using SoundManager for finish_level_sfx nodes
 		if sound_manager and sound_manager.has_method("play_finish_level_sfx"):
 			sound_manager.play_finish_level_sfx()
 
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(2.0).timeout
 		GlobalVariables.player_stopped = false
+		
+		# BACK TO ORIG FOCUS
+		camera.emit_signal("cinematic_end")
+		
 		return
 
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 

@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://pu00f16vh66k" path="res://Scripts/object-level/level_5/vending.gd" id="17_dtqwf"]
 [ext_resource type="Texture2D" uid="uid://d4hls42etbvcm" path="res://Assets/levels/level_5/placeholder_assets/soda_small.png" id="18_dtqwf"]
 [ext_resource type="Script" uid="uid://b1gbqaimevnvo" path="res://Scripts/object-level/level_5/soda.gd" id="18_oyxes"]
-[ext_resource type="Script" uid="uid://ck07upapmng41" path="res://Scripts/object-level/level_lobby/enter_6.gd" id="20_dw1n4"]
+[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="20_dw1n4"]
 [ext_resource type="Texture2D" uid="uid://d1gv25rkrif8y" path="res://Assets/lobby/level_6.png" id="21_2dttu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtqwf"]
@@ -218,7 +218,7 @@ _data = {
 &"rocket_animation": SubResource("Animation_oyxes")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dw1n4"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dttu"]
 radius = 12.1183
 height = 40.0368
 
@@ -384,46 +384,45 @@ libraries = {
 [node name="temp_timer" type="Timer" parent="."]
 
 [node name="enter_6" parent="." instance=ExtResource("5_ryj1a")]
-position = Vector2(142, 229)
-rotation = 2.59388
+rotation = 3.1415927
 script = ExtResource("20_dw1n4")
 object_name = "enter_6"
 object_type = 1
-is_enterable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_6"]
+position = Vector2(-7.6293945e-06, -290)
+shape = SubResource("CapsuleShape2D_2dttu")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_6"]
 texture_filter = 1
-position = Vector2(-0.999999, 9)
-rotation = -3.08868
+rotation = 3.1415927
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("21_2dttu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_6"]
-position = Vector2(-1, 6.99997)
-rotation = 3.11311
-shape = SubResource("CapsuleShape2D_dw1n4")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_6"]
-modulate = Color(0.278431, 0.235294, 0, 1)
+modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 28.055527
-offset_top = 103.79253
-offset_right = 234.05562
-offset_bottom = 165.79253
+offset_left = -90.0
+offset_top = -220.0
+offset_right = 90.0
+offset_bottom = -186.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -3.07267
-scale = Vector2(1.30259, 1.39847)
-text = "Level 6
-"
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_font_sizes/normal_font_size = 24
+text = "Ancient Tree"
 fit_content = true
 scroll_active = false
 tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="interact_text" type="RichTextLabel" parent="enter_6"]
 modulate = Color(1, 0, 0, 1)
@@ -432,18 +431,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 42.15793
-offset_top = 74.91135
-offset_right = 336.1581
-offset_bottom = 114.91185
+offset_left = -90.0
+offset_top = -250.0
+offset_right = 90.0
+offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -3.07267
+rotation = 3.1415927
 scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
 text = "INTERACT"
 fit_content = true
 scroll_active = false
 tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_shape_entered" from="science_project" to="science_project" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="science_project" to="science_project" method="_on_area_shape_exited"]
