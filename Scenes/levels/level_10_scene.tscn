@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_geapq"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_qcmyw"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_ttbi8"]
-[ext_resource type="Script" uid="uid://bbcpmbnrab0bp" path="res://Scripts/object-level/level_lobby/enter_11.gd" id="7_4n6ah"]
+[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_ttbi8"]
 [ext_resource type="Texture2D" uid="uid://cuydu40e70ckk" path="res://Assets/lobby/level_11.png" id="8_l8jia"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6d810"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4n6ah"]
 radius = 12.1183
 height = 40.0368
 
@@ -54,67 +54,65 @@ position_smoothing_enabled = true
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_qcmyw")]
 
 [node name="enter_11" parent="." instance=ExtResource("6_ttbi8")]
-visible = false
-position = Vector2(-3.000001, 268.00003)
-rotation = -3.1028948
-scale = Vector2(0.9999999, 0.9999999)
-script = ExtResource("7_4n6ah")
+rotation = 5.7595863
+script = ExtResource("7_ttbi8")
 object_name = "enter_11"
 object_type = 1
-is_enterable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_11"]
+position = Vector2(-7.6293945e-06, -290)
+shape = SubResource("CapsuleShape2D_4n6ah")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_11"]
 texture_filter = 1
-position = Vector2(-0.999999, 9)
-rotation = -3.08868
+rotation = 3.1415927
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("8_l8jia")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_11"]
-position = Vector2(-1, 6.99997)
-rotation = 3.11311
-shape = SubResource("CapsuleShape2D_6d810")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_11"]
-visible = false
-modulate = Color(0.278431, 0.235294, 0, 1)
+modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 33.49817
-offset_top = 89.77127
-offset_right = 239.49826
-offset_bottom = 151.77127
+offset_left = -90.0
+offset_top = -220.0
+offset_right = 90.0
+offset_bottom = -186.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -3.07267
-scale = Vector2(1.30259, 1.39847)
-text = "Level 11
-"
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_font_sizes/normal_font_size = 24
+text = "Ancient Tree"
 fit_content = true
 scroll_active = false
 tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="interact_text" type="RichTextLabel" parent="enter_11"]
-visible = false
 modulate = Color(1, 0, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 37.126564
-offset_top = 74.522575
-offset_right = 331.12674
-offset_bottom = 114.52308
+offset_left = -90.0
+offset_top = -250.0
+offset_right = 90.0
+offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -3.07267
+rotation = 3.1415927
 scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
 text = "INTERACT"
 fit_content = true
 scroll_active = false
 tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1

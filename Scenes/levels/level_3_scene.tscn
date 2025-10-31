@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://57y61numcit2" path="res://Assets/levels/level_3/Geiser_Rock_5.png" id="15_3gnya"]
 [ext_resource type="Script" uid="uid://cp4ph6xk7oue6" path="res://Scripts/object-level/level_3/rock.gd" id="16_4srx3"]
 [ext_resource type="Texture2D" uid="uid://cia7fvqduwmcc" path="res://Assets/levels/level_3/rock.png" id="16_symai"]
-[ext_resource type="Script" uid="uid://q77r6p0vma8u" path="res://Scripts/object-level/level_lobby/enter_4.gd" id="17_oyt3y"]
+[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="17_oyt3y"]
 [ext_resource type="Texture2D" uid="uid://7a5oqv826cwv" path="res://Assets/lobby/level_4.png" id="18_45cdh"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="22_3gnya"]
 
@@ -429,7 +429,7 @@ _data = {
 &"ride_the_water": SubResource("Animation_symai")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_njtrs"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45cdh"]
 radius = 12.1183
 height = 40.0368
 
@@ -635,45 +635,45 @@ libraries = {
 }
 
 [node name="enter_4" parent="." instance=ExtResource("8_thi73")]
-position = Vector2(252, -148)
-rotation = 1.074834
+rotation = 2.0943952
 script = ExtResource("17_oyt3y")
 object_name = "enter_4"
 object_type = 1
 
-[node name="Sprite2D2" type="Sprite2D" parent="enter_4"]
-texture_filter = 1
-position = Vector2(-0.999999, 9)
-rotation = -3.08868
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("18_45cdh")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_4"]
-position = Vector2(-1, 6.99997)
-rotation = 3.11311
-shape = SubResource("CapsuleShape2D_njtrs")
+position = Vector2(-7.6293945e-06, -290)
+shape = SubResource("CapsuleShape2D_45cdh")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
+[node name="Sprite2D2" type="Sprite2D" parent="enter_4"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("18_45cdh")
+offset = Vector2(0, 380)
+
 [node name="hover_text" type="RichTextLabel" parent="enter_4"]
-visible = false
-modulate = Color(0.278431, 0.235294, 0, 1)
+modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 134.59036
-offset_top = 127.39874
-offset_right = 422.9324
-offset_bottom = 189.39874
+offset_left = -90.0
+offset_top = -220.0
+offset_right = 90.0
+offset_bottom = -186.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -3.07267
-scale = Vector2(1.30259, 1.39847)
-text = "Level 4: The Theory of Evolution"
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_font_sizes/normal_font_size = 24
+text = "Ancient Tree"
 fit_content = true
 scroll_active = false
 tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="interact_text" type="RichTextLabel" parent="enter_4"]
 modulate = Color(1, 0, 0, 1)
@@ -682,18 +682,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 37.6368
-offset_top = 89.0195
-offset_right = 331.637
-offset_bottom = 129.02
+offset_left = -90.0
+offset_top = -250.0
+offset_right = 90.0
+offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -3.07267
+rotation = 3.1415927
 scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
 text = "INTERACT"
 fit_content = true
 scroll_active = false
 tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="player_finished_moving" from="PlayerScene" to="geyser" method="_on_player_scene_player_finished_moving"]
 [connection signal="animation_finished" from="AnimationPlayer" to="geyser" method="_on_animation_player_animation_finished"]

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dfdbkhqn5goip" path="res://Assets/levels/level_1/seed.png" id="10_70ox2"]
 [ext_resource type="Texture2D" uid="uid://bdnfiuumni1te" path="res://Assets/levels/level_1/DirtMound.png" id="11_70ox2"]
 [ext_resource type="Script" uid="uid://dxhkvoxn1q5vy" path="res://Scripts/object-level/level_1/tree_script.gd" id="11_xkn6d"]
-[ext_resource type="Script" uid="uid://cvko4yg4wmehn" path="res://Scripts/object-level/level_lobby/enter_2.gd" id="12_l05gj"]
+[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="12_l05gj"]
 [ext_resource type="Texture2D" uid="uid://vpgh1vjh3ndt" path="res://Assets/levels/level_1/tree_spritesheet.png" id="12_ystme"]
 [ext_resource type="Texture2D" uid="uid://bdvw57njg3aad" path="res://Assets/lobby/level_2.png" id="13_cd6w3"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="23_gu1y6"]
@@ -325,45 +325,45 @@ shape = SubResource("RectangleShape2D_7hl30")
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("8_pxia2")]
 
 [node name="enter_2" parent="." instance=ExtResource("9_l4q40")]
-position = Vector2(141, -246)
-rotation = 0.451709
+rotation = 1.0471976
 script = ExtResource("12_l05gj")
 object_name = "enter_2"
 object_type = 1
 
-[node name="Sprite2D2" type="Sprite2D" parent="enter_2"]
-texture_filter = 1
-position = Vector2(-0.999999, 9)
-rotation = -3.08868
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("13_cd6w3")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_2"]
-position = Vector2(-1, 6.99997)
-rotation = 3.11311
+position = Vector2(-7.6293945e-06, -290)
 shape = SubResource("CapsuleShape2D_ystme")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
+[node name="Sprite2D2" type="Sprite2D" parent="enter_2"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.54803, 0.75198)
+texture = ExtResource("13_cd6w3")
+offset = Vector2(0, 380)
+
 [node name="hover_text" type="RichTextLabel" parent="enter_2"]
-visible = false
-modulate = Color(0.278431, 0.235294, 0, 1)
+modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 70.29441
-offset_top = 105.941925
-offset_right = 364.2947
-offset_bottom = 145.94183
+offset_left = -90.0
+offset_top = -220.0
+offset_right = 90.0
+offset_bottom = -186.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -3.07267
-scale = Vector2(1.30259, 1.39847)
-text = "Level 2: Old Man"
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_font_sizes/normal_font_size = 24
+text = "Ancient Tree"
 fit_content = true
 scroll_active = false
 tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="interact_text" type="RichTextLabel" parent="enter_2"]
 modulate = Color(1, 0, 0, 1)
@@ -372,17 +372,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 42.581112
-offset_top = 67.14796
-offset_right = 336.5813
-offset_bottom = 107.14846
+offset_left = -90.0
+offset_top = -250.0
+offset_right = 90.0
+offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -3.07267
+rotation = 3.1415927
 scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
 text = "INTERACT"
 fit_content = true
 scroll_active = false
 tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="AnimationPlayer" to="tree" method="_on_animation_player_animation_finished"]

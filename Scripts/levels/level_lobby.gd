@@ -60,6 +60,9 @@ func _ready():
 	call_deferred("initialize_text_labels")
 	call_deferred("update_completed_levels_visual")
 	
+	# SET PLAYER ROTATION TO INITIALLY 1 O CLOCK
+	player.rotation = deg_to_rad(30.0)
+	
 	# CONNECT TO LEVEL COMPLETED SIGNAL
 	level_handler.level_completed.connect(_on_level_completed)
 	
@@ -325,5 +328,3 @@ func get_level_number_from_entrance(entrance_obj) -> int:
 		var num_str = obj_name.substr(6) 
 		return int(num_str)
 	return 0
-
-
