@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://c2dq7rfpmpmqb" path="res://Assets/ui/keys_elements.png" id="9_8crwb"]
 [ext_resource type="Texture2D" uid="uid://oxutfru2ik0r" path="res://Assets/ui/brochure_unhovered.png" id="10_wyu2o"]
 [ext_resource type="Texture2D" uid="uid://3vkvbxe40udp" path="res://Assets/ui/brochure_hovered.png" id="11_tocme"]
-[ext_resource type="Texture2D" uid="uid://dn8g7surbovjv" path="res://Assets/ui/hint_button_icon.png" id="12_ktfc8"]
-[ext_resource type="Texture2D" uid="uid://dgtpfwvyxwquw" path="res://Assets/ui/hint_button_icon_hover.png" id="13_2uxee"]
+[ext_resource type="Texture2D" uid="uid://fwomc1y72s18" path="res://Assets/ui/hint/hint_icon.png" id="12_us0vv"]
+[ext_resource type="Texture2D" uid="uid://dbhcu8amka32c" path="res://Assets/ui/hint/hint_icon_hover.png" id="13_us0vv"]
 [ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="16_gvmfu"]
 [ext_resource type="Texture2D" uid="uid://dmlkwrmka11h8" path="res://Assets/ui/counterclockwise_time_indicator.png" id="17_otg63"]
 [ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="18_dumc0"]
@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://qyn6g7sbegxs" path="res://Scripts/ui/hint.gd" id="22_exohx"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="22_iwsb4"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="23_4r7hv"]
-[ext_resource type="Texture2D" uid="uid://wx1gllya8umu" path="res://Assets/ui/hint/update1.png" id="23_us0vv"]
+[ext_resource type="Texture2D" uid="uid://cfk1sf6tg02we" path="res://Assets/ui/hint/hint_dialog.png" id="23_us0vv"]
 [ext_resource type="Texture2D" uid="uid://cgs10454tk44a" path="res://Assets/ui/hint/lock.png" id="24_y4w7x"]
 [ext_resource type="Texture2D" uid="uid://coq0k521hiqir" path="res://Assets/ui/hint/hint_2_overlay.png" id="26_exohx"]
 [ext_resource type="Texture2D" uid="uid://d0q68tpidyitt" path="res://Assets/ui/hint/solution_overlay.png" id="27_nol8b"]
@@ -535,7 +535,6 @@ animation = &"hover"
 autoplay = "default"
 
 [node name="game_ui_elements" type="Control" parent="ui_logic"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -573,8 +572,8 @@ offset_bottom = -636.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(-10, -10)
-texture_normal = ExtResource("12_ktfc8")
-texture_hover = ExtResource("13_2uxee")
+texture_normal = ExtResource("12_us0vv")
+texture_hover = ExtResource("13_us0vv")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -693,24 +692,23 @@ texture = ExtResource("19_bo42c")
 
 [node name="hint_dialog" type="TextureRect" parent="ui_logic/overlay/hint"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 80.0
-offset_top = 4.0
-offset_right = 80.0
-offset_bottom = 4.0
+anchors_preset = -1
+anchor_left = 0.1375
+anchor_top = 0.08194444
+anchor_right = 0.9546875
+anchor_bottom = 0.92638886
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("23_us0vv")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="hint_2" type="Control" parent="ui_logic/overlay/hint/hint_dialog"]
 layout_mode = 1
-anchor_left = 0.33828124
-anchor_top = 0.12361111
-anchor_right = 0.50859374
-anchor_bottom = 0.24027778
+anchor_left = 0.31453153
+anchor_top = 0.034539472
+anchor_right = 0.5544933
+anchor_bottom = 0.17927632
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -746,10 +744,14 @@ wait_time = 10.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_dialog/hint_2/hint_2_timer"]
 anchors_preset = -1
-anchor_left = 0.471875
-anchor_top = 0.20694445
-anchor_right = 0.503125
-anchor_bottom = 0.25416666
+anchor_left = 0.47734374
+anchor_top = 0.19861111
+anchor_right = 0.50859374
+anchor_bottom = 0.24583334
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -761,10 +763,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="solution" type="Control" parent="ui_logic/overlay/hint/hint_dialog"]
 layout_mode = 1
-anchor_left = 0.5203125
-anchor_top = 0.11388889
-anchor_right = 0.69609374
-anchor_bottom = 0.2402778
+anchor_left = 0.5717017
+anchor_top = 0.023026315
+anchor_right = 0.8126195
+anchor_bottom = 0.17927635
 offset_bottom = -1.5258789e-05
 grow_horizontal = 2
 grow_vertical = 2
@@ -799,14 +801,10 @@ wait_time = 10.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_dialog/solution/solution_timer"]
 anchors_preset = -1
-anchor_left = 0.65625
-anchor_top = 0.20416667
-anchor_right = 0.6875
-anchor_bottom = 0.25138888
-offset_left = 6.0
-offset_top = 3.0
-offset_right = 6.0
-offset_bottom = 3.0000153
+anchor_left = 0.6921875
+anchor_top = 0.19722222
+anchor_right = 0.7234375
+anchor_bottom = 0.24444444
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -817,12 +815,13 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_status_bar" type="TextureRect" parent="ui_logic/overlay/hint/hint_dialog"]
+modulate = Color(0, 1, 0, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.17578125
-anchor_top = 0.2402778
-anchor_right = 0.2894813
-anchor_bottom = 0.25833333
+anchor_left = 0.1166348
+anchor_top = 0.17927635
+anchor_right = 0.23033486
+anchor_bottom = 0.20394737
 offset_top = -1.5258789e-05
 grow_horizontal = 2
 grow_vertical = 2
@@ -831,13 +830,13 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_1_mark" type="Marker2D" parent="ui_logic/overlay/hint/hint_dialog"]
-position = Vector2(225, 172)
+position = Vector2(121, 109)
 
 [node name="hint_2_mark" type="Marker2D" parent="ui_logic/overlay/hint/hint_dialog"]
-position = Vector2(469, 174)
+position = Vector2(400, 108)
 
 [node name="solution_mark" type="Marker2D" parent="ui_logic/overlay/hint/hint_dialog"]
-position = Vector2(712, 173)
+position = Vector2(671, 108)
 
 [node name="level_1_hint" type="Control" parent="ui_logic/overlay/hint"]
 visible = false
