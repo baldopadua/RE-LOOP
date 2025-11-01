@@ -68,6 +68,7 @@ func geyser_ekusproshon():
 		ui_handler.set_time_indicator_fixed()
 		
 		# PLAY LOOPING GEYSER AFTER 
+		z_index = 1
 		area_handler.show_loop_break(2)
 		animate_geyser.play("loop_break")
 		
