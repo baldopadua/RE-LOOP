@@ -1,10 +1,10 @@
-extends Node2D
+extends Control
 
-@onready var animation_player = $AnimationPlayer
-@onready var godot_bg = $godot_bg
-@onready var godot = $godot
-@onready var patir_bg = $patir_bg
-@onready var patir_studio = $patir_studio
+@onready var animation_player = $bg/AnimationPlayer
+@onready var godot_bg = $bg/godot_bg
+@onready var godot = $bg/icon/godot
+@onready var patir_bg = $bg/patir_bg
+@onready var patir_studio = $bg/icon/patir_studio
 
 func _ready():
 	# Set all as false first

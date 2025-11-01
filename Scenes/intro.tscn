@@ -12,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("godot_bg:visible")
+tracks/0/path = NodePath("bg/godot_bg:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("godot:visible")
+tracks/1/path = NodePath("bg/icon/godot:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("godot:modulate")
+tracks/2/path = NodePath("bg/icon/godot:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -48,7 +48,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("patir_bg:visible")
+tracks/3/path = NodePath("bg/patir_bg:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -60,7 +60,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("patir_studio:visible")
+tracks/4/path = NodePath("bg/icon/patir_studio:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -72,7 +72,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("patir_studio:modulate")
+tracks/5/path = NodePath("bg/icon/patir_studio:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -88,7 +88,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("godot_bg:visible")
+tracks/0/path = NodePath("bg/godot_bg:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -100,7 +100,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("godot:visible")
+tracks/1/path = NodePath("bg/icon/godot:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -112,7 +112,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("godot:modulate")
+tracks/2/path = NodePath("bg/icon/godot:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -128,7 +128,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("patir_bg:visible")
+tracks/0/path = NodePath("bg/patir_bg:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -140,7 +140,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("patir_studio:visible")
+tracks/1/path = NodePath("bg/icon/patir_studio:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -152,7 +152,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("patir_studio:modulate")
+tracks/2/path = NodePath("bg/icon/patir_studio:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -169,49 +169,78 @@ _data = {
 &"patir": SubResource("Animation_nn7w8")
 }
 
-[node name="Intro" type="Node2D"]
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_rsiac")
+metadata/_edit_use_anchors_ = true
 
-[node name="godot_bg" type="Sprite2D" parent="."]
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="godot_bg" type="Sprite2D" parent="bg"]
 texture_filter = 1
-position = Vector2(711.50006, 358.7199)
-scale = Vector2(1.1726563, 1.0269997)
+position = Vector2(730.74994, 362.5)
+scale = Vector2(1.1300781, 1.1291667)
 texture = ExtResource("1_hwjxs")
 
-[node name="patir_bg" type="Sprite2D" parent="."]
+[node name="patir_bg" type="Sprite2D" parent="bg"]
 modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
-position = Vector2(713, 362.50003)
-scale = Vector2(1.1781249, 1.0375)
+position = Vector2(725.75, 361.00003)
+scale = Vector2(1.1394532, 1.1361111)
 texture = ExtResource("2_geirw")
 
-[node name="godot" type="Node2D" parent="."]
+[node name="icon" type="TextureRect" parent="bg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24140625
+anchor_top = 0.115277775
+anchor_right = 0.7734375
+anchor_bottom = 0.7625
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="godot" type="Node2D" parent="bg/icon"]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 texture_filter = 1
-position = Vector2(6, -24)
+position = Vector2(-281, -105)
 
-[node name="icon" type="Sprite2D" parent="godot"]
+[node name="icon" type="Sprite2D" parent="bg/icon/godot"]
 position = Vector2(630, 307)
 scale = Vector2(1.1436063, 1.1127533)
 texture = ExtResource("2_alxvg")
 
-[node name="text" type="Sprite2D" parent="godot"]
+[node name="text" type="Sprite2D" parent="bg/icon/godot"]
 position = Vector2(636.00006, 493.99997)
 scale = Vector2(0.8569891, 0.72814775)
 texture = ExtResource("3_geirw")
 
-[node name="patir_studio" type="Node2D" parent="."]
+[node name="patir_studio" type="Node2D" parent="bg/icon"]
 modulate = Color(1, 1, 1, 0)
 texture_filter = 1
-position = Vector2(14, -19)
+position = Vector2(-295, -102)
 
-[node name="icon" type="Sprite2D" parent="patir_studio"]
+[node name="icon" type="Sprite2D" parent="bg/icon/patir_studio"]
 position = Vector2(626.99994, 320)
 scale = Vector2(1.1436063, 1.1127533)
 texture = ExtResource("5_hwjxs")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bg"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_b26wi")
 }
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="bg/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
