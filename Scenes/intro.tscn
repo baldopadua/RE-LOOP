@@ -156,7 +156,7 @@ tracks/2/path = NodePath("patir_studio:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.8, 1.9333333, 1.9666667),
+"times": PackedFloat32Array(0, 0.46666667, 1.8, 1.9333333, 1.9666667),
 "transitions": PackedFloat32Array(1, 1, 0.5, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6156863), Color(1, 1, 1, 0.03529412)]
@@ -187,6 +187,7 @@ texture = ExtResource("2_geirw")
 [node name="godot" type="Node2D" parent="."]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 texture_filter = 1
+position = Vector2(6, -24)
 
 [node name="icon" type="Sprite2D" parent="godot"]
 position = Vector2(630, 307)
@@ -201,6 +202,7 @@ texture = ExtResource("3_geirw")
 [node name="patir_studio" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 texture_filter = 1
+position = Vector2(14, -19)
 
 [node name="icon" type="Sprite2D" parent="patir_studio"]
 position = Vector2(626.99994, 320)
