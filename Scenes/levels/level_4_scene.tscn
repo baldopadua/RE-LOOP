@@ -339,7 +339,7 @@ width = 10
 height = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0imo"]
-size = Vector2(32.5, 24)
+size = Vector2(32.5, 30.356384)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxcvp"]
 atlas = ExtResource("13_yxj7a")
@@ -943,7 +943,7 @@ animation = &"dino"
 autoplay = "dino"
 
 [node name="chicken" parent="." instance=ExtResource("4_fiti8")]
-position = Vector2(251, -145)
+position = Vector2(262, -145)
 script = ExtResource("5_gmxhw")
 object_name = "chicken"
 usable_targets = Array[String](["incubator"])
@@ -952,6 +952,7 @@ min_state_threshold = 1
 current_state = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chicken"]
+position = Vector2(-13, 10)
 rotation = -2.0944
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_a32ov")
@@ -967,12 +968,12 @@ texture = SubResource("GradientTexture2D_yxj7a")
 light_mask = 3
 visibility_layer = 3
 z_index = 1
-position = Vector2(12, -3)
+position = Vector2(0, 6)
 rotation = -2.0944
 shape = SubResource("RectangleShape2D_f0imo")
 
 [node name="lizard" parent="." instance=ExtResource("4_fiti8")]
-position = Vector2(-272, 162)
+position = Vector2(-248, 168)
 script = ExtResource("12_a37r3")
 object_name = "lizard"
 is_pickupable = true
@@ -982,6 +983,7 @@ min_state_threshold = 1
 current_state = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="lizard"]
+position = Vector2(-12, -2)
 rotation = 1.0472
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_f0imo")
@@ -995,7 +997,7 @@ texture = SubResource("GradientTexture2D_qb4ol")
 light_mask = 3
 visibility_layer = 3
 z_index = 1
-position = Vector2(12.5604, 5.94439)
+position = Vector2(1.0000057, 0.99999285)
 rotation = 1.0472
 shape = SubResource("RectangleShape2D_vv041")
 
@@ -1119,7 +1121,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_yixdo")
 
 [node name="lvl4_seed" parent="." instance=ExtResource("4_fiti8")]
-position = Vector2(280, 0)
+position = Vector2(294, 0)
 rotation = -1.5708
 script = ExtResource("28_56sg6")
 object_name = "lvl4_seed"
@@ -1128,13 +1130,14 @@ usable_targets = Array[String](["lvl4_soil"])
 
 [node name="Sprite2D2" type="Sprite2D" parent="lvl4_seed"]
 texture_filter = 1
-position = Vector2(-1, 1)
+position = Vector2(-0.9999783, -6)
 texture = ExtResource("28_yixdo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="lvl4_seed"]
 light_mask = 3
 visibility_layer = 3
 z_index = 1
+position = Vector2(2.533993e-05, -7)
 shape = SubResource("RectangleShape2D_56sg6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

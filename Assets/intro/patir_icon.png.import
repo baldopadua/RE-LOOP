@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wg21y0rbjlo2"
-path="res://.godot/imported/hint_3.png-f1f1c655a6740bf59e9566e9fb50f7c2.ctex"
+uid="uid://bq2tsoxpqsid"
+path="res://.godot/imported/patir_icon.png-2188045339d39f670feb2cebbf0dc368.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/hint/hint_3.png"
-dest_files=["res://.godot/imported/hint_3.png-f1f1c655a6740bf59e9566e9fb50f7c2.ctex"]
+source_file="res://Assets/intro/patir_icon.png"
+dest_files=["res://.godot/imported/patir_icon.png-2188045339d39f670feb2cebbf0dc368.ctex"]
 
 [params]
 

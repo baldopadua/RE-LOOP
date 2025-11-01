@@ -12,6 +12,9 @@ extends Node2D
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var sound_manager = $SoundManager
 
+# UI HANDLER REFERENCE
+var ui_handler = null
+
 # LOBBY ACTIVE FLAG
 var lobby_active: bool = true
 
@@ -39,6 +42,12 @@ var center_circle: Vector2i = Vector2i(0, 0)
 func _ready():
 	await get_tree().process_frame
 	lobby_active = true
+	
+	# GET UI HANDLER REFERENCE
+	ui_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler")
+	
+	# HIDE GAME UI ELEMENTS WHEN IN LOBBY
+	ui_handler.hide_game_ui_elements()
 	
 	if level_handler:
 		level_handler.set_current_lobby()
@@ -119,7 +128,6 @@ func enter_level(level_number: int):
 	await get_tree().create_timer(1.0).timeout
 	
 	# SHOW STORY CUTSCENE FIRST, THEN CLOCK ANIMATION, THEN LEVEL
-	var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 	# TODO: Dito yung show clock anim then level
 	if ui_handler:
 		ui_handler.show_level_cutscene(level_number, func(): _show_clock_animation_then_level(level_number, levels_frame))
@@ -140,6 +148,10 @@ func _show_clock_animation_then_level(level_number: int, levels_frame):
 	
 	await get_tree().create_timer(1.0).timeout
 	level_handler.level_status_node.hide_cutscene()
+	
+	# SHOW GAME UI ELEMENTS WHEN ENTERING ACTUAL LEVEL
+	ui_handler.show_game_ui_elements()
+	
 	level_handler.load_next_level_directly(level_number, levels_frame)
 
 
@@ -292,6 +304,9 @@ func disable_lobby_functionality():
 func enable_lobby_functionality():
 	lobby_active = true
 	
+	# HIDE GAME UI ELEMENTS WHEN RETURNING TO LOBBY
+	ui_handler.hide_game_ui_elements()
+	
 	if player:
 		player.set_process(true)
 		player.set_physics_process(true)
@@ -328,3 +343,5 @@ func get_level_number_from_entrance(entrance_obj) -> int:
 		var num_str = obj_name.substr(6) 
 		return int(num_str)
 	return 0
+
+

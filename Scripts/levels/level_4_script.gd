@@ -49,12 +49,13 @@ func play_incubator_processing():
 
 func play_trex_evolution():
 	play_level4_sfx("egg_crack")
-	await get_tree().create_timer(0.5).timeout  # Delay for sequenced effect
+	await get_tree().create_timer(0.5).timeout  
 	play_level4_sfx("trex_roar")
 
 # If the Plooy being tail whipped animation is finished go to level 5
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "tail_whipped":
+		await get_tree().create_timer(1).timeout
 		level_handler.complete_current_level(get_parent())
 
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
@@ -63,4 +64,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func enter_level():
 	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
-	level_handler.complete_current_level(get_parent()) 
+	level_handler.complete_current_level(get_parent())

@@ -134,7 +134,7 @@ func show_level_complete_cutscene(_next_level_number: int):
 	should_follow_player = false
 	
 	if ui_handler:
-		ui_handler.hide_game_ui_during_cutscene()
+		ui_handler.hide_game_ui_elements()
 		ui_handler.visible = false
 	
 	visible = true
@@ -326,7 +326,7 @@ func show_level_1_entry_cutscene():
 	should_follow_player = false
 	
 	if ui_handler:
-		ui_handler.hide_game_ui_during_cutscene()
+		ui_handler.hide_game_ui_elements()
 		ui_handler.visible = false
 	
 	var twelve_oclock_rotation = get_rotation_for_clock(12)

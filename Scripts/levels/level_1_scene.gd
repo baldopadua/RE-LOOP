@@ -15,7 +15,9 @@ extends Node2D
 @onready var area_handler = $AreaHandler
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var sound_manager = $SoundManager
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 #@onready var anim_handler = $AnimationHandler
+
 
 var states := ["State1", "State2", "State3", "State4"]
 var center_circle: Vector2i = Vector2i(0, 0)
@@ -82,6 +84,7 @@ func update_tree_visibility(stage: int) -> void:
 		GlobalVariables.player_stopped = true
 
 		# FOCUS ON TREE
+		ui_handler.hide_game_ui_elements()
 		player.get_node("Camera2D").emit_signal("pan_to_pos", pos_to_focus.global_position)
 		player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 		player.get_node("Camera2D").emit_signal("reveal_bars")
@@ -94,6 +97,7 @@ func update_tree_visibility(stage: int) -> void:
 		GlobalVariables.player_stopped = false
 		
 		# BACK TO ORIG FOCUS
+		ui_handler.show_game_ui_elements()
 		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 		player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 		player.get_node("Camera2D").emit_signal("hide_bars")
@@ -118,7 +122,7 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	
  	# REQUIRED TO LET THEM LOAD FIRST
 	await get_tree().create_timer(1.0).timeout
-	
+	ui_handler.hide_game_ui_elements()
 	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	
@@ -129,7 +133,7 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	player.get_node("Camera2D").emit_signal("pan_to_pos", soil.global_position)
 	
 	await get_tree().create_timer(2.0).timeout
-	
+	ui_handler.show_game_ui_elements()
 	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")

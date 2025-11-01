@@ -319,8 +319,22 @@ func item_drop() -> void:
 		# GET DROP POSITION - USE THE OBJECT_DROP_POSITION AS BASE
 		var drop_position = object_drop_position.global_position
 		
-		# FIRST, CHECK IF WE'RE STACKING ON ANOTHER OBJECT
-		if available_object and available_object.object_type == GlobalVariables.object_types.TOOL:
+		# CHECK IF WE'RE DROPPING ON AN INTERACTABLE OBJECT (like soil)
+		if interactable_objects.size() > 0:
+			for interactable in interactable_objects:
+				if interactable.object_type == GlobalVariables.object_types.NONTOOL:
+					if held_object.has_method("interact"):
+						var interaction_success = held_object.interact(interactable)
+						if interaction_success:
+							held_object = null
+							is_holding_object = false
+							interactable_objects.clear()
+							sound_manager.play_sfx("pickup")
+							print("Object interacted successfully")
+							return
+		
+		# CHECK IF WE'RE STACKING ON ANOTHER OBJECT (only for pickupable tools)
+		if available_object and available_object.object_type == GlobalVariables.object_types.TOOL and available_object.is_pickupable:
 			handle_stack_drop(available_object)
 		else:
 			handle_normal_drop(drop_position)

@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="RE:LOOP"
-run/main_scene="uid://dypu05rngiwmu"
+run/main_scene="uid://ce2je8elhchuj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-boot_splash/image="uid://dqxv8sy5omreg"
+boot_splash/image="uid://d4dvjse2gw7kq"
 config/icon="uid://dqxv8sy5omreg"
 config/image=""
 config/defaults/default_clear_color=Color(0.111197, 0.111197, 0.111197, 1)

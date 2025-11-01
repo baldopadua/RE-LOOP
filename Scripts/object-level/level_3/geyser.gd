@@ -23,6 +23,7 @@ var player_body: Node
 
 # TIME INDICATOR
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+@onready var area_handler = get_parent().get_node("AreaHandler")
 
 # ALLOWED POSITIONS/MOVES
 var allowed_positions: Array = [0, 3, -3, 6, -6, 9, -9, 12, -12]
@@ -66,7 +67,9 @@ func geyser_ekusproshon():
 		# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
 		ui_handler.set_time_indicator_fixed()
 		
-		# PLAY LOOPING GEYSER AFTER BURST
+		# PLAY LOOPING GEYSER AFTER 
+		z_index = 1
+		area_handler.show_loop_break(2)
 		animate_geyser.play("loop_break")
 		
 		# MAKE THE PLAYER ABLE TO MOVE AGAIN

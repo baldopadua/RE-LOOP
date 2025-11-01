@@ -28,7 +28,7 @@ func _on_body_entered(body) -> void:
 		is_playing = true
 		# DISABLE PLAYER MOVEMENT
 		GlobalVariables.player_stopped = true
-		
+		ui_handler.hide_game_ui_elements()
 		# STORE THE PLAYER REFERENCE
 		player_body = body
 		
