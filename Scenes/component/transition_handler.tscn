@@ -236,8 +236,8 @@ grow_vertical = 2
 
 [node name="game_animated_explosion_bg" type="AnimatedSprite2D" parent="background"]
 texture_filter = 1
-position = Vector2(655.5, 360)
-scale = Vector2(6.47321, 5.5)
+position = Vector2(705.50006, 360)
+scale = Vector2(6.345834, 5.5)
 sprite_frames = SubResource("SpriteFrames_feglm")
 
 [node name="transition_logic" type="Control" parent="."]
