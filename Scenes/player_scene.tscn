@@ -306,11 +306,11 @@ position = Vector2(0, -230)
 rotation = 3.14159
 
 [node name="object_drop_position" type="Marker2D" parent="."]
-position = Vector2(0, -293)
+position = Vector2(0, -292)
 rotation = 3.14159
 
 [node name="object_drop_position2ndlayer" type="Marker2D" parent="."]
-position = Vector2(0, -288)
+position = Vector2(0, -287)
 
 [node name="SoundManager" parent="." instance=ExtResource("3_e13mc")]
 

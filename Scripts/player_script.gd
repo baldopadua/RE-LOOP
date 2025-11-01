@@ -319,8 +319,25 @@ func item_drop() -> void:
 		# GET DROP POSITION - USE THE OBJECT_DROP_POSITION AS BASE
 		var drop_position = object_drop_position.global_position
 		
-		# FIRST, CHECK IF WE'RE STACKING ON ANOTHER OBJECT
-		if available_object and available_object.object_type == GlobalVariables.object_types.TOOL:
+		# CHECK IF WE'RE DROPPING ON AN INTERACTABLE OBJECT (like soil)
+		if interactable_objects.size() > 0:
+			for interactable in interactable_objects:
+				if interactable.object_type == GlobalVariables.object_types.NONTOOL:
+					if held_object.has_method("interact"):
+						var interaction_success = held_object.interact(interactable)
+						if interaction_success:
+							held_object = null
+							is_holding_object = false
+							interactable_objects.clear()
+							sound_manager.play_sfx("pickup")
+							print("Object interacted successfully")
+							return
+		
+		# CHECK IF WE'RE STACKING - BOTH OBJECTS MUST BE TOOL TYPE AND PICKUPABLE
+		if (available_object and 
+			available_object.object_type == GlobalVariables.object_types.TOOL and 
+			available_object.is_pickupable and
+			held_object.object_type == GlobalVariables.object_types.TOOL):
 			handle_stack_drop(available_object)
 		else:
 			handle_normal_drop(drop_position)
@@ -336,18 +353,25 @@ func handle_stack_drop(target_object) -> void:
 	if held_object:
 		target_object.tool_stack.push_back(held_object)
 		var stack_size = target_object.tool_stack.size()
-		var stack_position = get_stack_layer_position(stack_size, target_object)
-		stack_position += Vector2(randf_range(-2, 2), randf_range(-1, 1))
-		var stack_tween = create_tween()
-		stack_tween.tween_property(held_object, "global_position", stack_position, 0.2).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-		held_object.is_pickupable = true
+		var base_position = target_object.global_position
+		
+		var stack_offset: Vector2
+		if stack_size <= 3:
+			stack_offset = Vector2(0, -15 * stack_size) 
+		else:
+			stack_offset = Vector2(20, -25 - ((stack_size - 3) * 10))
+		var final_position = base_position + stack_offset
+		
 		held_object.reparent(get_parent())
-		held_object.z_index = target_object.z_index + 1
-		adjust_stack_visuals(target_object)
-		# Ensure all objects in the stack are pickupable after drop
+		held_object.is_pickupable = true
+		held_object.z_index = target_object.z_index + stack_size
+		
+		var stack_tween = create_tween()
+		stack_tween.tween_property(held_object, "global_position", final_position, 0.2).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+		
 		for obj in target_object.tool_stack:
 			obj.is_pickupable = true
-
+			
 func get_stack_layer_position(stack_size: int, _target_object) -> Vector2:
 	if stack_size <= 3:
 		return object_drop_position.global_position

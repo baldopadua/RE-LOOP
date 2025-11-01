@@ -265,7 +265,7 @@ z_index = 1
 shape = SubResource("RectangleShape2D_xkn6d")
 
 [node name="Soil" parent="." instance=ExtResource("9_l4q40")]
-position = Vector2(0, -307)
+position = Vector2(4, -307)
 object_name = "soil"
 object_type = 1
 
