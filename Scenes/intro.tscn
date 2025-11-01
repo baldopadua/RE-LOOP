@@ -195,8 +195,8 @@ scale = Vector2(1.1436063, 1.1127533)
 texture = ExtResource("2_alxvg")
 
 [node name="text" type="Sprite2D" parent="godot"]
-position = Vector2(631, 509.00006)
-scale = Vector2(1.0088499, 0.9128163)
+position = Vector2(636.00006, 493.99997)
+scale = Vector2(0.8569891, 0.72814775)
 texture = ExtResource("3_geirw")
 
 [node name="patir_studio" type="Node2D" parent="."]
