@@ -337,14 +337,14 @@ shape = SubResource("RectangleShape2D_7hl30")
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.00006, -54)
-scale = Vector2(20, 1.625)
+position = Vector2(772.5, -54)
+scale = Vector2(24.234373, 1.625)
 texture = SubResource("GradientTexture2D_7hl30")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.0001, 771)
-scale = Vector2(20, 1.5)
+position = Vector2(762.74994, 769)
+scale = Vector2(23.789063, 1.5)
 texture = SubResource("GradientTexture2D_7hl30")
 
 [node name="enter_2" parent="." instance=ExtResource("9_l4q40")]

@@ -7,7 +7,10 @@ var hint_progress = {}  # DICTIONARY TO STORE PROGRESS PER LEVEL
 # Example: hint_progress = { "level_1": "medium", "level_2": "easy" }
 
 # REFERENCE NODES FOR EASIER ACCESS
-@onready var hint_status_bar = $hint_dialog/hint_status_bar
+# REPLACED single hint_status_bar + marker nodes with three explicit status bars
+@onready var hint_1_status_bar = $hint_dialog/hint_1_status_bar
+@onready var hint_2_status_bar = $hint_dialog/hint_2_status_bar
+@onready var solution_status_bar = $hint_dialog/solution_status_bar
 @onready var hint_2_timer = $hint_dialog/hint_2/hint_2_timer
 @onready var hint_2_lock = $hint_dialog/hint_2/hint_2_lock
 @onready var hint_2_overlay = $hint_dialog/hint_2/hint_2_overlay
@@ -15,10 +18,10 @@ var hint_progress = {}  # DICTIONARY TO STORE PROGRESS PER LEVEL
 @onready var solution_lock = $hint_dialog/solution/solution_lock
 @onready var solution_overlay = $hint_dialog/solution/solution_overlay
 
-# STORE MARKERS FOR BAR MOVEMENT
-@onready var hint_1_mark = $hint_dialog/hint_1_mark
-@onready var hint_2_mark = $hint_dialog/hint_2_mark
-@onready var solution_mark = $hint_dialog/solution_mark
+
+@onready var orig_hint_1_modulate: Color = hint_1_status_bar.modulate
+@onready var orig_hint_2_modulate: Color = hint_2_status_bar.modulate
+@onready var orig_solution_modulate: Color = solution_status_bar.modulate
 
 var ui_handler = null
 
@@ -126,8 +129,10 @@ func _on_hint_2_timer_timeout():
 	
 	fade_out_elements([hint_2_lock, hint_2_overlay])
 	
-	var bar_tween = create_tween()
-	bar_tween.tween_property(hint_status_bar, "position", hint_2_mark.position, 0.5)
+	# TWEEN: previous (hint1) -> BLACK, hint2 -> original color
+	var tween = create_tween()
+	tween.tween_property(hint_1_status_bar, "modulate", Color(0, 0, 0, 1), 0.5)
+	tween.tween_property(hint_2_status_bar, "modulate", orig_hint_2_modulate, 0.5)
 	
 	update_hint_text("medium")
 	if solution_timer:
@@ -148,8 +153,10 @@ func _on_solution_timer_timeout():
 	
 	fade_out_elements([solution_lock, solution_overlay])
 	
-	var bar_tween = create_tween()
-	bar_tween.tween_property(hint_status_bar, "position", solution_mark.position, 0.5)
+	# TWEEN: previous (hint2) -> BLACK, solution -> original color
+	var tween = create_tween()
+	tween.tween_property(hint_2_status_bar, "modulate", Color(0, 0, 0, 1), 0.5)
+	tween.tween_property(solution_status_bar, "modulate", orig_solution_modulate, 0.5)
 	
 	update_hint_text("easy")
 
@@ -186,21 +193,31 @@ func show_appropriate_container():
 		var last_difficulty = hint_progress[current_level]
 		update_hint_text(last_difficulty)
 		
-		if hint_status_bar:
+		# SET STATUS-BAR COLORS BASED ON LAST DIFFICULTY (use BLACK for finished)
+		if hint_1_status_bar and hint_2_status_bar and solution_status_bar:
 			match last_difficulty:
 				"hard":
-					hint_status_bar.position = hint_1_mark.position
+					# hint1 normal, others black
+					hint_1_status_bar.modulate = orig_hint_1_modulate
+					hint_2_status_bar.modulate = Color(0, 0, 0, 1)
+					solution_status_bar.modulate = Color(0, 0, 0, 1)
 					if hint_2_timer and hint_2_timer.time_left <= 0 and not connected_level_handler.is_lobby:
 						hint_2_timer.start()
 				"medium":
-					hint_status_bar.position = hint_2_mark.position
+					# hint1 black, hint2 normal, solution black
+					hint_1_status_bar.modulate = Color(0, 0, 0, 1)
+					hint_2_status_bar.modulate = orig_hint_2_modulate
+					solution_status_bar.modulate = Color(0, 0, 0, 1)
 					if hint_2_lock and hint_2_overlay:
 						hint_2_lock.modulate.a = 0
 						hint_2_overlay.modulate.a = 0
 					if solution_timer and solution_timer.time_left <= 0:
 						solution_timer.start()
 				"easy":
-					hint_status_bar.position = solution_mark.position
+					# hint1 black, hint2 black, solution normal
+					hint_1_status_bar.modulate = Color(0, 0, 0, 1)
+					hint_2_status_bar.modulate = Color(0, 0, 0, 1)
+					solution_status_bar.modulate = orig_solution_modulate
 					if hint_2_lock and hint_2_overlay:
 						hint_2_lock.modulate.a = 0
 						hint_2_overlay.modulate.a = 0
@@ -251,9 +268,13 @@ func _check_for_level_handler():
 func _reset_hint_state():
 	hint_progress[current_level] = "hard"
 	
-	# RESET UI ELEMENTS
-	if hint_status_bar:
-		hint_status_bar.position = hint_1_mark.position
+	# RESET UI ELEMENTS: hint1 normal, others black
+	if hint_1_status_bar:
+		hint_1_status_bar.modulate = orig_hint_1_modulate
+	if hint_2_status_bar:
+		hint_2_status_bar.modulate = Color(0, 0, 0, 1)
+	if solution_status_bar:
+		solution_status_bar.modulate = Color(0, 0, 0, 1)
 	
 	# RESET OVERLAYS VISIBILITY
 	if hint_2_lock and hint_2_overlay:

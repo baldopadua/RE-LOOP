@@ -67,8 +67,8 @@ script = ExtResource("1_6h5vk")
 layer = -1
 
 [node name="game_scene_bg" type="AnimatedSprite2D" parent="CanvasLayer"]
-position = Vector2(640, 360)
-scale = Vector2(5.511, 5.5)
+position = Vector2(707, 360)
+scale = Vector2(6.2958336, 5.5)
 sprite_frames = SubResource("SpriteFrames_7iton")
 
 [node name="levels_frame" type="Node2D" parent="."]

@@ -296,9 +296,16 @@ func show_overlay_hint():
 			solution_label.modulate.a = 1
 			solution_label.visible = current_diff == "medium"
 			
-		var status_bar = hint_dialog.get_node_or_null("hint_status_bar")
-		if status_bar:
-			status_bar.visible = true
+		# SHOW THE NEW STATUS BARS (replace old hint_status_bar)
+		var h1 = hint_dialog.get_node_or_null("hint_1_status_bar")
+		var h2 = hint_dialog.get_node_or_null("hint_2_status_bar")
+		var sol = hint_dialog.get_node_or_null("solution_status_bar")
+		if h1:
+			h1.visible = true
+		if h2:
+			h2.visible = true
+		if sol:
+			sol.visible = true
 	
 	hint.show_appropriate_container()
 	show_close_button()

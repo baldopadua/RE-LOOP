@@ -174,14 +174,14 @@ script = ExtResource("1_rsiac")
 
 [node name="godot_bg" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(640.75, 361.7199)
-scale = Vector2(1.0496094, 1.0186664)
+position = Vector2(711.50006, 358.7199)
+scale = Vector2(1.1726563, 1.0269997)
 texture = ExtResource("1_hwjxs")
 
 [node name="patir_bg" type="Sprite2D" parent="."]
 modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
-position = Vector2(638, 362.50003)
-scale = Vector2(1.025, 1.0375)
+position = Vector2(713, 362.50003)
+scale = Vector2(1.1781249, 1.0375)
 texture = ExtResource("2_geirw")
 
 [node name="godot" type="Node2D" parent="."]
