@@ -10,6 +10,8 @@ var ready_for_entering: bool = false
 var player_has_entered : bool = false
 var player_still_allowed : bool = true
 @onready var level_handler = $"../CanvasLayer/LevelHandler"
+@onready var area_handler = get_parent().get_node("AreaHandler")
+@onready var sound_manager = get_parent().get_node("SoundManager")
 
 
 func _process(_delta: float) -> void:
@@ -27,6 +29,12 @@ func rocket_start():
 		player_still_allowed = false
 	)
 	rocket_started = true
+	await get_tree().create_timer(13.5).timeout
+	# Play all finish_level_sfx SFX at once
+	if sound_manager.has_method("play_finish_level_sfx"):
+		sound_manager.play_finish_level_sfx()
+	z_index = 1
+	area_handler.show_loop_break(4)
 
 func _on_body_entered(body) -> void:
 	if ready_for_entering and player_still_allowed:

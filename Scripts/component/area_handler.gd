@@ -4,6 +4,7 @@ extends Node2D
 @onready var loop_break: Node2D = $loop_break
 @onready var level_1_break: AnimatedSprite2D = $loop_break/level_1_break
 @onready var level_2_break: AnimatedSprite2D = $loop_break/level_2_break
+@onready var level_4_break: AnimatedSprite2D = $loop_break/level_4_break
 @onready var sound_manager: Node = $SoundManager
 
 # Map clock area to frame index
@@ -25,13 +26,18 @@ func show_map_for_clock_area(clock_area: int) -> void:
 		map_sprite.frame = clock_area_to_frame[clock_area]
 		map_sprite.pause()
 
+# MIDDLE BREAK LOOP LOGIC
 func show_loop_break(level: int) -> void:
 	loop_break.visible = true
 	level_1_break.visible = false
 	level_2_break.visible = false 
+	level_4_break.visible = false 
 	if level == 1:
 		level_1_break.visible = true
 		level_1_break.play()
 	elif level == 2:
 		level_2_break.visible = true
 		level_2_break.play()
+	elif level == 4:
+		level_4_break.visible = true
+		level_4_break.play()
