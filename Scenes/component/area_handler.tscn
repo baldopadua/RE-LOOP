@@ -230,10 +230,19 @@ frame_progress = 1.0
 [node name="level_4_break" type="AnimatedSprite2D" parent="loop_break"]
 visible = false
 z_index = 1
-position = Vector2(0, 1.1920929e-07)
-rotation = -2.9789975
-scale = Vector2(2.1547544, 2.2243903)
+position = Vector2(1.9999993, -4.999998)
+rotation = -2.4673212
+scale = Vector2(2.1250174, 2.2208595)
 sprite_frames = SubResource("SpriteFrames_xgawu")
+frame = 6
+frame_progress = 1.0
+
+[node name="level_5_break" type="AnimatedSprite2D" parent="loop_break"]
+visible = false
+position = Vector2(-1, -3.0000005)
+rotation = 2.0160418
+scale = Vector2(2.1857145, 2.1428573)
+sprite_frames = SubResource("SpriteFrames_domgy")
 frame = 6
 frame_progress = 1.0
 

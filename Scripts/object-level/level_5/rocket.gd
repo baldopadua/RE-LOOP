@@ -34,7 +34,7 @@ func rocket_start():
 	if sound_manager.has_method("play_finish_level_sfx"):
 		sound_manager.play_finish_level_sfx()
 	z_index = 1
-	area_handler.show_loop_break(4)
+	area_handler.show_loop_break(5)
 
 func _on_body_entered(body) -> void:
 	if ready_for_entering and player_still_allowed:

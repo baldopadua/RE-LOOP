@@ -5,6 +5,7 @@ extends Node2D
 @onready var level_1_break: AnimatedSprite2D = $loop_break/level_1_break
 @onready var level_2_break: AnimatedSprite2D = $loop_break/level_2_break
 @onready var level_4_break: AnimatedSprite2D = $loop_break/level_4_break
+@onready var level_5_break: AnimatedSprite2D = $loop_break/level_5_break
 @onready var sound_manager: Node = $SoundManager
 
 # Map clock area to frame index
@@ -41,3 +42,6 @@ func show_loop_break(level: int) -> void:
 	elif level == 4:
 		level_4_break.visible = true
 		level_4_break.play()
+	elif level == 5:
+		level_5_break.visible = true
+		level_5_break.play()
