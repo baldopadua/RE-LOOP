@@ -377,7 +377,7 @@ func set_default_time_indicator() -> void:
 # -------------------------------------------CUTSCENE FUNCTIONS
 func show_level_cutscene(level_number: int, continue_callback: Callable = Callable()):
 	if cutscene:
-		hide_game_ui_during_cutscene()
+		hide_game_ui_elements()
 		show_cursor()
 		if sound_manager:
 			sound_manager.play_ui("page_turn")
@@ -389,7 +389,7 @@ func hide_level_cutscene():
 		remove_cursor()
 
 # HIDE GAME UI ELEMENTS DURING CUTSCENE
-func hide_game_ui_during_cutscene():
+func hide_game_ui_elements():
 	if ui_logic and ui_logic.has_node("game_ui_elements"):
 		var game_ui = ui_logic.get_node("game_ui_elements")
 		game_ui.visible = false

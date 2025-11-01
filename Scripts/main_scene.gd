@@ -80,7 +80,7 @@ func _on_main_menu_button_pressed(button_type):
 			# Show level handler when game starts
 			if $GameScene.has_node("levels_frame/level_lobby/LevelHandler"):
 				$GameScene.get_node("levels_frame/level_lobby/LevelHandler").visible = true
-			ui_handler.show_game_ui_elements()
+			# DON'T show game_ui_elements when in lobby - it will be shown when entering a level
 		elif button_type == "tutorial":
 			ui_handler.sound_manager.play_ui("page_turn")
 			ui_handler.hide_main_menu()
