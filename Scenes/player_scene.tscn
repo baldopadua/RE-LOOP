@@ -306,7 +306,7 @@ position = Vector2(0, -230)
 rotation = 3.14159
 
 [node name="object_drop_position" type="Marker2D" parent="."]
-position = Vector2(0, -292)
+position = Vector2(0, -298)
 rotation = 3.14159
 
 [node name="object_drop_position2ndlayer" type="Marker2D" parent="."]
