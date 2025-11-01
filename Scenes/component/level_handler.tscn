@@ -65,6 +65,7 @@ animations = [{
 script = ExtResource("1_sijlw")
 
 [node name="level_status" type="Node2D" parent="."]
+position = Vector2(30, -2)
 script = ExtResource("2_bicrg")
 
 [node name="clock_camera" type="Camera2D" parent="level_status"]
@@ -96,15 +97,7 @@ scale = Vector2(0.69091, 0.648077)
 sprite_frames = SubResource("SpriteFrames_wbj5g")
 animation = &"lock"
 
-[node name="level_clock" type="TextureRect" parent="level_status"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 251.0
-offset_top = 7.0
-offset_right = 1017.0
-offset_bottom = 715.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="level_clock" type="Sprite2D" parent="level_status"]
+position = Vector2(644, 357)
+scale = Vector2(0.7166667, 0.7022167)
 texture = ExtResource("2_svrni")
-expand_mode = 1
