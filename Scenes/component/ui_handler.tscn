@@ -574,9 +574,20 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="time_indicator" type="AnimatedSprite2D" parent="ui_logic/game_ui_elements"]
+[node name="time" type="TextureRect" parent="ui_logic/game_ui_elements"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.846875
+anchor_top = 0.6791667
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="indicator" type="AnimatedSprite2D" parent="ui_logic/game_ui_elements/time"]
 texture_filter = 1
-position = Vector2(1187, 600)
+position = Vector2(107, 108)
 scale = Vector2(7.22857, 6.83333)
 sprite_frames = SubResource("SpriteFrames_qpkpn")
 animation = &"clockwise_time_indicator"

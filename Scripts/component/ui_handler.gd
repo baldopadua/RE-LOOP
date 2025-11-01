@@ -3,7 +3,7 @@ extends Control
 @onready var sound_manager = get_node("SoundManager")
 @onready var ui_logic = $ui_logic
 @onready var background = $background
-@onready var time_indicator = $ui_logic/game_ui_elements/time_indicator
+@onready var time_indicator = $ui_logic/game_ui_elements/time/indicator
 @onready var cutscene = $cutscene
 var hint_button = null 
 
