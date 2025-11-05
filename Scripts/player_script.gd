@@ -76,6 +76,11 @@ func _ready() -> void:
 		GlobalVariables.is_restarting = false
 		sound_manager.play_reset_level_sfx()
 		# PLAY RESTART SFX AND CUTSCENES
+	
+	# Reset moves to 0 when level loads
+	moves = 0
+	GlobalVariables.player_moves = 0
+	
 	object_pos = get_node("object_position")
 	sprite.play("idle")
 	# Try to get UiHandler under MainScene
@@ -214,7 +219,7 @@ func _tween_finished():
 	
 	tween.kill()
 	is_moving = false
-	player_finished_moving.emit()
+	player_finished_moving.emit()  # This now updates decoratives
 	sprite.play("idle")
 
 # Movement of Player
@@ -234,11 +239,13 @@ func rotate_player():
 		rotation_tween = rotation + deg_to_rad(angle_per_move)
 		sprite.flip_h = false
 		moves += 1
+		GlobalVariables.player_moves = moves  # Update global variable
 		to_intensity += 0.2
 	else:
 		rotation_tween = rotation - deg_to_rad(angle_per_move)
 		sprite.flip_h = true
 		moves -= 1
+		GlobalVariables.player_moves = moves  # Update global variable
 		to_intensity -= 0.2
 		
 	# set the tween

@@ -46,23 +46,25 @@ func show_loop_break(level: int) -> void:
 		level_5_break.visible = true
 		level_5_break.play()
 
-# Show decoratives for specific level
+# SHOW DECORATIVES FOR SPECIFIC LEVEL
 func show_decoratives(level: int) -> void:
-	# Hide all level decoratives first
 	for child in decoratives.get_children():
 		child.visible = false
-	
-	# Show the requested level
 	var level_node = decoratives.get_node_or_null("level_%d" % level)
 	if level_node:
 		level_node.visible = true
+		_update_decorative_frames(level_node)
 	else:
 		push_warning("Level %d decoratives not found" % level)
 
-# Hide all decoratives
+# UPDATE FRAMES FOR ALL DECORATIVES IN A LEVEL
+func _update_decorative_frames(level_node: Node2D) -> void:
+	for child in level_node.get_children():
+		if child.has_method("_update_frame"):
+			child._update_frame()
+
 func hide_all_decoratives() -> void:
 	decoratives.visible = false
 
-# Show decoratives node
 func show_all_decoratives() -> void:
 	decoratives.visible = true

@@ -8,6 +8,11 @@ const transition_time: float = 0.1 # 0.25 Default
 var is_looping: bool = false
 var player_stopped: bool = false
 var is_restarting: bool = false
+var player_moves: int = 0  # Track player moves globally
+
+# Reset player moves (called when level restarts)
+func reset_player_moves() -> void:
+	player_moves = 0
 
 # Extract level number from object names like "level_1_entrance", "level_2_door", etc.
 func get_level_number_from_name(object_name: String) -> int:

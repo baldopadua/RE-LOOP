@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d32038i8xpywr"
-path="res://.godot/imported/weed_tailes.png-f704f460b5725c11df2ba90aaef9214e.ctex"
+uid="uid://divu1n8mycb4y"
+path="res://.godot/imported/weedtailes.png-f46bfcbaaff2f78deeff9a3fecfb4e1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/decoratives/weed_tailes.png"
-dest_files=["res://.godot/imported/weed_tailes.png-f704f460b5725c11df2ba90aaef9214e.ctex"]
+source_file="res://Assets/decoratives/weedtailes.png"
+dest_files=["res://.godot/imported/weedtailes.png-f46bfcbaaff2f78deeff9a3fecfb4e1e.ctex"]
 
 [params]
 
