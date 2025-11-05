@@ -257,6 +257,9 @@ func load_next_level_directly(next_level_number: int, levels_frame):
 
 # Modified function to continue to level after cutscene
 func _continue_to_level(level_path: String, levels_frame):
+	# Reset player moves and map state before loading new level
+	GlobalVariables.player_moves = 0
+	
 	change_level(level_path, levels_frame)
 	ui_handler.set_default_time_indicator()
 	
@@ -264,6 +267,9 @@ func _continue_to_level(level_path: String, levels_frame):
 	ui_handler.visible = true
 
 func return_to_lobby(levels_frame):
+	# Reset player moves when returning to lobby
+	GlobalVariables.player_moves = 0
+	
 	var lobby_path = "res://Scenes/levels/level_lobby.tscn"
 	change_level(lobby_path, levels_frame)
 	ui_handler.set_default_time_indicator()

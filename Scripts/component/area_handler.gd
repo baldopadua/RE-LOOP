@@ -42,12 +42,23 @@ func update_map_frame() -> void:
 	var map_frame: int
 	var map_modulate := Color(1, 1, 1, 1) 
 	
-	if player_moves == 12 or player_moves == -12:
-		# SHOW FRAME 3 FOR 0.7 SECONDS BEFORE RESET
+	if player_moves == 12:
+		# SHOW FRAME 3 FOR 0.5 SECONDS BEFORE RESET (from future/climax)
 		map_sprite.frame = 3
 		map_sprite.modulate = Color(1, 1, 1, 1)  
 		map_sprite.pause()
-		print("MAP FRAME UPDATE - player_moves: %d, map_frame: 3 (waiting for reset)" % player_moves)
+		print("MAP FRAME UPDATE - player_moves: %d, map_frame: 3 (waiting for reset from future)" % player_moves)
+		if reset_timer and not reset_timer.is_stopped():
+			reset_timer.stop()
+		if reset_timer:
+			reset_timer.start()
+		return
+	elif player_moves == -12:
+		# SHOW FRAME 0 WITH VIOLET FOR 0.5 SECONDS BEFORE RESET (from past)
+		map_sprite.frame = 0
+		map_sprite.modulate = Color(1.0, 0.75, 1.0, 1)  # Deep violet (same as -9+)
+		map_sprite.pause()
+		print("MAP FRAME UPDATE - player_moves: %d, map_frame: 0 violet (waiting for reset from past)" % player_moves)
 		if reset_timer and not reset_timer.is_stopped():
 			reset_timer.stop()
 		if reset_timer:
@@ -61,29 +72,39 @@ func update_map_frame() -> void:
 			reset_timer.stop()
 		map_frame = 0
 	elif player_moves < 0:
-		# GOING BACKWARDS IN TIME
+		# GOING BACKWARDS IN TIME - all use frame 0 with violet tint
+		map_frame = 0
 		var abs_moves = abs(player_moves)
-		if abs_moves <= 5:
-			map_frame = 3 
-		elif abs_moves <= 8:
-			map_frame = 3
-			var red_progress = (abs_moves - 5) / 3.0  
-			var green_blue = 1.0 - (red_progress * 0.15)  
-			map_modulate = Color(1.0, green_blue, green_blue, 1)
+		
+		if abs_moves <= 2:
+			# -1 to -2: frame 0, normal color
+			map_modulate = Color(1.0, 1.0, 1.0, 1)
+		elif abs_moves <= 5:
+			# -3 to -5: frame 0 with subtle violet
+			var violet_progress = (abs_moves - 2) / 3.0
+			var red = 1.0
+			var green = 1.0 - (violet_progress * 0.10)
+			var blue = 1.0
+			map_modulate = Color(red, green, blue, 1)
 		else:
-			map_frame = 3
-			map_modulate = Color(1.0, 0.85, 0.85, 1) 
+			# -6+: frame 0 with more violet (deeper past)
+			var violet_progress = min((abs_moves - 5) / 4.0, 1.0)
+			var red = 1.0
+			var green = 0.9 - (violet_progress * 0.15)
+			var blue = 1.0
+			map_modulate = Color(red, green, blue, 1)
+	elif player_moves <= 2:
 		map_frame = 0
 	elif player_moves <= 5:
 		map_frame = 1
 	elif player_moves <= 8:
 		map_frame = 2
 	else:
-		# MOVES 9-12 SHOW FRAME 3 (CLIMAX)
+		# MOVES 9-11 SHOW FRAME 3 (CLIMAX)
 		map_frame = 3
 	
 	map_sprite.frame = map_frame
-	map_sprite.modulate = map_modulate  # APPLY RED TINT EFFECT
+	map_sprite.modulate = map_modulate
 	map_sprite.pause()
 	
 	print("MAP FRAME UPDATE - player_moves: %d, map_frame: %d, modulate: (%.2f, %.2f, %.2f)" % [player_moves, map_frame, map_modulate.r, map_modulate.g, map_modulate.b])
