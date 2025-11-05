@@ -191,8 +191,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="godot_bg" type="Sprite2D" parent="bg"]
 texture_filter = 1
-position = Vector2(730.74994, 362.5)
-scale = Vector2(1.1300781, 1.1291667)
+position = Vector2(722.99994, 362.5)
+scale = Vector2(1.1421874, 1.1291667)
 texture = ExtResource("1_hwjxs")
 
 [node name="patir_bg" type="Sprite2D" parent="bg"]

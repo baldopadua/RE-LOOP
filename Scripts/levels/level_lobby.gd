@@ -77,6 +77,8 @@ func _ready():
 	sound_manager.play_ambience_sfx("forest_sfx")
 	
 	GlobalVariables.is_looping = false
+	# Reset player moves to 0 so map stays at default frame 0 in lobby
+	GlobalVariables.player_moves = 0
 
 # INITIALIZE TEXT LABELS FOR ALL ENTRANCE OBJECTS
 func initialize_text_labels():

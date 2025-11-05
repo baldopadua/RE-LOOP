@@ -292,7 +292,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rthw2"]
-size = Vector2(42.542946, 13.178223)
+size = Vector2(74.04999, 30.794266)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ktbuk"]
 atlas = ExtResource("11_p8qog")
@@ -993,26 +993,127 @@ frame_progress = 1.0
 
 [node name="decoratives" type="Node2D" parent="."]
 
-[node name="level_1" type="Node2D" parent="decoratives"]
+[node name="template" type="Node2D" parent="decoratives"]
 visible = false
 
-[node name="bush" parent="decoratives/level_1" instance=ExtResource("8_26ycf")]
-position = Vector2(163, -257)
+[node name="bush" parent="decoratives/template" instance=ExtResource("8_26ycf")]
+position = Vector2(170, -265)
 rotation = 0.5235988
 script = ExtResource("9_p8qog")
 object_name = "bush"
 object_type = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_1/bush"]
-position = Vector2(-4.062195, 6.964081)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/template/bush"]
+position = Vector2(-20.603487, 30.142698)
 rotation = -3.0937703
-scale = Vector2(1.6908555, 1.6807109)
+scale = Vector2(2.5240636, 3.3909152)
 sprite_frames = SubResource("SpriteFrames_ktbuk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/level_1/bush"]
-position = Vector2(0.18301392, -2.124939)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/template/bush"]
+position = Vector2(-15.57048, 11.504883)
 shape = SubResource("RectangleShape2D_rthw2")
 debug_color = Color(0.15294118, 0.6313726, 0.4, 0.52156866)
+
+[node name="rock" parent="decoratives/template" instance=ExtResource("8_26ycf")]
+position = Vector2(279, -114.99999)
+rotation = 1.1457781
+script = ExtResource("9_p8qog")
+object_name = "rock"
+object_type = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/template/rock"]
+position = Vector2(-4.037024, 11.344698)
+rotation = -3.0937703
+scale = Vector2(1.6908555, 1.6807109)
+sprite_frames = SubResource("SpriteFrames_62yv3")
+frame_progress = 0.91306746
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/template/rock"]
+position = Vector2(-4.3824506, 2.4071097)
+shape = SubResource("CircleShape2D_kdgw5")
+debug_color = Color(0.6157293, 0.5178536, 0.3990868, 0.41960785)
+
+[node name="hand" parent="decoratives/template" instance=ExtResource("8_26ycf")]
+position = Vector2(292.99997, -20.999992)
+rotation = 1.2654364
+script = ExtResource("9_p8qog")
+object_name = "hand"
+object_type = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/template/hand"]
+position = Vector2(-4.037024, 11.344698)
+rotation = -2.9507465
+scale = Vector2(1.6908555, 1.6807109)
+sprite_frames = SubResource("SpriteFrames_p8qog")
+frame_progress = 0.37129256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/template/hand"]
+position = Vector2(-2.5568466, 1.3425903)
+rotation = 0.21350445
+shape = SubResource("RectangleShape2D_55pp6")
+debug_color = Color(0.6157293, 0.5178536, 0.3990868, 0.41960785)
+
+[node name="pillar" parent="decoratives/template" instance=ExtResource("8_26ycf")]
+position = Vector2(259, 152)
+rotation = 1.7803463
+script = ExtResource("9_p8qog")
+object_name = "pillar"
+object_type = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/template/pillar"]
+position = Vector2(-9.493469, 41.89122)
+rotation = -2.9507465
+scale = Vector2(2.97101, 4.023627)
+sprite_frames = SubResource("SpriteFrames_j6dpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/template/pillar"]
+position = Vector2(-9.217537, 40.772232)
+rotation = 0.19313498
+shape = SubResource("RectangleShape2D_l6xtc")
+debug_color = Color(0.6157293, 0.5178536, 0.3990868, 0.41960785)
+
+[node name="weed" parent="decoratives/template" instance=ExtResource("8_26ycf")]
+position = Vector2(146.00002, 266)
+rotation = 2.35795
+script = ExtResource("9_p8qog")
+object_name = "weed"
+object_type = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/template/weed"]
+position = Vector2(-4.037024, 11.344698)
+rotation = -2.9507465
+scale = Vector2(1.6908555, 1.6807109)
+sprite_frames = SubResource("SpriteFrames_aovpi")
+frame_progress = 0.066852644
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/template/weed"]
+position = Vector2(-1.7887573, -0.3965149)
+rotation = 0.37022263
+shape = SubResource("RectangleShape2D_c00tk")
+debug_color = Color(0.12479434, 0.6467894, 0.043980062, 0.41960785)
+
+[node name="weedtailes" parent="decoratives/template" instance=ExtResource("8_26ycf")]
+position = Vector2(192.00002, 231.00002)
+rotation = 2.1305127
+script = ExtResource("9_p8qog")
+object_name = "weedtailes"
+object_type = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/template/weedtailes"]
+position = Vector2(-4.037024, 11.344698)
+rotation = -2.9507465
+scale = Vector2(1.6908555, 1.6807109)
+sprite_frames = SubResource("SpriteFrames_sq617")
+frame_progress = 0.3617184
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/template/weedtailes"]
+position = Vector2(-1.7887573, -0.3965149)
+rotation = 0.37022263
+shape = SubResource("RectangleShape2D_sphy0")
+debug_color = Color(0.12479434, 0.6467894, 0.043980062, 0.41960785)
+
+[node name="level_1" type="Node2D" parent="decoratives"]
+visible = false
 
 [node name="rock" parent="decoratives/level_1" instance=ExtResource("8_26ycf")]
 position = Vector2(279, -114.99999)
@@ -1033,47 +1134,26 @@ position = Vector2(-4.3824506, 2.4071097)
 shape = SubResource("CircleShape2D_kdgw5")
 debug_color = Color(0.6157293, 0.5178536, 0.3990868, 0.41960785)
 
-[node name="hand" parent="decoratives/level_1" instance=ExtResource("8_26ycf")]
-position = Vector2(292.99997, -20.999992)
-rotation = 1.2654364
+[node name="bush" parent="decoratives/level_1" instance=ExtResource("8_26ycf")]
+position = Vector2(170, -265)
+rotation = 0.5235988
 script = ExtResource("9_p8qog")
-object_name = "hand"
+object_name = "bush"
 object_type = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_1/hand"]
-position = Vector2(-4.037024, 11.344698)
-rotation = -2.9507465
-scale = Vector2(1.6908555, 1.6807109)
-sprite_frames = SubResource("SpriteFrames_p8qog")
-frame_progress = 0.37129256
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_1/bush"]
+position = Vector2(-20.603487, 30.142698)
+rotation = -3.0937703
+scale = Vector2(2.5240636, 3.3909152)
+sprite_frames = SubResource("SpriteFrames_ktbuk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/level_1/hand"]
-position = Vector2(-2.5568466, 1.3425903)
-rotation = 0.21350445
-shape = SubResource("RectangleShape2D_55pp6")
-debug_color = Color(0.6157293, 0.5178536, 0.3990868, 0.41960785)
-
-[node name="pillar" parent="decoratives/level_1" instance=ExtResource("8_26ycf")]
-position = Vector2(259, 152)
-rotation = 1.7803463
-script = ExtResource("9_p8qog")
-object_name = "pillar"
-object_type = 2
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_1/pillar"]
-position = Vector2(-9.493469, 41.89122)
-rotation = -2.9507465
-scale = Vector2(2.97101, 4.023627)
-sprite_frames = SubResource("SpriteFrames_j6dpk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/level_1/pillar"]
-position = Vector2(-9.217537, 40.772232)
-rotation = 0.19313498
-shape = SubResource("RectangleShape2D_l6xtc")
-debug_color = Color(0.6157293, 0.5178536, 0.3990868, 0.41960785)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/level_1/bush"]
+position = Vector2(-15.57048, 11.504883)
+shape = SubResource("RectangleShape2D_rthw2")
+debug_color = Color(0.15294118, 0.6313726, 0.4, 0.52156866)
 
 [node name="weed" parent="decoratives/level_1" instance=ExtResource("8_26ycf")]
-position = Vector2(146.00002, 266)
+position = Vector2(182.99998, 235)
 rotation = 2.35795
 script = ExtResource("9_p8qog")
 object_name = "weed"
@@ -1092,9 +1172,29 @@ rotation = 0.37022263
 shape = SubResource("RectangleShape2D_c00tk")
 debug_color = Color(0.12479434, 0.6467894, 0.043980062, 0.41960785)
 
+[node name="weed2" parent="decoratives/level_1" instance=ExtResource("8_26ycf")]
+position = Vector2(-279, -105.999985)
+rotation = -1.6037843
+script = ExtResource("9_p8qog")
+object_name = "weed"
+object_type = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_1/weed2"]
+position = Vector2(-4.037024, 11.344698)
+rotation = -2.9507465
+scale = Vector2(1.6908555, 1.6807109)
+sprite_frames = SubResource("SpriteFrames_aovpi")
+frame_progress = 0.066852644
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/level_1/weed2"]
+position = Vector2(-1.7887573, -0.3965149)
+rotation = 0.37022263
+shape = SubResource("RectangleShape2D_c00tk")
+debug_color = Color(0.12479434, 0.6467894, 0.043980062, 0.41960785)
+
 [node name="weedtailes" parent="decoratives/level_1" instance=ExtResource("8_26ycf")]
-position = Vector2(192.00002, 231.00002)
-rotation = 2.1305127
+position = Vector2(-134.00002, -270)
+rotation = -0.77439284
 script = ExtResource("9_p8qog")
 object_name = "weedtailes"
 object_type = 2
@@ -1111,6 +1211,25 @@ position = Vector2(-1.7887573, -0.3965149)
 rotation = 0.37022263
 shape = SubResource("RectangleShape2D_sphy0")
 debug_color = Color(0.12479434, 0.6467894, 0.043980062, 0.41960785)
+
+[node name="rock2" parent="decoratives/level_1" instance=ExtResource("8_26ycf")]
+position = Vector2(-250.99998, 176)
+rotation = 4.069728
+script = ExtResource("9_p8qog")
+object_name = "rock"
+object_type = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_1/rock2"]
+position = Vector2(-4.037024, 11.344698)
+rotation = -3.0937703
+scale = Vector2(1.6908555, 1.6807109)
+sprite_frames = SubResource("SpriteFrames_62yv3")
+frame_progress = 0.91306746
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/level_1/rock2"]
+position = Vector2(-4.3824506, 2.4071097)
+shape = SubResource("CircleShape2D_kdgw5")
+debug_color = Color(0.6157293, 0.5178536, 0.3990868, 0.41960785)
 
 [node name="level_2" type="Node2D" parent="decoratives"]
 visible = false
