@@ -23,7 +23,8 @@ func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(4)
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
-	
+	# SHOW DECORATIVES
+	area_handler.show_decoratives(4)
 	objects_initialize()
 	
 	player.rotation = deg_to_rad(120.0)
