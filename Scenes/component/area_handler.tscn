@@ -871,6 +871,7 @@ position = Vector2(-375, -375)
 [node name="decoratives" type="Node2D" parent="."]
 
 [node name="level_1" type="Node2D" parent="decoratives"]
+visible = false
 
 [node name="bush" parent="decoratives/level_1" instance=ExtResource("8_26ycf")]
 position = Vector2(163, -257)
@@ -902,7 +903,7 @@ position = Vector2(-4.037024, 11.344698)
 rotation = -3.0937703
 scale = Vector2(1.6908555, 1.6807109)
 sprite_frames = SubResource("SpriteFrames_62yv3")
-frame_progress = 0.96655595
+frame_progress = 0.91306746
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/level_1/rock"]
 position = Vector2(-4.3824506, 2.4071097)
@@ -988,3 +989,54 @@ position = Vector2(-1.7887573, -0.3965149)
 rotation = 0.37022263
 shape = SubResource("RectangleShape2D_sphy0")
 debug_color = Color(0.12479434, 0.6467894, 0.043980062, 0.41960785)
+
+[node name="level_2" type="Node2D" parent="decoratives"]
+visible = false
+
+[node name="weedtailes" parent="decoratives/level_2" instance=ExtResource("8_26ycf")]
+position = Vector2(-77.999985, 292)
+rotation = 3.054748
+script = ExtResource("9_p8qog")
+object_name = "bush"
+object_type = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_2/weedtailes"]
+position = Vector2(-4.037024, 11.344698)
+rotation = -2.9507465
+scale = Vector2(1.6908555, 1.6807109)
+sprite_frames = SubResource("SpriteFrames_sq617")
+frame_progress = 0.3617184
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/level_2/weedtailes"]
+position = Vector2(-1.7887573, -0.3965149)
+rotation = 0.37022263
+shape = SubResource("RectangleShape2D_sphy0")
+debug_color = Color(0.12479434, 0.6467894, 0.043980062, 0.41960785)
+
+[node name="pillar" parent="decoratives/level_2" instance=ExtResource("8_26ycf")]
+position = Vector2(-245, 182.00002)
+rotation = 3.8134775
+script = ExtResource("9_p8qog")
+object_name = "bush"
+object_type = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_2/pillar"]
+position = Vector2(-9.493469, 41.89122)
+rotation = -2.9507465
+scale = Vector2(2.97101, 4.023627)
+sprite_frames = SubResource("SpriteFrames_j6dpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decoratives/level_2/pillar"]
+position = Vector2(-9.217537, 40.772232)
+rotation = 0.19313498
+shape = SubResource("RectangleShape2D_l6xtc")
+debug_color = Color(0.6157293, 0.5178536, 0.3990868, 0.41960785)
+
+[node name="level_3" type="Node2D" parent="decoratives"]
+visible = false
+
+[node name="level_4" type="Node2D" parent="decoratives"]
+visible = false
+
+[node name="level_5" type="Node2D" parent="decoratives"]
+visible = false

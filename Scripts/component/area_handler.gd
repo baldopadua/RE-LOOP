@@ -7,6 +7,7 @@ extends Node2D
 @onready var level_4_break: AnimatedSprite2D = $loop_break/level_4_break
 @onready var level_5_break: AnimatedSprite2D = $loop_break/level_5_break
 @onready var sound_manager: Node = $SoundManager
+@onready var decoratives: Node2D = $decoratives
 
 # Map clock area to frame index
 var clock_area_to_frame := {
@@ -18,7 +19,6 @@ var clock_area_to_frame := {
 
 func _ready() -> void:
 	pass
-
 func _process(_delta: float) -> void:
 	pass
 
@@ -45,3 +45,24 @@ func show_loop_break(level: int) -> void:
 	elif level == 5:
 		level_5_break.visible = true
 		level_5_break.play()
+
+# Show decoratives for specific level
+func show_decoratives(level: int) -> void:
+	# Hide all level decoratives first
+	for child in decoratives.get_children():
+		child.visible = false
+	
+	# Show the requested level
+	var level_node = decoratives.get_node_or_null("level_%d" % level)
+	if level_node:
+		level_node.visible = true
+	else:
+		push_warning("Level %d decoratives not found" % level)
+
+# Hide all decoratives
+func hide_all_decoratives() -> void:
+	decoratives.visible = false
+
+# Show decoratives node
+func show_all_decoratives() -> void:
+	decoratives.visible = true

@@ -12,6 +12,7 @@ var objects: Array = []
 # HANDLERS
 @onready var sound_manager = $SoundManager
 @onready var level_handler = $CanvasLayer/LevelHandler
+@onready var area_handler = $AreaHandler
 
 # TWEENS
 var tween_rotate: Tween
@@ -22,7 +23,8 @@ func _ready():
 	level_handler.set_current_level(2)
 	# INTRO OF MAP ROTATE AND SCALE PLUS TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
-
+	# SHOW DECORATIVES
+	area_handler.show_decoratives(2)
 	player.rotation = deg_to_rad(60.0)
 
 	# INITIALIE OBJECTS

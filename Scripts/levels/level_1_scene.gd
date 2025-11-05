@@ -36,7 +36,8 @@ func _ready():
 	level_handler.set_current_level(1)
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
-
+	# SHOW DECORATIVES
+	area_handler.show_decoratives(1)
 	# MANIPULATING OBJECTS APPENDED IN ARRAY
 	objects_initialize()
 	
