@@ -1361,9 +1361,9 @@ object_name = "hand"
 object_type = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_2/hand"]
-position = Vector2(-16.98745, 14.015192)
+position = Vector2(-26.966867, 37.02412)
 rotation = -2.9507465
-scale = Vector2(0.7939789, 1.9884089)
+scale = Vector2(1.3372343, 3.3977182)
 sprite_frames = SubResource("SpriteFrames_p8qog")
 frame_progress = 0.37129256
 
@@ -1381,9 +1381,9 @@ object_name = "weed"
 object_type = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_2/weed"]
-position = Vector2(-1.0542603, 16.937775)
+position = Vector2(-1.9739866, 26.797462)
 rotation = -2.9507465
-scale = Vector2(2.7965817, 2.2067091)
+scale = Vector2(3.464798, 3.0284972)
 sprite_frames = SubResource("SpriteFrames_aovpi")
 frame_progress = 0.066852644
 
@@ -1401,9 +1401,9 @@ object_name = "weed"
 object_type = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_2/weed2"]
-position = Vector2(-4.037024, 11.344698)
+position = Vector2(-4.052935, 19.585033)
 rotation = -2.9507465
-scale = Vector2(1.6908555, 1.6807109)
+scale = Vector2(2.4893553, 2.4597635)
 sprite_frames = SubResource("SpriteFrames_aovpi")
 frame_progress = 0.066852644
 
@@ -1421,9 +1421,9 @@ object_name = "hand"
 object_type = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_2/hand2"]
-position = Vector2(-2.5332565, 9.517481)
+position = Vector2(-6.1399374, 31.357634)
 rotation = -2.9507465
-scale = Vector2(0.92282236, 1.8265103)
+scale = Vector2(1.4000965, 3.129597)
 sprite_frames = SubResource("SpriteFrames_p8qog")
 frame_progress = 0.37129256
 
