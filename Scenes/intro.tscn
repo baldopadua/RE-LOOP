@@ -181,8 +181,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="bg" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 1.0507813
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -191,14 +191,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="godot_bg" type="Sprite2D" parent="bg"]
 texture_filter = 1
-position = Vector2(722.99994, 362.5)
-scale = Vector2(1.1421874, 1.1291667)
+position = Vector2(742, 362.5)
+scale = Vector2(1.171875, 1.1291667)
 texture = ExtResource("1_hwjxs")
 
 [node name="patir_bg" type="Sprite2D" parent="bg"]
 modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
-position = Vector2(725.75, 361.00003)
-scale = Vector2(1.1394532, 1.1361111)
+position = Vector2(746.75006, 361.00003)
+scale = Vector2(1.1722658, 1.1361111)
 texture = ExtResource("2_geirw")
 
 [node name="icon" type="TextureRect" parent="bg"]
