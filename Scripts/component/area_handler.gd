@@ -56,7 +56,7 @@ func update_map_frame() -> void:
 	elif player_moves == -12:
 		# SHOW FRAME 0 WITH VIOLET FOR 0.5 SECONDS BEFORE RESET (from past)
 		map_sprite.frame = 0
-		map_sprite.modulate = Color(1.0, 0.75, 1.0, 1)  # Deep violet (same as -9+)
+		map_sprite.modulate = Color(1.0, 0.75, 1.0, 1) 
 		map_sprite.pause()
 		print("MAP FRAME UPDATE - player_moves: %d, map_frame: 0 violet (waiting for reset from past)" % player_moves)
 		if reset_timer and not reset_timer.is_stopped():
@@ -72,7 +72,7 @@ func update_map_frame() -> void:
 			reset_timer.stop()
 		map_frame = 0
 	elif player_moves < 0:
-		# GOING BACKWARDS IN TIME - all use frame 0 with violet tint
+		# GOING BACKWARDS IN TIME - frame 0 with violet tint
 		map_frame = 0
 		var abs_moves = abs(player_moves)
 		
@@ -93,15 +93,37 @@ func update_map_frame() -> void:
 			var green = 0.9 - (violet_progress * 0.15)
 			var blue = 1.0
 			map_modulate = Color(red, green, blue, 1)
-	elif player_moves <= 2:
+	elif player_moves == 1:
 		map_frame = 0
+	elif player_moves == 2:
+		# TRANSITION START: Frame 0 with slight green hint
+		map_frame = 0
+		var red = 0.95 
+		var green = 1.0  
+		var blue = 0.92  
+		map_modulate = Color(red, green, blue, 1)
 	elif player_moves <= 5:
+		# TRANSITION: Frame 1 with green tint (move 3-5)
 		map_frame = 1
+		var green_progress = (player_moves - 2) / 3.0  
+		var red = 0.95 - (green_progress * 0.05)  
+		var green = 1.0  
+		var blue = 0.92 - (green_progress * 0.12)  
+		map_modulate = Color(red, green, blue, 1)
 	elif player_moves <= 8:
+		# FUTURE: Frame 2 with warm/red tint (approaching climax)
 		map_frame = 2
+		var red_progress = (player_moves - 5) / 3.0  #
+		var green = 1.0 - (red_progress * 0.10)  
+		var blue = 1.0 - (red_progress * 0.15)   
+		map_modulate = Color(1.0, green, blue, 1)
 	else:
-		# MOVES 9-11 SHOW FRAME 3 (CLIMAX)
+		# CLIMAX: Frame 3 with red tint (moves 9-11)
 		map_frame = 3
+		var red_progress = min((player_moves - 8) / 3.0, 1.0)  
+		var green = 0.9 - (red_progress * 0.10)  
+		var blue = 0.85 - (red_progress * 0.10)  
+		map_modulate = Color(1.0, green, blue, 1)
 	
 	map_sprite.frame = map_frame
 	map_sprite.modulate = map_modulate
