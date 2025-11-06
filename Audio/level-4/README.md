@@ -21,13 +21,11 @@
 
 ### Creature Reactions:
 - ✅ aso_kawawa - Dog sad/hurt sound
+- ✅ lizard sound effect
+- ✅ chicken sound effect
 
 ### Environment:
 - ✅ tanim_seed - Planting seed sound
-
-### On-going Sounds:
-- lizard sound effect
-- chicken sound effect
 
 ## Audio Integration:
 These sounds will be integrated following Klarenz's sound_manager.gd patterns.
