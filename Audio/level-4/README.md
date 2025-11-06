@@ -10,8 +10,6 @@
 ### Evolution Sounds:
 - egg_crack.wav - T-Rex hatching sound - done
 - trex_roar.wav - T-Rex appearance/growth sound - done
-- bone_drop.wav - Bone hitting incubator
-- stick_drop.wav - Stick hitting incubator
 
 ### Creature Sounds:
 - chicken_cluck.wav - Chicken interactions
