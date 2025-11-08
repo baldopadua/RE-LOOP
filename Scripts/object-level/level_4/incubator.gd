@@ -45,10 +45,12 @@ func _on_item_put(obj) -> void:
 		symbol_anim_sprite.play("dino")	
 		# set visibility of trex to true
 		print("TREX VISIBLE")
-		# Stop incubator sound 
+		await get_tree().create_timer(0.3).timeout
+		# Stop incubator sound & play empy
 		if sound_manager:
 			sound_manager.stop_sfx("idle_incubator")
 		DinoEggSprite.stop()
+		DinoEggSprite.play("empty")
 		trex.visible = true
 		symbol_anim_sprite.visible = false
 		trex.is_processed = true
