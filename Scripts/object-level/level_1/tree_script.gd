@@ -11,7 +11,7 @@ var player_body: Node
 @onready var black_hole = $"../Blackhole"
 
 # HANDLERS
-@onready var sound_manager = $SoundManager
+@onready var sound_manager = get_parent().get_node("SoundManager")
 @onready var level_handler = $"../CanvasLayer/LevelHandler"
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 @onready var anim_handler = $"../AnimationPlayer"
