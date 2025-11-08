@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b7pg7cwcpk1x1"
-path="res://.godot/imported/baby_dinosaur1.wav-109bf8e0beb1d73be64c44fae8abe0b8.sample"
+path="res://.godot/imported/baby_dinosaur1.wav-b20d1bf35cfada88e3b06a343519ca7e.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/baby_dinosaur1.wav"
-dest_files=["res://.godot/imported/baby_dinosaur1.wav-109bf8e0beb1d73be64c44fae8abe0b8.sample"]
+source_file="res://Audio/level-4/baby_dinosaur1.wav"
+dest_files=["res://.godot/imported/baby_dinosaur1.wav-b20d1bf35cfada88e3b06a343519ca7e.sample"]
 
 [params]
 

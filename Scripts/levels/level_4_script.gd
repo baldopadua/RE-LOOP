@@ -41,17 +41,12 @@ func objects_initialize():
 	objects.append(stick)
 	objects.append(sound_manager)
 
-func play_level4_sfx(sfx_name: String):
-	if sound_manager and sound_manager.sfx.has(sfx_name):
-		sound_manager.play_sfx(sfx_name)
-
-func play_incubator_processing():
-	play_level4_sfx("incubator_processing")
 
 func play_trex_evolution():
-	play_level4_sfx("egg_crack")
+	if sound_manager and sound_manager.sfx.has("incubator_complete"):
+			sound_manager.play_sfx("incubator_complete")
 	await get_tree().create_timer(0.5).timeout  
-	play_level4_sfx("trex_roar")
+	
 
 # If the Plooy being tail whipped animation is finished go to level 5
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cudnjxjbdwemt"
-path="res://.godot/imported/lizard_sound.wav-0e517e476a4210ebadd5297c52447052.sample"
+path="res://.godot/imported/lizard_sound.wav-3f669286eca550915c9560364876426c.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/lizard_sound.wav"
-dest_files=["res://.godot/imported/lizard_sound.wav-0e517e476a4210ebadd5297c52447052.sample"]
+source_file="res://Audio/level-4/lizard_sound.wav"
+dest_files=["res://.godot/imported/lizard_sound.wav-3f669286eca550915c9560364876426c.sample"]
 
 [params]
 

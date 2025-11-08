@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://ddeius2xpd3nn"
-path="res://.godot/imported/egg_pop1.wav-491969dc6fbbc838ff64491029eb6276.sample"
+uid="uid://b5dowpucinf1w"
+path="res://.godot/imported/aso_kawawa.wav-1a2ca23d64bdab93287f21e8e2d03add.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/egg_pop1.wav"
-dest_files=["res://.godot/imported/egg_pop1.wav-491969dc6fbbc838ff64491029eb6276.sample"]
+source_file="res://Audio/level-4/aso_kawawa.wav"
+dest_files=["res://.godot/imported/aso_kawawa.wav-1a2ca23d64bdab93287f21e8e2d03add.sample"]
 
 [params]
 

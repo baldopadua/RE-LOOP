@@ -1677,7 +1677,7 @@ object_type = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="decoratives/level_4/weed"]
 position = Vector2(-25.809324, 16.695518)
-rotation = -2.9507465
+rotation = -2.5983465
 scale = Vector2(3.0483227, 2.1275516)
 sprite_frames = SubResource("SpriteFrames_aovpi")
 frame_progress = 0.066852644

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://wspt4mwhafhc"]
+[gd_scene load_steps=49 format=3 uid="uid://wspt4mwhafhc"]
 
 [ext_resource type="Script" uid="uid://bhdr1gfr3i466" path="res://Scripts/component/sound_manager.gd" id="1_ynhbd"]
 [ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="2_sanpt"]
@@ -16,22 +16,37 @@
 [ext_resource type="PackedScene" uid="uid://co4mj4xfj7mhw" path="res://Audio/level-1/ice_break.tscn" id="11_kbx4k"]
 [ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="12_wax2h"]
 [ext_resource type="PackedScene" uid="uid://dfjn0ovrjl87e" path="res://Audio/level-1/time_freeze.tscn" id="13_ev6nr"]
-[ext_resource type="AudioStream" uid="uid://bt6xxs02lxxlj" path="res://Audio/pickup_item.wav" id="14_kjqcc"]
-[ext_resource type="AudioStream" uid="uid://mx84a50byjkj" path="res://Audio/climb_lvl1_2.wav" id="15_m4x1h"]
+[ext_resource type="AudioStream" uid="uid://bt6xxs02lxxlj" path="res://Audio/wavs-mp3/pickup_item.wav" id="14_kjqcc"]
+[ext_resource type="AudioStream" uid="uid://mx84a50byjkj" path="res://Audio/wavs-mp3/climb_lvl1_2.wav" id="15_m4x1h"]
 [ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/level-1/time_manip.tscn" id="16_4nov3"]
 [ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="17_nb86s"]
 [ext_resource type="PackedScene" uid="uid://be3gp4la2b857" path="res://Audio/level-2/sword.tscn" id="18_4r04m"]
-[ext_resource type="AudioStream" uid="uid://bkr8pimm0kht" path="res://Audio/level-2/sword_sound.wav" id="19_3oqx0"]
-[ext_resource type="AudioStream" uid="uid://bgqoutks1wanx" path="res://Audio/level-2/bones_collapse.wav" id="20_oau0s"]
-[ext_resource type="AudioStream" uid="uid://lkgup3yrmdri" path="res://Audio/level-2/kid_transformation.wav" id="21_g8dbi"]
-[ext_resource type="AudioStream" uid="uid://dglemqrh3iwqs" path="res://Audio/level-2/man_transformation.wav" id="22_ulap6"]
-[ext_resource type="AudioStream" uid="uid://dh87evicq78fk" path="res://Audio/level-2/old_man_transformation.wav" id="23_d467h"]
-[ext_resource type="AudioStream" uid="uid://c3nk4vsr5e80d" path="res://Audio/level-2/man_nagulat_sa_sword.wav" id="24_x6g16"]
-[ext_resource type="AudioStream" uid="uid://svaslsbjpxun" path="res://Audio/level-3/water_eruption.wav" id="25_t7wkh"]
-[ext_resource type="AudioStream" uid="uid://bhb388kh47yiw" path="res://Audio/level-3/rock_water_drop.wav" id="26_vv6oa"]
-[ext_resource type="AudioStream" uid="uid://dk3o16h28soqe" path="res://Audio/level-3/rock_ground_drop.wav" id="27_asjk1"]
-[ext_resource type="AudioStream" uid="uid://r1p3goyqtthx" path="res://Audio/level-3/rock_explode.wav" id="28_1fwc2"]
+[ext_resource type="AudioStream" uid="uid://bkr8pimm0kht" path="res://Audio/wavs-mp3/sword_sound.wav" id="19_3oqx0"]
+[ext_resource type="AudioStream" uid="uid://bgqoutks1wanx" path="res://Audio/wavs-mp3/bones_collapse.wav" id="20_oau0s"]
+[ext_resource type="AudioStream" uid="uid://lkgup3yrmdri" path="res://Audio/wavs-mp3/kid_transformation.wav" id="21_g8dbi"]
+[ext_resource type="AudioStream" uid="uid://dglemqrh3iwqs" path="res://Audio/wavs-mp3/man_transformation.wav" id="22_ulap6"]
+[ext_resource type="AudioStream" uid="uid://dh87evicq78fk" path="res://Audio/wavs-mp3/old_man_transformation.wav" id="23_d467h"]
+[ext_resource type="AudioStream" uid="uid://c3nk4vsr5e80d" path="res://Audio/wavs-mp3/man_nagulat_sa_sword.wav" id="24_x6g16"]
+[ext_resource type="AudioStream" uid="uid://svaslsbjpxun" path="res://Audio/wavs-mp3/water_eruption.wav" id="25_t7wkh"]
+[ext_resource type="AudioStream" uid="uid://bhb388kh47yiw" path="res://Audio/wavs-mp3/rock_water_drop.wav" id="26_vv6oa"]
+[ext_resource type="AudioStream" uid="uid://dk3o16h28soqe" path="res://Audio/wavs-mp3/rock_ground_drop.wav" id="27_asjk1"]
+[ext_resource type="AudioStream" uid="uid://r1p3goyqtthx" path="res://Audio/wavs-mp3/rock_explode.wav" id="28_1fwc2"]
 [ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/ui/game_theme_song.mp3" id="29_fwa5o"]
+[ext_resource type="AudioStream" uid="uid://d0drrsnhgax01" path="res://Audio/level-4/incubator_ekis.wav" id="32_86f52"]
+[ext_resource type="AudioStream" uid="uid://bh1mnpy3s61hg" path="res://Audio/level-4/incubator_check.wav" id="33_7m0u3"]
+[ext_resource type="AudioStream" uid="uid://dvcxl0266eqev" path="res://Audio/level-4/incubator_complete.wav" id="34_uli6b"]
+[ext_resource type="AudioStream" uid="uid://ddeius2xpd3nn" path="res://Audio/level-4/egg_pop1.wav" id="35_ev6nr"]
+[ext_resource type="AudioStream" uid="uid://cwfo8gg6tbp2k" path="res://Audio/level-4/egg_crack1.wav" id="36_kjqcc"]
+[ext_resource type="AudioStream" uid="uid://um01xhdgjdiu" path="res://Audio/level-4/egg_crack2.wav" id="37_m4x1h"]
+[ext_resource type="AudioStream" uid="uid://rt0o2cjxpnpb" path="res://Audio/level-4/sisiw_sound.wav" id="38_4nov3"]
+[ext_resource type="AudioStream" uid="uid://cudnjxjbdwemt" path="res://Audio/level-4/lizard_sound.wav" id="39_nb86s"]
+[ext_resource type="AudioStream" uid="uid://dfkssm4sgmp62" path="res://Audio/wavs-mp3/idle_incubator.wav" id="40_4r04m"]
+[ext_resource type="AudioStream" uid="uid://b5dowpucinf1w" path="res://Audio/level-4/aso_kawawa.wav" id="41_kjqcc"]
+[ext_resource type="AudioStream" uid="uid://b7pg7cwcpk1x1" path="res://Audio/level-4/baby_dinosaur1.wav" id="42_nb86s"]
+[ext_resource type="AudioStream" uid="uid://dq61fs42k5j0t" path="res://Audio/level-4/baby_dinosaur2.wav" id="43_4r04m"]
+[ext_resource type="AudioStream" uid="uid://bf6ubuc8twaig" path="res://Audio/level-4/big_dinosaur1.wav" id="44_3oqx0"]
+[ext_resource type="AudioStream" uid="uid://dhxw0ynfnpdlw" path="res://Audio/level-4/chicken_sound.wav" id="45_4r04m"]
+[ext_resource type="AudioStream" uid="uid://cknowng64v31f" path="res://Audio/level-4/tanim_seed.wav" id="46_3oqx0"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7wrvl"]
 random_pitch = 1.5
@@ -162,6 +177,62 @@ pitch_scale = 1.5
 stream = SubResource("AudioStreamRandomizer_7wrvl")
 volume_db = 1.0
 pitch_scale = 4.0
+
+[node name="level_4_sfx" type="Node2D" parent="sfx"]
+
+[node name="idle_incubator" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("40_4r04m")
+volume_db = 24.0
+
+[node name="incubator_wrong" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("32_86f52")
+
+[node name="incubator_check" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("33_7m0u3")
+
+[node name="incubator_complete" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("34_uli6b")
+
+[node name="egg_pop" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("35_ev6nr")
+
+[node name="egg_crack1" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("36_kjqcc")
+
+[node name="egg_crack2" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("37_m4x1h")
+volume_db = 11.107
+
+[node name="egg_crack3" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("37_m4x1h")
+
+[node name="sisiw" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("38_4nov3")
+
+[node name="lizard" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("39_nb86s")
+volume_db = 15.0
+
+[node name="aso_kawawa" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("41_kjqcc")
+volume_db = 24.0
+
+[node name="baby_dinasaur1" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("42_nb86s")
+
+[node name="baby_dinasaur2" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("43_4r04m")
+
+[node name="big_dinasaur1" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("44_3oqx0")
+volume_db = 24.0
+
+[node name="chicken_sound" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("45_4r04m")
+volume_db = -5.0
+
+[node name="tanim_seed" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
+stream = ExtResource("46_3oqx0")
 
 [node name="music" type="Node2D" parent="."]
 

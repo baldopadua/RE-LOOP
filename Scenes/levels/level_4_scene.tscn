@@ -819,6 +819,16 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yixdo"]
+size = Vector2(31, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56sg6"]
+size = Vector2(18, 18)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ceyy8"]
+radius = 12.1183
+height = 40.0368
+
 [sub_resource type="Animation" id="Animation_oqr2g"]
 length = 0.001
 tracks/0/type = "value"
@@ -880,21 +890,11 @@ _data = {
 &"tail_whipped": SubResource("Animation_0bs5k")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yixdo"]
-size = Vector2(31, 18)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_56sg6"]
-size = Vector2(18, 18)
-
 [sub_resource type="Gradient" id="Gradient_enhda"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ceyy8"]
 gradient = SubResource("Gradient_enhda")
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ceyy8"]
-radius = 12.1183
-height = 40.0368
 
 [node name="level_4" type="Node2D"]
 script = ExtResource("1_f0imo")
@@ -1023,8 +1023,7 @@ rotation = 2.0944
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qb4ol")
 animation = &"young_to_old"
-frame = 3
-frame_progress = 0.112999
+frame_progress = 0.817038
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dog"]
 light_mask = 3
@@ -1075,8 +1074,6 @@ shape = SubResource("RectangleShape2D_6d2y4")
 scale = Vector2(1.57143, 1.57143)
 texture = ExtResource("18_be8ic")
 
-[node name="SoundManager" parent="." instance=ExtResource("14_yxj7a")]
-
 [node name="trex" parent="." instance=ExtResource("4_fiti8")]
 visible = false
 position = Vector2(-152, -256)
@@ -1096,11 +1093,6 @@ shape = SubResource("RectangleShape2D_37es6")
 position = Vector2(-4, -22)
 sprite_frames = SubResource("SpriteFrames_37es6")
 animation = &"egg_to_trex"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_oqr2g")
-}
 
 [node name="lvl4_soil" parent="." instance=ExtResource("4_fiti8")]
 position = Vector2(0, 320)
@@ -1139,22 +1131,6 @@ visibility_layer = 3
 z_index = 1
 position = Vector2(2.533993e-05, -7)
 shape = SubResource("RectangleShape2D_56sg6")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("15_f0imo")]
-
-[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(637.00006, -50)
-scale = Vector2(20, 1.5)
-texture = SubResource("GradientTexture2D_ceyy8")
-
-[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(637.0001, 771)
-scale = Vector2(20, 1.5)
-texture = SubResource("GradientTexture2D_ceyy8")
 
 [node name="enter_5" parent="." instance=ExtResource("4_fiti8")]
 rotation = 2.6179938
@@ -1219,6 +1195,29 @@ scroll_active = false
 tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SoundManager" parent="." instance=ExtResource("14_yxj7a")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_oqr2g")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("15_f0imo")]
+
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.00006, -50)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_ceyy8")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(637.0001, 771)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_ceyy8")
 
 [connection signal="item_put" from="incubator" to="incubator" method="_on_item_put"]
 [connection signal="add_cur_state" from="stick" to="stick" method="_on_add_cur_state"]

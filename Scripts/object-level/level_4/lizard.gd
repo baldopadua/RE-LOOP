@@ -2,12 +2,19 @@ extends object_class
 
 var is_played: bool = false
 @onready var sprite = $AnimatedSprite2D
+@onready var sound_manager = get_parent().get_node("SoundManager")
 
 func _process(_delta: float) -> void:
 	if current_state == 2 and not is_played:
 		print("Yes")
 		is_played = true
 		sprite.play("Present")
+		if sound_manager and sound_manager.sfx.has("lizard"):
+			sound_manager.play_sfx("lizard")
+			get_tree().create_timer(0.59).timeout.connect(func():
+				if sound_manager.sfx["lizard"].playing:
+					sound_manager.sfx["lizard"].stop()
+			)
 		await sprite.animation_finished
 		is_pickupable = true
 	elif current_state == 1 and is_played:

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cknowng64v31f"
-path="res://.godot/imported/tanim_seed.wav-9b2d1816ee1b3a923afaa8975916f134.sample"
+path="res://.godot/imported/tanim_seed.wav-2e1d1245610687f0f7e764394cf5adcd.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/tanim_seed.wav"
-dest_files=["res://.godot/imported/tanim_seed.wav-9b2d1816ee1b3a923afaa8975916f134.sample"]
+source_file="res://Audio/level-4/tanim_seed.wav"
+dest_files=["res://.godot/imported/tanim_seed.wav-2e1d1245610687f0f7e764394cf5adcd.sample"]
 
 [params]
 

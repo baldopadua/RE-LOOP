@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bh1mnpy3s61hg"
-path="res://.godot/imported/incubator_check.wav-62b7608ed2b89f05daffd6ce2fc3b47e.sample"
+path="res://.godot/imported/incubator_check.wav-0e19d51a629254c85eb07a61cada4260.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/incubator_check.wav"
-dest_files=["res://.godot/imported/incubator_check.wav-62b7608ed2b89f05daffd6ce2fc3b47e.sample"]
+source_file="res://Audio/level-4/incubator_check.wav"
+dest_files=["res://.godot/imported/incubator_check.wav-0e19d51a629254c85eb07a61cada4260.sample"]
 
 [params]
 

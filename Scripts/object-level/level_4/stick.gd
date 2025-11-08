@@ -7,10 +7,13 @@ signal add_cur_state(direction)
 @onready var bone = $"../bone"
 @onready var stick_dog_sprite = $"../dog/StickDog"
 @onready var bone_dog_sprite = $"../dog/BoneDog"
+@onready var sound_manager = get_parent().get_node("SoundManager")
 var is_removed: bool = false
 
 func interact(interactable_obj):
 	if interactable_obj.name == "dog":
+		if sound_manager and sound_manager.sfx.has("aso_kawawa"):
+					sound_manager.play_sfx("aso_kawawa")
 		position = Vector2(0, 50.0)
 		var player: CharacterBody2D = get_parent().get_parent()
 		reparent(interactable_obj)

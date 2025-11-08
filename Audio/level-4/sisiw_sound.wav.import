@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://rt0o2cjxpnpb"
-path="res://.godot/imported/sisiw_sound.wav-7801359f93298d1594a4c6874a3a9b55.sample"
+path="res://.godot/imported/sisiw_sound.wav-ebc1adf0d5dac88afef1395a85367e68.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/sisiw_sound.wav"
-dest_files=["res://.godot/imported/sisiw_sound.wav-7801359f93298d1594a4c6874a3a9b55.sample"]
+source_file="res://Audio/level-4/sisiw_sound.wav"
+dest_files=["res://.godot/imported/sisiw_sound.wav-ebc1adf0d5dac88afef1395a85367e68.sample"]
 
 [params]
 
