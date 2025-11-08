@@ -42,10 +42,13 @@ func objects_initialize():
 	objects.append(stick)
 	objects.append(sound_manager)
 
+func play_incubator_processing():
+	if sound_manager and sound_manager.sfx.has("idle_incubator"):
+		sound_manager.play_sfx("idle_incubator")
 
 func play_trex_evolution():
 	if sound_manager and sound_manager.sfx.has("incubator_complete"):
-			sound_manager.play_sfx("incubator_complete")
+		sound_manager.play_sfx("incubator_complete")
 	await get_tree().create_timer(0.5).timeout  
 	
 

@@ -182,7 +182,6 @@ pitch_scale = 4.0
 
 [node name="idle_incubator" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
 stream = ExtResource("40_4r04m")
-volume_db = 24.0
 
 [node name="incubator_wrong" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
 stream = ExtResource("32_86f52")

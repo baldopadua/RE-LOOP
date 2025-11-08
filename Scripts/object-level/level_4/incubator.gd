@@ -22,26 +22,33 @@ func _on_item_put(obj) -> void:
 		symbol_anim_sprite.play("dino")
 		
 		# Start DinoEggSprite animation — ensure it’s looping in the editor
+		DinoEggSprite.visible = true
+		DinoEggSprite.stop()
+		DinoEggSprite.frame = 0
 		DinoEggSprite.play("running")
+		print("[incubator] DinoEggSprite now visible and playing 'running'")
 		return
-
 	elif material_count == 2 and obj.object_name == "lizard":
+		level_script.play_incubator_processing()
 		if sound_manager and sound_manager.sfx.has("incubator_check"):
 			sound_manager.play_sfx("incubator_check")
 		symbol_anim_sprite.play("correct")
 		await symbol_anim_sprite.animation_finished
-		symbol_anim_sprite.play("dino")
+		symbol_anim_sprite.play("dino")	
 		return
-
 	elif material_count == 3 and obj.object_name == "bone":
+		level_script.play_incubator_processing()
 		if sound_manager and sound_manager.sfx.has("incubator_check"):
 			sound_manager.play_sfx("incubator_check")
 		symbol_anim_sprite.play("correct")
 		await symbol_anim_sprite.animation_finished
-		symbol_anim_sprite.play("dino")
-		
-		# Make T-Rex visible and trigger evolution
+		symbol_anim_sprite.play("dino")	
+		# set visibility of trex to true
 		print("TREX VISIBLE")
+		# Stop incubator sound 
+		if sound_manager:
+			sound_manager.stop_sfx("idle_incubator")
+		DinoEggSprite.stop()
 		trex.visible = true
 		symbol_anim_sprite.visible = false
 		trex.is_processed = true
