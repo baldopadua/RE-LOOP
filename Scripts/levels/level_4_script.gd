@@ -10,6 +10,7 @@ var objects: Array = []
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var area_handler = $AreaHandler
 @onready var sound_manager = $SoundManager
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 @onready var bone = $bone
 @onready var chicken = $chicken
@@ -51,6 +52,8 @@ func play_trex_evolution():
 # If the Plooy being tail whipped animation is finished go to level 5
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "tail_whipped":
+		# SET THE TIME INDICATOR TO FIXED IT INDICATES WINNING
+		ui_handler.set_time_indicator_fixed()
 		await get_tree().create_timer(1).timeout
 		level_handler.complete_current_level(get_parent())
 
