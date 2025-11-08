@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=38 format=4 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/levels/level_1_scene.gd" id="1_pxia2"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_cmquk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="9_l4q40"]
 [ext_resource type="Texture2D" uid="uid://dfdbkhqn5goip" path="res://Assets/levels/level_1/seed.png" id="10_70ox2"]
 [ext_resource type="Texture2D" uid="uid://bdnfiuumni1te" path="res://Assets/levels/level_1/DirtMound.png" id="11_70ox2"]
+[ext_resource type="Texture2D" uid="uid://byuly2cl2yrii" path="res://Assets/levels/level_1/Tree-Sheet.png" id="11_l05gj"]
 [ext_resource type="Script" uid="uid://dxhkvoxn1q5vy" path="res://Scripts/object-level/level_1/tree_script.gd" id="11_xkn6d"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="12_l05gj"]
 [ext_resource type="Texture2D" uid="uid://vpgh1vjh3ndt" path="res://Assets/levels/level_1/tree_spritesheet.png" id="12_ystme"]
@@ -145,7 +146,7 @@ _data = {
 size = Vector2(18, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ystme"]
-size = Vector2(31, 22.5)
+size = Vector2(31, 18)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l05gj"]
 texture = ExtResource("12_ystme")
@@ -209,17 +210,178 @@ texture = ExtResource("12_ystme")
 21:6/0 = 0
 22:6/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cd6w3"]
+texture = ExtResource("11_l05gj")
+29:0/0 = 0
+30:0/0 = 0
+31:0/0 = 0
+33:0/0 = 0
+34:0/0 = 0
+35:0/0 = 0
+37:0/0 = 0
+38:0/0 = 0
+39:0/0 = 0
+41:0/0 = 0
+42:0/0 = 0
+43:0/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+24:1/0 = 0
+25:1/0 = 0
+26:1/0 = 0
+28:1/0 = 0
+29:1/0 = 0
+30:1/0 = 0
+31:1/0 = 0
+32:1/0 = 0
+33:1/0 = 0
+34:1/0 = 0
+35:1/0 = 0
+36:1/0 = 0
+37:1/0 = 0
+38:1/0 = 0
+39:1/0 = 0
+40:1/0 = 0
+41:1/0 = 0
+42:1/0 = 0
+43:1/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+25:2/0 = 0
+26:2/0 = 0
+27:2/0 = 0
+28:2/0 = 0
+29:2/0 = 0
+30:2/0 = 0
+31:2/0 = 0
+32:2/0 = 0
+33:2/0 = 0
+34:2/0 = 0
+35:2/0 = 0
+36:2/0 = 0
+37:2/0 = 0
+38:2/0 = 0
+39:2/0 = 0
+40:2/0 = 0
+41:2/0 = 0
+42:2/0 = 0
+43:2/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+23:3/0 = 0
+24:3/0 = 0
+25:3/0 = 0
+26:3/0 = 0
+27:3/0 = 0
+28:3/0 = 0
+29:3/0 = 0
+30:3/0 = 0
+31:3/0 = 0
+32:3/0 = 0
+33:3/0 = 0
+34:3/0 = 0
+35:3/0 = 0
+36:3/0 = 0
+37:3/0 = 0
+38:3/0 = 0
+39:3/0 = 0
+40:3/0 = 0
+41:3/0 = 0
+42:3/0 = 0
+43:3/0 = 0
+6:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+25:4/0 = 0
+26:4/0 = 0
+29:4/0 = 0
+30:4/0 = 0
+33:4/0 = 0
+34:4/0 = 0
+37:4/0 = 0
+38:4/0 = 0
+41:4/0 = 0
+42:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+25:5/0 = 0
+26:5/0 = 0
+29:5/0 = 0
+30:5/0 = 0
+33:5/0 = 0
+34:5/0 = 0
+37:5/0 = 0
+38:5/0 = 0
+41:5/0 = 0
+42:5/0 = 0
+2:6/0 = 0
+6:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+21:6/0 = 0
+22:6/0 = 0
+24:6/0 = 0
+25:6/0 = 0
+26:6/0 = 0
+27:6/0 = 0
+28:6/0 = 0
+29:6/0 = 0
+30:6/0 = 0
+31:6/0 = 0
+32:6/0 = 0
+33:6/0 = 0
+34:6/0 = 0
+35:6/0 = 0
+36:6/0 = 0
+37:6/0 = 0
+38:6/0 = 0
+39:6/0 = 0
+40:6/0 = 0
+41:6/0 = 0
+42:6/0 = 0
+43:6/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_cd6w3"]
 sources/0 = SubResource("TileSetAtlasSource_l05gj")
+sources/1 = SubResource("TileSetAtlasSource_cd6w3")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl30"]
 size = Vector2(31, 18)
-
-[sub_resource type="Gradient" id="Gradient_7hl30"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7hl30"]
-gradient = SubResource("Gradient_7hl30")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ystme"]
 radius = 12.1183
@@ -295,7 +457,7 @@ texture_filter = 1
 rotation = 3.14159
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAD/////AAABAAUAAAAAAP//AAACAAUAAAAAAAAAAAACAAYAAAA=")
-tile_set = SubResource("TileSet_cd6w3")
+tile_set = SubResource("TileSet_l05gj")
 
 [node name="State2" type="TileMapLayer" parent="tree"]
 visible = false
@@ -310,7 +472,7 @@ visible = false
 texture_filter = 1
 rotation = 3.14159
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAD+//3/AAAMAAMAAAD+//7/AAAMAAQAAAD///3/AAANAAMAAAD///7/AAANAAQAAAD/////AAANAAUAAAD//wAAAAANAAYAAAAAAP3/AAAOAAMAAAAAAP7/AAAOAAQAAAAAAP//AAAOAAUAAAAAAAAAAAAOAAYAAAA=")
+tile_map_data = PackedByteArray("AAD+//3/AQAQAAMAAAD+//7/AQAQAAQAAAD///3/AQARAAMAAAD///7/AQARAAQAAAD/////AQARAAUAAAD//wAAAQARAAYAAAAAAP3/AQASAAMAAAAAAP7/AQASAAQAAAAAAP//AQASAAUAAAAAAAAAAQASAAYAAAD///z/AQARAAIAAAAAAPz/AQASAAIAAAABAP3/AQATAAMAAAA=")
 tile_set = SubResource("TileSet_cd6w3")
 
 [node name="State4" type="TileMapLayer" parent="tree"]
@@ -319,7 +481,7 @@ texture_filter = 1
 position = Vector2(0, -1)
 rotation = 3.14159
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAD+//v/AAAUAAEAAAD+//z/AAAUAAIAAAD+//3/AAAUAAMAAAD+/wAAAAAUAAYAAAD///r/AAAVAAAAAAD///v/AAAVAAEAAAD///z/AAAVAAIAAAD///3/AAAVAAMAAAD///7/AAAVAAQAAAD/////AAAVAAUAAAD//wAAAAAVAAYAAAAAAPr/AAAWAAAAAAAAAPv/AAAWAAEAAAAAAPz/AAAWAAIAAAAAAP3/AAAWAAMAAAAAAP7/AAAWAAQAAAAAAP//AAAWAAUAAAAAAAAAAAAWAAYAAAABAPv/AAAXAAEAAAABAPz/AAAXAAIAAAA=")
+tile_map_data = PackedByteArray("AAD+//v/AQAcAAEAAAD+//z/AQAcAAIAAAD+//3/AQAcAAMAAAD+/wAAAAAUAAYAAAD///r/AQAdAAAAAAD///v/AQAdAAEAAAD///z/AQAdAAIAAAD///3/AQAdAAMAAAD///7/AQAdAAQAAAD/////AQAdAAUAAAD//wAAAQAdAAYAAAAAAPr/AQAeAAAAAAAAAPv/AQAeAAEAAAAAAPz/AQAeAAIAAAAAAP3/AQAeAAMAAAAAAP7/AQAeAAQAAAAAAP//AQAeAAUAAAAAAAAAAQAeAAYAAAABAPv/AQAfAAEAAAABAPz/AQAfAAIAAAABAPr/AQAfAAAAAAABAP3/AQAfAAMAAAA=")
 tile_set = SubResource("TileSet_cd6w3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="tree"]
@@ -330,6 +492,11 @@ position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_7hl30")
 
 [node name="SoundManager" parent="tree" instance=ExtResource("23_gu1y6")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="tree"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_gu1y6")
+animation = &"State1"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
