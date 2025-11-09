@@ -7,6 +7,7 @@ extends object_class
 @onready var sword_sprite: Sprite2D = $SwordSprite
 @onready var player = $"../PlayerScene"
 
+
 # HANDLERS
 @onready var sound_manager = get_parent().get_node("SoundManager")
 @onready var area_handler = get_parent().get_node("AreaHandler")
@@ -26,6 +27,10 @@ var tween_scale: Tween
 # TIME INDICTAOR
 var time_indicator: AnimatedSprite2D
 
+# POS TO FOCUS
+@onready var pos_to_focus = $"../pos_to_focus"
+var player_body: Node
+
 func _ready() -> void:
 	pass
 
@@ -41,6 +46,8 @@ func break_loop():
 		GlobalVariables.player_stopped = true
 		GlobalVariables.is_looping = false
 
+	 
+
 		var anim_strong_to_old = old_man.get_node("AnimatedSprite2D")
 		anim_strong_to_old.play_backwards("strong_to_old")
 		await anim_strong_to_old.animation_finished
@@ -55,9 +62,15 @@ func break_loop():
 				sound_manager.play_sfx("Sword2")
 			if sound_manager.sfx.has("nagulat"):
 				sound_manager.play_sfx("nagulat")
+
+		 # FOCUS ON SWORD
+		ui_handler.hide_game_ui_elements()
+		player.get_node("Camera2D").emit_signal("pan_to_pos", pos_to_focus.global_position)
+		player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
+		player.get_node("Camera2D").emit_signal("reveal_bars")
+		
 		loop_break_animation.play("unsheate")
 		await loop_break_animation.animation_finished
-
 		if sound_manager:
 			if sound_manager.sfx.has("sword"):
 				sound_manager.play_sfx("sword")
@@ -65,6 +78,21 @@ func break_loop():
 			if sound_manager.has_method("play_finish_level_sfx"):
 				sound_manager.play_finish_level_sfx()
 		area_handler.show_loop_break(2)
+		
+
+		# Play SFX using SoundManager for finish_level_sfx nodes
+		if sound_manager and sound_manager.has_method("play_finish_level_sfx"):
+			sound_manager.play_finish_level_sfx()
+
+		await get_tree().create_timer(2.0).timeout
+		GlobalVariables.player_stopped = false
+			
+		# BACK TO ORIG FOCUS
+		ui_handler.show_game_ui_elements()
+		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+		player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+		player.get_node("Camera2D").emit_signal("hide_bars")
+		
 		GlobalVariables.player_stopped = false
 
 func _on_body_entered(body) -> void:
@@ -74,6 +102,14 @@ func _on_body_entered(body) -> void:
 	if not GlobalVariables.is_looping and not is_playing_two:
 		is_playing_two = true
 		GlobalVariables.player_stopped = true
+		ui_handler.hide_game_ui_elements()
+		# STORE THE PLAYER REFERENCE
+		player_body = body
+		
+		player_body.get_node("Camera2D").emit_signal("pan_to_pos", player_body.get_node("AnimatedSprite2D").global_position)
+		player_body.get_node("Camera2D").emit_signal("reveal_bars")
+		player_body.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
+			
 		await get_tree().create_timer(1).timeout
 
 		ui_handler.set_time_indicator_fixed()

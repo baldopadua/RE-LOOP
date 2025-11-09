@@ -22,7 +22,6 @@ func _ready():
 
 
 func _on_body_entered(body):
-	# Only allow collision when trex is adult (state 4, not 3)
 	if body.name != "PlayerScene" or not is_processed or current_state != 4:
 		return
 	handle_body_entered(body)
