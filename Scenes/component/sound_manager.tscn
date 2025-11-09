@@ -40,7 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://um01xhdgjdiu" path="res://Audio/level-4/egg_crack2.wav" id="37_m4x1h"]
 [ext_resource type="AudioStream" uid="uid://rt0o2cjxpnpb" path="res://Audio/level-4/sisiw_sound.wav" id="38_4nov3"]
 [ext_resource type="AudioStream" uid="uid://cudnjxjbdwemt" path="res://Audio/level-4/lizard_sound.wav" id="39_nb86s"]
-[ext_resource type="AudioStream" uid="uid://dfkssm4sgmp62" path="res://Audio/wavs-mp3/idle_incubator.wav" id="40_4r04m"]
+[ext_resource type="AudioStream" uid="uid://dfkssm4sgmp62" path="res://Audio/level-4/idle_incubator.wav" id="40_4r04m"]
 [ext_resource type="AudioStream" uid="uid://b5dowpucinf1w" path="res://Audio/level-4/aso_kawawa.wav" id="41_kjqcc"]
 [ext_resource type="AudioStream" uid="uid://b7pg7cwcpk1x1" path="res://Audio/level-4/baby_dinosaur1.wav" id="42_nb86s"]
 [ext_resource type="AudioStream" uid="uid://dq61fs42k5j0t" path="res://Audio/level-4/baby_dinosaur2.wav" id="43_4r04m"]
@@ -177,6 +177,9 @@ pitch_scale = 1.5
 stream = SubResource("AudioStreamRandomizer_7wrvl")
 volume_db = 1.0
 pitch_scale = 4.0
+
+[node name="water_eruption" type="AudioStreamPlayer2D" parent="sfx/level_3_sfx"]
+stream = ExtResource("25_t7wkh")
 
 [node name="level_4_sfx" type="Node2D" parent="sfx"]
 

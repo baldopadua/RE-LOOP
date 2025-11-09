@@ -46,8 +46,6 @@ func break_loop():
 		GlobalVariables.player_stopped = true
 		GlobalVariables.is_looping = false
 
-	 
-
 		var anim_strong_to_old = old_man.get_node("AnimatedSprite2D")
 		anim_strong_to_old.play_backwards("strong_to_old")
 		await anim_strong_to_old.animation_finished

@@ -56,7 +56,7 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	
-	player.get_node("Camera2D").emit_signal("pan_to_pos", initial_oldman_focus.global_position)
+	player.get_node("Camera2D").emit_signal("pan_to_pos", old_man.global_position)
 	
 	await get_tree().create_timer(2.0).timeout
 	

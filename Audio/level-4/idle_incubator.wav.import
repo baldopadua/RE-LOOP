@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dfkssm4sgmp62"
-path="res://.godot/imported/idle_incubator.wav-aaaf8e7e121eaa8380c2b86ffce49b52.sample"
+path="res://.godot/imported/idle_incubator.wav-be7620b70b22b083589863baddc28c87.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/idle_incubator.wav"
-dest_files=["res://.godot/imported/idle_incubator.wav-aaaf8e7e121eaa8380c2b86ffce49b52.sample"]
+source_file="res://Audio/level-4/idle_incubator.wav"
+dest_files=["res://.godot/imported/idle_incubator.wav-be7620b70b22b083589863baddc28c87.sample"]
 
 [params]
 

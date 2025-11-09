@@ -586,8 +586,5 @@ vertical_alignment = 1
 [node name="pos_to_focus" type="Marker2D" parent="."]
 position = Vector2(118, -193)
 
-[node name="initial_oldman_focus" type="Marker2D" parent="."]
-position = Vector2(-120, 213)
-
 [connection signal="map_scale_tween_finished" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_map_scale_tween_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="Sword" method="_on_animation_player_animation_finished"]
