@@ -58,7 +58,6 @@ func update_map_frame() -> void:
 		map_sprite.frame = 0
 		map_sprite.modulate = Color(1.0, 0.75, 1.0, 1) 
 		map_sprite.pause()
-		print("MAP FRAME UPDATE - player_moves: %d, map_frame: 0 violet (waiting for reset from past)" % player_moves)
 		if reset_timer and not reset_timer.is_stopped():
 			reset_timer.stop()
 		if reset_timer:
@@ -129,7 +128,6 @@ func update_map_frame() -> void:
 	map_sprite.modulate = map_modulate
 	map_sprite.pause()
 	
-	print("MAP FRAME UPDATE - player_moves: %d, map_frame: %d, modulate: (%.2f, %.2f, %.2f)" % [player_moves, map_frame, map_modulate.r, map_modulate.g, map_modulate.b])
 
 func _on_reset_timer_timeout() -> void:
 	map_sprite.frame = 0

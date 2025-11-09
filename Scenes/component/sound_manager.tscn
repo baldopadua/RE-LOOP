@@ -182,6 +182,7 @@ pitch_scale = 4.0
 
 [node name="idle_incubator" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
 stream = ExtResource("40_4r04m")
+volume_db = -5.0
 
 [node name="incubator_wrong" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
 stream = ExtResource("32_86f52")
@@ -224,7 +225,7 @@ stream = ExtResource("43_4r04m")
 
 [node name="big_dinasaur1" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
 stream = ExtResource("44_3oqx0")
-volume_db = 24.0
+volume_db = 10.0
 
 [node name="chicken_sound" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
 stream = ExtResource("45_4r04m")

@@ -1044,13 +1044,6 @@ script = ExtResource("12_d64ua")
 object_name = "incubator"
 object_type = 1
 
-[node name="EmptySprite" type="Sprite2D" parent="incubator"]
-visible = false
-position = Vector2(13.033478, 23.085907)
-rotation = 2.61799
-scale = Vector2(2, 2)
-texture = ExtResource("15_d64ua")
-
 [node name="DinoEggSprite" type="AnimatedSprite2D" parent="incubator"]
 position = Vector2(13.033478, 23.085907)
 rotation = 2.61799
@@ -1223,9 +1216,7 @@ shape = SubResource("RectangleShape2D_37es6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="trex"]
 position = Vector2(-4, -22)
 sprite_frames = SubResource("SpriteFrames_37es6")
-animation = &"tail_whip"
-frame = 13
-frame_progress = 1.0
+animation = &"egg_to_baby"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

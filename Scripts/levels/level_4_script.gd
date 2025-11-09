@@ -29,6 +29,7 @@ func _ready():
 	objects_initialize()
 	
 	player.rotation = deg_to_rad(120.0)
+	trex.visible = false
 
 func objects_initialize():
 		# APPEND THE OBJECTS IN THE OBJECTS ARRAY HERE

@@ -5,7 +5,7 @@ signal item_put(obj)
 
 @onready var symbol_anim_sprite : AnimatedSprite2D = $symbol_anim_sprite
 @onready var DinoEggSprite : AnimatedSprite2D = $DinoEggSprite
-@onready var trex = $"../trex"
+@onready var trex = get_parent().get_node("trex")
 @onready var level_script = get_parent()
 @onready var sound_manager = get_parent().get_node("SoundManager")
 var material_count : int = 0
@@ -44,17 +44,20 @@ func _on_item_put(obj) -> void:
 		symbol_anim_sprite.play("correct")
 		await symbol_anim_sprite.animation_finished
 		symbol_anim_sprite.play("dino")	
-		# set visibility of trex to true
+		
 		print("TREX VISIBLE")
 		await get_tree().create_timer(0.3).timeout
-		# Stop incubator sound & play empy
+		
+		# Stop incubator sound & play empty
 		if sound_manager:
 			sound_manager.stop_sfx("idle_incubator")
 		DinoEggSprite.stop()
 		DinoEggSprite.play("empty")
+		
+		# Make trex visible and enable processing
 		trex.visible = true
-		symbol_anim_sprite.visible = false
 		trex.is_processed = true
+		symbol_anim_sprite.visible = false
 		level_script.play_trex_evolution()
 		await get_tree().create_timer(2.0).timeout
 		GlobalVariables.player_stopped = false
