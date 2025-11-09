@@ -1327,11 +1327,6 @@ vertical_alignment = 1
 
 [node name="SoundManager" parent="." instance=ExtResource("14_yxj7a")]
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_oqr2g")
-}
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("15_f0imo")]

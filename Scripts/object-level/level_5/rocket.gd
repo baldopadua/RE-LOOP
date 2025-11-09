@@ -6,12 +6,11 @@ var ready_for_entering: bool = false
 @onready var temp_timer = $"../temp_timer"
 @onready var text = $AnimatedSprite2D/Label
 @onready var animationplayer = $"../AnimationPlayer"
-@onready var player_label = $"../PlayerScene/Label"
-var player_has_entered : bool = false
 var player_still_allowed : bool = true
 @onready var level_handler = $"../CanvasLayer/LevelHandler"
 @onready var area_handler = get_parent().get_node("AreaHandler")
 @onready var sound_manager = get_parent().get_node("SoundManager")
+@onready var level_script = get_parent()  # Reference to level script
 
 
 func _process(_delta: float) -> void:
@@ -42,7 +41,7 @@ func _on_body_entered(body) -> void:
 		
 		if body.name == "PlayerScene":
 			GlobalVariables.player_stopped = true
-			player_has_entered = true
+			level_script.player_has_entered = true  # Use level_script reference
 			var tween = create_tween()
 			tween.tween_property(body, "modulate", Color(0.0, 0.0, 0.0, 0.0), 1.5)
 			tween.finished.connect(func():
@@ -51,14 +50,3 @@ func _on_body_entered(body) -> void:
 			)
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "rocket_animation":
-		if not player_has_entered:
-			player_label.visible = true
-			temp_timer.start(3.0)
-			temp_timer.timeout.connect(func():
-				level_handler.restart_level(get_parent().get_parent())
-			)
-		else:
-			# Player successfully entered the rocket and animation finished
-			level_handler.complete_current_level(get_parent().get_parent())

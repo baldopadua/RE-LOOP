@@ -54,7 +54,6 @@ func enter_level():
 
 func _on_level_handler_map_scale_tween_finished() -> void:
 		# EXECUTE INITIAL CAMERA CUTSCENES FIRST
-	# SUBTLE CAMERA PAN HINT
 	
 	GlobalVariables.player_stopped = true
 	

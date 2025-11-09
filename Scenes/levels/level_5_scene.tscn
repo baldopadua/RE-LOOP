@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c68gmkh2e26af"]
+[gd_scene load_steps=67 format=3 uid="uid://c68gmkh2e26af"]
 
 [ext_resource type="Script" uid="uid://bht2nh4ymwmf5" path="res://Scripts/levels/level_5_script.gd" id="1_0li43"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_aql1r"]
@@ -677,4 +677,4 @@ vertical_alignment = 1
 [connection signal="area_shape_entered" from="dreamer" to="dreamer" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="dreamer" to="dreamer" method="_on_area_shape_exited"]
 [connection signal="animation_finished" from="dreamer/AnimatedSprite2D" to="dreamer" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="rocket" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

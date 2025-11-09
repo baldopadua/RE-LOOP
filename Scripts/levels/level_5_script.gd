@@ -8,6 +8,7 @@ extends Node2D
 @onready var area_handler = $AreaHandler
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var sound_manager = $SoundManager
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 # LEVEL 5 OBJECTS
 @onready var science_project = $science_project
@@ -17,6 +18,9 @@ extends Node2D
 
 # PLAYER STATE AND LABEL
 var player_has_entered: bool = false
+@onready var player_label: Label = $PlayerScene/Label  # Corrected path
+@onready var temp_timer: Timer = Timer.new()  # Create timer
+
 
 # TWEENS
 @onready var tween_rotate: Tween
@@ -33,6 +37,12 @@ func _ready():
 	objects_initialize()
 	
 	player.rotation = deg_to_rad(150.0)
+	
+	# Add timer to scene tree and configure
+	add_child(temp_timer)
+	temp_timer.one_shot = true
+	if player_label:
+		player_label.visible = false
 
 func objects_initialize():
 	
@@ -64,3 +74,18 @@ func enter_level():
 	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
 	level_handler.complete_current_level(get_parent()) 
+
+
+# If the rocket animation is finished go to level 6
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "rocket_animation":
+		if not player_has_entered:
+			if player_label:
+				player_label.visible = true
+			temp_timer.start(3.0)
+			temp_timer.timeout.connect(func():
+				level_handler.restart_level(get_parent())
+			)
+		else:
+			# Player successfully entered the rocket and animation finished
+			level_handler.complete_current_level(get_parent())
