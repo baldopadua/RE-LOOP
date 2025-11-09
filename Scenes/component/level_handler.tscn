@@ -80,7 +80,7 @@ zoom = Vector2(28.107, 1.638)
 rotation_smoothing_enabled = true
 
 [node name="long_hand_clock" type="AnimatedSprite2D" parent="level_status/long_hand_rotation"]
-position = Vector2(-2, -111.442)
+position = Vector2(8, -112.442)
 scale = Vector2(0.690476, 0.865827)
 sprite_frames = SubResource("SpriteFrames_syl1f")
 animation = &"lock"
@@ -92,7 +92,7 @@ zoom = Vector2(33.12, 1.93)
 rotation_smoothing_enabled = true
 
 [node name="short_hand_clock" type="AnimatedSprite2D" parent="level_status/short_hand_rotation"]
-position = Vector2(-2.00003, -82)
+position = Vector2(7.9999695, -82)
 scale = Vector2(0.69091, 0.648077)
 sprite_frames = SubResource("SpriteFrames_wbj5g")
 animation = &"lock"

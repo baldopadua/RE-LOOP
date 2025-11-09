@@ -1,59 +1,11 @@
 extends object_class
 
-var is_played: bool = false
+@warning_ignore("unused_signal")
+signal add_cur_state(direction)
+
 @onready var sprite = $AnimatedSprite2D
 @onready var player = $"../PlayerScene"
-var previous_state = current_state
 @onready var sound_manager = get_parent().get_node("SoundManager")
-
-func _process(_delta: float) -> void:
-	if current_state != previous_state:
-		match [previous_state, current_state, player.direction]:
-			# Forward animations
-			[2, 3, GlobalVariables.player_direction.CLOCKWISE]:
-				is_played = true
-				sprite.play("chicken_to_feather")
-				if sound_manager and sound_manager.sfx.has("egg_pop"):
-					var egg_pop_sfx = sound_manager.sfx["egg_pop"]
-					if not egg_pop_sfx.playing:
-						sound_manager.play_sfx("egg_pop")
-						egg_pop_sfx.seek(0.60)
-				await sprite.animation_finished
-				is_pickupable = true
-
-			[1, 2, GlobalVariables.player_direction.CLOCKWISE]:
-				is_played = false
-				sprite.play("chick_to_chicken")
-				if sound_manager and sound_manager.sfx.has("chicken_sound"):
-					sound_manager.play_sfx("chicken_sound")
-				is_pickupable = false
-
-			# Reverse animations
-			[3, 2, GlobalVariables.player_direction.COUNTERCLOCKWISE]:
-				is_played = false
-				sprite.play_backwards("chicken_to_feather")
-				if sound_manager and sound_manager.sfx.has("chicken_sound"):
-					sound_manager.play_sfx("chicken_sound")
-				is_pickupable = false
-
-			[2, 1, GlobalVariables.player_direction.COUNTERCLOCKWISE]:
-				is_played = false
-				sprite.play_backwards("chick_to_chicken")
-				if sound_manager and sound_manager.sfx.has("sisiw"):
-					sound_manager.play_sfx("sisiw")
-				is_pickupable = false
-
-			[3, 2, GlobalVariables.player_direction.CLOCKWISE]:
-				is_played = false
-				sprite.play("chicken_to_feather")
-				is_pickupable = false
-
-			[2, 3, GlobalVariables.player_direction.COUNTERCLOCKWISE]:
-				is_played = true
-				sprite.play_backwards("chicken_to_feather")
-				await sprite.animation_finished
-				is_pickupable = true
-	previous_state = current_state
 	
 func interact(object_interacted: object_class):
 	if object_interacted.object_name == "incubator" :
@@ -65,3 +17,37 @@ func interact(object_interacted: object_class):
 			visible = false
 			return true
 	return false
+
+
+func _on_add_cur_state(direction: Variant) -> void:
+	if direction == GlobalVariables.Directions.CLOCKWISE:
+		if current_state == 2:
+			sprite.play("chick_to_chicken")
+			if sound_manager and sound_manager.sfx.has("chicken_sound"):
+				sound_manager.play_sfx("chicken_sound")
+			is_pickupable = false
+			
+		elif current_state == 3:
+			sprite.play("chicken_to_feather")
+			if sound_manager and sound_manager.sfx.has("egg_pop"):
+				var egg_pop_sfx = sound_manager.sfx["egg_pop"]
+				if not egg_pop_sfx.playing:
+					sound_manager.play_sfx("egg_pop")
+					egg_pop_sfx.seek(0.60)
+			sprite.animation_finished.connect(func():
+				is_pickupable = true
+			, CONNECT_ONE_SHOT)
+			
+	else:
+		
+		if current_state == 1:
+			sprite.play_backwards("chick_to_chicken")
+			if sound_manager and sound_manager.sfx.has("sisiw"):
+				sound_manager.play_sfx("sisiw")
+			is_pickupable = false
+			
+		elif current_state == 2:
+			sprite.play_backwards("chicken_to_feather")
+			if sound_manager and sound_manager.sfx.has("chicken_sound"):
+				sound_manager.play_sfx("chicken_sound")
+			is_pickupable = false

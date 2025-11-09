@@ -699,22 +699,6 @@ size = Vector2(50, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37es6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gsm8w"]
-atlas = ExtResource("24_ceyy8")
-region = Rect2(0, 0, 85, 76)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqh3h"]
-atlas = ExtResource("24_ceyy8")
-region = Rect2(85, 0, 85, 76)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iovum"]
-atlas = ExtResource("24_ceyy8")
-region = Rect2(170, 0, 85, 76)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s5pw1"]
-atlas = ExtResource("24_ceyy8")
-region = Rect2(255, 0, 85, 76)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wn5qp"]
 atlas = ExtResource("24_ceyy8")
 region = Rect2(340, 0, 85, 76)
@@ -747,29 +731,21 @@ region = Rect2(850, 0, 85, 76)
 atlas = ExtResource("24_ceyy8")
 region = Rect2(935, 0, 85, 76)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lf0uc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsm8w"]
 atlas = ExtResource("24_ceyy8")
-region = Rect2(1020, 0, 85, 76)
+region = Rect2(0, 0, 85, 76)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rkta3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqh3h"]
 atlas = ExtResource("24_ceyy8")
-region = Rect2(1105, 0, 85, 76)
+region = Rect2(85, 0, 85, 76)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qtgq3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iovum"]
 atlas = ExtResource("24_ceyy8")
-region = Rect2(1190, 0, 85, 76)
+region = Rect2(170, 0, 85, 76)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8tmfu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5pw1"]
 atlas = ExtResource("24_ceyy8")
-region = Rect2(1275, 0, 85, 76)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dy8jw"]
-atlas = ExtResource("24_ceyy8")
-region = Rect2(1360, 0, 85, 76)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_560uq"]
-atlas = ExtResource("24_ceyy8")
-region = Rect2(1445, 0, 85, 76)
+region = Rect2(255, 0, 85, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jsgs"]
 atlas = ExtResource("25_enhda")
@@ -823,21 +799,33 @@ region = Rect2(935, 0, 85, 76)
 atlas = ExtResource("25_enhda")
 region = Rect2(1020, 0, 85, 76)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf0uc"]
+atlas = ExtResource("24_ceyy8")
+region = Rect2(1020, 0, 85, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkta3"]
+atlas = ExtResource("24_ceyy8")
+region = Rect2(1105, 0, 85, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtgq3"]
+atlas = ExtResource("24_ceyy8")
+region = Rect2(1190, 0, 85, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tmfu"]
+atlas = ExtResource("24_ceyy8")
+region = Rect2(1275, 0, 85, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy8jw"]
+atlas = ExtResource("24_ceyy8")
+region = Rect2(1360, 0, 85, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_560uq"]
+atlas = ExtResource("24_ceyy8")
+region = Rect2(1445, 0, 85, 76)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_37es6"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gsm8w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aqh3h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iovum")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s5pw1")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wn5qp")
 }, {
@@ -861,28 +849,30 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mwpy4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lf0uc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rkta3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qtgq3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8tmfu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dy8jw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_560uq")
 }],
 "loop": false,
-"name": &"egg_to_trex",
-"speed": 10.0
+"name": &"baby_to_teen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsm8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqh3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iovum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5pw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn5qp")
+}],
+"loop": false,
+"name": &"egg_to_baby",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -923,10 +913,39 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ymmfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jsgs")
 }],
 "loop": false,
 "name": &"tail_whip",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwpy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf0uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkta3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtgq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tmfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dy8jw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_560uq")
+}],
+"loop": false,
+"name": &"teen_to_adult",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_oqr2g"]
@@ -1062,7 +1081,7 @@ object_name = "chicken"
 usable_targets = Array[String](["incubator"])
 max_state_threshold = 3
 min_state_threshold = 1
-current_state = 1
+current_state = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chicken"]
 position = Vector2(-13, 10)
@@ -1188,14 +1207,13 @@ scale = Vector2(1.57143, 1.57143)
 texture = ExtResource("18_be8ic")
 
 [node name="trex" parent="." instance=ExtResource("4_fiti8")]
-visible = false
 position = Vector2(-152, -256)
 rotation = 2.61799
 scale = Vector2(2, 2)
 script = ExtResource("24_lahvx")
 object_name = "trex"
 object_type = 1
-max_state_threshold = 2
+max_state_threshold = 4
 min_state_threshold = 1
 current_state = 1
 
@@ -1205,7 +1223,9 @@ shape = SubResource("RectangleShape2D_37es6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="trex"]
 position = Vector2(-4, -22)
 sprite_frames = SubResource("SpriteFrames_37es6")
-animation = &"egg_to_trex"
+animation = &"tail_whip"
+frame = 13
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1338,6 +1358,9 @@ scale = Vector2(20, 1.5)
 texture = SubResource("GradientTexture2D_ceyy8")
 
 [connection signal="item_put" from="incubator" to="incubator" method="_on_item_put"]
+[connection signal="add_cur_state" from="chicken" to="chicken" method="_on_add_cur_state"]
+[connection signal="add_cur_state" from="lizard" to="lizard" method="_on_add_cur_state"]
 [connection signal="add_cur_state" from="stick" to="stick" method="_on_add_cur_state"]
 [connection signal="tree_exited" from="stick" to="stick" method="_on_tree_exited"]
+[connection signal="add_cur_state" from="trex" to="trex" method="_on_add_cur_state"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

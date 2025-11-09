@@ -51,7 +51,6 @@ func play_trex_evolution():
 		sound_manager.play_sfx("incubator_complete")
 	await get_tree().create_timer(0.5).timeout  
 	
-
 # If the Plooy being tail whipped animation is finished go to level 5
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "tail_whipped":

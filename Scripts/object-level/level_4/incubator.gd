@@ -37,6 +37,7 @@ func _on_item_put(obj) -> void:
 		symbol_anim_sprite.play("dino")	
 		return
 	elif material_count == 3 and obj.object_name == "bone":
+		GlobalVariables.player_stopped = true
 		level_script.play_incubator_processing()
 		if sound_manager and sound_manager.sfx.has("incubator_check"):
 			sound_manager.play_sfx("incubator_check")
@@ -55,6 +56,8 @@ func _on_item_put(obj) -> void:
 		symbol_anim_sprite.visible = false
 		trex.is_processed = true
 		level_script.play_trex_evolution()
+		await get_tree().create_timer(2.0).timeout
+		GlobalVariables.player_stopped = false
 	else:
 		material_count -= 1
 		if sound_manager and sound_manager.sfx.has("incubator_wrong"):

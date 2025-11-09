@@ -1,13 +1,18 @@
 extends object_class
 
+@warning_ignore("unused_signal")
+signal add_cur_state(direction)
+
 # TWEENS
 var tween_climb: Tween
 var tween_rotate: Tween
 var tween_scale: Tween
 
+@onready var animated_sprite = $AnimatedSprite2D
 var time_indicator: AnimatedSprite2D
 var is_playing: bool = false
-var player_body: Node 
+var player_body: Node
+@onready var player =  $"../PlayerScene"
 @onready var black_hole = $"../Blackhole"
 
 # HANDLERS
@@ -15,6 +20,7 @@ var player_body: Node
 @onready var level_handler = $"../CanvasLayer/LevelHandler"
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 @onready var anim_handler = $"../AnimationPlayer"
+@onready var area_handler = $"../AreaHandler"
 
 # POS TO FOCUS
 @onready var pos_to_focus = $"../pos_to_focus"
@@ -94,3 +100,43 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 				player_body.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 			)
 		)
+
+
+func _on_add_cur_state(direction: Variant) -> void:
+	if direction == GlobalVariables.Directions.CLOCKWISE:
+		if current_state == 2:
+			animated_sprite.play("grow_1")
+		elif current_state == 3:
+			animated_sprite.play("grow_2")
+		elif current_state == 4:
+			animated_sprite.play("grow_3")
+			# Stop
+			area_handler.show_loop_break(1)
+			GlobalVariables.is_looping = false
+			GlobalVariables.player_stopped = true
+
+			# FOCUS ON TREE
+			ui_handler.hide_game_ui_elements()
+			player.get_node("Camera2D").emit_signal("pan_to_pos", pos_to_focus.global_position)
+			player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
+			player.get_node("Camera2D").emit_signal("reveal_bars")
+
+			# Play SFX using SoundManager for finish_level_sfx nodes
+			if sound_manager and sound_manager.has_method("play_finish_level_sfx"):
+				sound_manager.play_finish_level_sfx()
+
+			await get_tree().create_timer(2.0).timeout
+			GlobalVariables.player_stopped = false
+			
+			# BACK TO ORIG FOCUS
+			ui_handler.show_game_ui_elements()
+			player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+			player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+			player.get_node("Camera2D").emit_signal("hide_bars")
+	else:
+		if current_state == 2:
+			animated_sprite.play_backwards("grow_1")
+		elif current_state == 3:
+			animated_sprite.play_backwards("grow_2")
+		elif current_state == 4:
+			animated_sprite.play_backwards("grow_3")

@@ -1,5 +1,8 @@
 extends object_class
 
+@warning_ignore("unused_signal")
+signal add_cur_state(direction)
+
 # If incubator is not complete, trex is not processed
 var is_processed : bool = false
 var previous_state = current_state
@@ -64,3 +67,20 @@ func _on_body_entered(body):
 	if sound_manager.has_method("play_finish_level_sfx"):
 		sound_manager.play_finish_level_sfx()
 	anim_player.play("tail_whipped")
+
+
+func _on_add_cur_state(direction: Variant) -> void:
+	if direction == GlobalVariables.Directions.CLOCKWISE:
+		if current_state == 2:
+			sprite.play("egg_to_baby")
+		elif current_state == 3:
+			sprite.play("baby_to_teen")
+		elif current_state == 4:
+			sprite.play("teen_to_adult")
+	else:
+		if current_state == 1:
+			sprite.play("egg_to_baby")
+		elif current_state == 2:
+			sprite.play("baby_to_teen")
+		elif current_state == 3:
+			sprite.play("teen_to_adult")

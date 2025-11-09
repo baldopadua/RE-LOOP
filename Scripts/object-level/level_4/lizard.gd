@@ -1,30 +1,10 @@
 extends object_class
 
-var is_played: bool = false
+@warning_ignore("unused_signal")
+signal add_cur_state(direction)
+
 @onready var sprite = $AnimatedSprite2D
 @onready var sound_manager = get_parent().get_node("SoundManager")
-
-func _process(_delta: float) -> void:
-	if current_state == 2 and not is_played:
-		print("Yes")
-		is_played = true
-		sprite.play("Present")
-		if sound_manager and sound_manager.sfx.has("lizard"):
-			sound_manager.play_sfx("lizard")
-			get_tree().create_timer(0.59).timeout.connect(func():
-				if sound_manager.sfx["lizard"].playing:
-					sound_manager.sfx["lizard"].stop()
-			)
-		await sprite.animation_finished
-		is_pickupable = true
-	elif current_state == 1 and is_played:
-		is_played = false
-		sprite.play("Past")
-		is_pickupable = false
-	elif current_state == 3 and is_played:
-		is_played = false
-		sprite.play("Future")
-		is_pickupable = false
 		
 func interact(object_interacted: object_class):
 	if object_interacted.object_name == "incubator" and current_state == 2:
@@ -37,3 +17,27 @@ func interact(object_interacted: object_class):
 			visible = false
 			return true
 	return false
+
+
+func _on_add_cur_state(direction: Variant) -> void:
+	if direction == GlobalVariables.Directions.CLOCKWISE:
+		if current_state == 2:
+			sprite.play("Present")
+			if sound_manager and sound_manager.sfx.has("lizard"):
+				sound_manager.play_sfx("lizard")
+				get_tree().create_timer(0.59).timeout.connect(func():
+					if sound_manager.sfx["lizard"].playing:
+						sound_manager.sfx["lizard"].stop()
+				)
+			is_pickupable = true
+		elif current_state == 3:
+			sprite.play("Future")
+			is_pickupable = false
+	else:
+		if current_state == 1:
+			sprite.play_backwards("Present")
+			is_pickupable = false
+		elif current_state == 2:
+			sprite.play_backwards("Future")
+			is_pickupable = true
+			
