@@ -126,6 +126,8 @@ func _on_body_entered(body) -> void:
 		sound_manager.play_player_sfx("Climb")
 		anim_handler.play("ClimbingAnimation_2")
 
+		
+
 func _tween_climb_finished():
 	tween_climb.kill()
 
@@ -140,6 +142,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		# Play jump animation in AnimationPlayer
 		anim_handler.play("JumpAnimation_2")
 	elif anim_name == "JumpAnimation_2":
+
+		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+		player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+		player.get_node("Camera2D").emit_signal("hide_bars")
 		
 		# NOTIFY LEVEL 2 IS COMPLETED - this will handle cutscene and next level automatically
 		level_handler.complete_current_level(get_parent().get_parent())
