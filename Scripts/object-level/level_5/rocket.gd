@@ -2,6 +2,8 @@ extends object_class
 
 var rocket_started : bool = false
 var ready_for_entering: bool = false
+var player_body: Node
+@onready var player = $"../PlayerScene"
 @onready var timer = $"../Timer"
 @onready var temp_timer = $"../temp_timer"
 @onready var text = $AnimatedSprite2D/Label
@@ -11,6 +13,7 @@ var player_still_allowed : bool = true
 @onready var area_handler = get_parent().get_node("AreaHandler")
 @onready var sound_manager = get_parent().get_node("SoundManager")
 @onready var level_script = get_parent()  # Reference to level script
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 
 func _process(_delta: float) -> void:
@@ -20,7 +23,22 @@ func _process(_delta: float) -> void:
 func rocket_start():
 	ready_for_entering = true
 	timer.start(10.0)
+	
+	# Zoom back to normal
+	ui_handler.show_game_ui_elements()
+	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+	player.get_node("Camera2D").emit_signal("hide_bars")
+	
 	timer.timeout.connect(func():
+		# Zoom to rocket when it's about to launch
+		ui_handler.hide_game_ui_elements()
+		player.get_node("Camera2D").emit_signal("cam_zoom", 2.0)
+		player.get_node("Camera2D").emit_signal("reveal_bars")
+		player.get_node("Camera2D").emit_signal("pan_to_pos", global_position)
+		
+		await get_tree().create_timer(1.0).timeout
+
 		# Send the rocket out into space
 		rocket_started = false
 		animationplayer.play("rocket_animation")
@@ -28,12 +46,17 @@ func rocket_start():
 		player_still_allowed = false
 	)
 	rocket_started = true
-	await get_tree().create_timer(13.5).timeout
+	await get_tree().create_timer(14.0).timeout
 	# Play all finish_level_sfx SFX at once
 	if sound_manager.has_method("play_finish_level_sfx"):
 		sound_manager.play_finish_level_sfx()
 	z_index = 1
+	player.get_node("Camera2D").emit_signal("cam_zoom", 2.0)
+	player.get_node("Camera2D").emit_signal("reveal_bars")
+	player.get_node("Camera2D").emit_signal("pan_to_pos", global_position)
+	await get_tree().create_timer(0.5).timeout
 	area_handler.show_loop_break(5)
+	
 
 func _on_body_entered(body) -> void:
 	if ready_for_entering and player_still_allowed:

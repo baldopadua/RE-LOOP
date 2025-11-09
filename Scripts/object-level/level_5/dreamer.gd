@@ -4,6 +4,8 @@ extends object_class
 signal add_cur_state(direction)
 
 @onready var dreamer_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+@onready var player = $"../PlayerScene"
 
 # Keystone Objects
 @onready var soda = $"../soda"
@@ -85,6 +87,14 @@ func set_rocket():
 	rocket.visible = true
 	soda.visible = false
 	soda.is_pickupable = false
+
+	# Zoom to rocket when astronaut animation plays
+	ui_handler.hide_game_ui_elements()
+	player.get_node("Camera2D").emit_signal("cam_zoom", 2.0)
+	player.get_node("Camera2D").emit_signal("reveal_bars")
+	player.get_node("Camera2D").emit_signal("pan_to_pos", rocket.global_position)
+	
+	await get_tree().create_timer(1.0).timeout
 
 	# Stop player and play animation of kid going into rocket...
 	GlobalVariables.player_stopped = true

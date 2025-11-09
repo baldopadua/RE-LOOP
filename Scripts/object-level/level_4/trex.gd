@@ -13,7 +13,6 @@ var player_body: Node
 @onready var anim_player = $"../AnimationPlayer"
 @onready var area_handler = get_parent().get_node("AreaHandler")
 @onready var sound_manager = get_parent().get_node("SoundManager")
-
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 # POS TO FOCUS
@@ -40,8 +39,8 @@ func _on_body_entered(body):
 	player_body.get_node("Camera2D").emit_signal("pan_to_pos", player_body.get_node("AnimatedSprite2D").global_position)
 	player_body.get_node("Camera2D").emit_signal("reveal_bars")
 	player_body.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
-			
 	await get_tree().create_timer(1.2).timeout
+
 	stop_player()
 	sprite.play("tail_whip")
 	await sprite.animation_finished
@@ -81,7 +80,7 @@ func _on_add_cur_state(direction: Variant) -> void:
 			sprite.play("teen_to_adult")
 			if sound_manager and sound_manager.sfx.has("big_dinasaur1"):
 					sound_manager.play_sfx("big_dinasaur1")
-			 # FOCUS ON GEYSER
+			 # FOCUS ON TREX
 			ui_handler.hide_game_ui_elements()
 			player.get_node("Camera2D").emit_signal("pan_to_pos", pos_to_focus.global_position)
 			player.get_node("Camera2D").emit_signal("cam_zoom", 2.0)

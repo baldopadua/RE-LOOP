@@ -319,11 +319,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_dw1n4"]
+[sub_resource type="Gradient" id="Gradient_7hl30"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2dttu"]
-gradient = SubResource("Gradient_dw1n4")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dtqwf"]
+gradient = SubResource("Gradient_7hl30")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds2sm"]
 
@@ -561,7 +561,7 @@ metadata/_edit_lock_ = true
 rotation = 2.0944
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5xm4r")
-animation = &"skeletal_remains"
+animation = &"astronaut"
 metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -570,15 +570,15 @@ metadata/_edit_lock_ = true
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.00006, -50)
-scale = Vector2(20, 1.5)
-texture = SubResource("GradientTexture2D_2dttu")
+position = Vector2(772.5, -54)
+scale = Vector2(24.234373, 1.625)
+texture = SubResource("GradientTexture2D_dtqwf")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.0001, 771)
-scale = Vector2(20, 1.5)
-texture = SubResource("GradientTexture2D_2dttu")
+position = Vector2(762.74994, 769)
+scale = Vector2(23.789063, 1.5)
+texture = SubResource("GradientTexture2D_dtqwf")
 
 [node name="soda" parent="." instance=ExtResource("5_ryj1a")]
 visible = false
@@ -671,10 +671,14 @@ tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="pos_to_focus" type="Marker2D" parent="."]
+position = Vector2(-202, -122)
+
 [connection signal="area_shape_entered" from="science_project" to="science_project" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="science_project" to="science_project" method="_on_area_shape_exited"]
 [connection signal="add_cur_state" from="dreamer" to="dreamer" method="_on_add_cur_state"]
 [connection signal="area_shape_entered" from="dreamer" to="dreamer" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="dreamer" to="dreamer" method="_on_area_shape_exited"]
 [connection signal="animation_finished" from="dreamer/AnimatedSprite2D" to="dreamer" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="map_scale_tween_finished" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_map_scale_tween_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
