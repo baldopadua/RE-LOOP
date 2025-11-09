@@ -8,6 +8,7 @@ extends Node2D
 @onready var area_handler = $AreaHandler
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var sound_manager = $SoundManager
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 # LEVEL 5 OBJECTS
 @onready var science_project = $science_project
@@ -21,6 +22,9 @@ var player_has_entered: bool = false
 # TWEENS
 @onready var tween_rotate: Tween
 @onready var tween_scale: Tween
+
+# FOCUS MARKERS
+@onready var pos_to_focus = $pos_to_focus
 
 func _ready():
 	# SET LEVEL
@@ -64,3 +68,29 @@ func enter_level():
 	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
 	level_handler.complete_current_level(get_parent()) 
+
+
+func _on_level_handler_map_scale_tween_finished() -> void:
+	# EXECUTE INITIAL CAMERA CUTSCENES FIRST
+	# SUBTLE CAMERA PAN HINT
+	
+	GlobalVariables.player_stopped = true
+	
+	# REQUIRED TO LET THEM LOAD FIRST
+	await get_tree().create_timer(1.0).timeout
+	ui_handler.hide_game_ui_elements()
+	player.get_node("Camera2D").emit_signal("cam_zoom", 2.0)
+	player.get_node("Camera2D").emit_signal("reveal_bars")
+	
+	player.get_node("Camera2D").emit_signal("pan_to_pos", dreamer.global_position)
+	await get_tree().create_timer(1.5).timeout
+	
+	player.get_node("Camera2D").emit_signal("pan_to_pos", vending.global_position)
+	await get_tree().create_timer(1.5).timeout
+	
+	ui_handler.show_game_ui_elements()
+	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+	player.get_node("Camera2D").emit_signal("hide_bars")
+	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+	
+	GlobalVariables.player_stopped = false
