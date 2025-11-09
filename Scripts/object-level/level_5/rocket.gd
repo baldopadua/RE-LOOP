@@ -14,6 +14,7 @@ var player_still_allowed : bool = true
 @onready var sound_manager = get_parent().get_node("SoundManager")
 @onready var level_script = get_parent()  # Reference to level script
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+@onready var rocket_exit = $"../rocket_exit"
 
 
 func _process(_delta: float) -> void:
@@ -51,11 +52,11 @@ func rocket_start():
 	if sound_manager.has_method("play_finish_level_sfx"):
 		sound_manager.play_finish_level_sfx()
 	z_index = 1
-	player.get_node("Camera2D").emit_signal("cam_zoom", 2.0)
-	player.get_node("Camera2D").emit_signal("reveal_bars")
-	player.get_node("Camera2D").emit_signal("pan_to_pos", global_position)
-	await get_tree().create_timer(0.5).timeout
 	area_handler.show_loop_break(5)
+	player.get_node("Camera2D").emit_signal("cam_zoom", 1.8)
+	player.get_node("Camera2D").emit_signal("pan_to_pos", rocket_exit.global_position)
+	await get_tree().create_timer(1.5).timeout
+	player.get_node("Camera2D").emit_signal("hide_bars")
 	
 
 func _on_body_entered(body) -> void:

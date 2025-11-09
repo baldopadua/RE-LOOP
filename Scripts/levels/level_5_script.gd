@@ -10,7 +10,6 @@ extends Node2D
 @onready var sound_manager = $SoundManager
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
-
 # LEVEL 5 OBJECTS
 @onready var science_project = $science_project
 @onready var vending = $vending
@@ -19,16 +18,15 @@ extends Node2D
 
 # PLAYER STATE AND LABEL
 var player_has_entered: bool = false
-@onready var player_label: Label = $PlayerScene/Label  # Corrected path
-@onready var temp_timer: Timer = Timer.new()  # Create timer
-
+var level_completed: bool = false  # NEW: Prevent multiple completions
+@onready var player_label: Label = $PlayerScene/Label
+@onready var temp_timer: Timer = Timer.new()
+@onready var upper_bar = $CanvasLayer/upper_bar
+@onready var lower_bar = $CanvasLayer/lower_bar
 
 # TWEENS
 @onready var tween_rotate: Tween
 @onready var tween_scale: Tween
-
-# FOCUS MARKERS
-@onready var pos_to_focus = $pos_to_focus
 
 func _ready():
 	# SET LEVEL
@@ -49,7 +47,6 @@ func _ready():
 		player_label.visible = false
 
 func objects_initialize():
-	
 	objects.append(science_project)
 	objects.append(vending)
 	objects.append(rocket)
@@ -65,7 +62,7 @@ func play_rocket_countdown():
 
 func play_rocket_launch_sequence():
 	play_level5_sfx("rocket_ignition")
-	await get_tree().create_timer(2.0).timeout  # Wait for ignition
+	await get_tree().create_timer(2.0).timeout
 	play_level5_sfx("rocket_launch")
 
 func play_science_project_activate():
@@ -79,26 +76,6 @@ func enter_level():
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
 	level_handler.complete_current_level(get_parent()) 
 
-
-# If the rocket animation is finished go to level 6
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "rocket_animation":
-		if not player_has_entered:
-			# PLAYER DIDN'T ENTER - SHOW FAILURE STATE
-			ui_handler.hide_game_ui_elements()
-			player.get_node("Camera2D").emit_signal("pan_to_pos", player.get_node("AnimatedSprite2D").global_position)
-			player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
-			player.get_node("Camera2D").emit_signal("reveal_bars")
-	
-			await get_tree().create_timer(1.5).timeout
-
-			player_label.visible = true
-			temp_timer.start(3.0)
-			temp_timer.timeout.connect(func():
-				level_handler.restart_level(get_parent())
-			)
-		else:
-			level_handler.complete_current_level(get_parent())
 
 
 func _on_level_handler_map_scale_tween_finished() -> void:
@@ -125,3 +102,41 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 	
 	GlobalVariables.player_stopped = false
+
+# If the rocket animation is finished go to level 6
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	# GUARD: Prevent multiple calls
+	if level_completed:
+		return
+		
+	if anim_name == "rocket_animation":
+		# DISCONNECT immediately to prevent re-triggers
+		if $AnimationPlayer.is_connected("animation_finished", _on_animation_player_animation_finished):
+			$AnimationPlayer.disconnect("animation_finished", _on_animation_player_animation_finished)
+			
+		if not player_has_entered:
+			GlobalVariables.player_stopped = true
+			ui_handler.hide_game_ui_elements()
+			player.get_node("Camera2D").emit_signal("pan_to_pos", player.get_node("AnimatedSprite2D").global_position)
+			player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
+			player.get_node("Camera2D").emit_signal("reveal_bars")
+			await get_tree().create_timer(1.0).timeout
+			player_label.visible = true
+			temp_timer.start(3.0)
+			temp_timer.timeout.connect(func():
+				level_handler.restart_level(get_parent()), CONNECT_ONE_SHOT)
+		else:
+			# Mark as completed BEFORE calling level handler
+			level_completed = true
+			# Player successfully entered the rocket and animation finished
+			ui_handler.set_time_indicator_fixed()
+			player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+			player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+			
+			level_handler.complete_current_level(get_parent())
+			player.get_node("Camera2D").emit_signal("hide_bars")
+			# Permanently remove bars so they can't come back
+			if upper_bar:
+				upper_bar.queue_free()
+			if lower_bar:
+				lower_bar.queue_free()

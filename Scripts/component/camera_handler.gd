@@ -52,49 +52,50 @@ func _on_pan_to_orig_pos() -> void:
 
 
 func _on_hide_bars() -> void:
-		# UPPER BAR
-	var upper_tween = create_tween()
-	upper_tween.set_trans(Tween.TRANS_SINE)
-	upper_tween.set_ease(Tween.EASE_IN_OUT)
-	upper_tween.tween_property(upper_bar, "position:y", -50, 1.0)
-	upper_tween.finished.connect(func():
-		upper_tween.kill()
-	)
-
+	# UPPER BAR
+	if is_instance_valid(upper_bar):
+		var upper_tween = create_tween()
+		upper_tween.set_trans(Tween.TRANS_SINE)
+		upper_tween.set_ease(Tween.EASE_IN_OUT)
+		upper_tween.tween_property(upper_bar, "position:y", -50, 1.0)
+		upper_tween.finished.connect(func():
+			upper_tween.kill()
+		)
 	# LOWER BAR
-	var lower_tween = create_tween()
-	lower_tween.set_trans(Tween.TRANS_SINE)
-	lower_tween.set_ease(Tween.EASE_IN_OUT)
-	lower_tween.tween_property(lower_bar, "position:y", 771, 1.0)
-	lower_tween.finished.connect(func():
-		lower_tween.kill()	
-		# HIDES BAR
-		upper_bar.visible = false
-		lower_bar.visible = false
-	)
+	if is_instance_valid(lower_bar):
+		var lower_tween = create_tween()
+		lower_tween.set_trans(Tween.TRANS_SINE)
+		lower_tween.set_ease(Tween.EASE_IN_OUT)
+		lower_tween.tween_property(lower_bar, "position:y", 771, 1.0)
+		lower_tween.finished.connect(func():
+			lower_tween.kill()	
+			# HIDES BAR
+			if is_instance_valid(upper_bar):
+				upper_bar.visible = false
+			if is_instance_valid(lower_bar):
+				lower_bar.visible = false
+		)
 
 func _on_reveal_bars() -> void:
-		# REVEAL BARS
-	upper_bar.visible = true
-	lower_bar.visible = true
-	
-		# UPPER BAR
-	var upper_tween = create_tween()
-	upper_tween.set_trans(Tween.TRANS_SINE)
-	upper_tween.set_ease(Tween.EASE_IN_OUT)
-	upper_tween.tween_property(upper_bar, "position:y", 50, 1.0)
-	upper_tween.finished.connect(func():
-		upper_tween.kill()
-	)
-
-	# LOWER BAR
-	var lower_tween = create_tween()
-	lower_tween.set_trans(Tween.TRANS_SINE)
-	lower_tween.set_ease(Tween.EASE_IN_OUT)
-	lower_tween.tween_property(lower_bar, "position:y", 676, 1.0)
-	lower_tween.finished.connect(func():
-		lower_tween.kill()	
-	)
+	# REVEAL BARS
+	if is_instance_valid(upper_bar):
+		upper_bar.visible = true
+		var upper_tween = create_tween()
+		upper_tween.set_trans(Tween.TRANS_SINE)
+		upper_tween.set_ease(Tween.EASE_IN_OUT)
+		upper_tween.tween_property(upper_bar, "position:y", 50, 1.0)
+		upper_tween.finished.connect(func():
+			upper_tween.kill()
+		)
+	if is_instance_valid(lower_bar):
+		lower_bar.visible = true
+		var lower_tween = create_tween()
+		lower_tween.set_trans(Tween.TRANS_SINE)
+		lower_tween.set_ease(Tween.EASE_IN_OUT)
+		lower_tween.tween_property(lower_bar, "position:y", 676, 1.0)
+		lower_tween.finished.connect(func():
+			lower_tween.kill()	
+		)
 
 
 func _on_cam_zoom(value: Variant) -> void:

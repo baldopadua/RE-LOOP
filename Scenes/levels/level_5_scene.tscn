@@ -672,7 +672,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="pos_to_focus" type="Marker2D" parent="."]
-position = Vector2(-202, -122)
+position = Vector2(-148, -75)
+
+[node name="rocket_exit" type="Marker2D" parent="."]
+position = Vector2(-58, -5)
 
 [connection signal="area_shape_entered" from="science_project" to="science_project" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="science_project" to="science_project" method="_on_area_shape_exited"]
