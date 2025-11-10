@@ -20,7 +20,6 @@ var tween_rotate: Tween
 var tween_scale: Tween
 
 # FOCUS MARKERS
-@onready var initial_oldman_focus = $initial_oldman_focus
 @onready var pos_to_focus = $pos_to_focus
 
 func _ready():

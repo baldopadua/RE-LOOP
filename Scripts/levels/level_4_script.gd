@@ -105,3 +105,6 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 	
 	GlobalVariables.player_stopped = false
+
+func _on_dog_add_cur_state(direction: Variant) -> void:
+	pass # Replace with function body.
