@@ -8,7 +8,14 @@ signal item_put(obj)
 @onready var trex = get_parent().get_node("trex")
 @onready var level_script = get_parent()
 @onready var sound_manager = get_parent().get_node("SoundManager")
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 var material_count : int = 0
+var player_body: Node
+
+@onready var player = $"../PlayerScene"
+
+# POS TO FOCUS
+@onready var pos_to_focus = $"../pos_to_focus"
 
 func _on_item_put(obj) -> void:
 	material_count += 1
@@ -44,7 +51,13 @@ func _on_item_put(obj) -> void:
 		symbol_anim_sprite.play("correct")
 		await symbol_anim_sprite.animation_finished
 		symbol_anim_sprite.play("dino")	
-		
+
+		 # FOCUS ON TREX EGG
+		ui_handler.hide_game_ui_elements()
+		player.get_node("Camera2D").emit_signal("pan_to_pos", pos_to_focus.global_position)
+		player.get_node("Camera2D").emit_signal("cam_zoom", 2.0)
+		player.get_node("Camera2D").emit_signal("reveal_bars")
+
 		print("TREX VISIBLE")
 		await get_tree().create_timer(0.3).timeout
 		
@@ -60,6 +73,11 @@ func _on_item_put(obj) -> void:
 		symbol_anim_sprite.visible = false
 		level_script.play_trex_evolution()
 		await get_tree().create_timer(2.0).timeout
+		# BACK TO ORIG FOCUS
+		ui_handler.show_game_ui_elements()
+		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+		player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+		player.get_node("Camera2D").emit_signal("hide_bars")
 		GlobalVariables.player_stopped = false
 	else:
 		material_count -= 1

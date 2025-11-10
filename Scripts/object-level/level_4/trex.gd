@@ -49,7 +49,7 @@ func _on_body_entered(body):
 	if sound_manager.has_method("play_finish_level_sfx"):
 		sound_manager.play_finish_level_sfx()
 	anim_player.play("tail_whipped")
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.9).timeout
 	# HIDE PLAYER AFTER RIDING THE WATER
 	player_body.visible = false
 	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
@@ -80,20 +80,12 @@ func _on_add_cur_state(direction: Variant) -> void:
 			sprite.play("teen_to_adult")
 			if sound_manager and sound_manager.sfx.has("big_dinasaur1"):
 					sound_manager.play_sfx("big_dinasaur1")
-			 # FOCUS ON TREX
-			ui_handler.hide_game_ui_elements()
-			player.get_node("Camera2D").emit_signal("pan_to_pos", pos_to_focus.global_position)
-			player.get_node("Camera2D").emit_signal("cam_zoom", 2.0)
-			player.get_node("Camera2D").emit_signal("reveal_bars")
+			
 
 			await sprite.animation_finished
 			await get_tree().create_timer(0.3).timeout
 
-			# BACK TO ORIG FOCUS
-			ui_handler.show_game_ui_elements()
-			player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
-			player.get_node("Camera2D").emit_signal("cam_orig_zoom")
-			player.get_node("Camera2D").emit_signal("hide_bars")
+			
 	else:
 		sprite.speed_scale = -1.0  # Play backwards
 		if current_state == 1:
