@@ -32,6 +32,7 @@ func rocket_start():
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	
 	timer.timeout.connect(func():
+		
 		# Zoom to rocket when it's about to launch
 		ui_handler.hide_game_ui_elements()
 		player.get_node("Camera2D").emit_signal("cam_zoom", 2.0)
@@ -47,7 +48,9 @@ func rocket_start():
 		player_still_allowed = false
 	)
 	rocket_started = true
-	await get_tree().create_timer(14.0).timeout
+	await get_tree().create_timer(11.0).timeout
+	GlobalVariables.player_stopped = true
+	await get_tree().create_timer(3.0).timeout
 	# Play all finish_level_sfx SFX at once
 	if sound_manager.has_method("play_finish_level_sfx"):
 		sound_manager.play_finish_level_sfx()
@@ -55,7 +58,7 @@ func rocket_start():
 	area_handler.show_loop_break(5)
 	player.get_node("Camera2D").emit_signal("cam_zoom", 1.8)
 	player.get_node("Camera2D").emit_signal("pan_to_pos", rocket_exit.global_position)
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.9).timeout
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	
 
