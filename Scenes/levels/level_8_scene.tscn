@@ -1,18 +1,41 @@
-[gd_scene load_steps=23 format=3 uid="uid://cyoxpcag56i3y"]
+[gd_scene load_steps=58 format=3 uid="uid://cyoxpcag56i3y"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_bkfv3"]
 [ext_resource type="Script" uid="uid://02trpnykd33h" path="res://Scripts/levels/level_8_script.gd" id="1_mqs6j"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_kpw4m"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_qy5wi"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_tsmqx"]
+[ext_resource type="Script" uid="uid://dssseh4rhnfwq" path="res://Scripts/object-level/level_8/player.gd" id="4_yjicb"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_tsmqx"]
 [ext_resource type="Texture2D" uid="uid://ctnnsyuu5actf" path="res://Assets/lobby/level_9.png" id="7_3qsgw"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_mqs6j"]
 [ext_resource type="Texture2D" uid="uid://byu3u57wwx1t0" path="res://Assets/levels/level_8/placeholder_assets/turtle.png" id="9_3t05e"]
 [ext_resource type="Texture2D" uid="uid://b4toswyxai5af" path="res://Assets/levels/level_8/placeholder_assets/hare.png" id="10_85ltu"]
+[ext_resource type="Script" uid="uid://c2u0qmaqqfrai" path="res://Scripts/object-level/level_8/turtle.gd" id="10_tivvh"]
 [ext_resource type="Texture2D" uid="uid://vgsk8b4lijru" path="res://Assets/levels/level_8/placeholder_assets/carrot_patch.png" id="11_jvjwy"]
 [ext_resource type="Texture2D" uid="uid://ivsmrcju6ac0" path="res://Assets/levels/level_8/placeholder_assets/tree.png" id="12_bou3q"]
+[ext_resource type="Texture2D" uid="uid://bcss1oklynufq" path="res://Assets/levels/level_8/placeholder_assets/carrot_patch_no_carrot.png" id="12_kks11"]
+[ext_resource type="Script" uid="uid://djgywlacmyl8k" path="res://Scripts/object-level/level_8/hare.gd" id="12_plygp"]
 [ext_resource type="Texture2D" uid="uid://c3fev08m45qd5" path="res://Assets/levels/level_8/placeholder_assets/chair.png" id="13_85ltu"]
+[ext_resource type="Texture2D" uid="uid://b45e7kw7vtamg" path="res://Assets/levels/level_8/placeholder_assets/start-line.png" id="14_jvjwy"]
+[ext_resource type="Script" uid="uid://b1uulmepksmhb" path="res://Scripts/object-level/level_8/carrot_patch.gd" id="14_mpdlk"]
+[ext_resource type="Texture2D" uid="uid://d3ec6vivgxao1" path="res://Assets/levels/level_8/placeholder_assets/finish-line.png" id="15_bou3q"]
+[ext_resource type="Script" uid="uid://d22q7j5n4l6xi" path="res://Scripts/object-level/level_8/tree_lvl_8.gd" id="16_pcvy3"]
+[ext_resource type="Script" uid="uid://dixa88bvwn3b5" path="res://Scripts/object-level/level_8/finish_line.gd" id="19_w44jm"]
+[ext_resource type="Texture2D" uid="uid://cdlh3t84oi1pn" path="res://Assets/levels/level_8/placeholder_assets/turtle_happy.png" id="20_hc7nv"]
+[ext_resource type="Texture2D" uid="uid://dfgedmc12sran" path="res://Assets/levels/level_8/placeholder_assets/turtle_cry.png" id="21_j72x1"]
+[ext_resource type="Texture2D" uid="uid://dip3pqldum80p" path="res://Assets/levels/level_8/placeholder_assets/small-carrot.png" id="22_f7rh4"]
+[ext_resource type="Texture2D" uid="uid://cf4j2wa1nypi7" path="res://Assets/levels/level_8/placeholder_assets/hare_eating_carrot.png" id="23_203gj"]
+[ext_resource type="Texture2D" uid="uid://bn2mk0w6w8vhs" path="res://Assets/levels/level_8/placeholder_assets/turtle_walk.png" id="23_qcaca"]
+[ext_resource type="Script" uid="uid://bhqeaytly6m30" path="res://Scripts/object-level/level_8/gun.gd" id="24_65a2d"]
+[ext_resource type="Texture2D" uid="uid://me0xnho5s8bk" path="res://Assets/levels/level_8/placeholder_assets/hare_sleep.png" id="24_bgg6d"]
+[ext_resource type="Texture2D" uid="uid://daonfh2nl0je7" path="res://Assets/levels/level_8/placeholder_assets/hare_surprised.png" id="24_nbcoo"]
+[ext_resource type="Texture2D" uid="uid://dqp1jua4xcd0g" path="res://Assets/levels/level_8/placeholder_assets/hare_in_love.png" id="24_no5gr"]
+[ext_resource type="Texture2D" uid="uid://c8tssbwk5vjdf" path="res://Assets/levels/level_8/placeholder_assets/gun.png" id="25_d08m7"]
+[ext_resource type="Texture2D" uid="uid://p3e6cn7wbplf" path="res://Assets/levels/level_8/placeholder_assets/hare_walk.png" id="25_ofh5g"]
+[ext_resource type="Texture2D" uid="uid://ce8d5ds3tpexn" path="res://Assets/levels/level_8/placeholder_assets/angry_sad_hare.png" id="25_paq8g"]
+[ext_resource type="Texture2D" uid="uid://5j4gkcmnwsje" path="res://Assets/levels/level_8/placeholder_assets/gun_fire.png" id="26_203gj"]
+[ext_resource type="Texture2D" uid="uid://cckflrtea0o74" path="res://Assets/levels/level_8/placeholder_assets/evil_hare.png" id="29_kpjhv"]
 
 [sub_resource type="Gradient" id="Gradient_85ltu"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -24,38 +47,38 @@ gradient = SubResource("Gradient_85ltu")
 radius = 12.1183
 height = 40.0368
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqs6j"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85ltu"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3qsgw"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bou3q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_3t05e")
+"texture": ExtResource("14_jvjwy")
 }],
 "loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tivvh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_85ltu")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kks11"]
+size = Vector2(55.41072, 54.12268)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_plygp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("12_kks11")
+}],
+"loop": false,
+"name": &"no_carrot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("11_jvjwy")
 }],
 "loop": false,
-"name": &"default",
+"name": &"with_carrot",
 "speed": 5.0
 }]
 
@@ -70,6 +93,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqs6j"]
+size = Vector2(20, 68.21997)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d08m7"]
+size = Vector2(36, 40.359985)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_jvjwy"]
 animations = [{
 "frames": [{
@@ -78,6 +107,415 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcvy3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_bou3q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w44jm"]
+size = Vector2(44, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qsgw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_hc7nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hc7nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hc7nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hc7nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hc7nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hc7nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hc7nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hc7nv")
+}],
+"loop": true,
+"name": &"celebrates",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_j72x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j72x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j72x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j72x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j72x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j72x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j72x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j72x1")
+}],
+"loop": true,
+"name": &"cry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qcaca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qcaca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qcaca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qcaca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qcaca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qcaca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qcaca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qcaca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qcaca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3t05e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qcaca")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv02y"]
+size = Vector2(20, 82.82001)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tivvh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_85ltu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_203gj")
+}],
+"loop": false,
+"name": &"eating_carrot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_no5gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_no5gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_no5gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_no5gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_no5gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_no5gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_no5gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_no5gr")
+}],
+"loop": false,
+"name": &"find_wife",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_paq8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_paq8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_paq8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_paq8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_paq8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_paq8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_paq8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_paq8g")
+}],
+"loop": false,
+"name": &"loser_hare",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_bgg6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bgg6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bgg6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bgg6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bgg6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bgg6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bgg6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bgg6d")
+}],
+"loop": false,
+"name": &"resting_in_chair",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_nbcoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nbcoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nbcoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nbcoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nbcoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nbcoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nbcoo")
+}],
+"loop": false,
+"name": &"surprised",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_85ltu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ofh5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_85ltu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ofh5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_85ltu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ofh5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_85ltu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ofh5g")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_kpjhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_kpjhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_kpjhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_kpjhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_kpjhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_kpjhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_kpjhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_kpjhv")
+}],
+"loop": false,
+"name": &"winner_hare",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65a2d"]
+size = Vector2(49.589996, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yjicb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_f7rh4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7rh4"]
+size = Vector2(20, 39.35846)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_203gj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbcoo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_d08m7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_203gj")
+}],
+"loop": false,
+"name": &"fire",
 "speed": 5.0
 }]
 
@@ -90,6 +528,7 @@ metadata/_edit_lock_ = true
 [node name="PlayerScene" parent="." instance=ExtResource("2_kpw4m")]
 self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
+script = ExtResource("4_yjicb")
 
 [node name="Label" type="Label" parent="PlayerScene"]
 visible = false
@@ -198,59 +637,136 @@ tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Turtle" parent="." instance=ExtResource("5_tsmqx")]
-position = Vector2(-269.41, -15.07)
+[node name="Start Line" parent="." instance=ExtResource("5_tsmqx")]
+position = Vector2(-260, 0)
 rotation = 1.5707964
-object_name = "turtle"
+object_name = "start_line"
+object_type = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Turtle"]
-shape = SubResource("RectangleShape2D_mqs6j")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Line"]
+shape = SubResource("RectangleShape2D_85ltu")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turtle"]
-sprite_frames = SubResource("SpriteFrames_3qsgw")
-
-[node name="Hare" parent="." instance=ExtResource("5_tsmqx")]
-position = Vector2(-270.295, 11.985)
-rotation = 1.5707964
-object_name = "hare"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hare"]
-shape = SubResource("RectangleShape2D_mqs6j")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hare"]
-sprite_frames = SubResource("SpriteFrames_tivvh")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Start Line"]
+sprite_frames = SubResource("SpriteFrames_bou3q")
 
 [node name="CarrotPatch" parent="." instance=ExtResource("5_tsmqx")]
-position = Vector2(-117.36, 256.05)
+visible = false
+position = Vector2(-133.25, 236.735)
 rotation = 0.5235988
+script = ExtResource("14_mpdlk")
 object_name = "carrot_patch"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarrotPatch"]
-shape = SubResource("RectangleShape2D_mqs6j")
+shape = SubResource("RectangleShape2D_kks11")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CarrotPatch"]
 sprite_frames = SubResource("SpriteFrames_plygp")
+animation = &"no_carrot"
 
 [node name="Tree" parent="." instance=ExtResource("5_tsmqx")]
-position = Vector2(0, 265.89)
+position = Vector2(130.32, 230.2)
+rotation = -0.5235988
+script = ExtResource("16_pcvy3")
 object_name = "tree"
 object_type = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree"]
-shape = SubResource("RectangleShape2D_mqs6j")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tree"]
 sprite_frames = SubResource("SpriteFrames_mpdlk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree"]
+shape = SubResource("RectangleShape2D_mqs6j")
 
 [node name="Chair" parent="." instance=ExtResource("5_tsmqx")]
 position = Vector2(0, -290.18)
 rotation = 3.1415927
 object_name = "chair"
-object_type = 1
+is_pickupable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chair"]
-shape = SubResource("RectangleShape2D_mqs6j")
+shape = SubResource("RectangleShape2D_d08m7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Chair"]
 sprite_frames = SubResource("SpriteFrames_jvjwy")
+
+[node name="Finish Line" parent="." instance=ExtResource("5_tsmqx")]
+position = Vector2(260, 0)
+rotation = -1.5707964
+script = ExtResource("19_w44jm")
+object_name = "finish_line"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Finish Line"]
+sprite_frames = SubResource("SpriteFrames_pcvy3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish Line"]
+position = Vector2(-9.1410584e-08, 13)
+shape = SubResource("RectangleShape2D_w44jm")
+
+[node name="Turtle" parent="." instance=ExtResource("5_tsmqx")]
+rotation = -1.5707964
+script = ExtResource("10_tivvh")
+object_name = "turtle"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turtle"]
+rotation = 3.1415927
+sprite_frames = SubResource("SpriteFrames_3qsgw")
+offset = Vector2(0, 269.41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turtle"]
+position = Vector2(0, -269.41)
+shape = SubResource("RectangleShape2D_wv02y")
+
+[node name="Hare" parent="." instance=ExtResource("5_tsmqx")]
+rotation = -1.5707964
+script = ExtResource("12_plygp")
+object_name = "hare"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hare"]
+rotation = 3.1415927
+sprite_frames = SubResource("SpriteFrames_tivvh")
+offset = Vector2(0, 269.41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hare"]
+position = Vector2(0, -274.12)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_65a2d")
+
+[node name="Small Carrot" parent="." instance=ExtResource("5_tsmqx")]
+position = Vector2(143.325, -249.475)
+rotation = 3.6651914
+object_name = "small_carrot"
+is_pickupable = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Small Carrot"]
+sprite_frames = SubResource("SpriteFrames_yjicb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Small Carrot"]
+position = Vector2(0, -9.67923)
+shape = SubResource("RectangleShape2D_f7rh4")
+
+[node name="Gun" parent="." instance=ExtResource("5_tsmqx")]
+position = Vector2(-246.82, -141.8)
+rotation = 1.5707964
+script = ExtResource("24_65a2d")
+object_name = "gun"
+is_pickupable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun"]
+shape = SubResource("RectangleShape2D_203gj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun"]
+sprite_frames = SubResource("SpriteFrames_nbcoo")
+
+[node name="marker1" type="Marker2D" parent="."]
+position = Vector2(0, 152.16)
+
+[node name="player_gun_marker" type="Marker2D" parent="."]
+position = Vector2(-194.025, -132.41)
+
+[connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
+[connection signal="rotate_object" from="Turtle" to="Turtle" method="_on_rotate_object"]
+[connection signal="area_entered" from="Hare" to="Hare" method="_on_area_entered"]
+[connection signal="area_exited" from="Hare" to="Hare" method="_on_area_exited"]
+[connection signal="rotate_object" from="Hare" to="Hare" method="_on_rotate_object"]
+[connection signal="start_race" from="Gun" to="Gun" method="_on_start_race"]

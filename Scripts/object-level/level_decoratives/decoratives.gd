@@ -67,4 +67,3 @@ func _update_frame() -> void:
 	animated_sprite.pause()
 	
 	animated_sprite.queue_redraw()
-
