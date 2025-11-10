@@ -5,6 +5,7 @@ signal level_instantiated(level_name: String)
 signal level_completed(level_name: String)
 signal short_hand_state_changed(level_number: int, is_unlocked: bool)
 signal map_scale_tween_finished() 
+signal hint_level_changed(level_number: int) # NEW SIGNAL FOR HINT SYSTEM
 
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 var player = null # Will be set when level_scene is available
@@ -123,7 +124,7 @@ func set_current_level(level_number: int):
 	
 	emit_signal("level_instantiated", level_name)
 	update_short_hand_state_for_level(level_number)
-
+	emit_signal("hint_level_changed", level_number) # Notify hint system of current level
 
 # CALL THIS METHOD FROM LEVEL_LOBBY SCRIPT IN ITS _READY() FUNCTION TO IDENTIFY IT AS LOBBY
 # EXAMPLE: LEVEL_HANDLER.SET_CURRENT_LOBBY()
@@ -135,6 +136,7 @@ func set_current_lobby():
 	
 	level_status_node.resume_following_player()
 	update_short_hand_state_for_level(1)
+	emit_signal("hint_level_changed", 0) # Notify hint system of lobby
 
 # CALL THIS METHOD FROM THE LEVEL SCRIPTS WHEN THE LEVEL OBJECTIVE IS MET
 # EXAMPLE: LEVEL_HANDLER.COMPLETE_CURRENT_LEVEL(GET_PARENT().GET_PARENT())
@@ -156,8 +158,8 @@ func complete_current_level(levels_frame):
 		# STOP HINT TIMERS IF THEY EXIST
 		if ui_handler and ui_handler.has_node("ui_logic/overlay/hint"):
 			var hint = ui_handler.get_node("ui_logic/overlay/hint")
-			var hint_2_timer = hint.get_node_or_null("hint_dialog/hint_2/hint_2_timer")
-			var solution_timer = hint.get_node_or_null("hint_dialog/solution/solution_timer")
+			var hint_2_timer = hint.get_node_or_null("hint_box/hint_box_empty/hint_2/hint_2_timer")
+			var solution_timer = hint.get_node_or_null("hint_box/hint_box_empty/solution/solution_timer")
 			
 			if hint_2_timer:
 				hint_2_timer.stop()
@@ -414,7 +416,7 @@ func _on_level_instantiated(_level_name: String) -> void:
 func _check_and_start_hint_timers() -> void:
 	if not is_lobby and current_level_number > 0 and hint_component:
 		
-		var hint_2_timer = hint_component.get_node_or_null("hint_dialog/hint_2/hint_2_timer")
+		var hint_2_timer = hint_component.get_node_or_null("hint_box/hint_box_empty/hint_2/hint_2_timer")
 		if hint_2_timer and hint_2_timer.time_left <= 0:
 			
 			var level_key = "level_" + str(current_level_number)
@@ -434,8 +436,8 @@ func _check_and_start_hint_timers() -> void:
 					timer_label.modulate.a = 0
 	
 	elif is_lobby and hint_component:
-		var hint_2_timer = hint_component.get_node_or_null("hint_dialog/hint_2/hint_2_timer")
-		var solution_timer = hint_component.get_node_or_null("hint_dialog/solution/solution_timer")
+		var hint_2_timer = hint_component.get_node_or_null("hint_box/hint_box_empty/hint_2/hint_2_timer")
+		var solution_timer = hint_component.get_node_or_null("hint_box/hint_box_empty/solution/solution_timer")
 		
 		if hint_2_timer:
 			hint_2_timer.stop()

@@ -682,7 +682,6 @@ texture = ExtResource("21_taira")
 expand_mode = 1
 
 [node name="hint" type="Control" parent="ui_logic/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -829,15 +828,19 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
-wait_time = 10.0
+wait_time = 60.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2/hint_2_timer"]
 visible = false
 anchors_preset = -1
-anchor_left = 0.46640626
-anchor_top = 0.20694445
-anchor_right = 0.49765626
-anchor_bottom = 0.25416666
+anchor_left = 0.4640625
+anchor_top = 0.22222222
+anchor_right = 0.4953125
+anchor_bottom = 0.26944444
+offset_left = -9.0
+offset_top = -11.0
+offset_right = -9.0
+offset_bottom = -11.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -883,19 +886,19 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
-wait_time = 10.0
+wait_time = 60.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution/solution_timer"]
 visible = false
 anchors_preset = -1
-anchor_left = 0.6195313
-anchor_top = 0.20555556
-anchor_right = 0.6507813
-anchor_bottom = 0.25277779
-offset_left = 10.0
-offset_top = 2.0
-offset_right = 10.0
-offset_bottom = 2.0
+anchor_left = 0.64140624
+anchor_top = 0.21944444
+anchor_right = 0.67265624
+anchor_bottom = 0.26666668
+offset_left = -28.0
+offset_top = -10.0
+offset_right = -28.0
+offset_bottom = -10.000015
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -1007,89 +1010,6 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05406056
-anchor_top = 0.12308049
-anchor_right = 0.9412718
-anchor_bottom = 0.87063754
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
-theme_override_constants/line_spacing = 7
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("28_0vcng")
-theme_override_font_sizes/font_size = 59
-text = "\"A seed waits in dry ground, cares for it and it will grow.\""
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="hint_1_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_1_hint"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.049090188
-anchor_top = 0.13564448
-anchor_right = 0.9363014
-anchor_bottom = 0.8832015
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
-theme_override_constants/line_spacing = 7
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("28_0vcng")
-theme_override_font_sizes/font_size = 60
-text = "“Plant the seed in the soil and move clockwise”"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="level_2_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="hint_2_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_2_hint"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.032936484
-anchor_top = -0.021405319
-anchor_right = 0.971094
-anchor_bottom = 1.029316
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
-theme_override_constants/line_spacing = 20
-theme_override_constants/paragraph_spacing = 0
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("28_0vcng")
-theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="hint_2_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_2_hint"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05406056
 anchor_top = 0.15030245
 anchor_right = 0.9412718
 anchor_bottom = 0.89785945
@@ -1111,14 +1031,14 @@ vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="hint_2_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_2_hint"]
+[node name="hint_1_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_1_hint"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05406056
-anchor_top = 0.15030245
-anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_left = 0.05778834
+anchor_top = 0.22359236
+anchor_right = 0.9449996
+anchor_bottom = 0.9711494
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1128,11 +1048,19 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
-theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_2_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="level_3_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
@@ -1173,7 +1101,6 @@ sprite_frames = SubResource("SpriteFrames_tkpeg")
 flip_h = true
 
 [node name="close_button" type="TextureButton" parent="ui_logic/overlay"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1

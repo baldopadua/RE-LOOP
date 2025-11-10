@@ -4,20 +4,18 @@ var current_level: String = "level_1"
 var connected_level_handler: Node = null
 @onready var plooy_hint = $plooy_hint
 var hint_progress = {}  # DICTIONARY TO STORE PROGRESS PER LEVEL
-# Example: hint_progress = { "level_1": "medium", "level_2": "easy" }
 
-# REFERENCE NODES FOR EASIER ACCESS
-# REPLACED single hint_status_bar + marker nodes with three explicit status bars
-@onready var hint_1_status_bar = $hint_dialog/hint_1_status_bar
-@onready var hint_2_status_bar = $hint_dialog/hint_2_status_bar
-@onready var solution_status_bar = $hint_dialog/solution_status_bar
-@onready var hint_2_timer = $hint_dialog/hint_2/hint_2_timer
-@onready var hint_2_lock = $hint_dialog/hint_2/hint_2_lock
-@onready var hint_2_overlay = $hint_dialog/hint_2/hint_2_overlay
-@onready var solution_timer = $hint_dialog/solution/solution_timer
-@onready var solution_lock = $hint_dialog/solution/solution_lock
-@onready var solution_overlay = $hint_dialog/solution/solution_overlay
-
+# status bars are under hint_box/hint_dialog_empty
+@onready var hint_1_status_bar = $hint_box/hint_dialog_empty/hint_1_status_bar
+@onready var hint_2_status_bar = $hint_box/hint_dialog_empty/hint_2_status_bar
+@onready var solution_status_bar = $hint_box/hint_dialog_empty/solution_status_bar
+# timers/locks/overlays are under hint_box/hint_box_empty
+@onready var hint_2_timer = $hint_box/hint_box_empty/hint_2/hint_2_timer
+@onready var hint_2_lock = $hint_box/hint_box_empty/hint_2/hint_2_lock
+@onready var hint_2_overlay = $hint_box/hint_box_empty/hint_2/hint_2_overlay
+@onready var solution_timer = $hint_box/hint_box_empty/solution/solution_timer
+@onready var solution_lock = $hint_box/hint_box_empty/solution/solution_lock
+@onready var solution_overlay = $hint_box/hint_box_empty/solution/solution_overlay
 
 @onready var orig_hint_1_modulate: Color = hint_1_status_bar.modulate
 @onready var orig_hint_2_modulate: Color = hint_2_status_bar.modulate
@@ -29,7 +27,8 @@ func _ready() -> void:
 	if plooy_hint:
 		plooy_hint.play()
 	
-	ui_handler = get_parent().get_parent().get_parent()
+	# Use global path to UiHandler to avoid parent traversal issues
+	ui_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler")
 	call_deferred("_init_timer_labels")
 	connect_to_level_handler()
 	
@@ -165,27 +164,42 @@ func _on_solution_timer_timeout():
 
 func update_hint_text(difficulty: String):
 	for level in range(1, 13):  
-		var level_hint = get_node_or_null("level_" + str(level) + "_hint")
+		var level_hint = $hint_box/hint_dialog_empty.get_node_or_null("level_" + str(level) + "_hint")
 		if level_hint:
+			# Hide all hint labels first
 			for hint in level_hint.get_children():
 				hint.visible = false
-			
-			var hint_node = level_hint.get_node_or_null("hint_1_" + difficulty)
+
+			# Use correct prefix for each level
+			var prefix = "hint_1_"
+			if level == 2:
+				prefix = "hint_2_"
+			elif level == 3:
+				prefix = "hint_3_"
+			# ...add more elif for other levels if needed...
+
+			# Only show the label for the current difficulty
+			var hint_node = level_hint.get_node_or_null(prefix + difficulty)
 			if hint_node:
 				hint_node.visible = true
 
 func show_appropriate_container():
+	print("show_appropriate_container: current_level =", current_level)
+	# ...existing code...
 	if connected_level_handler and connected_level_handler.is_lobby:
 		return
 		
 	for level in range(1, 13): 
-		var container = get_node_or_null("level_" + str(level) + "_hint")
+		var container = $hint_box/hint_dialog_empty.get_node_or_null("level_" + str(level) + "_hint")
 		if container:
 			container.visible = false
 	
-	var current_container = get_node_or_null(current_level + "_hint")
+	var current_container = $hint_box/hint_dialog_empty.get_node_or_null(current_level + "_hint")
 	if current_container:
 		current_container.visible = true
+		# Ensure all child labels are hidden except the correct one
+		for hint in current_container.get_children():
+			hint.visible = false
 		
 		if not hint_progress.has(current_level):
 			hint_progress[current_level] = "hard"
@@ -258,13 +272,12 @@ func _check_for_level_handler():
 		if level_number > 0:
 			var new_level = "level_" + str(level_number)
 			if new_level != current_level:
-				# LEVEL CHANGED - RESET HINT PROGRESS AND UI
+				print("Hint: Changing current_level from", current_level, "to", new_level)
 				current_level = new_level
 				_reset_hint_state()
 				show_appropriate_container()
 				print("Hint: Level updated to ", current_level)
 
-# RESET HINT PROGRESS AND UI STATE WHEN CHANGING LEVELS
 func _reset_hint_state():
 	hint_progress[current_level] = "hard"
 	
@@ -306,15 +319,14 @@ func find_level_handler() -> Node:
 	var root = get_tree().current_scene
 	if not root:
 		root = get_tree().root
-	
 	return _search_for_level_handler(root)
 
 func _search_for_level_handler(node: Node) -> Node:
 	if node.get_script():
 		var script_path = node.get_script().get_path()
+		# print("Checking node:", node.name, "Script path:", script_path)
 		if "level_handler.gd" in script_path:
 			return node
-	
 	for child in node.get_children():
 		var result = _search_for_level_handler(child)
 		if result:
@@ -324,10 +336,28 @@ func _search_for_level_handler(node: Node) -> Node:
 
 func connect_to_level_handler():
 	var level_handler = find_level_handler()
+	print("connect_to_level_handler: found level_handler =", level_handler)
 	if level_handler:
 		connected_level_handler = level_handler
+		# Connect to the new signal for hint level changes
+		if not level_handler.is_connected("hint_level_changed", Callable(self, "_on_hint_level_changed")):
+			level_handler.connect("hint_level_changed", Callable(self, "_on_hint_level_changed"))
 	else:
 		print("Hint: No level handler found")
+
+func _on_hint_level_changed(level_number: int) -> void:
+	if level_number > 0:
+		var new_level = "level_" + str(level_number)
+		if new_level != current_level:
+			print("Hint: Signal - Changing current_level from", current_level, "to", new_level)
+			current_level = new_level
+			_reset_hint_state()
+			show_appropriate_container()
+	else:
+		if current_level != "lobby":
+			current_level = "lobby"
+			_reset_hint_state()
+			show_appropriate_container()
 
 func _process(_delta: float) -> void:
 	pass
@@ -345,12 +375,17 @@ func show_hint():
 		return
 		
 	visible = true
+
 	# ONLY START TIMERS IF WE'RE NOT IN LOBBY, BUT DON'T MAKE TIMER LABELS VISIBLE YET
 	if connected_level_handler and connected_level_handler.current_level_number > 0:
 		var current_diff = hint_progress.get(current_level, "hard")
+		print("show_hint: current_level =", current_level, "difficulty =", current_diff)
 		if current_diff == "hard" and hint_2_timer and hint_2_timer.time_left <= 0:
 			hint_2_timer.start()
 		elif current_diff == "medium" and solution_timer and solution_timer.time_left <= 0:
 			solution_timer.start()
+
+	visible = false
+
 func hide_hint():
 	visible = false

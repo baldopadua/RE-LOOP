@@ -207,11 +207,12 @@ func close_overlay_button(_node):
 	
 	# SPECIAL HANDLING FOR HINT OVERLAY
 	if visible_child and visible_child.name == "hint":
-		
 		var hint_bg = visible_child.get_node_or_null("hint_bg")
-		var hint_dialog = visible_child.get_node_or_null("hint_dialog")
-		var hint_2_timer = hint_dialog.get_node_or_null("hint_2/hint_2_timer") if hint_dialog else null
-		var solution_timer = hint_dialog.get_node_or_null("solution/solution_timer") if hint_dialog else null
+		var hint_box = visible_child.get_node_or_null("hint_box")
+		var hint_box_empty = hint_box.get_node_or_null("hint_box_empty") if hint_box else null
+		var hint_dialog = hint_box.get_node_or_null("hint_dialog_empty") if hint_box else null
+		var hint_2_timer = hint_box_empty.get_node_or_null("hint_2/hint_2_timer") if hint_box_empty else null
+		var solution_timer = hint_box_empty.get_node_or_null("solution/solution_timer") if hint_box_empty else null
 		
 		if hint_bg:
 			hint_bg.visible = false
@@ -271,7 +272,9 @@ func show_overlay_hint():
 	hint.visible = true
 	
 	var hint_bg = hint.get_node_or_null("hint_bg")
-	var hint_dialog = hint.get_node_or_null("hint_dialog")
+	var hint_box = hint.get_node_or_null("hint_box")
+	var hint_box_empty = hint_box.get_node_or_null("hint_box_empty") if hint_box else null
+	var hint_dialog = hint_box.get_node_or_null("hint_dialog_empty") if hint_box else null
 	
 	if hint_bg:
 		hint_bg.visible = true
@@ -286,13 +289,13 @@ func show_overlay_hint():
 			current_diff = hint.hint_progress[current_level]
 		
 		# SHOW APPROPRIATE TIMER LABELS BASED ON DIFFICULTY
-		if hint_dialog.has_node("hint_2/hint_2_timer/timer_label"):
-			var timer_label = hint_dialog.get_node("hint_2/hint_2_timer/timer_label")
+		if hint_box_empty and hint_box_empty.has_node("hint_2/hint_2_timer/timer_label"):
+			var timer_label = hint_box_empty.get_node("hint_2/hint_2_timer/timer_label")
 			timer_label.modulate.a = 1
 			timer_label.visible = current_diff == "hard"
 			
-		if hint_dialog.has_node("solution/solution_timer/timer_label"):
-			var solution_label = hint_dialog.get_node("solution/solution_timer/timer_label")
+		if hint_box_empty and hint_box_empty.has_node("solution/solution_timer/timer_label"):
+			var solution_label = hint_box_empty.get_node("solution/solution_timer/timer_label")
 			solution_label.modulate.a = 1
 			solution_label.visible = current_diff == "medium"
 			
