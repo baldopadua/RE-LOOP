@@ -1,6 +1,9 @@
 extends Area2D
 class_name object_class
 
+@warning_ignore("unused_signal")
+signal rotate_object(direction)
+
 @export var object_name: String = "Generic Object"
 @export var object_type: GlobalVariables.object_types
 @export var is_pickupable: bool = true

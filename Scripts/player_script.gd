@@ -1,6 +1,6 @@
 extends CharacterBody2D 
 
-signal player_finished_moving
+signal player_finished_moving()
 @warning_ignore("unused_signal")
 signal near_obj
 
