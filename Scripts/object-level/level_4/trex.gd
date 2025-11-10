@@ -80,8 +80,6 @@ func _on_add_cur_state(direction: Variant) -> void:
 			sprite.play("teen_to_adult")
 			if sound_manager and sound_manager.sfx.has("big_dinasaur1"):
 					sound_manager.play_sfx("big_dinasaur1")
-			
-
 			await sprite.animation_finished
 			await get_tree().create_timer(0.3).timeout
 

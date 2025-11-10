@@ -60,19 +60,11 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	# REQUIRED TO LET THEM LOAD FIRST
 	await get_tree().create_timer(1.0).timeout
 	ui_handler.hide_game_ui_elements()
-	player.get_node("Camera2D").emit_signal("cam_zoom", 3.0)
+	player.get_node("Camera2D").emit_signal("cam_zoom", 3.5)
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	
-	player.get_node("Camera2D").emit_signal("pan_to_pos", rock5.global_position)
-	await get_tree().create_timer(1.0).timeout
-	player.get_node("Camera2D").emit_signal("pan_to_pos", rock4.global_position)
-	await get_tree().create_timer(0.9).timeout
 	player.get_node("Camera2D").emit_signal("pan_to_pos", rock3.global_position)
-	await get_tree().create_timer(0.5).timeout
-	player.get_node("Camera2D").emit_signal("pan_to_pos", rock2.global_position)
-	await get_tree().create_timer(0.5).timeout
-	player.get_node("Camera2D").emit_signal("pan_to_pos", rock1.global_position)
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(2.0).timeout
 	
 	player.get_node("Camera2D").emit_signal("pan_to_pos", geyser.global_position)
 	await get_tree().create_timer(2.0).timeout
