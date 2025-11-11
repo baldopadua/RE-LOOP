@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_tsmqx"]
 [ext_resource type="Script" uid="uid://dssseh4rhnfwq" path="res://Scripts/object-level/level_8/player.gd" id="4_yjicb"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_tsmqx"]
-[ext_resource type="Texture2D" uid="uid://ctnnsyuu5actf" path="res://Assets/lobby/level_9.png" id="7_3qsgw"]
+[ext_resource type="Texture2D" uid="uid://ctnnsyuu5actf" path="res://Assets/level_select_lobby/level_9.png" id="7_3qsgw"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_mqs6j"]
 [ext_resource type="Texture2D" uid="uid://byu3u57wwx1t0" path="res://Assets/levels/level_8/placeholder_assets/turtle.png" id="9_3t05e"]
 [ext_resource type="Texture2D" uid="uid://b4toswyxai5af" path="res://Assets/levels/level_8/placeholder_assets/hare.png" id="10_85ltu"]

@@ -1,24 +1,39 @@
-[gd_scene load_steps=23 format=3 uid="uid://y4on1fq1mgnm"]
+[gd_scene load_steps=25 format=3 uid="uid://y4on1fq1mgnm"]
 
 [ext_resource type="Script" uid="uid://cej80lpoc3wmr" path="res://Scripts/levels/level_lobby.gd" id="1_6t7hq"]
-[ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_x2la1"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_6t7hq"]
+[ext_resource type="Texture2D" uid="uid://dv0n6q6h84trc" path="res://Assets/level_select_lobby/clock_base.png" id="2_11bkw"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_1uaeg"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_7i53v"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_1uaeg"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="6_rqxun"]
-[ext_resource type="Texture2D" uid="uid://byo827h22co3m" path="res://Assets/lobby/level_1.png" id="7_rqxun"]
-[ext_resource type="Texture2D" uid="uid://bdvw57njg3aad" path="res://Assets/lobby/level_2.png" id="9_rym1o"]
-[ext_resource type="Texture2D" uid="uid://c1qyepipkdh6o" path="res://Assets/lobby/level_3.png" id="11_p6aa3"]
-[ext_resource type="Texture2D" uid="uid://7a5oqv826cwv" path="res://Assets/lobby/level_4.png" id="13_r86rd"]
-[ext_resource type="Texture2D" uid="uid://c72nnu8ruare1" path="res://Assets/lobby/level_5.png" id="14_r86rd"]
-[ext_resource type="Texture2D" uid="uid://d1gv25rkrif8y" path="res://Assets/lobby/level_6.png" id="18_ocyro"]
-[ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/lobby/level_7.png" id="20_2qbue"]
-[ext_resource type="Texture2D" uid="uid://ba6w75c3euhid" path="res://Assets/lobby/level_8.png" id="22_me8nm"]
-[ext_resource type="Texture2D" uid="uid://ctnnsyuu5actf" path="res://Assets/lobby/level_9.png" id="24_m35q0"]
-[ext_resource type="Texture2D" uid="uid://drwtiaj6m5wpq" path="res://Assets/lobby/level_10.png" id="25_kgpvv"]
-[ext_resource type="Texture2D" uid="uid://cuydu40e70ckk" path="res://Assets/lobby/level_11.png" id="27_me8nm"]
-[ext_resource type="Texture2D" uid="uid://d1sh6ravdkyq3" path="res://Assets/lobby/level_12.png" id="28_6wcj2"]
+[ext_resource type="Texture2D" uid="uid://byo827h22co3m" path="res://Assets/level_select_lobby/level_1.png" id="7_rqxun"]
+[ext_resource type="Texture2D" uid="uid://bdvw57njg3aad" path="res://Assets/level_select_lobby/level_2.png" id="9_rym1o"]
+[ext_resource type="Texture2D" uid="uid://c1qyepipkdh6o" path="res://Assets/level_select_lobby/level_3.png" id="11_p6aa3"]
+[ext_resource type="Texture2D" uid="uid://7a5oqv826cwv" path="res://Assets/level_select_lobby/level_4.png" id="13_r86rd"]
+[ext_resource type="Texture2D" uid="uid://c72nnu8ruare1" path="res://Assets/level_select_lobby/level_5.png" id="14_r86rd"]
+[ext_resource type="Texture2D" uid="uid://d1gv25rkrif8y" path="res://Assets/level_select_lobby/level_6.png" id="18_ocyro"]
+[ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/level_select_lobby/level_7.png" id="20_2qbue"]
+[ext_resource type="Texture2D" uid="uid://ba6w75c3euhid" path="res://Assets/level_select_lobby/level_8.png" id="22_me8nm"]
+[ext_resource type="Texture2D" uid="uid://ctnnsyuu5actf" path="res://Assets/level_select_lobby/level_9.png" id="24_m35q0"]
+[ext_resource type="Texture2D" uid="uid://drwtiaj6m5wpq" path="res://Assets/level_select_lobby/level_10.png" id="25_kgpvv"]
+[ext_resource type="Texture2D" uid="uid://cuydu40e70ckk" path="res://Assets/level_select_lobby/level_11.png" id="27_me8nm"]
+[ext_resource type="Texture2D" uid="uid://d1sh6ravdkyq3" path="res://Assets/level_select_lobby/level_12.png" id="28_6wcj2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igr4h"]
+atlas = ExtResource("2_11bkw")
+region = Rect2(0, 0, 1774, 1804)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gdju7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igr4h")
+}],
+"loop": true,
+"name": &"base",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uaeg"]
 radius = 12.1183
@@ -33,13 +48,15 @@ gradient = SubResource("Gradient_11bkw")
 [node name="LevelLobby" type="Node2D"]
 script = ExtResource("1_6t7hq")
 
-[node name="AreaHandler" parent="." instance=ExtResource("1_x2la1")]
+[node name="clock_area" type="AnimatedSprite2D" parent="."]
+position = Vector2(7.6293945e-06, -2)
+scale = Vector2(0.38162345, 0.36474502)
+sprite_frames = SubResource("SpriteFrames_gdju7")
+animation = &"base"
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_6t7hq")]
 self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
-
-[node name="SoundManager" parent="." instance=ExtResource("3_1uaeg")]
 
 [node name="enter_1" parent="." instance=ExtResource("6_1uaeg")]
 rotation = 0.5235988
@@ -824,3 +841,5 @@ visible = false
 position = Vector2(0, 409.40997)
 scale = Vector2(20, 1.5)
 texture = SubResource("GradientTexture2D_igr4h")
+
+[node name="SoundManager" parent="." instance=ExtResource("3_1uaeg")]

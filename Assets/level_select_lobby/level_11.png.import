@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv0n6q6h84trc"
-path="res://.godot/imported/clock_base.png-4f9c49242eb32cc3003c6256128a16ac.ctex"
+uid="uid://cuydu40e70ckk"
+path="res://.godot/imported/level_11.png-8bdbd49018c24227a34272f5c20e8f79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/lobby/clock_base.png"
-dest_files=["res://.godot/imported/clock_base.png-4f9c49242eb32cc3003c6256128a16ac.ctex"]
+source_file="res://Assets/level_select_lobby/level_11.png"
+dest_files=["res://.godot/imported/level_11.png-8bdbd49018c24227a34272f5c20e8f79.ctex"]
 
 [params]
 

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_bd58e"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_u54cp"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_u54cp"]
-[ext_resource type="Texture2D" uid="uid://drwtiaj6m5wpq" path="res://Assets/lobby/level_10.png" id="7_nkbtn"]
+[ext_resource type="Texture2D" uid="uid://drwtiaj6m5wpq" path="res://Assets/level_select_lobby/level_10.png" id="7_nkbtn"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_pn0o0"]
 
 [sub_resource type="Gradient" id="Gradient_pn0o0"]

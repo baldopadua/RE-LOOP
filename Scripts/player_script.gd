@@ -88,7 +88,11 @@ func _ready() -> void:
 	if root.has_node("MainScene/CanvasLayerUi/UiHandler"):
 		ui_handler = root.get_node("MainScene/CanvasLayerUi/UiHandler")
 	# MAP HANDLER
-	area_handler = get_parent().get_node("AreaHandler") 
+	# Remove AreaHandler reference for lobby, avoid error
+	if get_parent().has_node("AreaHandler"):
+		area_handler = get_parent().get_node("AreaHandler")
+	else:
+		area_handler = null
 	
 	cameraShakeNoise = FastNoiseLite.new()
 

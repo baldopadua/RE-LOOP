@@ -8,7 +8,6 @@ extends Node2D
 @onready var player = $PlayerScene
 
 # HANDLERS
-@onready var area_handler = $AreaHandler
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var sound_manager = $SoundManager
 
@@ -38,6 +37,8 @@ var center_circle: Vector2i = Vector2i(0, 0)
 @onready var enter_11: object_class = $enter_11
 @onready var enter_12: object_class = $enter_12
 
+# Add clock_area variable for lobby
+var clock_area: int = 12
 
 func _ready():
 	await get_tree().process_frame
@@ -58,9 +59,8 @@ func _ready():
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 
-	# Make clock visible in lobby for level selection but hide the clock texture
-	#level_handler.level_status_node.visible = true
-	level_handler.level_status_node.get_node("level_clock").visible = false
+	# Show/hide clock_base only, remove level_clock reference
+	level_handler.level_status_node.get_node("clock_base").visible = true
 	
 	level_handler.visible = false
 
@@ -137,12 +137,12 @@ func enter_level(level_number: int):
 # SHOW CLOCK ANIMATION THEN PROCEED TO LEVEL
 func _show_clock_animation_then_level(level_number: int, levels_frame):
 	print("Showing clock animation for level ", level_number)
-	 #SHOW CLOCK ANIMATION CUTSCENE
-	level_handler.level_status_node.get_node("level_clock").visible = true
+	# Show clock_base only, remove level_clock reference
+	level_handler.level_status_node.get_node("clock_base").visible = true
 	level_handler.level_status_node.show_level_1_entry_cutscene()
 	await get_tree().create_timer(1.0).timeout
 	
-	 #ANIMATE HAND FROM 12 O'CLOCK TO TARGET LEVEL POSITION
+	# ANIMATE HAND FROM 12 O'CLOCK TO TARGET LEVEL POSITION
 	var target_clock_position = level_handler.level_status_node.get_clock_position_for_level(level_number)
 	var animation_tween = level_handler.level_status_node.animate_hand_to_next_level(target_clock_position)
 	if animation_tween:
@@ -197,8 +197,6 @@ func disable_entrance_completely(entrance_obj):
 		entrance_obj.get_node("interact_text").visible = false
 	if entrance_obj.has_method("set") and "is_enterable" in entrance_obj:
 		entrance_obj.is_enterable = false
-	if area_handler and area_handler.has_method("remove_object_from_detection"):
-		area_handler.remove_object_from_detection(entrance_obj)
 
 func _on_level_completed(level_name: String):
 	print("Level completed: ", level_name)
@@ -281,9 +279,6 @@ func disable_lobby_functionality():
 		player.set_process(false)
 		player.set_physics_process(false)
 		player.set_process_input(false)
-	if area_handler:
-		area_handler.set_process(false)
-		area_handler.set_physics_process(false)
 	for obj in objects:
 		if obj:
 			obj.set_process(false)
@@ -313,10 +308,6 @@ func enable_lobby_functionality():
 		player.set_process(true)
 		player.set_physics_process(true)
 		player.set_process_input(true)
-	
-	if area_handler:
-		area_handler.set_process(true)
-		area_handler.set_physics_process(true)
 	
 	for obj in objects:
 		if obj:

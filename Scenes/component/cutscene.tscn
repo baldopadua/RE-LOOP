@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://cg6w2psi5h5rg" path="res://Scripts/component/cutscene.gd" id="1_njedo"]
 [ext_resource type="Texture2D" uid="uid://bdllaonekw5q4" path="res://Assets/comics/level1.png" id="2_7ptmk"]
 [ext_resource type="Texture2D" uid="uid://cm4aufr87rgw3" path="res://Assets/comics/level2.png" id="3_hjp08"]
-[ext_resource type="Texture2D" uid="uid://drnejma6awybr" path="res://Assets/lobby/continue_unhover.png" id="3_l34s7"]
+[ext_resource type="Texture2D" uid="uid://drnejma6awybr" path="res://Assets/level_select_lobby/continue_unhover.png" id="3_l34s7"]
 [ext_resource type="Texture2D" uid="uid://tkt1pip3c0fa" path="res://Assets/comics/level3.png" id="4_gfvu8"]
-[ext_resource type="Texture2D" uid="uid://b41v0lt0bm0rg" path="res://Assets/lobby/continue_hover.png" id="4_r77sh"]
+[ext_resource type="Texture2D" uid="uid://b41v0lt0bm0rg" path="res://Assets/level_select_lobby/continue_hover.png" id="4_r77sh"]
 
 [node name="Cutscene" type="Control"]
 layout_mode = 3

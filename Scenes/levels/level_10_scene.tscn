@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_qcmyw"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_ttbi8"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_ttbi8"]
-[ext_resource type="Texture2D" uid="uid://cuydu40e70ckk" path="res://Assets/lobby/level_11.png" id="8_l8jia"]
+[ext_resource type="Texture2D" uid="uid://cuydu40e70ckk" path="res://Assets/level_select_lobby/level_11.png" id="8_l8jia"]
 [ext_resource type="Script" uid="uid://de7c74454l7fa" path="res://Scripts/object-level/level_10/laser.gd" id="9_hqhit"]
 [ext_resource type="Texture2D" uid="uid://b8uqlvui8sxln" path="res://Assets/levels/level_10/placeholder_assets/laser-no-light.png" id="9_l8jia"]
 [ext_resource type="Texture2D" uid="uid://lm5s61eelun8" path="res://Assets/levels/level_10/placeholder_assets/nic-t.png" id="10_6d810"]

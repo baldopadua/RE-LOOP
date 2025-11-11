@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d2gt2huwh184d" path="res://Assets/levels/level_2/Sword.png" id="10_jjhbo"]
 [ext_resource type="Texture2D" uid="uid://ybg1xg2tebka" path="res://Assets/levels/level_2/oldman_allCycles-Sheet.png" id="11_7w76p"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="12_rgji6"]
-[ext_resource type="Texture2D" uid="uid://c1qyepipkdh6o" path="res://Assets/lobby/level_3.png" id="13_e2qdm"]
+[ext_resource type="Texture2D" uid="uid://c1qyepipkdh6o" path="res://Assets/level_select_lobby/level_3.png" id="13_e2qdm"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="27_0pbmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjp23"]

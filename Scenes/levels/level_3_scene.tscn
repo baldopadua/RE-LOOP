@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://cp4ph6xk7oue6" path="res://Scripts/object-level/level_3/rock.gd" id="16_4srx3"]
 [ext_resource type="Texture2D" uid="uid://cia7fvqduwmcc" path="res://Assets/levels/level_3/rock.png" id="16_symai"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="17_oyt3y"]
-[ext_resource type="Texture2D" uid="uid://7a5oqv826cwv" path="res://Assets/lobby/level_4.png" id="18_45cdh"]
+[ext_resource type="Texture2D" uid="uid://7a5oqv826cwv" path="res://Assets/level_select_lobby/level_4.png" id="18_45cdh"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="22_3gnya"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y483m"]

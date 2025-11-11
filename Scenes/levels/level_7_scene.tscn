@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_ltkbt"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_qi7jl"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_qi7jl"]
-[ext_resource type="Texture2D" uid="uid://ba6w75c3euhid" path="res://Assets/lobby/level_8.png" id="8_ltkbt"]
+[ext_resource type="Texture2D" uid="uid://ba6w75c3euhid" path="res://Assets/level_select_lobby/level_8.png" id="8_ltkbt"]
 
 [sub_resource type="Gradient" id="Gradient_qi7jl"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1qyepipkdh6o"
-path="res://.godot/imported/level_3.png-99c40642257c61124f57b4f8519d1d78.ctex"
+uid="uid://vjw6qkta1b4b"
+path="res://.godot/imported/clock_short_arm.png-da3355b33404867d10969faea47f6986.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/lobby/level_3.png"
-dest_files=["res://.godot/imported/level_3.png-99c40642257c61124f57b4f8519d1d78.ctex"]
+source_file="res://Assets/level_select_lobby/clock_short_arm.png"
+dest_files=["res://.godot/imported/clock_short_arm.png-da3355b33404867d10969faea47f6986.ctex"]
 
 [params]
 

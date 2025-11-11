@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vjw6qkta1b4b"
-path="res://.godot/imported/clock_short_arm.png-2f7f3538c7b1905c768affda7e3a7cb7.ctex"
+uid="uid://drnejma6awybr"
+path="res://.godot/imported/continue_unhover.png-565e2939ce39f52ac36a4e83d96e37b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/lobby/clock_short_arm.png"
-dest_files=["res://.godot/imported/clock_short_arm.png-2f7f3538c7b1905c768affda7e3a7cb7.ctex"]
+source_file="res://Assets/level_select_lobby/continue_unhover.png"
+dest_files=["res://.godot/imported/continue_unhover.png-565e2939ce39f52ac36a4e83d96e37b0.ctex"]
 
 [params]
 
