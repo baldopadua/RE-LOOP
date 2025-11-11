@@ -29,6 +29,9 @@ static var last_entered_level: int = 0
 # NEW: track whether the last-instantiated level was a replay
 static var last_play_was_replay: bool = false
 
+# NEW: node being initialized (used to hide/show during map tweens)
+var initializing_map_node: Node = null
+
 # LEVEL INTRO GUIDE:
 #   1. Initialize Level Handler component in the level map and initialize as onready variable.
 #   2. Add a tween_rotate and a tween_scale as tween type variables in the level map
@@ -37,6 +40,11 @@ static var last_play_was_replay: bool = false
 func map_initialize(this, tween_rotate, tween_scale):
 	# TODO: MAP INITIALIZATION
 	
+	# Ensure the map/lobby node is hidden until its intro tweens finish
+	initializing_map_node = this
+	if initializing_map_node and "visible" in initializing_map_node:
+		initializing_map_node.visible = false
+
 	GlobalVariables.is_looping = true
 	GlobalVariables.player_stopped = false
 
@@ -91,6 +99,10 @@ func tween_rotate_finished(tween_created):
 func tween_scale_finished(tween_created):
 	print("Scale Killed")
 	tween_created.kill()
+	# Restore visibility of the node being initialized (if any)
+	if initializing_map_node and "visible" in initializing_map_node:
+		initializing_map_node.visible = true
+	initializing_map_node = null
 	
 func tween_next_rotate_finished(tween_created):
 	print("Next Rotate Killed")
@@ -107,12 +119,33 @@ func change_level(scene_path: String, levels_frame):
 		return_to_lobby(levels_frame)
 		return
 	
-	for child in levels_frame.get_children():
-		child.queue_free()
-
-	# LOAD AND ADD NEW LEVEL
+	# Collect current children and hide them (keep container visible so UI doesn't flash)
+	var old_children: Array = []
+	if levels_frame:
+		for child in levels_frame.get_children():
+			old_children.append(child)
+			if "visible" in child:
+				child.visible = false
+	
+	# LOAD AND ADD NEW LEVEL (start hidden)
 	var new_level = load(scene_path).instantiate()
-	levels_frame.add_child(new_level)
+	if new_level:
+		if "visible" in new_level:
+			new_level.visible = false
+		levels_frame.add_child(new_level)
+	
+	# Allow one frame + small delay so the new scene can run _ready() and initialize resources
+	await get_tree().process_frame
+	await get_tree().create_timer(0.05).timeout
+	
+	# Show the new level now that it's initialized
+	if new_level and "visible" in new_level:
+		new_level.visible = true
+	
+	# Free the old children after the new level is visible (prevents flash)
+	for child in old_children:
+		if child and child.is_inside_tree():
+			child.queue_free()
 
 # CALL THIS METHOD FROM LEVEL SCRIPTS IN THE THEIR _READY() FUNCTION TO IDENTIFY THE LEVEL
 # EXAMPLE: LEVEL_HANDLER.SET_CURRENT_LEVEL(1)
