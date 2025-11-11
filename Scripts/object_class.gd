@@ -97,6 +97,7 @@ func setup_text_labels():
 		hover_text_label.visible = false
 		hover_text_label.text = ""
 	
+
 	if has_node("interact_text"):
 		interact_text_label = get_node("interact_text")
 		interact_text_label.visible = false

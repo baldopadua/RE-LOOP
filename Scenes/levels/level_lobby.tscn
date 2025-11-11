@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://y4on1fq1mgnm"]
+[gd_scene load_steps=26 format=3 uid="uid://y4on1fq1mgnm"]
 
 [ext_resource type="Script" uid="uid://cej80lpoc3wmr" path="res://Scripts/levels/level_lobby.gd" id="1_6t7hq"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_6t7hq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_7i53v"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_1uaeg"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="6_rqxun"]
+[ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="7_igr4h"]
 [ext_resource type="Texture2D" uid="uid://byo827h22co3m" path="res://Assets/level_select_lobby/level_1.png" id="7_rqxun"]
 [ext_resource type="Texture2D" uid="uid://bdvw57njg3aad" path="res://Assets/level_select_lobby/level_2.png" id="9_rym1o"]
 [ext_resource type="Texture2D" uid="uid://c1qyepipkdh6o" path="res://Assets/level_select_lobby/level_3.png" id="11_p6aa3"]
@@ -77,7 +78,6 @@ texture = ExtResource("7_rqxun")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_1"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -91,7 +91,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -141,7 +146,6 @@ texture = ExtResource("9_rym1o")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_2"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -155,7 +159,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -205,7 +214,6 @@ texture = ExtResource("11_p6aa3")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_3"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -219,7 +227,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -269,7 +282,6 @@ texture = ExtResource("13_r86rd")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_4"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -283,7 +295,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -333,7 +350,6 @@ texture = ExtResource("14_r86rd")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_5"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -347,7 +363,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -397,7 +418,6 @@ texture = ExtResource("18_ocyro")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_6"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -411,7 +431,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -461,7 +486,6 @@ texture = ExtResource("20_2qbue")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_7"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -475,7 +499,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -525,7 +554,6 @@ texture = ExtResource("22_me8nm")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_8"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -539,7 +567,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -589,7 +622,6 @@ texture = ExtResource("24_m35q0")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_9"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -603,7 +635,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -653,7 +690,6 @@ texture = ExtResource("25_kgpvv")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_10"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -667,7 +703,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -717,7 +758,6 @@ texture = ExtResource("27_me8nm")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_11"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -731,7 +771,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
@@ -781,7 +826,6 @@ texture = ExtResource("28_6wcj2")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_12"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -795,7 +839,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("7_igr4h")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
