@@ -22,6 +22,12 @@ const TOTAL_LEVEL_COUNT: int = 12
 
 # References for hint system
 var hint_component = null
+# NEW: store the lobby clock position just before entering a level (used for replay return animation)
+var pre_entry_clock_pos: int = 12
+# NEW: persist the exact last entrance index used to enter a level (survives scene change)
+static var last_entered_level: int = 0
+# NEW: track whether the last-instantiated level was a replay
+static var last_play_was_replay: bool = false
 
 # LEVEL INTRO GUIDE:
 #   1. Initialize Level Handler component in the level map and initialize as onready variable.
@@ -116,6 +122,8 @@ func set_current_level(level_number: int):
 	
 	# Check if this level was already completed before
 	is_replaying_completed_level = completed_levels.has(level_number)
+	# Track globally whether this instantiation is a replay
+	last_play_was_replay = is_replaying_completed_level
 	
 	var level_name = "level_" + str(level_number)
 	print("Level Handler: Current level set to ", level_name)
@@ -207,20 +215,45 @@ func complete_current_level(levels_frame):
 		kill_current_level(current_level)
 		await get_tree().create_timer(1.2).timeout  # Increased wait time to ensure tween completion
 
-		# CHECK IF THIS IS A REPLAY OF AN ALREADY COMPLETED LEVEL
+		# MARK NEXT LEVEL NUMBER (wrap)
+		var next_level_number = current_level_number + 1
+		if next_level_number > TOTAL_LEVEL_COUNT:
+			next_level_number = 1
+
+		# If this is a replay of an already completed level, return immediately to lobby
 		if is_replaying_completed_level:
-			print("Level Handler: Skipping cutscene for replayed level, going directly to lobby")
-			return_to_lobby(levels_frame)
-		else:
-			# SHOW STORY CUTSCENE FIRST, THEN CLOCK ANIMATION, THEN NEXT LEVEL
-			# CALCULATE NEXT LEVEL NUMBER FOR CUTSCENE
-			var next_level_number = current_level_number + 1
-			if next_level_number > TOTAL_LEVEL_COUNT:
-				next_level_number = 1 # Loop back to level 1
+			print("Level Handler: Replay completed level - returning to lobby")
+			await return_to_lobby(levels_frame)
 			
-			# SHOW STORY CUTSCENE FIRST
-			if ui_handler:
-				ui_handler.show_level_cutscene(next_level_number, func(): _show_clock_then_load_level(next_level_number, levels_frame))
+			# Wait briefly so the lobby scene has time to run its _ready and initialize nodes
+			await get_tree().create_timer(0.12).timeout
+			
+			# After lobby was instantiated, play a replay-return animation from the replayed level
+			var lobby_scene = levels_frame.get_child(0)
+			if lobby_scene and lobby_scene.has_method("start_replay_return_animation"):
+				# Use persisted last_entered_level if available, otherwise fallback to the current level
+				var target_pos = last_entered_level if last_entered_level > 0 else current_level_number
+				lobby_scene.start_replay_return_animation(current_level_number, target_pos)
+			return
+		else:
+			# For first-time completion, return to lobby first then let lobby drive cutscene -> clock -> next level
+			await return_to_lobby(levels_frame)
+
+			# After lobby was instantiated, request the lobby scene to start its cutscene + clock animation then enter the next level
+			var lobby_scene = levels_frame.get_child(0)
+			if lobby_scene and lobby_scene.has_method("start_cutscene_then_enter_next_level"):
+				lobby_scene.start_cutscene_then_enter_next_level(next_level_number)
+			else:
+				# Fallback: run the cutscene and directly continue to next level from here
+				if ui_handler:
+					ui_handler.show_level_cutscene(next_level_number, func(): _continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame))
+				else:
+					_continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame)
+# NEW HELPER: show the clock animation/cutscene then return to lobby
+func _show_clock_then_return_lobby(_cutscene_level_number: int, levels_frame):
+	# Play the same transition cutscene used elsewhere, wait for it, then return to lobby
+	await show_level_transition_cutscene(_cutscene_level_number)
+	return_to_lobby(levels_frame)
 
 # NEW FUNCTION TO SHOW CLOCK ANIMATION THEN LOAD NEXT LEVEL
 func _show_clock_then_load_level(next_level_number: int, levels_frame):

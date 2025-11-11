@@ -103,6 +103,7 @@ scroll_active = false
 tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="interact_text" type="RichTextLabel" parent="enter_1"]
 modulate = Color(1, 0, 0, 1)
@@ -126,6 +127,7 @@ scroll_active = false
 tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="enter_2" parent="." instance=ExtResource("6_1uaeg")]
 rotation = 1.0471976

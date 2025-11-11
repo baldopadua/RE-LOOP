@@ -108,6 +108,11 @@ func _process(_delta: float) -> void:
 
 # ADD THIS METHOD TO HANDLE LEVEL TRANSITIONS FROM LOBBY
 func enter_level(level_number: int):
+	# RECORD THE LOBBY HAND POSITION BEFORE LEAVING (for replay return)
+	if level_handler:
+		# persist the exact entrance index so replay return can position the player back here
+		level_handler.last_entered_level = level_number
+	
 	# DISABLE ALL LOBBY FUNCTIONALITY IMMEDIATELY
 	disable_lobby_functionality()
 	print("Entering level ", level_number)
@@ -139,10 +144,21 @@ func _show_clock_animation_then_level(level_number: int, levels_frame):
 	print("Showing clock animation for level ", level_number)
 	# Show clock_base only, remove level_clock reference
 	level_handler.level_status_node.get_node("clock_base").visible = true
-	level_handler.level_status_node.show_level_1_entry_cutscene()
+
+	# --- NEW: ensure hand starts from last completed level (or 12 if none)
+	var highest_completed_level = 0
+	for lvl in level_handler.completed_levels:
+		if lvl > highest_completed_level:
+			highest_completed_level = lvl
+	var start_hand_pos = highest_completed_level if highest_completed_level > 0 else 12
+	# Force the clock hands to the last completed position and preserve rotations for the cutscene
+	level_handler.level_status_node.set_hand_to_clock_position(start_hand_pos)
+
+	# Show entry cutscene WITHOUT forcing hands to 12 so animation starts from preserved/last-completed position
+	level_handler.level_status_node.show_level_entry_cutscene()
 	await get_tree().create_timer(1.0).timeout
 	
-	# ANIMATE HAND FROM 12 O'CLOCK TO TARGET LEVEL POSITION
+	# ANIMATE HAND FROM CURRENT (preserved) POSITION TO TARGET LEVEL POSITION
 	var target_clock_position = level_handler.level_status_node.get_clock_position_for_level(level_number)
 	var animation_tween = level_handler.level_status_node.animate_hand_to_next_level(target_clock_position)
 	if animation_tween:
@@ -174,8 +190,6 @@ func update_completed_levels_visual():
 		# Update the entrance if it exists
 		if entrance:
 			entrance.set_level_completion_visual(is_completed)
-			if is_completed:
-				disable_entrance_completely(entrance)
 
 # COMPLETELY DISABLE A COMPLETED ENTRANCE OBJECT
 func disable_entrance_completely(entrance_obj):
@@ -206,6 +220,18 @@ func _on_level_completed(level_name: String):
 func position_player_based_on_progress():
 	if not player:
 		return
+
+	# If we came back from a replayed play, place player at the exact entrance they used
+	if level_handler and level_handler.last_play_was_replay and level_handler.last_entered_level > 0:
+		var replay_pos = level_handler.last_entered_level
+		# Place player and sync clock hand
+		player.rotation = deg_to_rad(replay_pos * 30)
+		if level_handler and level_handler.level_status_node:
+			level_handler.level_status_node.set_hand_to_clock_position(replay_pos)
+		# clear replay trackers so normal logic resumes afterwards
+		level_handler.last_play_was_replay = false
+		level_handler.last_entered_level = 0
+		return
 		
 	# GET THE HIGHEST COMPLETED LEVEL TO DETERMINE PLAYER POSITION
 	var highest_completed_level = 0
@@ -217,15 +243,19 @@ func position_player_based_on_progress():
 	var target_rotation = 0.0
 	
 	if highest_completed_level == 0:
-		target_rotation = deg_to_rad(30.0)
-	elif highest_completed_level == 12:
-		# ALL LEVELS COMPLETED, GO BACK TO LEVEL 1 POSITION
-		target_rotation = deg_to_rad(360.0)
+		# No levels completed yet -> player at 12 o'clock target (360 deg -> 12)
+		target_rotation = deg_to_rad(360.0) # treat 12 o'clock as full circle
+		# Set clock hand start to 12
+		level_handler.level_status_node.set_hand_to_clock_position(12)
 	else:
-		# NEXT LEVEL IS CURRENT LEVEL + 1
-		# EACH LEVEL IS POSITIONED AT (LEVEL_NUMBER * 30) DEGREES
+		# If there is at least one completed level, start the hand at that completed level position
+		# NEXT LEVEL FOR PLAYER IS highest_completed_level + 1 (but player placement uses next level)
 		var next_level = highest_completed_level + 1
+		if next_level > 12:
+			next_level = 1
 		target_rotation = deg_to_rad(next_level * 30)
+		# Start clock hand at the latest completed level position
+		level_handler.level_status_node.set_hand_to_clock_position(highest_completed_level)
 	
 	# SET PLAYER ROTATION DIRECTLY
 	player.rotation = target_rotation
@@ -253,7 +283,7 @@ func position_player_based_on_progress():
 		#var current_degrees = rad_to_deg(player.rotation)
 		#var current_clock_pos = level_handler.level_status_node.get_clock_position_from_rotation(current_degrees)
 		#level_handler.level_status_node.base_clock_position = current_clock_pos
-		#level_handler.level_status_node.update_lock_state()
+	#level_handler.level_status_node.update_lock_state()
 
 #func sync_short_hand_to_player():
 	#if not lobby_active:
@@ -324,6 +354,63 @@ func enable_lobby_functionality():
 	
 	if sound_manager:
 		sound_manager.set_process(true)
+
+# ADD THIS METHOD TO BE CALLED AFTER RETURNING TO LOBBY
+func start_cutscene_then_enter_next_level(next_level_number: int):
+	# Disable lobby so player cannot interact while lobby plays cutscene/clock animation
+	disable_lobby_functionality()
+	
+	# Stop lobby ambience immediately
+	if sound_manager:
+		sound_manager.stop_ambience_sfx("forest_sfx")
+	
+	var levels_frame = get_parent()
+	
+	# Reuse existing UI cutscene -> clock animation -> load level flow
+	if ui_handler:
+		ui_handler.show_level_cutscene(next_level_number, func(): _show_clock_animation_then_level(next_level_number, levels_frame))
+	else:
+		_show_clock_animation_then_level(next_level_number, levels_frame)
+
+# NEW: Play animation when returning from a replayed level.
+# Animates clock hands from 'from_level' -> 'to_level', then re-enables lobby and places player at to_level.
+func start_replay_return_animation(from_level: int, to_level: int):
+	# disable interactions while playing
+	disable_lobby_functionality()
+	
+	# ensure clock base visible and set start hand position
+	if level_handler and level_handler.level_status_node:
+		# Force the hands to start at the replayed level (preserve for cutscene)
+		level_handler.level_status_node.set_hand_to_clock_position(from_level)
+		level_handler.level_status_node.show_level_entry_cutscene()
+	
+	# animate to the recorded lobby position
+	var animation_tween = level_handler.level_status_node.animate_hand_to_next_level(to_level)
+	if animation_tween:
+		await animation_tween.finished
+	
+	# small delay then hide cutscene
+	await get_tree().create_timer(0.3).timeout
+	level_handler.level_status_node.hide_cutscene()
+	
+	# Place player at the resulting clock position (fetch PlayerScene now to ensure it's ready)
+	var lobby_player = get_node_or_null("PlayerScene")
+	if lobby_player:
+		lobby_player.rotation = deg_to_rad(to_level * 30)
+	else:
+		# fallback: update onready player var if available
+		if player:
+			player.rotation = deg_to_rad(to_level * 30)
+	
+	# Clear replay tracker (safety)
+	if level_handler:
+		level_handler.last_play_was_replay = false
+		level_handler.last_entered_level = 0
+	
+	# re-enable lobby and UI
+	enable_lobby_functionality()
+	if sound_manager:
+		sound_manager.play_ambience_sfx("forest_sfx")
 
 # HELPER FUNCTION TO GET LEVEL NUMBER FROM ENTRANCE OBJECT NAME
 func get_level_number_from_entrance(entrance_obj) -> int:

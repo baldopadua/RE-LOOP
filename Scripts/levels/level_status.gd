@@ -50,6 +50,8 @@ func set_hand_to_clock_position(clock_position: int):
 	
 	preserved_hand_rotation = target_rotation
 	preserved_long_hand_rotation = target_rotation
+	# mark preserved rotations as valid so animate_hand_to_next_level can use them
+	preserved_rotations_valid = true
 	print("DEBUG: Both hands force set to clock position ", clock_position, " at ", rad_to_deg(target_rotation), " degrees")
 	print("DEBUG: Position preserved for cutscene: ", rad_to_deg(preserved_hand_rotation), " degrees")
 	
@@ -191,26 +193,41 @@ func animate_hand_to_next_level(next_clock_position: int) -> Tween:
 	var sequence_tween = create_tween()
 	sequence_tween.tween_callback(func(): await get_tree().create_timer(0.5).timeout)
 
-	# --- Hour hand (short hand): move forward to the exact target hour angle
-	# Compute the forward delta (always clockwise, minimal positive rotation to reach the target hour)
+	# --- Decide direction: if target clock index is numerically less than start -> rotate backward
+	var start_short_clock_pos = get_clock_position_from_rotation(rad_to_deg(current_short_rotation))
+	var direction = 1
+	if next_clock_position < start_short_clock_pos:
+		direction = -1
+
+	# --- Hour hand (short hand): compute signed minimal rotation respecting desired direction
 	var short_diff = target_short_rotation - current_short_rotation
-	# Normalize into [-PI, PI] first (keeps consistent)
+	# Normalize into [-PI, PI]
 	while short_diff > PI:
 		short_diff -= 2 * PI
 	while short_diff < -PI:
 		short_diff += 2 * PI
-	# If you want the hour hand to always move forward clockwise (never backwards),
-	# force negative diffs to be full clockwise rotation:
-	if short_diff < 0:
+
+	# Enforce chosen direction: if we chose backward but diff is positive, make it negative (wrap)
+	if direction == -1 and short_diff > 0:
+		short_diff -= 2 * PI
+	# If we chose forward but diff is negative, make it positive (wrap)
+	if direction == 1 and short_diff < 0:
 		short_diff += 2 * PI
+
 	var final_short_rotation = current_short_rotation + short_diff
 
-	# --- Long hand (minute hand): spin whole turns equal to hours advanced, then end at 12 (0 radians)
+	# --- Long hand (minute hand): spin whole turns equal to signed hours advanced in same direction
 	var current_long_clock_pos = get_clock_position_from_rotation(rad_to_deg(current_long_rotation))
-	var hours_to_rotate = calculate_hours_between_positions(current_long_clock_pos, next_clock_position)
-	# Make the minute hand spin `hours_to_rotate` full turns (clockwise)
-	var long_hand_additional_rotation = hours_to_rotate * (2 * PI)
+	var signed_hours = next_clock_position - current_long_clock_pos
+	# Normalize signed_hours to prefer chosen direction
+	if direction == 1:
+		if signed_hours <= 0:
+			signed_hours += 12
+	else:
+		if signed_hours >= 0:
+			signed_hours -= 12
 
+	var long_hand_additional_rotation = signed_hours * (2 * PI)
 	var final_long_rotation = current_long_rotation + long_hand_additional_rotation
 
 	# Normalize final long rotation to [0, 2PI)
@@ -310,38 +327,16 @@ func show_level_1_entry_cutscene():
 	
 	# Remove lock animation
 
-# ANIMATES HAND FROM 12 TO 1 O'CLOCK
-func animate_hand_from_12_to_1() -> Tween:
-	var current_rotation = get_rotation_for_clock(12)
-	var target_rotation = get_rotation_for_clock(1)
+# NEW: show entry cutscene without forcing hands to 12 (keeps current/preserved hand rotations)
+func show_level_entry_cutscene():
+	should_follow_player = false
 	
-	short_hand_rotation.rotation = current_rotation
-	long_hand_rotation.rotation = current_rotation
+	if ui_handler:
+		ui_handler.hide_game_ui_elements()
+		ui_handler.visible = false
 	
-	# Remove unlock animation
+	visible = true
 	
-	var sequence_tween = create_tween()
+	hide_gameplay_elements()
 	
-	sequence_tween.tween_callback(func(): await get_tree().create_timer(0.5).timeout)
-	
-	var rotation_diff = target_rotation - current_rotation
-	
-	var final_short_rotation = current_rotation + rotation_diff
-	
-	var long_hand_full_rotation = current_rotation + (2 * PI)
-	
-	sequence_tween.parallel().tween_property(short_hand_rotation, "rotation", final_short_rotation, 2.0)
-	sequence_tween.parallel().tween_property(long_hand_rotation, "rotation", long_hand_full_rotation, 2.0)
-	sequence_tween.set_trans(Tween.TRANS_QUART)
-	sequence_tween.set_ease(Tween.EASE_IN_OUT)
-	
-	sequence_tween.finished.connect(func(): 
-		base_clock_position = 1
-		short_hand_rotation.rotation = target_rotation
-		long_hand_rotation.rotation = get_rotation_for_clock(12)
-		preserved_hand_rotation = target_rotation
-		preserved_long_hand_rotation = get_rotation_for_clock(12)
-		# Remove update_lock_state()
-	)
-	
-	return sequence_tween
+	# keep current hand rotations (do not reset to 12)
