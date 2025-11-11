@@ -435,7 +435,6 @@ height = 40.0368
 script = ExtResource("1_0li43")
 
 [node name="AreaHandler" parent="." instance=ExtResource("2_aql1r")]
-metadata/_edit_lock_ = true
 
 [node name="PlayerScene" parent="." instance=ExtResource("3_tahrn")]
 self_modulate = Color(1, 1, 1, 0)
@@ -484,7 +483,6 @@ sprite_frames = SubResource("SpriteFrames_ds2sm")
 position = Vector2(0, -8)
 rotation = 0.523599
 shape = SubResource("RectangleShape2D_h26wg")
-metadata/_edit_lock_ = true
 
 [node name="science_project" parent="." instance=ExtResource("5_ryj1a")]
 position = Vector2(-250, -141)
@@ -496,13 +494,11 @@ object_type = 1
 rotation = 2.0944
 scale = Vector2(2, 2)
 texture = ExtResource("11_oyxes")
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="science_project"]
 position = Vector2(-6.30145, -3.63814)
 rotation = 2.0944
 shape = SubResource("RectangleShape2D_tahrn")
-metadata/_edit_lock_ = true
 
 [node name="rocket" parent="." instance=ExtResource("5_ryj1a")]
 visible = false
@@ -555,14 +551,12 @@ current_state = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dreamer"]
 rotation = 2.0944
 shape = SubResource("CapsuleShape2D_agu2x")
-metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="dreamer"]
 rotation = 2.0944
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5xm4r")
 animation = &"astronaut"
-metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -590,7 +584,6 @@ usable_targets = Array[String](["science_project"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="soda"]
 shape = SubResource("RectangleShape2D_ds2sm")
-metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="soda"]
 position = Vector2(-0.401932, -6.69614)

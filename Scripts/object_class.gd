@@ -150,6 +150,10 @@ func _on_body_exited(body) -> void:
 	handle_body_exited(body)
 	
 func handle_body_exited(body):
+	# GUARD: ignore null bodies (prevents "invalid access to property 'name' on null instance")
+	if body == null:
+		return
+
 	# IF NOT PLAYER SCENE OR BEING PICKED UP DISABLE BODY ENTER AND EXIT
 	if body != player_char:
 		return
@@ -158,6 +162,7 @@ func handle_body_exited(body):
 	if object_type == GlobalVariables.object_types.TOOL:
 		is_reachable = false
 		player_char = null
+		# restore direct assignment (original behavior)
 		body.available_object = null
 		#print("Out of Object Range")
 		
@@ -167,12 +172,14 @@ func handle_body_exited(body):
 			glow_light = null
 			
 		# REMOVE OUTLINE
-		shader_sprite.material = null
+		if shader_sprite:
+			shader_sprite.material = null
 		
 	# Interatable behavior if out of range
 	if object_type == GlobalVariables.object_types.NONTOOL:
 		is_reachable = false
 		player_char = null
+		# restore original behavior: remove if present
 		if body.interactable_objects.has(self):
 			body.interactable_objects.erase(self)
 		
@@ -188,6 +195,10 @@ func _on_body_entered(body) -> void:
 	handle_body_entered(body)
 
 func handle_body_entered(body):
+	# GUARD: ignore null bodies (prevents "invalid access to property 'name' on null instance")
+	if body == null:
+		return
+
 	# IF NOT PLAYER SCENE OR BEING PICKED UP DISABLE BODY ENTER AND EXIT
 	if body.name != "PlayerScene":
 		return
@@ -202,7 +213,8 @@ func handle_body_entered(body):
 	if is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.TOOL:
 		#print("Player can pick up %s" % object_name)
 		# ADD OBJECT OUTLINE
-		shader_sprite.material = mat
+		if shader_sprite:
+			shader_sprite.material = mat
 		
 		print(shader_sprite.material)
 		
@@ -230,10 +242,12 @@ func handle_body_entered(body):
 		
 		is_reachable = true
 		player_char = body
+		# restore original direct assignment
 		body.available_object = self
 		
-		# Emit signal that player is near an object to play animation
-		body.near_obj.emit()
+		# Emit signal that player is near an object to play animation (only if exists)
+		if body.has_signal("near_obj"):
+			body.near_obj.emit()
 		
 	# INTERACTING WHILE CARRYING PICKUPABLE THINGS
 	if not is_pickupable and body.is_holding_object and object_type == GlobalVariables.object_types.NONTOOL:
@@ -244,8 +258,9 @@ func handle_body_entered(body):
 		body.interactable_objects.append(self)
 	
 		# If this nontool is usable for the held object
-		if self.object_name in body.held_object.usable_targets:
-			body.near_obj.emit()
+		if body.held_object and self.object_name in body.held_object.usable_targets:
+			if body.has_signal("near_obj"):
+				body.near_obj.emit()
 
 	# INTERACTING WITH NON-PICKUPABLE OBJECTS WHEN NOT HOLDING ANYTHING (for lobby entrances)
 	if not is_pickupable and not body.is_holding_object and object_type == GlobalVariables.object_types.NONTOOL:
@@ -288,14 +303,14 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 		2: [1],
 		3: [1, 2],
 		4: [1, 2, 3],
-		5: [1, 2, 3, 4],
-		6: [1, 2, 3, 4, 5],
-		7: [1, 2, 3, 4, 5, 6],
-		8: [1, 2, 3, 4, 5, 6, 7],
-		9: [1, 2, 3, 4, 5, 6, 7, 8],
-		10: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-		11: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-		12: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+		5: [],
+		6: [],
+		7: [],
+		8: [],
+		9: [],
+		10: [],
+		11: [],
+		12: [],
 	}
 
 	if not requirements.has(level_number):

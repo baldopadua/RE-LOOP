@@ -9,21 +9,35 @@ func _ready():
 	print("SCIENCE PROJECT: ",get_rid())
 
 func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
+	# GUARD: ignore null area (prevents "invalid access to property 'name' on null instance")
+	if area == null:
+		return
+	var parent = get_parent()
+	if parent == null:
+		return
+
 	#	DREAMER/KID
-	if area.name == "dreamer" and get_parent().name != "object_position":
+	if area.name == "dreamer" and parent.name != "object_position":
 		area_entered_objects.append(area)
 		is_dreamer_here = true
 	#	SODA
-	elif area.name == "soda" and get_parent().name != "object_position":
+	elif area.name == "soda" and parent.name != "object_position":
 		area_entered_objects.append(area)
 		is_soda_here = true
 
 func _on_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
+	# GUARD: ignore null area (prevents "invalid access to property 'name' on null instance")
+	if area == null:
+		return
+	var parent = get_parent()
+	if parent == null:
+		return
+
 	#	DREAMER/KID
-	if area.name == "dreamer" and get_parent().name != "object_position":
+	if area.name == "dreamer" and parent.name != "object_position":
 		area_entered_objects.erase(area)
 		is_dreamer_here = false
 	#	SODA
-	elif area.name == "soda" and get_parent().name != "object_position":
+	elif area.name == "soda" and parent.name != "object_position":
 		area_entered_objects.erase(area)
-		is_soda_here = true
+		is_soda_here = false

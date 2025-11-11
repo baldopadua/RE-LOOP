@@ -117,15 +117,14 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		if not player_has_entered:
 			player_label.visible = true
 			GlobalVariables.player_stopped = true
+			# start timer and wait, then restart level (no malformed connect)
 			temp_timer.start(3.0)
 			ui_handler.hide_game_ui_elements()
 			player.get_node("Camera2D").emit_signal("pan_to_pos", player.get_node("AnimatedSprite2D").global_position)
 			player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 			player.get_node("Camera2D").emit_signal("reveal_bars")
-			temp_timer.timeout.connect(func():
-				
-			  
-				level_handler.restart_level(get_parent()), CONNECT_ONE_SHOT)
+			await temp_timer.timeout
+			level_handler.restart_level(get_parent())
 		else:
 			# Mark as completed BEFORE calling level handler
 			level_completed = true

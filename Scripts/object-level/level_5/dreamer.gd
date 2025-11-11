@@ -63,20 +63,34 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		is_pickupable = false
 
 func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
+	# GUARD: ignore null area or parent to avoid "invalid access to property 'name' on null instance"
+	if area == null:
+		return
+	var parent = get_parent()
+	if parent == null:
+		return
+
 	# VENDING MACHINE
-	if area.name == "vending" and get_parent().name != "object_position":
+	if area.name == "vending" and parent.name != "object_position":
 		is_in_vending = true
 	# SCIENCE PROJECT
-	elif area.name == "science_project" and get_parent().name != "object_position":
+	elif area.name == "science_project" and parent.name != "object_position":
 		is_in_science = true
 
 func _on_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
+	# GUARD: ignore null area or parent to avoid "invalid access to property 'name' on null instance"
+	if area == null:
+		return
+	var parent = get_parent()
+	if parent == null:
+		return
+
 	# VENDING MACHINE
-	if area.name == "vending" and get_parent().name == "object_position":
+	if area.name == "vending" and parent.name != "object_position":
 		is_in_vending = false
 	# SCIENCE PROJECT
-	elif area.name == "science_project" and get_parent().name == "object_position":
-		is_in_science = true
+	elif area.name == "science_project" and parent.name != "object_position":
+		is_in_science = false
 
 func interact(_obj):
 	#if obj.object_name == "vending" and obj in area_entered_objects:
