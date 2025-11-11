@@ -280,82 +280,53 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 	if not level_handler:
 		print("No level handler provided")
 		return false
-	
-	match level_number:
-		1:
-			# Level 1 is always accessible
-			return true
-		2:
-			# Level 2 requires Level 1 to be completed
-			var accessible = level_handler.completed_levels.has(1)
-			return accessible
-		3:
-			# Level 3 requires Level 1 AND Level 2 to be completed
-			var accessible = level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2)
-			return accessible
-		4:
-			# Level 4 requires Level 1, 2, AND 3 to be completed
-			# var accessible = level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2) and level_handler.completed_levels.has(3)
-			# return accessible
-			return true
-		5:
-			# Level 5 requires previous levels to be completed
-			# var accessible = level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2) and level_handler.completed_levels.has(3) and level_handler.completed_levels.has(4)
-			# return accessible
-			return true
-		6:
-			# Level 6 requires previous levels to be completed
-			# var accessible = level_handler.completed_levels.has(5)
-			# return accessible
-			return true
-		7:
-			# Level 7 requires previous levels to be completed
-			return true
-		8:
-			# Level 8 requires previous levels to be completed
-			return true
-		9:
-			# Level 9 requires previous levels to be completed
-			return true
-		10:
-			# Level 10 requires previous levels to be completed
-			return true
-		11:
-			# Level 11 requires previous levels to be completed
-			return true
-		12:
-			# Level 12 requires previous levels to be completed
-			return true
-		_:
-			print("Level ", level_number, " not implemented yet")
+
+	# Define required previous levels per level_number.
+	# An empty array means the level is always accessible.
+	var requirements := {
+		1: [],
+		2: [1],
+		3: [1, 2],
+		4: [1, 2, 3],
+		5: [1, 2, 3, 4],
+		6: [1, 2, 3, 4, 5],
+		7: [1, 2, 3, 4, 5, 6],
+		8: [1, 2, 3, 4, 5, 6, 7],
+		9: [1, 2, 3, 4, 5, 6, 7, 8],
+		10: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+		11: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+		12: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+	}
+
+	if not requirements.has(level_number):
+		print("Level ", level_number, " not implemented yet")
+		return false
+
+	for req_level in requirements[level_number]:
+		if not level_handler.completed_levels.has(req_level):
 			return false
 
+	return true
+
 func get_level_number_from_name() -> int:
-	var node_name = name # Use the node's name instead of object_name
-	if "enter_1" in node_name:
-		return 1
-	elif "enter_2" in node_name:
-		return 2
-	elif "enter_3" in node_name:
-		return 3
-	elif "enter_4" in node_name:
-		return 4
-	elif "enter_5" in node_name:
-		return 5
-	elif "enter_6" in node_name:
-		return 6
-	elif "enter_7" in node_name:
-		return 7
-	elif "enter_8" in node_name:
-		return 8
-	elif "enter_9" in node_name:
-		return 9
-	elif "enter_10" in node_name:
-		return 10
-	elif "enter_11" in node_name:
-		return 11
-	elif "enter_12" in node_name:
-		return 12
+	# convert StringName to String to allow indexing/substr operations
+	var node_name_str := str(name)
+	# If name starts with "enter_", parse the remainder as an integer (handles enter_10, enter_11, enter_12 correctly)
+	if node_name_str.begins_with("enter_"):
+		var num_str := node_name_str.substr(6, node_name_str.length() - 6) # substring after "enter_"
+		if num_str.is_valid_int():
+			return int(num_str)
+	# Fallback: extract trailing digits (robust for other naming)
+	var digits := ""
+	for i in range(node_name_str.length() - 1, -1, -1):
+		var c := node_name_str.substr(i, 1)
+		# use ASCII comparison to detect digits (avoid non-existent is_digit())
+		if c >= "0" and c <= "9":
+			digits = c + digits
+		else:
+			break
+	if digits != "":
+		return int(digits)
 	return 0
 
 func get_level_handler():
@@ -412,7 +383,7 @@ func create_glow_light_to_lobby(color: Color = Color.YELLOW):
 		glow_light = null
 		
 	glow_light = PointLight2D.new()
-	glow_light.position = Vector2(0, 0)
+	glow_light.position = Vector2.ZERO
 
 	# CREATE GRADIENT with proper color intensity
 	var gradient = Gradient.new()
@@ -420,21 +391,57 @@ func create_glow_light_to_lobby(color: Color = Color.YELLOW):
 	gradient.set_color(1, Color(color.r, color.g, color.b, 0.0))
 	gradient.offsets = [0.0, 1.0]
 
-	# CREATE TEXTURE FROM GRADIENT - SMALLER SIZE
+	# CREATE TEXTURE FROM GRADIENT (radial)
 	var gradient_texture = GradientTexture2D.new()
 	gradient_texture.gradient = gradient
 	gradient_texture.fill = GradientTexture2D.FILL_RADIAL
 	gradient_texture.fill_from = Vector2(0.5, 0.5)
-	gradient_texture.width = 64
-	gradient_texture.height = 64
-	# ASSIGN TO LIGHT with smaller scale and lower energy
+
+	# Determine square texture size from CollisionShape2D if available
+	var collision_node = get_node_or_null("CollisionShape2D")
+	var size_px = 64.0
+	if collision_node and collision_node.shape:
+		var s = collision_node.shape
+		var base_dim = 64.0
+		# For capsule: use diameter (2 * radius) so glow stays circular, not stretched along capsule height
+		if s is CapsuleShape2D:
+			var radius = s.radius
+			base_dim = radius * 2.0
+		# CircleShape2D: diameter
+		elif s.has_property("radius"):
+			var r = s.radius
+			base_dim = r * 2.0
+		# Rectangle-like: take the smaller side to create a circle that fits inside the rect (avoid elongated glow)
+		elif s.has_property("extents"):
+			var ext = s.extents
+			base_dim = min(ext.x * 2.0, ext.y * 2.0)
+		else:
+			base_dim = 64.0
+		# add padding so glow isn't clipped
+		var padding := 1.3
+		size_px = max(8.0, ceil(base_dim * padding))
+	else:
+		size_px = 64.0
+
+	# Ensure integer sizes and square texture for perfect circle
+	var tex_size = int(size_px)
+	gradient_texture.width = tex_size
+	gradient_texture.height = tex_size
+
+	# ASSIGN TO LIGHT
 	glow_light.texture = gradient_texture
 	glow_light.energy = 1.0
-	glow_light.texture_scale = 0.8
+	glow_light.texture_scale = 1.0
 	glow_light.color = color
 
-	add_child(glow_light)
-	
+	# Parent the glow to the CollisionShape2D if it exists so the glow sits at the collider
+	if collision_node:
+		collision_node.add_child(glow_light)
+		glow_light.position = Vector2.ZERO
+	else:
+		add_child(glow_light)
+		glow_light.position = Vector2.ZERO
+
 func set_flipped(flip: bool):
 	if has_node("item_sprite"):
 		$item_sprite.flip_h = flip

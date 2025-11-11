@@ -37,8 +37,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uaeg"]
-radius = 12.1183
-height = 40.0368
+radius = 33.212807
+height = 66.42561
 
 [sub_resource type="Gradient" id="Gradient_11bkw"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -66,14 +66,15 @@ object_name = "enter_1"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_1"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(22.250591, -323.46082)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_1"]
 texture_filter = 1
-rotation = 3.1415927
-scale = Vector2(0.54803, 0.75198)
+position = Vector2(5.8371716, -81.889725)
+rotation = 3.2106247
+scale = Vector2(0.54803, 0.6387339)
 texture = ExtResource("7_rqxun")
 offset = Vector2(0, 380)
 
@@ -136,14 +137,15 @@ object_name = "enter_2"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_2"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(17.4622, -328.24545)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_2"]
 texture_filter = 1
-rotation = 3.1415927
-scale = Vector2(0.54803, 0.75198)
+position = Vector2(7.68911, -83.31793)
+rotation = 3.1885588
+scale = Vector2(0.54803, 0.64389104)
 texture = ExtResource("9_rym1o")
 offset = Vector2(0, 380)
 
@@ -204,13 +206,14 @@ object_name = "enter_3"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_3"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(9.999986, -335)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_3"]
 texture_filter = 1
-rotation = 3.1415927
+position = Vector2(6.9999976, -49)
+rotation = 3.151688
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("11_p6aa3")
 offset = Vector2(0, 380)
@@ -272,13 +275,14 @@ object_name = "enter_4"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_4"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(8.394183, -315.46082)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_4"]
 texture_filter = 1
-rotation = 3.1415927
+position = Vector2(-3.2416725, -31.614737)
+rotation = 3.1827781
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("13_r86rd")
 offset = Vector2(0, 380)
@@ -340,13 +344,14 @@ object_name = "enter_5"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_5"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(7.3641453, -316.75507)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_5"]
 texture_filter = 1
-rotation = 3.1415927
+position = Vector2(-5.320504, -30.78461)
+rotation = 3.1842096
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("14_r86rd")
 offset = Vector2(0, 380)
@@ -408,12 +413,13 @@ object_name = "enter_6"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_6"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(-1.0000284, -324)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_6"]
 texture_filter = 1
+position = Vector2(-1.0000033, -37.999996)
 rotation = 3.1415927
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("18_ocyro")
@@ -476,13 +482,14 @@ object_name = "enter_7"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_7"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(-8.998106, -321.5852)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_7"]
 texture_filter = 1
-rotation = 3.1415927
+position = Vector2(-2.0096188, -33.480762)
+rotation = 3.121508
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("20_2qbue")
 offset = Vector2(0, 380)
@@ -544,13 +551,14 @@ object_name = "enter_8"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_8"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(-6.2602553, -321.15698)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_8"]
 texture_filter = 1
-rotation = 3.1415927
+position = Vector2(-0.4544859, -37.212814)
+rotation = 3.125929
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("22_me8nm")
 offset = Vector2(0, 380)
@@ -608,12 +616,13 @@ object_name = "enter_9"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_9"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(-5.000004, -334)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_9"]
 texture_filter = 1
+position = Vector2(-3.0000005, -47.999996)
 rotation = 3.1415927
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("24_m35q0")
@@ -670,19 +679,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="enter_10" parent="." instance=ExtResource("6_1uaeg")]
-rotation = 5.2359877
+rotation = 5.171742
 script = ExtResource("6_rqxun")
 object_name = "enter_10"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_10"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(3.213935, -331.82175)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_10"]
 texture_filter = 1
-rotation = 3.1415927
+position = Vector2(6.4472322, -43.35243)
+rotation = 3.135674
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("25_kgpvv")
 offset = Vector2(0, 380)
@@ -744,12 +754,13 @@ object_name = "enter_11"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_11"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(-20.65247, -320.2288)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_11"]
 texture_filter = 1
+position = Vector2(-22.176908, -33.588455)
 rotation = 3.1415927
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("27_me8nm")
@@ -810,16 +821,18 @@ rotation = 6.2831855
 script = ExtResource("6_rqxun")
 object_name = "enter_12"
 object_type = 1
+is_enterable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_12"]
-position = Vector2(-7.6293945e-06, -290)
+position = Vector2(-1.0000548, -314)
 shape = SubResource("CapsuleShape2D_1uaeg")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_12"]
 texture_filter = 1
-rotation = 3.1415927
-scale = Vector2(0.54803, 0.75198)
+position = Vector2(-1.835823e-05, -103.99999)
+rotation = 3.141018
+scale = Vector2(0.49659887, 0.55141103)
 texture = ExtResource("28_6wcj2")
 offset = Vector2(0, 380)
 
