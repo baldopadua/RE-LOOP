@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crokfqrgo62ht"
-path="res://.godot/imported/short_hand_lock.png-0b633d2d2c47440c5effaf9b73d92802.ctex"
+uid="uid://vjw6qkta1b4b"
+path="res://.godot/imported/clock_short_arm.png-2f7f3538c7b1905c768affda7e3a7cb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/lobby/short_hand_lock.png"
-dest_files=["res://.godot/imported/short_hand_lock.png-0b633d2d2c47440c5effaf9b73d92802.ctex"]
+source_file="res://Assets/lobby/clock_short_arm.png"
+dest_files=["res://.godot/imported/clock_short_arm.png-2f7f3538c7b1905c768affda7e3a7cb7.ctex"]
 
 [params]
 

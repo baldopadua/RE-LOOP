@@ -123,7 +123,6 @@ func set_current_level(level_number: int):
 		print("Level Handler: This is a replay of an already completed level")
 	
 	emit_signal("level_instantiated", level_name)
-	update_short_hand_state_for_level(level_number)
 	emit_signal("hint_level_changed", level_number) # Notify hint system of current level
 
 # CALL THIS METHOD FROM LEVEL_LOBBY SCRIPT IN ITS _READY() FUNCTION TO IDENTIFY IT AS LOBBY
@@ -135,7 +134,6 @@ func set_current_lobby():
 	emit_signal("level_instantiated", "lobby")
 	
 	level_status_node.resume_following_player()
-	update_short_hand_state_for_level(1)
 	emit_signal("hint_level_changed", 0) # Notify hint system of lobby
 
 # CALL THIS METHOD FROM THE LEVEL SCRIPTS WHEN THE LEVEL OBJECTIVE IS MET
@@ -300,7 +298,6 @@ func _mark_level_completed_and_print_status():
 	if not completed_levels.has(current_level_number):
 		completed_levels.append(current_level_number)
 
-	update_short_hand_state_for_level(current_level_number)
 	print_completion_status()
 
 # PUBLIC FUNCTION TO PRINT COMPLETION STATUS
@@ -316,12 +313,9 @@ func print_completion_status():
 	print("Level Handler: ", completed_status)
 
 # CENTRALIZED FUNCTION TO UPDATE LONG HAND STATE AND NOTIFY LISTENERS
-func update_short_hand_state_for_level(level_number: int):
-	if level_number <= 0:
-		return
-		
-	var is_unlocked = completed_levels.has(level_number)
-	emit_signal("short_hand_state_changed", level_number, is_unlocked)
+func update_short_hand_state_for_level(_level_number: int):
+	# Remove lock/unlock logic, do nothing
+	pass
 
 func show_level_transition_cutscene(next_level_number: int):
 	

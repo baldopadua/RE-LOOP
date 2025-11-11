@@ -106,5 +106,5 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	
 	GlobalVariables.player_stopped = false
 
-func _on_dog_add_cur_state(direction: Variant) -> void:
+func _on_dog_add_cur_state(_direction):
 	pass # Replace with function body.

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chhe5p3bv3njw"
-path="res://.godot/imported/hand_clock_unlock.png-0738b9aa780f7bdbab70dc4c325807f1.ctex"
+uid="uid://dv0n6q6h84trc"
+path="res://.godot/imported/clock_base.png-4f9c49242eb32cc3003c6256128a16ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/lobby/hand_clock_unlock.png"
-dest_files=["res://.godot/imported/hand_clock_unlock.png-0738b9aa780f7bdbab70dc4c325807f1.ctex"]
+source_file="res://Assets/lobby/clock_base.png"
+dest_files=["res://.godot/imported/clock_base.png-4f9c49242eb32cc3003c6256128a16ac.ctex"]
 
 [params]
 

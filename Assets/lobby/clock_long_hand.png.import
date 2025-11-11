@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfafojviloenq"
-path="res://.godot/imported/long_hand_lock.png-806e4390eb5502c6a2df85837da83b08.ctex"
+uid="uid://tmy61a3kawu8"
+path="res://.godot/imported/clock_long_hand.png-11fb2c09c1ad98783a7f34d7377ae831.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/lobby/long_hand_lock.png"
-dest_files=["res://.godot/imported/long_hand_lock.png-806e4390eb5502c6a2df85837da83b08.ctex"]
+source_file="res://Assets/lobby/clock_long_hand.png"
+dest_files=["res://.godot/imported/clock_long_hand.png-11fb2c09c1ad98783a7f34d7377ae831.ctex"]
 
 [params]
 
