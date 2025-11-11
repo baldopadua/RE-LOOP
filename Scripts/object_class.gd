@@ -287,14 +287,12 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 			return true
 		2:
 			# Level 2 requires Level 1 to be completed
-			# var accessible = level_handler.completed_levels.has(1)
-			# return accessible
-			return true
+			var accessible = level_handler.completed_levels.has(1)
+			return accessible
 		3:
 			# Level 3 requires Level 1 AND Level 2 to be completed
-			# var accessible = level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2)
-			# return accessible
-			return true
+			var accessible = level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2)
+			return accessible
 		4:
 			# Level 4 requires Level 1, 2, AND 3 to be completed
 			# var accessible = level_handler.completed_levels.has(1) and level_handler.completed_levels.has(2) and level_handler.completed_levels.has(3)
