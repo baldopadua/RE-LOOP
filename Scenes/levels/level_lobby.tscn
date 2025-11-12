@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://y4on1fq1mgnm"]
+[gd_scene load_steps=29 format=3 uid="uid://y4on1fq1mgnm"]
 
 [ext_resource type="Script" uid="uid://cej80lpoc3wmr" path="res://Scripts/levels/level_lobby.gd" id="1_6t7hq"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_6t7hq"]
@@ -46,6 +46,42 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_igr4h"]
 gradient = SubResource("Gradient_11bkw")
 
+[sub_resource type="Animation" id="Animation_ornx3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:direction")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_igr4h"]
+resource_name = "forward_3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:direction")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ornx3"]
+_data = {
+&"RESET": SubResource("Animation_ornx3"),
+&"forward_3": SubResource("Animation_igr4h")
+}
+
 [node name="LevelLobby" type="Node2D"]
 script = ExtResource("1_6t7hq")
 
@@ -57,6 +93,7 @@ animation = &"base"
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_6t7hq")]
 self_modulate = Color(1, 1, 1, 0)
+rotation = 1.6265733
 up_direction = Vector2(0, 1)
 
 [node name="enter_1" parent="." instance=ExtResource("6_1uaeg")]
@@ -905,3 +942,8 @@ scale = Vector2(20, 1.5)
 texture = SubResource("GradientTexture2D_igr4h")
 
 [node name="SoundManager" parent="." instance=ExtResource("3_1uaeg")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ornx3")
+}

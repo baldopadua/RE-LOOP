@@ -41,6 +41,9 @@ var center_circle: Vector2i = Vector2i(0, 0)
 var clock_area: int = 12
 
 func _ready():
+	await get_tree().process_frame
+	lobby_active = true
+
 	call_deferred("initialize_text_labels")
 	# GET UI HANDLER REFERENCE
 	ui_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler")
@@ -48,10 +51,6 @@ func _ready():
 	# HIDE GAME UI ELEMENTS WHEN IN LOBBY
 	ui_handler.hide_game_ui_elements()
 
-	await get_tree().process_frame
-	lobby_active = true
-	
-	
 	if level_handler:
 		level_handler.set_current_lobby()
 	else:
