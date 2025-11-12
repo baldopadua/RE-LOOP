@@ -16,8 +16,52 @@ static var preserved_hand_rotation: float = 0.0
 static var preserved_long_hand_rotation: float = 0.0
 static var preserved_rotations_valid: bool = false
 
+@onready var enter_1: object_class = $enter_1 
+@onready var enter_2: object_class = $enter_2
+@onready var enter_3: object_class = $enter_3
+@onready var enter_4: object_class = $enter_4
+@onready var enter_5: object_class = $enter_5
+@onready var enter_6: object_class = $enter_6
+@onready var enter_7: object_class = $enter_7
+@onready var enter_8: object_class = $enter_8
+@onready var enter_9: object_class = $enter_9
+@onready var enter_10: object_class = $enter_10
+@onready var enter_11: object_class = $enter_11
+@onready var enter_12: object_class = $enter_12
+
+
+@onready var objects: Array = []
+
 func _ready() -> void:
 	visible = false
+	objects_initialize()
+	# Force update of entrance visuals on ready
+	var level_handler = get_parent()
+	if level_handler and "completed_levels" in level_handler:
+		update_completed_levels_visual(level_handler.completed_levels)
+
+func objects_initialize():
+	for i in range(1, 13):
+		var entrance_var_name = "enter_" + str(i)
+		var entrance = get(entrance_var_name)
+		if entrance:
+			objects.append(entrance)
+
+func update_completed_levels_visual(completed_levels: Array):
+	for level_num in range(1, 13):
+		var is_completed = completed_levels.has(level_num)
+		var entrance_var_name = "enter_" + str(level_num)
+		var entrance = get_node_or_null(entrance_var_name)
+		if entrance and entrance.has_method("set_level_completion_visual"):
+			entrance.set_level_completion_visual(is_completed)
+
+func set_level_completion_visual(is_completed: bool):
+	if has_node("Sprite2D2"):
+		var sprite = get_node("Sprite2D2")
+		if is_completed:
+			sprite.modulate = Color(0, 1, 0) # Green
+		else:
+			sprite.modulate = Color(1, 1, 1) # Default
 
 func _on_short_hand_state_changed(_level_number: int, _is_unlocked: bool):
 	pass
@@ -261,10 +305,18 @@ func get_level_for_clock_position(clock_position: int) -> int:
 
 func _on_level_completed(_level_name: String):
 	update_lock_state()
+	# Update entrance visuals to match completed levels
+	var level_handler = get_parent()
+	if level_handler and "completed_levels" in level_handler:
+		update_completed_levels_visual(level_handler.completed_levels)
 
 func _on_level_instantiated(_level_name: String):
 	call_deferred("update_lock_state")
 	update_lock_state()
+	# Update entrance visuals to match completed levels
+	var level_handler = get_parent()
+	if level_handler and "completed_levels" in level_handler:
+		update_completed_levels_visual(level_handler.completed_levels)
 
 func show_level_1_entry_cutscene():
 	should_follow_player = false
@@ -290,5 +342,5 @@ func show_level_entry_cutscene():
 	
 	visible = true
 	hide_gameplay_elements()
-	
-	
+
+

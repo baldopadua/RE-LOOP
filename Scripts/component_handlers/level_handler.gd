@@ -265,6 +265,9 @@ func _mark_level_completed_and_print_status():
 	if not completed_levels.has(current_level_number):
 		completed_levels.append(current_level_number)
 	print_completion_status()
+	# Update clock entrance visuals immediately
+	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
+		level_status_node.update_completed_levels_visual(completed_levels)
 
 func print_completion_status():
 	var completed_status = ""
@@ -276,6 +279,7 @@ func print_completion_status():
 	
 	completed_status = completed_status.trim_suffix(", ")
 	print("Level Handler: ", completed_status)
+	
 
 func update_short_hand_state_for_level(_level_number: int):
 	pass

@@ -45,13 +45,19 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 			object_interacted.hide_text()
 			return
 		
-		# GET THE LOBBY SCENE (PARENT OF THIS OBJECT)
+		# FIND THE LOBBY SCENE (TRAVERSE UP UNTIL WE FIND enter_level, SKIP level_status)
 		var lobby_scene = object_interacted.get_parent()
-		print("lobby_scene found: ", lobby_scene.name, " - has enter_level method: ", lobby_scene.has_method("enter_level"))
-		await object_interacted.get_tree().create_timer(0.3).timeout
-		
-		# TRIGGER LEVEL SELECTION - LOBBY SCENE ENTER_LEVEL DOES TAKE THE LEVEL_NUMBER PARAMETER
-		if lobby_scene.has_method("enter_level"):
+		while lobby_scene and (not lobby_scene.has_method("enter_level") or lobby_scene.name == "level_status"):
+			lobby_scene = lobby_scene.get_parent()
+		# Prevent entering if the found node is level_status
+		if lobby_scene and lobby_scene.name == "level_status":
+			print("Found parent is level_status, not calling enter_level.")
+			return
+		if lobby_scene:
+			print("lobby_scene found: ", lobby_scene.name, " - has enter_level method: ", lobby_scene.has_method("enter_level"))
+			await object_interacted.get_tree().create_timer(0.3).timeout
+			
+			# TRIGGER LEVEL SELECTION - LOBBY SCENE ENTER_LEVEL DOES TAKE THE LEVEL_NUMBER PARAMETER
 			var method_info = _get_method_info(lobby_scene, "enter_level")
 			if method_info and method_info.args.size() > 0:
 				print("Calling parent scene's enter_level WITH level_number parameter: ", level_number)
@@ -60,7 +66,7 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 				print("Calling parent scene's enter_level with NO parameters")
 				lobby_scene.enter_level()
 		else:
-			print("lobby_scene doesn't have enter_level method")
+			print("No parent with enter_level method found!")
 
 # HELPER FUNCTION TO GET METHOD INFORMATION
 static func _get_method_info(object_ref, method_name: String):
@@ -99,7 +105,8 @@ static func handle_level_hover(level_number: int, object_ref: object_class):
 			else:
 				print("No title found for level: ", level_number)
 		else:
-			print("Level not accessible, not showing hover")
+			print("Level not accessible, showing LOCKED")
+			object_ref.show_interact_text("LOCKED")
 	else:
 		print("No level handler found")
 
