@@ -56,7 +56,7 @@ animations = [{
 script = ExtResource("1_sijlw")
 
 [node name="level_status" type="Node2D" parent="."]
-position = Vector2(44, -4)
+position = Vector2(93, -2)
 script = ExtResource("2_bicrg")
 
 [node name="clock_camera" type="Camera2D" parent="level_status"]
