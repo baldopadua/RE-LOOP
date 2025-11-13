@@ -11,6 +11,37 @@ func _ready() -> void:
 	print(level_number)
 	original_area_position = position
 
+	# --- ENTERABLE LOGIC BASED ON SCENE CONTEXT ---
+	_update_is_enterable()
+
+func _update_is_enterable():
+	var parent = get_parent()
+	var scene = get_tree().current_scene
+	var scene_name = scene.name if scene else ""
+	var parent_name = parent.name if parent else ""
+
+	# Check if under level_handler (level select clock)
+	if parent_name == "level_status" or parent_name == "LevelHandler":
+		is_enterable = false
+		return
+
+	# Check if inside a level_X_scene (level_1_scene, ..., level_12_scene)
+	if scene_name.begins_with("level_") and scene_name.ends_with("_scene"):
+		is_enterable = false
+		return
+
+	# Check if inside level_lobby
+	if scene_name == "level_lobby":
+		# If parent is not a level_X_scene, allow enterable
+		is_enterable = true
+		# But if parent is a level_X_scene (shouldn't happen), disable
+		if parent_name.begins_with("level_") and parent_name.ends_with("_scene"):
+			is_enterable = false
+		return
+
+	# Default fallback
+	is_enterable = false
+
 func on_hover_enter():
 	# Always call hover logic
 	var enter_lobby = preload("res://Scripts/object-level/level_lobby/enter_lobby.gd")

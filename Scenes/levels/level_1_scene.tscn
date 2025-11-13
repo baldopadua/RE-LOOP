@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cbl4k6bkjnggc"]
+[gd_scene load_steps=43 format=3 uid="uid://cbl4k6bkjnggc"]
 
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/levels/level_1_scene.gd" id="1_pxia2"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_cmquk"]
@@ -15,7 +15,6 @@
 [ext_resource type="Shader" uid="uid://6nni72ykvmy7" path="res://Shaders/black_hole.gdshader" id="14_cd6w3"]
 [ext_resource type="Texture2D" uid="uid://rjouqbpxr0qg" path="res://icon.svg" id="15_7hl30"]
 [ext_resource type="Texture2D" uid="uid://bacqpwmbkc6hy" path="res://Shaders/black_hole.tres" id="15_ggo0n"]
-[ext_resource type="Texture2D" uid="uid://byo827h22co3m" path="res://Assets/level_select_lobby/level_1.png" id="17_jr302"]
 [ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="18_ttgta"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="23_gu1y6"]
 
@@ -258,18 +257,14 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7hl30"]
 gradient = SubResource("Gradient_7hl30")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ystme"]
-radius = 12.1183
-height = 40.0368
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggo0n"]
 shader = ExtResource("14_cd6w3")
 shader_parameter/curve = ExtResource("15_ggo0n")
 shader_parameter/strength = 4.7499999933364734e-08
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2f8f"]
-radius = 12.1183
-height = 40.0368
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggo0n"]
+radius = 33.212807
+height = 93.28204
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_pxia2")
@@ -365,71 +360,6 @@ position = Vector2(762.74994, 769)
 scale = Vector2(23.789063, 1.5)
 texture = SubResource("GradientTexture2D_7hl30")
 
-[node name="enter_2" parent="." instance=ExtResource("9_l4q40")]
-visible = false
-rotation = 1.0471976
-script = ExtResource("12_l05gj")
-object_name = "enter_2"
-object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_2"]
-position = Vector2(-7.6293945e-06, -290)
-shape = SubResource("CapsuleShape2D_ystme")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="enter_2"]
-texture_filter = 1
-rotation = 3.1415927
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("13_cd6w3")
-offset = Vector2(0, 380)
-
-[node name="hover_text" type="RichTextLabel" parent="enter_2"]
-modulate = Color(0.279873, 0.236817, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -220.0
-offset_right = 90.0
-offset_bottom = -186.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
-text = "Ancient Tree"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="interact_text" type="RichTextLabel" parent="enter_2"]
-modulate = Color(1, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -250.0
-offset_right = 90.0
-offset_bottom = -227.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-scale = Vector2(1.30259, 1.39847)
-pivot_offset = Vector2(90, 11.5)
-text = "INTERACT"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Blackhole" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ggo0n")
 scale = Vector2(5.3125, 5.5)
@@ -441,25 +371,27 @@ position = Vector2(1, -159)
 [node name="initial_seed_focus" type="Marker2D" parent="."]
 position = Vector2(0, 250)
 
-[node name="enter_1" parent="." instance=ExtResource("9_l4q40")]
-rotation = 0.5235988
+[node name="enter_2" parent="." instance=ExtResource("9_l4q40")]
+position = Vector2(-21.000002, 1.5646219e-07)
+rotation = 1.4785348
 script = ExtResource("12_l05gj")
-object_name = "enter_1"
+object_name = "enter_2"
 object_type = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_1"]
-position = Vector2(-7.6293945e-06, -290)
-shape = SubResource("CapsuleShape2D_j2f8f")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_2"]
+position = Vector2(17.4622, -328.24545)
+shape = SubResource("CapsuleShape2D_ggo0n")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
-[node name="Sprite2D2" type="Sprite2D" parent="enter_1"]
+[node name="Sprite2D2" type="Sprite2D" parent="enter_2"]
 texture_filter = 1
-rotation = 3.1415927
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("17_jr302")
+position = Vector2(7.68911, -83.31793)
+rotation = 3.1885588
+scale = Vector2(0.54803, 0.64389104)
+texture = ExtResource("13_cd6w3")
 offset = Vector2(0, 380)
 
-[node name="hover_text" type="RichTextLabel" parent="enter_1"]
+[node name="hover_text" type="RichTextLabel" parent="enter_2"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -487,7 +419,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="interact_text" type="RichTextLabel" parent="enter_1"]
+[node name="interact_text" type="RichTextLabel" parent="enter_2"]
 modulate = Color(1, 0, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
