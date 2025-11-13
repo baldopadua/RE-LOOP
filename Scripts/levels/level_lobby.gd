@@ -52,7 +52,7 @@ func _ready():
 	call_deferred("initialize_text_labels")
 	ui_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler")
 	ui_handler.hide_game_ui_elements()
-	ui_handler.show_only_keys_elements()
+	
 	if level_handler:
 		level_handler.set_current_lobby()
 	else:

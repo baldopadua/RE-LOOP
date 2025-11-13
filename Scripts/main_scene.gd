@@ -7,6 +7,7 @@ extends Control
 
 func _ready():
 	#ui_handler.show_only_children(ui_handler.ui_logic, ["overlay"])
+	
 	ui_handler.show_main_menu()
 	ui_handler.show_cursor()
 	transition_handler.show_main_to_game_transition()
@@ -15,6 +16,12 @@ func _ready():
 	_connect_game_ui_elements_buttons()
 	$GameScene.visible= false;
 	$GameScene.process_mode = Node.PROCESS_MODE_DISABLED
+
+	 # Hide game UI elements on first landing
+	if ui_handler.ui_logic.has_node("game_ui_elements"):
+		ui_handler.ui_logic.get_node("game_ui_elements").visible = false
+
+	
 	# Hide level handler initially
 	if $GameScene.has_node("levels_frame/level_lobby/LevelHandler"):
 		$GameScene.get_node("levels_frame/level_lobby/LevelHandler").visible = false
