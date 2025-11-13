@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3tla2n3edqkn"]
+[gd_scene load_steps=13 format=3 uid="uid://3tla2n3edqkn"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_2r23t"]
 [ext_resource type="Script" uid="uid://ds7lwxirvmjvs" path="res://Scripts/levels/level_6_script.gd" id="1_odmpw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_kapnr"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_kapnr"]
 [ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/level_select_lobby/level_7.png" id="8_pwedw"]
+[ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="9_sh2gb"]
 
 [sub_resource type="Gradient" id="Gradient_kapnr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -15,9 +16,9 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_sh2gb"]
 gradient = SubResource("Gradient_kapnr")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh2gb"]
-radius = 12.1183
-height = 40.0368
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pwedw"]
+radius = 33.212807
+height = 93.28204
 
 [node name="level_6_scene" type="Node2D"]
 script = ExtResource("1_odmpw")
@@ -72,25 +73,25 @@ scale = Vector2(20, 1.5)
 texture = SubResource("GradientTexture2D_sh2gb")
 
 [node name="enter_7" parent="." instance=ExtResource("6_kapnr")]
-rotation = 3.6651914
+rotation = -3.1121259
 script = ExtResource("7_kapnr")
 object_name = "enter_7"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_7"]
-position = Vector2(-7.6293945e-06, -290)
-shape = SubResource("CapsuleShape2D_sh2gb")
+position = Vector2(-8.998106, -321.5852)
+shape = SubResource("CapsuleShape2D_pwedw")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_7"]
 texture_filter = 1
-rotation = 3.1415927
+position = Vector2(-2.0096188, -33.480762)
+rotation = 3.121508
 scale = Vector2(0.54803, 0.75198)
 texture = ExtResource("8_pwedw")
 offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="enter_7"]
-modulate = Color(0.279873, 0.236817, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -104,13 +105,19 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("9_sh2gb")
+theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
 scroll_active = false
 tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="interact_text" type="RichTextLabel" parent="enter_7"]
 modulate = Color(1, 0, 0, 1)
@@ -134,3 +141,4 @@ scroll_active = false
 tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
