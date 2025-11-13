@@ -1,13 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://3tla2n3edqkn"]
+[gd_scene load_steps=30 format=3 uid="uid://3tla2n3edqkn"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_2r23t"]
 [ext_resource type="Script" uid="uid://ds7lwxirvmjvs" path="res://Scripts/levels/level_6_script.gd" id="1_odmpw"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_et41i"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_5j0bc"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_jmy7j"]
+[ext_resource type="Script" uid="uid://bm414w0mavhw0" path="res://Scripts/object-level/level_6/player.gd" id="4_pwedw"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_kapnr"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_kapnr"]
 [ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/level_select_lobby/level_7.png" id="8_pwedw"]
+[ext_resource type="Texture2D" uid="uid://bd6huacdltowj" path="res://Assets/levels/level_6/placeholder_assets/rift_in_time.png" id="9_sh2gb"]
+[ext_resource type="Script" uid="uid://b4sgciq6gkscg" path="res://Scripts/object-level/level_6/switch_circle.gd" id="10_ov81m"]
+[ext_resource type="Texture2D" uid="uid://hsoor2nwutob" path="res://Assets/levels/level_6/placeholder_assets/isaac_newton_dead.png" id="12_36bwe"]
+[ext_resource type="Texture2D" uid="uid://20x2gha106e6" path="res://Assets/levels/level_6/placeholder_assets/isaac_newton.png" id="12_iwthe"]
+[ext_resource type="Texture2D" uid="uid://cdwk27ivdcjvf" path="res://Assets/levels/level_6/placeholder_assets/isaac_newton_old.png" id="14_pugdj"]
+[ext_resource type="Texture2D" uid="uid://6me05e503l8b" path="res://Assets/levels/level_6/placeholder_assets/isaac_newton_young.png" id="15_nlrgi"]
+[ext_resource type="Texture2D" uid="uid://ccgmn7tbh1mei" path="res://Assets/levels/level_6/placeholder_assets/tree.png" id="16_pugdj"]
+[ext_resource type="Texture2D" uid="uid://bhkpxdw4kq7lu" path="res://Assets/levels/level_6/placeholder_assets/seed.png" id="17_nlrgi"]
 
 [sub_resource type="Gradient" id="Gradient_kapnr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -19,15 +28,131 @@ gradient = SubResource("Gradient_kapnr")
 radius = 12.1183
 height = 40.0368
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_kapnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_sh2gb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh2gb"]
+size = Vector2(120, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov81m"]
+size = Vector2(20, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_36bwe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_36bwe")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_iwthe")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_pugdj")
+}],
+"loop": false,
+"name": &"old",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_nlrgi")
+}],
+"loop": false,
+"name": &"young",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwthe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_36bwe")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_iwthe")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_pugdj")
+}],
+"loop": false,
+"name": &"old",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_nlrgi")
+}],
+"loop": false,
+"name": &"young",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pugdj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_pugdj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlrgi"]
+size = Vector2(32, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pugdj"]
+size = Vector2(32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nlrgi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_nlrgi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="level_6_scene" type="Node2D"]
 script = ExtResource("1_odmpw")
 
 [node name="AreaHandler" parent="." instance=ExtResource("1_2r23t")]
-metadata/_edit_lock_ = true
+position = Vector2(-8, 8)
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_et41i")]
 self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
+script = ExtResource("4_pwedw")
 
 [node name="Label" type="Label" parent="PlayerScene"]
 visible = false
@@ -47,11 +172,6 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 14
 text = "I didn't forget you, but you forgot me..."
 horizontal_alignment = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-rotation = -1.5570105
-ignore_rotation = false
-position_smoothing_enabled = true
 
 [node name="SoundManager" parent="." instance=ExtResource("3_5j0bc")]
 
@@ -134,3 +254,74 @@ scroll_active = false
 tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="switch_circle" parent="." instance=ExtResource("6_kapnr")]
+visible = false
+script = ExtResource("10_ov81m")
+object_name = "switch_circle"
+is_pickupable = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="switch_circle"]
+sprite_frames = SubResource("SpriteFrames_kapnr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="switch_circle"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_sh2gb")
+
+[node name="isaac_newton_1" parent="." instance=ExtResource("6_kapnr")]
+visible = false
+position = Vector2(-503.745, 0)
+rotation = 1.5707964
+object_name = "isaac_newton_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="isaac_newton_1"]
+position = Vector2(3.637979e-12, 12.255005)
+shape = SubResource("RectangleShape2D_ov81m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="isaac_newton_1"]
+sprite_frames = SubResource("SpriteFrames_36bwe")
+animation = &"old"
+
+[node name="isaac_newton_2" parent="." instance=ExtResource("6_kapnr")]
+visible = false
+position = Vector2(229.03, 273.25)
+object_name = "isaac_newton_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="isaac_newton_2"]
+position = Vector2(3.637979e-12, 12.255005)
+shape = SubResource("RectangleShape2D_ov81m")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="isaac_newton_2"]
+sprite_frames = SubResource("SpriteFrames_iwthe")
+animation = &"young"
+metadata/_edit_lock_ = true
+
+[node name="tree" parent="." instance=ExtResource("6_kapnr")]
+visible = false
+position = Vector2(-248, 250)
+object_name = "tree"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="tree"]
+sprite_frames = SubResource("SpriteFrames_pugdj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tree"]
+position = Vector2(0, 42)
+shape = SubResource("RectangleShape2D_nlrgi")
+
+[node name="seed" parent="." instance=ExtResource("6_kapnr")]
+visible = false
+position = Vector2(500.67, 0)
+rotation = -1.5707964
+object_name = "seed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="seed"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_pugdj")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="seed"]
+sprite_frames = SubResource("SpriteFrames_nlrgi")
+metadata/_edit_lock_ = true
+
+[connection signal="toggle_switch_circle" from="switch_circle" to="switch_circle" method="_on_toggle_switch_circle"]
