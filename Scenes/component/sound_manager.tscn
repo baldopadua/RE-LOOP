@@ -62,12 +62,15 @@ script = ExtResource("1_ynhbd")
 
 [node name="hover_sound" type="AudioStreamPlayer2D" parent="sfx/ui_sfx"]
 stream = ExtResource("2_sanpt")
+bus = &"sfx"
 
 [node name="click_sound" type="AudioStreamPlayer2D" parent="sfx/ui_sfx"]
 stream = ExtResource("3_6lgko")
+bus = &"sfx"
 
 [node name="page_turn_sound" type="AudioStreamPlayer2D" parent="sfx/ui_sfx"]
 stream = ExtResource("4_2aguw")
+bus = &"sfx"
 
 [node name="global_sfx" type="Node2D" parent="sfx"]
 

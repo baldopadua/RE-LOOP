@@ -173,10 +173,21 @@ func show_overlay_tutorial():
 		var overlay = ui_logic.get_node("overlay")
 		if overlay.has_node("tutorial"):
 			var tutorial = overlay.get_node("tutorial")
-			ui_logic.animate_overlay_open_from_right(tutorial)
+			ui_logic.animate_overlay_open_from_top(tutorial)
 			overlay.visible = true
 			hide_all_children(overlay)
 			tutorial.visible = true
+			show_close_button()
+
+func show_overlay_settings():
+	if ui_logic.has_node("overlay"):
+		var overlay = ui_logic.get_node("overlay")
+		if overlay.has_node("settings"):
+			var settings = overlay.get_node("settings")
+			ui_logic.animate_overlay_open_from_right(settings)
+			overlay.visible = true
+			hide_all_children(overlay)
+			settings.visible = true
 			show_close_button()
 
 func show_overlay_credits():

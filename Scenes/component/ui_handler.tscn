@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://m46y1wd88uf1"]
+[gd_scene load_steps=94 format=3 uid="uid://m46y1wd88uf1"]
 
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="1_fmqw2"]
 [ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
@@ -20,8 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="18_dumc0"]
 [ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="19_bo42c"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="19_dumc0"]
+[ext_resource type="Texture2D" uid="uid://bacei26qp35s5" path="res://Assets/ui/settings_icon.png" id="19_g2hc1"]
 [ext_resource type="Texture2D" uid="uid://rd183d7psrym" path="res://Assets/ui/Tutorial.png" id="20_0n0xc"]
 [ext_resource type="Script" uid="uid://bdxwx60b8pdlx" path="res://Scripts/ui/custom_cursor.gd" id="20_qpkpn"]
+[ext_resource type="Texture2D" uid="uid://co6jwl3bru7ka" path="res://Assets/ui/settings_icon_hover.png" id="20_tkpeg"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="21_qpkpn"]
 [ext_resource type="Texture2D" uid="uid://cg2l84tao5f1l" path="res://Assets/ui/credits_bg.png" id="21_taira"]
 [ext_resource type="Script" uid="uid://qyn6g7sbegxs" path="res://Scripts/ui/hint.gd" id="22_exohx"]
@@ -35,7 +37,9 @@
 [ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="28_0vcng"]
 [ext_resource type="Texture2D" uid="uid://bt02461ew12vr" path="res://Assets/ui/hint/hintbox.png" id="28_5ue8t"]
 [ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="29_g2hc1"]
+[ext_resource type="Script" uid="uid://xbkpwj8hqvws" path="res://Scripts/ui/settings.gd" id="33_6k3yl"]
 [ext_resource type="PackedScene" uid="uid://b11bd22bl1hik" path="res://Scenes/component/cutscene.tscn" id="33_nol8b"]
+[ext_resource type="Texture2D" uid="uid://donw7tlc1yq2f" path="res://Assets/ui/hint/settings_dialog.png" id="34_l8elr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
 atlas = ExtResource("1_fmqw2")
@@ -579,10 +583,10 @@ metadata/_edit_use_anchors_ = true
 [node name="time" type="TextureRect" parent="ui_logic/game_ui_elements"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.846875
-anchor_top = 0.6791667
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.8453125
+anchor_top = 0.6666667
+anchor_right = 0.9984375
+anchor_bottom = 0.9875
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -597,12 +601,26 @@ animation = &"clockwise_time_indicator"
 [node name="tutorial_button" type="TextureButton" parent="ui_logic/game_ui_elements"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.890625
-anchor_top = 0.00138889
-anchor_right = 0.997656
-anchor_bottom = 0.155556
+anchor_left = 0.0375
+anchor_top = 0.60694444
+anchor_right = 0.14453097
+anchor_bottom = 0.7611116
 texture_normal = ExtResource("10_wyu2o")
 texture_hover = ExtResource("11_tocme")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="settings_button" type="TextureButton" parent="ui_logic/game_ui_elements"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9265625
+anchor_top = 0.023611112
+anchor_right = 0.9765622
+anchor_bottom = 0.10833376
+texture_normal = ExtResource("19_g2hc1")
+texture_hover = ExtResource("20_tkpeg")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
@@ -2008,6 +2026,115 @@ scale = Vector2(10.9193, 10.0155)
 sprite_frames = SubResource("SpriteFrames_tkpeg")
 flip_h = true
 
+[node name="settings" type="Control" parent="ui_logic/overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("33_6k3yl")
+
+[node name="settings_bg" type="TextureRect" parent="ui_logic/overlay/settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.015625
+anchor_right = 1.015625
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_bo42c")
+metadata/_edit_use_anchors_ = true
+
+[node name="settings_box" type="TextureRect" parent="ui_logic/overlay/settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2375
+anchor_top = 0.21666667
+anchor_right = 0.7796875
+anchor_bottom = 0.7708333
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_l8elr")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx_slider" type="HSlider" parent="ui_logic/overlay/settings/settings_box"]
+modulate = Color(18.892, 7.06, 18.892, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29683
+anchor_top = 0.46365914
+anchor_right = 0.7562137
+anchor_bottom = 0.6592582
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx_title" type="Label" parent="ui_logic/overlay/settings/settings_box/sfx_slider"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.31587833
+anchor_top = 0.22045739
+anchor_right = -0.13081647
+anchor_bottom = 0.6689223
+offset_left = 3.0517578e-05
+offset_right = 3.0517578e-05
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 50
+text = "sfx"
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx_volume" type="Label" parent="ui_logic/overlay/settings/settings_box/sfx_slider"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0335366
+anchor_top = 0.22499998
+anchor_right = 1.2185984
+anchor_bottom = 0.6734649
+offset_right = -1.6526489
+offset_bottom = -0.8557434
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 50
+text = "100"
+metadata/_edit_use_anchors_ = true
+
+[node name="music_slider" type="HSlider" parent="ui_logic/overlay/settings/settings_box"]
+modulate = Color(18.892157, 7.0600886, 18.892157, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29682997
+anchor_top = 0.65914786
+anchor_right = 0.7562137
+anchor_bottom = 0.8547469
+metadata/_edit_use_anchors_ = true
+
+[node name="music_volume" type="Label" parent="ui_logic/overlay/settings/settings_box/music_slider"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0350919
+anchor_top = 0.15375957
+anchor_right = 1.2395449
+anchor_bottom = 0.70004845
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 50
+text = "100"
+metadata/_edit_use_anchors_ = true
+
+[node name="music_title" type="Label" parent="ui_logic/overlay/settings/settings_box/music_slider"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.3601427
+anchor_top = 0.15864645
+anchor_right = -0.031884853
+anchor_bottom = 0.6180762
+offset_right = -1.6526489
+offset_bottom = -0.8557434
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 50
+text = "music"
+metadata/_edit_use_anchors_ = true
+
 [node name="close_button" type="TextureButton" parent="ui_logic/overlay"]
 visible = false
 texture_filter = 1
@@ -2038,3 +2165,6 @@ texture = ExtResource("19_dumc0")
 script = ExtResource("20_qpkpn")
 
 [node name="SoundManager" parent="." instance=ExtResource("21_qpkpn")]
+
+[connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/sfx_slider" to="ui_logic/overlay/settings" method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/music_slider" to="ui_logic/overlay/settings" method="_on_music_slider_value_changed"]

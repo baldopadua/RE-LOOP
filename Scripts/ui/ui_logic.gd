@@ -65,6 +65,18 @@ func animate_overlay_open_from_left(node: Control) -> void:
 	tween.tween_property(node, "position", final_pos, 0.25)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
+# ANIMATE OVERLAY OPEN: SLIDE IN FROM TOP TO CENTER
+func animate_overlay_open_from_top(node: Control) -> void:
+	var parent_size = get_viewport_rect().size
+	var overlay_size = node.size
+	var final_pos = (parent_size / 2) - (overlay_size / 2)
+	var start_pos = Vector2(final_pos.x, -overlay_size.y)
+	node.position = start_pos
+	node.visible = true
+	var tween = create_tween()
+	tween.tween_property(node, "position", final_pos, 0.25)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
 # ANIMATE OVERLAY CLOSE: SLIDE OUT TO LEFT, THEN CALL OPTIONAL CALLBACK
 func animate_overlay_close_to_left(node: Control, callback: Callable = Callable()) -> void:
 	var parent_size = get_viewport_rect().size
