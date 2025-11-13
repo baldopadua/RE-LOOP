@@ -10,14 +10,26 @@ var objects: Array = []
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var area_handler = $AreaHandler
 
+# Objects
+@onready var butterfly = $butterfly
+@onready var spider = $spider
+@onready var flower = $flower
+@onready var wind = $wind
+
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(7)
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 
+	objects_initialize()
 
 	player.rotation = deg_to_rad(210.0)
+
+func objects_initialize():
+	objects.append(butterfly)
+	objects.append(spider)
+	objects.append(flower)
 
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
 # TO WORK ON THE SCRIPT
