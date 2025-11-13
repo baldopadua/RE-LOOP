@@ -4,6 +4,13 @@ var level_number: int = 0
 var original_area_position: Vector2
 
 func _ready() -> void:
+	if get_parent() and get_parent().name == "level_status":
+		is_enterable = false
+		
+		for child in get_children():
+			if child is CollisionShape2D:
+				child.disabled = true
+		return
 	is_enterable = true
 	print("Lobby available: ", object_name)
 	var object_lvl_num = object_name.replace("enter_", "").strip_edges()
@@ -39,11 +46,12 @@ func _update_is_enterable():
 			is_enterable = false
 		return
 
-	# Default fallback
 	is_enterable = false
 
 func on_hover_enter():
-	# Always call hover logic
+	if get_parent() and get_parent().name == "level_status":
+		return
+	
 	var enter_lobby = preload("res://Scripts/object-level/level_lobby/enter_lobby.gd")
 	enter_lobby.handle_level_hover(level_number, self)
 	# Use AnimationPlayer for hover animation if available
@@ -55,6 +63,9 @@ func on_hover_enter():
 	
 
 func on_hover_exit():
+	# Block all hover logic if under level_status (clock)
+	if get_parent() and get_parent().name == "level_status":
+		return
 	# Always call hover exit logic
 	var enter_lobby = preload("res://Scripts/object-level/level_lobby/enter_lobby.gd")
 	enter_lobby.handle_level_hover_exit(self)
@@ -66,6 +77,9 @@ func on_hover_exit():
 	
 
 func interact(object_interacted: object_class):
+	# Block all interaction if under level_status (clock)
+	if get_parent() and get_parent().name == "level_status":
+		return
 	print("interact called for ", object_name)
 	var enter_lobby = preload("res://Scripts/object-level/level_lobby/enter_lobby.gd")
 	enter_lobby.handle_level_entrance(level_number, object_interacted)

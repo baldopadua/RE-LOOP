@@ -304,14 +304,15 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 		3: [1, 2],
 		4: [1, 2, 3],
 		5: [1, 2, 3, 4],
-		6: [1, 2, 3, 4, 5],
+		6: [],
 		7: [],
 		8: [],
 		9: [],
 		10: [],
-		11: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-		12: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+		11: [],
+		12: [],
 	}
+
 
 	if not requirements.has(level_number):
 		print("Level ", level_number, " not implemented yet")

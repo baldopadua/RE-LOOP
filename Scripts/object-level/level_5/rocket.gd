@@ -75,5 +75,3 @@ func _on_body_entered(body) -> void:
 				body.visible = false
 				tween.kill()
 			)
-
-

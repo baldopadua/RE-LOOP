@@ -342,5 +342,3 @@ func show_level_entry_cutscene():
 	
 	visible = true
 	hide_gameplay_elements()
-
-
