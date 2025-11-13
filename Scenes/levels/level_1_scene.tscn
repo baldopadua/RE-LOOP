@@ -372,8 +372,7 @@ position = Vector2(1, -159)
 position = Vector2(0, 250)
 
 [node name="enter_2" parent="." instance=ExtResource("9_l4q40")]
-position = Vector2(-21.000002, 1.5646219e-07)
-rotation = 1.4785348
+rotation = 1.0511703
 script = ExtResource("12_l05gj")
 object_name = "enter_2"
 object_type = 1

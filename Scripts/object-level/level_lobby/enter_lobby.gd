@@ -1,6 +1,5 @@
 extends Node
 
-# Level titles mapping
 static var level_titles = {
 	1: "Level 1: The Ancient Tree",
 	2: "Level 2: The Old Man", 
@@ -16,7 +15,7 @@ static var level_titles = {
 	12: "Level 12: Plooy"  
 }
 
-# GENERAL FUNCTION TO HANDLE LEVEL ENTRANCE FOR ANY LEVEL (1-12)
+# HANDLE LEVEL ENTRANCE FOR ANY LEVEL (1-12)
 static func handle_level_entrance(level_number: int, object_interacted: object_class):
 	print("enter_", level_number, " interact called with: ", object_interacted.object_name)
 	
@@ -37,7 +36,6 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 					current_level_scene.enter_level()
 			return
 		
-		# CHECK IF LEVEL IS ACCESSIBLE BEFORE ENTERING (LOBBY BEHAVIOR)
 		var level_handler = object_interacted.get_level_handler()
 		if level_handler and not object_interacted.is_level_accessible(level_number, level_handler):
 			object_interacted.show_interact_text("LOCKED")
@@ -45,11 +43,9 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 			object_interacted.hide_text()
 			return
 		
-		# FIND THE LOBBY SCENE (TRAVERSE UP UNTIL WE FIND enter_level, SKIP level_status)
 		var lobby_scene = object_interacted.get_parent()
 		while lobby_scene and (not lobby_scene.has_method("enter_level") or lobby_scene.name == "level_status"):
 			lobby_scene = lobby_scene.get_parent()
-		# Prevent entering if the found node is level_status
 		if lobby_scene and lobby_scene.name == "level_status":
 			print("Found parent is level_status, not calling enter_level.")
 			return
@@ -57,7 +53,6 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 			print("lobby_scene found: ", lobby_scene.name, " - has enter_level method: ", lobby_scene.has_method("enter_level"))
 			await object_interacted.get_tree().create_timer(0.3).timeout
 			
-			# TRIGGER LEVEL SELECTION - LOBBY SCENE ENTER_LEVEL DOES TAKE THE LEVEL_NUMBER PARAMETER
 			var method_info = _get_method_info(lobby_scene, "enter_level")
 			if method_info and method_info.args.size() > 0:
 				print("Calling parent scene's enter_level WITH level_number parameter: ", level_number)
@@ -68,7 +63,7 @@ static func handle_level_entrance(level_number: int, object_interacted: object_c
 		else:
 			print("No parent with enter_level method found!")
 
-# HELPER FUNCTION TO GET METHOD INFORMATION
+# GET METHOD INFORMATION
 static func _get_method_info(object_ref, method_name: String):
 	if object_ref and object_ref.has_method("get_method_list"):
 		var methods = object_ref.get_method_list()
@@ -77,7 +72,7 @@ static func _get_method_info(object_ref, method_name: String):
 				return method
 	return null
 
-# HELPER FUNCTION TO DETECT IF WE'RE IN A LEVEL SCENE
+# DETECT IF WE'RE IN A LEVEL SCENE
 static func _get_current_level_scene(object_ref: object_class) -> Node:
 	var current = object_ref.get_parent()
 	while current != null:
@@ -86,8 +81,10 @@ static func _get_current_level_scene(object_ref: object_class) -> Node:
 		current = current.get_parent()
 	return null
 
-# GENERAL FUNCTION TO HANDLE HOVER BEHAVIOR FOR ANY LEVEL
+# HANDLE HOVER BEHAVIOR FOR ANY LEVEL
 static func handle_level_hover(level_number: int, object_ref: object_class):
+	if object_ref.get_parent() and object_ref.get_parent().name == "level_status":
+		return
 	print("Handle level hover called for level: ", level_number, " object: ", object_ref.object_name)
 	
 	var level_handler = object_ref.get_level_handler()
@@ -110,7 +107,9 @@ static func handle_level_hover(level_number: int, object_ref: object_class):
 	else:
 		print("No level handler found")
 
-# GENERAL FUNCTION TO HANDLE HOVER EXIT FOR ANY LEVEL
+# HANDLE HOVER EXIT FOR ANY LEVEL
 static func handle_level_hover_exit(object_ref: object_class):
+	if object_ref.get_parent() and object_ref.get_parent().name == "level_status":
+		return
 	print("Handle level hover exit called for: ", object_ref.object_name)
 	object_ref.hide_text()
