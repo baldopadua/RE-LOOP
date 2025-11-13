@@ -76,6 +76,11 @@ func _ready():
 	GlobalVariables.is_looping = false
 	GlobalVariables.player_moves = 0
 
+	# --- NEW: Set all entrances to not enterable by default ---
+	for obj in objects:
+		if obj:
+			obj.is_enterable = false
+
 func initialize_text_labels():
 	var entrances = [enter_1, enter_2, enter_3, enter_4, enter_5, enter_6, enter_7, enter_8, enter_9, enter_10, enter_11, enter_12]
 	for entrance in entrances:
@@ -334,6 +339,7 @@ func disable_lobby_functionality():
 			obj.set_process(false)
 			obj.set_physics_process(false)
 			obj.set_process_input(false)
+			obj.is_enterable = false # <--- Disable enterable when lobby is not active
 			if obj.has_node("hover_text"):
 				obj.get_node("hover_text").visible = false
 			if obj.has_node("interact_text"):
@@ -366,6 +372,7 @@ func enable_lobby_functionality():
 				obj.set_process(true)
 				obj.set_physics_process(true)
 				obj.set_process_input(true)
+			obj.is_enterable = true # <--- Enable enterable only when lobby is active
 	
 	if level_handler:
 		level_handler.set_process(true)

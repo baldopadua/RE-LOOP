@@ -682,6 +682,7 @@ texture = ExtResource("21_taira")
 expand_mode = 1
 
 [node name="hint" type="Control" parent="ui_logic/overlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1420,7 +1421,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
 theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+text = "hard"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1444,9 +1445,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
 theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+text = "medium"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1470,7 +1469,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
 theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+text = "easy"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1490,10 +1489,12 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.032936484
-anchor_top = -0.021405319
-anchor_right = 0.971094
-anchor_bottom = 1.029316
+anchor_left = 0.036664262
+anchor_top = -0.05409495
+anchor_right = 0.9748218
+anchor_bottom = 1.1708934
+offset_top = 41.611115
+offset_bottom = -41.611084
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1504,8 +1505,12 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
-theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+theme_override_font_sizes/font_size = 38
+text = "\"A fragile traveler flits along a treacherous path.
+One wrong step and silence falls; one careful touch and the sky awakens.
+Webs of shadow block the way, yet petals of life extend your reach.
+Guide wings that barely stir the air, and witness a storm rise where none dared to tread.\"
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1529,9 +1534,10 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
 theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+text = "\"The butterfly must fly beyond the web that lies ahead.
+Remove the spider, let the wings find the flower,
+and watch as its strength grows to stir the winds into a mighty tornado.\"
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1541,10 +1547,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05406056
-anchor_top = 0.15030245
-anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_left = 0.045362413
+anchor_top = 0.102140516
+anchor_right = 0.9325736
+anchor_bottom = 0.84969753
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1554,8 +1560,9 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
-theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+theme_override_font_sizes/font_size = 57
+text = "“Help the butterfly avoid the spider and reach the flower.
+The flower gives it energy to fly far enough to make a tornado.\""
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1576,9 +1583,9 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.032936484
-anchor_top = -0.021405319
-anchor_right = 0.971094
-anchor_bottom = 1.029316
+anchor_top = 0.056072578
+anchor_right = 0.96115327
+anchor_bottom = 1.1067939
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1589,8 +1596,12 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
-theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+theme_override_font_sizes/font_size = 44
+text = "“Tempt the swift with sweetness and rest.
+Where hunger meets comfort, pride will fade.
+Patience wins where haste decays,
+the still shall pass while the restless stays.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1614,9 +1625,10 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
 theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+text = "“The hare can’t resist temptation.
+Place a carrot on his path, and a chair in a resting spot.
+Once both distractions are ready, start the race and let time run its course.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1627,9 +1639,9 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05406056
-anchor_top = 0.15030245
+anchor_top = 0.03408561
 anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_bottom = 1.0140764
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1639,8 +1651,11 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
-theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+theme_override_font_sizes/font_size = 50
+text = "“Plant the carrot on the track to slow the hare,
+then place the chair somewhere along the track to double his distraction time.
+Once both are set, start the race and move forward in time until the turtle wins.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

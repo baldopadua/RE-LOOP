@@ -170,16 +170,8 @@ func update_hint_text(difficulty: String):
 			for hint in level_hint.get_children():
 				hint.visible = false
 
-			# Use correct prefix for each level
-			var prefix = "hint_1_"
-			if level == 2:
-				prefix = "hint_2_"
-			elif level == 3:
-				prefix = "hint_3_"
-			# ...add more elif for other levels if needed...
-
-			# Only show the label for the current difficulty
-			var hint_node = level_hint.get_node_or_null(prefix + difficulty)
+			# Always use the pattern "hint_{level}_{difficulty}"
+			var hint_node = level_hint.get_node_or_null("hint_%d_%s" % [level, difficulty])
 			if hint_node:
 				hint_node.visible = true
 
