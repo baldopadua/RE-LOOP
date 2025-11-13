@@ -682,7 +682,6 @@ texture = ExtResource("21_taira")
 expand_mode = 1
 
 [node name="hint" type="Control" parent="ui_logic/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1145,6 +1144,79 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="hint_3_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 56
+text = "\"Block the roaring path where water longs to escape. The stones hide the key, placing each heavy heart where it belongs.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_3_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“Gather all the stones in one place before placing them in the geyser. Only then will its power remain.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_3_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.13878547
+anchor_right = 0.9748218
+anchor_bottom = 0.8245696
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 50
+text = "“Stack the stones beside the geyser so that it doesn’t explode from the pressure of time. Only then when all stones are collected shall you place it inside” "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="level_4_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
 visible = false
 layout_mode = 1
@@ -1155,6 +1227,79 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="hint_4_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_4_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 56
+text = "\"To break the loop, rewrite the thread, Awake the code that long lay dead revealed to you which may be asked for time itself will be unmasked\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_4_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_4_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“Follow the whispers the machine will sing, provide what you’ve gathered, each precious thing, when pieces combine in their destined relation, you’ll witness the spark of a grand creation. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_4_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_4_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“Take the feather from the chicken and the tail left by the lizard. Plant the seed and let it grow into a stick, let the dog bite it, in exchange for the bone. Place them all into the incubator and see what it creates.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="level_5_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
 visible = false
 layout_mode = 1
@@ -1163,6 +1308,682 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_5_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_5_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00932722
+anchor_top = 0.016286632
+anchor_right = 1.0183126
+anchor_bottom = 1.0670079
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 47
+text = "“A soda in hand, a sparkle and gleam,
+He builds his creation from bubbles and dream
+and soar to the stars on a fizzy beam”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_5_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_5_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“The child needs a soda, go take him there. Return to the spot where dreams fill the air, once bubbles are built and the project complete. Move forth in time, your journey’s replete. ”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_5_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_5_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = -0.060144268
+anchor_right = 0.9412718
+anchor_bottom = 1.1083062
+offset_top = 100.5
+offset_bottom = -100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 40
+text = "“Place the skeleton at the vending machine.
+Move forward in time for the kid to buy a soda,
+Then return him where he used to be. place the soda there as well. The kid will use it as a science project, and see what the future lies. Once it's built, catch a ride. You don't want to be left out.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_6_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_6_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_6_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 56
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_6_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_6_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“A skull of heroes rests in silence.
+Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_6_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_6_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_7_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_7_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_7_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 56
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_7_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_7_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“A skull of heroes rests in silence.
+Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_7_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_7_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_8_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_8_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_8_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 56
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_8_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_8_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“A skull of heroes rests in silence.
+Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_8_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_8_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_9_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_9_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_9_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 56
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_9_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_9_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“A skull of heroes rests in silence.
+Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_9_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_9_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_10_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_10_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_10_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 56
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_10_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_10_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“A skull of heroes rests in silence.
+Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_10_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_10_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_11_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_11_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_11_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 56
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_11_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_11_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“A skull of heroes rests in silence.
+Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_11_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_11_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_12_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_12_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_12_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 56
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_12_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_12_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“A skull of heroes rests in silence.
+Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_12_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_12_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("28_0vcng")
+theme_override_font_sizes/font_size = 54
+text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="plooy_hint" type="AnimatedSprite2D" parent="ui_logic/overlay/hint"]
