@@ -6,6 +6,8 @@ var music_volume_label: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$settings_box/sfx_slider.value = 100
+	$settings_box/music_slider.value = 100
 	sfx_volume_label = $settings_box/sfx_slider/sfx_volume
 	music_volume_label = $settings_box/music_slider/music_volume
 	# Initialize label values to match slider values
