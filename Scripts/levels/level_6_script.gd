@@ -7,6 +7,7 @@ var tween_rotate: Tween
 var tween_scale: Tween
 var objects: Array = []
 
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var area_handler = $AreaHandler
 @onready var canvas_layer = $CanvasLayer
@@ -30,12 +31,15 @@ func _ready():
 	
 	await get_tree().create_timer(1.0).timeout
 	
+	# HIDE THE UI DURING CINEMA
+	ui_handler.hide_game_ui_elements()
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	player.get_node("Camera2D").emit_signal("cam_zoom", 0.75)
 	player.shake_camera(5.0, 10.0, 2.5)
 	
 	await get_tree().create_timer(2.5).timeout
 	
+
 	var flash = ColorRect.new()
 	flash.color = Color(1, 1, 1, 1)
 	flash.anchor_right = 1
@@ -61,6 +65,8 @@ func _ready():
 	player.set_process_input(true)
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+	# SHOW AGAIN THE UI AFTER
+	ui_handler.show_game_ui_elements()
 	
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
 # TO WORK ON THE SCRIPT
