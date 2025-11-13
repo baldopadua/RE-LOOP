@@ -6,10 +6,10 @@ extends Node2D
 
 @onready var objects: Array = []
 
-@onready var player = $PlayerScene
+@onready var player = $Camera2D/PlayerScene
 
-@onready var level_handler = $CanvasLayer/LevelHandler
-@onready var sound_manager = $SoundManager
+@onready var level_handler = $Camera2D/CanvasLayer/LevelHandler
+@onready var sound_manager = $Camera2D/SoundManager
 
 var ui_handler = null
 
@@ -21,18 +21,18 @@ var center_circle: Vector2i = Vector2i(0, 0)
 @onready var tween_rotate: Tween
 @onready var tween_scale: Tween
 
-@onready var enter_1: object_class = $enter_1 
-@onready var enter_2: object_class = $enter_2
-@onready var enter_3: object_class = $enter_3
-@onready var enter_4: object_class = $enter_4
-@onready var enter_5: object_class = $enter_5
-@onready var enter_6: object_class = $enter_6
-@onready var enter_7: object_class = $enter_7
-@onready var enter_8: object_class = $enter_8
-@onready var enter_9: object_class = $enter_9
-@onready var enter_10: object_class = $enter_10
-@onready var enter_11: object_class = $enter_11
-@onready var enter_12: object_class = $enter_12
+@onready var enter_1: object_class = $Camera2D/enter_1 
+@onready var enter_2: object_class = $Camera2D/enter_2
+@onready var enter_3: object_class = $Camera2D/enter_3
+@onready var enter_4: object_class = $Camera2D/enter_4
+@onready var enter_5: object_class = $Camera2D/enter_5
+@onready var enter_6: object_class = $Camera2D/enter_6
+@onready var enter_7: object_class = $Camera2D/enter_7
+@onready var enter_8: object_class = $Camera2D/enter_8
+@onready var enter_9: object_class = $Camera2D/enter_9
+@onready var enter_10: object_class = $Camera2D/enter_10
+@onready var enter_11: object_class = $Camera2D/enter_11
+@onready var enter_12: object_class = $Camera2D/enter_12
 
 var clock_area: int = 12
 var highest_completed_level = 0
@@ -51,9 +51,8 @@ func _ready():
 
 	call_deferred("initialize_text_labels")
 	ui_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler")
-	
 	ui_handler.hide_game_ui_elements()
-
+	ui_handler.show_only_keys_elements()
 	if level_handler:
 		level_handler.set_current_lobby()
 	else:

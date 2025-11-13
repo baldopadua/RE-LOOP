@@ -93,14 +93,14 @@ sprite_frames = SubResource("SpriteFrames_6d8r2")
 animation = &"base"
 
 [node name="long_hand_rotation" type="Camera2D" parent="level_status"]
-position = Vector2(645.00006, 357.00003)
+position = Vector2(645.00006, 361.00003)
 rotation = 0.00050228834
 ignore_rotation = false
 zoom = Vector2(28.107, 1.638)
 rotation_smoothing_enabled = true
 
 [node name="long_hand_clock" type="AnimatedSprite2D" parent="level_status/long_hand_rotation"]
-position = Vector2(-1.0462997, -97.277664)
+position = Vector2(-1.0452685, -89.99953)
 scale = Vector2(0.34202147, 0.38841495)
 sprite_frames = SubResource("SpriteFrames_syl1f")
 animation = &"long_hand"
@@ -112,7 +112,8 @@ zoom = Vector2(33.12, 1.93)
 rotation_smoothing_enabled = true
 
 [node name="short_hand_clock" type="AnimatedSprite2D" parent="level_status/short_hand_rotation"]
-position = Vector2(-0.99999857, -60.000008)
+position = Vector2(1.0000017, -58.000008)
+rotation = 3.1389456
 scale = Vector2(0.21838951, 0.2147465)
 sprite_frames = SubResource("SpriteFrames_wbj5g")
 animation = &"short_hand"

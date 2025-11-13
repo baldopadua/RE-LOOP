@@ -398,6 +398,18 @@ func hide_level_cutscene():
 		cutscene.hide_cutscene()
 		remove_cursor()
 
+func show_only_keys_elements():
+	if ui_logic and ui_logic.has_node("game_ui_elements"):
+		var game_ui = ui_logic.get_node("game_ui_elements")
+		game_ui.visible = true
+		for child in game_ui.get_children():
+			if child.name == "keys_elements":
+				if child.has_method("set_visible"):
+					child.visible = true
+			else:
+				if child.has_method("set_visible"):
+					child.visible = false
+
 # HIDE GAME UI ELEMENTS DURING CUTSCENE
 func hide_game_ui_elements():
 	if ui_logic and ui_logic.has_node("game_ui_elements"):
