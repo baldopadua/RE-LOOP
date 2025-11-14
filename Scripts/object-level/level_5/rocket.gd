@@ -43,8 +43,6 @@ func rocket_start():
 
 		# Send the rocket out into space
 		rocket_started = false
-		if sound_manager and sound_manager.sfx.has("rocket_blastoff"):
-			sound_manager.play_sfx("rocket_blastoff")
 		animationplayer.play("rocket_animation")
 		text.visible = false
 		player_still_allowed = false
