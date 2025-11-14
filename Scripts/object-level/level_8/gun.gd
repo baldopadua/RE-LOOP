@@ -9,6 +9,8 @@ signal race_finished()
 @onready var hare = $"../Hare"
 @onready var turtle = $"../Turtle"
 @onready var player = $"../PlayerScene"
+@onready var sound_manager = get_parent().get_node("SoundManager")
+@onready var area_handler = get_parent().get_node("AreaHandler")
 var turtle_won : bool = false
 
 # Keystones
@@ -85,6 +87,14 @@ func _on_start_race() -> void:
 			turtle_won = true
 			turtle.animated_sprite.play("celebrates")
 			hare.animated_sprite.play("loser_hare")
+			#BREAK LOOP
+			if sound_manager:
+				if sound_manager.sfx.has("sword"):
+					sound_manager.play_sfx("sword")
+				# Play all finish level SFX at once
+				if sound_manager.has_method("play_finish_level_sfx"):
+					sound_manager.play_finish_level_sfx()
+			area_handler.show_loop_break(8)
 			break
 		elif round(hare.rotation_degrees) <= -270.0:
 			turtle.animated_sprite.play("cry")

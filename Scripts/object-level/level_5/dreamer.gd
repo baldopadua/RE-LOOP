@@ -6,6 +6,7 @@ signal add_cur_state(direction)
 @onready var dreamer_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 @onready var player = $"../PlayerScene"
+@onready var sound_manager = get_parent().get_node("SoundManager")
 
 # Keystone Objects
 @onready var soda = $"../soda"
@@ -15,46 +16,61 @@ signal add_cur_state(direction)
 @onready var temp_timer = $"../temp_timer"
 
 var area_entered_objects : Array = []
+var previous_state: int = 1
 
 var is_soda_dispensed: bool = false
 var is_dream_reached: bool = false
 var is_in_vending: bool = false
 var is_in_science: bool = false
 
-func _on_add_cur_state(_direction) -> void:
+func _process(_delta: float) -> void:
+	update_dreamer_state()
+
+func update_dreamer_state():
+	# Update pickupability
 	if current_state == 1:
-		dreamer_animated_sprite.play("skeletal_remains")
-	elif current_state == 2:
+		is_pickupable = true
+	else:
 		is_pickupable = false
-		dreamer_animated_sprite.play("kid")
-		dreamer_animated_sprite.animation_finished.connect(func():
-			if dreamer_animated_sprite.animation == "kid":
+	
+	# Handle state changes with sound effects
+	if current_state != previous_state:
+		match [previous_state, current_state]:
+			[1, 2]:
+				# Skeletal remains to kid
+				if sound_manager and sound_manager.sfx.has("happy_kid"):
+					sound_manager.play_sfx("happy_kid")
+				dreamer_animated_sprite.play("kid")
+				await dreamer_animated_sprite.animation_finished
 				if is_in_vending and not is_soda_dispensed:
-					# Play Animation of kid inserting coin
-					# Play Animation of vending machine cluttering
-					# Play Animation of vending machine dispensing soda
-					# Play animation of kid raising the soda in the air
-					# Play animation of kid dropping the soda on the ground
-					
+					if sound_manager and sound_manager.sfx.has("vending_machine"):
+						sound_manager.play_sfx("vending_machine")
 					is_soda_dispensed = true
 					soda.visible = true
 					soda.is_pickupable = true
-				# Also detect if the soda is within in range
-				# Then determine if the kid grows up to be an astronaut
-				# or a depressed salaryman
-		)
-	elif current_state == 3:
-		if is_in_science:
-			if science_project.is_dreamer_here and science_project.is_soda_here:
-				is_dream_reached = true
-			else:
-				is_dream_reached = false
+			[2, 3]:
+				# Kid to adult (astronaut or salaryman)
+				if is_in_science:
+					if science_project.is_dreamer_here and science_project.is_soda_here:
+						is_dream_reached = true
+					else:
+						is_dream_reached = false
+				
+				if is_dream_reached:
+					if sound_manager and sound_manager.sfx.has("happy_kid"):
+						sound_manager.play_sfx("happy_kid")
+					dreamer_animated_sprite.play("astronaut")
+					set_rocket()
+				else:
+					if sound_manager and sound_manager.sfx.has("depress_man"):
+						sound_manager.play_sfx("depress_man")
+					dreamer_animated_sprite.play("depressed_salaryman")
 		
-		if is_dream_reached:
-			dreamer_animated_sprite.play("astronaut")
-			set_rocket()
-		else:
-			dreamer_animated_sprite.play("depressed_salaryman")
+		previous_state = current_state
+
+func _on_add_cur_state(_direction) -> void:
+	if current_state == 1:
+		dreamer_animated_sprite.play("skeletal_remains")
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if dreamer_animated_sprite.animation == "skeletal_remains":
@@ -98,6 +114,10 @@ func interact(_obj):
 	return false
 
 func set_rocket():
+	# Play rocket blastoff sound when building the rocket
+	if sound_manager and sound_manager.sfx.has("rocket_blastoff"):
+		sound_manager.play_sfx("rocket_blastoff")
+	
 	rocket.visible = true
 	soda.visible = false
 	soda.is_pickupable = false

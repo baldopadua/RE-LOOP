@@ -7,6 +7,9 @@ extends object_class
 
 # When the wind reaches state_6 - tornado - the loop will break.
 
+@onready var sound_manager = get_parent().get_node("SoundManager")
+@onready var area_handler = get_parent().get_node("AreaHandler")
+
 @warning_ignore("unused_signal")
 signal add_wind_state(direction)
 
@@ -26,6 +29,14 @@ func _on_add_wind_state(direction: Variant) -> void:
 			animated_sprite.play("wind_5")
 		elif current_state == 6:
 			animated_sprite.play("wind_6")
+			#BREAK LOOP
+			if sound_manager:
+				if sound_manager.sfx.has("sword"):
+					sound_manager.play_sfx("sword")
+				# Play all finish level SFX at once
+				if sound_manager.has_method("play_finish_level_sfx"):
+					sound_manager.play_finish_level_sfx()
+			area_handler.show_loop_break(7)
 	else:
 		if current_state > min_state_threshold:
 			current_state -= 1
@@ -40,3 +51,4 @@ func _on_add_wind_state(direction: Variant) -> void:
 		elif current_state == 5:
 			animated_sprite.play_backwards("wind_5")
 	print("WIND CURRENT_STATE: ", current_state)
+

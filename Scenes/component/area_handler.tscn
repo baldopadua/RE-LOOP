@@ -1020,6 +1020,60 @@ sprite_frames = SubResource("SpriteFrames_domgy")
 frame = 6
 frame_progress = 1.0
 
+[node name="level_7_break" type="AnimatedSprite2D" parent="loop_break"]
+visible = false
+position = Vector2(-1, -3.0000005)
+rotation = -0.5235988
+scale = Vector2(2.1857145, 2.1428573)
+sprite_frames = SubResource("SpriteFrames_domgy")
+frame = 6
+frame_progress = 1.0
+
+[node name="level_8_break" type="AnimatedSprite2D" parent="loop_break"]
+visible = false
+position = Vector2(-2, -2)
+rotation = -3.6651917
+scale = Vector2(2.175, -2.175)
+sprite_frames = SubResource("SpriteFrames_domgy")
+frame = 6
+frame_progress = 1.0
+
+[node name="level_9_break" type="AnimatedSprite2D" parent="loop_break"]
+visible = false
+position = Vector2(-2, -2)
+rotation = -3.6651917
+scale = Vector2(2.175, -2.175)
+sprite_frames = SubResource("SpriteFrames_domgy")
+frame = 6
+frame_progress = 1.0
+
+[node name="level_10_break" type="AnimatedSprite2D" parent="loop_break"]
+visible = false
+position = Vector2(-2, -2)
+rotation = -6.806784
+scale = Vector2(2.175, -2.175)
+sprite_frames = SubResource("SpriteFrames_domgy")
+frame = 6
+frame_progress = 1.0
+
+[node name="level_11_break" type="AnimatedSprite2D" parent="loop_break"]
+visible = false
+position = Vector2(-2, -2)
+rotation = -3.6651917
+scale = Vector2(2.175, -2.175)
+sprite_frames = SubResource("SpriteFrames_domgy")
+frame = 6
+frame_progress = 1.0
+
+[node name="level_12_break" type="AnimatedSprite2D" parent="loop_break"]
+visible = false
+position = Vector2(-2, -2)
+rotation = -3.6651917
+scale = Vector2(2.175, -2.175)
+sprite_frames = SubResource("SpriteFrames_domgy")
+frame = 6
+frame_progress = 1.0
+
 [node name="decoratives" type="Node2D" parent="."]
 
 [node name="template" type="Node2D" parent="decoratives"]

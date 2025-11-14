@@ -2,10 +2,6 @@ extends Node2D
 
 @onready var map_sprite: AnimatedSprite2D = $world_environment/map
 @onready var loop_break: Node2D = $loop_break
-@onready var level_1_break: AnimatedSprite2D = $loop_break/level_1_break
-@onready var level_2_break: AnimatedSprite2D = $loop_break/level_2_break
-@onready var level_4_break: AnimatedSprite2D = $loop_break/level_4_break
-@onready var level_5_break: AnimatedSprite2D = $loop_break/level_5_break
 @onready var sound_manager: Node = $SoundManager
 @onready var decoratives: Node2D = $decoratives
 
@@ -146,21 +142,17 @@ func show_map_for_clock_area(_clock_area: int) -> void:
 # MIDDLE BREAK LOOP LOGIC
 func show_loop_break(level: int) -> void:
 	loop_break.visible = true
-	level_1_break.visible = false
-	level_2_break.visible = false 
-	level_4_break.visible = false 
-	if level == 1:
-		level_1_break.visible = true
-		level_1_break.play()
-	elif level == 2:
-		level_2_break.visible = true
-		level_2_break.play()
-	elif level == 4:
-		level_4_break.visible = true
-		level_4_break.play()
-	elif level == 5:
-		level_5_break.visible = true
-		level_5_break.play()
+	# Hide all level_*_break nodes dynamically
+	for child in loop_break.get_children():
+		if child.name.begins_with("level_") and child.name.ends_with("_break"):
+			child.visible = false
+	# Show and play the requested break node if it exists
+	var break_node_name = "level_%d_break" % level
+	var break_node = loop_break.get_node_or_null(break_node_name)
+	if break_node:
+		break_node.visible = true
+		if break_node.has_method("play"):
+			break_node.play()
 
 # SHOW DECORATIVES FOR SPECIFIC LEVEL
 func show_decoratives(level: int) -> void:
