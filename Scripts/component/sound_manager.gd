@@ -127,3 +127,32 @@ func set_ambience_volume(sfx_name: String, volume: float) -> void:
 		var player = get_node("sfx/global_sfx/ambience_sfx/" + sfx_name)
 		if player is AudioStreamPlayer2D:
 			player.volume_db = volume
+
+func _ready():
+	_set_bus_for_all_sfx()
+	_set_bus_for_all_music()
+
+# Recursively set bus for all AudioStreamPlayer2D nodes under sfx
+func _set_bus_for_all_sfx():
+	if has_node("sfx"):
+		_set_bus_recursive($sfx, "sfx")
+
+func _set_bus_for_all_music():
+	if has_node("music"):
+		_set_bus_recursive($music, "music")
+
+func _set_bus_recursive(parent: Node, bus_name: String):
+	for child in parent.get_children():
+		if child is AudioStreamPlayer2D:
+			child.bus = bus_name
+		else:
+			_set_bus_recursive(child, bus_name)
+
+# Volume control for buses
+func set_sfx_bus_volume(volume: float) -> void:
+	var db = linear_to_db(volume / 100.0)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), db)
+
+func set_music_bus_volume(volume: float) -> void:
+	var db = linear_to_db(volume / 100.0)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), db)

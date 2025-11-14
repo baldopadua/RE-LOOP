@@ -37,7 +37,7 @@
 [ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="28_0vcng"]
 [ext_resource type="Texture2D" uid="uid://bt02461ew12vr" path="res://Assets/ui/hint/hintbox.png" id="28_5ue8t"]
 [ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="29_g2hc1"]
-[ext_resource type="Script" path="res://Scripts/ui/settings.gd" id="33_6k3yl"]
+[ext_resource type="Script" uid="uid://xbkpwj8hqvws" path="res://Scripts/ui/settings.gd" id="33_6k3yl"]
 [ext_resource type="PackedScene" uid="uid://b11bd22bl1hik" path="res://Scenes/component/cutscene.tscn" id="33_nol8b"]
 [ext_resource type="Texture2D" uid="uid://donw7tlc1yq2f" path="res://Assets/ui/hint/settings_dialog.png" id="34_l8elr"]
 
