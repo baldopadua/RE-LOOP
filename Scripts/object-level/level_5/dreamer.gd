@@ -100,6 +100,10 @@ func interact(_obj):
 	return false
 
 func set_rocket():
+	# Play rocket blastoff sound when building the rocket
+	if sound_manager and sound_manager.sfx.has("rocket_blastoff"):
+		sound_manager.play_sfx("rocket_blastoff")
+	
 	rocket.visible = true
 	soda.visible = false
 	soda.is_pickupable = false
