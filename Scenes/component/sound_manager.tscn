@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://wspt4mwhafhc"]
+[gd_scene load_steps=53 format=3 uid="uid://wspt4mwhafhc"]
 
 [ext_resource type="Script" uid="uid://bhdr1gfr3i466" path="res://Scripts/component/sound_manager.gd" id="1_ynhbd"]
 [ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="2_sanpt"]
@@ -47,6 +47,11 @@
 [ext_resource type="AudioStream" uid="uid://bf6ubuc8twaig" path="res://Audio/level-4/big_dinosaur1.wav" id="44_3oqx0"]
 [ext_resource type="AudioStream" uid="uid://dhxw0ynfnpdlw" path="res://Audio/level-4/chicken_sound.wav" id="45_4r04m"]
 [ext_resource type="AudioStream" uid="uid://cknowng64v31f" path="res://Audio/level-4/tanim_seed.wav" id="46_3oqx0"]
+[ext_resource type="AudioStream" uid="uid://w6e50i7jdnmb" path="res://Audio/wavs-mp3/happy_kid.wav" id="47_level5"]
+[ext_resource type="AudioStream" uid="uid://c3u56t78d4ypb" path="res://Audio/wavs-mp3/rocket_blastoff_final.wav" id="48_level5"]
+[ext_resource type="AudioStream" uid="uid://bjpx2dxsb18qv" path="res://Audio/wavs-mp3/vending_machine_final.wav" id="49_level5"]
+[ext_resource type="AudioStream" path="res://Audio/wavs-mp3/soda_pop_final.wav" id="50_level5"]
+[ext_resource type="AudioStream" uid="uid://co8t5ydhqx2ig" path="res://Audio/wavs-mp3/depress_man.wav" id="51_level5"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7wrvl"]
 random_pitch = 1.5
@@ -236,6 +241,23 @@ volume_db = -5.0
 
 [node name="tanim_seed" type="AudioStreamPlayer2D" parent="sfx/level_4_sfx"]
 stream = ExtResource("46_3oqx0")
+
+[node name="level_5_sfx" type="Node2D" parent="sfx"]
+
+[node name="happy_kid" type="AudioStreamPlayer2D" parent="sfx/level_5_sfx"]
+stream = ExtResource("47_level5")
+
+[node name="rocket_blastoff" type="AudioStreamPlayer2D" parent="sfx/level_5_sfx"]
+stream = ExtResource("48_level5")
+
+[node name="vending_machine" type="AudioStreamPlayer2D" parent="sfx/level_5_sfx"]
+stream = ExtResource("49_level5")
+
+[node name="soda_pop" type="AudioStreamPlayer2D" parent="sfx/level_5_sfx"]
+stream = ExtResource("50_level5")
+
+[node name="depress_man" type="AudioStreamPlayer2D" parent="sfx/level_5_sfx"]
+stream = ExtResource("51_level5")
 
 [node name="music" type="Node2D" parent="."]
 
