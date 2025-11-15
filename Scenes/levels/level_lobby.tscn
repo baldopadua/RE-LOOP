@@ -122,7 +122,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -17)]
+"values": [Vector2(9, -5.9999995)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -334,7 +334,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(8, -6), Vector2(9.536743e-07, -23.999998)]
+"values": [Vector2(8, -6), Vector2(0, -18.000002)]
 }
 
 [sub_resource type="Animation" id="Animation_kgpvv"]
@@ -719,7 +719,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="enter_5" parent="Camera2D" instance=ExtResource("6_1uaeg")]
-position = Vector2(0, -17)
+position = Vector2(9, -5.9999995)
 rotation = 2.6517494
 script = ExtResource("6_rqxun")
 object_name = "enter_5"
