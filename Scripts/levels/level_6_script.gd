@@ -17,6 +17,7 @@ var objects: Array = []
 @onready var isaac_newton_2 = $isaac_newton_2
 @onready var seed = $seed
 @onready var seed2 = $seed2
+@onready var center_pos = $center_pos
 
 func _ready():
 	# SET LEVEL
@@ -35,6 +36,7 @@ func _ready():
 	
 	# HIDE THE UI DURING CINEMA
 	ui_handler.hide_game_ui_elements()
+	player.get_node("Camera2D").emit_signal("pan_to_pos", center_pos.global_position)
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	player.get_node("Camera2D").emit_signal("cam_zoom", 0.75)
 	player.shake_camera(5.0, 10.0, 2.5)
@@ -65,6 +67,7 @@ func _ready():
 	
 	GlobalVariables.player_stopped = false
 	player.set_process_input(true)
+	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 	# SHOW AGAIN THE UI AFTER

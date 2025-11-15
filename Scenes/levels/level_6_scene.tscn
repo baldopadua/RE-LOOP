@@ -389,6 +389,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="center_pos" type="Marker2D" parent="."]
+
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="toggle_switch_circle" from="switch_circle" to="switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="add_cur_state" from="isaac_newton_1" to="isaac_newton_1" method="_on_add_cur_state"]
