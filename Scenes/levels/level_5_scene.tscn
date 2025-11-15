@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://c68gmkh2e26af"]
+[gd_scene load_steps=80 format=3 uid="uid://c68gmkh2e26af"]
 
 [ext_resource type="Script" uid="uid://bht2nh4ymwmf5" path="res://Scripts/levels/level_5_script.gd" id="1_0li43"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_aql1r"]
@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_ryj1a"]
 [ext_resource type="Script" uid="uid://cex25lnpgh2tf" path="res://Scripts/object-level/level_5/dreamer.gd" id="7_cltmq"]
 [ext_resource type="Texture2D" uid="uid://kmxvp6sy4oyr" path="res://Assets/levels/level_5/vending machine.png" id="7_dtqwf"]
+[ext_resource type="Texture2D" uid="uid://cmlw65qbw2380" path="res://Assets/levels/level_5/cubicle-sheet.png" id="10_0da36"]
 [ext_resource type="Texture2D" uid="uid://c3ie6txnoudpw" path="res://Assets/levels/level_5/Rocket-Transform.png" id="11_dtqwf"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="11_dw1n4"]
-[ext_resource type="Texture2D" uid="uid://4c60fvbfi0y4" path="res://Assets/levels/level_5/Rocketship.png" id="11_oyxes"]
 [ext_resource type="Script" uid="uid://6vc2vv34jju8" path="res://Scripts/object-level/level_5/science_project.gd" id="12_tahrn"]
 [ext_resource type="Texture2D" uid="uid://dpc6gh77uqym1" path="res://Assets/levels/level_5/BoyFrames.png" id="13_0da36"]
 [ext_resource type="Script" uid="uid://dx7cjdgx1bqh8" path="res://Scripts/object-level/level_5/rocket.gd" id="14_ctghb"]
@@ -37,6 +37,101 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h26wg"]
 size = Vector2(48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cupc2"]
+atlas = ExtResource("10_0da36")
+region = Rect2(192, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4nsl"]
+atlas = ExtResource("10_0da36")
+region = Rect2(256, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw7tg"]
+atlas = ExtResource("10_0da36")
+region = Rect2(320, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii72l"]
+atlas = ExtResource("10_0da36")
+region = Rect2(384, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttsr5"]
+atlas = ExtResource("10_0da36")
+region = Rect2(448, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx5iq"]
+atlas = ExtResource("10_0da36")
+region = Rect2(512, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kheq8"]
+atlas = ExtResource("10_0da36")
+region = Rect2(576, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6o6t"]
+atlas = ExtResource("10_0da36")
+region = Rect2(192, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjttt"]
+atlas = ExtResource("10_0da36")
+region = Rect2(128, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_067hi"]
+atlas = ExtResource("10_0da36")
+region = Rect2(64, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew28s"]
+atlas = ExtResource("10_0da36")
+region = Rect2(0, 0, 64, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oyxes"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cupc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4nsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw7tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii72l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttsr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx5iq")
+}],
+"loop": false,
+"name": &"depressed_salaryman_cubicle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kheq8")
+}],
+"loop": false,
+"name": &"kid_cubicle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6o6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjttt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_067hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew28s")
+}],
+"loop": false,
+"name": &"skeletal_remains_cubicle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tahrn"]
 size = Vector2(20, 34.5526)
@@ -491,10 +586,12 @@ script = ExtResource("12_tahrn")
 object_name = "science_project"
 object_type = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="science_project"]
-rotation = 2.0944
-scale = Vector2(2, 2)
-texture = ExtResource("11_oyxes")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="science_project"]
+position = Vector2(31.000002, 24)
+rotation = 2.13695
+scale = Vector2(1.6032808, 1.7601186)
+sprite_frames = SubResource("SpriteFrames_oyxes")
+animation = &"depressed_salaryman_cubicle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="science_project"]
 position = Vector2(-6.30145, -3.63814)
@@ -560,7 +657,7 @@ shape = SubResource("CapsuleShape2D_agu2x")
 rotation = 2.0944
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5xm4r")
-animation = &"kid"
+animation = &"depressed_salaryman"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
