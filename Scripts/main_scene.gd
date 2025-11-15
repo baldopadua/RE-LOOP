@@ -44,6 +44,12 @@ func _connect_main_menu_buttons():
 			var credits_btn = main_menu.get_node("credits_button")
 			if not credits_btn.is_connected("pressed", Callable(self, "_on_main_menu_button_pressed")):
 				credits_btn.connect("pressed", Callable(self, "_on_main_menu_button_pressed").bind("credits"))
+			# Settings Button
+		if main_menu.has_node("settings_button"):
+			var settings_btn = main_menu.get_node("settings_button")
+			if not settings_btn.is_connected("pressed", Callable(self, "_on_game_ui_elements_button_pressed")):
+				settings_btn.connect("pressed", Callable(self, "_on_game_ui_elements_button_pressed").bind("settings"))
+
 
 func _connect_game_ui_elements_buttons():
 	if ui_handler.ui_logic.has_node("game_ui_elements"):
@@ -58,6 +64,11 @@ func _connect_game_ui_elements_buttons():
 			var hint_btn = game_ui.get_node("hint_button")
 			if not hint_btn.is_connected("pressed", Callable(self, "_on_game_ui_elements_button_pressed")):
 				hint_btn.connect("pressed", Callable(self, "_on_game_ui_elements_button_pressed").bind("hint"))
+		# Settings Button
+		if game_ui.has_node("settings_button"):
+			var settings_btn = game_ui.get_node("settings_button")
+			if not settings_btn.is_connected("pressed", Callable(self, "_on_game_ui_elements_button_pressed")):
+				settings_btn.connect("pressed", Callable(self, "_on_game_ui_elements_button_pressed").bind("settings"))
 
 func _connect_overlay_close_button():
 	if ui_handler.ui_logic.has_node("overlay"):
@@ -98,6 +109,10 @@ func _on_main_menu_button_pressed(button_type):
 			ui_handler.show_overlay_credits()
 			ui_handler.hide_main_menu()
 			ui_handler.show_overlay_credits()
+		elif button_type == "settings":
+			ui_handler.sound_manager.play_ui("page_turn")
+			ui_handler.hide_main_menu()
+			ui_handler.show_overlay_settings()
 
 func _on_game_ui_elements_button_pressed(button_type):
 	if ui_handler.sound_manager:
@@ -107,3 +122,6 @@ func _on_game_ui_elements_button_pressed(button_type):
 		elif button_type == "hint":
 			ui_handler.sound_manager.play_ui("page_turn")
 			ui_handler.show_overlay_hint()
+		elif button_type == "settings":
+			ui_handler.sound_manager.play_ui("page_turn")
+			ui_handler.show_overlay_settings()
