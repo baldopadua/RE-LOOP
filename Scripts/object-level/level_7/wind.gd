@@ -19,6 +19,7 @@ signal add_wind_state(direction)
 var is_tornado: bool = false
 var is_playing: bool = false
 var player_body: Node
+var player_in_area: bool = false
 
 @onready var anim_handler = get_parent().get_node("AnimationPlayer")
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
@@ -49,6 +50,9 @@ func _on_add_wind_state(direction: Variant) -> void:
 				if sound_manager.has_method("play_finish_level_sfx"):
 					sound_manager.play_finish_level_sfx()
 			area_handler.show_loop_break(7)
+			# If player is already in area, trigger tornado sequence
+			if player_in_area and not is_playing and player_body:
+				_start_tornado_sequence(player_body)
 	else:
 		if current_state > min_state_threshold:
 			current_state -= 1
@@ -65,20 +69,28 @@ func _on_add_wind_state(direction: Variant) -> void:
 	print("WIND CURRENT_STATE: ", current_state)
 
 func _on_body_entered(body) -> void:
-	# If tornado state and not already playing
+	player_in_area = true
+	player_body = body
 	if is_tornado and not is_playing:
-		GlobalVariables.player_stopped = true
-		ui_handler.hide_game_ui_elements()
-		player_body = body
-		player_body.get_node("Camera2D").emit_signal("pan_to_pos", player_body.get_node("AnimatedSprite2D").global_position)
-		player_body.get_node("Camera2D").emit_signal("reveal_bars")
-		player_body.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
-		await get_tree().create_timer(1).timeout
-		is_playing = true
-		player_body.z_index = 2
-		anim_handler.play("flow_with_tornado")
-		if sound_manager:
-			sound_manager.play_sfx("water_eruption")
+		_start_tornado_sequence(body)
+
+func _on_body_exited(body) -> void:
+	if body == player_body:
+		player_in_area = false
+
+func _start_tornado_sequence(body) -> void:
+	GlobalVariables.player_stopped = true
+	ui_handler.hide_game_ui_elements()
+	player_body = body
+	player_body.get_node("Camera2D").emit_signal("pan_to_pos", player_body.get_node("AnimatedSprite2D").global_position)
+	player_body.get_node("Camera2D").emit_signal("reveal_bars")
+	player_body.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
+	await get_tree().create_timer(1).timeout
+	is_playing = true
+	player_body.z_index = 2
+	anim_handler.play("flow_with_tornado")
+	if sound_manager:
+		sound_manager.play_sfx("water_eruption")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
