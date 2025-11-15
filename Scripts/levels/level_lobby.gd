@@ -71,7 +71,7 @@ func _ready():
 	level_handler.level_completed.connect(_on_level_completed)
 	
 	call_deferred("position_player_based_on_progress")
-	sound_manager.play_ambience_sfx("forest_sfx")
+	sound_manager.play_ambience_music("forest")
 	
 	GlobalVariables.is_looping = false
 	GlobalVariables.player_moves = 0
