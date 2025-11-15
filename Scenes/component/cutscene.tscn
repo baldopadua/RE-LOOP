@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b11bd22bl1hik"]
+[gd_scene load_steps=9 format=3 uid="uid://b11bd22bl1hik"]
 
 [ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="1_ecwua"]
 [ext_resource type="Script" uid="uid://cg6w2psi5h5rg" path="res://Scripts/component/cutscene.gd" id="1_njedo"]
 [ext_resource type="Texture2D" uid="uid://bdllaonekw5q4" path="res://Assets/comics/level1.png" id="2_7ptmk"]
+[ext_resource type="Texture2D" uid="uid://cnmt0b4y7gy50" path="res://Assets/ui/BG.png" id="2_hjp08"]
 [ext_resource type="Texture2D" uid="uid://cm4aufr87rgw3" path="res://Assets/comics/level2.png" id="3_hjp08"]
 [ext_resource type="Texture2D" uid="uid://drnejma6awybr" path="res://Assets/level_select_lobby/continue_unhover.png" id="3_l34s7"]
 [ext_resource type="Texture2D" uid="uid://tkt1pip3c0fa" path="res://Assets/comics/level3.png" id="4_gfvu8"]
@@ -16,6 +17,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_njedo")
+metadata/_edit_use_anchors_ = true
+
+[node name="bg" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hjp08")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="comics_container" type="Control" parent="."]
