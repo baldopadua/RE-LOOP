@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://3tla2n3edqkn"]
+[gd_scene load_steps=35 format=3 uid="uid://3tla2n3edqkn"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_2r23t"]
 [ext_resource type="Script" uid="uid://ds7lwxirvmjvs" path="res://Scripts/levels/level_6_script.gd" id="1_odmpw"]
@@ -10,14 +10,20 @@
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_kapnr"]
 [ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/level_select_lobby/level_7.png" id="8_pwedw"]
 [ext_resource type="Texture2D" uid="uid://bd6huacdltowj" path="res://Assets/levels/level_6/placeholder_assets/rift_in_time.png" id="9_sh2gb"]
+[ext_resource type="Script" uid="uid://ipneen5ggosr" path="res://Scripts/object-level/level_6/in_1.gd" id="10_cr1iw"]
 [ext_resource type="Script" uid="uid://b4sgciq6gkscg" path="res://Scripts/object-level/level_6/switch_circle.gd" id="10_ov81m"]
 [ext_resource type="Texture2D" uid="uid://hsoor2nwutob" path="res://Assets/levels/level_6/placeholder_assets/isaac_newton_dead.png" id="12_36bwe"]
 [ext_resource type="Texture2D" uid="uid://20x2gha106e6" path="res://Assets/levels/level_6/placeholder_assets/isaac_newton.png" id="12_iwthe"]
 [ext_resource type="Texture2D" uid="uid://cdwk27ivdcjvf" path="res://Assets/levels/level_6/placeholder_assets/isaac_newton_old.png" id="14_pugdj"]
+[ext_resource type="Script" uid="uid://dpen7dd1hhm1c" path="res://Scripts/object-level/level_6/in_2.gd" id="15_bxtqd"]
 [ext_resource type="Texture2D" uid="uid://6me05e503l8b" path="res://Assets/levels/level_6/placeholder_assets/isaac_newton_young.png" id="15_nlrgi"]
 [ext_resource type="Texture2D" uid="uid://ccgmn7tbh1mei" path="res://Assets/levels/level_6/placeholder_assets/tree.png" id="16_pugdj"]
+[ext_resource type="Script" uid="uid://4ps5tmbu0ta5" path="res://Scripts/object-level/level_6/seed.gd" id="17_8mnya"]
 [ext_resource type="Texture2D" uid="uid://bhkpxdw4kq7lu" path="res://Assets/levels/level_6/placeholder_assets/seed.png" id="17_nlrgi"]
 [ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="18_rcfaf"]
+[ext_resource type="Texture2D" uid="uid://pevvfq2jt8jf" path="res://Assets/levels/level_6/placeholder_assets/sapling.png" id="19_jvt55"]
+[ext_resource type="Texture2D" uid="uid://c6e0ivfkhpgnh" path="res://Assets/levels/level_6/placeholder_assets/semi_tree.png" id="20_5v7yl"]
+[ext_resource type="Script" uid="uid://dn4wa6vh46eft" path="res://Scripts/object-level/level_6/seed2.gd" id="20_f215k"]
 
 [sub_resource type="Gradient" id="Gradient_kapnr"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -77,6 +83,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pugdj"]
+size = Vector2(32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nlrgi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_nlrgi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_jvt55")
+}],
+"loop": false,
+"name": &"sapling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_5v7yl")
+}],
+"loop": false,
+"name": &"semi_tree",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_pugdj")
+}],
+"loop": false,
+"name": &"tree",
+"speed": 5.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_iwthe"]
 animations = [{
 "frames": [{
@@ -112,34 +156,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_pugdj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("16_pugdj")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlrgi"]
-size = Vector2(32, 56)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pugdj"]
-size = Vector2(32, 40)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_nlrgi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_nlrgi")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cr1iw"]
 radius = 33.212807
 height = 93.28204
@@ -148,7 +164,6 @@ height = 93.28204
 script = ExtResource("1_odmpw")
 
 [node name="AreaHandler" parent="." instance=ExtResource("1_2r23t")]
-position = Vector2(-8, 8)
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_et41i")]
 self_modulate = Color(1, 1, 1, 0)
@@ -196,7 +211,7 @@ texture = SubResource("GradientTexture2D_sh2gb")
 visible = false
 script = ExtResource("10_ov81m")
 object_name = "switch_circle"
-is_pickupable = true
+object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="switch_circle"]
 sprite_frames = SubResource("SpriteFrames_kapnr")
@@ -207,9 +222,14 @@ shape = SubResource("RectangleShape2D_sh2gb")
 
 [node name="isaac_newton_1" parent="." instance=ExtResource("6_kapnr")]
 visible = false
+z_index = 1
 position = Vector2(-503.745, 0)
 rotation = 1.5707964
+script = ExtResource("10_cr1iw")
 object_name = "isaac_newton_1"
+max_state_threshold = 4
+min_state_threshold = 1
+current_state = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="isaac_newton_1"]
 position = Vector2(3.637979e-12, 12.255005)
@@ -217,12 +237,72 @@ shape = SubResource("RectangleShape2D_ov81m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="isaac_newton_1"]
 sprite_frames = SubResource("SpriteFrames_36bwe")
-animation = &"old"
+animation = &"young"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="isaac_newton_1"]
+sprite_frames = SubResource("SpriteFrames_36bwe")
+animation = &"young"
+
+[node name="seed" parent="." instance=ExtResource("6_kapnr")]
+visible = false
+position = Vector2(500.67, 0)
+rotation = -1.5707964
+script = ExtResource("17_8mnya")
+object_name = "seed"
+max_state_threshold = 4
+min_state_threshold = 1
+current_state = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="seed"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_pugdj")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="seed"]
+position = Vector2(0, -17.875)
+sprite_frames = SubResource("SpriteFrames_nlrgi")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="seed"]
+position = Vector2(0, -17.875)
+sprite_frames = SubResource("SpriteFrames_nlrgi")
+metadata/_edit_lock_ = true
+
+[node name="seed2" parent="." instance=ExtResource("6_kapnr")]
+visible = false
+position = Vector2(-248, 250)
+script = ExtResource("20_f215k")
+object_name = "seed"
+max_state_threshold = 4
+min_state_threshold = 1
+current_state = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="seed2"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_pugdj")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="seed2"]
+position = Vector2(0, -17.875)
+sprite_frames = SubResource("SpriteFrames_nlrgi")
+animation = &"tree"
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="seed2"]
+position = Vector2(0, -17.875)
+sprite_frames = SubResource("SpriteFrames_nlrgi")
+animation = &"tree"
+metadata/_edit_lock_ = true
 
 [node name="isaac_newton_2" parent="." instance=ExtResource("6_kapnr")]
 visible = false
+z_index = 1
 position = Vector2(229.03, 273.25)
+script = ExtResource("15_bxtqd")
 object_name = "isaac_newton_2"
+max_state_threshold = 4
+min_state_threshold = 1
+current_state = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="isaac_newton_2"]
 position = Vector2(3.637979e-12, 12.255005)
@@ -231,34 +311,10 @@ metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="isaac_newton_2"]
 sprite_frames = SubResource("SpriteFrames_iwthe")
-animation = &"young"
 metadata/_edit_lock_ = true
 
-[node name="tree" parent="." instance=ExtResource("6_kapnr")]
-visible = false
-position = Vector2(-248, 250)
-object_name = "tree"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="tree"]
-sprite_frames = SubResource("SpriteFrames_pugdj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tree"]
-position = Vector2(0, 42)
-shape = SubResource("RectangleShape2D_nlrgi")
-
-[node name="seed" parent="." instance=ExtResource("6_kapnr")]
-visible = false
-position = Vector2(500.67, 0)
-rotation = -1.5707964
-object_name = "seed"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="seed"]
-position = Vector2(0, 20)
-shape = SubResource("RectangleShape2D_pugdj")
-metadata/_edit_lock_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="seed"]
-sprite_frames = SubResource("SpriteFrames_nlrgi")
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="isaac_newton_2"]
+sprite_frames = SubResource("SpriteFrames_iwthe")
 metadata/_edit_lock_ = true
 
 [node name="enter_7" parent="." instance=ExtResource("6_kapnr")]
@@ -333,4 +389,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="toggle_switch_circle" from="switch_circle" to="switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="add_cur_state" from="isaac_newton_1" to="isaac_newton_1" method="_on_add_cur_state"]
+[connection signal="is_dropped" from="isaac_newton_1" to="isaac_newton_1" method="_on_is_dropped"]
+[connection signal="add_cur_state" from="seed" to="seed" method="_on_add_cur_state"]
+[connection signal="is_dropped" from="seed" to="seed" method="_on_is_dropped"]
+[connection signal="add_cur_state" from="seed2" to="seed2" method="_on_add_cur_state"]
+[connection signal="is_dropped" from="seed2" to="seed2" method="_on_is_dropped"]
+[connection signal="add_cur_state" from="isaac_newton_2" to="isaac_newton_2" method="_on_add_cur_state"]
+[connection signal="is_dropped" from="isaac_newton_2" to="isaac_newton_2" method="_on_is_dropped"]

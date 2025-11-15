@@ -51,4 +51,3 @@ func _on_add_wind_state(direction: Variant) -> void:
 		elif current_state == 5:
 			animated_sprite.play_backwards("wind_5")
 	print("WIND CURRENT_STATE: ", current_state)
-

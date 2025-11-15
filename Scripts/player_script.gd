@@ -367,6 +367,7 @@ func handle_stack_drop(target_object) -> void:
 		stack_tween.tween_property(held_object, "global_position", stack_position, 0.2).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 		held_object.is_pickupable = true
 		held_object.reparent(get_parent())
+		held_object.emit_signal("is_dropped", abs(round(rotation_degrees)))
 		held_object.z_index = target_object.z_index + 1
 		adjust_stack_visuals(target_object)
 		# Ensure all objects in the stack are pickupable after drop
@@ -391,6 +392,7 @@ func handle_normal_drop(drop_position) -> void:
 		# UPDATE OBJECT PROPERTIES
 		held_object.is_pickupable = true	
 		held_object.reparent(get_parent())
+		held_object.emit_signal("is_dropped", abs(round(rotation_degrees)))
 
 func find_valid_drop_position(base_position: Vector2) -> Vector2:
 	# BASE DROP RADIUS AND SPACING

@@ -3,6 +3,8 @@ class_name object_class
 
 @warning_ignore("unused_signal")
 signal rotate_object(direction)
+@warning_ignore("unused_signal")
+signal is_dropped(plooy_rotatione)
 
 @export var object_name: String = "Generic Object"
 @export var object_type: GlobalVariables.object_types
@@ -216,29 +218,7 @@ func handle_body_entered(body):
 		if shader_sprite:
 			shader_sprite.material = mat
 		
-		print(shader_sprite.material)
-		
-		## CREATE POINT LIGHT (OLD METHOD FOR PICKUPABLES)
-		#glow_light = PointLight2D.new()
-		#glow_light.position = Vector2(0, 0)
-#
-		## CREATE GRADIENT
-		#var gradient = Gradient.new()
-		#gradient.set_color(0, Color.YELLOW)
-		#gradient.set_color(1, Color.TRANSPARENT)
-		#gradient.offsets[1] = 0.5
-#
-		## CREATE TEXTURE FROM GRADIENT
-		#var gradient_texture = GradientTexture2D.new()
-		#gradient_texture.gradient = gradient
-		#gradient_texture.fill = GradientTexture2D.FILL_RADIAL
-		#gradient_texture.fill_from = Vector2(0.5, 0.5)
-#
-		## ASSIGN TO LIGHT
-		#glow_light.texture = gradient_texture
-		#glow_light.energy = 1.5
-#
-		#add_child(glow_light)
+		#print(shader_sprite.material)
 		
 		is_reachable = true
 		player_char = body
@@ -475,3 +455,12 @@ func on_hover_exit():
 	# Override in extended classes for specific hover exit behavior
 	if is_text_visible:
 		hide_text()
+
+func pulse(color: String, animated_sprite: AnimatedSprite2D):
+	var tween = create_tween()
+	if color == "green":
+		tween.tween_property(self, "modulate", Color(0, 1, 0, 1), 0.2)
+		tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.2)
+	elif color == "red":
+		tween.tween_property(self, "modulate", Color(1.0, 0.0, 0.017, 1.0), 0.2)
+		tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.2)

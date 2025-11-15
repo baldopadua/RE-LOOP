@@ -15,8 +15,8 @@ var objects: Array = []
 @onready var switch_circle = $switch_circle
 @onready var isaac_newton_1 = $isaac_newton_1
 @onready var isaac_newton_2 = $isaac_newton_2
-@onready var tree = $tree
 @onready var seed = $seed
+@onready var seed2 = $seed2
 
 func _ready():
 	# SET LEVEL
@@ -25,6 +25,8 @@ func _ready():
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	
 	player.rotation = deg_to_rad(180.0)
+	
+	object_initialize()
 	
 	GlobalVariables.player_stopped = true
 	player.set_process_input(false)
@@ -52,8 +54,8 @@ func _ready():
 	switch_circle.visible = true
 	isaac_newton_1.visible = true
 	isaac_newton_2.visible = true
-	tree.visible = true
 	seed.visible = true
+	seed2.visible = true
 	# Reveal all the keystones here
 
 	# Fade out animation
@@ -67,6 +69,12 @@ func _ready():
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 	# SHOW AGAIN THE UI AFTER
 	ui_handler.show_game_ui_elements()
+
+func object_initialize():
+	objects.append(isaac_newton_1)
+	objects.append(isaac_newton_2)
+	objects.append(seed)
+	objects.append(seed2)
 	
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
 # TO WORK ON THE SCRIPT
