@@ -560,7 +560,7 @@ shape = SubResource("CapsuleShape2D_agu2x")
 rotation = 2.0944
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5xm4r")
-animation = &"astronaut"
+animation = &"kid"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

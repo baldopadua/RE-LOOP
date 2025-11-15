@@ -25,57 +25,64 @@ var is_in_science: bool = false
 
 func _process(_delta: float) -> void:
 	update_dreamer_state()
+	check_and_start_rocket()
 
 func update_dreamer_state():
-	# Update pickupability
-	if current_state == 1:
+	# Update pickupability: Only skeletal_remains is pickupable
+	if current_state == 3:
 		is_pickupable = true
 	else:
 		is_pickupable = false
 	
-	# Handle state changes with sound effects
+	# Handle state changes with sound effects and animations
 	if current_state != previous_state:
 		match [previous_state, current_state]:
 			[1, 2]:
-				# Skeletal remains to kid
+				# Kid to depressed_salaryman
+				if sound_manager and sound_manager.sfx.has("depress_man"):
+					sound_manager.play_sfx("depress_man")
+				dreamer_animated_sprite.play("depressed_salaryman")
+			[2, 3]:
+				# Depressed_salaryman to skeletal_remains
+				dreamer_animated_sprite.play("skeletal_remains")
+				await dreamer_animated_sprite.animation_finished
+			[3, 1]:
+				# Skeletal_remains to kid (loop or reset, if needed)
 				if sound_manager and sound_manager.sfx.has("happy_kid"):
 					sound_manager.play_sfx("happy_kid")
 				dreamer_animated_sprite.play("kid")
 				await dreamer_animated_sprite.animation_finished
+				# Only kid can buy soda
 				if is_in_vending and not is_soda_dispensed:
 					if sound_manager and sound_manager.sfx.has("vending_machine"):
 						sound_manager.play_sfx("vending_machine")
 					is_soda_dispensed = true
 					soda.visible = true
 					soda.is_pickupable = true
-			[2, 3]:
-				# Kid to adult (astronaut or salaryman)
-				if is_in_science:
-					if science_project.is_dreamer_here and science_project.is_soda_here:
-						is_dream_reached = true
-					else:
-						is_dream_reached = false
-				
-				if is_dream_reached:
-					if sound_manager and sound_manager.sfx.has("happy_kid"):
-						sound_manager.play_sfx("happy_kid")
-					dreamer_animated_sprite.play("astronaut")
-					set_rocket()
-				else:
-					if sound_manager and sound_manager.sfx.has("depress_man"):
-						sound_manager.play_sfx("depress_man")
-					dreamer_animated_sprite.play("depressed_salaryman")
-		
+		# Dispense soda if state changed to kid and already in vending
+		if current_state == 1 and is_in_vending and not is_soda_dispensed:
+			if sound_manager and sound_manager.sfx.has("vending_machine"):
+				sound_manager.play_sfx("vending_machine")
+			is_soda_dispensed = true
+			soda.visible = true
+			soda.is_pickupable = true
+
 		previous_state = current_state
 
 func _on_add_cur_state(_direction) -> void:
+	# Play animation for current state
 	if current_state == 1:
+		dreamer_animated_sprite.play("kid")
+	elif current_state == 2:
+		dreamer_animated_sprite.play("depressed_salaryman")
+	elif current_state == 3:
 		dreamer_animated_sprite.play("skeletal_remains")
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
+	# Only skeletal_remains is pickupable
 	if dreamer_animated_sprite.animation == "skeletal_remains":
 		is_pickupable = true
-	elif dreamer_animated_sprite.animation == "kid" or dreamer_animated_sprite.animation == "depressed_salaryman" or dreamer_animated_sprite.animation == "astronaut":
+	else:
 		is_pickupable = false
 
 func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
@@ -89,6 +96,13 @@ func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int
 	# VENDING MACHINE
 	if area.name == "vending" and parent.name != "object_position":
 		is_in_vending = true
+		# Dispense soda if dreamer is kid and soda hasn't been dispensed yet
+		if current_state == 1 and not is_soda_dispensed:
+			if sound_manager and sound_manager.sfx.has("vending_machine"):
+				sound_manager.play_sfx("vending_machine")
+			is_soda_dispensed = true
+			soda.visible = true
+			soda.is_pickupable = true
 	# SCIENCE PROJECT
 	elif area.name == "science_project" and parent.name != "object_position":
 		is_in_science = true
@@ -119,6 +133,8 @@ func set_rocket():
 		sound_manager.play_sfx("rocket_blastoff")
 	
 	rocket.visible = true
+	# Set dreamer animation to astronaut
+	dreamer_animated_sprite.play("astronaut")
 	soda.visible = false
 	soda.is_pickupable = false
 
@@ -141,6 +157,20 @@ func set_rocket():
 		# Start Countdown
 		rocket.rocket_start()
 	)
+
+func check_and_start_rocket():
+	# Check if all three objects are in the same place and rocket hasn't started
+	if rocket.visible:
+		return # Already started
+	# All must be visible and pickupable (soda), and dreamer must be kid
+	if soda.visible and soda.is_pickupable and current_state == 1 and science_project.visible:
+		# Check if all are close enough (same area)
+		var dist1 = global_position.distance_to(soda.global_position)
+		var dist2 = global_position.distance_to(science_project.global_position)
+		var dist3 = soda.global_position.distance_to(science_project.global_position)
+		var threshold = 48 # adjust as needed for "same place"
+		if dist1 < threshold and dist2 < threshold and dist3 < threshold:
+			set_rocket()
 
 # TODO: make function that will add vending and science_project to usable_objects when a certain criteria is met
 # TODO: When rocket is interactable, and the kid is dropped in there, the position of the kid ends up being weird
