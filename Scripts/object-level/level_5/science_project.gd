@@ -48,22 +48,23 @@ func set_animation(anim_name: String):
 	if animated_sprite.animation != target_anim or animated_sprite.frame != 0:
 		animated_sprite.play(target_anim)
 		# Connect to animation_finished to stop at last frame
-		if not animated_sprite.is_connected("animation_finished", Callable(self, "_on_animation_finished")):
-			animated_sprite.connect("animation_finished", Callable(self, "_on_animation_finished").bind(target_anim))
+		if not animated_sprite.is_connected("animation_finished", Callable(self, "_on_animated_sprite_2d_animation_finished")):
+			animated_sprite.connect("animation_finished", Callable(self, "_on_animated_sprite_2d_animation_finished").bind(target_anim))
 
-func _on_animation_finished(finished_anim: String):
-	if animated_sprite.animation == finished_anim:
-		var last_frame = 0
-		match finished_anim:
-			"depressed_salaryman_cubicle":
-				last_frame = 5 # last frame index for depressed_salaryman_cubicle
-			"skeletal_remains_cubicle":
-				last_frame = 3 # last frame index for skeletal_remains_cubicle
-			"kid_cubicle":
-				last_frame = 0 # only one frame for kid_cubicle
-			_:
-				return # Do nothing for unknown animations
-		animated_sprite.frame = last_frame
-		animated_sprite.stop() # stop AFTER setting frame, so it doesn't reset to 0
-		animated_sprite.frame = last_frame # set again in case stop() resets it
-		animated_sprite.disconnect("animation_finished", Callable(self, "_on_animation_finished"))
+func _on_animated_sprite_2d_animation_finished(_finished_anim: String = "") -> void:
+	# Stop at last frame for the current animation
+	var anim_name = animated_sprite.animation
+	var last_frame = 0
+	match anim_name:
+		"depressed_salaryman_cubicle":
+			last_frame = 5 # last frame index for depressed_salaryman_cubicle
+		"skeletal_remains_cubicle":
+			last_frame = 3 # last frame index for skeletal_remains_cubicle
+		"kid_cubicle":
+			last_frame = 0 # only one frame for kid_cubicle
+		_:
+			return # Do nothing for unknown animations
+	animated_sprite.frame = last_frame
+	animated_sprite.stop() # stop AFTER setting frame, so it doesn't reset to 0
+	animated_sprite.frame = last_frame # set again in case stop() resets it
+	animated_sprite.disconnect("animation_finished", Callable(self, "_on_animated_sprite_2d_animation_finished"))

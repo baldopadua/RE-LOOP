@@ -14,6 +14,8 @@ signal add_cur_state(direction)
 @onready var rocket = $"../rocket"
 @onready var timer = $"../Timer"
 @onready var temp_timer = $"../temp_timer"
+@onready var vending = $"../vending"
+@onready var vending_sprite: AnimatedSprite2D = vending.get_node("AnimatedSprite2D")
 
 var area_entered_objects : Array = []
 var previous_state: int = 1
@@ -36,6 +38,15 @@ func update_dreamer_state():
 	
 	# Handle state changes with sound effects and animations
 	if current_state != previous_state:
+		# Sync vending machine animation to dreamer state
+		if current_state == 1:
+			vending_sprite.set_animation("past")
+		elif current_state == 2:
+			vending_sprite.set_animation("present")
+		elif current_state == 3:
+			vending_sprite.set_animation("future")
+		else:
+			vending_sprite.set_animation("climax")
 		match [previous_state, current_state]:
 			[1, 2]:
 				# Kid to depressed_salaryman
@@ -73,6 +84,16 @@ func update_dreamer_state():
 		previous_state = current_state
 
 func _on_add_cur_state(_direction) -> void:
+	# Sync vending machine animation to dreamer state
+	if current_state == 1:
+		vending_sprite.set_animation("past")
+	elif current_state == 2:
+		vending_sprite.set_animation("present")
+	elif current_state == 3:
+		vending_sprite.set_animation("future")
+	else:
+		vending_sprite.set_animation("climax")
+	
 	if current_state == 1:
 		dreamer_animated_sprite.play("kid")
 		science_project.set_animation("kid")
