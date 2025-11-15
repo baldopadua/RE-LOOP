@@ -117,7 +117,7 @@ func enter_level(level_number: int):
 		enable_lobby_functionality()
 		return  
 	
-	sound_manager.stop_ambience_sfx("forest_sfx")
+	sound_manager.stop_ambience_music("forest")
 	var levels_frame = get_parent() 
 
 	level_handler.kill_current_level(self)
@@ -384,7 +384,7 @@ func start_cutscene_then_enter_next_level(next_level_number: int):
 	disable_lobby_functionality()
 	
 	if sound_manager:
-		sound_manager.stop_ambience_sfx("forest_sfx")
+		sound_manager.stop_ambience_music("forest")
 	
 	var levels_frame = get_parent()
 	
