@@ -34,6 +34,8 @@ var center_circle: Vector2i = Vector2i(0, 0)
 @onready var enter_11: object_class = $Camera2D/enter_11
 @onready var enter_12: object_class = $Camera2D/enter_12
 
+@onready var short_hand_rotation_lobby = $Camera2D/short_hand_rotation_lobby
+
 var clock_area: int = 12
 var highest_completed_level = 0
 
@@ -71,7 +73,7 @@ func _ready():
 	level_handler.level_completed.connect(_on_level_completed)
 	
 	call_deferred("position_player_based_on_progress")
-	sound_manager.play_ambience_sfx("forest_sfx")
+	sound_manager.play_ambience_music("forest")
 	
 	GlobalVariables.is_looping = false
 	GlobalVariables.player_moves = 0
@@ -103,6 +105,9 @@ func _process(_delta: float) -> void:
 	if not lobby_active:
 		return
 	level_handler.visible = true
+	# --- Sync short_hand_rotation_lobby to player rotation ---
+	if player and short_hand_rotation_lobby:
+		short_hand_rotation_lobby.rotation = player.rotation
 
 func enter_level(level_number: int):
 	if level_handler:
@@ -117,7 +122,7 @@ func enter_level(level_number: int):
 		enable_lobby_functionality()
 		return  
 	
-	sound_manager.stop_ambience_sfx("forest_sfx")
+	sound_manager.stop_ambience_music("forest")
 	var levels_frame = get_parent() 
 
 	level_handler.kill_current_level(self)
@@ -384,7 +389,7 @@ func start_cutscene_then_enter_next_level(next_level_number: int):
 	disable_lobby_functionality()
 	
 	if sound_manager:
-		sound_manager.stop_ambience_sfx("forest_sfx")
+		sound_manager.stop_ambience_music("forest")
 	
 	var levels_frame = get_parent()
 	

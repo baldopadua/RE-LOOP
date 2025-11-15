@@ -414,7 +414,7 @@ func show_only_keys_elements():
 		var game_ui = ui_logic.get_node("game_ui_elements")
 		game_ui.visible = true
 		for child in game_ui.get_children():
-			if child.name == "keys_elements":
+			if child.name in ["keys_elements", "tutorial_button", "settings_button"]:
 				if child.has_method("set_visible"):
 					child.visible = true
 			else:

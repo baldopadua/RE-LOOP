@@ -53,16 +53,7 @@ func map_initialize(this, tween_rotate, tween_scale):
 	if not short_hand_state_changed.is_connected(level_status_node._on_short_hand_state_changed):
 		short_hand_state_changed.connect(level_status_node._on_short_hand_state_changed)
 
-	call_deferred("connect_to_player", this)
-
-func connect_to_player(level_scene):
-	player = level_scene.get_node_or_null("PlayerScene")
-	if player:
-		current_player = player
-		if player.has_signal("player_finished_moving"):
-			player.player_finished_moving.connect(level_status_node._on_player_moved)
-		level_status_node.set_player_reference(player)
-
+	
 func tween_rotate_finished(tween_created):
 	print("Rotate Killed")
 	tween_created.kill()

@@ -79,19 +79,6 @@ bus = &"sfx"
 
 [node name="global_sfx" type="Node2D" parent="sfx"]
 
-[node name="ambience_sfx" type="Node2D" parent="sfx/global_sfx"]
-
-[node name="forest_sfx" type="AudioStreamPlayer2D" parent="sfx/global_sfx/ambience_sfx"]
-stream = ExtResource("5_6lgko")
-volume_db = 15.848
-
-[node name="wind_sfx" type="AudioStreamPlayer2D" parent="sfx/global_sfx/ambience_sfx"]
-stream = ExtResource("6_2aguw")
-volume_db = 5.0
-
-[node name="graveyard_sfx" type="AudioStreamPlayer2D" parent="sfx/global_sfx/ambience_sfx"]
-stream = ExtResource("7_2aguw")
-
 [node name="reset_level_sfx" type="Node2D" parent="sfx/global_sfx"]
 
 [node name="cinematic_ah" parent="sfx/global_sfx/reset_level_sfx" instance=ExtResource("5_vsbfc")]
@@ -267,3 +254,16 @@ stream = ExtResource("51_level5")
 [node name="main_bgm" type="AudioStreamPlayer2D" parent="music"]
 stream = ExtResource("29_fwa5o")
 volume_db = 7.336
+
+[node name="ambience" type="Node2D" parent="music"]
+
+[node name="forest" type="AudioStreamPlayer2D" parent="music/ambience"]
+stream = ExtResource("5_6lgko")
+volume_db = 15.848
+
+[node name="wind" type="AudioStreamPlayer2D" parent="music/ambience"]
+stream = ExtResource("6_2aguw")
+volume_db = 5.0
+
+[node name="graveyard" type="AudioStreamPlayer2D" parent="music/ambience"]
+stream = ExtResource("7_2aguw")

@@ -282,7 +282,7 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 		1: [],
 		2: [1],
 		3: [1, 2],
-		4: [1, 2, 3],
+		4: [],
 		5: [],
 		6: [],
 		7: [],
@@ -456,7 +456,7 @@ func on_hover_exit():
 	if is_text_visible:
 		hide_text()
 
-func pulse(color: String, animated_sprite: AnimatedSprite2D):
+func pulse(color: String, _animated_sprite: AnimatedSprite2D):
 	var tween = create_tween()
 	if color == "green":
 		tween.tween_property(self, "modulate", Color(0, 1, 0, 1), 0.2)

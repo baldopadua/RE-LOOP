@@ -96,12 +96,12 @@ animation = &"base"
 position = Vector2(645.00006, 361.00003)
 rotation = 0.00050228834
 ignore_rotation = false
-zoom = Vector2(26.282, 1.528)
+zoom = Vector2(24.792, 1.441)
 rotation_smoothing_enabled = true
 
 [node name="long_hand_clock" type="AnimatedSprite2D" parent="level_status/long_hand_rotation"]
-position = Vector2(-0.7346659, -117.01132)
-scale = Vector2(0.51086426, 0.49151337)
+position = Vector2(-0.7346659, -127.598206)
+scale = Vector2(0.51086426, 0.5319214)
 sprite_frames = SubResource("SpriteFrames_syl1f")
 animation = &"long_hand"
 

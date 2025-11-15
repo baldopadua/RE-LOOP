@@ -105,10 +105,10 @@ func play_reset_level_sfx():
 			if sfx_node.has_method("play"):
 				sfx_node.play()
 
-# AMBIENCE SFX 
-func play_ambience_sfx(sfx_name: String) -> void:
-	if has_node("sfx/global_sfx/ambience_sfx/" + sfx_name):
-		var player = get_node("sfx/global_sfx/ambience_sfx/" + sfx_name)
+# AMBIENCE MUSIC 
+func play_ambience_music(music_name: String) -> void:
+	if has_node("music/ambience/" + music_name):
+		var player = get_node("music/ambience/" + music_name)
 		if player is AudioStreamPlayer2D:
 			if player.stream and player.stream.has_method("set_loop"):
 				player.stream.set_loop(true)
@@ -116,15 +116,15 @@ func play_ambience_sfx(sfx_name: String) -> void:
 				player.stream.loop = true
 			player.play()
 
-func stop_ambience_sfx(sfx_name: String) -> void:
-	if has_node("sfx/global_sfx/ambience_sfx/" + sfx_name):
-		var player = get_node("sfx/global_sfx/ambience_sfx/" + sfx_name)
+func stop_ambience_music(music_name: String) -> void:
+	if has_node("music/ambience/" + music_name):
+		var player = get_node("music/ambience/" + music_name)
 		if player is AudioStreamPlayer2D:
 			player.stop()
 
-func set_ambience_volume(sfx_name: String, volume: float) -> void:
-	if has_node("sfx/global_sfx/ambience_sfx/" + sfx_name):
-		var player = get_node("sfx/global_sfx/ambience_sfx/" + sfx_name)
+func set_ambience_music_volume(music_name: String, volume: float) -> void:
+	if has_node("music/ambience/" + music_name):
+		var player = get_node("music/ambience/" + music_name)
 		if player is AudioStreamPlayer2D:
 			player.volume_db = volume
 
