@@ -4,7 +4,7 @@ class_name object_class
 @warning_ignore("unused_signal")
 signal rotate_object(direction)
 @warning_ignore("unused_signal")
-signal is_dropped(plooy_rotatione)
+signal is_dropped(plooy_rotation)
 
 @export var object_name: String = "Generic Object"
 @export var object_type: GlobalVariables.object_types

@@ -294,7 +294,7 @@ position = Vector2(0, -295)
 rotation = 3.14159
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3rj77")
-animation = &"antenna"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

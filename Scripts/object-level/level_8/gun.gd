@@ -78,7 +78,10 @@ func _on_start_race() -> void:
 				hare.animated_sprite.play("default")
 				move_turtle()
 				await get_tree().create_timer(1.0).timeout
-
+			elif finish in hare.array:
+				turtle.animated_sprite.play("cry")
+				hare.animated_sprite.play("winner_hare")
+				break
 		# Wait a bit before next cycle (optional)
 		await get_tree().create_timer(1.0).timeout
 
