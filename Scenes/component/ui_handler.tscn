@@ -1419,7 +1419,7 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("28_0vcng")
 theme_override_font_sizes/font_size = 40
 text = "“Place the skeleton at the vending machine.
-Move forward in time for the kid to buy a soda,
+Move backward in time for the kid to buy a soda,
 Then return him where he used to be. place the soda there as well. The kid will use it as a science project, and see what the future lies. Once it's built, catch a ride. You don't want to be left out.”
 "
 horizontal_alignment = 1
