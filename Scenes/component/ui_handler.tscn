@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://m46y1wd88uf1"]
+[gd_scene load_steps=97 format=3 uid="uid://m46y1wd88uf1"]
 
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="1_fmqw2"]
 [ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
@@ -40,7 +40,9 @@
 [ext_resource type="Script" uid="uid://xbkpwj8hqvws" path="res://Scripts/ui/settings.gd" id="33_6k3yl"]
 [ext_resource type="PackedScene" uid="uid://b11bd22bl1hik" path="res://Scenes/component/cutscene.tscn" id="33_nol8b"]
 [ext_resource type="Texture2D" uid="uid://donw7tlc1yq2f" path="res://Assets/ui/hint/settings_dialog.png" id="34_l8elr"]
-[ext_resource type="Texture2D" uid="uid://b8y4qe7j467a6" path="res://Assets/ui/note_sound_icon.png" id="35_0pln8"]
+[ext_resource type="Texture2D" uid="uid://cx5jspt8um5dv" path="res://Assets/ui/hint/note_sound_icon.png" id="35_0pln8"]
+[ext_resource type="Texture2D" uid="uid://bxlkfq5axax5a" path="res://Assets/ui/hint/mute_sound_icon.png" id="36_swapm"]
+[ext_resource type="Texture2D" uid="uid://biicj40cdmvm6" path="res://Assets/ui/hint/note_sound_icon_hover.png" id="37_yg0r3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
 atlas = ExtResource("1_fmqw2")
@@ -2042,6 +2044,7 @@ sprite_frames = SubResource("SpriteFrames_tkpeg")
 flip_h = true
 
 [node name="settings" type="Control" parent="ui_logic/overlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2076,32 +2079,39 @@ texture = ExtResource("34_l8elr")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="sound_icon2" type="TextureRect" parent="ui_logic/overlay/settings/settings_box"]
+[node name="sfx_mute_button" type="TextureButton" parent="ui_logic/overlay/settings/settings_box"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.07204611
-anchor_top = 0.5520504
-anchor_right = 0.17867431
-anchor_bottom = 0.7287066
-offset_right = 3.0517578e-05
-texture = ExtResource("35_0pln8")
-expand_mode = 1
+anchor_left = 0.08933718
+anchor_top = 0.2681388
+anchor_right = 0.16138329
+anchor_bottom = 0.42271292
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("35_0pln8")
+texture_pressed = ExtResource("36_swapm")
+texture_hover = ExtResource("37_yg0r3")
+ignore_texture_size = true
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="sound_icon3" type="TextureRect" parent="ui_logic/overlay/settings/settings_box"]
-texture_filter = 1
+[node name="music_mute_button" type="TextureButton" parent="ui_logic/overlay/settings/settings_box"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.07204611
-anchor_top = 0.26813877
-anchor_right = 0.17867431
-anchor_bottom = 0.4447949
-offset_top = 1.5258789e-05
-offset_right = 3.0517578e-05
-offset_bottom = 1.5258789e-05
-texture = ExtResource("35_0pln8")
-expand_mode = 1
+anchor_left = 0.08933718
+anchor_top = 0.5646688
+anchor_right = 0.16138329
+anchor_bottom = 0.71924293
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("35_0pln8")
+texture_pressed = ExtResource("36_swapm")
+texture_hover = ExtResource("37_yg0r3")
+ignore_texture_size = true
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="sfx_slider" type="HSlider" parent="ui_logic/overlay/settings/settings_box"]
@@ -2209,5 +2219,7 @@ script = ExtResource("20_qpkpn")
 
 [node name="SoundManager" parent="." instance=ExtResource("21_qpkpn")]
 
+[connection signal="pressed" from="ui_logic/overlay/settings/settings_box/sfx_mute_button" to="ui_logic/overlay/settings" method="_on_sfx_mute_button_pressed"]
+[connection signal="pressed" from="ui_logic/overlay/settings/settings_box/music_mute_button" to="ui_logic/overlay/settings" method="_on_music_mute_button_pressed"]
 [connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/sfx_slider" to="ui_logic/overlay/settings" method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/music_slider" to="ui_logic/overlay/settings" method="_on_music_slider_value_changed"]
