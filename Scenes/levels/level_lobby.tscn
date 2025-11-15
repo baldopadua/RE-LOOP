@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://y4on1fq1mgnm"]
+[gd_scene load_steps=43 format=3 uid="uid://y4on1fq1mgnm"]
 
 [ext_resource type="Script" uid="uid://cej80lpoc3wmr" path="res://Scripts/levels/level_lobby.gd" id="1_6t7hq"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_6t7hq"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://7a5oqv826cwv" path="res://Assets/level_select_lobby/level_4.png" id="13_r86rd"]
 [ext_resource type="Texture2D" uid="uid://c72nnu8ruare1" path="res://Assets/level_select_lobby/level_5.png" id="14_r86rd"]
 [ext_resource type="Texture2D" uid="uid://d1gv25rkrif8y" path="res://Assets/level_select_lobby/level_6.png" id="18_ocyro"]
+[ext_resource type="Texture2D" uid="uid://vjw6qkta1b4b" path="res://Assets/level_select_lobby/clock_short_arm.png" id="19_ornx3"]
 [ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/level_select_lobby/level_7.png" id="20_2qbue"]
 [ext_resource type="Texture2D" uid="uid://ba6w75c3euhid" path="res://Assets/level_select_lobby/level_8.png" id="22_me8nm"]
 [ext_resource type="Texture2D" uid="uid://ctnnsyuu5actf" path="res://Assets/level_select_lobby/level_9.png" id="24_m35q0"]
@@ -39,6 +40,21 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uaeg"]
 radius = 33.212807
 height = 85.85651
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v70hq"]
+atlas = ExtResource("19_ornx3")
+region = Rect2(0, 0, 219, 550)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycnx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v70hq")
+}],
+"loop": true,
+"name": &"short_hand",
+"speed": 5.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_11bkw"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -1266,6 +1282,19 @@ tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="short_hand_rotation_lobby" type="Camera2D" parent="Camera2D"]
+rotation = 1.5707964
+ignore_rotation = false
+zoom = Vector2(32.411, 1.889)
+rotation_smoothing_enabled = true
+
+[node name="short_hand_clock" type="AnimatedSprite2D" parent="Camera2D/short_hand_rotation_lobby"]
+position = Vector2(-0.11239808, -77.06851)
+rotation = 3.1389456
+scale = Vector2(0.3054967, 0.28409702)
+sprite_frames = SubResource("SpriteFrames_ycnx0")
+animation = &"short_hand"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 

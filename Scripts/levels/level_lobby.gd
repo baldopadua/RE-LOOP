@@ -34,6 +34,8 @@ var center_circle: Vector2i = Vector2i(0, 0)
 @onready var enter_11: object_class = $Camera2D/enter_11
 @onready var enter_12: object_class = $Camera2D/enter_12
 
+@onready var short_hand_rotation_lobby = $Camera2D/short_hand_rotation_lobby
+
 var clock_area: int = 12
 var highest_completed_level = 0
 
@@ -103,6 +105,9 @@ func _process(_delta: float) -> void:
 	if not lobby_active:
 		return
 	level_handler.visible = true
+	# --- Sync short_hand_rotation_lobby to player rotation ---
+	if player and short_hand_rotation_lobby:
+		short_hand_rotation_lobby.rotation = player.rotation
 
 func enter_level(level_number: int):
 	if level_handler:
