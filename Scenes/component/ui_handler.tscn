@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://m46y1wd88uf1"]
+[gd_scene load_steps=95 format=3 uid="uid://m46y1wd88uf1"]
 
 [ext_resource type="Texture2D" uid="uid://bamn1t14fnsk8" path="res://Assets/GameBackground-Sheet.png" id="1_fmqw2"]
 [ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
@@ -20,14 +20,14 @@
 [ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="18_dumc0"]
 [ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="19_bo42c"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="19_dumc0"]
-[ext_resource type="Texture2D" uid="uid://bacei26qp35s5" path="res://Assets/ui/settings_icon.png" id="19_g2hc1"]
 [ext_resource type="Texture2D" uid="uid://rd183d7psrym" path="res://Assets/ui/Tutorial.png" id="20_0n0xc"]
 [ext_resource type="Script" uid="uid://bdxwx60b8pdlx" path="res://Scripts/ui/custom_cursor.gd" id="20_qpkpn"]
-[ext_resource type="Texture2D" uid="uid://co6jwl3bru7ka" path="res://Assets/ui/settings_icon_hover.png" id="20_tkpeg"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="21_qpkpn"]
+[ext_resource type="Texture2D" uid="uid://cvnnf0m2baxac" path="res://Assets/ui/sound_icon.png" id="21_swapm"]
 [ext_resource type="Texture2D" uid="uid://cg2l84tao5f1l" path="res://Assets/ui/credits_bg.png" id="21_taira"]
 [ext_resource type="Script" uid="uid://qyn6g7sbegxs" path="res://Scripts/ui/hint.gd" id="22_exohx"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="22_iwsb4"]
+[ext_resource type="Texture2D" uid="uid://cj8vhumcbbns3" path="res://Assets/ui/sound_icon_hover.png" id="22_yg0r3"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="23_4r7hv"]
 [ext_resource type="Texture2D" uid="uid://y5ujgaokyei8" path="res://Assets/ui/hint/hint_dialog.png" id="23_us0vv"]
 [ext_resource type="Texture2D" uid="uid://cgs10454tk44a" path="res://Assets/ui/hint/lock.png" id="24_y4w7x"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" uid="uid://xbkpwj8hqvws" path="res://Scripts/ui/settings.gd" id="33_6k3yl"]
 [ext_resource type="PackedScene" uid="uid://b11bd22bl1hik" path="res://Scenes/component/cutscene.tscn" id="33_nol8b"]
 [ext_resource type="Texture2D" uid="uid://donw7tlc1yq2f" path="res://Assets/ui/hint/settings_dialog.png" id="34_l8elr"]
+[ext_resource type="Texture2D" uid="uid://b8y4qe7j467a6" path="res://Assets/ui/note_sound_icon.png" id="35_0pln8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhp3t"]
 atlas = ExtResource("1_fmqw2")
@@ -542,12 +543,12 @@ autoplay = "default"
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.9265625
-anchor_top = 0.023611112
-anchor_right = 0.9765622
-anchor_bottom = 0.10833376
-texture_normal = ExtResource("19_g2hc1")
-texture_hover = ExtResource("20_tkpeg")
+anchor_left = 0.9085938
+anchor_top = 0.013888889
+anchor_right = 0.9859375
+anchor_bottom = 0.12638889
+texture_normal = ExtResource("21_swapm")
+texture_hover = ExtResource("22_yg0r3")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
@@ -629,12 +630,12 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.9265625
-anchor_top = 0.023611112
-anchor_right = 0.9765622
-anchor_bottom = 0.10833376
-texture_normal = ExtResource("19_g2hc1")
-texture_hover = ExtResource("20_tkpeg")
+anchor_left = 0.9085938
+anchor_top = 0.015277778
+anchor_right = 0.9859375
+anchor_bottom = 0.12638889
+texture_normal = ExtResource("21_swapm")
+texture_hover = ExtResource("22_yg0r3")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
@@ -861,7 +862,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
-wait_time = 10.0
+wait_time = 60.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2/hint_2_timer"]
 visible = false
@@ -915,7 +916,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
-wait_time = 10.0
+wait_time = 60.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution/solution_timer"]
 visible = false
@@ -2065,13 +2066,41 @@ metadata/_edit_use_anchors_ = true
 [node name="settings_box" type="TextureRect" parent="ui_logic/overlay/settings"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2375
-anchor_top = 0.21666667
-anchor_right = 0.7796875
-anchor_bottom = 0.7708333
+anchor_left = 0.23984376
+anchor_top = 0.25277779
+anchor_right = 0.78203124
+anchor_bottom = 0.69305557
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("34_l8elr")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="sound_icon2" type="TextureRect" parent="ui_logic/overlay/settings/settings_box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07204611
+anchor_top = 0.5520504
+anchor_right = 0.17867431
+anchor_bottom = 0.7287066
+offset_right = 3.0517578e-05
+texture = ExtResource("35_0pln8")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="sound_icon3" type="TextureRect" parent="ui_logic/overlay/settings/settings_box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07204611
+anchor_top = 0.26813877
+anchor_right = 0.17867431
+anchor_bottom = 0.4447949
+offset_top = 1.5258789e-05
+offset_right = 3.0517578e-05
+offset_bottom = 1.5258789e-05
+texture = ExtResource("35_0pln8")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -2079,57 +2108,57 @@ metadata/_edit_use_anchors_ = true
 modulate = Color(18.892, 7.06, 18.892, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.29683
-anchor_top = 0.46365914
-anchor_right = 0.7562137
-anchor_bottom = 0.6592582
+anchor_left = 0.3559078
+anchor_top = 0.20189273
+anchor_right = 0.7997118
+anchor_bottom = 0.5362298
 metadata/_edit_use_anchors_ = true
 
 [node name="sfx_title" type="Label" parent="ui_logic/overlay/settings/settings_box/sfx_slider"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.31587833
-anchor_top = 0.22045739
-anchor_right = -0.13081647
-anchor_bottom = 0.6689223
+anchor_left = -0.30194816
+anchor_top = 0.28305933
+anchor_right = -0.11038971
+anchor_bottom = 0.7315242
 offset_left = 3.0517578e-05
 offset_right = 3.0517578e-05
 theme_override_fonts/font = ExtResource("28_0vcng")
 theme_override_font_sizes/font_size = 50
-text = "sfx"
+text = "Sfx"
 metadata/_edit_use_anchors_ = true
 
 [node name="sfx_volume" type="Label" parent="ui_logic/overlay/settings/settings_box/sfx_slider"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0335366
-anchor_top = 0.22499998
-anchor_right = 1.2185984
-anchor_bottom = 0.6734649
+anchor_left = 1.0357144
+anchor_top = 0.28305933
+anchor_right = 1.2326386
+anchor_bottom = 0.7315242
 offset_right = -1.6526489
 offset_bottom = -0.8557434
 theme_override_fonts/font = ExtResource("28_0vcng")
 theme_override_font_sizes/font_size = 50
-text = "100"
+text = "100 "
 metadata/_edit_use_anchors_ = true
 
 [node name="music_slider" type="HSlider" parent="ui_logic/overlay/settings/settings_box"]
 modulate = Color(18.892157, 7.0600886, 18.892157, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.29682997
-anchor_top = 0.65914786
-anchor_right = 0.7562137
-anchor_bottom = 0.8547469
+anchor_left = 0.35590777
+anchor_top = 0.49526808
+anchor_right = 0.7997118
+anchor_bottom = 0.80111915
 metadata/_edit_use_anchors_ = true
 
 [node name="music_volume" type="Label" parent="ui_logic/overlay/settings/settings_box/music_slider"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0350919
-anchor_top = 0.15375957
-anchor_right = 1.2395449
-anchor_bottom = 0.70004845
+anchor_left = 1.0357143
+anchor_top = 0.26816633
+anchor_right = 1.2401673
+anchor_bottom = 0.8144552
 theme_override_fonts/font = ExtResource("28_0vcng")
 theme_override_font_sizes/font_size = 50
 text = "100"
@@ -2138,15 +2167,15 @@ metadata/_edit_use_anchors_ = true
 [node name="music_title" type="Label" parent="ui_logic/overlay/settings/settings_box/music_slider"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.3601427
-anchor_top = 0.15864645
-anchor_right = -0.031884853
-anchor_bottom = 0.6180762
+anchor_left = -0.36038962
+anchor_top = 0.26816624
+anchor_right = -0.020608284
+anchor_bottom = 0.727596
 offset_right = -1.6526489
 offset_bottom = -0.8557434
 theme_override_fonts/font = ExtResource("28_0vcng")
 theme_override_font_sizes/font_size = 50
-text = "music"
+text = "Music"
 metadata/_edit_use_anchors_ = true
 
 [node name="close_button" type="TextureButton" parent="ui_logic/overlay"]
