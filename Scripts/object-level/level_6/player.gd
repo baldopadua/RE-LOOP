@@ -66,6 +66,10 @@ func _on_player_finished_moving() -> void:
 				await get_tree().create_timer(1.0).timeout
 				
 				get_node("Camera2D").emit_signal("cam_orig_zoom")
+				# Play all finish_level_sfx SFX at once
+				if sound_manager.has_method("play_finish_level_sfx"):
+					sound_manager.play_finish_level_sfx()
+				sound_manager.play_finish_level_sfx()
 				area_handler.show_loop_break(6)
 
 				emit_signal("loop_break_shown") 
@@ -90,15 +94,17 @@ func _on_player_finished_moving() -> void:
 # Add this function to handle climb animation trigger
 func _on_climbable_body_entered(body: Node) -> void:
 	if body == self:
-		set_process_input(false) 
-		animated_sprite.play("climb")
+		set_process_input(false)
+		print("Playing ClimbingAnimation")
+		animated_sprite.play("climb") # Play climb on AnimatedSprite2D
 		var level_node = get_parent()
 		if level_node.has_method("play_climb_animation"):
 			level_node.play_climb_animation(self)
 
 # Add this function to be called from level script after climb animation finishes
 func play_jump_animation():
-	set_process_input(false) 
-	animated_sprite.play("jump")
+	set_process_input(false)
+	print("Playing JumpAnimation")
+	animated_sprite.play("jump") # Play jump on AnimatedSprite2D
 	position = Vector2(-1, -200)
 	modulate = Color(1, 1, 1, 1)

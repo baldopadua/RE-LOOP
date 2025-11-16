@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://3tla2n3edqkn"]
+[gd_scene load_steps=61 format=3 uid="uid://3tla2n3edqkn"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_2r23t"]
 [ext_resource type="Script" uid="uid://ds7lwxirvmjvs" path="res://Scripts/levels/level_6_script.gd" id="1_odmpw"]
@@ -292,59 +292,7 @@ animations = [{
 radius = 33.212807
 height = 93.28204
 
-[sub_resource type="Animation" id="Animation_pxia2"]
-resource_name = "ClimbingAnimation"
-length = 2.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerScene:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1, -208)]
-}
-
-[sub_resource type="Animation" id="Animation_70ox2"]
-resource_name = "ClimbingAnimation_2"
-length = 2.5
-
-[sub_resource type="Animation" id="Animation_cmquk"]
-resource_name = "JumpAnimation"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerScene:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.61, 0.98, 1.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -208), Vector2(0, -208), Vector2(-1, -281), Vector2(-1, -200)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerScene:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.19, 1.4333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_wegfx"]
-resource_name = "JumpAnimation_2"
-length = 1.5
-
-[sub_resource type="Animation" id="Animation_l4q40"]
+[sub_resource type="Animation" id="Animation_bxtqd"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -371,13 +319,43 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmquk"]
+[sub_resource type="Animation" id="Animation_cr1iw"]
+resource_name = "climbing_animation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -130)]
+}
+
+[sub_resource type="Animation" id="Animation_8mnya"]
+resource_name = "jumping_animation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 0.9666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -130), Vector2(0, -130), Vector2(0, -244), Vector2(0, -143)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8mnya"]
 _data = {
-&"ClimbingAnimation": SubResource("Animation_pxia2"),
-&"ClimbingAnimation_2": SubResource("Animation_70ox2"),
-&"JumpAnimation": SubResource("Animation_cmquk"),
-&"JumpAnimation_2": SubResource("Animation_wegfx"),
-&"RESET": SubResource("Animation_l4q40")
+&"RESET": SubResource("Animation_bxtqd"),
+&"climbing_animation": SubResource("Animation_cr1iw"),
+&"jumping_animation": SubResource("Animation_8mnya")
 }
 
 [node name="level_6_scene" type="Node2D"]
@@ -419,7 +397,7 @@ layer = 2
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(772.5, -54)
+position = Vector2(773, -61)
 scale = Vector2(24.234373, 1.625)
 texture = SubResource("GradientTexture2D_cr1iw")
 
@@ -619,10 +597,11 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="center_pos" type="Marker2D" parent="."]
+position = Vector2(0, 25)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_cmquk")
+&"": SubResource("AnimationLibrary_8mnya")
 }
 
 [connection signal="loop_break_shown" from="PlayerScene" to="isaac_newton_1" method="_on_player_scene_loop_break_shown"]
