@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfdbkhqn5goip"
-path="res://.godot/imported/seed.png-27bcc5abc0cf6849c91d07ca5d9a9f2e.ctex"
+uid="uid://cpedey21ps2at"
+path="res://.godot/imported/carrot-growth-sheet.png-d25662521d0e56461c6d76b2b6168e0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/levels/level_1/seed.png"
-dest_files=["res://.godot/imported/seed.png-27bcc5abc0cf6849c91d07ca5d9a9f2e.ctex"]
+source_file="res://Assets/levels/level_8/carrot-growth-sheet.png"
+dest_files=["res://.godot/imported/carrot-growth-sheet.png-d25662521d0e56461c6d76b2b6168e0f.ctex"]
 
 [params]
 

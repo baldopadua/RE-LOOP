@@ -1,8 +1,9 @@
-[gd_scene load_steps=150 format=3 uid="uid://ciik8gauu5jgn"]
+[gd_scene load_steps=152 format=3 uid="uid://ciik8gauu5jgn"]
 
 [ext_resource type="Script" uid="uid://bfyxj6ex06pot" path="res://Scripts/component/area_handler.gd" id="1_hhhxy"]
 [ext_resource type="Texture2D" uid="uid://cyh820yfsstco" path="res://Assets/RoundWorldFuture.png" id="2_j1fyd"]
 [ext_resource type="Texture2D" uid="uid://bua2qfy6026td" path="res://Assets/blank-clock.png" id="3_26ycf"]
+[ext_resource type="Shader" uid="uid://da7oyahfkv3u8" path="res://Shaders/gray_scale.gdshader" id="4_j68sh"]
 [ext_resource type="Texture2D" uid="uid://ba7ogpk2q02y1" path="res://Assets/levels/level_1/World_Level1 (1)-Sheet.png" id="4_rthw2"]
 [ext_resource type="Texture2D" uid="uid://bfy4mv3573p42" path="res://Assets/levels/level_1/Loop Break 1.png" id="5_p8qog"]
 [ext_resource type="Texture2D" uid="uid://b5anpj1w84407" path="res://Assets/Variance-Sheet.png" id="5_pr0aj"]
@@ -16,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://20wmsy7f3xtp" path="res://Assets/decoratives/pillar.png" id="13_sphy0"]
 [ext_resource type="Texture2D" uid="uid://divu1n8mycb4y" path="res://Assets/decoratives/weedtailes.png" id="14_sphy0"]
 [ext_resource type="Texture2D" uid="uid://565ps4t5nxh8" path="res://Assets/decoratives/weed.png" id="14_sq617"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fws7d"]
+shader = ExtResource("4_j68sh")
+shader_parameter/gray_amount = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yw2kp"]
 atlas = ExtResource("4_rthw2")
@@ -979,6 +984,7 @@ expand_mode = 1
 scale = Vector2(2.12857, 2.17714)
 
 [node name="map" type="AnimatedSprite2D" parent="world_environment"]
+material = SubResource("ShaderMaterial_fws7d")
 sprite_frames = SubResource("SpriteFrames_x3fpq")
 
 [node name="loop_break" type="Node2D" parent="."]
