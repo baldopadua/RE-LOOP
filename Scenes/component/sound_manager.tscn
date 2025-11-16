@@ -7,6 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://cskwu36g87k23" path="res://Audio/music/space_ambience_clock.wav" id="5_6lgko"]
 [ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="5_vsbfc"]
 [ext_resource type="AudioStream" uid="uid://cqd8pth4qyq4u" path="res://Audio/music/plooy_final_level.wav" id="5_final"]
+[ext_resource type="AudioStream" path="res://Audio/ambience/bird_chirp.wav" id="5_bird"]
+[ext_resource type="AudioStream" path="res://Audio/ambience/cricket.wav" id="5_cricket"]
+[ext_resource type="AudioStream" path="res://Audio/ambience/idle_wind.wav" id="5_wind"]
 [ext_resource type="AudioStream" uid="uid://d2tjtumu1r0ov" path="res://Audio/music/space_ambience_clock.wav" id="6_2aguw"]
 [ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="6_ip4rx"]
 [ext_resource type="AudioStream" uid="uid://bpjg7ii1y2ht6" path="res://Audio/music/space_ambience_clock.wav" id="7_2aguw"]
@@ -254,14 +257,26 @@ stream = ExtResource("51_level5")
 
 [node name="main_bgm" type="AudioStreamPlayer2D" parent="music"]
 stream = ExtResource("29_fwa5o")
-volume_db = 7.336
+volume_db = 5.0
 
 [node name="final_level_bgm" type="AudioStreamPlayer2D" parent="music"]
 stream = ExtResource("5_final")
-volume_db = 7.336
+volume_db = 5.0
 
 [node name="ambience" type="Node2D" parent="music"]
 
 [node name="space_ambience" type="AudioStreamPlayer2D" parent="music/ambience"]
 stream = ExtResource("5_6lgko")
 volume_db = 15.848
+
+[node name="bird_chirp" type="AudioStreamPlayer2D" parent="music/ambience"]
+stream = ExtResource("5_bird")
+volume_db = -8.0
+
+[node name="cricket" type="AudioStreamPlayer2D" parent="music/ambience"]
+stream = ExtResource("5_cricket")
+volume_db = -8.0
+
+[node name="idle_wind" type="AudioStreamPlayer2D" parent="music/ambience"]
+stream = ExtResource("5_wind")
+volume_db = -10.0
