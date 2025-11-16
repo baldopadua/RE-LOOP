@@ -91,7 +91,13 @@ func _on_main_menu_button_pressed(button_type):
 			ui_handler.remove_main_menu()
 			transition_handler.visible = true 
 			transition_handler.show_main_to_game_transition()
-			await get_tree().create_timer(4.5).timeout 
+			# Play wormhole sounds
+			if transition_handler.sound_manager:
+				transition_handler.sound_manager.play_sfx("Climb")
+				transition_handler.sound_manager.play_sfx("ear_ring")
+				# Stop ear_ring after 1.5 seconds to shorten it
+				await get_tree().create_timer(4).timeout
+				transition_handler.sound_manager.stop_sfx("ear_ring")
 			transition_handler.visible = false 
 			$GameScene.visible= true;
 			$GameScene.process_mode = Node.PROCESS_MODE_INHERIT

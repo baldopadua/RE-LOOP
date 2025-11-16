@@ -28,6 +28,9 @@ func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(3)
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
+	# PLAY LEVEL AMBIENCE
+	if sound_manager:
+		sound_manager.play_level_ambience()
 	objects_initialize()
 	# SHOW DECORATIVES
 	area_handler.show_decoratives(3)

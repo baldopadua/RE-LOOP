@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="AudioStream" uid="uid://bh1mnpy3s61hg" path="res://Audio/sfx/incubator_check.wav" id="1_check"]
+
+[node name="incubator_check" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_check")
+volume_db = 0.0

@@ -7,7 +7,8 @@ extends Node2D
 }
 
 @onready var music := {
-	"main_bgm": $music/main_bgm
+	"main_bgm": $music/main_bgm,
+	"final_level_bgm": $music/final_level_bgm
 }
 
 # RECURSIVELY COLLECT ALL AUDIOSTREAMPLAYER2D NODES UNDER A GIVEN NODE
@@ -110,10 +111,6 @@ func play_ambience_music(music_name: String) -> void:
 	if has_node("music/ambience/" + music_name):
 		var player = get_node("music/ambience/" + music_name)
 		if player is AudioStreamPlayer2D:
-			if player.stream and player.stream.has_method("set_loop"):
-				player.stream.set_loop(true)
-			elif "loop" in player.stream:
-				player.stream.loop = true
 			player.play()
 
 func stop_ambience_music(music_name: String) -> void:
@@ -131,6 +128,7 @@ func set_ambience_music_volume(music_name: String, volume: float) -> void:
 func _ready():
 	_set_bus_for_all_sfx()
 	_set_bus_for_all_music()
+	_setup_music_looping()
 
 # Recursively set bus for all AudioStreamPlayer2D nodes under sfx
 func _set_bus_for_all_sfx():
@@ -144,9 +142,68 @@ func _set_bus_for_all_music():
 func _set_bus_recursive(parent: Node, bus_name: String):
 	for child in parent.get_children():
 		if child is AudioStreamPlayer2D:
-			child.bus = bus_name
+			if child.bus == "Master":
+				child.bus = bus_name
 		else:
 			_set_bus_recursive(child, bus_name)
+
+# Setup looping by connecting to finished signal
+func _setup_music_looping():
+	# Setup main_bgm looping
+	if music.has("main_bgm"):
+		var player = music["main_bgm"]
+		if not player.finished.is_connected(_loop_music):
+			player.finished.connect(_loop_music.bind("main_bgm"))
+	
+	# Setup final_level_bgm looping
+	if music.has("final_level_bgm"):
+		var player = music["final_level_bgm"]
+		if not player.finished.is_connected(_loop_music):
+			player.finished.connect(_loop_music.bind("final_level_bgm"))
+	
+	# Setup space_ambience looping (for level 12)
+	if has_node("music/ambience/space_ambience"):
+		var player = $music/ambience/space_ambience
+		if not player.finished.is_connected(_loop_ambience):
+			player.finished.connect(_loop_ambience.bind("space_ambience"))
+	
+	# Setup bird_chirp looping (for levels 1-11)
+	if has_node("music/ambience/bird_chirp"):
+		var player = $music/ambience/bird_chirp
+		if not player.finished.is_connected(_loop_ambience):
+			player.finished.connect(_loop_ambience.bind("bird_chirp"))
+	
+	# Setup cricket looping (for levels 1-11)
+	if has_node("music/ambience/cricket"):
+		var player = $music/ambience/cricket
+		if not player.finished.is_connected(_loop_ambience):
+			player.finished.connect(_loop_ambience.bind("cricket"))
+	
+	# Setup idle_wind looping (for levels 1-11)
+	if has_node("music/ambience/idle_wind"):
+		var player = $music/ambience/idle_wind
+		if not player.finished.is_connected(_loop_ambience):
+			player.finished.connect(_loop_ambience.bind("idle_wind"))
+
+func _loop_music(music_name: String):
+	if music.has(music_name):
+		music[music_name].play()
+
+func _loop_ambience(ambience_name: String):
+	if has_node("music/ambience/" + ambience_name):
+		get_node("music/ambience/" + ambience_name).play()
+
+# Play all level ambience sounds (bird_chirp, cricket, idle_wind) for levels 1-11
+func play_level_ambience():
+	play_ambience_music("bird_chirp")
+	play_ambience_music("cricket")
+	play_ambience_music("idle_wind")
+
+# Stop all level ambience sounds
+func stop_level_ambience():
+	stop_ambience_music("bird_chirp")
+	stop_ambience_music("cricket")
+	stop_ambience_music("idle_wind")
 
 # Volume control for buses
 func set_sfx_bus_volume(volume: float) -> void:

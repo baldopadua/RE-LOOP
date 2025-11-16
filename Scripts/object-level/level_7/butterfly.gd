@@ -26,7 +26,7 @@ signal add_state(direction)
 # TODO: Ayusin yung movement ng butterfly
 
 func _on_rotate_object(direction: Variant) -> void:
-	if not is_alive:
+	if not is_alive or wind.is_tornado:
 		return
 	if moves >= 0 and moves <= 3:
 		var tween = create_tween()
@@ -64,7 +64,7 @@ func _on_rotate_object(direction: Variant) -> void:
 		
 
 func _on_add_state(direction: Variant) -> void:
-	if not is_alive:
+	if not is_alive or wind.is_tornado:
 		return
 	if direction == GlobalVariables.Directions.CLOCKWISE:
 		if b_curr_state < b_max_state:

@@ -205,6 +205,10 @@ func get_clock_position_for_level(level_number: int) -> int:
 	return 1
 
 func animate_hand_to_next_level(next_clock_position: int) -> Tween:
+	var sound_manager = get_tree().root.find_child("SoundManager", true, false)
+	if sound_manager:
+		sound_manager.play_sfx("clock_transition")
+	
 	var current_short_rotation = preserved_hand_rotation if preserved_rotations_valid else short_hand_rotation.rotation
 	var current_long_rotation = preserved_long_hand_rotation if preserved_rotations_valid else long_hand_rotation.rotation
 	var target_short_rotation = get_rotation_for_clock(next_clock_position)

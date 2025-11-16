@@ -4,6 +4,7 @@ var area_entered_objects : Array = []
 var is_dreamer_here : bool = false
 var is_soda_here : bool = false
 @onready var rocket = $"../rocket"
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
 	print("SCIENCE PROJECT: ",get_rid())
@@ -41,3 +42,29 @@ func _on_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int,
 	elif area.name == "soda" and parent.name != "object_position":
 		area_entered_objects.erase(area)
 		is_soda_here = false
+
+func set_animation(anim_name: String):
+	var target_anim = anim_name + "_cubicle"
+	if animated_sprite.animation != target_anim or animated_sprite.frame != 0:
+		animated_sprite.play(target_anim)
+		# Connect to animation_finished to stop at last frame
+		if not animated_sprite.is_connected("animation_finished", Callable(self, "_on_animated_sprite_2d_animation_finished")):
+			animated_sprite.connect("animation_finished", Callable(self, "_on_animated_sprite_2d_animation_finished").bind(target_anim))
+
+func _on_animated_sprite_2d_animation_finished(_finished_anim: String = "") -> void:
+	# Stop at last frame for the current animation
+	var anim_name = animated_sprite.animation
+	var last_frame = 0
+	match anim_name:
+		"depressed_salaryman_cubicle":
+			last_frame = 5 # last frame index for depressed_salaryman_cubicle
+		"skeletal_remains_cubicle":
+			last_frame = 3 # last frame index for skeletal_remains_cubicle
+		"kid_cubicle":
+			last_frame = 0 # only one frame for kid_cubicle
+		_:
+			return # Do nothing for unknown animations
+	animated_sprite.frame = last_frame
+	animated_sprite.stop() # stop AFTER setting frame, so it doesn't reset to 0
+	animated_sprite.frame = last_frame # set again in case stop() resets it
+	animated_sprite.disconnect("animation_finished", Callable(self, "_on_animated_sprite_2d_animation_finished"))

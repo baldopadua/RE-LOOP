@@ -14,6 +14,8 @@ signal add_cur_state(direction)
 @onready var rocket = $"../rocket"
 @onready var timer = $"../Timer"
 @onready var temp_timer = $"../temp_timer"
+@onready var vending = $"../vending"
+@onready var vending_sprite: AnimatedSprite2D = vending.get_node("AnimatedSprite2D")
 
 var area_entered_objects : Array = []
 var previous_state: int = 1
@@ -36,21 +38,33 @@ func update_dreamer_state():
 	
 	# Handle state changes with sound effects and animations
 	if current_state != previous_state:
+		# Sync vending machine animation to dreamer state
+		if current_state == 1:
+			vending_sprite.set_animation("past")
+		elif current_state == 2:
+			vending_sprite.set_animation("present")
+		elif current_state == 3:
+			vending_sprite.set_animation("future")
+		else:
+			vending_sprite.set_animation("climax")
 		match [previous_state, current_state]:
 			[1, 2]:
 				# Kid to depressed_salaryman
 				if sound_manager and sound_manager.sfx.has("depress_man"):
 					sound_manager.play_sfx("depress_man")
 				dreamer_animated_sprite.play("depressed_salaryman")
+				science_project.set_animation("depressed_salaryman")
 			[2, 3]:
 				# Depressed_salaryman to skeletal_remains
 				dreamer_animated_sprite.play("skeletal_remains")
+				science_project.set_animation("skeletal_remains")
 				await dreamer_animated_sprite.animation_finished
 			[3, 1]:
 				# Skeletal_remains to kid (loop or reset, if needed)
 				if sound_manager and sound_manager.sfx.has("happy_kid"):
 					sound_manager.play_sfx("happy_kid")
 				dreamer_animated_sprite.play("kid")
+				science_project.set_animation("kid")
 				await dreamer_animated_sprite.animation_finished
 				# Only kid can buy soda
 				if is_in_vending and not is_soda_dispensed:
@@ -70,13 +84,25 @@ func update_dreamer_state():
 		previous_state = current_state
 
 func _on_add_cur_state(_direction) -> void:
-	# Play animation for current state
+	# Sync vending machine animation to dreamer state
+	if current_state == 1:
+		vending_sprite.set_animation("past")
+	elif current_state == 2:
+		vending_sprite.set_animation("present")
+	elif current_state == 3:
+		vending_sprite.set_animation("future")
+	else:
+		vending_sprite.set_animation("climax")
+	
 	if current_state == 1:
 		dreamer_animated_sprite.play("kid")
+		science_project.set_animation("kid")
 	elif current_state == 2:
 		dreamer_animated_sprite.play("depressed_salaryman")
+		science_project.set_animation("depressed_salaryman")
 	elif current_state == 3:
 		dreamer_animated_sprite.play("skeletal_remains")
+		science_project.set_animation("skeletal_remains")
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	# Only skeletal_remains is pickupable

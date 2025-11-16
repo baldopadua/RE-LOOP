@@ -12,6 +12,8 @@ signal add_cur_state(direction)
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _on_add_cur_state(direction: Variant) -> void:
+	if $"../wind".is_tornado:
+		return # Freeze flower logic when tornado is reached
 	if direction == GlobalVariables.Directions.CLOCKWISE:
 		if current_state == 2:
 			animated_sprite.play("flower_almost_bloom")

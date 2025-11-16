@@ -1,6 +1,7 @@
 extends Control
 
 var logic: Control
+@onready var sound_manager = $SoundManager
 
 func _ready() -> void:
 	logic = get_node("transition_logic")

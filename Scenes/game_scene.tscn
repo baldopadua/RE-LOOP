@@ -5,39 +5,33 @@
 [ext_resource type="PackedScene" uid="uid://y4on1fq1mgnm" path="res://Scenes/levels/level_lobby.tscn" id="3_6h5vk"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_fiftr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b6fju"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiftr"]
 atlas = ExtResource("1_x87qo")
 region = Rect2(0, 0, 240, 135)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6h5vk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ixah"]
 atlas = ExtResource("1_x87qo")
 region = Rect2(240, 0, 240, 135)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fiftr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgj8m"]
 atlas = ExtResource("1_x87qo")
 region = Rect2(480, 0, 240, 135)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ixah"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fmhe"]
 atlas = ExtResource("1_x87qo")
 region = Rect2(720, 0, 240, 135)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgj8m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iton"]
 atlas = ExtResource("1_x87qo")
 region = Rect2(960, 0, 240, 135)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2fmhe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikfsv"]
 atlas = ExtResource("1_x87qo")
 region = Rect2(1200, 0, 240, 135)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7iton"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b6fju")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6h5vk")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fiftr")
 }, {
@@ -49,6 +43,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2fmhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7iton")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikfsv")
 }],
 "loop": true,
 "name": &"default",

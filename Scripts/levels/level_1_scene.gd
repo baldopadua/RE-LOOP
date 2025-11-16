@@ -36,6 +36,9 @@ func _ready():
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# SHOW DECORATIVES
 	area_handler.show_decoratives(1)
+	# PLAY LEVEL AMBIENCE
+	if sound_manager:
+		sound_manager.play_level_ambience()
 	# MANIPULATING OBJECTS APPENDED IN ARRAY
 	objects_initialize()
 	

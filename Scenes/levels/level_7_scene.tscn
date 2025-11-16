@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bg2xip755v06g"]
+[gd_scene load_steps=70 format=3 uid="uid://bg2xip755v06g"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_7glvm"]
 [ext_resource type="Script" uid="uid://cr0pwvu6h53ym" path="res://Scripts/levels/level_7_script.gd" id="1_y76yc"]
@@ -21,25 +21,17 @@
 [ext_resource type="Script" uid="uid://d0x8vdiqt3w82" path="res://Scripts/object-level/level_7/spider.gd" id="15_1h23k"]
 [ext_resource type="Texture2D" uid="uid://8n0yppaxs0y1" path="res://Assets/levels/level_7/placeholder_assets/spider_eating.png" id="15_vo0jc"]
 [ext_resource type="Texture2D" uid="uid://3v4njjoxkbbt" path="res://Assets/levels/level_7/placeholder_assets/spider_web.png" id="16_lk5ig"]
-[ext_resource type="Texture2D" uid="uid://e414nhcqimrd" path="res://Assets/levels/level_7/placeholder_assets/flower.png" id="18_u1p72"]
-[ext_resource type="Texture2D" uid="uid://ckf7jr6xp282k" path="res://Assets/levels/level_7/placeholder_assets/flower_blooming.png" id="19_hba52"]
 [ext_resource type="Script" uid="uid://dhjxm2kigjotr" path="res://Scripts/object-level/level_7/flower.gd" id="20_4j7ts"]
-[ext_resource type="Texture2D" uid="uid://bkwjlub2i2lhw" path="res://Assets/levels/level_7/placeholder_assets/flower_dead.png" id="20_hba52"]
-[ext_resource type="Texture2D" uid="uid://bwg1d41of5y04" path="res://Assets/levels/level_7/placeholder_assets/flower_no_bloom.png" id="20_ptlfo"]
-[ext_resource type="Texture2D" uid="uid://co50p51yyvnyg" path="res://Assets/levels/level_7/placeholder_assets/wind_1.png" id="22_fdkpo"]
-[ext_resource type="Texture2D" uid="uid://nak71lhr4ifc" path="res://Assets/levels/level_7/placeholder_assets/wind_2.png" id="23_e6wxl"]
-[ext_resource type="Texture2D" uid="uid://c1vp2qplnfmea" path="res://Assets/levels/level_7/placeholder_assets/wind_3.png" id="24_nsgis"]
-[ext_resource type="Texture2D" uid="uid://be275wpxkrixy" path="res://Assets/levels/level_7/placeholder_assets/wind_4.png" id="25_1h23k"]
+[ext_resource type="Texture2D" uid="uid://btrlf2b2mv0f1" path="res://Assets/levels/level_7/flower.png" id="22_1h23k"]
 [ext_resource type="Script" uid="uid://bnpdbogrrts84" path="res://Scripts/object-level/level_7/wind.gd" id="25_4j7ts"]
-[ext_resource type="Texture2D" uid="uid://bui7kena78cyv" path="res://Assets/levels/level_7/placeholder_assets/wind_5.png" id="26_4j7ts"]
-[ext_resource type="Texture2D" uid="uid://nos8ytcmwqwv" path="res://Assets/levels/level_7/placeholder_assets/wind_6.png" id="27_tttb2"]
+[ext_resource type="Texture2D" uid="uid://d0qrsoix2qt60" path="res://Assets/levels/level_7/tornado.png" id="27_24kqj"]
 [ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="34_t4kqu"]
 
-[sub_resource type="Gradient" id="Gradient_qi7jl"]
+[sub_resource type="Gradient" id="Gradient_u1wgx"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e7h5n"]
-gradient = SubResource("Gradient_qi7jl")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fdkpo"]
+gradient = SubResource("Gradient_u1wgx")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7h5n"]
 animations = [{
@@ -177,14 +169,88 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jflw"]
-size = Vector2(20, 62.50284)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifcmi"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(0, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dhcl"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(49, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7iqr"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(98, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tg33"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(147, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6wxl"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(196, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhqkk"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(245, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odp1g"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(294, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbni0"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(343, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u454"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(392, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcu35"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(441, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1wgx"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(637, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdkpo"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(686, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx022"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(735, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3nid"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(784, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qjvo"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(490, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l0tr"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(539, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xlex"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(588, 0, 49, 59)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7dou0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_u1p72")
+"texture": SubResource("AtlasTexture_ifcmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dhcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7iqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tg33")
 }],
 "loop": false,
 "name": &"flower_almost_bloom",
@@ -192,7 +258,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("19_hba52")
+"texture": SubResource("AtlasTexture_e6wxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhqkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odp1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbni0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u454")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcu35")
 }],
 "loop": false,
 "name": &"flower_blooming",
@@ -200,7 +281,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_hba52")
+"texture": SubResource("AtlasTexture_u1wgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdkpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx022")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3nid")
 }],
 "loop": false,
 "name": &"flower_dead",
@@ -208,21 +298,81 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_ptlfo")
+"texture": SubResource("AtlasTexture_7qjvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l0tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xlex")
 }],
 "loop": false,
 "name": &"flower_no_bloom",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jflw"]
+size = Vector2(41.483192, 84.14305)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d53ws"]
 size = Vector2(20, 38.089523)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsgis"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(0, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h23k"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(49, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j7ts"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(49, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4kqu"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(98, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tttb2"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(98, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24kqj"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(147, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t502a"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(147, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57k56"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(196, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7qxu"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(245, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kc4s"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(294, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcu8n"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(343, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dc5k"]
+atlas = ExtResource("27_24kqj")
+region = Rect2(392, 0, 49, 59)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sgx2x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("22_fdkpo")
+"texture": SubResource("AtlasTexture_nsgis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h23k")
 }],
 "loop": false,
 "name": &"wind_1",
@@ -230,7 +380,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_e6wxl")
+"texture": SubResource("AtlasTexture_4j7ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4kqu")
 }],
 "loop": false,
 "name": &"wind_2",
@@ -238,7 +391,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("24_nsgis")
+"texture": SubResource("AtlasTexture_tttb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24kqj")
 }],
 "loop": false,
 "name": &"wind_3",
@@ -246,7 +402,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("25_1h23k")
+"texture": SubResource("AtlasTexture_t502a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57k56")
 }],
 "loop": false,
 "name": &"wind_4",
@@ -254,7 +413,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("26_4j7ts")
+"texture": SubResource("AtlasTexture_y7qxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kc4s")
 }],
 "loop": false,
 "name": &"wind_5",
@@ -262,7 +424,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("27_tttb2")
+"texture": SubResource("AtlasTexture_tcu8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dc5k")
 }],
 "loop": false,
 "name": &"wind_6",
@@ -273,6 +438,67 @@ animations = [{
 radius = 33.212807
 height = 93.28204
 
+[sub_resource type="Animation" id="Animation_fdkpo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u1wgx"]
+resource_name = "flow_with_tornado"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333335, 0.43333337, 0.6666667, 0.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-49, -78), Vector2(-124, -100), Vector2(-48, -162), Vector2(-131.00002, -224.00003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdkpo"]
+_data = {
+&"RESET": SubResource("Animation_fdkpo"),
+&"flow_with_tornado": SubResource("Animation_u1wgx")
+}
+
 [node name="level_7_scene" type="Node2D"]
 script = ExtResource("1_y76yc")
 
@@ -280,6 +506,7 @@ script = ExtResource("1_y76yc")
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_qi7jl")]
 self_modulate = Color(1, 1, 1, 0)
+rotation = -0.26626825
 up_direction = Vector2(0, 1)
 script = ExtResource("4_t502a")
 
@@ -316,15 +543,15 @@ layer = 2
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.00006, -50)
-scale = Vector2(20, 1.5)
-texture = SubResource("GradientTexture2D_e7h5n")
+position = Vector2(772.5, -54)
+scale = Vector2(24.234373, 1.625)
+texture = SubResource("GradientTexture2D_fdkpo")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.0001, 771)
-scale = Vector2(20, 1.5)
-texture = SubResource("GradientTexture2D_e7h5n")
+position = Vector2(762.74994, 769)
+scale = Vector2(23.789063, 1.5)
+texture = SubResource("GradientTexture2D_fdkpo")
 
 [node name="butterfly" parent="." instance=ExtResource("6_qi7jl")]
 rotation = 0.5235988
@@ -336,6 +563,7 @@ object_type = 1
 position = Vector2(-140.915, 243.755)
 rotation = 0.5235988
 sprite_frames = SubResource("SpriteFrames_e7h5n")
+animation = &"starved_butterfly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="butterfly"]
 position = Vector2(-140.915, 243.755)
@@ -360,7 +588,7 @@ sprite_frames = SubResource("SpriteFrames_lrbu4")
 [node name="Marker2D" type="Marker2D" parent="spider"]
 
 [node name="flower" parent="." instance=ExtResource("6_qi7jl")]
-position = Vector2(224.825, 129.155)
+position = Vector2(253.00002, 144)
 rotation = -1.0908308
 script = ExtResource("20_4j7ts")
 object_name = "flower"
@@ -369,13 +597,16 @@ max_state_threshold = 4
 min_state_threshold = 1
 current_state = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flower"]
-position = Vector2(7.6293945e-06, 21.251404)
-shape = SubResource("RectangleShape2D_2jflw")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="flower"]
+texture_filter = 1
+position = Vector2(4.105446, -104.72891)
+scale = Vector2(4.1209445, 4.4911594)
 sprite_frames = SubResource("SpriteFrames_7dou0")
-animation = &"flower_blooming"
+animation = &"flower_almost_bloom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flower"]
+position = Vector2(2.1382751, -19.679413)
+shape = SubResource("RectangleShape2D_2jflw")
 
 [node name="wind" parent="." instance=ExtResource("6_qi7jl")]
 position = Vector2(100.24, 178.08)
@@ -393,6 +624,9 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_d53ws")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="wind"]
+texture_filter = 1
+position = Vector2(10.134695, 20.783165)
+scale = Vector2(3.3538196, 3.5516498)
 sprite_frames = SubResource("SpriteFrames_sgx2x")
 animation = &"wind_1"
 
@@ -462,6 +696,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fdkpo")
+}
+
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="add_state" from="butterfly" to="butterfly" method="_on_add_state"]
 [connection signal="area_entered" from="butterfly" to="butterfly" method="_on_area_entered"]
@@ -471,3 +710,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="area_entered" from="spider" to="spider" method="_on_area_entered"]
 [connection signal="add_cur_state" from="flower" to="flower" method="_on_add_cur_state"]
 [connection signal="add_wind_state" from="wind" to="wind" method="_on_add_wind_state"]
+[connection signal="animation_finished" from="AnimationPlayer" to="wind" method="_on_animation_player_animation_finished"]
