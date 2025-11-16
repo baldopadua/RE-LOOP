@@ -436,14 +436,14 @@ position = Vector2(-1.8358784e-06, -42)
 shape = SubResource("RectangleShape2D_ov81m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="isaac_newton_1"]
-position = Vector2(-14.000013, -39)
-scale = Vector2(2.6206899, 2.4)
+position = Vector2(-14.999998, -36)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_iwthe")
 animation = &"young"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="isaac_newton_1"]
-position = Vector2(-14.000003, -36.500015)
-scale = Vector2(2.6896548, 2.26)
+position = Vector2(-14.750001, -36.000015)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_iwthe")
 
 [node name="seed" parent="." instance=ExtResource("6_kapnr")]
@@ -463,13 +463,13 @@ shape = SubResource("RectangleShape2D_pugdj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="seed"]
 texture_filter = 1
 position = Vector2(0.5937388, -59.937515)
-scale = Vector2(2.1026788, 1.4986148)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nlrgi")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="seed"]
 texture_filter = 1
 position = Vector2(0.53906095, -59.388996)
-scale = Vector2(2.1845982, 1.5167378)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nlrgi")
 
 [node name="seed2" parent="." instance=ExtResource("6_kapnr")]
@@ -488,14 +488,14 @@ shape = SubResource("RectangleShape2D_pugdj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="seed2"]
 texture_filter = 1
 position = Vector2(0.5937388, -59.937515)
-scale = Vector2(2.1026788, 1.4986148)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nlrgi")
 animation = &"tree"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="seed2"]
 texture_filter = 1
 position = Vector2(0.53906095, -59.388996)
-scale = Vector2(2.1845982, 1.5167378)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nlrgi")
 animation = &"tree"
 
@@ -514,14 +514,14 @@ position = Vector2(-0.02999878, -36.25)
 shape = SubResource("RectangleShape2D_ov81m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="isaac_newton_2"]
-position = Vector2(-14.000013, -39)
-scale = Vector2(2.6206899, 2.4)
+position = Vector2(-12.249998, -25.5)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_iwthe")
 animation = &"young"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="isaac_newton_2"]
-position = Vector2(-14.000003, -36.500015)
-scale = Vector2(2.6896548, 2.26)
+position = Vector2(-12.249988, -23.000015)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_iwthe")
 
 [node name="center_pos" type="Marker2D" parent="."]
