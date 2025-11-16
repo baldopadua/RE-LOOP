@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://3tla2n3edqkn"]
+[gd_scene load_steps=66 format=3 uid="uid://3tla2n3edqkn"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_2r23t"]
 [ext_resource type="Script" uid="uid://ds7lwxirvmjvs" path="res://Scripts/levels/level_6_script.gd" id="1_odmpw"]
@@ -10,14 +10,14 @@
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_kapnr"]
 [ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/level_select_lobby/level_7.png" id="8_pwedw"]
 [ext_resource type="Texture2D" uid="uid://bd6huacdltowj" path="res://Assets/levels/level_6/placeholder_assets/rift_in_time.png" id="9_sh2gb"]
-[ext_resource type="Script" path="res://Scripts/object-level/level_6/in_1.gd" id="10_cr1iw"]
+[ext_resource type="Script" uid="uid://ipneen5ggosr" path="res://Scripts/object-level/level_6/in_1.gd" id="10_cr1iw"]
 [ext_resource type="Script" uid="uid://b4sgciq6gkscg" path="res://Scripts/object-level/level_6/switch_circle.gd" id="10_ov81m"]
 [ext_resource type="Texture2D" uid="uid://dhn4nwd5xx3k2" path="res://Assets/levels/level_6/placeholder_assets/seed 1.png" id="13_cr1iw"]
 [ext_resource type="Texture2D" uid="uid://byuly2cl2yrii" path="res://Assets/levels/level_1/Tree-Sheet.png" id="14_8mnya"]
-[ext_resource type="Script" path="res://Scripts/object-level/level_6/in_2.gd" id="15_bxtqd"]
-[ext_resource type="Script" path="res://Scripts/object-level/level_6/seed.gd" id="17_8mnya"]
+[ext_resource type="Script" uid="uid://dpen7dd1hhm1c" path="res://Scripts/object-level/level_6/in_2.gd" id="15_bxtqd"]
+[ext_resource type="Script" uid="uid://4ps5tmbu0ta5" path="res://Scripts/object-level/level_6/seed.gd" id="17_8mnya"]
 [ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="18_rcfaf"]
-[ext_resource type="Script" path="res://Scripts/object-level/level_6/seed2.gd" id="20_f215k"]
+[ext_resource type="Script" uid="uid://dn4wa6vh46eft" path="res://Scripts/object-level/level_6/seed2.gd" id="20_f215k"]
 [ext_resource type="Texture2D" uid="uid://cqy4vnecvhahh" path="res://Assets/levels/level_6/inewton.png" id="22_f215k"]
 
 [sub_resource type="Gradient" id="Gradient_kapnr"]
@@ -313,6 +313,94 @@ animations = [{
 radius = 33.212807
 height = 93.28204
 
+[sub_resource type="Animation" id="Animation_pxia2"]
+resource_name = "ClimbingAnimation"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, -208)]
+}
+
+[sub_resource type="Animation" id="Animation_70ox2"]
+resource_name = "ClimbingAnimation_2"
+length = 2.5
+
+[sub_resource type="Animation" id="Animation_cmquk"]
+resource_name = "JumpAnimation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.61, 0.98, 1.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -208), Vector2(0, -208), Vector2(-1, -281), Vector2(-1, -200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.19, 1.4333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wegfx"]
+resource_name = "JumpAnimation_2"
+length = 1.5
+
+[sub_resource type="Animation" id="Animation_l4q40"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmquk"]
+_data = {
+&"ClimbingAnimation": SubResource("Animation_pxia2"),
+&"ClimbingAnimation_2": SubResource("Animation_70ox2"),
+&"JumpAnimation": SubResource("Animation_cmquk"),
+&"JumpAnimation_2": SubResource("Animation_wegfx"),
+&"RESET": SubResource("Animation_l4q40")
+}
+
 [node name="level_6_scene" type="Node2D"]
 script = ExtResource("1_odmpw")
 
@@ -320,6 +408,7 @@ script = ExtResource("1_odmpw")
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_et41i")]
 self_modulate = Color(1, 1, 1, 0)
+z_index = 2
 up_direction = Vector2(0, 1)
 script = ExtResource("4_pwedw")
 
@@ -345,6 +434,7 @@ horizontal_alignment = 1
 [node name="SoundManager" parent="." instance=ExtResource("3_5j0bc")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_jmy7j")]
 
@@ -551,6 +641,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="center_pos" type="Marker2D" parent="."]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cmquk")
+}
+
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="toggle_switch_circle" from="switch_circle" to="switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="add_cur_state" from="isaac_newton_1" to="isaac_newton_1" method="_on_add_cur_state"]
@@ -561,3 +656,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="is_dropped" from="seed2" to="seed2" method="_on_is_dropped"]
 [connection signal="add_cur_state" from="isaac_newton_2" to="isaac_newton_2" method="_on_add_cur_state"]
 [connection signal="is_dropped" from="isaac_newton_2" to="isaac_newton_2" method="_on_is_dropped"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

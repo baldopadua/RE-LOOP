@@ -19,6 +19,9 @@ var objects: Array = []
 @onready var seed2 = $seed2
 @onready var center_pos = $center_pos
 
+var player_body: Node = null
+@onready var anim_handler = $AnimationPlayer
+
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(6)
@@ -72,6 +75,7 @@ func _ready():
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 	# SHOW AGAIN THE UI AFTER
 	ui_handler.show_game_ui_elements()
+	anim_handler.playback_active = false # AnimationPlayer OFF at start
 
 func object_initialize():
 	objects.append(isaac_newton_1)
@@ -85,5 +89,34 @@ func object_initialize():
 func enter_level():
 	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
-	level_handler.complete_current_level(get_parent()) 
+	level_handler.complete_current_level(get_parent())
+
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "ClimbingAnimation":
+		if player_body and player_body.has_method("play_jump_animation"):
+			player_body.play_jump_animation()
+		anim_handler.play("JumpAnimation")
+	elif anim_name == "JumpAnimation":
+		# Re-enable collision after animation
+		if player_body and player_body.has_method("enable_collision"):
+			player_body.enable_collision()
+		player_body.get_node("Camera2D").emit_signal("hide_bars")
+		player_body.get_node("Camera2D").emit_signal("cam_orig_zoom")
+		player_body.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+		
+		# Ensure player position and modulate are set to final animation values
+		if player_body:
+			player_body.position = Vector2(-1, -200) # Match last key in JumpAnimation
+			player_body.modulate = Color(1, 1, 1, 1) # Ensure visible
 	
+		level_handler.complete_current_level(get_parent())
+
+# Add this function so player.gd can call it after match
+func enable_animation_player():
+	anim_handler.playback_active = true
+
+func play_climb_animation(body: Node) -> void:
+	self.player_body = body
+	anim_handler.play("ClimbingAnimation")
