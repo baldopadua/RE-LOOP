@@ -10,30 +10,33 @@ extends object_class
 signal add_cur_state(direction)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area == butterfly:
-		# Eat the motherfucker >:)
-		# Focus camera here and then restart
-		butterfly.is_alive = false
-		
-		player.set_process_input(false)
-		
-		player.get_node("Camera2D").emit_signal("pan_to_pos", mark_to_pos.global_position)
-		player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
-		player.get_node("Camera2D").emit_signal("reveal_bars")
-		
-		await get_tree().create_timer(2.0).timeout  
-		
-		animated_sprite.play("spider_eating")
-		butterfly.animated_sprite.play("eaten_butterfly")
-		await animated_sprite.animation_finished
-		
-		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
-		player.get_node("Camera2D").emit_signal("cam_orig_zoom")
-		player.get_node("Camera2D").emit_signal("hide_bars")
-		
-		await get_tree().create_timer(1.0).timeout
-		
-		player.level_handler.restart_level(get_parent().get_parent())
+	# ONLY TRIGGER IF SPIDER IS IN THE LEVEL SCENE (NOT BEING HELD BY PLAYER)
+	if get_parent() == get_tree().current_scene or get_parent().name == "level_7_scene":
+		if area == butterfly and is_instance_valid(butterfly) and is_instance_valid(player):
+			# Eat the motherfucker >:)
+			# Focus camera here and then restart
+			butterfly.is_alive = false
+			
+			player.set_process_input(false)
+			
+			player.get_node("Camera2D").emit_signal("pan_to_pos", mark_to_pos.global_position)
+			player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
+			player.get_node("Camera2D").emit_signal("reveal_bars")
+			
+			await get_tree().create_timer(2.0).timeout  
+			
+			animated_sprite.play("spider_eating")
+			butterfly.animated_sprite.play("eaten_butterfly")
+			await animated_sprite.animation_finished
+			
+			player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+			player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+			player.get_node("Camera2D").emit_signal("hide_bars")
+			
+			await get_tree().create_timer(1.0).timeout
+			
+			player.level_handler.restart_level(get_parent().get_parent())
+	# ELSE: IGNORE COLLISION IF BEING HELD
 
 
 func _on_add_cur_state(direction: Variant) -> void:

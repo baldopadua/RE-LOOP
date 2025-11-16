@@ -571,7 +571,7 @@ rotation = 0.5235988
 shape = SubResource("RectangleShape2D_qi7jl")
 
 [node name="spider" parent="." instance=ExtResource("6_qi7jl")]
-position = Vector2(-262.26, -0.63)
+position = Vector2(-305, 3)
 rotation = 1.5707964
 script = ExtResource("15_1h23k")
 object_name = "spider"
@@ -580,9 +580,11 @@ min_state_threshold = 1
 current_state = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spider"]
+position = Vector2(0.62999886, -26.26001)
 shape = SubResource("RectangleShape2D_ltkbt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spider"]
+position = Vector2(-29.370003, -46.26001)
 sprite_frames = SubResource("SpriteFrames_lrbu4")
 
 [node name="Marker2D" type="Marker2D" parent="spider"]
