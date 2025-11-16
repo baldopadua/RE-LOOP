@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlb043fvqn8o8"]
+[gd_scene load_steps=2 format=3 uid="uid://dlb043fvqn8o8"]
 
-[ext_resource type="AudioStream" uid="uid://djspbs1k70j2x" path="res://Audio/wavs-mp3/big_bell.wav" id="1_xvejs"]
+[ext_resource type="AudioStream" uid="uid://djspbs1k70j2x" path="res://Audio/sfx/big_bell.wav" id="1_xvejs"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyg4q"]
 playback_mode = 2

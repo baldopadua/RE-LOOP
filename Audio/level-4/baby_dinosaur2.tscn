@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="AudioStream" uid="uid://dq61fs42k5j0t" path="res://Audio/sfx/baby_dinosaur2.wav" id="1_baby2"]
+
+[node name="baby_dinosaur2" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_baby2")
+volume_db = 0.0

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="AudioStream" uid="uid://cudnjxjbdwemt" path="res://Audio/sfx/lizard_sound.wav" id="1_lizard"]
+
+[node name="lizard_sound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_lizard")
+volume_db = 15.0

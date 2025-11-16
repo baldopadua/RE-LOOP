@@ -31,6 +31,9 @@ func _ready():
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# SHOW DECORATIVES
 	area_handler.show_decoratives(4)
+	# PLAY LEVEL AMBIENCE
+	if sound_manager:
+		sound_manager.play_level_ambience()
 	objects_initialize()
 	
 	player.rotation = deg_to_rad(120.0)

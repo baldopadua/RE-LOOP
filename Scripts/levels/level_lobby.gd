@@ -73,7 +73,7 @@ func _ready():
 	level_handler.level_completed.connect(_on_level_completed)
 	
 	call_deferred("position_player_based_on_progress")
-	sound_manager.play_ambience_music("forest")
+	sound_manager.play_ambience_music("space_ambience")
 	
 	GlobalVariables.is_looping = false
 	GlobalVariables.player_moves = 0
@@ -122,7 +122,7 @@ func enter_level(level_number: int):
 		enable_lobby_functionality()
 		return  
 	
-	sound_manager.stop_ambience_music("forest")
+	sound_manager.stop_ambience_music("space_ambience")
 	var levels_frame = get_parent() 
 
 	level_handler.kill_current_level(self)
@@ -389,7 +389,7 @@ func start_cutscene_then_enter_next_level(next_level_number: int):
 	disable_lobby_functionality()
 	
 	if sound_manager:
-		sound_manager.stop_ambience_music("forest")
+		sound_manager.stop_ambience_music("space_ambience")
 	
 	var levels_frame = get_parent()
 	
@@ -425,7 +425,7 @@ func start_replay_return_animation(from_level: int, to_level: int):
 	
 	enable_lobby_functionality()
 	if sound_manager:
-		sound_manager.play_ambience_sfx("forest_sfx")
+		sound_manager.play_ambience_music("space_ambience")
 
 func get_level_number_from_entrance(entrance_obj) -> int:
 	if not entrance_obj or not entrance_obj.has_method("get") or not "object_name" in entrance_obj:
