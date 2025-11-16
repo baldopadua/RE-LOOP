@@ -160,11 +160,29 @@ func _setup_music_looping():
 		if not player.finished.is_connected(_loop_music):
 			player.finished.connect(_loop_music.bind("final_level_bgm"))
 	
-	# Setup space_ambience looping
+	# Setup space_ambience looping (for level 12)
 	if has_node("music/ambience/space_ambience"):
 		var player = $music/ambience/space_ambience
 		if not player.finished.is_connected(_loop_ambience):
 			player.finished.connect(_loop_ambience.bind("space_ambience"))
+	
+	# Setup bird_chirp looping (for levels 1-11)
+	if has_node("music/ambience/bird_chirp"):
+		var player = $music/ambience/bird_chirp
+		if not player.finished.is_connected(_loop_ambience):
+			player.finished.connect(_loop_ambience.bind("bird_chirp"))
+	
+	# Setup cricket looping (for levels 1-11)
+	if has_node("music/ambience/cricket"):
+		var player = $music/ambience/cricket
+		if not player.finished.is_connected(_loop_ambience):
+			player.finished.connect(_loop_ambience.bind("cricket"))
+	
+	# Setup idle_wind looping (for levels 1-11)
+	if has_node("music/ambience/idle_wind"):
+		var player = $music/ambience/idle_wind
+		if not player.finished.is_connected(_loop_ambience):
+			player.finished.connect(_loop_ambience.bind("idle_wind"))
 
 func _loop_music(music_name: String):
 	if music.has(music_name):
@@ -173,6 +191,18 @@ func _loop_music(music_name: String):
 func _loop_ambience(ambience_name: String):
 	if has_node("music/ambience/" + ambience_name):
 		get_node("music/ambience/" + ambience_name).play()
+
+# Play all level ambience sounds (bird_chirp, cricket, idle_wind) for levels 1-11
+func play_level_ambience():
+	play_ambience_music("bird_chirp")
+	play_ambience_music("cricket")
+	play_ambience_music("idle_wind")
+
+# Stop all level ambience sounds
+func stop_level_ambience():
+	stop_ambience_music("bird_chirp")
+	stop_ambience_music("cricket")
+	stop_ambience_music("idle_wind")
 
 # Volume control for buses
 func set_sfx_bus_volume(volume: float) -> void:
