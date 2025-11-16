@@ -250,7 +250,7 @@ func return_to_lobby(levels_frame):
 	var lobby_scene = levels_frame.get_child(0)
 	if lobby_scene and lobby_scene.has_node("SoundManager"):
 		var sound_manager = lobby_scene.get_node("SoundManager")
-		sound_manager.play_ambience_sfx("forest_sfx")
+		sound_manager.play_ambience_music("space_ambience")
 
 func _mark_level_completed_and_print_status():
 	if not completed_levels.has(current_level_number):
