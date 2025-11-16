@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://3tla2n3edqkn"]
+[gd_scene load_steps=63 format=3 uid="uid://3tla2n3edqkn"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_2r23t"]
 [ext_resource type="Script" uid="uid://ds7lwxirvmjvs" path="res://Scripts/levels/level_6_script.gd" id="1_odmpw"]
@@ -13,18 +13,18 @@
 [ext_resource type="Script" uid="uid://ipneen5ggosr" path="res://Scripts/object-level/level_6/in_1.gd" id="10_cr1iw"]
 [ext_resource type="Script" uid="uid://b4sgciq6gkscg" path="res://Scripts/object-level/level_6/switch_circle.gd" id="10_ov81m"]
 [ext_resource type="Texture2D" uid="uid://dhn4nwd5xx3k2" path="res://Assets/levels/level_6/placeholder_assets/seed 1.png" id="13_cr1iw"]
-[ext_resource type="Texture2D" uid="uid://byuly2cl2yrii" path="res://Assets/levels/level_1/Tree-Sheet.png" id="14_8mnya"]
+[ext_resource type="Texture2D" uid="uid://bbu4jrknv4i47" path="res://Assets/levels/level_6/recolored-tree.png" id="15_8mnya"]
 [ext_resource type="Script" uid="uid://dpen7dd1hhm1c" path="res://Scripts/object-level/level_6/in_2.gd" id="15_bxtqd"]
 [ext_resource type="Script" uid="uid://4ps5tmbu0ta5" path="res://Scripts/object-level/level_6/seed.gd" id="17_8mnya"]
 [ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="18_rcfaf"]
 [ext_resource type="Script" uid="uid://dn4wa6vh46eft" path="res://Scripts/object-level/level_6/seed2.gd" id="20_f215k"]
 [ext_resource type="Texture2D" uid="uid://cqy4vnecvhahh" path="res://Assets/levels/level_6/inewton.png" id="22_f215k"]
 
-[sub_resource type="Gradient" id="Gradient_kapnr"]
+[sub_resource type="Gradient" id="Gradient_7hl30"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_sh2gb"]
-gradient = SubResource("Gradient_kapnr")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cr1iw"]
+gradient = SubResource("Gradient_7hl30")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kapnr"]
 animations = [{
@@ -206,49 +206,37 @@ size = Vector2(32, 134.67003)
 atlas = ExtResource("13_cr1iw")
 region = Rect2(0, 0, 70, 116)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5rki3"]
-atlas = ExtResource("14_8mnya")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr1iw"]
+atlas = ExtResource("15_8mnya")
 region = Rect2(0, 0, 64, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j5vdi"]
-atlas = ExtResource("14_8mnya")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxtqd"]
+atlas = ExtResource("15_8mnya")
 region = Rect2(64, 0, 64, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wo1o1"]
-atlas = ExtResource("14_8mnya")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mnya"]
+atlas = ExtResource("15_8mnya")
 region = Rect2(128, 0, 64, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bxtqd"]
-atlas = ExtResource("14_8mnya")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqhwj"]
+atlas = ExtResource("15_8mnya")
 region = Rect2(192, 0, 64, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5inal"]
-atlas = ExtResource("14_8mnya")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvt55"]
+atlas = ExtResource("15_8mnya")
 region = Rect2(256, 0, 64, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ng81t"]
-atlas = ExtResource("14_8mnya")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v7yl"]
+atlas = ExtResource("15_8mnya")
 region = Rect2(320, 0, 64, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wb7td"]
-atlas = ExtResource("14_8mnya")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f215k"]
+atlas = ExtResource("15_8mnya")
 region = Rect2(384, 0, 64, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cr1iw"]
-atlas = ExtResource("14_8mnya")
+[sub_resource type="AtlasTexture" id="AtlasTexture_26fy1"]
+atlas = ExtResource("15_8mnya")
 region = Rect2(448, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5obo5"]
-atlas = ExtResource("14_8mnya")
-region = Rect2(512, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_13a0s"]
-atlas = ExtResource("14_8mnya")
-region = Rect2(576, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bdgji"]
-atlas = ExtResource("14_8mnya")
-region = Rect2(640, 0, 64, 112)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlrgi"]
 animations = [{
@@ -262,13 +250,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5rki3")
+"texture": SubResource("AtlasTexture_cr1iw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j5vdi")
+"texture": SubResource("AtlasTexture_bxtqd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wo1o1")
+"texture": SubResource("AtlasTexture_8mnya")
 }],
 "loop": false,
 "name": &"sapling",
@@ -276,16 +264,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bxtqd")
+"texture": SubResource("AtlasTexture_fqhwj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5inal")
+"texture": SubResource("AtlasTexture_jvt55")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ng81t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wb7td")
+"texture": SubResource("AtlasTexture_5v7yl")
 }],
 "loop": false,
 "name": &"semi_tree",
@@ -293,16 +278,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cr1iw")
+"texture": SubResource("AtlasTexture_f215k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5obo5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_13a0s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bdgji")
+"texture": SubResource("AtlasTexture_26fy1")
 }],
 "loop": false,
 "name": &"tree",
@@ -440,15 +419,15 @@ layer = 2
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.00006, -50)
-scale = Vector2(20, 1.5)
-texture = SubResource("GradientTexture2D_sh2gb")
+position = Vector2(772.5, -54)
+scale = Vector2(24.234373, 1.625)
+texture = SubResource("GradientTexture2D_cr1iw")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.0001, 771)
-scale = Vector2(20, 1.5)
-texture = SubResource("GradientTexture2D_sh2gb")
+position = Vector2(762.74994, 769)
+scale = Vector2(23.789063, 1.5)
+texture = SubResource("GradientTexture2D_cr1iw")
 
 [node name="switch_circle" parent="." instance=ExtResource("6_kapnr")]
 visible = false
@@ -517,7 +496,7 @@ sprite_frames = SubResource("SpriteFrames_nlrgi")
 
 [node name="seed2" parent="." instance=ExtResource("6_kapnr")]
 visible = false
-position = Vector2(-241, 315)
+position = Vector2(-244, 312)
 script = ExtResource("20_f215k")
 object_name = "seed"
 max_state_threshold = 4
@@ -530,15 +509,15 @@ shape = SubResource("RectangleShape2D_pugdj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="seed2"]
 texture_filter = 1
-position = Vector2(0.5937388, -63.9375)
-scale = Vector2(2.1026788, 1.5700431)
+position = Vector2(0.5937388, -59.937515)
+scale = Vector2(2.1026788, 1.4986148)
 sprite_frames = SubResource("SpriteFrames_nlrgi")
 animation = &"tree"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="seed2"]
 texture_filter = 1
-position = Vector2(0.53906095, -65.59822)
-scale = Vector2(2.1845982, 1.6276168)
+position = Vector2(0.53906095, -59.388996)
+scale = Vector2(2.1845982, 1.5167378)
 sprite_frames = SubResource("SpriteFrames_nlrgi")
 animation = &"tree"
 
