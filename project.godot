@@ -24,12 +24,15 @@ config/bg_color=Color(0.14, 0.14, 0.14, 1)
 GlobalVariables="*res://Scripts/global_variables.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+runtime/balloon_path="res://dialogues/made/balloon.tscn"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

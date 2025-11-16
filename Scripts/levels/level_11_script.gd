@@ -66,24 +66,24 @@ func _ready():
 	# reveal cinematic bars
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	
-	# Slow down time to 0.1 under 2 seconds
+	# Slow down time to 0.1 under 1 seconds
 	var tween = get_tree().create_tween()
-	tween.tween_property(Engine, "time_scale", 0.1, 2.0)
+	tween.tween_property(Engine, "time_scale", 0.1, 1.0)
 	
 	# while slowing down time, toggle grayscale
 	toggle_grayscale(bg)
 	toggle_grayscale(area_handler.map_sprite)
 	# toggle grayscale for keystones
-	toggle_grayscale(seed.get_node("AnimatedSprite2D2"))
-	toggle_grayscale(skull.get_node("AnimatedSprite2D2"))
-	toggle_grayscale(rock.get_node("AnimatedSprite2D2"))
-	toggle_grayscale(egg.get_node("AnimatedSprite2D2"))
-	toggle_grayscale(soda.get_node("AnimatedSprite2D2"))
-	toggle_grayscale(apple.get_node("AnimatedSprite2D2"))
-	toggle_grayscale(butterfly.get_node("AnimatedSprite2D2"))
-	toggle_grayscale(carrot.get_node("AnimatedSprite2D2"))
-	toggle_grayscale(cat.get_node("AnimatedSprite2D2"))
-	toggle_grayscale(lightbulb.get_node("AnimatedSprite2D2"))
+	#toggle_grayscale(seed.get_node("AnimatedSprite2D2"))
+	#toggle_grayscale(skull.get_node("AnimatedSprite2D2"))
+	#toggle_grayscale(rock.get_node("AnimatedSprite2D2"))
+	#toggle_grayscale(egg.get_node("AnimatedSprite2D2"))
+	#toggle_grayscale(soda.get_node("AnimatedSprite2D2"))
+	#toggle_grayscale(apple.get_node("AnimatedSprite2D2"))
+	#toggle_grayscale(butterfly.get_node("AnimatedSprite2D2"))
+	#toggle_grayscale(carrot.get_node("AnimatedSprite2D2"))
+	#toggle_grayscale(cat.get_node("AnimatedSprite2D2"))
+	#toggle_grayscale(lightbulb.get_node("AnimatedSprite2D2"))
 	
 	# wait for slowing time to be finished then pause bg and set time scale back to normal
 	await tween.finished
@@ -95,20 +95,25 @@ func _ready():
 	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 	
 	# Dialogue here
-	#DialogueManager.show_dialogue_balloon()
-	
-	# Wait 2 seconds
-	await get_tree().create_timer(2.0).timeout
-	
+	DialogueManager.show_dialogue_balloon_scene("res://dialogues/made/balloon.tscn", load("res://dialogues/initial_meeting.dialogue"))
+	#DialogueManager.
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
+func _on_dialogue_ended(_resource: DialogueResource):
 	# Refocus original position
 	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
-	
+		
 	# Enable player movement
 	player.set_process_input(true)
 #	Reshow ui elements
 	ui_handler.show_game_ui_elements()
+
+func _on_letter_spoke(letter, index, speed):
+	if letter in [" ", "\n"]: return # (optional)
+	$AudioStreamPlayer.play()
+
 
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
 # TO WORK ON THE SCRIPT
@@ -121,7 +126,7 @@ func enter_level():
 func toggle_grayscale(bg):
 	var current = bg.material.get("shader_parameter/gray_amount")
 	var target = 1.0 if current < 0.5 else 0.0
-
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property(bg.material, "shader_parameter/gray_amount", target, 0.5)
 

@@ -292,6 +292,7 @@ usable_targets = Array[String](["soil"])
 [node name="Sprite2D2" type="Sprite2D" parent="Seed"]
 texture_filter = 1
 position = Vector2(-1, 1)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_ggo0n")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Seed"]
@@ -349,14 +350,12 @@ animation = &"grow_1"
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("8_pxia2")]
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(772.5, -54)
+position = Vector2(642.49994, -54)
 scale = Vector2(24.234373, 1.625)
 texture = SubResource("GradientTexture2D_7hl30")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(762.74994, 769)
+position = Vector2(632.7499, 769)
 scale = Vector2(23.789063, 1.5)
 texture = SubResource("GradientTexture2D_7hl30")
 

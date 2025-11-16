@@ -41,12 +41,6 @@ theme_override_font_sizes/font_size = 14
 text = "TEXT"
 horizontal_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-rotation = 1.5750766
-scale = Vector2(0.99999994, 0.99999994)
-ignore_rotation = false
-position_smoothing_enabled = true
-
 [node name="SoundManager" parent="." instance=ExtResource("3_62p7t")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -56,11 +50,11 @@ position_smoothing_enabled = true
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
 position = Vector2(637.00006, -50)
-scale = Vector2(20, 1.5)
+scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_62p7t")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
 position = Vector2(637.0001, 771)
-scale = Vector2(20, 1.5)
+scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_62p7t")

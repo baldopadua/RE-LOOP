@@ -1,11 +1,35 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+Monk: How lovely!
+Plooy: You… [wait=1]You can see Plooy?
+Monk: Yes. I have been in this place for… [speed=0.2]eons…
+Monk: And to you, “eons” are nothing more than a fickle of dust.
+Plooy: Time does not seem to work here as intended.
+Plooy: Has Plooy’s undoing caused more rifts in time?
+Monk: No… you have done the right things. It is “I” [speed=0.5]who stopped time in this stream.
+Plooy: But why? Why would you do that?
+Monk: “Time”, is a river with many eddies…
+Monk: The more you move forward in it… the more it pushes against itself.
+Plooy: A… disagreement?
+Monk: Exactly. For every right choice you make, there exists another Plooy — in another timeline — who made the wrong one.
+Monk: You must tread carefully. Plooy must not repeat those mistakes… and “I” must not make any more wrong decisions.
+
+# --- CUTSCENE EVENT ---
+# @change_sprite monk_split
+#
+# ----------------------------------
+
+Plooy: You’re… [speed=0.2]ME?
+Plooy: These statues… Plooy recognizes them. They look like the lives Plooy has touched.
+Plooy: Monk, what are these? What purpose do they serve?
+Monk: They are echoes. Nothing more.
+Plooy: Echoes of what?
+Monk: Of steps taken… and steps yet to be taken…
+Plooy: Plooy does not understand.
+Monk: You’re not meant to. Not yet.
+
+Plooy: Are we… [speed=0.5]the cause of the time splits?
+Monk: [speed=0.5]That is correct. [speed=1.0]“I” must not let you go any further. The heart of time and its pillars must remain like insects in amber.
+Plooy: We both know that our mistakes will create unpleasant consequences. But even so… we must keep going!
+Monk: Very well. But I must remind you, [speed=0.2]“time” [speed=1.0]will not always be in your favor.
+
 => END
