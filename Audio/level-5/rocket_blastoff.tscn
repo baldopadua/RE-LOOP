@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="AudioStream" uid="uid://mfp02gerh4tq" path="res://Audio/sfx/rocket_blastoff_final.wav" id="1_rocket"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rocket"]
+playback_mode = 2
+streams_count = 1
+stream_0/stream = ExtResource("1_rocket")
+
+[node name="rocket_blastoff" type="AudioStreamPlayer2D"]
+stream = SubResource("AudioStreamRandomizer_rocket")
+volume_db = 1.0
