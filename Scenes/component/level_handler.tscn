@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://byo827h22co3m" path="res://Assets/level_select_lobby/level_1.png" id="9_57g54"]
 [ext_resource type="Texture2D" uid="uid://bdvw57njg3aad" path="res://Assets/level_select_lobby/level_2.png" id="11_ma7fv"]
 [ext_resource type="Texture2D" uid="uid://c1qyepipkdh6o" path="res://Assets/level_select_lobby/level_3.png" id="12_cimng"]
-[ext_resource type="Texture2D" uid="uid://7a5oqv826cwv" path="res://Assets/level_select_lobby/level_4.png" id="13_uxnec"]
+[ext_resource type="Texture2D" uid="uid://n71gi1vslhq0" path="res://Assets/level_select_lobby/level_4_icon.png" id="12_tvcbk"]
 [ext_resource type="Texture2D" uid="uid://c72nnu8ruare1" path="res://Assets/level_select_lobby/level_5.png" id="14_kvxy6"]
 [ext_resource type="Texture2D" uid="uid://d1gv25rkrif8y" path="res://Assets/level_select_lobby/level_6.png" id="15_a2ivc"]
 [ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/level_select_lobby/level_7.png" id="16_17rk7"]
@@ -192,18 +192,18 @@ script = ExtResource("8_r3dfo")
 object_name = "enter_4"
 object_type = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="level_status/enter_4"]
-position = Vector2(8.394183, -315.46082)
-shape = SubResource("CapsuleShape2D_tvcbk")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
 [node name="Sprite2D2" type="Sprite2D" parent="level_status/enter_4"]
 texture_filter = 1
-position = Vector2(-3.2416725, -31.614737)
+position = Vector2(7.7595296, -225.7593)
 rotation = 3.1827781
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("13_uxnec")
+scale = Vector2(0.26605895, 0.28641188)
+texture = ExtResource("12_tvcbk")
 offset = Vector2(0, 380)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_status/enter_4"]
+position = Vector2(8.3941345, -315.46088)
+shape = SubResource("CapsuleShape2D_tvcbk")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="enter_5" parent="level_status" instance=ExtResource("7_p0pyb")]
 position = Vector2(655, 337)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://c68gmkh2e26af"]
+[gd_scene load_steps=96 format=3 uid="uid://c68gmkh2e26af"]
 
 [ext_resource type="Script" uid="uid://bht2nh4ymwmf5" path="res://Scripts/levels/level_5_script.gd" id="1_0li43"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_aql1r"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://egsh4qbwuqgk" path="res://Assets/levels/level_5/SodaBottle.png" id="16_dw1n4"]
 [ext_resource type="Script" uid="uid://pu00f16vh66k" path="res://Scripts/object-level/level_5/vending.gd" id="17_dtqwf"]
 [ext_resource type="Script" uid="uid://b1gbqaimevnvo" path="res://Scripts/object-level/level_5/soda.gd" id="18_oyxes"]
-[ext_resource type="FontFile" path="res://Assets/ByteBounce.ttf" id="19_oyxes"]
 [ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="20_0da36"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="20_dw1n4"]
 [ext_resource type="Texture2D" uid="uid://d1gv25rkrif8y" path="res://Assets/level_select_lobby/level_6.png" id="21_2dttu"]
@@ -757,7 +756,7 @@ rotation = -2.1088762
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("19_oyxes")
+theme_override_fonts/font = ExtResource("20_0da36")
 theme_override_font_sizes/font_size = 37
 text = "10"
 horizontal_alignment = 1

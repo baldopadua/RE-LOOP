@@ -2210,6 +2210,15 @@ texture_hover = ExtResource("23_4r7hv")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="level_lobby" type="Control" parent="ui_logic/overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="cutscene" parent="." instance=ExtResource("33_nol8b")]
 visible = false
 layout_mode = 1

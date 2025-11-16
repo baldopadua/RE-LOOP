@@ -54,6 +54,12 @@ func _ready():
 	call_deferred("initialize_text_labels")
 	ui_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler")
 	ui_handler.hide_game_ui_elements()
+
+	var game_scene = get_tree().root.get_node("MainScene/GameScene")
+	if game_scene and game_scene.has_node("CanvasLayer/bg") and game_scene.has_node("CanvasLayer/game_scene_bg"):
+		game_scene.get_node("CanvasLayer/bg").visible = true
+		game_scene.get_node("CanvasLayer/game_scene_bg").visible = false
+
 	
 	if level_handler:
 		level_handler.set_current_lobby()
@@ -130,10 +136,18 @@ func enter_level(level_number: int):
 	
 	if ui_handler:
 		ui_handler.show_level_cutscene(level_number, func(): _show_clock_animation_then_level(level_number, levels_frame))
+	else:
+		await _show_clock_animation_then_level(level_number, levels_frame)
 
 func _show_clock_animation_then_level(level_number: int, levels_frame):
 	print("Showing clock animation for level ", level_number)
 	level_handler.level_status_node.get_node("clock_base").visible = true
+
+	# Show animated bg, hide static bg (back to normal during clock animation)
+	var game_scene = get_tree().root.get_node("MainScene/GameScene")
+	if game_scene and game_scene.has_node("CanvasLayer/bg") and game_scene.has_node("CanvasLayer/game_scene_bg"):
+		game_scene.get_node("CanvasLayer/bg").visible = false
+		game_scene.get_node("CanvasLayer/game_scene_bg").visible = true
 
 	for lvl in level_handler.completed_levels:
 		if lvl > highest_completed_level:
@@ -151,6 +165,11 @@ func _show_clock_animation_then_level(level_number: int, levels_frame):
 	
 	await get_tree().create_timer(1.0).timeout
 	level_handler.level_status_node.hide_cutscene()
+	
+	# Restore animated bg, hide static bg (game background)
+	if game_scene and game_scene.has_node("CanvasLayer/bg") and game_scene.has_node("CanvasLayer/game_scene_bg"):
+		game_scene.get_node("CanvasLayer/bg").visible = false
+		game_scene.get_node("CanvasLayer/game_scene_bg").visible = true
 	
 	ui_handler.show_game_ui_elements()
 	
