@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c5t73uqaq5ng4"
-path="res://.godot/imported/depress_man.wav-97a7f67ccf7ee4587b56dd19a0e8ff09.sample"
+path="res://.godot/imported/depress_man.wav-163c9c8baac09e4a763f7c72f498ac2b.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/depress_man.wav"
-dest_files=["res://.godot/imported/depress_man.wav-97a7f67ccf7ee4587b56dd19a0e8ff09.sample"]
+source_file="res://Audio/sfx/depress_man.wav"
+dest_files=["res://.godot/imported/depress_man.wav-163c9c8baac09e4a763f7c72f498ac2b.sample"]
 
 [params]
 

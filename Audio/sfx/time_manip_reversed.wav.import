@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c3w518v6hpeoy"
-path="res://.godot/imported/time_manip_reversed.wav-a2310e94210f2f976971efc44116c05e.sample"
+path="res://.godot/imported/time_manip_reversed.wav-ce017cfbec07b9dc120af68a0b43e7f9.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/time_manip_reversed.wav"
-dest_files=["res://.godot/imported/time_manip_reversed.wav-a2310e94210f2f976971efc44116c05e.sample"]
+source_file="res://Audio/sfx/time_manip_reversed.wav"
+dest_files=["res://.godot/imported/time_manip_reversed.wav-ce017cfbec07b9dc120af68a0b43e7f9.sample"]
 
 [params]
 

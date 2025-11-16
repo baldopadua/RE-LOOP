@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://mfp02gerh4tq"
-path="res://.godot/imported/rocket_blastoff_final.wav-368ef3510c6a28f3d8a04f0230c45d9b.sample"
+path="res://.godot/imported/rocket_blastoff_final.wav-91711748a60fe48543b247bacbdf9180.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/rocket_blastoff_final.wav"
-dest_files=["res://.godot/imported/rocket_blastoff_final.wav-368ef3510c6a28f3d8a04f0230c45d9b.sample"]
+source_file="res://Audio/sfx/rocket_blastoff_final.wav"
+dest_files=["res://.godot/imported/rocket_blastoff_final.wav-91711748a60fe48543b247bacbdf9180.sample"]
 
 [params]
 

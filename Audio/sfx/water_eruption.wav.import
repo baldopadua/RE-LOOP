@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://svaslsbjpxun"
-path="res://.godot/imported/water_eruption.wav-1719d3b33c3596cd8cb6cfba7c9e3e21.sample"
+path="res://.godot/imported/water_eruption.wav-8450bc265b1fc1afd55aa6989a82314b.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/water_eruption.wav"
-dest_files=["res://.godot/imported/water_eruption.wav-1719d3b33c3596cd8cb6cfba7c9e3e21.sample"]
+source_file="res://Audio/sfx/water_eruption.wav"
+dest_files=["res://.godot/imported/water_eruption.wav-8450bc265b1fc1afd55aa6989a82314b.sample"]
 
 [params]
 

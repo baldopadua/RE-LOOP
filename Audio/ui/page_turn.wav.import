@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bkr8pimm0kht"
-path="res://.godot/imported/sword_sound.wav-a2af209885359338363ec607144f0243.sample"
+uid="uid://ddyong7nh0vrr"
+path="res://.godot/imported/page_turn.wav-d00fac6677e3ff341f131542f9aa4a0e.sample"
 
 [deps]
 
-source_file="res://Audio/sfx/sword_sound.wav"
-dest_files=["res://.godot/imported/sword_sound.wav-a2af209885359338363ec607144f0243.sample"]
+source_file="res://Audio/ui/page_turn.wav"
+dest_files=["res://.godot/imported/page_turn.wav-d00fac6677e3ff341f131542f9aa4a0e.sample"]
 
 [params]
 

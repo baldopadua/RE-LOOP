@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dwxh4bwfols54"
-path="res://.godot/imported/vending_machine_final.wav-978f69dd798091bae1a18449cd01fa46.sample"
+path="res://.godot/imported/vending_machine_final.wav-39491d1a259a24e2a3be183faac6da50.sample"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/vending_machine_final.wav"
-dest_files=["res://.godot/imported/vending_machine_final.wav-978f69dd798091bae1a18449cd01fa46.sample"]
+source_file="res://Audio/sfx/vending_machine_final.wav"
+dest_files=["res://.godot/imported/vending_machine_final.wav-39491d1a259a24e2a3be183faac6da50.sample"]
 
 [params]
 

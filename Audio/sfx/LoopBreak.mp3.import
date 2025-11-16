@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://biks8nrrx71fp"
-path="res://.godot/imported/LoopBreak.mp3-0f1ff9dea8ee355b9c595283f9d101f1.mp3str"
+path="res://.godot/imported/LoopBreak.mp3-db41899cc1371d1ccf99fdda16f5b41a.mp3str"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/LoopBreak.mp3"
-dest_files=["res://.godot/imported/LoopBreak.mp3-0f1ff9dea8ee355b9c595283f9d101f1.mp3str"]
+source_file="res://Audio/sfx/LoopBreak.mp3"
+dest_files=["res://.godot/imported/LoopBreak.mp3-db41899cc1371d1ccf99fdda16f5b41a.mp3str"]
 
 [params]
 

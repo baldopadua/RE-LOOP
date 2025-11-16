@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dw113eq8hgg8e"
-path="res://.godot/imported/tick_tock.mp3-54d635c0b88f4bc009ec2948c23b3568.mp3str"
+path="res://.godot/imported/tick_tock.mp3-8e9f833df2eaee89d0e5aae413152d2b.mp3str"
 
 [deps]
 
-source_file="res://Audio/wavs-mp3/tick_tock.mp3"
-dest_files=["res://.godot/imported/tick_tock.mp3-54d635c0b88f4bc009ec2948c23b3568.mp3str"]
+source_file="res://Audio/sfx/tick_tock.mp3"
+dest_files=["res://.godot/imported/tick_tock.mp3-8e9f833df2eaee89d0e5aae413152d2b.mp3str"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://cigshhmo4cxq6"
-path="res://.godot/imported/game_theme_song.mp3-a32430dfcbb64f70faa8ddbbfc6112b5.mp3str"
+path="res://.godot/imported/game_theme_song.mp3-be688541e2a6073c8a62daeb8ae1215c.mp3str"
 
 [deps]
 
-source_file="res://Audio/ui/game_theme_song.mp3"
-dest_files=["res://.godot/imported/game_theme_song.mp3-a32430dfcbb64f70faa8ddbbfc6112b5.mp3str"]
+source_file="res://Audio/music/game_theme_song.mp3"
+dest_files=["res://.godot/imported/game_theme_song.mp3-be688541e2a6073c8a62daeb8ae1215c.mp3str"]
 
 [params]
 
