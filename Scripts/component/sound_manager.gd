@@ -7,7 +7,8 @@ extends Node2D
 }
 
 @onready var music := {
-	"main_bgm": $music/main_bgm
+	"main_bgm": $music/main_bgm,
+	"final_level_bgm": $music/final_level_bgm
 }
 
 # RECURSIVELY COLLECT ALL AUDIOSTREAMPLAYER2D NODES UNDER A GIVEN NODE
