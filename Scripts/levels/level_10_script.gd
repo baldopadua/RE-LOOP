@@ -26,6 +26,9 @@ func _ready():
 	level_handler.set_current_level(10)
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
+	# PLAY LEVEL AMBIENCE
+	if sound_manager:
+		sound_manager.play_level_ambience()
 	# MANIPULATING OBJECTS APPENDED IN ARRAY
 	objects_initialize()
 	
