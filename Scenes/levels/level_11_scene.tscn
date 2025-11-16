@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_ngdtp"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_k2n1d"]
 [ext_resource type="Texture2D" uid="uid://d1sh6ravdkyq3" path="res://Assets/level_select_lobby/level_12.png" id="7_ob8a3"]
-[ext_resource type="FontFile" path="res://Assets/ByteBounce.ttf" id="9_ob8a3"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="9_00ofh"]
 [ext_resource type="Texture2D" uid="uid://4gu6kuviroho" path="res://Assets/levels/level_11/statue-tree-sheet-Sheet.png" id="10_vicku"]
 [ext_resource type="Texture2D" uid="uid://cfsgv0k3seegy" path="res://Assets/levels/level_11/statue-hero-sheet-Sheet.png" id="11_rf6by"]
 [ext_resource type="Texture2D" uid="uid://dpv8tnci5fvu2" path="res://Assets/levels/level_11/statue-geyser-sheet-sheet.png" id="12_tucii"]
@@ -1506,7 +1506,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 1
 theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("9_ob8a3")
+theme_override_fonts/normal_font = ExtResource("9_00ofh")
 theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
