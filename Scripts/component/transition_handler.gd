@@ -28,8 +28,5 @@ func _show_node_and_children(node: Node) -> void:
 func show_main_to_game_transition() -> void:
 	show_background()
 	show_child_node("main_to_game")
-	# Play wormhole sound
-	if sound_manager:
-		sound_manager.play_sfx("Climb")
 	if logic:
 		logic.play_plooy_falling_animation()
