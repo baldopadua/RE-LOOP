@@ -549,7 +549,7 @@ animation = &"tree"
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="seed2"]
 texture_filter = 1
 position = Vector2(0.53906095, -59.388996)
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nlrgi")
 animation = &"tree"
 
