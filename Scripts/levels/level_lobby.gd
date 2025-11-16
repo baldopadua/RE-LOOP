@@ -73,7 +73,7 @@ func _ready():
 	level_handler.level_completed.connect(_on_level_completed)
 	
 	call_deferred("position_player_based_on_progress")
-	sound_manager.play_ambience_music("forest")
+	sound_manager.play_ambience_music("space_ambience")
 	
 	GlobalVariables.is_looping = false
 	GlobalVariables.player_moves = 0
@@ -122,7 +122,7 @@ func enter_level(level_number: int):
 		enable_lobby_functionality()
 		return  
 	
-	sound_manager.stop_ambience_music("forest")
+	sound_manager.stop_ambience_music("space_ambience")
 	var levels_frame = get_parent() 
 
 	level_handler.kill_current_level(self)
@@ -389,7 +389,7 @@ func start_cutscene_then_enter_next_level(next_level_number: int):
 	disable_lobby_functionality()
 	
 	if sound_manager:
-		sound_manager.stop_ambience_music("forest")
+		sound_manager.stop_ambience_music("space_ambience")
 	
 	var levels_frame = get_parent()
 	
