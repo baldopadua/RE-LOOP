@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://c68gmkh2e26af"]
+[gd_scene load_steps=99 format=3 uid="uid://c68gmkh2e26af"]
 
 [ext_resource type="Script" uid="uid://bht2nh4ymwmf5" path="res://Scripts/levels/level_5_script.gd" id="1_0li43"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_aql1r"]
@@ -185,9 +185,17 @@ region = Rect2(448, 0, 64, 70)
 atlas = ExtResource("10_0da36")
 region = Rect2(512, 0, 64, 70)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjnuc"]
+atlas = ExtResource("10_0da36")
+region = Rect2(0, 0, 64, 70)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kheq8"]
 atlas = ExtResource("10_0da36")
-region = Rect2(576, 0, 64, 70)
+region = Rect2(128, 0, 64, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7kb2"]
+atlas = ExtResource("10_0da36")
+region = Rect2(64, 0, 64, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cupc2"]
 atlas = ExtResource("10_0da36")
@@ -233,7 +241,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bjnuc")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kheq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7kb2")
 }],
 "loop": false,
 "name": &"kid_cubicle",
@@ -704,9 +718,9 @@ object_name = "vending"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="vending"]
-position = Vector2(-2.9999995, -3)
+position = Vector2(-6, 2)
 rotation = 0.523599
-scale = Vector2(2, 2)
+scale = Vector2(1.7, 1.7)
 sprite_frames = SubResource("SpriteFrames_ds2sm")
 animation = &"climax"
 
@@ -726,9 +740,7 @@ position = Vector2(31.000002, 24)
 rotation = 2.13695
 scale = Vector2(1.6032808, 1.7601186)
 sprite_frames = SubResource("SpriteFrames_oyxes")
-animation = &"skeletal_remains_cubicle"
-frame = 4
-frame_progress = 1.0
+animation = &"kid_cubicle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="science_project"]
 position = Vector2(-6.30145, -3.63814)
@@ -791,10 +803,11 @@ rotation = 2.0944
 shape = SubResource("CapsuleShape2D_agu2x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="dreamer"]
+position = Vector2(6, 6)
 rotation = 2.0944
-scale = Vector2(2, 2)
+scale = Vector2(2.4, 2.4)
 sprite_frames = SubResource("SpriteFrames_5xm4r")
-animation = &"kid"
+animation = &"skeletal_remains"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
