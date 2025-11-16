@@ -91,6 +91,9 @@ func _on_main_menu_button_pressed(button_type):
 			ui_handler.remove_main_menu()
 			transition_handler.visible = true 
 			transition_handler.show_main_to_game_transition()
+			# Play wormhole sound
+			if transition_handler.sound_manager:
+				transition_handler.sound_manager.play_sfx("Climb")
 			await get_tree().create_timer(4.5).timeout 
 			transition_handler.visible = false 
 			$GameScene.visible= true;
