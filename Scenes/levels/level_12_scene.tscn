@@ -56,11 +56,11 @@ position_smoothing_enabled = true
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
 position = Vector2(637.00006, -50)
-scale = Vector2(20, 1.5)
+scale = Vector2(20.145, 1.5)
 texture = SubResource("GradientTexture2D_62p7t")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
 position = Vector2(637.0001, 771)
-scale = Vector2(20, 1.5)
+scale = Vector2(20.145, 1.5)
 texture = SubResource("GradientTexture2D_62p7t")
