@@ -425,7 +425,7 @@ func start_replay_return_animation(from_level: int, to_level: int):
 	
 	enable_lobby_functionality()
 	if sound_manager:
-		sound_manager.play_ambience_sfx("forest_sfx")
+		sound_manager.play_ambience_music("space_ambience")
 
 func get_level_number_from_entrance(entrance_obj) -> int:
 	if not entrance_obj or not entrance_obj.has_method("get") or not "object_name" in entrance_obj:
