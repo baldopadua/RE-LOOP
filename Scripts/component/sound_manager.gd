@@ -111,10 +111,6 @@ func play_ambience_music(music_name: String) -> void:
 	if has_node("music/ambience/" + music_name):
 		var player = get_node("music/ambience/" + music_name)
 		if player is AudioStreamPlayer2D:
-			if player.stream and player.stream.has_method("set_loop"):
-				player.stream.set_loop(true)
-			elif "loop" in player.stream:
-				player.stream.loop = true
 			player.play()
 
 func stop_ambience_music(music_name: String) -> void:
@@ -132,6 +128,7 @@ func set_ambience_music_volume(music_name: String, volume: float) -> void:
 func _ready():
 	_set_bus_for_all_sfx()
 	_set_bus_for_all_music()
+	_setup_music_looping()
 
 # Recursively set bus for all AudioStreamPlayer2D nodes under sfx
 func _set_bus_for_all_sfx():
@@ -148,6 +145,34 @@ func _set_bus_recursive(parent: Node, bus_name: String):
 			child.bus = bus_name
 		else:
 			_set_bus_recursive(child, bus_name)
+
+# Setup looping by connecting to finished signal
+func _setup_music_looping():
+	# Setup main_bgm looping
+	if music.has("main_bgm"):
+		var player = music["main_bgm"]
+		if not player.finished.is_connected(_loop_music):
+			player.finished.connect(_loop_music.bind("main_bgm"))
+	
+	# Setup final_level_bgm looping
+	if music.has("final_level_bgm"):
+		var player = music["final_level_bgm"]
+		if not player.finished.is_connected(_loop_music):
+			player.finished.connect(_loop_music.bind("final_level_bgm"))
+	
+	# Setup space_ambience looping
+	if has_node("music/ambience/space_ambience"):
+		var player = $music/ambience/space_ambience
+		if not player.finished.is_connected(_loop_ambience):
+			player.finished.connect(_loop_ambience.bind("space_ambience"))
+
+func _loop_music(music_name: String):
+	if music.has(music_name):
+		music[music_name].play()
+
+func _loop_ambience(ambience_name: String):
+	if has_node("music/ambience/" + ambience_name):
+		get_node("music/ambience/" + ambience_name).play()
 
 # Volume control for buses
 func set_sfx_bus_volume(volume: float) -> void:
