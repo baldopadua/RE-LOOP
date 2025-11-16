@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://bt6xxs02lxxlj" path="res://Audio/sfx/pickup_item.wav" id="14_kjqcc"]
 [ext_resource type="AudioStream" uid="uid://mx84a50byjkj" path="res://Audio/sfx/climb_lvl1_2.wav" id="15_m4x1h"]
 [ext_resource type="AudioStream" uid="uid://dcsj1yjxfj58e" path="res://Audio/sfx/ear_ring.wav" id="15_ear_ring"]
+[ext_resource type="AudioStream" uid="uid://dgxmg2rsnl6ah" path="res://Audio/sfx/clock_transition_final.wav" id="15_clock"]
 [ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/level-1/time_manip.tscn" id="16_4nov3"]
 [ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="17_nb86s"]
 [ext_resource type="PackedScene" uid="uid://be3gp4la2b857" path="res://Audio/level-2/sword.tscn" id="18_4r04m"]
@@ -117,6 +118,9 @@ stream = ExtResource("15_m4x1h")
 
 [node name="ear_ring" type="AudioStreamPlayer2D" parent="sfx/player_sfx"]
 stream = ExtResource("15_ear_ring")
+
+[node name="clock_transition" type="AudioStreamPlayer2D" parent="sfx/player_sfx"]
+stream = ExtResource("15_clock")
 
 [node name="time_manip" parent="sfx/player_sfx" instance=ExtResource("16_4nov3")]
 
