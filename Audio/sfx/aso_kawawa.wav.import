@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b5dowpucinf1w"
-path="res://.godot/imported/aso_kawawa.wav-1a2ca23d64bdab93287f21e8e2d03add.sample"
+path="res://.godot/imported/aso_kawawa.wav-7af831e1355e3280d4d9ac75fdef056f.sample"
 
 [deps]
 
-source_file="res://Audio/level-4/aso_kawawa.wav"
-dest_files=["res://.godot/imported/aso_kawawa.wav-1a2ca23d64bdab93287f21e8e2d03add.sample"]
+source_file="res://Audio/sfx/aso_kawawa.wav"
+dest_files=["res://.godot/imported/aso_kawawa.wav-7af831e1355e3280d4d9ac75fdef056f.sample"]
 
 [params]
 

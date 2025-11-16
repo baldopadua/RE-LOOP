@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ddeius2xpd3nn"
-path="res://.godot/imported/egg_pop1.wav-b6270b40c40e92577c081d2c11ca0589.sample"
+path="res://.godot/imported/egg_pop1.wav-34d8c4be189820b590af9b67a8ddcabd.sample"
 
 [deps]
 
-source_file="res://Audio/level-4/egg_pop1.wav"
-dest_files=["res://.godot/imported/egg_pop1.wav-b6270b40c40e92577c081d2c11ca0589.sample"]
+source_file="res://Audio/sfx/egg_pop1.wav"
+dest_files=["res://.godot/imported/egg_pop1.wav-34d8c4be189820b590af9b67a8ddcabd.sample"]
 
 [params]
 

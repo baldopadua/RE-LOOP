@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cwfo8gg6tbp2k"
-path="res://.godot/imported/egg_crack1.wav-5fe30209afec7f25e56cf0b94d925e2a.sample"
+path="res://.godot/imported/egg_crack1.wav-07fde4affa4de0f14c0ed41c5053cdd8.sample"
 
 [deps]
 
-source_file="res://Audio/level-4/egg_crack1.wav"
-dest_files=["res://.godot/imported/egg_crack1.wav-5fe30209afec7f25e56cf0b94d925e2a.sample"]
+source_file="res://Audio/sfx/egg_crack1.wav"
+dest_files=["res://.godot/imported/egg_crack1.wav-07fde4affa4de0f14c0ed41c5053cdd8.sample"]
 
 [params]
 

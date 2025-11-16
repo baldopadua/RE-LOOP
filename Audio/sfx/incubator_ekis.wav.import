@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d0drrsnhgax01"
-path="res://.godot/imported/incubator_ekis.wav-52082bfb5669f0ea18a6a32afa6601ba.sample"
+path="res://.godot/imported/incubator_ekis.wav-bd8f23c45dfef4218ba59de9b4e8e088.sample"
 
 [deps]
 
-source_file="res://Audio/level-4/incubator_ekis.wav"
-dest_files=["res://.godot/imported/incubator_ekis.wav-52082bfb5669f0ea18a6a32afa6601ba.sample"]
+source_file="res://Audio/sfx/incubator_ekis.wav"
+dest_files=["res://.godot/imported/incubator_ekis.wav-bd8f23c45dfef4218ba59de9b4e8e088.sample"]
 
 [params]
 
