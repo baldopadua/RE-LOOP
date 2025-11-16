@@ -421,6 +421,7 @@ position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_sh2gb")
 
 [node name="isaac_newton_1" parent="." instance=ExtResource("6_kapnr")]
+visible = false
 z_index = 1
 position = Vector2(-547, 0)
 rotation = 1.5707964

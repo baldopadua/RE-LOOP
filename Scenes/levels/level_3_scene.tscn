@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bj33i7h4w2wco" path="res://Assets/levels/level_3/Geiser_Rock_4.png" id="14_6xexh"]
 [ext_resource type="Texture2D" uid="uid://57y61numcit2" path="res://Assets/levels/level_3/Geiser_Rock_5.png" id="15_3gnya"]
 [ext_resource type="Script" uid="uid://cp4ph6xk7oue6" path="res://Scripts/object-level/level_3/rock.gd" id="16_4srx3"]
-[ext_resource type="Texture2D" uid="uid://cia7fvqduwmcc" path="res://Assets/levels/level_3/rock.png" id="16_symai"]
+[ext_resource type="Texture2D" uid="uid://bibehf1sqmbjn" path="res://Assets/levels/level_3/rock.png" id="16_symai"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="17_oyt3y"]
 [ext_resource type="Texture2D" uid="uid://n71gi1vslhq0" path="res://Assets/level_select_lobby/level_4_icon.png" id="18_45cdh"]
 [ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="19_njtrs"]
@@ -538,7 +538,7 @@ usable_targets = Array[String](["geyser"])
 
 [node name="Sprite2D2" type="Sprite2D" parent="Rock1"]
 texture_filter = 1
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 texture = ExtResource("16_symai")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Rock1"]
@@ -559,7 +559,7 @@ usable_targets = Array[String](["geyser"])
 
 [node name="Sprite2D2" type="Sprite2D" parent="Rock2"]
 texture_filter = 1
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 texture = ExtResource("16_symai")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Rock2"]
@@ -580,10 +580,11 @@ usable_targets = Array[String](["geyser"])
 
 [node name="Sprite2D2" type="Sprite2D" parent="Rock3"]
 texture_filter = 1
-scale = Vector2(5, 5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("16_symai")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Rock3"]
+visible = false
 light_mask = 3
 visibility_layer = 3
 z_index = 1
@@ -601,7 +602,7 @@ usable_targets = Array[String](["geyser"])
 
 [node name="Sprite2D2" type="Sprite2D" parent="Rock4"]
 texture_filter = 1
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 texture = ExtResource("16_symai")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Rock4"]
@@ -622,7 +623,7 @@ usable_targets = Array[String](["geyser"])
 
 [node name="Sprite2D2" type="Sprite2D" parent="Rock5"]
 texture_filter = 1
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 texture = ExtResource("16_symai")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Rock5"]
