@@ -279,4 +279,4 @@ volume_db = -8.0
 
 [node name="idle_wind" type="AudioStreamPlayer2D" parent="music/ambience"]
 stream = ExtResource("5_wind")
-volume_db = -10.0
+volume_db = 1.0
