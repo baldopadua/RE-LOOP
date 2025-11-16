@@ -625,6 +625,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_cmquk")
 }
 
+[connection signal="loop_break_shown" from="PlayerScene" to="isaac_newton_1" method="_on_player_scene_loop_break_shown"]
+[connection signal="loop_break_shown" from="PlayerScene" to="seed" method="_on_player_scene_loop_break_shown"]
+[connection signal="loop_break_shown" from="PlayerScene" to="seed2" method="_on_player_scene_loop_break_shown"]
+[connection signal="loop_break_shown" from="PlayerScene" to="isaac_newton_2" method="_on_player_scene_loop_break_shown"]
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="toggle_switch_circle" from="switch_circle" to="switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="add_cur_state" from="isaac_newton_1" to="isaac_newton_1" method="_on_add_cur_state"]

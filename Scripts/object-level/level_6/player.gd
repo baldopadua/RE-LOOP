@@ -8,6 +8,8 @@ extends "res://Scripts/player_script.gd"
 @onready var switch_circle = $"../switch_circle"
 @onready var animated_sprite = $AnimatedSprite2D
 
+signal loop_break_shown # Add this signal
+
 var matched = false
 var can_trigger_body_entered = false # Add this flag
 
@@ -66,6 +68,7 @@ func _on_player_finished_moving() -> void:
 				get_node("Camera2D").emit_signal("cam_orig_zoom")
 				area_handler.show_loop_break(6)
 
+				emit_signal("loop_break_shown") 
 				await get_tree().create_timer(1.0).timeout 
 
 				# After the loop break, hide bars and enable player movement
@@ -73,10 +76,6 @@ func _on_player_finished_moving() -> void:
 				set_process_input(true)
 				GlobalVariables.player_stopped = false
 
-				# Stop all object animations so only final state is visible
-				in_1.stop_animations()
-				in_2.stop_animations()
-				
 				# Connect body_entered signals for climbable objects
 				seed1.connect("body_entered", Callable(self, "_on_climbable_body_entered"))
 				seed2.connect("body_entered", Callable(self, "_on_climbable_body_entered"))
@@ -91,7 +90,7 @@ func _on_player_finished_moving() -> void:
 # Add this function to handle climb animation trigger
 func _on_climbable_body_entered(body: Node) -> void:
 	if body == self:
-		set_process_input(false) # Disable input during climb
+		set_process_input(false) 
 		animated_sprite.play("climb")
 		var level_node = get_parent()
 		if level_node.has_method("play_climb_animation"):
@@ -99,7 +98,7 @@ func _on_climbable_body_entered(body: Node) -> void:
 
 # Add this function to be called from level script after climb animation finishes
 func play_jump_animation():
-	set_process_input(false) # Disable input during jump
+	set_process_input(false) 
 	animated_sprite.play("jump")
 	position = Vector2(-1, -200)
 	modulate = Color(1, 1, 1, 1)

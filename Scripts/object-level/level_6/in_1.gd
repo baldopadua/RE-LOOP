@@ -7,8 +7,13 @@ signal add_cur_state(direction)
 @onready var collision_shape = $CollisionShape2D
 
 var matched = false
+var is_loop_shown = false 
 
 func _on_add_cur_state(direction: Variant) -> void:
+
+	if is_loop_shown:
+		return
+
 	if direction == GlobalVariables.Directions.CLOCKWISE:
 		if current_state == 2:
 			animated_sprite.play("default")
@@ -52,3 +57,6 @@ func enable_collision():
 func stop_animations():
 	animated_sprite.stop()
 	animated_sprite2.stop()
+
+func _on_player_scene_loop_break_shown() -> void:
+	is_loop_shown = true

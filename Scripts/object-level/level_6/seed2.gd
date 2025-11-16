@@ -7,8 +7,11 @@ signal add_cur_state(direction)
 @onready var collision_shape = $CollisionShape2D
 
 var matched = true
+var is_loop_shown = false 
 
 func _on_add_cur_state(direction: Variant) -> void:
+	if is_loop_shown:
+		return
 	# Only allow pickup in state 1, unless matched
 	if current_state == 1 and not matched:
 		is_pickupable = true
@@ -50,3 +53,8 @@ func disable_collision():
 
 func enable_collision():
 	collision_shape.disabled = false
+
+
+
+func _on_player_scene_loop_break_shown() -> void:
+	is_loop_shown = true 
