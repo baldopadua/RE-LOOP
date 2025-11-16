@@ -638,14 +638,12 @@ shape = SubResource("RectangleShape2D_4srx3")
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("7_ipdqe")]
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(772.5, -54)
+position = Vector2(715.49994, -54)
 scale = Vector2(24.234373, 1.625)
 texture = SubResource("GradientTexture2D_oyt3y")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(762.74994, 769)
+position = Vector2(705.7499, 769)
 scale = Vector2(23.789063, 1.5)
 texture = SubResource("GradientTexture2D_oyt3y")
 

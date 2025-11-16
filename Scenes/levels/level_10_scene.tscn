@@ -326,15 +326,13 @@ horizontal_alignment = 1
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_qcmyw")]
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
 position = Vector2(637.00006, -50)
-scale = Vector2(20.145, 1.5)
+scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_3abkh")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
 position = Vector2(637.0001, 771)
-scale = Vector2(20.145, 1.5)
+scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_3abkh")
 
 [node name="Laser" parent="." instance=ExtResource("6_ttbi8")]

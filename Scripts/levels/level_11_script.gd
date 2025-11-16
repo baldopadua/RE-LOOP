@@ -96,7 +96,7 @@ func _ready():
 	
 	# Dialogue here
 	DialogueManager.show_dialogue_balloon_scene("res://dialogues/made/balloon.tscn", load("res://dialogues/initial_meeting.dialogue"))
-	
+	#DialogueManager.
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func _on_dialogue_ended(_resource: DialogueResource):
@@ -110,6 +110,9 @@ func _on_dialogue_ended(_resource: DialogueResource):
 #	Reshow ui elements
 	ui_handler.show_game_ui_elements()
 
+func _on_letter_spoke(letter, index, speed):
+	if letter in [" ", "\n"]: return # (optional)
+	$AudioStreamPlayer.play()
 
 
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 

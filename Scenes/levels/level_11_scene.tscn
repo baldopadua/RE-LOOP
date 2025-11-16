@@ -1464,15 +1464,13 @@ position_smoothing_enabled = true
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_ngdtp")]
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
 position = Vector2(637.00006, -50)
-scale = Vector2(20.145, 1.5)
+scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_ob8a3")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
 position = Vector2(637.0001, 771)
-scale = Vector2(20.145, 1.5)
+scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_ob8a3")
 
 [node name="enter_12" parent="." instance=ExtResource("5_ngdtp")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=3 uid="uid://fyqypy6fcyaf"]
+[gd_scene load_steps=166 format=3 uid="uid://fyqypy6fcyaf"]
 
 [ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/levels/level_4_script.gd" id="1_f0imo"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_lahvx"]
@@ -1253,6 +1253,8 @@ usable_targets = Array[String](["lvl4_soil"])
 [node name="Sprite2D2" type="Sprite2D" parent="lvl4_seed"]
 texture_filter = 1
 position = Vector2(-0.9999783, -6)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("27_ceyy8")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="lvl4_seed"]
 light_mask = 3
@@ -1269,13 +1271,13 @@ shape = SubResource("RectangleShape2D_56sg6")
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(772.5, -54)
+position = Vector2(687.49994, -54)
 scale = Vector2(24.234373, 1.625)
 texture = SubResource("GradientTexture2D_enhda")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(762.74994, 769)
+position = Vector2(677.7499, 769)
 scale = Vector2(23.789063, 1.5)
 texture = SubResource("GradientTexture2D_enhda")
 
