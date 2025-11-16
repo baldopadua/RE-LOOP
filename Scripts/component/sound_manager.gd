@@ -142,7 +142,8 @@ func _set_bus_for_all_music():
 func _set_bus_recursive(parent: Node, bus_name: String):
 	for child in parent.get_children():
 		if child is AudioStreamPlayer2D:
-			child.bus = bus_name
+			if child.bus == "Master":
+				child.bus = bus_name
 		else:
 			_set_bus_recursive(child, bus_name)
 
