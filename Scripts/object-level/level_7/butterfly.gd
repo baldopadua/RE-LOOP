@@ -22,6 +22,7 @@ var b_curr_state = 3
 
 @warning_ignore("unused_signal")
 signal add_state(direction)
+signal butterfly_state_changed
 
 # TODO: Ayusin yung movement ng butterfly
 
@@ -72,7 +73,8 @@ func _on_add_state(direction: Variant) -> void:
 		if b_curr_state == 2:
 			animated_sprite.play("cocoon")
 		elif b_curr_state == 3:
-				animated_sprite.play("default")
+			animated_sprite.play("default")
+			emit_signal("butterfly_state_changed") # <--- emit when state 3
 	else:
 		if b_curr_state > b_min_state:
 			b_curr_state -= 1

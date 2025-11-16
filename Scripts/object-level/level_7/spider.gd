@@ -9,10 +9,13 @@ extends object_class
 @warning_ignore("unused_signal")
 signal add_cur_state(direction)
 
+func _ready():
+	butterfly.connect("butterfly_state_changed", Callable(self, "_on_butterfly_butterfly_state_changed"))
+
 func _on_area_entered(area: Area2D) -> void:
 	if area == butterfly:
-		# IGNORE COLLISION IF BEING HELD OR IF SPIDER IS DEAD
-		if is_pickupable or current_state == 1:
+		# IGNORE COLLISION IF BEING HELD, DEAD, OR BUTTERFLY NOT IN FINAL STATE
+		if is_pickupable or current_state == 1 or butterfly.b_curr_state != 3:
 			return
 		# Eat the motherfucker >:)
 		# Focus camera here and then restart
@@ -37,8 +40,7 @@ func _on_area_entered(area: Area2D) -> void:
 		await get_tree().create_timer(1.0).timeout
 		
 		player.level_handler.restart_level(get_parent().get_parent())
-	# ELSE: IGNORE COLLISION IF BEING HELD OR DEAD
-
+	# ELSE: IGNORE COLLISION IF BEING HELD, DEAD, OR BUTTERFLY NOT IN FINAL STATE
 
 func _on_add_cur_state(direction: Variant) -> void:
 	if not butterfly.is_alive:
@@ -47,9 +49,15 @@ func _on_add_cur_state(direction: Variant) -> void:
 		if current_state == 2:
 			animated_sprite.play("default")
 			is_pickupable = false
-			if butterfly.get_overlapping_areas().has(self):
+			if butterfly.get_overlapping_areas().has(self) and butterfly.b_curr_state == 3:
 				_on_area_entered(butterfly)
 	else:
 		if current_state == 1:
 			animated_sprite.play("dead_spider")
 			is_pickupable = true
+
+func _on_butterfly_butterfly_state_changed() -> void:
+	if not butterfly.is_alive:
+		return
+	if current_state == 2 and butterfly.b_curr_state == 3 and butterfly.get_overlapping_areas().has(self):
+		_on_area_entered(butterfly)
