@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b26khqfn4jala"]
+[gd_scene load_steps=2 format=3 uid="uid://b26khqfn4jala"]
 
-[ext_resource type="AudioStream" uid="uid://bfemwfq7j6yes" path="res://Audio/wavs-mp3/glass_break.mp3" id="1_4ag76"]
+[ext_resource type="AudioStream" uid="uid://bfemwfq7j6yes" path="res://Audio/sfx/glass_break.mp3" id="1_4ag76"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyg4q"]
 random_pitch = 1.2
