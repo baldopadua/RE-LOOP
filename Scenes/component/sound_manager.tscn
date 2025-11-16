@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://b37yxih7ftd24" path="res://Audio/ui/hover.mp3" id="2_sanpt"]
 [ext_resource type="AudioStream" uid="uid://cw5va43ffrudg" path="res://Audio/ui/click.mp3" id="3_6lgko"]
 [ext_resource type="AudioStream" uid="uid://cj5qdevxooddn" path="res://Audio/ui/page_turn.wav" id="4_2aguw"]
-[ext_resource type="AudioStream" uid="uid://c3cg713tx2oc7" path="res://Audio/music/space_ambience_clock.wav" id="5_6lgko"]
+[ext_resource type="AudioStream" uid="uid://cskwu36g87k23" path="res://Audio/music/space_ambience_clock.wav" id="5_6lgko"]
 [ext_resource type="PackedScene" uid="uid://bfit8d0rxu8t4" path="res://Audio/level-1/reverse_ahh.tscn" id="5_vsbfc"]
 [ext_resource type="AudioStream" uid="uid://d2tjtumu1r0ov" path="res://Audio/music/space_ambience_clock.wav" id="6_2aguw"]
 [ext_resource type="PackedScene" uid="uid://dm71ghsip2km7" path="res://Audio/level-1/shwoop.tscn" id="6_ip4rx"]
