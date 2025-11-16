@@ -111,3 +111,8 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 
 func _on_dog_add_cur_state(_direction):
 	pass # Replace with function body.
+
+
+func _on_level_handler_skip_level_requested(level_number: int) -> void:
+	if level_number == 4:
+		level_handler.complete_current_level(get_parent())

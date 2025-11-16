@@ -78,3 +78,10 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 	
 	GlobalVariables.player_stopped = false
+
+
+func _on_level_handler_skip_level_requested(level_number: int) -> void:
+	# Only complete if this is the current level
+	if level_number == 3:
+		level_handler.complete_current_level(get_parent())
+

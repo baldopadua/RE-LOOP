@@ -7,6 +7,7 @@ signal level_completed(level_name: String)
 signal short_hand_state_changed(level_number: int, is_unlocked: bool)
 signal map_scale_tween_finished() 
 signal hint_level_changed(level_number: int)
+signal skip_level_requested(level_number: int) # <--- ADD THIS LINE
 
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 var player = null
@@ -375,3 +376,22 @@ func _check_and_start_hint_timers() -> void:
 			hint_2_timer.stop()
 		if solution_timer:
 			solution_timer.stop()
+
+# Listener function to be connected to a UI/Control node signal
+func on_ui_request_return_to_lobby(levels_frame):
+	# Kill current level if exists
+	if levels_frame and levels_frame.get_child_count() > 0:
+		var current_level = levels_frame.get_child(0)
+		if current_level:
+			kill_current_level(current_level)
+	# Switch to lobby
+	await return_to_lobby(levels_frame)
+
+# Listener for skip button or script call: completes level and returns to lobby
+func on_skip_level_and_return_to_lobby(levels_frame):
+	if current_level_number > 0:
+		await complete_current_level(levels_frame)
+		# Optionally, you can add extra logic here if needed
+
+func request_skip_level():
+	emit_signal("skip_level_requested", current_level_number)

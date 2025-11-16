@@ -864,7 +864,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
-wait_time = 20.0
+wait_time = 5.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2/hint_2_timer"]
 visible = false
@@ -921,7 +921,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
-wait_time = 20.0
+wait_time = 5.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution/solution_timer"]
 visible = false
@@ -2038,6 +2038,21 @@ text = "“Find the skull and place it on the sword on stone, then move backward
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="skip_level" type="Button" parent="ui_logic/overlay/hint/hint_box"]
+modulate = Color(0.9368433, 0.8956263, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.20717132
+anchor_top = 0.6553571
+anchor_right = 0.029419858
+anchor_bottom = 0.7375
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 55
+text = "Skip Level"
 metadata/_edit_use_anchors_ = true
 
 [node name="plooy_hint" type="AnimatedSprite2D" parent="ui_logic/overlay/hint"]

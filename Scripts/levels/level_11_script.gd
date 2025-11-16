@@ -130,3 +130,8 @@ func toggle_grayscale(bg):
 func tween_time_scale(target: float, duration: float = 0.5):
 	var tween = get_tree().create_tween()
 	tween.tween_property(Engine, "time_scale", target, duration)
+
+
+func _on_level_handler_skip_level_requested(level_number: int) -> void:
+	if level_number == 11:
+		level_handler.complete_current_level(get_parent())

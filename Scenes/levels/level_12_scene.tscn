@@ -64,3 +64,5 @@ visible = false
 position = Vector2(637.0001, 771)
 scale = Vector2(20.145, 1.5)
 texture = SubResource("GradientTexture2D_62p7t")
+
+[connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]

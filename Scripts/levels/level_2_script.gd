@@ -79,3 +79,9 @@ func enter_level():
 	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
 	level_handler.complete_current_level(get_parent())
+
+
+func _on_level_handler_skip_level_requested(level_number: int) -> void:
+	# Only complete if this is the current level
+	if level_number == 2:
+		level_handler.complete_current_level(get_parent())

@@ -133,3 +133,8 @@ func enable_animation_player():
 func play_climb_animation(body: Node) -> void:
 	self.player_body = body
 	anim_handler.play("climbing_animation")
+
+
+func _on_level_handler_skip_level_requested(level_number: int) -> void:
+	if level_number == 6:
+		level_handler.complete_current_level(get_parent())

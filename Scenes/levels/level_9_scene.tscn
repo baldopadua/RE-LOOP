@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_u54cp"]
 [ext_resource type="Texture2D" uid="uid://drwtiaj6m5wpq" path="res://Assets/level_select_lobby/level_10.png" id="7_nkbtn"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_pn0o0"]
-[ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/ByteBounce.ttf" id="9_nkbtn"]
 [ext_resource type="Texture2D" uid="uid://swdhm3lxv1ct" path="res://Assets/levels/level_9/cat-life-sheet.png" id="10_4w81x"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="10_ckxqi"]
 [ext_resource type="Script" uid="uid://mmdkubc5d0w" path="res://Scripts/object-level/level_9/cat1.gd" id="10_pwust"]
 [ext_resource type="Texture2D" uid="uid://b2bmpkbvrhe15" path="res://Assets/levels/level_9/box-contraption-sheet.png" id="10_w6vp2"]
 [ext_resource type="Texture2D" uid="uid://8oocsy7jw2hw" path="res://Assets/levels/level_9/schrodinger-sheet.png" id="11_cdi80"]
@@ -447,7 +447,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 1
 theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("9_nkbtn")
+theme_override_fonts/normal_font = ExtResource("10_ckxqi")
 theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
@@ -630,6 +630,7 @@ shape = SubResource("RectangleShape2D_rfmfc")
 [node name="center_pos" type="Marker2D" parent="."]
 
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
+[connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
 [connection signal="add_cur_state" from="cat" to="cat" method="_on_add_cur_state"]
 [connection signal="area_entered" from="cat" to="cat" method="_on_area_entered"]
 [connection signal="add_cur_state" from="cat2" to="cat2" method="_on_add_cur_state"]
