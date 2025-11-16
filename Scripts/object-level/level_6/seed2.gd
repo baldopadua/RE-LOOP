@@ -4,12 +4,22 @@ signal add_cur_state(direction)
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var animated_sprite2 = $AnimatedSprite2D2
+@onready var collision_shape = $CollisionShape2D
+
 var matched = true
+var is_loop_shown = false 
 
 func _on_add_cur_state(direction: Variant) -> void:
+	if is_loop_shown:
+		return
+	# Only allow pickup in state 1, unless matched
+	if current_state == 1 and not matched:
+		is_pickupable = true
+	else:
+		is_pickupable = false
+
 	if direction == GlobalVariables.Directions.CLOCKWISE:
 		if current_state == 2:
-			is_pickupable = false
 			animated_sprite.play("sapling")
 			animated_sprite2.play("sapling")
 		elif current_state == 3:
@@ -20,7 +30,6 @@ func _on_add_cur_state(direction: Variant) -> void:
 			animated_sprite2.play("tree")
 	else:
 		if current_state == 1:
-			is_pickupable = true
 			animated_sprite.play_backwards("default")
 			animated_sprite2.play_backwards("default")
 		elif current_state == 2:
@@ -38,3 +47,14 @@ func _on_is_dropped(plooy_rotation: Variant) -> void:
 	else:
 		pulse("red", animated_sprite2)
 		matched = false
+
+func disable_collision():
+	collision_shape.disabled = true
+
+func enable_collision():
+	collision_shape.disabled = false
+
+
+
+func _on_player_scene_loop_break_shown() -> void:
+	is_loop_shown = true 

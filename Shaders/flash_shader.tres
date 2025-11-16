@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+shader = Shader {
+	code = "
+		shader_type canvas_item;
+		uniform vec4 flash_color : hint_color = vec4(1.0, 1.0, 0.0, 1.0);
+		void fragment() {
+			COLOR = mix(texture(TEXTURE, UV), flash_color, 0.7);
+		}
+	"
+}

@@ -20,6 +20,11 @@ var objects: Array = []
 @onready var seed2 = $seed2
 @onready var center_pos = $center_pos
 
+var player_body: Node = null
+@onready var anim_handler = $AnimationPlayer
+
+var jump_animation_played := false # Add this flag
+
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(6)
@@ -30,6 +35,9 @@ func _ready():
 		sound_manager.play_level_ambience()
 	
 	player.rotation = deg_to_rad(180.0)
+	
+	# Hide player at start
+	player.modulate.a = 0.0
 	
 	object_initialize()
 	
@@ -69,6 +77,9 @@ func _ready():
 	
 	await get_tree().create_timer(2.0).timeout
 	
+	# Restore player visibility before enabling movement
+	player.modulate.a = 1.0
+	
 	GlobalVariables.player_stopped = false
 	player.set_process_input(true)
 	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
@@ -76,6 +87,7 @@ func _ready():
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 	# SHOW AGAIN THE UI AFTER
 	ui_handler.show_game_ui_elements()
+	anim_handler.playback_active = false # AnimationPlayer OFF at start
 
 func object_initialize():
 	objects.append(isaac_newton_1)
@@ -89,5 +101,38 @@ func object_initialize():
 func enter_level():
 	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
-	level_handler.complete_current_level(get_parent()) 
+	level_handler.complete_current_level(get_parent())
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	print("Animation finished: ", anim_name)
+	if anim_name == "climbing_animation":
+		# Play jump animation on player sprite after climbing finishes
+		if player_body and player_body.has_node("AnimatedSprite2D"):
+			var sprite = player_body.get_node("AnimatedSprite2D")
+			sprite.stop()
+			sprite.play("jump")
+		# Play jump animation in AnimationPlayer only once
+		if not jump_animation_played:
+			jump_animation_played = true
+			anim_handler.play("jumping_animation")
+			await get_tree().create_timer(1.7).timeout
+			anim_handler.stop() 
+			ui_handler.set_time_indicator_fixed()
+			level_handler.complete_current_level(get_parent())
+		player_body.get_node("Camera2D").emit_signal("hide_bars")
+		player_body.get_node("Camera2D").emit_signal("cam_orig_zoom")
+		player_body.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	
+
+# Add this function so player.gd can call it after match
+func enable_animation_player():
+	jump_animation_played = false # Reset flag when enabling
+	anim_handler.playback_active = true
+
+func play_climb_animation(body: Node) -> void:
+	self.player_body = body
+	anim_handler.play("climbing_animation")
+
+
+

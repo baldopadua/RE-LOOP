@@ -864,7 +864,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
-wait_time = 60.0
+wait_time = 20.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2/hint_2_timer"]
 visible = false
@@ -918,7 +918,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
-wait_time = 60.0
+wait_time = 20.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution/solution_timer"]
 visible = false
