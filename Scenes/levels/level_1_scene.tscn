@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://bkcwbkukhbb5v" path="res://Scripts/levels/level_1_scene.gd" id="1_pxia2"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_cmquk"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="5_xkn6d"]
+[ext_resource type="Texture2D" uid="uid://dlc2xgxew4uv6" path="res://Assets/levels/level_11/seed.png" id="7_ggo0n"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="8_pxia2"]
 [ext_resource type="Script" uid="uid://c5sevvwh55kxw" path="res://Scripts/object-level/level_1/seed.gd" id="9_cmquk"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="9_l4q40"]
-[ext_resource type="Texture2D" uid="uid://dfdbkhqn5goip" path="res://Assets/levels/level_1/seed.png" id="10_70ox2"]
 [ext_resource type="Texture2D" uid="uid://bdnfiuumni1te" path="res://Assets/levels/level_1/DirtMound.png" id="11_70ox2"]
 [ext_resource type="Texture2D" uid="uid://byuly2cl2yrii" path="res://Assets/levels/level_1/Tree-Sheet.png" id="11_ggo0n"]
 [ext_resource type="Script" uid="uid://dxhkvoxn1q5vy" path="res://Scripts/object-level/level_1/tree_script.gd" id="11_xkn6d"]
@@ -15,7 +15,7 @@
 [ext_resource type="Shader" uid="uid://6nni72ykvmy7" path="res://Shaders/black_hole.gdshader" id="14_cd6w3"]
 [ext_resource type="Texture2D" uid="uid://rjouqbpxr0qg" path="res://icon.svg" id="15_7hl30"]
 [ext_resource type="Texture2D" uid="uid://bacqpwmbkc6hy" path="res://Shaders/black_hole.tres" id="15_ggo0n"]
-[ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="18_ttgta"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="17_ggo0n"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="23_gu1y6"]
 
 [sub_resource type="Animation" id="Animation_pxia2"]
@@ -262,9 +262,9 @@ shader = ExtResource("14_cd6w3")
 shader_parameter/curve = ExtResource("15_ggo0n")
 shader_parameter/strength = 4.7499999933364734e-08
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggo0n"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jr302"]
 radius = 33.212807
-height = 93.28204
+height = 85.85651
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_pxia2")
@@ -292,7 +292,7 @@ usable_targets = Array[String](["soil"])
 [node name="Sprite2D2" type="Sprite2D" parent="Seed"]
 texture_filter = 1
 position = Vector2(-1, 1)
-texture = ExtResource("10_70ox2")
+texture = ExtResource("7_ggo0n")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Seed"]
 light_mask = 3
@@ -372,15 +372,14 @@ position = Vector2(1, -159)
 position = Vector2(0, 250)
 
 [node name="enter_2" parent="." instance=ExtResource("9_l4q40")]
-position = Vector2(-21.000002, 1.5646219e-07)
-rotation = 1.4785348
+rotation = 1.0511703
 script = ExtResource("12_l05gj")
 object_name = "enter_2"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_2"]
 position = Vector2(17.4622, -328.24545)
-shape = SubResource("CapsuleShape2D_ggo0n")
+shape = SubResource("CapsuleShape2D_jr302")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_2"]
@@ -403,13 +402,13 @@ offset_right = 90.0
 offset_bottom = -186.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 3.1415927
+rotation = 0.001894474
 pivot_offset = Vector2(90, 11.5)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 1
 theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("18_ttgta")
+theme_override_fonts/normal_font = ExtResource("17_ggo0n")
 theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
@@ -426,15 +425,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -250.0
-offset_right = 90.0
-offset_bottom = -227.0
+offset_left = -72.933075
+offset_top = -257.15903
+offset_right = 107.066925
+offset_bottom = -234.15903
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 3.1415927
 scale = Vector2(1.30259, 1.39847)
 pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("17_ggo0n")
+theme_override_font_sizes/normal_font_size = 25
 text = "INTERACT"
 fit_content = true
 scroll_active = false

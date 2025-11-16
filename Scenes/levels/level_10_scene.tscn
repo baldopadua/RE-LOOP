@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://ccuyqxt2yj0er" path="res://Assets/levels/level_10/placeholder_assets/ben-f-shocked.png" id="26_5i1by"]
 [ext_resource type="Script" uid="uid://0auyg2m5liyv" path="res://Scripts/object-level/level_10/lightning_cloud.gd" id="27_imt5e"]
 [ext_resource type="Script" uid="uid://2gvpdpwif2sn" path="res://Scripts/object-level/level_10/light_bulb.gd" id="30_5i1by"]
-[ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="37_3abkh"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="37_3abkh"]
 
 [sub_resource type="Gradient" id="Gradient_5i1by"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -288,7 +288,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mh15f"]
 radius = 33.212807
-height = 93.28204
+height = 85.85651
 
 [node name="level_10_scene" type="Node2D"]
 script = ExtResource("1_lnfvu")
@@ -444,7 +444,7 @@ sprite_frames = SubResource("SpriteFrames_ehdct")
 metadata/_edit_lock_ = true
 
 [node name="enter_11" parent="." instance=ExtResource("6_ttbi8")]
-rotation = -1.4963021
+rotation = -0.52359897
 script = ExtResource("7_ttbi8")
 object_name = "enter_11"
 object_type = 1
@@ -468,13 +468,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -220.0
-offset_right = 90.0
-offset_bottom = -186.0
+offset_left = -105.195404
+offset_top = -247.79614
+offset_right = 74.804596
+offset_bottom = -213.79614
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 3.1415927
 pivot_offset = Vector2(90, 11.5)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -497,15 +496,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -250.0
-offset_right = 90.0
-offset_bottom = -227.0
+offset_left = -96.90119
+offset_top = -244.16212
+offset_right = 83.09881
+offset_bottom = -221.16212
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 3.1415927
 scale = Vector2(1.30259, 1.39847)
 pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("37_3abkh")
+theme_override_font_sizes/normal_font_size = 25
 text = "INTERACT"
 fit_content = true
 scroll_active = false

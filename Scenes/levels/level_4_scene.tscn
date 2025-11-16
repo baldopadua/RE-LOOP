@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://fyqypy6fcyaf"]
+[gd_scene load_steps=165 format=3 uid="uid://fyqypy6fcyaf"]
 
 [ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/levels/level_4_script.gd" id="1_f0imo"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_lahvx"]
@@ -28,10 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://6armfecvjr2b" path="res://Assets/levels/level_4/dinosaur_hit.png" id="25_enhda"]
 [ext_resource type="Texture2D" uid="uid://bdnfiuumni1te" path="res://Assets/levels/level_1/DirtMound.png" id="27_oqr2g"]
 [ext_resource type="Script" uid="uid://uimo3i2ldyyp" path="res://Scripts/object-level/level_4/lvl4_seed.gd" id="28_56sg6"]
-[ext_resource type="Texture2D" uid="uid://dfdbkhqn5goip" path="res://Assets/levels/level_1/seed.png" id="28_yixdo"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="30_enhda"]
 [ext_resource type="Texture2D" uid="uid://c72nnu8ruare1" path="res://Assets/level_select_lobby/level_5.png" id="31_ceyy8"]
-[ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="32_ceyy8"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="32_ceyy8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3mgg"]
 atlas = ExtResource("7_enhda")
@@ -1022,9 +1021,9 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_enhda"]
 gradient = SubResource("Gradient_7hl30")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vfvy7"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_enhda"]
 radius = 33.212807
-height = 93.28204
+height = 85.85651
 
 [node name="level_4" type="Node2D"]
 script = ExtResource("1_f0imo")
@@ -1253,7 +1252,6 @@ usable_targets = Array[String](["lvl4_soil"])
 [node name="Sprite2D2" type="Sprite2D" parent="lvl4_seed"]
 texture_filter = 1
 position = Vector2(-0.9999783, -6)
-texture = ExtResource("28_yixdo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="lvl4_seed"]
 light_mask = 3
@@ -1284,7 +1282,7 @@ texture = SubResource("GradientTexture2D_enhda")
 position = Vector2(-58, -217)
 
 [node name="enter_5" parent="." instance=ExtResource("4_fiti8")]
-position = Vector2(0, -17)
+position = Vector2(9, -5.9999995)
 rotation = 2.6517494
 script = ExtResource("30_enhda")
 object_name = "enter_5"
@@ -1292,7 +1290,7 @@ object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_5"]
 position = Vector2(7.3641453, -316.75507)
-shape = SubResource("CapsuleShape2D_vfvy7")
+shape = SubResource("CapsuleShape2D_enhda")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_5"]
@@ -1338,15 +1336,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -250.0
-offset_right = 90.0
-offset_bottom = -227.0
+offset_left = -87.2058
+offset_top = -257.28415
+offset_right = 92.7942
+offset_bottom = -234.28415
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 scale = Vector2(1.30259, 1.39847)
 pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("32_ceyy8")
+theme_override_font_sizes/normal_font_size = 25
 text = "INTERACT"
 fit_content = true
 scroll_active = false

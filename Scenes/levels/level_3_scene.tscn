@@ -16,8 +16,8 @@
 [ext_resource type="Script" uid="uid://cp4ph6xk7oue6" path="res://Scripts/object-level/level_3/rock.gd" id="16_4srx3"]
 [ext_resource type="Texture2D" uid="uid://cia7fvqduwmcc" path="res://Assets/levels/level_3/rock.png" id="16_symai"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="17_oyt3y"]
-[ext_resource type="Texture2D" uid="uid://7a5oqv826cwv" path="res://Assets/level_select_lobby/level_4.png" id="18_45cdh"]
-[ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="19_45cdh"]
+[ext_resource type="Texture2D" uid="uid://n71gi1vslhq0" path="res://Assets/level_select_lobby/level_4_icon.png" id="18_45cdh"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="19_njtrs"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="22_3gnya"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y483m"]
@@ -436,9 +436,9 @@ _data = {
 &"ride_the_water": SubResource("Animation_symai")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_njtrs"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6xexh"]
 radius = 33.212807
-height = 93.28204
+height = 85.85651
 
 [node name="level_3" type="Node2D"]
 script = ExtResource("1_thi73")
@@ -658,21 +658,21 @@ libraries = {
 position = Vector2(122, -193)
 
 [node name="enter_4" parent="." instance=ExtResource("8_thi73")]
-rotation = 3.142078
+rotation = 2.0943952
 script = ExtResource("17_oyt3y")
 object_name = "enter_4"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_4"]
-position = Vector2(8.394183, -315.46082)
-shape = SubResource("CapsuleShape2D_njtrs")
+position = Vector2(8.394165, -315.46088)
+shape = SubResource("CapsuleShape2D_6xexh")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_4"]
 texture_filter = 1
-position = Vector2(-3.2416725, -31.614737)
+position = Vector2(7.7595296, -225.7593)
 rotation = 3.1827781
-scale = Vector2(0.54803, 0.75198)
+scale = Vector2(0.26605895, 0.28641188)
 texture = ExtResource("18_45cdh")
 offset = Vector2(0, 380)
 
@@ -682,10 +682,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.00964
-offset_top = -187.63329
-offset_right = 88.99036
-offset_bottom = -153.63329
+offset_left = -84.88528
+offset_top = -205.02559
+offset_right = 95.11472
+offset_bottom = -171.02559
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
@@ -694,7 +694,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 1
 theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("19_45cdh")
+theme_override_fonts/normal_font = ExtResource("19_njtrs")
 theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
@@ -711,15 +711,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -250.0
-offset_right = 90.0
-offset_bottom = -227.0
+offset_left = -88.36862
+offset_top = -263.0589
+offset_right = 91.63138
+offset_bottom = -240.0589
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
 scale = Vector2(1.30259, 1.39847)
 pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("19_njtrs")
+theme_override_font_sizes/normal_font_size = 25
 text = "INTERACT"
 fit_content = true
 scroll_active = false

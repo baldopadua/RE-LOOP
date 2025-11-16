@@ -133,3 +133,6 @@ func enable_animation_player():
 func play_climb_animation(body: Node) -> void:
 	self.player_body = body
 	anim_handler.play("climbing_animation")
+
+
+

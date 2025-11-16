@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://ce8d5ds3tpexn" path="res://Assets/levels/level_8/placeholder_assets/angry_sad_hare.png" id="25_paq8g"]
 [ext_resource type="Texture2D" uid="uid://5j4gkcmnwsje" path="res://Assets/levels/level_8/placeholder_assets/gun_fire.png" id="26_203gj"]
 [ext_resource type="Texture2D" uid="uid://cckflrtea0o74" path="res://Assets/levels/level_8/placeholder_assets/evil_hare.png" id="29_kpjhv"]
-[ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="37_ejpmq"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="37_ejpmq"]
 
 [sub_resource type="Gradient" id="Gradient_85ltu"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -518,7 +518,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fg7v5"]
 radius = 33.212807
-height = 93.28204
+height = 85.85651
 
 [node name="level_8_scene" type="Node2D"]
 script = ExtResource("1_mqs6j")
@@ -702,7 +702,7 @@ position = Vector2(0, 152.16)
 position = Vector2(-194.025, -132.41)
 
 [node name="enter_9" parent="." instance=ExtResource("5_tsmqx")]
-rotation = -2.2100787
+rotation = -1.5707964
 script = ExtResource("7_mqs6j")
 object_name = "enter_9"
 object_type = 1
@@ -726,10 +726,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.0
-offset_top = -190.0
-offset_right = 121.0
-offset_bottom = -156.0
+offset_left = -79.99999
+offset_top = -199.00002
+offset_right = 132.0
+offset_bottom = -165.00002
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
@@ -764,6 +764,8 @@ grow_vertical = 2
 rotation = 3.1415927
 scale = Vector2(1.30259, 1.39847)
 pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("37_ejpmq")
+theme_override_font_sizes/normal_font_size = 25
 text = "INTERACT"
 fit_content = true
 scroll_active = false

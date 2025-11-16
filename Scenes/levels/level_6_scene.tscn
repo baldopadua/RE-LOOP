@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bbu4jrknv4i47" path="res://Assets/levels/level_6/recolored-tree.png" id="15_8mnya"]
 [ext_resource type="Script" uid="uid://dpen7dd1hhm1c" path="res://Scripts/object-level/level_6/in_2.gd" id="15_bxtqd"]
 [ext_resource type="Script" uid="uid://4ps5tmbu0ta5" path="res://Scripts/object-level/level_6/seed.gd" id="17_8mnya"]
-[ext_resource type="FontFile" uid="uid://clb021ab2cyeu" path="res://Assets/fonts/ByteBounce.ttf" id="18_rcfaf"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="19_cr1iw"]
 [ext_resource type="Script" uid="uid://dn4wa6vh46eft" path="res://Scripts/object-level/level_6/seed2.gd" id="20_f215k"]
 [ext_resource type="Texture2D" uid="uid://cqy4vnecvhahh" path="res://Assets/levels/level_6/inewton.png" id="22_f215k"]
 
@@ -288,10 +288,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cr1iw"]
-radius = 33.212807
-height = 93.28204
-
 [sub_resource type="Animation" id="Animation_bxtqd"]
 length = 0.001
 tracks/0/type = "value"
@@ -357,6 +353,10 @@ _data = {
 &"climbing_animation": SubResource("Animation_cr1iw"),
 &"jumping_animation": SubResource("Animation_8mnya")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxtqd"]
+radius = 33.212807
+height = 85.85651
 
 [node name="level_6_scene" type="Node2D"]
 script = ExtResource("1_odmpw")
@@ -524,16 +524,23 @@ position = Vector2(-14.000003, -36.500015)
 scale = Vector2(2.6896548, 2.26)
 sprite_frames = SubResource("SpriteFrames_iwthe")
 
+[node name="center_pos" type="Marker2D" parent="."]
+position = Vector2(0, 25)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8mnya")
+}
+
 [node name="enter_7" parent="." instance=ExtResource("6_kapnr")]
-position = Vector2(-195, -4)
-rotation = -1.9820957
+rotation = -2.6179938
 script = ExtResource("7_kapnr")
 object_name = "enter_7"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_7"]
 position = Vector2(-8.998106, -321.5852)
-shape = SubResource("CapsuleShape2D_cr1iw")
+shape = SubResource("CapsuleShape2D_bxtqd")
 debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="enter_7"]
@@ -550,10 +557,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -220.0
-offset_right = 90.0
-offset_bottom = -186.0
+offset_left = -91.05516
+offset_top = -225.71211
+offset_right = 88.94484
+offset_bottom = -191.71211
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415927
@@ -562,7 +569,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 1
 theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("18_rcfaf")
+theme_override_fonts/normal_font = ExtResource("19_cr1iw")
 theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
@@ -588,6 +595,8 @@ grow_vertical = 2
 rotation = 3.1415927
 scale = Vector2(1.30259, 1.39847)
 pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("19_cr1iw")
+theme_override_font_sizes/normal_font_size = 25
 text = "INTERACT"
 fit_content = true
 scroll_active = false
@@ -595,14 +604,6 @@ tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="center_pos" type="Marker2D" parent="."]
-position = Vector2(0, 25)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_8mnya")
-}
 
 [connection signal="loop_break_shown" from="PlayerScene" to="isaac_newton_1" method="_on_player_scene_loop_break_shown"]
 [connection signal="loop_break_shown" from="PlayerScene" to="seed" method="_on_player_scene_loop_break_shown"]
