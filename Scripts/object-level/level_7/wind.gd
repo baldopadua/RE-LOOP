@@ -114,8 +114,6 @@ func _start_tornado_sequence(body) -> void:
 	is_playing = true
 	player_body.z_index = 2
 	anim_handler.play("flow_with_tornado")
-	if sound_manager and sound_manager.sfx.has("tornado"):
-		sound_manager.play_sfx("tornado")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
