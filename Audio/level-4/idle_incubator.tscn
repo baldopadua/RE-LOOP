@@ -4,4 +4,4 @@
 
 [node name="idle_incubator" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_idle")
-volume_db = 3.0
+volume_db = 4.0
