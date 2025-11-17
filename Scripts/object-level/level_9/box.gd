@@ -77,11 +77,12 @@ func open_box_function():
 
 func _on_open_box_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "activate":
-		cat.visible = true
-		cat2.visible = true
+		cat.get_node("AnimatedSprite2D").frame = 3
+		cat2.get_node("AnimatedSprite2D").frame = 3
 		player.get_node("Camera2D").emit_signal("hide_bars")
-		player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+		player.get_node("Camera2D").emit_signal("cam_origEEEEE_zoom")
 		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 		player.set_process_input(true)
 		box_closed = false
 		emit_signal("open_box")
+

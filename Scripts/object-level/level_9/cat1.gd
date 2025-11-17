@@ -7,7 +7,13 @@ signal add_cur_state(direction)
 @onready var box = $"../box"
 @onready var marker2D = $"../box/Marker2D"
 
+var is_loop_shown = false
+
 func _on_add_cur_state(direction: Variant) -> void:
+
+	if is_loop_shown:
+		return
+		
 	if direction == GlobalVariables.Directions.CLOCKWISE:
 		if current_state == 2:
 			animated_sprite1.play("default")
@@ -42,3 +48,8 @@ func float_cat() -> void:
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position:y", self.position.y, duration) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+
+func _on_player_scene_loop_break_shown() -> void:
+	is_loop_shown = true
+

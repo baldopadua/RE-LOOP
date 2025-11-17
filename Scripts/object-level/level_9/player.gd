@@ -10,10 +10,13 @@ extends "res://Scripts/player_script.gd"
 @onready var canvas_layer = $"../CanvasLayer"
 @onready var switch_circle = $"../switch_circle"
 @onready var center_pos = $"../center_pos"
+signal loop_break_shown # Add this signal
 
 var matched = false
 
+
 func _on_player_finished_moving() -> void:
+	
 	# check if both cat states are the same
 	if not box.box_closed and box.cat_placed and box.cat2_placed:
 		if cat.current_state == cat2.current_state:
@@ -69,16 +72,17 @@ func _on_player_finished_moving() -> void:
 				matched = true
 				# Reveal all the keystones here
 				position.x = 0.0
+				
 
 				# Fade out animation
 				flash.create_tween().tween_property(flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 				
 				await get_tree().create_timer(1.0).timeout
-
 				box.open_box_function()
 				get_node("Camera2D").emit_signal("cam_orig_zoom") #
 				await get_tree().create_timer(4.0).timeout
 				area_handler.show_loop_break(9)
+				emit_signal("loop_break_shown") 
 
 				# After the loop break, hide bars and enable player movement
 				get_node("Camera2D").emit_signal("hide_bars")
