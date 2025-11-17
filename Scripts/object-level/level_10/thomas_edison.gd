@@ -35,6 +35,7 @@ func _on_add_cur_state(direction: Variant) -> void:
 			elif current_state == 2:
 				animated_sprite.play_backwards("thom_e_skull")
 				is_pickupable = true
+
 	elif object_that_this_is_on == "lightning_cloud":
 		if direction == GlobalVariables.player_direction.CLOCKWISE:
 			if current_state == 1:
@@ -50,25 +51,26 @@ func _on_add_cur_state(direction: Variant) -> void:
 			elif current_state == 2:
 				animated_sprite.play_backwards("thom_e_shocked")
 				is_pickupable = true
+
 	elif object_that_this_is_on == "light_bulb":
+		var light_bulb = $"../LightBulb" # get LightBulb node
 		if direction == GlobalVariables.player_direction.CLOCKWISE:
 			if current_state == 1:
 				animated_sprite.play("default")
 				is_pickupable = false
 			elif current_state == 2:
-				animated_sprite.play("thom_e_invented")
+				light_bulb.get_node("AnimatedSprite2D").play("light_bulb_flicker")
 				is_pickupable = false
-				# SET ONE OF LASER'S KEYSTONE TO SUCCESS
 				laser.emit_signal("keystone_complete", object_name, true)
 		else:
 			if current_state == 1:
 				animated_sprite.play_backwards("default")
 				is_pickupable = false
-				# UNSET ONE OF LASER'S KEYSTONE TO SUCCESS
 				laser.emit_signal("keystone_complete", object_name, false)
 			elif current_state == 2:
-				animated_sprite.play_backwards("thom_e_invented")
+				light_bulb.get_node("AnimatedSprite2D").play_backwards("light_bulb_flicker")
 				is_pickupable = false
+
 	elif object_that_this_is_on == "tesla_coil":
 		if direction == GlobalVariables.player_direction.CLOCKWISE:
 			if current_state == 1:

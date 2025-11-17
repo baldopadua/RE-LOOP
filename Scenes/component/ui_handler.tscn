@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cwndswkyv0b33" path="res://Assets/ui/start_button_hover.png" id="6_f7f2r"]
 [ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="7_vdxet"]
 [ext_resource type="Texture2D" uid="uid://dycrhdnxrjgsl" path="res://Assets/ui/credits_animated_icon.png" id="8_8crwb"]
-[ext_resource type="Texture2D" uid="uid://c2dq7rfpmpmqb" path="res://Assets/ui/keys_elements.png" id="9_8crwb"]
+[ext_resource type="Texture2D" uid="uid://bcehs3kb87ooy" path="res://Assets/ui/keys_elements.png" id="9_8crwb"]
 [ext_resource type="Texture2D" uid="uid://oxutfru2ik0r" path="res://Assets/ui/brochure_unhovered.png" id="10_wyu2o"]
 [ext_resource type="Texture2D" uid="uid://3vkvbxe40udp" path="res://Assets/ui/brochure_hovered.png" id="11_tocme"]
 [ext_resource type="Texture2D" uid="uid://fwomc1y72s18" path="res://Assets/ui/hint/hint_icon.png" id="12_us0vv"]
@@ -877,7 +877,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
-wait_time = 30.0
+wait_time = 120.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2/hint_2_timer"]
 visible = false
@@ -934,7 +934,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
-wait_time = 30.0
+wait_time = 120.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution/solution_timer"]
 visible = false
@@ -1198,7 +1198,6 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_3_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -1224,7 +1223,6 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_3_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -1249,7 +1247,6 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_3_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -1938,8 +1935,12 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+theme_override_font_sizes/font_size = 42
+text = "\"Echoes guard the hall of memory.
+What once belonged will call to what was taken,
+yet silence waits for those who’ve forgotten.
+Only by returning each fragment to the statue that remembers its story
+will time dare to move again.\""
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1962,10 +1963,12 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+theme_override_font_sizes/font_size = 45
+text = "“Each statue is missing the keystone it once carried.
+The relics you’ve gathered from earlier journeys still remember
+where they were meant to belong.
+Listen to their echoes and return each keystone to the statue
+that matches its past.”"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1989,7 +1992,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+text = "Match the correct keystones to its rightful statue, all are echoes from the previous levels, remember which keystone they ought to belong. Once everything is in place, go to the Plooy statue and time will once more flow."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2024,7 +2027,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+text = "hard"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2048,9 +2051,8 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+text = "medium
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2074,7 +2076,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+text = "Place the keystones in their rightful statues, but keep in mind your other self. Match his position to prevent the reset, or lose a keystone from its proper place."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

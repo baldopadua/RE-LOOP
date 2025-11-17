@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://o3p4q5r6s7t8u"]
 
 [ext_resource type="AudioStream" uid="uid://dq61fs42k5j0t" path="res://Audio/sfx/baby_dinosaur2.wav" id="1_baby2"]
 

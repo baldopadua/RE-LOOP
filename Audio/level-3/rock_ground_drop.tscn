@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://p5r8u1v4w7x0y"]
 
-[ext_resource type="AudioStream" uid="uid://q6c9f3h5j8m2n" path="res://Audio/sfx/rock_ground_drop.wav" id="1_rock_ground"]
+[ext_resource type="AudioStream" uid="uid://dk3o16h28soqe" path="res://Audio/sfx/rock_ground_drop.wav" id="1_rock_ground"]
 
 [node name="rock_ground_drop" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_rock_ground")

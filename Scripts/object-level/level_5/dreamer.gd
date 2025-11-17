@@ -50,7 +50,7 @@ func update_dreamer_state():
 		match [previous_state, current_state]:
 			[1, 2]:
 				# Kid to depressed_salaryman
-				if sound_manager and sound_manager.sfx.has("depress_man"):
+				if sound_manager:
 					sound_manager.play_sfx("depress_man")
 				dreamer_animated_sprite.play("depressed_salaryman")
 				science_project.set_animation("depressed_salaryman")
@@ -61,21 +61,21 @@ func update_dreamer_state():
 				await dreamer_animated_sprite.animation_finished
 			[3, 1]:
 				# Skeletal_remains to kid (loop or reset, if needed)
-				if sound_manager and sound_manager.sfx.has("happy_kid"):
+				if sound_manager:
 					sound_manager.play_sfx("happy_kid")
 				dreamer_animated_sprite.play("kid")
 				science_project.set_animation("kid")
 				await dreamer_animated_sprite.animation_finished
 				# Only kid can buy soda
 				if is_in_vending and not is_soda_dispensed:
-					if sound_manager and sound_manager.sfx.has("vending_machine"):
+					if sound_manager:
 						sound_manager.play_sfx("vending_machine")
 					is_soda_dispensed = true
 					soda.visible = true
 					soda.is_pickupable = true
 		# Dispense soda if state changed to kid and already in vending
 		if current_state == 1 and is_in_vending and not is_soda_dispensed:
-			if sound_manager and sound_manager.sfx.has("vending_machine"):
+			if sound_manager:
 				sound_manager.play_sfx("vending_machine")
 			is_soda_dispensed = true
 			soda.visible = true
@@ -95,9 +95,13 @@ func _on_add_cur_state(_direction) -> void:
 		vending_sprite.set_animation("climax")
 	
 	if current_state == 1:
+		if sound_manager:
+			sound_manager.play_sfx("happy_kid")
 		dreamer_animated_sprite.play("kid")
 		science_project.set_animation("kid")
 	elif current_state == 2:
+		if sound_manager:
+			sound_manager.play_sfx("depress_man")
 		dreamer_animated_sprite.play("depressed_salaryman")
 		science_project.set_animation("depressed_salaryman")
 	elif current_state == 3:
@@ -124,7 +128,7 @@ func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int
 		is_in_vending = true
 		# Dispense soda if dreamer is kid and soda hasn't been dispensed yet
 		if current_state == 1 and not is_soda_dispensed:
-			if sound_manager and sound_manager.sfx.has("vending_machine"):
+			if sound_manager:
 				sound_manager.play_sfx("vending_machine")
 			is_soda_dispensed = true
 			soda.visible = true
@@ -155,7 +159,7 @@ func interact(_obj):
 
 func set_rocket():
 	# Play rocket blastoff sound when building the rocket
-	if sound_manager and sound_manager.sfx.has("rocket_blastoff"):
+	if sound_manager:
 		sound_manager.play_sfx("rocket_blastoff")
 	
 	rocket.visible = true

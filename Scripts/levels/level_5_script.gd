@@ -31,7 +31,7 @@ var level_completed: bool = false  # NEW: Prevent multiple completions
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(5)
-	ui_handler.disable_game_ui_elements()
+	
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# SHOW DECORATIVES
@@ -92,7 +92,7 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	await get_tree().create_timer(1.5).timeout
 	
 	ui_handler.show_game_ui_elements()
-	ui_handler.enable_game_ui_elements()
+	
 	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")

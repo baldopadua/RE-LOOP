@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://v9w0x1y2z3a4b"]
 
 [ext_resource type="AudioStream" uid="uid://bf6ubuc8twaig" path="res://Audio/sfx/big_dinosaur1.wav" id="1_big"]
 

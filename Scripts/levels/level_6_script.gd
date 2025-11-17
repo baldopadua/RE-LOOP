@@ -28,7 +28,6 @@ var jump_animation_played := false # Add this flag
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(6)
-	ui_handler.disable_game_ui_elements()
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# PLAY LEVEL AMBIENCE
@@ -56,6 +55,10 @@ func _ready():
 	
 	await get_tree().create_timer(2.5).timeout
 	
+	# Play crystal transition sound
+	if sound_manager and sound_manager.sfx.has("crystal_transition"):
+		sound_manager.play_sfx("crystal_transition")
+
 	var flash = ColorRect.new()
 	flash.color = Color(1, 1, 1, 1)
 	flash.anchor_right = 1
@@ -79,7 +82,7 @@ func _ready():
 	
 	# Restore player visibility before enabling movement
 	player.modulate.a = 1.0
-	ui_handler.enable_game_ui_elements()
+	
 	GlobalVariables.player_stopped = false
 	player.set_process_input(true)
 	
@@ -94,7 +97,7 @@ func object_initialize():
 	objects.append(isaac_newton_2)
 	objects.append(seed)
 	objects.append(seed2)
-
+	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	print("Animation finished: ", anim_name)
 	if anim_name == "climbing_animation":

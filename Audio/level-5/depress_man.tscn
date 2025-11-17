@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://b6fh2wn5tix1m"]
 
 [ext_resource type="AudioStream" uid="uid://c5t73uqaq5ng4" path="res://Audio/sfx/depress_man.wav" id="1_depress"]
 

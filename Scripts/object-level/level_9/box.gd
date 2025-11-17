@@ -13,27 +13,25 @@ var cat2_placed = false
 var box_closed = false
 
 @onready var animation_sprite = $AnimatedSprite2D
+var float_tween : Tween
 
 func _ready() -> void:
 	float_box()
 	
 func float_box() -> void:
-	var tween := create_tween()
-	
-	tween.set_loops()
-	
+	float_tween = create_tween()
+	float_tween.set_loops()
 	var float_offset := -5.0
 	var duration := 1.0
-	
-	tween.tween_property(self, "position:y", self.position.y + float_offset, duration) \
+	float_tween.tween_property(self, "position:y", self.position.y + float_offset, duration) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "position:y", self.position.y, duration) \
+	float_tween.tween_property(self, "position:y", self.position.y, duration) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-func _on_close_box(cat: Variant) -> void:
-	if cat.object_name == "cat":
+func _on_close_box(cat_arg: Variant) -> void:
+	if cat_arg.object_name == "cat":
 		cat_placed = true
-	elif cat.object_name == "cat2":
+	elif cat_arg.object_name == "cat2":
 		cat2_placed = true
 	
 	if cat_placed and cat2_placed:
@@ -74,15 +72,32 @@ func open_box_function():
 	
 	animation_sprite.play_backwards("activate")
 	
+	# Show the cat at frame 2
+	cat.visible = true
+	cat.get_node("AnimatedSprite2D").frame = 2
 
 func _on_open_box_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "activate":
-		cat.get_node("AnimatedSprite2D").frame = 3
-		cat2.get_node("AnimatedSprite2D").frame = 3
-		player.get_node("Camera2D").emit_signal("hide_bars")
 		player.get_node("Camera2D").emit_signal("cam_origEEEEE_zoom")
 		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 		player.set_process_input(true)
 		box_closed = false
 		emit_signal("open_box")
+		
+		visible = true
+
+		
+		if float_tween and float_tween.is_valid():
+			float_tween.kill()
+			print("Stopped floating tween.")
+
+		var marker = get_parent().get_node("box_down_marker")
+		print("Tweening box from ", position, " to ", marker.position)
+		var tween := create_tween()
+		tween.tween_property(self, "position", marker.position, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween.connect("finished", Callable(self, "_on_box_tween_finished"))
+		print("Started downward tween.")
+
+func _on_box_tween_finished():
+	print("Box tween finished, new position: ", position)
 
