@@ -775,7 +775,8 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
-[connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
+[connection signal="area_entered" from="Finish Line" to="Finish Line" method="_on_area_entered"]
+[connection signal="area_entered" from="Turtle" to="Turtle" method="_on_area_entered"]
 [connection signal="rotate_object" from="Turtle" to="Turtle" method="_on_rotate_object"]
 [connection signal="area_entered" from="Hare" to="Hare" method="_on_area_entered"]
 [connection signal="area_exited" from="Hare" to="Hare" method="_on_area_exited"]
