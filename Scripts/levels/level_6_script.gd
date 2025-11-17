@@ -28,7 +28,6 @@ var jump_animation_played := false # Add this flag
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(6)
-	ui_handler.disable_game_ui_elements()
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# PLAY LEVEL AMBIENCE
@@ -79,7 +78,7 @@ func _ready():
 	
 	# Restore player visibility before enabling movement
 	player.modulate.a = 1.0
-	ui_handler.enable_game_ui_elements()
+	
 	GlobalVariables.player_stopped = false
 	player.set_process_input(true)
 	

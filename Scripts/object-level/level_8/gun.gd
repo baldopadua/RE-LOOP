@@ -105,7 +105,7 @@ func _on_start_race() -> void:
 						cam.emit_signal("reveal_bars")
 						# If you have a rock3 node in this level, replace below with its reference
 						# cam.emit_signal("pan_to_pos", rock3.global_position)
-						await get_tree().create_timer(2.0).timeout
+						await get_tree().create_timer(5.0).timeout
 
 						# Shake camera then complete level and hide bars
 						if cam.has_signal("shake"):
@@ -114,8 +114,6 @@ func _on_start_race() -> void:
 						player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 						player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 						player.get_node("Camera2D").emit_signal("hide_bars")
-						cam.emit_signal("hide_bars")
-
 					# Emit the new signal instead of calling complete_current_level directly
 					emit_signal("turtle_win_race")
 
