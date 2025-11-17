@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcehs3kb87ooy"
-path="res://.godot/imported/keys_elements.png-54d5c7998183a4d58ae39b8d1b50ab80.ctex"
+uid="uid://cpyrh25etlwdj"
+path="res://.godot/imported/lightbulb.png-7b977c776a0035f3905a8f1fab7734f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/keys_elements.png"
-dest_files=["res://.godot/imported/keys_elements.png-54d5c7998183a4d58ae39b8d1b50ab80.ctex"]
+source_file="res://Assets/levels/level_10/lightbulb.png"
+dest_files=["res://.godot/imported/lightbulb.png-7b977c776a0035f3905a8f1fab7734f4.ctex"]
 
 [params]
 
