@@ -57,18 +57,32 @@ func _on_player_finished_moving() -> void:
 				lever2.visible = false
 				box.visible = false
 				switch_circle.visible = false
-				s1.position.x = -243.425
-				lever1.position.x = -243.425
+				s1.position.x = -101.0
+				lever1.position.x = -101.0
+				s1.position.y = 280.0
+				lever1.position.y = 280.0
 				s1.animated_sprite1.play_backwards("default")
 				s1.animated_sprite2.play_backwards("default")
 				s1.current_state = 1
 				get_node("Camera2D").emit_signal("pan_to_orig_pos")
 				matched = true
 				# Reveal all the keystones here
+				position.x = 0.0
 
 				# Fade out animation
 				flash.create_tween().tween_property(flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 				
 				await get_tree().create_timer(1.0).timeout
 				get_node("Camera2D").emit_signal("cam_orig_zoom")
+				await get_tree().create_timer(2.0).timeout
 				area_handler.show_loop_break(9)
+
+				# After the loop break, hide bars and enable player movement
+				get_node("Camera2D").emit_signal("hide_bars")
+				set_process_input(true)
+				GlobalVariables.player_stopped = false
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	pass # Replace with function body.
+				
