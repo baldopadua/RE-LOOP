@@ -1352,6 +1352,7 @@ animation = &"short_hand"
 [node name="LevelHandler" parent="Camera2D/CanvasLayer" instance=ExtResource("4_7i53v")]
 visible = false
 z_index = 2
+position = Vector2(-13, -2)
 
 [node name="upper_bar" type="Sprite2D" parent="Camera2D/CanvasLayer"]
 visible = false

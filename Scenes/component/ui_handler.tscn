@@ -20,13 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="18_dumc0"]
 [ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="19_bo42c"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="19_dumc0"]
-[ext_resource type="Texture2D" uid="uid://rd183d7psrym" path="res://Assets/ui/Tutorial.png" id="20_0n0xc"]
 [ext_resource type="Script" uid="uid://bdxwx60b8pdlx" path="res://Scripts/ui/custom_cursor.gd" id="20_qpkpn"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="21_qpkpn"]
 [ext_resource type="Texture2D" uid="uid://cvnnf0m2baxac" path="res://Assets/ui/sound_icon.png" id="21_swapm"]
 [ext_resource type="Texture2D" uid="uid://cg2l84tao5f1l" path="res://Assets/ui/credits_bg.png" id="21_taira"]
 [ext_resource type="Script" uid="uid://qyn6g7sbegxs" path="res://Scripts/ui/hint.gd" id="22_exohx"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="22_iwsb4"]
+[ext_resource type="Texture2D" uid="uid://ckok4beotp5ne" path="res://Assets/ui/Brochure.png" id="22_kyj2j"]
 [ext_resource type="Texture2D" uid="uid://cj8vhumcbbns3" path="res://Assets/ui/sound_icon_hover.png" id="22_yg0r3"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="23_4r7hv"]
 [ext_resource type="Texture2D" uid="uid://y5ujgaokyei8" path="res://Assets/ui/hint/hint_dialog.png" id="23_us0vv"]
@@ -682,13 +682,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -425.0
-offset_top = -425.0
-offset_right = 425.0
-offset_bottom = 425.0
+offset_left = -648.0
+offset_top = -379.0
+offset_right = 1272.0
+offset_bottom = 701.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("20_0n0xc")
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("22_kyj2j")
 stretch_mode = 4
 
 [node name="credits" type="Control" parent="ui_logic/overlay"]
@@ -717,7 +718,6 @@ texture = ExtResource("21_taira")
 expand_mode = 1
 
 [node name="hint" type="Control" parent="ui_logic/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -864,7 +864,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
-wait_time = 20.0
+wait_time = 5.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2/hint_2_timer"]
 visible = false
@@ -921,7 +921,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
-wait_time = 20.0
+wait_time = 5.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution/solution_timer"]
 visible = false
@@ -2040,10 +2040,25 @@ vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="skip_level" type="Button" parent="ui_logic/overlay/hint/hint_box"]
+modulate = Color(0.9368433, 0.8956263, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.20119523
+anchor_top = 0.54821426
+anchor_right = 0.035395954
+anchor_bottom = 0.63035715
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 55
+text = "Skip Level"
+metadata/_edit_use_anchors_ = true
+
 [node name="plooy_hint" type="AnimatedSprite2D" parent="ui_logic/overlay/hint"]
 texture_filter = 1
-position = Vector2(142, 599.99994)
-scale = Vector2(10.9193, 10.0155)
+position = Vector2(152.2421, 571.2965)
+scale = Vector2(12.563159, 12.441378)
 sprite_frames = SubResource("SpriteFrames_tkpeg")
 flip_h = true
 
@@ -2209,6 +2224,15 @@ texture_normal = ExtResource("22_iwsb4")
 texture_hover = ExtResource("23_4r7hv")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="level_lobby" type="Control" parent="ui_logic/overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="cutscene" parent="." instance=ExtResource("33_nol8b")]
 visible = false

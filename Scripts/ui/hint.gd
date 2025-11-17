@@ -16,6 +16,7 @@ var hint_progress = {}  # DICTIONARY TO STORE PROGRESS PER LEVEL
 @onready var solution_timer = $hint_box/hint_box_empty/solution/solution_timer
 @onready var solution_lock = $hint_box/hint_box_empty/solution/solution_lock
 @onready var solution_overlay = $hint_box/hint_box_empty/solution/solution_overlay
+@onready var skip_level_button = $hint_box/skip_level
 
 @onready var orig_hint_1_modulate: Color = hint_1_status_bar.modulate
 @onready var orig_hint_2_modulate: Color = hint_2_status_bar.modulate
@@ -51,6 +52,11 @@ func _ready() -> void:
 	update_timer.timeout.connect(_update_timer_displays)
 	update_timer.autostart = true
 	add_child(update_timer)
+
+	if skip_level_button:
+		skip_level_button.visible = false
+		skip_level_button.disabled = true
+		skip_level_button.pressed.connect(_on_skip_level_pressed)
 
 func _init_timer_labels() -> void:
 	if hint_2_timer and hint_2_timer.has_node("timer_label"):
@@ -175,6 +181,15 @@ func update_hint_text(difficulty: String):
 			if hint_node:
 				hint_node.visible = true
 
+	# Show/hide skip_level button based on difficulty
+	if skip_level_button:
+		if difficulty == "easy":
+			skip_level_button.visible = true
+			skip_level_button.disabled = false
+		else:
+			skip_level_button.visible = false
+			skip_level_button.disabled = true
+
 func show_appropriate_container():
 	print("show_appropriate_container: current_level =", current_level)
 	# ...existing code...
@@ -248,6 +263,15 @@ func show_appropriate_container():
 				else:
 					label.text = format_time(solution_timer.wait_time)
 
+		# Also ensure skip_level button is updated
+		if skip_level_button:
+			if last_difficulty == "easy":
+				skip_level_button.visible = true
+				skip_level_button.disabled = false
+			else:
+				skip_level_button.visible = false
+				skip_level_button.disabled = true
+
 func _check_for_level_handler():
 	# ALWAYS CHECK FOR NEW LEVEL HANDLERS SINCE LEVELS GET DESTROYED/RECREATED
 	var current_handler = find_level_handler()
@@ -305,6 +329,10 @@ func _reset_hint_state():
 			label.visible = false
 			label.modulate.a = 0
 			label.text = format_time(solution_timer.wait_time)
+
+	if skip_level_button:
+		skip_level_button.visible = false
+		skip_level_button.disabled = true
 
 func find_level_handler() -> Node:
 	# SEARCH THE ENTIRE SCENE TREE FOR THE LEVEL_HANDLER SCRIPT
@@ -381,3 +409,22 @@ func show_hint():
 
 func hide_hint():
 	visible = false
+
+func _on_skip_level_pressed():
+	# Find the overlay node and hide it
+	var overlay = get_parent()
+	while overlay and overlay.name != "overlay":
+		overlay = overlay.get_parent()
+	if overlay:
+		overlay.visible = false
+	# Hide the hint itself
+	visible = false
+	# Optionally hide the close button if present
+	if overlay and overlay.has_node("close_button"):
+		overlay.get_node("close_button").visible = false
+
+	# Trigger skip level signal on the handler
+	if connected_level_handler and connected_level_handler.has_method("request_skip_level"):
+		connected_level_handler.request_skip_level()
+
+

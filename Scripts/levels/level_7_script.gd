@@ -43,3 +43,8 @@ func enter_level():
 	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
 	level_handler.complete_current_level(get_parent()) 
 	
+
+
+func _on_level_handler_skip_level_requested(level_number: int) -> void:
+	if level_number == 7:
+		level_handler.complete_current_level(get_parent())

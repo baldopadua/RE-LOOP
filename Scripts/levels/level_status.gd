@@ -169,7 +169,7 @@ func show_level_complete_cutscene(_next_level_number: int):
 	visible = true
 	hide_gameplay_elements()
 	
-
+	
 func hide_cutscene():
 	visible = false
 	show_gameplay_elements()
@@ -177,6 +177,8 @@ func hide_cutscene():
 	if ui_handler:
 		ui_handler.show_game_ui_after_cutscene()
 		ui_handler.visible = true
+
+	
 
 func hide_gameplay_elements():
 	var level_handler = get_parent()
@@ -336,6 +338,11 @@ func show_level_1_entry_cutscene():
 	visible = true
 	hide_gameplay_elements()
 	
+	# Show animated bg, hide static bg (back to normal during clock animation)
+	var game_scene = get_tree().root.get_node("MainScene/GameScene")
+	if game_scene and game_scene.has_node("CanvasLayer/bg") and game_scene.has_node("CanvasLayer/game_scene_bg"):
+		game_scene.get_node("CanvasLayer/bg").visible = false
+		game_scene.get_node("CanvasLayer/game_scene_bg").visible = true
 
 func show_level_entry_cutscene():
 	should_follow_player = false
@@ -346,3 +353,9 @@ func show_level_entry_cutscene():
 	
 	visible = true
 	hide_gameplay_elements()
+	
+	# Show animated bg, hide static bg (back to normal during clock animation)
+	var game_scene = get_tree().root.get_node("MainScene/GameScene")
+	if game_scene and game_scene.has_node("CanvasLayer/bg") and game_scene.has_node("CanvasLayer/game_scene_bg"):
+		game_scene.get_node("CanvasLayer/bg").visible = false
+		game_scene.get_node("CanvasLayer/game_scene_bg").visible = true

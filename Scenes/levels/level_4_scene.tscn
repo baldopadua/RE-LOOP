@@ -1366,3 +1366,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="add_cur_state" from="trex" to="trex" method="_on_add_cur_state"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="map_scale_tween_finished" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_map_scale_tween_finished"]
+[connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]

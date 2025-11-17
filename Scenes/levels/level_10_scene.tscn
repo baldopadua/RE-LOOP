@@ -512,6 +512,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
 [connection signal="area_entered" from="Laser" to="Laser" method="_on_area_entered"]
 [connection signal="keystone_complete" from="Laser" to="Laser" method="_on_keystone_complete"]
 [connection signal="add_cur_state" from="NicolaTesla" to="NicolaTesla" method="_on_add_cur_state"]

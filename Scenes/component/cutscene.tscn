@@ -1,16 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://b11bd22bl1hik"]
+[gd_scene load_steps=17 format=3 uid="uid://b11bd22bl1hik"]
 
 [ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="1_ecwua"]
 [ext_resource type="Script" uid="uid://cg6w2psi5h5rg" path="res://Scripts/component/cutscene.gd" id="1_njedo"]
 [ext_resource type="Texture2D" uid="uid://cnmt0b4y7gy50" path="res://Assets/ui/BG.png" id="2_hjp08"]
 [ext_resource type="Texture2D" uid="uid://di0hw7e1cmwdb" path="res://Assets/comics/level_1.png" id="3_2hhsc"]
 [ext_resource type="Texture2D" uid="uid://drnejma6awybr" path="res://Assets/level_select_lobby/continue_unhover.png" id="3_l34s7"]
+[ext_resource type="Texture2D" uid="uid://dncj71lqva6un" path="res://Assets/comics/level_2.png" id="4_fhx3f"]
 [ext_resource type="Texture2D" uid="uid://75hh0b6ran57" path="res://Assets/comics/level_3.png" id="4_iekig"]
 [ext_resource type="Texture2D" uid="uid://b41v0lt0bm0rg" path="res://Assets/level_select_lobby/continue_hover.png" id="4_r77sh"]
 [ext_resource type="Texture2D" uid="uid://d07bq68hd8bjb" path="res://Assets/comics/level_4.png" id="5_akqlm"]
 [ext_resource type="Texture2D" uid="uid://eutwyj8wuwwp" path="res://Assets/comics/level_6.png" id="7_37vhi"]
 [ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="7_gfvu8"]
 [ext_resource type="Texture2D" uid="uid://b3v3lgn6vodgx" path="res://Assets/comics/level_8.png" id="7_qagty"]
+[ext_resource type="Texture2D" uid="uid://ernspchust18" path="res://Assets/comics/level_7.png" id="8_7iyrd"]
 [ext_resource type="Texture2D" uid="uid://b55ac1gyc0csp" path="res://Assets/comics/level_9.png" id="8_a2o4x"]
 [ext_resource type="Texture2D" uid="uid://cbjxkkygxynji" path="res://Assets/comics/level_10.png" id="11_55x6a"]
 [ext_resource type="Texture2D" uid="uid://deryhgvf7e1n7" path="res://Assets/comics/level_11.png" id="12_wyaj5"]
@@ -67,7 +69,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_iekig")
+texture = ExtResource("4_fhx3f")
 expand_mode = 1
 
 [node name="comics_level_3" type="TextureRect" parent="comics_container"]
@@ -131,7 +133,7 @@ anchor_right = 1.003125
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_qagty")
+texture = ExtResource("8_7iyrd")
 expand_mode = 1
 
 [node name="comics_level_8" type="TextureRect" parent="comics_container"]

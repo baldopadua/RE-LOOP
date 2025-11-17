@@ -143,3 +143,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 				upper_bar.queue_free()
 			if lower_bar:
 				lower_bar.queue_free()
+
+
+func _on_level_handler_skip_level_requested(level_number: int) -> void:
+	if level_number == 5:
+		level_handler.complete_current_level(get_parent())
