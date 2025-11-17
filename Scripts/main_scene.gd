@@ -17,6 +17,7 @@ func _ready():
 	$GameScene.visible= false;
 	$GameScene.process_mode = Node.PROCESS_MODE_DISABLED
 
+	
 	 # Hide game UI elements on first landing
 	if ui_handler.ui_logic.has_node("game_ui_elements"):
 		ui_handler.ui_logic.get_node("game_ui_elements").visible = false
@@ -25,6 +26,12 @@ func _ready():
 	# Hide level handler initially
 	if $GameScene.has_node("levels_frame/level_lobby/LevelHandler"):
 		$GameScene.get_node("levels_frame/level_lobby/LevelHandler").visible = false
+
+	# Hide and disable credits_button_settings initially
+	var credits_btn_settings = ui_handler.ui_logic.get_node_or_null("overlay/settings/credits_button_settings")
+	if credits_btn_settings:
+		credits_btn_settings.visible = false
+		credits_btn_settings.disabled = true
 
 func _connect_main_menu_buttons():
 	if ui_handler.ui_logic.has_node("main_menu"):
@@ -105,14 +112,18 @@ func _on_main_menu_button_pressed(button_type):
 			if $GameScene.has_node("levels_frame/level_lobby/LevelHandler"):
 				$GameScene.get_node("levels_frame/level_lobby/LevelHandler").visible = true
 			ui_handler.show_only_keys_elements()
+
+			# Show and enable credits_button_settings when starting
+			var credits_btn_settings = ui_handler.ui_logic.get_node_or_null("overlay/settings/credits_button_settings")
+			if credits_btn_settings:
+				credits_btn_settings.visible = true
+				credits_btn_settings.disabled = false
 		elif button_type == "tutorial":
 			ui_handler.sound_manager.play_ui("page_turn")
 			ui_handler.hide_main_menu()
 			ui_handler.show_overlay_tutorial()
 		elif button_type == "credits":
 			ui_handler.sound_manager.play_ui("page_turn")
-			ui_handler.hide_main_menu()
-			ui_handler.show_overlay_credits()
 			ui_handler.hide_main_menu()
 			ui_handler.show_overlay_credits()
 		elif button_type == "settings":
