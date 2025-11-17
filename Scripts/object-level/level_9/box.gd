@@ -2,6 +2,7 @@ extends object_class
 
 @warning_ignore("unused_signal")
 signal close_box(cat)
+signal open_box # New signal
 
 @onready var cat = $"../cat"
 @onready var cat2 = $"../cat2"
@@ -62,3 +63,25 @@ func close_box_function():
 	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	player.set_process_input(true)
 	box_closed = true
+
+func open_box_function():
+	player.set_process_input(false)
+	player.get_node("Camera2D").emit_signal("reveal_bars")
+	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
+	player.get_node("Camera2D").emit_signal("pan_to_pos", global_position)
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	animation_sprite.play_backwards("activate")
+	
+
+func _on_open_box_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "activate":
+		cat.visible = true
+		cat2.visible = true
+		player.get_node("Camera2D").emit_signal("hide_bars")
+		player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+		player.set_process_input(true)
+		box_closed = false
+		emit_signal("open_box")

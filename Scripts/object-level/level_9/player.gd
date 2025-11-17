@@ -55,7 +55,8 @@ func _on_player_finished_moving() -> void:
 				lever2.is_pickupable = false
 				s2.visible = false
 				lever2.visible = false
-				box.visible = false
+				box.visible = true
+				cat.visible = true
 				switch_circle.visible = false
 				s1.position.x = -101.0
 				lever1.position.x = -101.0
@@ -73,8 +74,10 @@ func _on_player_finished_moving() -> void:
 				flash.create_tween().tween_property(flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 				
 				await get_tree().create_timer(1.0).timeout
-				get_node("Camera2D").emit_signal("cam_orig_zoom")
-				await get_tree().create_timer(2.0).timeout
+
+				box.open_box_function()
+				get_node("Camera2D").emit_signal("cam_orig_zoom") #
+				await get_tree().create_timer(4.0).timeout
 				area_handler.show_loop_break(9)
 
 				# After the loop break, hide bars and enable player movement
@@ -85,4 +88,6 @@ func _on_player_finished_moving() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	pass # Replace with function body.
-				
+
+
+
