@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://l5m6n7o8p9q0r"]
 
 [ext_resource type="AudioStream" uid="uid://bh1mnpy3s61hg" path="res://Audio/sfx/incubator_check.wav" id="1_check"]
 

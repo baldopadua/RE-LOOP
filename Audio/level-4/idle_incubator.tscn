@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://e9f0g1h2i3j4k"]
 
 [ext_resource type="AudioStream" uid="uid://dfkssm4sgmp62" path="res://Audio/sfx/idle_incubator.wav" id="1_idle"]
 
