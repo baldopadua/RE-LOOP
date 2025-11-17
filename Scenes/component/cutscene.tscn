@@ -100,6 +100,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="comics_level_5" type="TextureRect" parent="comics_container"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
