@@ -92,6 +92,37 @@
 [ext_resource type="PackedScene" uid="uid://dcajafvxv6kos" path="res://Audio/level-5/soda_pop.tscn" id="50_level5"]
 [ext_resource type="PackedScene" uid="uid://b6fh2wn5tix1m" path="res://Audio/level-5/depress_man.tscn" id="51_level5"]
 
+; ========================================
+; LEVEL 6 SOUNDS (Wrappers - PackedScene)
+; ========================================
+[ext_resource type="PackedScene" uid="uid://j9k0l1m2n3o4p" path="res://Audio/level-6/crystal_transition.tscn" id="52_level6"]
+
+; ========================================
+; LEVEL 7 SOUNDS (Wrappers - PackedScene)
+; ========================================
+[ext_resource type="PackedScene" uid="uid://b1c2d3e4f5g6h" path="res://Audio/level-7/butterfly.tscn" id="53_level7"]
+[ext_resource type="PackedScene" uid="uid://c2d3e4f5g6h7i" path="res://Audio/level-7/spider.tscn" id="54_level7"]
+
+; ========================================
+; LEVEL 8 SOUNDS (Wrappers - PackedScene)
+; ========================================
+[ext_resource type="PackedScene" uid="uid://m2n3o4p5q6r7s" path="res://Audio/level-8/carrot_patch.tscn" id="55_level8"]
+[ext_resource type="PackedScene" uid="uid://k0l1m2n3o4p5q" path="res://Audio/level-8/chair.tscn" id="56_level8"]
+[ext_resource type="PackedScene" uid="uid://l1m2n3o4p5q6r" path="res://Audio/level-8/gunshut.tscn" id="57_level8"]
+
+; ========================================
+; LEVEL 9 SOUNDS (Wrappers - PackedScene)
+; ========================================
+[ext_resource type="PackedScene" uid="uid://e4f5g6h7i8j9k" path="res://Audio/level-9/cat.tscn" id="58_level9"]
+[ext_resource type="PackedScene" uid="uid://f5g6h7i8j9k0l" path="res://Audio/level-9/lever.tscn" id="59_level9"]
+[ext_resource type="PackedScene" uid="uid://g6h7i8j9k0l1m" path="res://Audio/level-9/bowl.tscn" id="60_level9"]
+
+; ========================================
+; LEVEL 10 SOUNDS (Wrappers - PackedScene)
+; ========================================
+[ext_resource type="PackedScene" uid="uid://h7i8j9k0l1m2n" path="res://Audio/level-10/laser.tscn" id="61_level10"]
+[ext_resource type="PackedScene" uid="uid://i8j9k0l1m2n3o" path="res://Audio/level-10/tesla_coil.tscn" id="62_level10"]
+
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_ynhbd")
 
@@ -233,6 +264,42 @@ stream = ExtResource("15_clock")
 [node name="soda_pop" parent="sfx/level_5_sfx" instance=ExtResource("50_level5")]
 
 [node name="depress_man" parent="sfx/level_5_sfx" instance=ExtResource("51_level5")]
+
+[node name="level_6_sfx" type="Node2D" parent="sfx"]
+
+[node name="crystal_transition" parent="sfx/level_6_sfx" instance=ExtResource("52_level6")]
+
+[node name="level_7_sfx" type="Node2D" parent="sfx"]
+
+[node name="butterfly" parent="sfx/level_7_sfx" instance=ExtResource("53_level7")]
+
+[node name="spider" parent="sfx/level_7_sfx" instance=ExtResource("54_level7")]
+
+[node name="level_8_sfx" type="Node2D" parent="sfx"]
+
+[node name="carrot_patch" parent="sfx/level_8_sfx" instance=ExtResource("55_level8")]
+
+[node name="chair" parent="sfx/level_8_sfx" instance=ExtResource("56_level8")]
+
+[node name="gunshut" parent="sfx/level_8_sfx" instance=ExtResource("57_level8")]
+
+[node name="level_9_sfx" type="Node2D" parent="sfx"]
+
+[node name="cat" parent="sfx/level_9_sfx" instance=ExtResource("58_level9")]
+
+[node name="lever" parent="sfx/level_9_sfx" instance=ExtResource("59_level9")]
+
+[node name="bowl" parent="sfx/level_9_sfx" instance=ExtResource("60_level9")]
+
+[node name="level_10_sfx" type="Node2D" parent="sfx"]
+
+[node name="laser" parent="sfx/level_10_sfx" instance=ExtResource("61_level10")]
+
+[node name="tesla_coil" parent="sfx/level_10_sfx" instance=ExtResource("62_level10")]
+
+[node name="level_11_sfx" type="Node2D" parent="sfx"]
+
+[node name="level_12_sfx" type="Node2D" parent="sfx"]
 
 [node name="music" type="Node2D" parent="."]
 
