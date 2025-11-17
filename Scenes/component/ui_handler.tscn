@@ -693,13 +693,24 @@ texture = ExtResource("22_kyj2j")
 stretch_mode = 4
 
 [node name="credits" type="Control" parent="ui_logic/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="credits_bg" type="TextureRect" parent="ui_logic/overlay/credits"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.015625
+anchor_right = 1.015625
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_bo42c")
 metadata/_edit_use_anchors_ = true
 
 [node name="credits_overlay" type="TextureRect" parent="ui_logic/overlay/credits"]
@@ -2091,6 +2102,7 @@ sprite_frames = SubResource("SpriteFrames_tkpeg")
 flip_h = true
 
 [node name="settings" type="Control" parent="ui_logic/overlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2265,6 +2277,26 @@ theme_override_font_sizes/font_size = 50
 text = "Music"
 metadata/_edit_use_anchors_ = true
 
+[node name="credits_button_settings" type="TextureButton" parent="ui_logic/overlay/settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1578125
+anchor_top = 0.12083333
+anchor_right = 0.2820315
+anchor_bottom = 0.36111027
+grow_horizontal = 2
+grow_vertical = 2
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="credits_animated_icon" type="AnimatedSprite2D" parent="ui_logic/overlay/settings/credits_button_settings"]
+texture_filter = 1
+position = Vector2(88, 65.2501)
+scale = Vector2(6.28704, 6.95834)
+sprite_frames = SubResource("SpriteFrames_ko6nu")
+autoplay = "default"
+
 [node name="close_button" type="TextureButton" parent="ui_logic/overlay"]
 visible = false
 texture_filter = 1
@@ -2311,3 +2343,4 @@ script = ExtResource("20_qpkpn")
 [connection signal="toggled" from="ui_logic/overlay/settings/settings_box/enable_skip_toggle" to="ui_logic/overlay/hint" method="_on_enable_skip_toggle_toggled"]
 [connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/sfx_slider" to="ui_logic/overlay/settings" method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/music_slider" to="ui_logic/overlay/settings" method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="ui_logic/overlay/settings/credits_button_settings" to="ui_logic/overlay/settings" method="_on_credits_button_settings_pressed"]

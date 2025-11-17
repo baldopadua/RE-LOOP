@@ -1,6 +1,7 @@
 extends Control
 
 @onready var credits_button = $main_menu/credits_button
+@onready var credits_button_settings = $overlay/settings/credits_button_settings
 @onready var ui_handler = get_parent() 
 var animated_icon: AnimatedSprite2D = null
 
