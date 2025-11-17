@@ -1372,7 +1372,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 47
-text = "\"A child holds a simple soda, yet dreams ignite. From fizz and foam he fashions flight, a vessel born of bubbles and bright imagination, rising skyward on a sparkling beam.”"
+text = "“A child holds a simple soda, yet dreams ignite. From fizz and foam he fashions a vessel born of bubbles and bright imagination, rising skyward on a sparkling beam.”"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1459,8 +1459,8 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 56
-text = "hard"
+theme_override_font_sizes/font_size = 42
+text = "“A world divided drifts out of tune. Roots and bones wander where they do not belong, and time forgets which story is true. Only when both circles echo the same moment,seed to seed, mind to mind, will gravity remember its purpose and let the fruit of truth fall.”"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1471,9 +1471,9 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05406056
-anchor_top = 0.15030245
-anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_top = -0.060144268
+anchor_right = 0.97730696
+anchor_bottom = 1.1083062
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1483,8 +1483,11 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 54
-text = "medium"
+theme_override_font_sizes/font_size = 42
+text = "“Each circle shows a different version of the same scene.
+Match what belongs on the left with its counterpart on the right. A seed must meet its seed, a Newton must meet his other self. When both timelines mirror each other perfectly,
+the tree will know when to drop the apple.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1495,9 +1498,11 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05406056
-anchor_top = 0.15030245
-anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_top = 0.064448565
+anchor_right = 0.937544
+anchor_bottom = 0.9837134
+offset_top = 12.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1507,8 +1512,14 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 54
-text = "easy"
+theme_override_font_sizes/font_size = 38
+text = "“Place each keystone in the circle where it really belongs.
+Plant the seed so it matches the other timeline,
+put Isaac Newton where the other world shows him,
+and keep both circles synchronized.
+When everything is in the same state in both timelines,
+the apple will fall and the two worlds will merge.“
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1715,9 +1726,9 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.032936484
-anchor_top = -0.021405319
+anchor_top = 0.030944612
 anchor_right = 0.971094
-anchor_bottom = 1.029316
+anchor_bottom = 1.0816659
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1728,8 +1739,13 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+theme_override_font_sizes/font_size = 42
+text = "“Two worlds argue over a single truth.
+A cat caught between fates,
+a lever pulled in one reality but not the other.
+Bring both moments into agreement,
+and the box at the center will reveal what time has decided.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1753,9 +1769,9 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+text = "“Put the cat inside the center box, then make sure the lever in both circles matches.
+When both timelines share the same action, the two labs will begin to merge and the box will open.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1779,7 +1795,10 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+text = "“Place the cat inside the center box.
+Match the lever position in both worlds.
+Once the levers line up at the same time, the timelines merge and the box opens.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1800,9 +1819,9 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.032936484
-anchor_top = -0.021405319
+anchor_top = 0.0120986365
 anchor_right = 0.971094
-anchor_bottom = 1.029316
+anchor_bottom = 1.06282
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1813,8 +1832,12 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+theme_override_font_sizes/font_size = 47
+text = "“Three sparks sleep in silence.
+Wake the minds that once chased lightning, coils, and burning filaments.
+Only when their forgotten discoveries shine again
+will the laser remember how to roar.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1824,10 +1847,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05406056
-anchor_top = 0.15030245
-anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_left = 0.056545746
+anchor_top = 0.10842251
+anchor_right = 0.943757
+anchor_bottom = 0.99418336
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1838,9 +1861,10 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+text = "“Charge the laser by restoring the work of the three inventors.
+Let Franklin reclaim lightning, Tesla his coil, and Edison his light.
+When all three inventions shine together, the laser will reactivate.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1851,9 +1875,9 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05406056
-anchor_top = 0.15030245
-anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_top = 0.04769659
+anchor_right = 0.937544
+anchor_bottom = 1.0276873
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1863,8 +1887,11 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+theme_override_font_sizes/font_size = 49
+text = "“Place each inventor’s skull at their invention: Franklin at the lightning cloud , Tesla at the coil, and Edison at the lightbulb.
+Once placed, returned them into their young selves, powering the laser.
+When all three lights shine, the laser fires and breaks the loop.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
