@@ -96,6 +96,8 @@
 ; LEVEL 6 SOUNDS (Wrappers - PackedScene)
 ; ========================================
 [ext_resource type="PackedScene" uid="uid://j9k0l1m2n3o4p" path="res://Audio/level-6/crystal_transition.tscn" id="52_level6"]
+[ext_resource type="PackedScene" uid="uid://n3o4p5q6r7s8t" path="res://Audio/level-6/person1.tscn" id="53_level6"]
+[ext_resource type="PackedScene" uid="uid://o4p5q6r7s8t9u" path="res://Audio/level-6/leaves.tscn" id="54_level6"]
 
 ; ========================================
 ; LEVEL 7 SOUNDS (Wrappers - PackedScene)
@@ -268,6 +270,12 @@ stream = ExtResource("15_clock")
 [node name="level_6_sfx" type="Node2D" parent="sfx"]
 
 [node name="crystal_transition" parent="sfx/level_6_sfx" instance=ExtResource("52_level6")]
+
+[node name="person1" parent="sfx/level_6_sfx" instance=ExtResource("53_level6")]
+
+[node name="leaves" parent="sfx/level_6_sfx" instance=ExtResource("54_level6")]
+
+[node name="bones_collapse" parent="sfx/level_6_sfx" instance=ExtResource("20_oau0s")]
 
 [node name="level_7_sfx" type="Node2D" parent="sfx"]
 
