@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d4m7oap2q8s1t"]
 
-[ext_resource type="AudioStream" uid="uid://e5n8r1u4v7w2x" path="res://Audio/sfx/man_nagulat_sa_sword.wav" id="1_man_nagulat"]
+[ext_resource type="AudioStream" uid="uid://c3nk4vsr5e80d" path="res://Audio/sfx/man_nagulat_sa_sword.wav" id="1_man_nagulat"]
 
 [node name="man_nagulat_sa_sword" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_man_nagulat")

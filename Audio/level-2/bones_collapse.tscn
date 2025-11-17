@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bl2jks8h4m2nx"]
 
-[ext_resource type="AudioStream" uid="uid://b8h5h2n0djc2x" path="res://Audio/sfx/bones_collapse.wav" id="1_bones"]
+[ext_resource type="AudioStream" uid="uid://bgqoutks1wanx" path="res://Audio/sfx/bones_collapse.wav" id="1_bones"]
 
 [node name="bones_collapse" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_bones")
