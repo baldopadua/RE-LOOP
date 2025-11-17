@@ -718,7 +718,6 @@ texture = ExtResource("21_taira")
 expand_mode = 1
 
 [node name="hint" type="Control" parent="ui_logic/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2091,6 +2090,7 @@ sprite_frames = SubResource("SpriteFrames_tkpeg")
 flip_h = true
 
 [node name="settings" type="Control" parent="ui_logic/overlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2163,32 +2163,34 @@ metadata/_edit_use_anchors_ = true
 [node name="enable_skip_toggle" type="CheckButton" parent="ui_logic/overlay/settings/settings_box"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.6475
-anchor_top = 0.64705884
-anchor_right = 0.795175
-anchor_bottom = 0.8556148
+anchor_left = 0.68
+anchor_top = 0.6524064
+anchor_right = 0.82767504
+anchor_bottom = 0.8609624
 offset_right = -74.140015
 offset_bottom = -48.949677
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.685, 2.685)
-focus_behavior_recursive = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 17
+flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="enable" type="Label" parent="ui_logic/overlay/settings/settings_box"]
+[node name="sfx_title" type="Label" parent="ui_logic/overlay/settings/settings_box/enable_skip_toggle"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.255
-anchor_top = 0.7058824
-anchor_right = 0.65
-anchor_bottom = 0.8315508
+anchor_left = -3.0218391
+anchor_top = 0.24358991
+anchor_right = 0.23700576
+anchor_bottom = 0.9102569
+offset_left = 3.0517578e-05
+offset_right = 3.0517578e-05
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 45
-text = "Enable Skip Levels"
+theme_override_font_sizes/font_size = 20
+text = "Enable Skip Level"
 metadata/_edit_use_anchors_ = true
 
 [node name="sfx_slider" type="HSlider" parent="ui_logic/overlay/settings/settings_box"]
@@ -2285,10 +2287,9 @@ stretch_mode = 0
 
 [node name="level_lobby" type="Control" parent="ui_logic/overlay"]
 layout_mode = 1
-anchor_left = -0.02109375
-anchor_top = -0.0125
-anchor_right = 0.9789063
-anchor_bottom = 0.9875
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true

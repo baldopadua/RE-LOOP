@@ -17,7 +17,7 @@ var hint_progress = {}  # DICTIONARY TO STORE PROGRESS PER LEVEL
 @onready var solution_lock = $hint_box/hint_box_empty/solution/solution_lock
 @onready var solution_overlay = $hint_box/hint_box_empty/solution/solution_overlay
 @onready var skip_level_button = $hint_box/skip_level
-@onready var enable_skip_button = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler/ui_logic/overlay/settings/settings_box/enable_skip")
+@onready var enable_skip_button = get_node("/root/MainScene/CanvasLayerUi/UiHandler/ui_logic/overlay/settings/settings_box/enable_skip_toggle")
 
 @onready var orig_hint_1_modulate: Color = hint_1_status_bar.modulate
 @onready var orig_hint_2_modulate: Color = hint_2_status_bar.modulate
@@ -59,6 +59,8 @@ func _ready() -> void:
 		skip_level_button.disabled = true
 		skip_level_button.pressed.connect(_on_skip_level_pressed)
 	
+	print("skip_level_button:", skip_level_button)
+	print("enable_skip_button:", enable_skip_button)
 
 func _init_timer_labels() -> void:
 	if hint_2_timer and hint_2_timer.has_node("timer_label"):
@@ -424,16 +426,14 @@ func _on_skip_level_pressed():
 		connected_level_handler.request_skip_level()
 
 
+func _on_enable_skip_toggle_toggled(toggled_on: bool) -> void:
 
-
-func _on_enable_skip_toggled(toggled_on: bool) -> void:
 	if skip_level_button:
 		skip_level_button.visible = toggled_on
 		skip_level_button.disabled = not toggled_on
 		skip_level_button.modulate = Color(1, 1, 0, 1) if toggled_on else Color(0.9368433, 0.8956263, 1, 1)
 	if enable_skip_button:
-		enable_skip_button.modulate = Color(1, 1, 0, 1) if toggled_on else Color(1, 1, 1, 1)
-
+		enable_skip_button.modulate = Color(1, 1, 0, 1) if toggled_on else Color(0.9368433, 0.8956263, 1, 1)
 	# Only auto-show hint overlay if hint system is active (not lobby, level > 0)
 	if toggled_on and ui_handler:
 		var hint_btn = null
