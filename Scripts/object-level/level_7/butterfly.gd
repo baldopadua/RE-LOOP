@@ -12,6 +12,7 @@ extends object_class
 # 	Tt can now be moved away from the butterfly's path.
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var sound_manager = get_parent().get_node("SoundManager")
 var moves : int = 3
 var is_alive : bool = true
 var b_min_state = 1
@@ -40,6 +41,9 @@ func _on_rotate_object(direction: Variant) -> void:
 			rotation_tween = rotation - deg_to_rad(30.0)
 			animated_sprite.flip_h = true
 			moves += 1
+			# Play butterfly sound
+			if sound_manager and sound_manager.sfx.has("butterfly"):
+				sound_manager.play_sfx("butterfly")
 			tween.tween_property(self, "rotation", rotation_tween, 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 			tween.finished.connect(func():
 				wind.emit_signal("add_wind_state", direction)
@@ -51,6 +55,9 @@ func _on_rotate_object(direction: Variant) -> void:
 			rotation_tween = rotation + deg_to_rad(30.0)
 			animated_sprite.flip_h = false
 			moves -= 1
+			# Play butterfly sound
+			if sound_manager and sound_manager.sfx.has("butterfly"):
+				sound_manager.play_sfx("butterfly")
 			tween.tween_property(self, "rotation", rotation_tween, 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 			tween.finished.connect(func():
 				wind.emit_signal("add_wind_state", direction)

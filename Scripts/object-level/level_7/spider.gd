@@ -6,6 +6,7 @@ extends object_class
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player = $"../PlayerScene"
 @onready var mark_to_pos = $Marker2D
+@onready var sound_manager = get_parent().get_node("SoundManager")
 @warning_ignore("unused_signal")
 signal add_cur_state(direction)
 
@@ -31,6 +32,9 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		animated_sprite.play("spider_eating")
 		butterfly.animated_sprite.play("eaten_butterfly")
+		# Play spider sound when eating
+		if sound_manager and sound_manager.sfx.has("spider"):
+			sound_manager.play_sfx("spider")
 		await animated_sprite.animation_finished
 		
 		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
