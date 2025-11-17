@@ -116,7 +116,6 @@ func _on_start_race() -> void:
 						player.get_node("Camera2D").emit_signal("hide_bars")
 					# Emit the new signal instead of calling complete_current_level directly
 					emit_signal("turtle_win_race")
-
 				break
 
 #		Priority hare reaches finish first

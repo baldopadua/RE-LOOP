@@ -204,14 +204,21 @@ func complete_current_level(levels_frame):
 			return
 		else:
 			await return_to_lobby(levels_frame)
-			var lobby_scene = levels_frame.get_child(0)
-			if lobby_scene and lobby_scene.has_method("start_cutscene_then_enter_next_level"):
-				lobby_scene.start_cutscene_then_enter_next_level(next_level_number)
-			else:
-				if ui_handler:
-					ui_handler.show_level_cutscene(next_level_number, func(): _continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame))
-				else:
-					_continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame)
+			# --- REMOVE/COMMENT OUT THE CUTSCENE LOGIC BELOW ---
+			# var lobby_scene = levels_frame.get_child(0)
+			# if lobby_scene and lobby_scene.has_method("start_cutscene_then_enter_next_level"):
+			# 	lobby_scene.start_cutscene_then_enter_next_level(next_level_number)
+			# else:
+			# 	if ui_handler:
+			# 		ui_handler.show_level_cutscene(next_level_number, func(): _continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame))
+			# 	else:
+			# 		_continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame)
+			# --- NOW, JUST RETURN TO LOBBY ---
+			return
+		# if ui_handler:
+		# 	ui_handler.show_level_cutscene(next_level_number, func(): _continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame))
+		# else:
+		# 	_continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame)
 
 func _show_clock_then_return_lobby(_cutscene_level_number: int, levels_frame):
 	await show_level_transition_cutscene(_cutscene_level_number)
