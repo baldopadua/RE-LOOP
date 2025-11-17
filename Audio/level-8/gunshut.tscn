@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://l1m2n3o4p5q6r"]
+
+[ext_resource type="AudioStream" uid="uid://cw7gad37jby6p" path="res://Audio/sfx/gunshut.wav" id="1_gun"]
+
+[node name="gunshut" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_gun")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 2
