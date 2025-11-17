@@ -55,6 +55,9 @@ func _ready():
 	
 	await get_tree().create_timer(2.5).timeout
 	
+	# Play crystal transition sound
+	if sound_manager and sound_manager.sfx.has("crystal_transition"):
+		sound_manager.play_sfx("crystal_transition")
 
 	var flash = ColorRect.new()
 	flash.color = Color(1, 1, 1, 1)
