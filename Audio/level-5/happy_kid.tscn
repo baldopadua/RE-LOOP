@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://bma5h0uw7cyp8"]
 
 [ext_resource type="AudioStream" uid="uid://bg3sl3jb78yai" path="res://Audio/sfx/happy_kid.wav" id="1_happy"]
 
@@ -9,4 +9,4 @@ stream_0/stream = ExtResource("1_happy")
 
 [node name="happy_kid" type="AudioStreamPlayer2D"]
 stream = SubResource("AudioStreamRandomizer_happy")
-volume_db = 1.0
+volume_db = 10.0

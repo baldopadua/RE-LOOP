@@ -51,11 +51,11 @@
 [ext_resource type="AudioStream" uid="uid://bf6ubuc8twaig" path="res://Audio/sfx/big_dinosaur1.wav" id="44_3oqx0"]
 [ext_resource type="AudioStream" uid="uid://dhxw0ynfnpdlw" path="res://Audio/sfx/chicken_sound.wav" id="45_4r04m"]
 [ext_resource type="AudioStream" uid="uid://cknowng64v31f" path="res://Audio/sfx/tanim_seed.wav" id="46_3oqx0"]
-[ext_resource type="AudioStream" uid="uid://bg3sl3jb78yai" path="res://Audio/sfx/happy_kid.wav" id="47_level5"]
-[ext_resource type="AudioStream" uid="uid://mfp02gerh4tq" path="res://Audio/sfx/rocket_blastoff_final.wav" id="48_level5"]
-[ext_resource type="AudioStream" uid="uid://dwxh4bwfols54" path="res://Audio/sfx/vending_machine_final.wav" id="49_level5"]
-[ext_resource type="AudioStream" uid="uid://dawev68c5nw0" path="res://Audio/sfx/soda_pop_final.wav" id="50_level5"]
-[ext_resource type="AudioStream" uid="uid://c5t73uqaq5ng4" path="res://Audio/sfx/depress_man.wav" id="51_level5"]
+[ext_resource type="PackedScene" uid="uid://bma5h0uw7cyp8" path="res://Audio/level-5/happy_kid.tscn" id="47_level5"]
+[ext_resource type="PackedScene" uid="uid://c5ktlnrjwqn5y" path="res://Audio/level-5/rocket_blastoff.tscn" id="48_level5"]
+[ext_resource type="PackedScene" uid="uid://cc1p6nlx25ams" path="res://Audio/level-5/vending_machine.tscn" id="49_level5"]
+[ext_resource type="PackedScene" uid="uid://dcajafvxv6kos" path="res://Audio/level-5/soda_pop.tscn" id="50_level5"]
+[ext_resource type="PackedScene" uid="uid://b6fh2wn5tix1m" path="res://Audio/level-5/depress_man.tscn" id="51_level5"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7wrvl"]
 random_pitch = 1.5
@@ -244,20 +244,15 @@ stream = ExtResource("46_3oqx0")
 
 [node name="level_5_sfx" type="Node2D" parent="sfx"]
 
-[node name="happy_kid" type="AudioStreamPlayer2D" parent="sfx/level_5_sfx"]
-stream = ExtResource("47_level5")
+[node name="happy_kid" parent="sfx/level_5_sfx" instance=ExtResource("47_level5")]
 
-[node name="rocket_blastoff" type="AudioStreamPlayer2D" parent="sfx/level_5_sfx"]
-stream = ExtResource("48_level5")
+[node name="rocket_blastoff" parent="sfx/level_5_sfx" instance=ExtResource("48_level5")]
 
-[node name="vending_machine" type="AudioStreamPlayer2D" parent="sfx/level_5_sfx"]
-stream = ExtResource("49_level5")
+[node name="vending_machine" parent="sfx/level_5_sfx" instance=ExtResource("49_level5")]
 
-[node name="soda_pop" type="AudioStreamPlayer2D" parent="sfx/level_5_sfx"]
-stream = ExtResource("50_level5")
+[node name="soda_pop" parent="sfx/level_5_sfx" instance=ExtResource("50_level5")]
 
-[node name="depress_man" type="AudioStreamPlayer2D" parent="sfx/level_5_sfx"]
-stream = ExtResource("51_level5")
+[node name="depress_man" parent="sfx/level_5_sfx" instance=ExtResource("51_level5")]
 
 [node name="music" type="Node2D" parent="."]
 

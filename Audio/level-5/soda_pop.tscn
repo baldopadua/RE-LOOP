@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://dcajafvxv6kos"]
 
 [ext_resource type="AudioStream" uid="uid://dawev68c5nw0" path="res://Audio/sfx/soda_pop_final.wav" id="1_soda"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://cc1p6nlx25ams"]
 
 [ext_resource type="AudioStream" uid="uid://dwxh4bwfols54" path="res://Audio/sfx/vending_machine_final.wav" id="1_vending"]
 
