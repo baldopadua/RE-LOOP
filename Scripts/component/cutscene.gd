@@ -8,6 +8,21 @@ extends Control
 var current_level: int = 0
 var on_continue_callback: Callable
 
+static var level_titles = {
+	1: "The Ancient Tree",
+	2: "The Old Man", 
+	3: "Under Pressure",
+	4: "The Theory of Evolution",
+	5: "Rocket Science",
+	6: "Gravity of the Situation",
+	7: "The Butterfly Effect",  
+	8: "The Turtle and The Hare", 
+	9: "Schrödinger's Cat",  
+	10: "Shock Therapy",
+	11: "The Sanctuary",
+	12: "Plooy"  
+}
+
 func _ready() -> void:
 	hide_all_comics()
 	press_to_continue.pressed.connect(_on_continue_pressed)
@@ -27,7 +42,11 @@ func show_level_cutscene(level_number: int, continue_callback: Callable = Callab
 		var comic_node = comics_container.get_node(comic_node_name)
 		comic_node.visible = true
 	
-	cutscene_labels.text = "Level " + str(level_number) + " Story"
+	# Only show the title, no "Level" word
+	if level_titles.has(level_number):
+		cutscene_labels.text = level_titles[level_number]
+	else:
+		cutscene_labels.text = str(level_number)
 	visible = true
 
 func hide_all_comics():

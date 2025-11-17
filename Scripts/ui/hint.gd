@@ -407,6 +407,15 @@ func show_hint():
 
 func hide_hint():
 	visible = false
+	# Ensure timer labels are invisible when closing
+	if hint_2_timer and hint_2_timer.has_node("timer_label"):
+		var label = hint_2_timer.get_node("timer_label")
+		label.visible = false
+		label.modulate.a = 0
+	if solution_timer and solution_timer.has_node("timer_label"):
+		var label = solution_timer.get_node("timer_label")
+		label.visible = false
+		label.modulate.a = 0
 
 func _on_skip_level_pressed():
 	# Find the overlay node and hide it
