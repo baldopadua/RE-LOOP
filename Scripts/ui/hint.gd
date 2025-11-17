@@ -181,7 +181,7 @@ func update_hint_text(difficulty: String):
 			var hint_node = level_hint.get_node_or_null("hint_%d_%s" % [level, difficulty])
 			if hint_node:
 				hint_node.visible = true
-	# skip_level visibility handled by _on_enable_skip_toggled
+	
 
 func show_appropriate_container():
 	print("show_appropriate_container: current_level =", current_level)
@@ -407,7 +407,18 @@ func show_hint():
 
 func hide_hint():
 	visible = false
-	# Ensure timer labels are invisible when closing
+	
+
+func _on_skip_level_pressed():
+	var overlay = get_parent()
+	while overlay and overlay.name != "overlay":
+		overlay = overlay.get_parent()
+	if overlay:
+		overlay.visible = false
+	visible = false
+	if overlay and overlay.has_node("close_button"):
+		overlay.get_node("close_button").visible = false
+
 	if hint_2_timer and hint_2_timer.has_node("timer_label"):
 		var label = hint_2_timer.get_node("timer_label")
 		label.visible = false
@@ -417,20 +428,6 @@ func hide_hint():
 		label.visible = false
 		label.modulate.a = 0
 
-func _on_skip_level_pressed():
-	# Find the overlay node and hide it
-	var overlay = get_parent()
-	while overlay and overlay.name != "overlay":
-		overlay = overlay.get_parent()
-	if overlay:
-		overlay.visible = false
-	# Hide the hint itself
-	visible = false
-	# Optionally hide the close button if present
-	if overlay and overlay.has_node("close_button"):
-		overlay.get_node("close_button").visible = false
-
-	# Trigger skip level signal on the handler
 	if connected_level_handler and connected_level_handler.has_method("request_skip_level"):
 		connected_level_handler.request_skip_level()
 

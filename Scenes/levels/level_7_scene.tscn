@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://bg2xip755v06g"]
+[gd_scene load_steps=66 format=3 uid="uid://bg2xip755v06g"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_7glvm"]
 [ext_resource type="Script" uid="uid://cr0pwvu6h53ym" path="res://Scripts/levels/level_7_script.gd" id="1_y76yc"]
@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_ltkbt"]
 [ext_resource type="Script" uid="uid://bp7mho5gyrm7k" path="res://Scripts/object-level/level_7/player.gd" id="4_t502a"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_qi7jl"]
-[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_qi7jl"]
-[ext_resource type="Texture2D" uid="uid://ba6w75c3euhid" path="res://Assets/level_select_lobby/level_8.png" id="8_ltkbt"]
 [ext_resource type="Texture2D" uid="uid://d4e6h22pyoxli" path="res://Assets/levels/level_7/placeholder_assets/butterfly.png" id="9_2jflw"]
 [ext_resource type="Texture2D" uid="uid://bq1o7tei5oc8i" path="res://Assets/levels/level_7/placeholder_assets/cocoon.png" id="9_7dou0"]
 [ext_resource type="Texture2D" uid="uid://bma0x25be1pws" path="res://Assets/levels/level_7/placeholder_assets/butterfly_eaten.png" id="10_7dou0"]
@@ -25,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://btrlf2b2mv0f1" path="res://Assets/levels/level_7/flower.png" id="22_1h23k"]
 [ext_resource type="Script" uid="uid://bnpdbogrrts84" path="res://Scripts/object-level/level_7/wind.gd" id="25_4j7ts"]
 [ext_resource type="Texture2D" uid="uid://d0qrsoix2qt60" path="res://Assets/levels/level_7/tornado.png" id="27_24kqj"]
-[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="34_t4kqu"]
 
 [sub_resource type="Gradient" id="Gradient_u1wgx"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -495,10 +492,6 @@ _data = {
 &"flow_with_tornado": SubResource("Animation_u1wgx")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u1wgx"]
-radius = 33.212807
-height = 85.85651
-
 [node name="level_7_scene" type="Node2D"]
 script = ExtResource("1_y76yc")
 
@@ -634,72 +627,6 @@ animation = &"wind_1"
 libraries = {
 &"": SubResource("AnimationLibrary_fdkpo")
 }
-
-[node name="enter_8" parent="." instance=ExtResource("6_qi7jl")]
-rotation = -2.094395
-script = ExtResource("7_qi7jl")
-object_name = "enter_8"
-object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_8"]
-position = Vector2(-6.2602553, -321.15698)
-shape = SubResource("CapsuleShape2D_u1wgx")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="enter_8"]
-texture_filter = 1
-position = Vector2(-0.4544859, -37.212814)
-rotation = 3.125929
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("8_ltkbt")
-offset = Vector2(0, 380)
-
-[node name="hover_text" type="RichTextLabel" parent="enter_8"]
-offset_left = -88.21474
-offset_top = -217.20764
-offset_right = 123.10579
-offset_bottom = -183.20764
-rotation = 3.1415927
-pivot_offset = Vector2(90, 11.5)
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = 1
-theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("34_t4kqu")
-theme_override_font_sizes/normal_font_size = 31
-text = "Ancient Tree"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="interact_text" type="RichTextLabel" parent="enter_8"]
-modulate = Color(1, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -250.0
-offset_right = 90.0
-offset_bottom = -227.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-scale = Vector2(1.30259, 1.39847)
-pivot_offset = Vector2(90, 11.5)
-theme_override_fonts/normal_font = ExtResource("34_t4kqu")
-theme_override_font_sizes/normal_font_size = 25
-text = "INTERACT"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]

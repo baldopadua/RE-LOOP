@@ -686,19 +686,14 @@ offset_left = -648.0
 offset_top = -379.0
 offset_right = 1272.0
 offset_bottom = 701.0
-offset_left = -648.0
-offset_top = -379.0
-offset_right = 1272.0
-offset_bottom = 701.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.68, 0.68)
-texture = ExtResource("22_kyj2j")
 scale = Vector2(0.68, 0.68)
 texture = ExtResource("22_kyj2j")
 stretch_mode = 4
 
 [node name="credits" type="Control" parent="ui_logic/overlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -735,6 +730,7 @@ texture = ExtResource("21_taira")
 expand_mode = 1
 
 [node name="hint" type="Control" parent="ui_logic/overlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -881,8 +877,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
-wait_time = 5.0
-wait_time = 5.0
+wait_time = 30.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2/hint_2_timer"]
 visible = false
@@ -939,8 +934,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
-wait_time = 5.0
-wait_time = 5.0
+wait_time = 30.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution/solution_timer"]
 visible = false
@@ -2101,25 +2095,8 @@ theme_override_font_sizes/font_size = 55
 text = "Skip Level"
 metadata/_edit_use_anchors_ = true
 
-[node name="skip_level" type="Button" parent="ui_logic/overlay/hint/hint_box"]
-modulate = Color(0.9368433, 0.8956263, 1, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.20119523
-anchor_top = 0.54821426
-anchor_right = 0.035395954
-anchor_bottom = 0.63035715
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 55
-text = "Skip Level"
-metadata/_edit_use_anchors_ = true
-
 [node name="plooy_hint" type="AnimatedSprite2D" parent="ui_logic/overlay/hint"]
 texture_filter = 1
-position = Vector2(152.2421, 571.2965)
-scale = Vector2(12.563159, 12.441378)
 position = Vector2(152.2421, 571.2965)
 scale = Vector2(12.563159, 12.441378)
 sprite_frames = SubResource("SpriteFrames_tkpeg")
@@ -2338,16 +2315,6 @@ texture_normal = ExtResource("22_iwsb4")
 texture_hover = ExtResource("23_4r7hv")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="level_lobby" type="Control" parent="ui_logic/overlay"]
-layout_mode = 1
-anchor_left = -0.02109375
-anchor_top = -0.0125
-anchor_right = 0.9789063
-anchor_bottom = 0.9875
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="cutscene" parent="." instance=ExtResource("33_nol8b")]
 visible = false

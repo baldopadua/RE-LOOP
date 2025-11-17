@@ -529,3 +529,23 @@ func shake_hint_button():
 	
 	# RESET TEXTURE AFTER ALL SHAKES ARE DONE
 	hint_button.texture_normal = original_texture
+
+func disable_game_ui_elements():
+	if ui_logic.has_node("game_ui_elements"):
+		var game_ui = ui_logic.get_node("game_ui_elements")
+		game_ui.set_process(false)
+		game_ui.set_process_input(false)
+		game_ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		for child in game_ui.get_children():
+			if child is Control:
+				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func enable_game_ui_elements():
+	if ui_logic.has_node("game_ui_elements"):
+		var game_ui = ui_logic.get_node("game_ui_elements")
+		game_ui.set_process(true)
+		game_ui.set_process_input(true)
+		game_ui.mouse_filter = Control.MOUSE_FILTER_STOP
+		for child in game_ui.get_children():
+			if child is Control:
+				child.mouse_filter = Control.MOUSE_FILTER_STOP

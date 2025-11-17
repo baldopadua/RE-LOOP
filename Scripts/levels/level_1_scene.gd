@@ -41,7 +41,7 @@ func _ready():
 		sound_manager.play_level_ambience()
 	# MANIPULATING OBJECTS APPENDED IN ARRAY
 	objects_initialize()
-	
+	ui_handler.disable_game_ui_elements()
 	player.rotation = deg_to_rad(30.0)
 	
 
@@ -74,6 +74,7 @@ func _on_level_handler_map_scale_tween_finished() -> void:
  	# REQUIRED TO LET THEM LOAD FIRST
 	await get_tree().create_timer(1.0).timeout
 	ui_handler.hide_game_ui_elements()
+	ui_handler.enable_game_ui_elements()
 	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	
@@ -85,6 +86,7 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	
 	await get_tree().create_timer(2.0).timeout
 	ui_handler.show_game_ui_elements()
+	ui_handler.enable_game_ui_elements()
 	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")

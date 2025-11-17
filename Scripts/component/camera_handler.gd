@@ -20,6 +20,7 @@ signal hide_bars()
 @onready var upper_bar = $"../../CanvasLayer/upper_bar"
 @onready var lower_bar = $"../../CanvasLayer/lower_bar"
 @onready var orig_parent = get_parent()
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 # HIDING POSITIONS
 # -50

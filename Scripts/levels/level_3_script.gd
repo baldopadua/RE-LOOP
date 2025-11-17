@@ -27,6 +27,7 @@ var tween_scale: Tween
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(3)
+	ui_handler.disable_game_ui_elements()
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# PLAY LEVEL AMBIENCE
 	if sound_manager:
@@ -45,14 +46,6 @@ func objects_initialize():
 func play_level3_sfx(sfx_name: String):
 	if sound_manager and sound_manager.sfx.has(sfx_name):
 		sound_manager.play_sfx(sfx_name)
-
-# ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
-# TO WORK ON THE SCRIPT
-# ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
-func enter_level():
-	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
-	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
-	level_handler.complete_current_level(get_parent()) 
 
 
 func _on_level_handler_map_scale_tween_finished() -> void:
@@ -73,6 +66,7 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	await get_tree().create_timer(2.0).timeout
 	
 	ui_handler.show_game_ui_elements()
+	ui_handler.enable_game_ui_elements()
 	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")

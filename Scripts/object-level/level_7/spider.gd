@@ -8,6 +8,7 @@ extends object_class
 @onready var mark_to_pos = $Marker2D
 @warning_ignore("unused_signal")
 signal add_cur_state(direction)
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 func _ready():
 	butterfly.connect("butterfly_state_changed", Callable(self, "_on_butterfly_butterfly_state_changed"))
@@ -22,7 +23,6 @@ func _on_area_entered(area: Area2D) -> void:
 		butterfly.is_alive = false
 		
 		player.set_process_input(false)
-		
 		player.get_node("Camera2D").emit_signal("pan_to_pos", mark_to_pos.global_position)
 		player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 		player.get_node("Camera2D").emit_signal("reveal_bars")

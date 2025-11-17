@@ -28,6 +28,7 @@ var jump_animation_played := false # Add this flag
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(6)
+	ui_handler.disable_game_ui_elements()
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# PLAY LEVEL AMBIENCE
@@ -78,7 +79,7 @@ func _ready():
 	
 	# Restore player visibility before enabling movement
 	player.modulate.a = 1.0
-	
+	ui_handler.enable_game_ui_elements()
 	GlobalVariables.player_stopped = false
 	player.set_process_input(true)
 	
@@ -93,15 +94,6 @@ func object_initialize():
 	objects.append(isaac_newton_2)
 	objects.append(seed)
 	objects.append(seed2)
-	
-# ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
-# TO WORK ON THE SCRIPT
-# ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
-func enter_level():
-	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
-	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
-	level_handler.complete_current_level(get_parent())
-
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	print("Animation finished: ", anim_name)

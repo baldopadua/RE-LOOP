@@ -1,4 +1,4 @@
-[gd_scene load_steps=251 format=3 uid="uid://c6w56va7ypoav"]
+[gd_scene load_steps=247 format=3 uid="uid://c6w56va7ypoav"]
 
 [ext_resource type="Script" uid="uid://bn68f804f0j7u" path="res://Scripts/levels/level_11_script.gd" id="1_k2n1d"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_rvkxo"]
@@ -7,9 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_ngdtp"]
 [ext_resource type="Script" uid="uid://dywnbqqvqpke2" path="res://Scripts/object-level/level_11/player.gd" id="4_pplem"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_ngdtp"]
-[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_k2n1d"]
-[ext_resource type="Texture2D" uid="uid://d1sh6ravdkyq3" path="res://Assets/level_select_lobby/level_12.png" id="7_ob8a3"]
-[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="9_00ofh"]
 [ext_resource type="Texture2D" uid="uid://4gu6kuviroho" path="res://Assets/levels/level_11/statue-tree-sheet-Sheet.png" id="10_vicku"]
 [ext_resource type="Texture2D" uid="uid://cfsgv0k3seegy" path="res://Assets/levels/level_11/statue-hero-sheet-Sheet.png" id="11_rf6by"]
 [ext_resource type="Texture2D" uid="uid://dpv8tnci5fvu2" path="res://Assets/levels/level_11/statue-geyser-sheet-sheet.png" id="12_tucii"]
@@ -49,10 +46,6 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ob8a3"]
 gradient = SubResource("Gradient_k2n1d")
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vicku"]
-radius = 33.212807
-height = 93.28204
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wo06f"]
 atlas = ExtResource("10_vicku")
@@ -1474,79 +1467,6 @@ visible = false
 position = Vector2(637.0001, 771)
 scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_ob8a3")
-
-[node name="enter_12" parent="." instance=ExtResource("5_ngdtp")]
-visible = false
-rotation = -1.5576049
-script = ExtResource("7_k2n1d")
-object_name = "enter_12"
-object_type = 1
-is_enterable = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_12"]
-position = Vector2(-1.0000548, -314)
-shape = SubResource("CapsuleShape2D_vicku")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="enter_12"]
-texture_filter = 1
-position = Vector2(-1.835823e-05, -103.99999)
-rotation = 3.141018
-scale = Vector2(0.49659887, 0.55141103)
-texture = ExtResource("7_ob8a3")
-offset = Vector2(0, 380)
-
-[node name="hover_text" type="RichTextLabel" parent="enter_12"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -220.0
-offset_right = 90.0
-offset_bottom = -186.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-pivot_offset = Vector2(90, 11.5)
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = 1
-theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("9_00ofh")
-theme_override_font_sizes/normal_font_size = 31
-text = "Ancient Tree"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="interact_text" type="RichTextLabel" parent="enter_12"]
-modulate = Color(1, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -250.0
-offset_right = 90.0
-offset_bottom = -227.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-scale = Vector2(1.30259, 1.39847)
-pivot_offset = Vector2(90, 11.5)
-text = "INTERACT"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="tree_statue" parent="." instance=ExtResource("5_ngdtp")]
 position = Vector2(122, -214)

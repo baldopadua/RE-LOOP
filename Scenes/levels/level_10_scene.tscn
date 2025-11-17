@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cvuyhsgfvpxwp"]
+[gd_scene load_steps=45 format=3 uid="uid://cvuyhsgfvpxwp"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_k7dlq"]
 [ext_resource type="Script" uid="uid://devjgm4fpge0o" path="res://Scripts/levels/level_10_script.gd" id="1_lnfvu"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_geapq"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_qcmyw"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_ttbi8"]
-[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_ttbi8"]
-[ext_resource type="Texture2D" uid="uid://cuydu40e70ckk" path="res://Assets/level_select_lobby/level_11.png" id="8_l8jia"]
 [ext_resource type="Script" uid="uid://de7c74454l7fa" path="res://Scripts/object-level/level_10/laser.gd" id="9_hqhit"]
 [ext_resource type="Texture2D" uid="uid://b8uqlvui8sxln" path="res://Assets/levels/level_10/placeholder_assets/laser-no-light.png" id="9_l8jia"]
 [ext_resource type="Texture2D" uid="uid://lm5s61eelun8" path="res://Assets/levels/level_10/placeholder_assets/nic-t.png" id="10_6d810"]
@@ -36,7 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://ccuyqxt2yj0er" path="res://Assets/levels/level_10/placeholder_assets/ben-f-shocked.png" id="26_5i1by"]
 [ext_resource type="Script" uid="uid://0auyg2m5liyv" path="res://Scripts/object-level/level_10/lightning_cloud.gd" id="27_imt5e"]
 [ext_resource type="Script" uid="uid://2gvpdpwif2sn" path="res://Scripts/object-level/level_10/light_bulb.gd" id="30_5i1by"]
-[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="37_3abkh"]
 
 [sub_resource type="Gradient" id="Gradient_5i1by"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -286,10 +283,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mh15f"]
-radius = 33.212807
-height = 85.85651
-
 [node name="level_10_scene" type="Node2D"]
 script = ExtResource("1_lnfvu")
 
@@ -440,77 +433,6 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LightBulb"]
 sprite_frames = SubResource("SpriteFrames_ehdct")
 metadata/_edit_lock_ = true
-
-[node name="enter_11" parent="." instance=ExtResource("6_ttbi8")]
-rotation = -0.52359897
-script = ExtResource("7_ttbi8")
-object_name = "enter_11"
-object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_11"]
-position = Vector2(-20.65247, -320.2288)
-shape = SubResource("CapsuleShape2D_mh15f")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="enter_11"]
-texture_filter = 1
-position = Vector2(-22.176908, -33.588455)
-rotation = 3.1415927
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("8_l8jia")
-offset = Vector2(0, 380)
-
-[node name="hover_text" type="RichTextLabel" parent="enter_11"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -105.195404
-offset_top = -247.79614
-offset_right = 74.804596
-offset_bottom = -213.79614
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(90, 11.5)
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = 1
-theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("37_3abkh")
-theme_override_font_sizes/normal_font_size = 31
-text = "Ancient Tree"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="interact_text" type="RichTextLabel" parent="enter_11"]
-modulate = Color(1, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -96.90119
-offset_top = -244.16212
-offset_right = 83.09881
-offset_bottom = -221.16212
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.30259, 1.39847)
-pivot_offset = Vector2(90, 11.5)
-theme_override_fonts/normal_font = ExtResource("37_3abkh")
-theme_override_font_sizes/normal_font_size = 25
-text = "INTERACT"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
 [connection signal="area_entered" from="Laser" to="Laser" method="_on_area_entered"]

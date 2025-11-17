@@ -9,6 +9,7 @@ var objects: Array = []
 
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var sound_manager = $SoundManager
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 @onready var monk = $monk
 @onready var canvas_layer = $CanvasLayer
@@ -58,6 +59,7 @@ var objects: Array = []
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(12)
+	ui_handler.disable_game_ui_elements()
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	GlobalVariables.is_looping = false

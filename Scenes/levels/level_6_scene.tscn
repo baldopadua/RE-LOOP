@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://3tla2n3edqkn"]
+[gd_scene load_steps=65 format=3 uid="uid://3tla2n3edqkn"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_2r23t"]
 [ext_resource type="Script" uid="uid://ds7lwxirvmjvs" path="res://Scripts/levels/level_6_script.gd" id="1_odmpw"]
@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_jmy7j"]
 [ext_resource type="Script" uid="uid://bm414w0mavhw0" path="res://Scripts/object-level/level_6/player.gd" id="4_pwedw"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_kapnr"]
-[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_kapnr"]
-[ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/level_select_lobby/level_7.png" id="8_pwedw"]
 [ext_resource type="Texture2D" uid="uid://cm1ofcp5mp3f1" path="res://Assets/VarianceSplit-Sheet.png" id="9_cr1iw"]
 [ext_resource type="Script" uid="uid://ipneen5ggosr" path="res://Scripts/object-level/level_6/in_1.gd" id="10_cr1iw"]
 [ext_resource type="Script" uid="uid://b4sgciq6gkscg" path="res://Scripts/object-level/level_6/switch_circle.gd" id="10_ov81m"]
@@ -16,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bbu4jrknv4i47" path="res://Assets/levels/level_6/recolored-tree.png" id="15_8mnya"]
 [ext_resource type="Script" uid="uid://dpen7dd1hhm1c" path="res://Scripts/object-level/level_6/in_2.gd" id="15_bxtqd"]
 [ext_resource type="Script" uid="uid://4ps5tmbu0ta5" path="res://Scripts/object-level/level_6/seed.gd" id="17_8mnya"]
-[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="19_cr1iw"]
 [ext_resource type="Script" uid="uid://dn4wa6vh46eft" path="res://Scripts/object-level/level_6/seed2.gd" id="20_f215k"]
 [ext_resource type="Texture2D" uid="uid://cqy4vnecvhahh" path="res://Assets/levels/level_6/inewton.png" id="22_f215k"]
 
@@ -407,10 +404,6 @@ _data = {
 &"jumping_animation": SubResource("Animation_8mnya")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxtqd"]
-radius = 33.212807
-height = 85.85651
-
 [node name="level_6_scene" type="Node2D"]
 script = ExtResource("1_odmpw")
 
@@ -587,79 +580,6 @@ position = Vector2(0, 25)
 libraries = {
 &"": SubResource("AnimationLibrary_8mnya")
 }
-
-[node name="enter_7" parent="." instance=ExtResource("6_kapnr")]
-rotation = -2.6179938
-script = ExtResource("7_kapnr")
-object_name = "enter_7"
-object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_7"]
-position = Vector2(-8.998106, -321.5852)
-shape = SubResource("CapsuleShape2D_bxtqd")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="enter_7"]
-texture_filter = 1
-position = Vector2(-2.0096188, -33.480762)
-rotation = 3.121508
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("8_pwedw")
-offset = Vector2(0, 380)
-
-[node name="hover_text" type="RichTextLabel" parent="enter_7"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -91.05516
-offset_top = -225.71211
-offset_right = 88.94484
-offset_bottom = -191.71211
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-pivot_offset = Vector2(90, 11.5)
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = 1
-theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("19_cr1iw")
-theme_override_font_sizes/normal_font_size = 31
-text = "Ancient Tree"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="interact_text" type="RichTextLabel" parent="enter_7"]
-modulate = Color(1, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -250.0
-offset_right = 90.0
-offset_bottom = -227.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-scale = Vector2(1.30259, 1.39847)
-pivot_offset = Vector2(90, 11.5)
-theme_override_fonts/normal_font = ExtResource("19_cr1iw")
-theme_override_font_sizes/normal_font_size = 25
-text = "INTERACT"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [connection signal="loop_break_shown" from="PlayerScene" to="isaac_newton_1" method="_on_player_scene_loop_break_shown"]
 [connection signal="loop_break_shown" from="PlayerScene" to="seed" method="_on_player_scene_loop_break_shown"]

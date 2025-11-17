@@ -61,6 +61,7 @@ func _on_player_finished_moving() -> void:
 				get_parent().enable_animation_player()
 				# Reveal all the keystones here
 				# Fade out animation
+				position.x = 0.0
 				flash.create_tween().tween_property(flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 				
 				await get_tree().create_timer(1.0).timeout
@@ -79,6 +80,7 @@ func _on_player_finished_moving() -> void:
 				get_node("Camera2D").emit_signal("hide_bars")
 				set_process_input(true)
 				GlobalVariables.player_stopped = false
+				position.x = 0.0
 
 				# Connect body_entered signals for climbable objects
 				seed1.connect("body_entered", Callable(self, "_on_climbable_body_entered"))

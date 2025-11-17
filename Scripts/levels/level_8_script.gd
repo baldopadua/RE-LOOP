@@ -10,10 +10,12 @@ var objects: Array = []
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var area_handler = $AreaHandler
 @onready var sound_manager = $SoundManager
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(8)
+	ui_handler.disable_game_ui_elements()
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# PLAY LEVEL AMBIENCE
@@ -25,14 +27,6 @@ func _ready():
 	player.rotation = deg_to_rad(240.0)
 
 
-# ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
-# TO WORK ON THE SCRIPT
-# ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
-func enter_level():
-	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
-	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
-	level_handler.complete_current_level(get_parent()) 
-	
 func _on_level_handler_skip_level_requested(level_number: int) -> void:
 	if level_number == 8:
 		level_handler.complete_current_level(get_parent())
