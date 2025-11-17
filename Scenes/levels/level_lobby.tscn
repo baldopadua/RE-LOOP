@@ -1,8 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://y4on1fq1mgnm"]
+[gd_scene load_steps=54 format=3 uid="uid://y4on1fq1mgnm"]
 
 [ext_resource type="Script" uid="uid://cej80lpoc3wmr" path="res://Scripts/levels/level_lobby.gd" id="1_6t7hq"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_6t7hq"]
-[ext_resource type="Texture2D" uid="uid://dv0n6q6h84trc" path="res://Assets/level_select_lobby/clock_base.png" id="2_11bkw"]
+[ext_resource type="Texture2D" uid="uid://dwely2w8w04vg" path="res://Assets/LevelSelect.png" id="2_ornx3"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_1uaeg"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_7i53v"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_1uaeg"]
@@ -22,22 +22,66 @@
 [ext_resource type="Texture2D" uid="uid://cuydu40e70ckk" path="res://Assets/level_select_lobby/level_11.png" id="27_me8nm"]
 [ext_resource type="Texture2D" uid="uid://d1sh6ravdkyq3" path="res://Assets/level_select_lobby/level_12.png" id="28_6wcj2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_igr4h"]
-atlas = ExtResource("2_11bkw")
-region = Rect2(0, 0, 1774, 1804)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycnx0"]
+atlas = ExtResource("2_ornx3")
+region = Rect2(149, 52, 214, 214)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gdju7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_igr4h")
+"texture": SubResource("AtlasTexture_ycnx0")
 }],
 "loop": true,
 "name": &"base",
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ornx3"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ycnx0"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o4wl8"]
+radius = 33.212807
+height = 85.85651
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uaeg"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ocyro"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qbue"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgpvv"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_me8nm"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m35q0"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6wcj2"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbn7t"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6un46"]
 radius = 33.212807
 height = 85.85651
 
@@ -425,7 +469,7 @@ script = ExtResource("1_6t7hq")
 
 [node name="clock_area" type="AnimatedSprite2D" parent="Camera2D"]
 position = Vector2(7.6293945e-06, -2)
-scale = Vector2(0.38162345, 0.36474502)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_gdju7")
 animation = &"base"
 
@@ -439,19 +483,6 @@ rotation = 0.5235988
 script = ExtResource("6_rqxun")
 object_name = "enter_1"
 object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_1"]
-position = Vector2(22.250591, -323.46082)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_1"]
-texture_filter = 1
-position = Vector2(5.8371716, -81.889725)
-rotation = 3.2106247
-scale = Vector2(0.54803, 0.6387339)
-texture = ExtResource("7_rqxun")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_1"]
 texture_filter = 1
@@ -507,24 +538,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_1"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_ornx3")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_1"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("7_rqxun")
+offset = Vector2(0, 483.725)
+
 [node name="enter_2" parent="Camera2D" instance=ExtResource("6_1uaeg")]
-rotation = 1.0511703
+rotation = 1.0471976
 script = ExtResource("6_rqxun")
 object_name = "enter_2"
 object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_2"]
-position = Vector2(17.4622, -328.24545)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_2"]
-texture_filter = 1
-position = Vector2(7.68911, -83.31793)
-rotation = 3.1885588
-scale = Vector2(0.54803, 0.64389104)
-texture = ExtResource("9_rym1o")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_2"]
 anchors_preset = 8
@@ -579,24 +609,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_2"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_ycnx0")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_2"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("9_rym1o")
+offset = Vector2(0, 483.725)
+
 [node name="enter_3" parent="Camera2D" instance=ExtResource("6_1uaeg")]
 rotation = 1.5707964
 script = ExtResource("6_rqxun")
 object_name = "enter_3"
 object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_3"]
-position = Vector2(9.999986, -335)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_3"]
-texture_filter = 1
-position = Vector2(6.9999976, -49)
-rotation = 3.151688
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("11_p6aa3")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_3"]
 anchors_preset = 8
@@ -652,6 +681,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_3"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_o4wl8")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_3"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("11_p6aa3")
+offset = Vector2(0, 483.725)
+
 [node name="enter_4" parent="Camera2D" instance=ExtResource("6_1uaeg")]
 rotation = 2.0943952
 script = ExtResource("6_rqxun")
@@ -667,7 +708,7 @@ debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
 texture_filter = 1
 position = Vector2(7.7595296, -225.7593)
 rotation = 3.1827781
-scale = Vector2(0.26605895, 0.28641188)
+scale = Vector2(0.286, 0.286)
 texture = ExtResource("10_ornx3")
 offset = Vector2(0, 380)
 
@@ -727,23 +768,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="enter_5" parent="Camera2D" instance=ExtResource("6_1uaeg")]
 position = Vector2(9, -5.9999995)
-rotation = 2.6517494
+rotation = 2.6179938
 script = ExtResource("6_rqxun")
 object_name = "enter_5"
 object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_5"]
-position = Vector2(7.3641453, -316.75507)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_5"]
-texture_filter = 1
-position = Vector2(-5.320504, -30.78461)
-rotation = 3.1842096
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("14_r86rd")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_5"]
 anchors_preset = 8
@@ -799,24 +827,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_5"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_ocyro")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_5"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("14_r86rd")
+offset = Vector2(0, 483.725)
+
 [node name="enter_6" parent="Camera2D" instance=ExtResource("6_1uaeg")]
 rotation = -3.1415925
 script = ExtResource("6_rqxun")
 object_name = "enter_6"
 object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_6"]
-position = Vector2(-1.0000284, -324)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_6"]
-texture_filter = 1
-position = Vector2(-1.0000033, -37.999996)
-rotation = 3.1415927
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("18_ocyro")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_6"]
 anchors_preset = 8
@@ -872,24 +899,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_6"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_2qbue")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_6"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("18_ocyro")
+offset = Vector2(0, 483.725)
+
 [node name="enter_7" parent="Camera2D" instance=ExtResource("6_1uaeg")]
 rotation = -2.6179938
 script = ExtResource("6_rqxun")
 object_name = "enter_7"
 object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_7"]
-position = Vector2(-8.998106, -321.5852)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_7"]
-texture_filter = 1
-position = Vector2(-2.0096188, -33.480762)
-rotation = 3.121508
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("20_2qbue")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_7"]
 anchors_preset = 8
@@ -945,24 +971,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_7"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_kgpvv")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_7"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("20_2qbue")
+offset = Vector2(0, 483.725)
+
 [node name="enter_8" parent="Camera2D" instance=ExtResource("6_1uaeg")]
 rotation = -2.094395
 script = ExtResource("6_rqxun")
 object_name = "enter_8"
 object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_8"]
-position = Vector2(-6.2602553, -321.15698)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_8"]
-texture_filter = 1
-position = Vector2(-0.4544859, -37.212814)
-rotation = 3.125929
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("22_me8nm")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_8"]
 offset_left = -88.21474
@@ -1011,24 +1036,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_8"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_me8nm")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_8"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("22_me8nm")
+offset = Vector2(0, 483.725)
+
 [node name="enter_9" parent="Camera2D" instance=ExtResource("6_1uaeg")]
 rotation = -1.5707964
 script = ExtResource("6_rqxun")
 object_name = "enter_9"
 object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_9"]
-position = Vector2(-5.000004, -334)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_9"]
-texture_filter = 1
-position = Vector2(-3.0000005, -47.999996)
-rotation = 3.1415927
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("24_m35q0")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_9"]
 anchors_preset = 8
@@ -1084,25 +1108,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_9"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_m35q0")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_9"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("24_m35q0")
+offset = Vector2(0, 483.725)
+
 [node name="enter_10" parent="Camera2D" instance=ExtResource("6_1uaeg")]
-rotation = -1.1114433
+rotation = -1.0471976
 scale = Vector2(0.99999994, 0.99999994)
 script = ExtResource("6_rqxun")
 object_name = "enter_10"
 object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_10"]
-position = Vector2(3.213935, -331.82175)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_10"]
-texture_filter = 1
-position = Vector2(6.4472322, -43.35243)
-rotation = 3.135674
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("25_kgpvv")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_10"]
 anchors_preset = 8
@@ -1157,24 +1180,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_10"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_6wcj2")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_10"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("25_kgpvv")
+offset = Vector2(0, 483.725)
+
 [node name="enter_11" parent="Camera2D" instance=ExtResource("6_1uaeg")]
 rotation = -0.52359897
 script = ExtResource("6_rqxun")
 object_name = "enter_11"
 object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_11"]
-position = Vector2(-20.65247, -320.2288)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_11"]
-texture_filter = 1
-position = Vector2(-22.176908, -33.588455)
-rotation = 3.1415927
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("27_me8nm")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_11"]
 anchors_preset = 8
@@ -1228,24 +1250,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_11"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_bbn7t")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_11"]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("27_me8nm")
+offset = Vector2(0, 483.725)
+
 [node name="enter_12" parent="Camera2D" instance=ExtResource("6_1uaeg")]
 script = ExtResource("6_rqxun")
 object_name = "enter_12"
 object_type = 1
 is_enterable = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_12"]
-position = Vector2(-1.0000548, -314)
-shape = SubResource("CapsuleShape2D_1uaeg")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_12"]
-texture_filter = 1
-position = Vector2(-1.835823e-05, -103.99999)
-rotation = 3.141018
-scale = Vector2(0.49659887, 0.55141103)
-texture = ExtResource("28_6wcj2")
-offset = Vector2(0, 380)
 
 [node name="hover_text" type="RichTextLabel" parent="Camera2D/enter_12"]
 anchors_preset = 8
@@ -1299,6 +1320,18 @@ tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/enter_12"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_6un46")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/enter_12"]
+texture_filter = 1
+rotation = 3.141018
+scale = Vector2(0.639, 0.639)
+texture = ExtResource("28_6wcj2")
+offset = Vector2(0, 483.725)
 
 [node name="short_hand_rotation_lobby" type="Camera2D" parent="Camera2D"]
 rotation = 1.5707964

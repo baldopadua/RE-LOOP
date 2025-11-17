@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://3tla2n3edqkn"]
+[gd_scene load_steps=69 format=3 uid="uid://3tla2n3edqkn"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_2r23t"]
 [ext_resource type="Script" uid="uid://ds7lwxirvmjvs" path="res://Scripts/levels/level_6_script.gd" id="1_odmpw"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_kapnr"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_kapnr"]
 [ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/level_select_lobby/level_7.png" id="8_pwedw"]
-[ext_resource type="Texture2D" uid="uid://bd6huacdltowj" path="res://Assets/levels/level_6/placeholder_assets/rift_in_time.png" id="9_sh2gb"]
+[ext_resource type="Texture2D" uid="uid://cm1ofcp5mp3f1" path="res://Assets/VarianceSplit-Sheet.png" id="9_cr1iw"]
 [ext_resource type="Script" uid="uid://ipneen5ggosr" path="res://Scripts/object-level/level_6/in_1.gd" id="10_cr1iw"]
 [ext_resource type="Script" uid="uid://b4sgciq6gkscg" path="res://Scripts/object-level/level_6/switch_circle.gd" id="10_ov81m"]
 [ext_resource type="Texture2D" uid="uid://dhn4nwd5xx3k2" path="res://Assets/levels/level_6/placeholder_assets/seed 1.png" id="13_cr1iw"]
@@ -26,13 +26,66 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cr1iw"]
 gradient = SubResource("Gradient_7hl30")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk5e6"]
+atlas = ExtResource("9_cr1iw")
+region = Rect2(0, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mek2u"]
+atlas = ExtResource("9_cr1iw")
+region = Rect2(146, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghasi"]
+atlas = ExtResource("9_cr1iw")
+region = Rect2(292, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpdsn"]
+atlas = ExtResource("9_cr1iw")
+region = Rect2(438, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3ctc"]
+atlas = ExtResource("9_cr1iw")
+region = Rect2(584, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82sfl"]
+atlas = ExtResource("9_cr1iw")
+region = Rect2(730, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5464"]
+atlas = ExtResource("9_cr1iw")
+region = Rect2(876, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us4og"]
+atlas = ExtResource("9_cr1iw")
+region = Rect2(1022, 0, 146, 273)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kapnr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_sh2gb")
+"texture": SubResource("AtlasTexture_rk5e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mek2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghasi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpdsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3ctc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82sfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5464")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us4og")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
@@ -396,14 +449,12 @@ layer = 2
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_jmy7j")]
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(773, -61)
+position = Vector2(687.49994, -61)
 scale = Vector2(24.234373, 1.625)
 texture = SubResource("GradientTexture2D_cr1iw")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(762.74994, 769)
+position = Vector2(677.2499, 769)
 scale = Vector2(23.789063, 1.5)
 texture = SubResource("GradientTexture2D_cr1iw")
 
@@ -414,7 +465,10 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="switch_circle"]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_kapnr")
+autoplay = "default"
+frame_progress = 0.7319413
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="switch_circle"]
 position = Vector2(4, 0)

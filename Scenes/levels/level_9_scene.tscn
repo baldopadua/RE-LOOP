@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://8a2v680niu5p"]
+[gd_scene load_steps=78 format=3 uid="uid://8a2v680niu5p"]
 
 [ext_resource type="Script" uid="uid://c4rebl1aw8xj3" path="res://Scripts/levels/level_9_script.gd" id="1_pn0o0"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_tiu38"]
@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_u54cp"]
 [ext_resource type="Texture2D" uid="uid://drwtiaj6m5wpq" path="res://Assets/level_select_lobby/level_10.png" id="7_nkbtn"]
 [ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_pn0o0"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="9_nkbtn"]
 [ext_resource type="Texture2D" uid="uid://swdhm3lxv1ct" path="res://Assets/levels/level_9/cat-life-sheet.png" id="10_4w81x"]
-[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="10_ckxqi"]
 [ext_resource type="Script" uid="uid://mmdkubc5d0w" path="res://Scripts/object-level/level_9/cat1.gd" id="10_pwust"]
 [ext_resource type="Texture2D" uid="uid://b2bmpkbvrhe15" path="res://Assets/levels/level_9/box-contraption-sheet.png" id="10_w6vp2"]
 [ext_resource type="Texture2D" uid="uid://8oocsy7jw2hw" path="res://Assets/levels/level_9/schrodinger-sheet.png" id="11_cdi80"]
@@ -19,9 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://i224olptd5sq" path="res://Assets/levels/level_9/lever-sheet.png" id="13_37n40"]
 [ext_resource type="Script" uid="uid://cbuxrkicqo5t3" path="res://Scripts/object-level/level_9/schrodinger2.gd" id="13_rfmfc"]
 [ext_resource type="Script" uid="uid://b4sgciq6gkscg" path="res://Scripts/object-level/level_6/switch_circle.gd" id="14_bv4bh"]
-[ext_resource type="Texture2D" uid="uid://bd6huacdltowj" path="res://Assets/levels/level_6/placeholder_assets/rift_in_time.png" id="15_yb32e"]
 [ext_resource type="Script" uid="uid://ba3fkfhsn3joj" path="res://Scripts/object-level/level_9/box.gd" id="16_g4pg6"]
 [ext_resource type="Script" uid="uid://cwlw10d8pobff" path="res://Scripts/object-level/level_9/lever2.gd" id="20_ckxqi"]
+[ext_resource type="Texture2D" uid="uid://cm1ofcp5mp3f1" path="res://Assets/VarianceSplit-Sheet.png" id="22_ckxqi"]
 
 [sub_resource type="Gradient" id="Gradient_pn0o0"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -341,19 +341,72 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwqnk"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nu7n4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmfc"]
+size = Vector2(120, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk5e6"]
+atlas = ExtResource("22_ckxqi")
+region = Rect2(0, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mek2u"]
+atlas = ExtResource("22_ckxqi")
+region = Rect2(146, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghasi"]
+atlas = ExtResource("22_ckxqi")
+region = Rect2(292, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpdsn"]
+atlas = ExtResource("22_ckxqi")
+region = Rect2(438, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3ctc"]
+atlas = ExtResource("22_ckxqi")
+region = Rect2(584, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82sfl"]
+atlas = ExtResource("22_ckxqi")
+region = Rect2(730, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5464"]
+atlas = ExtResource("22_ckxqi")
+region = Rect2(876, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us4og"]
+atlas = ExtResource("22_ckxqi")
+region = Rect2(1022, 0, 146, 273)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s22ca"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_yb32e")
+"texture": SubResource("AtlasTexture_rk5e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mek2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghasi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpdsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3ctc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82sfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5464")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us4og")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmfc"]
-size = Vector2(120, 20)
 
 [node name="level_9_scene" type="Node2D"]
 script = ExtResource("1_pn0o0")
@@ -398,15 +451,13 @@ position_smoothing_enabled = true
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_u54cp")]
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
 position = Vector2(637.00006, -50)
-scale = Vector2(20.145, 1.5)
+scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_nkbtn")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
-visible = false
 position = Vector2(637.0001, 771)
-scale = Vector2(20.145, 1.5)
+scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_nkbtn")
 
 [node name="enter_10" parent="." instance=ExtResource("5_u54cp")]
@@ -447,7 +498,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 1
 theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("10_ckxqi")
+theme_override_fonts/normal_font = ExtResource("9_nkbtn")
 theme_override_font_sizes/normal_font_size = 31
 text = "Ancient Tree"
 fit_content = true
@@ -620,12 +671,14 @@ script = ExtResource("14_bv4bh")
 object_name = "switch_circle"
 object_type = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="switch_circle"]
-sprite_frames = SubResource("SpriteFrames_nu7n4")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="switch_circle"]
 position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_rfmfc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_s22ca")
+autoplay = "default"
 
 [node name="center_pos" type="Marker2D" parent="."]
 
