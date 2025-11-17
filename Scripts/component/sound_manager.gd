@@ -51,7 +51,8 @@ func adjust_sfx_pitch_scale(sfx_name: String, delta: float) -> void:
 	if sfx.has(sfx_name):
 		var player = sfx[sfx_name]
 		if player is AudioStreamPlayer2D:
-			player.pitch_scale += delta
+			if player.pitch_scale > 0.0:
+				player.pitch_scale += delta
 
 # UI SFX
 func play_ui(sound_name: String) -> void:

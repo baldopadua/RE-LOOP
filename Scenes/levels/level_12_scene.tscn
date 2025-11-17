@@ -1,4 +1,4 @@
-[gd_scene load_steps=252 format=3 uid="uid://d0bch0apbias6"]
+[gd_scene load_steps=253 format=3 uid="uid://d0bch0apbias6"]
 
 [ext_resource type="Script" uid="uid://cdwufukld6gqp" path="res://Scripts/levels/level_12_script.gd" id="1_1urvf"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_isc8s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dd635c4b3bsv2" path="res://Assets/levels/level_12/circle_rift.png" id="2_rdsab"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_62p7t"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_8ftga"]
+[ext_resource type="Script" uid="uid://binyh0ej31lmb" path="res://Scripts/object-level/level_12/player.gd" id="5_yy3na"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_j4nk1"]
 [ext_resource type="Texture2D" uid="uid://4gu6kuviroho" path="res://Assets/levels/level_11/statue-tree-sheet-Sheet.png" id="7_rdsab"]
 [ext_resource type="Texture2D" uid="uid://cfsgv0k3seegy" path="res://Assets/levels/level_11/statue-hero-sheet-Sheet.png" id="8_yuv2b"]
@@ -19,26 +20,26 @@
 [ext_resource type="Texture2D" uid="uid://dgdu6koe03gcs" path="res://Assets/levels/level_11/statue-electricity-sheet-Sheet.png" id="16_uwl73"]
 [ext_resource type="Script" uid="uid://b6ohbbxknid48" path="res://Scripts/object-level/level_11/plooy_statue.gd" id="17_eevqw"]
 [ext_resource type="Texture2D" uid="uid://kct5rymfl3vf" path="res://Assets/levels/level_11/statue-monk-sheet-Sheet.png" id="18_1ufae"]
-[ext_resource type="Script" uid="uid://lbqdlud888h" path="res://Scripts/object-level/level_11/seed.gd" id="20_mscse"]
 [ext_resource type="Texture2D" uid="uid://chym00hbs7nqm" path="res://Assets/levels/level_12/Strawberry-Plooy-Sheet.png" id="20_rdsab"]
+[ext_resource type="Script" uid="uid://cn8a7m2arrdbv" path="res://Scripts/object-level/level_12/seed.gd" id="21_bjqkp"]
 [ext_resource type="Texture2D" uid="uid://dlc2xgxew4uv6" path="res://Assets/levels/level_11/seed.png" id="21_xj3l4"]
-[ext_resource type="Script" uid="uid://cx5mcfu0pbmtu" path="res://Scripts/object-level/level_11/skull.gd" id="22_u47sx"]
 [ext_resource type="Texture2D" uid="uid://x5wmuwrko0lv" path="res://Assets/levels/level_11/skull.png" id="23_di07y"]
-[ext_resource type="Script" uid="uid://chewd1epm513" path="res://Scripts/object-level/level_11/rock.gd" id="24_rler6"]
+[ext_resource type="Script" uid="uid://dbpagmg7xq4gd" path="res://Scripts/object-level/level_12/skull.gd" id="23_yy3na"]
 [ext_resource type="Texture2D" uid="uid://cvr6us7jjvyo4" path="res://Assets/levels/level_11/rock.png" id="25_a55gj"]
-[ext_resource type="Script" uid="uid://bwbnvbtirpg37" path="res://Scripts/object-level/level_11/egg.gd" id="26_ksykj"]
+[ext_resource type="Script" uid="uid://clyfdhetb6cxd" path="res://Scripts/object-level/level_12/rock.gd" id="25_pg2al"]
 [ext_resource type="Texture2D" uid="uid://dw2c428cyugqr" path="res://Assets/levels/level_11/egg.png" id="27_bkswr"]
-[ext_resource type="Script" uid="uid://c2kbw0ugvho5n" path="res://Scripts/object-level/level_11/soda.gd" id="28_8ks6u"]
+[ext_resource type="Script" uid="uid://7pjck6rii462" path="res://Scripts/object-level/level_12/egg.gd" id="27_p42lt"]
 [ext_resource type="Texture2D" uid="uid://xhmphq7kkaxe" path="res://Assets/levels/level_11/soda.png" id="29_4ek57"]
-[ext_resource type="Script" uid="uid://cvg1c2dmw5q02" path="res://Scripts/object-level/level_11/apple.gd" id="30_b0kw0"]
+[ext_resource type="Script" uid="uid://ckdchopuyabi4" path="res://Scripts/object-level/level_12/soda.gd" id="29_wan2m"]
+[ext_resource type="Script" uid="uid://w4rhjjgdvf03" path="res://Scripts/object-level/level_12/apple.gd" id="31_oam8e"]
 [ext_resource type="Texture2D" uid="uid://bf28ig28k8qbb" path="res://Assets/levels/level_11/apple.png" id="31_ubdeg"]
-[ext_resource type="Script" uid="uid://bcykc1obu063a" path="res://Scripts/object-level/level_11/butterfly.gd" id="32_cfvc8"]
+[ext_resource type="Script" uid="uid://bj6ko286vfu7e" path="res://Scripts/object-level/level_12/butterfly.gd" id="33_51dsj"]
 [ext_resource type="Texture2D" uid="uid://d2nxdxa8q4l32" path="res://Assets/levels/level_11/butterfly.png" id="33_c087w"]
-[ext_resource type="Script" uid="uid://c5g3x8rd6hc33" path="res://Scripts/object-level/level_11/carrot.gd" id="34_ckxb7"]
 [ext_resource type="Texture2D" uid="uid://c0utn6usi1avl" path="res://Assets/levels/level_11/carrot.png" id="35_p7m7c"]
-[ext_resource type="Script" uid="uid://cplaslbu83cpc" path="res://Scripts/object-level/level_11/cat.gd" id="36_ivnx4"]
+[ext_resource type="Script" uid="uid://dfl71j6oy0wxr" path="res://Scripts/object-level/level_12/carrot.gd" id="35_uwl73"]
 [ext_resource type="Texture2D" uid="uid://wqq4u522ywux" path="res://Assets/levels/level_11/cat.png" id="37_2ppfu"]
-[ext_resource type="Script" uid="uid://dke5qtot13lgg" path="res://Scripts/object-level/level_11/lightbulb.gd" id="38_d517h"]
+[ext_resource type="Script" uid="uid://cuq3fvcbvupck" path="res://Scripts/object-level/level_12/cat.gd" id="37_eevqw"]
+[ext_resource type="Script" uid="uid://coo0cum754s83" path="res://Scripts/object-level/level_12/lightbulb.gd" id="39_1ufae"]
 [ext_resource type="Texture2D" uid="uid://bgf013042hubx" path="res://Assets/levels/level_11/lightbulb.png" id="39_47c5w"]
 [ext_resource type="Script" uid="uid://bb4am05ach10w" path="res://Scripts/object-level/level_12/switch_circle.gd" id="41_yy3na"]
 [ext_resource type="Texture2D" uid="uid://cm1ofcp5mp3f1" path="res://Assets/VarianceSplit-Sheet.png" id="42_yy3na"]
@@ -53,6 +54,73 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk5e6"]
+atlas = ExtResource("42_yy3na")
+region = Rect2(0, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mek2u"]
+atlas = ExtResource("42_yy3na")
+region = Rect2(146, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghasi"]
+atlas = ExtResource("42_yy3na")
+region = Rect2(292, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpdsn"]
+atlas = ExtResource("42_yy3na")
+region = Rect2(438, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3ctc"]
+atlas = ExtResource("42_yy3na")
+region = Rect2(584, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82sfl"]
+atlas = ExtResource("42_yy3na")
+region = Rect2(730, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5464"]
+atlas = ExtResource("42_yy3na")
+region = Rect2(876, 0, 146, 273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us4og"]
+atlas = ExtResource("42_yy3na")
+region = Rect2(1022, 0, 146, 273)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pg2al"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk5e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mek2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghasi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpdsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3ctc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82sfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5464")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us4og")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p42lt"]
+size = Vector2(19, 20)
 
 [sub_resource type="Gradient" id="Gradient_1urvf"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -1366,73 +1434,6 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qw0cl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rk5e6"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(0, 0, 146, 273)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mek2u"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(146, 0, 146, 273)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ghasi"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(292, 0, 146, 273)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mpdsn"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(438, 0, 146, 273)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3ctc"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(584, 0, 146, 273)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_82sfl"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(730, 0, 146, 273)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5464"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(876, 0, 146, 273)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_us4og"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(1022, 0, 146, 273)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pg2al"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rk5e6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mek2u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ghasi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mpdsn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t3ctc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_82sfl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p5464")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_us4og")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p42lt"]
-size = Vector2(19, 20)
-
 [node name="level_12_scene" type="Node2D"]
 script = ExtResource("1_1urvf")
 
@@ -1443,41 +1444,870 @@ metadata/_edit_lock_ = true
 
 [node name="AreaHandler1" parent="." instance=ExtResource("1_isc8s")]
 
+[node name="1_switch_circle" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 342.0
+y_pos = 0.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler1/1_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler1/1_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="2_switch_circle" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -779.0
+y_pos = -450.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler1/2_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler1/2_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="2_switch_circle2" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 779.0
+y_pos = -450.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler1/2_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler1/2_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle2" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -800.0
+y_pos = -1400.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler1/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler1/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 800.0
+y_pos = -1400.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler1/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler1/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
 [node name="AreaHandler2" parent="." instance=ExtResource("1_isc8s")]
+
+[node name="1_switch_circle" parent="AreaHandler2" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -342.0
+y_pos = 0.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler2/1_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler2/1_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="2_switch_circle" parent="AreaHandler2" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 0.0
+y_pos = -900.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler2/2_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler2/2_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="2_switch_circle2" parent="AreaHandler2" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 779.0
+y_pos = 450.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler2/2_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler2/2_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle2" parent="AreaHandler2" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 0.0
+y_pos = -1600.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler2/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler2/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler2" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 1400.0
+y_pos = -800.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler2/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler2/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
 
 [node name="AreaHandler3" parent="." instance=ExtResource("1_isc8s")]
 visible = false
 
+[node name="2_switch_circle" parent="AreaHandler3" instance=ExtResource("6_j4nk1")]
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 779.0
+y_pos = -450.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler3/2_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler3/2_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="2_switch_circle2" parent="AreaHandler3" instance=ExtResource("6_j4nk1")]
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 0.0
+y_pos = 900.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler3/2_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler3/2_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle2" parent="AreaHandler3" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 800.0
+y_pos = -1400.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler3/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler3/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler3" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 1600.0
+y_pos = 0.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler3/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler3/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
 [node name="AreaHandler4" parent="." instance=ExtResource("1_isc8s")]
 visible = false
+
+[node name="2_switch_circle" parent="AreaHandler4" instance=ExtResource("6_j4nk1")]
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 779.0
+y_pos = 450.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler4/2_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler4/2_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="2_switch_circle2" parent="AreaHandler4" instance=ExtResource("6_j4nk1")]
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -779.0
+y_pos = 450.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler4/2_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler4/2_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle2" parent="AreaHandler4" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 1400.0
+y_pos = -800.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler4/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler4/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler4" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 1400.0
+y_pos = 800.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler4/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler4/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
 
 [node name="AreaHandler5" parent="." instance=ExtResource("1_isc8s")]
 visible = false
 
+[node name="2_switch_circle" parent="AreaHandler5" instance=ExtResource("6_j4nk1")]
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 0.0
+y_pos = 900.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler5/2_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler5/2_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="2_switch_circle2" parent="AreaHandler5" instance=ExtResource("6_j4nk1")]
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -779.0
+y_pos = -450.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler5/2_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler5/2_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle2" parent="AreaHandler5" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 1600.0
+y_pos = 0.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler5/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler5/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler5" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 800.0
+y_pos = 1400.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler5/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler5/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
 [node name="AreaHandler6" parent="." instance=ExtResource("1_isc8s")]
 visible = false
+
+[node name="2_switch_circle" parent="AreaHandler6" instance=ExtResource("6_j4nk1")]
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -779.0
+y_pos = 450.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler6/2_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler6/2_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="2_switch_circle2" parent="AreaHandler6" instance=ExtResource("6_j4nk1")]
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 0.0
+y_pos = -900.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler6/2_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler6/2_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle2" parent="AreaHandler6" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 1400.0
+y_pos = 800.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler6/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler6/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler6" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 0.0
+y_pos = 1600.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler6/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler6/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
 
 [node name="AreaHandler7" parent="." instance=ExtResource("1_isc8s")]
 visible = false
 
+[node name="3_switch_circle2" parent="AreaHandler7" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 800.0
+y_pos = 1400.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler7/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler7/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler7" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -800.0
+y_pos = 1400.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler7/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler7/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
 [node name="AreaHandler8" parent="." instance=ExtResource("1_isc8s")]
 visible = false
+
+[node name="3_switch_circle2" parent="AreaHandler8" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 0.0
+y_pos = 1600.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler8/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler8/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler8" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -1400.0
+y_pos = 800.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler8/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler8/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
 
 [node name="AreaHandler9" parent="." instance=ExtResource("1_isc8s")]
 visible = false
 
+[node name="3_switch_circle2" parent="AreaHandler9" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -800.0
+y_pos = 1400.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler9/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler9/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler9" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -1600.0
+y_pos = 0.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler9/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler9/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
 [node name="AreaHandler10" parent="." instance=ExtResource("1_isc8s")]
 visible = false
+
+[node name="3_switch_circle2" parent="AreaHandler10" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -1400.0
+y_pos = 800.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler10/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler10/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler10" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -1400.0
+y_pos = -800.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler10/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler10/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
 
 [node name="AreaHandler11" parent="." instance=ExtResource("1_isc8s")]
 visible = false
 
+[node name="3_switch_circle2" parent="AreaHandler11" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -1600.0
+y_pos = 0.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler11/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler11/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler11" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -800.0
+y_pos = -1400.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler11/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler11/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
 [node name="AreaHandler12" parent="." instance=ExtResource("1_isc8s")]
 visible = false
+
+[node name="3_switch_circle2" parent="AreaHandler12" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(-284, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = -1400.0
+y_pos = -800.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler12/3_switch_circle2"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler12/3_switch_circle2"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
+
+[node name="3_switch_circle" parent="AreaHandler12" instance=ExtResource("6_j4nk1")]
+visible = false
+position = Vector2(297, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("41_yy3na")
+x_pos = 0.0
+y_pos = -1600.0
+object_name = "switch_circle"
+object_type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler12/3_switch_circle"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pg2al")
+autoplay = "default"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaHandler12/3_switch_circle"]
+position = Vector2(-3.5149994, 0)
+shape = SubResource("RectangleShape2D_p42lt")
+metadata/_edit_lock_ = true
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_1urvf")]
 self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
+script = ExtResource("5_yy3na")
 metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="PlayerScene"]
@@ -1716,27 +2546,30 @@ shape = SubResource("RectangleShape2D_lnogc")
 metadata/_edit_lock_ = true
 
 [node name="monk" parent="." instance=ExtResource("6_j4nk1")]
-position = Vector2(0, -295.35)
-rotation = 3.1415927
 object_name = "monk"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="monk"]
+position = Vector2(0, -295)
+rotation = 3.1415927
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nnoof")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.15753174
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="monk"]
+position = Vector2(0, -295)
 shape = SubResource("CapsuleShape2D_p42lt")
+metadata/_edit_lock_ = true
 
 [node name="seed" parent="." instance=ExtResource("6_j4nk1")]
 z_index = 1
 position = Vector2(144, -253)
 rotation = 3.6651914
 scale = Vector2(2, 2)
-script = ExtResource("20_mscse")
+script = ExtResource("21_bjqkp")
 object_name = "seed"
 is_pickupable = true
 
@@ -1757,7 +2590,7 @@ z_index = 1
 position = Vector2(254.00003, -143.99998)
 rotation = 4.1887903
 scale = Vector2(2, 2)
-script = ExtResource("22_u47sx")
+script = ExtResource("23_yy3na")
 object_name = "skull"
 is_pickupable = true
 
@@ -1776,9 +2609,9 @@ metadata/_edit_lock_ = true
 [node name="rock" parent="." instance=ExtResource("6_j4nk1")]
 z_index = 1
 position = Vector2(287, 2)
-rotation = 1.5707964
+rotation = -1.5707964
 scale = Vector2(2, 2)
-script = ExtResource("24_rler6")
+script = ExtResource("25_pg2al")
 object_name = "rock"
 is_pickupable = true
 
@@ -1801,7 +2634,7 @@ z_index = 1
 position = Vector2(257, 154)
 rotation = -1.0471976
 scale = Vector2(2, 2)
-script = ExtResource("26_ksykj")
+script = ExtResource("27_p42lt")
 object_name = "egg"
 is_pickupable = true
 
@@ -1822,7 +2655,7 @@ z_index = 1
 position = Vector2(149, 260)
 rotation = -0.5235988
 scale = Vector2(2, 2)
-script = ExtResource("28_8ks6u")
+script = ExtResource("29_wan2m")
 object_name = "soda"
 is_pickupable = true
 
@@ -1842,7 +2675,7 @@ metadata/_edit_lock_ = true
 z_index = 1
 position = Vector2(0.99998474, 298)
 scale = Vector2(2, 2)
-script = ExtResource("30_b0kw0")
+script = ExtResource("31_oam8e")
 object_name = "apple"
 is_pickupable = true
 
@@ -1863,7 +2696,7 @@ z_index = 1
 position = Vector2(-141.99998, 261)
 rotation = 0.5235988
 scale = Vector2(2, 2)
-script = ExtResource("32_cfvc8")
+script = ExtResource("33_51dsj")
 object_name = "butterfly"
 is_pickupable = true
 
@@ -1884,7 +2717,7 @@ z_index = 1
 position = Vector2(-248, 151)
 rotation = 1.0471976
 scale = Vector2(2, 2)
-script = ExtResource("34_ckxb7")
+script = ExtResource("35_uwl73")
 object_name = "carrot"
 is_pickupable = true
 
@@ -1905,7 +2738,7 @@ z_index = 1
 position = Vector2(-275, 1)
 rotation = 1.5707964
 scale = Vector2(2, 2)
-script = ExtResource("36_ivnx4")
+script = ExtResource("37_eevqw")
 object_name = "cat"
 is_pickupable = true
 
@@ -1922,11 +2755,12 @@ shape = SubResource("RectangleShape2D_2fjnq")
 metadata/_edit_lock_ = true
 
 [node name="lightbulb" parent="." instance=ExtResource("6_j4nk1")]
+visible = false
 z_index = 1
 position = Vector2(-252, -136)
-rotation = -1.0471976
+rotation = 2.0943952
 scale = Vector2(2, 2)
-script = ExtResource("38_d517h")
+script = ExtResource("39_1ufae")
 object_name = "lightbulb"
 is_pickupable = true
 
@@ -1942,46 +2776,66 @@ metadata/_edit_lock_ = true
 shape = SubResource("RectangleShape2D_qw0cl")
 metadata/_edit_lock_ = true
 
-[node name="1_switch_circle" parent="." instance=ExtResource("6_j4nk1")]
-position = Vector2(-50, 0)
-script = ExtResource("41_yy3na")
-object_name = "switch_circle"
-object_type = 1
+[node name="center_pos" type="Marker2D" parent="."]
+position = Vector2(0.5, 0.5)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="1_switch_circle"]
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_pg2al")
-autoplay = "default"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="1_switch_circle"]
-position = Vector2(-3.5149994, 0)
-shape = SubResource("RectangleShape2D_p42lt")
-
-[node name="1_switch_circle2" parent="." instance=ExtResource("6_j4nk1")]
-position = Vector2(50, 0)
-script = ExtResource("41_yy3na")
-object_name = "switch_circle"
-object_type = 1
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="1_switch_circle2"]
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_pg2al")
-autoplay = "default"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="1_switch_circle2"]
-position = Vector2(-3.5149994, 0)
-shape = SubResource("RectangleShape2D_p42lt")
-
+[connection signal="toggle_switch_circle" from="AreaHandler1/1_switch_circle" to="AreaHandler1/1_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler1/2_switch_circle" to="AreaHandler1/2_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler1/2_switch_circle2" to="AreaHandler1/2_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler1/3_switch_circle2" to="AreaHandler1/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler1/3_switch_circle" to="AreaHandler1/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler2/1_switch_circle" to="AreaHandler2/1_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler2/2_switch_circle" to="AreaHandler2/2_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler2/2_switch_circle2" to="AreaHandler2/2_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler2/3_switch_circle2" to="AreaHandler2/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler2/3_switch_circle" to="AreaHandler2/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler3/2_switch_circle" to="AreaHandler3/2_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler3/2_switch_circle2" to="AreaHandler3/2_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler3/3_switch_circle2" to="AreaHandler3/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler3/3_switch_circle" to="AreaHandler3/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler4/2_switch_circle" to="AreaHandler4/2_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler4/2_switch_circle2" to="AreaHandler4/2_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler4/3_switch_circle2" to="AreaHandler4/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler4/3_switch_circle" to="AreaHandler4/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler5/2_switch_circle" to="AreaHandler5/2_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler5/2_switch_circle2" to="AreaHandler5/2_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler5/3_switch_circle2" to="AreaHandler5/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler5/3_switch_circle" to="AreaHandler5/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler6/2_switch_circle" to="AreaHandler6/2_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler6/2_switch_circle2" to="AreaHandler6/2_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler6/3_switch_circle2" to="AreaHandler6/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler6/3_switch_circle" to="AreaHandler6/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler7/3_switch_circle2" to="AreaHandler7/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler7/3_switch_circle" to="AreaHandler7/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler8/3_switch_circle2" to="AreaHandler8/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler8/3_switch_circle" to="AreaHandler8/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler9/3_switch_circle2" to="AreaHandler9/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler9/3_switch_circle" to="AreaHandler9/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler10/3_switch_circle2" to="AreaHandler10/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler10/3_switch_circle" to="AreaHandler10/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler11/3_switch_circle2" to="AreaHandler11/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler11/3_switch_circle" to="AreaHandler11/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler12/3_switch_circle2" to="AreaHandler12/3_switch_circle2" method="_on_toggle_switch_circle"]
+[connection signal="toggle_switch_circle" from="AreaHandler12/3_switch_circle" to="AreaHandler12/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
+[connection signal="area_entered" from="seed" to="seed" method="_on_area_entered"]
 [connection signal="is_dropped" from="seed" to="seed" method="_on_is_dropped"]
+[connection signal="area_entered" from="skull" to="skull" method="_on_area_entered"]
 [connection signal="is_dropped" from="skull" to="skull" method="_on_is_dropped"]
+[connection signal="area_entered" from="rock" to="rock" method="_on_area_entered"]
 [connection signal="is_dropped" from="rock" to="rock" method="_on_is_dropped"]
+[connection signal="area_entered" from="egg" to="egg" method="_on_area_entered"]
 [connection signal="is_dropped" from="egg" to="egg" method="_on_is_dropped"]
+[connection signal="area_entered" from="soda" to="soda" method="_on_area_entered"]
 [connection signal="is_dropped" from="soda" to="soda" method="_on_is_dropped"]
+[connection signal="area_entered" from="apple" to="apple" method="_on_area_entered"]
 [connection signal="is_dropped" from="apple" to="apple" method="_on_is_dropped"]
+[connection signal="area_entered" from="butterfly" to="butterfly" method="_on_area_entered"]
 [connection signal="is_dropped" from="butterfly" to="butterfly" method="_on_is_dropped"]
+[connection signal="area_entered" from="carrot" to="carrot" method="_on_area_entered"]
 [connection signal="is_dropped" from="carrot" to="carrot" method="_on_is_dropped"]
+[connection signal="area_entered" from="cat" to="cat" method="_on_area_entered"]
 [connection signal="is_dropped" from="cat" to="cat" method="_on_is_dropped"]
+[connection signal="area_entered" from="lightbulb" to="lightbulb" method="_on_area_entered"]
 [connection signal="is_dropped" from="lightbulb" to="lightbulb" method="_on_is_dropped"]
-[connection signal="toggle_switch_circle" from="1_switch_circle" to="1_switch_circle" method="_on_toggle_switch_circle"]
-[connection signal="toggle_switch_circle" from="1_switch_circle2" to="1_switch_circle2" method="_on_toggle_switch_circle"]
