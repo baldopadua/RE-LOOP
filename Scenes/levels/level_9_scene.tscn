@@ -534,7 +534,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="cat" parent="." instance=ExtResource("5_u54cp")]
 visible = false
-position = Vector2(240, 280)
+position = Vector2(240, 284)
 script = ExtResource("10_pwust")
 object_name = "cat"
 is_pickupable = true
@@ -543,6 +543,7 @@ min_state_threshold = 1
 current_state = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="cat"]
+position = Vector2(0, 12)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nkbtn")
 
@@ -551,7 +552,7 @@ shape = SubResource("RectangleShape2D_w6vp2")
 
 [node name="cat2" parent="." instance=ExtResource("5_u54cp")]
 visible = false
-position = Vector2(-240, 280)
+position = Vector2(-240, 284)
 script = ExtResource("12_g4pg6")
 object_name = "cat2"
 is_pickupable = true
@@ -560,6 +561,7 @@ min_state_threshold = 1
 current_state = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="cat2"]
+position = Vector2(0, 12)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_37n40")
 
@@ -577,10 +579,12 @@ min_state_threshold = 1
 current_state = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="schrodinger"]
+position = Vector2(0.73205566, 2.7320251)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="schrodinger"]
+position = Vector2(0.732, 2.732)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 
@@ -599,12 +603,14 @@ min_state_threshold = 1
 current_state = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="schrodinger2"]
+position = Vector2(0, 5)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 frame = 5
 frame_progress = 1.0
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="schrodinger2"]
+position = Vector2(0, 5)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 frame = 5
