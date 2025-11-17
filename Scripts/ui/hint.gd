@@ -426,5 +426,3 @@ func _on_skip_level_pressed():
 	# Trigger skip level signal on the handler
 	if connected_level_handler and connected_level_handler.has_method("request_skip_level"):
 		connected_level_handler.request_skip_level()
-
-

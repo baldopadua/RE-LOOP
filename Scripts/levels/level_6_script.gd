@@ -55,7 +55,6 @@ func _ready():
 	
 	await get_tree().create_timer(2.5).timeout
 	
-
 	var flash = ColorRect.new()
 	flash.color = Color(1, 1, 1, 1)
 	flash.anchor_right = 1

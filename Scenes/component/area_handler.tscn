@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=3 uid="uid://ciik8gauu5jgn"]
+[gd_scene load_steps=154 format=3 uid="uid://ciik8gauu5jgn"]
 
 [ext_resource type="Script" uid="uid://bfyxj6ex06pot" path="res://Scripts/component/area_handler.gd" id="1_hhhxy"]
 [ext_resource type="Texture2D" uid="uid://cyh820yfsstco" path="res://Assets/RoundWorldFuture.png" id="2_j1fyd"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://20wmsy7f3xtp" path="res://Assets/decoratives/pillar.png" id="13_sphy0"]
 [ext_resource type="Texture2D" uid="uid://divu1n8mycb4y" path="res://Assets/decoratives/weedtailes.png" id="14_sphy0"]
 [ext_resource type="Texture2D" uid="uid://565ps4t5nxh8" path="res://Assets/decoratives/weed.png" id="14_sq617"]
+[ext_resource type="Texture2D" uid="uid://c8nxx47af1oao" path="res://Assets/levels/level_12/explosion.png" id="18_fws7d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fws7d"]
 shader = ExtResource("4_j68sh")
@@ -942,6 +943,17 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sphy0"]
 size = Vector2(36.940224, 28.198517)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_byqky"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_fws7d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="AreaHandler" type="Node2D"]
 script = ExtResource("1_hhhxy")
@@ -2384,3 +2396,7 @@ debug_color = Color(0.12479434, 0.6467894, 0.043980062, 0.41960785)
 [node name="SoundManager" parent="." instance=ExtResource("7_7c312")]
 visible = false
 position = Vector2(-375, -375)
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_byqky")
