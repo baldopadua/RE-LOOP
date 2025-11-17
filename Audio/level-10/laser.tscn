@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://brkq3iuk0wpkk"]
+
+[ext_resource type="AudioStream" uid="uid://c52bgy0w3m5rn" path="res://Audio/sfx/laser.wav" id="1_laser"]
+
+[node name="laser" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_laser")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 3

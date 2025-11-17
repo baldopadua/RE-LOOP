@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://c5ktlnrjwqn5y"]
 
 [ext_resource type="AudioStream" uid="uid://mfp02gerh4tq" path="res://Audio/sfx/rocket_blastoff_final.wav" id="1_rocket"]
 

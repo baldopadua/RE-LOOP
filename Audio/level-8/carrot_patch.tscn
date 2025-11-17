@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhghwxye2k5xi"]
+
+[ext_resource type="AudioStream" uid="uid://di2mvqic78brq" path="res://Audio/sfx/carrot_patch.wav" id="1_carrot"]
+
+[node name="carrot_patch" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_carrot")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 2

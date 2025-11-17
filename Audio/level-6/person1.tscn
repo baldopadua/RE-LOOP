@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cihixy0f3l6yj"]
+
+[ext_resource type="AudioStream" uid="uid://d0wotjffqyg32" path="res://Audio/sfx/person1.wav" id="1_person"]
+
+[node name="person1" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_person")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 2

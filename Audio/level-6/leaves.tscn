@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://djijy01g4m70k"]
+
+[ext_resource type="AudioStream" uid="uid://by0h6r8rlyn81" path="res://Audio/sfx/leaves.ogg" id="1_leaves"]
+
+[node name="leaves" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_leaves")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 2

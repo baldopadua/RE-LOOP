@@ -31,6 +31,33 @@ func _on_add_wind_state(direction: Variant) -> void:
 	if direction == GlobalVariables.Directions.CLOCKWISE:
 		if current_state < max_state_threshold:
 			current_state += 1
+		
+		# Play wind/tornado sound with increasing intensity based on state
+		if sound_manager and sound_manager.sfx.has("tornado"):
+			var volume_scale = 0.0
+			var pitch_scale = 1.0
+			
+			if current_state == 2:
+				volume_scale = -15.0  # Very quiet breeze
+				pitch_scale = 0.8
+			elif current_state == 3:
+				volume_scale = -10.0  # Light wind
+				pitch_scale = 0.9
+			elif current_state == 4:
+				volume_scale = -5.0   # Moderate wind
+				pitch_scale = 1.0
+			elif current_state == 5:
+				volume_scale = 0.0    # Strong wind
+				pitch_scale = 1.1
+			elif current_state == 6:
+				volume_scale = 8.0    # Full tornado
+				pitch_scale = 1.2
+			
+			# Set volume and pitch, then play
+			sound_manager.set_sfx_volume("tornado", volume_scale)
+			sound_manager.set_sfx_pitch_scale("tornado", pitch_scale)
+			sound_manager.play_sfx("tornado")
+		
 		if current_state == 2:
 			animated_sprite.play("wind_2")
 		elif current_state == 3:
@@ -44,8 +71,6 @@ func _on_add_wind_state(direction: Variant) -> void:
 			is_tornado = true
 			#BREAK LOOP
 			if sound_manager:
-				if sound_manager.sfx.has("sword"):
-					sound_manager.play_sfx("sword")
 				# Play all finish level SFX at once
 				if sound_manager.has_method("play_finish_level_sfx"):
 					sound_manager.play_finish_level_sfx()
@@ -89,8 +114,6 @@ func _start_tornado_sequence(body) -> void:
 	is_playing = true
 	player_body.z_index = 2
 	anim_handler.play("flow_with_tornado")
-	if sound_manager:
-		sound_manager.play_sfx("water_eruption")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

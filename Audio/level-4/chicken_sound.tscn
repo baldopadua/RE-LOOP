@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://c5d6e7f8g9h0i"]
 
 [ext_resource type="AudioStream" uid="uid://dhxw0ynfnpdlw" path="res://Audio/sfx/chicken_sound.wav" id="1_chicken"]
 

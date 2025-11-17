@@ -55,6 +55,10 @@ func _ready():
 	
 	await get_tree().create_timer(2.5).timeout
 	
+	# Play crystal transition sound
+	if sound_manager and sound_manager.sfx.has("crystal_transition"):
+		sound_manager.play_sfx("crystal_transition")
+
 	var flash = ColorRect.new()
 	flash.color = Color(1, 1, 1, 1)
 	flash.anchor_right = 1
@@ -93,6 +97,15 @@ func object_initialize():
 	objects.append(isaac_newton_2)
 	objects.append(seed)
 	objects.append(seed2)
+	
+# ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
+# TO WORK ON THE SCRIPT
+# ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
+func enter_level():
+	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
+	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
+	level_handler.complete_current_level(get_parent())
+
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	print("Animation finished: ", anim_name)
