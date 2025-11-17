@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://8a2v680niu5p"]
+[gd_scene load_steps=76 format=3 uid="uid://8a2v680niu5p"]
 
 [ext_resource type="Script" uid="uid://c4rebl1aw8xj3" path="res://Scripts/levels/level_9_script.gd" id="1_pn0o0"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_tiu38"]
@@ -25,6 +25,10 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nkbtn"]
 gradient = SubResource("Gradient_pn0o0")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqds8"]
+atlas = ExtResource("10_4w81x")
+region = Rect2(60, 0, 30, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omca5"]
 atlas = ExtResource("10_4w81x")
@@ -54,6 +58,14 @@ region = Rect2(150, 0, 30, 25)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_aqds8")
+}],
+"loop": true,
+"name": &"alive_cat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_omca5")
 }, {
 "duration": 1.0,
@@ -79,8 +91,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6vp2"]
 size = Vector2(50, 54)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvmv3"]
+atlas = ExtResource("10_4w81x")
+region = Rect2(60, 0, 30, 25)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_37n40"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvmv3")
+}],
+"loop": true,
+"name": &"alive_cat",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mbaqs")
@@ -612,7 +636,8 @@ autoplay = "default"
 
 [node name="center_pos" type="Marker2D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="box_down_marker" type="Marker2D" parent="."]
+position = Vector2(4, 300)
 
 [connection signal="loop_break_shown" from="PlayerScene" to="cat" method="_on_player_scene_loop_break_shown"]
 [connection signal="loop_break_shown" from="PlayerScene" to="cat2" method="_on_player_scene_loop_break_shown"]
@@ -630,5 +655,6 @@ autoplay = "default"
 [connection signal="is_dropped" from="schrodinger2" to="schrodinger2" method="_on_is_dropped"]
 [connection signal="close_box" from="box" to="PlayerScene" method="_on_box_close_box"]
 [connection signal="close_box" from="box" to="box" method="_on_close_box"]
+[connection signal="open_box" from="box" to="PlayerScene" method="_on_box_open_box"]
 [connection signal="is_dropped" from="lever2" to="lever2" method="_on_is_dropped"]
 [connection signal="toggle_switch_circle" from="switch_circle" to="switch_circle" method="_on_toggle_switch_circle"]

@@ -79,13 +79,15 @@ func _on_player_finished_moving() -> void:
 				
 				await get_tree().create_timer(1.0).timeout
 				box.open_box_function()
-				get_node("Camera2D").emit_signal("cam_orig_zoom") #
-				await get_tree().create_timer(4.0).timeout
+				await get_tree().create_timer(1.0).timeout
 				area_handler.show_loop_break(9)
 				emit_signal("loop_break_shown") 
+				await get_tree().create_timer(3.0).timeout
+				get_node("Camera2D").emit_signal("cam_orig_zoom")
 
 				# After the loop break, hide bars and enable player movement
 				get_node("Camera2D").emit_signal("hide_bars")
+				ui_handler.show_game_ui_elements()
 				set_process_input(true)
 				GlobalVariables.player_stopped = false
 
