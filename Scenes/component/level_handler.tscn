@@ -213,7 +213,8 @@ scale = Vector2(0.9, 0.9)
 script = ExtResource("1_sijlw")
 
 [node name="level_status" type="Node2D" parent="."]
-position = Vector2(88.88889, 25.555553)
+position = Vector2(93.33332, 29.999996)
+scale = Vector2(0.95, 0.95)
 script = ExtResource("2_bicrg")
 
 [node name="clock_camera" type="Camera2D" parent="level_status"]
@@ -313,7 +314,7 @@ sprite_frames = SubResource("SpriteFrames_yx607")
 animation = &"lock"
 
 [node name="enter_4" parent="level_status" instance=ExtResource("7_p0pyb")]
-position = Vector2(640, 366)
+position = Vector2(639.99994, 353.33337)
 rotation = 2.0943952
 script = ExtResource("8_r3dfo")
 object_name = "enter_4"
@@ -332,7 +333,7 @@ sprite_frames = SubResource("SpriteFrames_yx607")
 animation = &"lock"
 
 [node name="enter_5" parent="level_status" instance=ExtResource("7_p0pyb")]
-position = Vector2(649, 360)
+position = Vector2(640.0001, 353.3333)
 rotation = 2.6179938
 script = ExtResource("8_r3dfo")
 object_name = "enter_5"
@@ -351,7 +352,7 @@ sprite_frames = SubResource("SpriteFrames_yx607")
 animation = &"lock"
 
 [node name="enter_6" parent="level_status" instance=ExtResource("7_p0pyb")]
-position = Vector2(640.00006, 366.00003)
+position = Vector2(640, 360)
 rotation = -3.1415925
 script = ExtResource("8_r3dfo")
 object_name = "enter_6"
@@ -370,7 +371,7 @@ sprite_frames = SubResource("SpriteFrames_yx607")
 animation = &"lock"
 
 [node name="enter_7" parent="level_status" instance=ExtResource("7_p0pyb")]
-position = Vector2(640, 366)
+position = Vector2(639.99994, 360.00003)
 rotation = -2.6179938
 script = ExtResource("8_r3dfo")
 object_name = "enter_7"
@@ -389,7 +390,7 @@ sprite_frames = SubResource("SpriteFrames_yx607")
 animation = &"lock"
 
 [node name="enter_8" parent="level_status" instance=ExtResource("7_p0pyb")]
-position = Vector2(640.00006, 366.00006)
+position = Vector2(639.99994, 360.00003)
 rotation = -2.094395
 script = ExtResource("8_r3dfo")
 object_name = "enter_8"

@@ -469,8 +469,8 @@ position_smoothing_enabled = true
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.00006, -50)
-scale = Vector2(24, 1.5)
+position = Vector2(637.00006, -60)
+scale = Vector2(24, 1.8125)
 texture = SubResource("GradientTexture2D_nkbtn")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
