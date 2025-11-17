@@ -1111,7 +1111,7 @@ current_state = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="lizard"]
 position = Vector2(-12, -2)
 rotation = 1.0472
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_f0imo")
 animation = &"Present"
 
@@ -1146,7 +1146,7 @@ animation = &"young_to_old"
 [node name="BoneDog" type="AnimatedSprite2D" parent="dog"]
 position = Vector2(-16.555, -7.185)
 rotation = 2.0944
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_qb4ol")
 animation = &"young_to_old"
 frame_progress = 0.817038
