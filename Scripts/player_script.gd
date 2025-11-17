@@ -108,6 +108,7 @@ func _process(delta: float) -> void:
 		if hold_time >= HOLD_DURATION and not triggered and current_rift != null:
 			current_rift.emit_signal("toggle_switch_circle")
 			triggered = true
+			print("PLOOY POSITION: ", position)
 
 func _input(event: InputEvent) -> void:
 	# MOVEMENT round(rad_to_deg(rotation)) < 180.0

@@ -63,7 +63,7 @@ enter_rift={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/initial_meeting.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/initial_meeting.dialogue", "res://dialogues/ending.dialogue")
 
 [rendering]
 
