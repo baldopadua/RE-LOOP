@@ -5,7 +5,7 @@ var music_volume_label: Label
 
 var last_sfx_volume: float = 100
 var last_music_volume: float = 100
-
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -80,3 +80,7 @@ func _on_sfx_mute_button_pressed() -> void:
 	sfx_volume_label.text = str(int(slider.value)) + "%"
 	if sound_manager:
 		sound_manager.set_sfx_bus_volume(slider.value)
+
+func _on_credits_button_settings_pressed() -> void:
+	ui_handler.sound_manager.play_ui("page_turn")
+	ui_handler.show_overlay_credits_for_settings()
