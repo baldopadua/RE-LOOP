@@ -79,6 +79,7 @@ func _on_start_race() -> void:
 	race_finished.emit()
 	
 func _process_carrot() -> void:
+	carrot.visible = false
 	hare.animated_sprite.play("eating_carrot")
 	await hare.animated_sprite.animation_finished
 
@@ -94,9 +95,12 @@ func _process_carrot() -> void:
 	hare.array.erase(carrot)
 
 func process_chair():
-	hare.animated_sprite.play("resting_in_chair")
-	await hare.animated_sprite.animation_finished
+	hare.visible = false
+	chair.get_node("AnimatedSprite2D").play("sleeping")
+	await chair.get_node("AnimatedSprite2D").animation_finished
 
+	hare.visible = true
+	chair.get_node("AnimatedSprite2D").play("default")
 	move_turtle()
 	await get_tree().create_timer(1.0).timeout
 	move_turtle()
@@ -108,7 +112,10 @@ func process_chair():
 
 	hare.array.erase(chair)
 
+
+
 func process_tree():
+	tree.animated_sprite.play("window")
 	hare.animated_sprite.play("find_wife")
 	await hare.animated_sprite.animation_finished
 

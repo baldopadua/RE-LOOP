@@ -74,7 +74,7 @@ func item_pick_up() -> void:
 			await get_tree().create_timer(2.0).timeout  
 			held_object.animated_sprite.play("fire")
 			
-			await get_tree().create_timer(0.25).timeout  
+			await get_tree().create_timer(1.5).timeout  
 			held_object.animated_sprite.play("default")
 				
 			camera2d.emit_signal("pan_to_pos", marker1.global_position)
