@@ -5,6 +5,7 @@ signal add_cur_state(direction)
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var animated_sprite2 = $AnimatedSprite2D2
 @onready var collision_shape = $CollisionShape2D
+@onready var sound_manager = get_parent().get_node("SoundManager")
 
 var matched = false
 var is_loop_shown = false
@@ -18,6 +19,10 @@ func _on_add_cur_state(direction: Variant) -> void:
 		is_pickupable = true
 	else:
 		is_pickupable = false
+	
+	# Play leaves sound when tree/seed changes state
+	if sound_manager and sound_manager.sfx.has("leaves"):
+		sound_manager.play_sfx("leaves")
 
 	if direction == GlobalVariables.Directions.CLOCKWISE:
 		if current_state == 2:
