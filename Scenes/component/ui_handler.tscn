@@ -1185,6 +1185,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_3_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -1210,6 +1211,7 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_3_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -1234,13 +1236,14 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_3_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05406056
-anchor_top = 0.13878547
-anchor_right = 0.9748218
-anchor_bottom = 0.8245696
+anchor_left = 0.042877227
+anchor_top = 0.19427639
+anchor_right = 0.9636385
+anchor_bottom = 0.8800605
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1251,7 +1254,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 50
-text = "“Stack the stones beside the geyser so that it doesn’t explode from the pressure of time. Only then when all stones are collected shall you place it inside” "
+text = "“Stack the stones on the left side of the geyser so that it doesn’t explode from the pressure of time. Only then when all stones are collected shall you place it inside” "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1354,10 +1357,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.00932722
-anchor_top = 0.016286632
-anchor_right = 1.0183126
-anchor_bottom = 1.0670079
+anchor_left = 0.0640013
+anchor_top = -0.008841335
+anchor_right = 0.9561829
+anchor_bottom = 1.0418799
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1369,10 +1372,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 47
-text = "“A soda in hand, a sparkle and gleam,
-He builds his creation from bubbles and dream
-and soar to the stars on a fizzy beam”
-"
+text = "\"A child holds a simple soda, yet dreams ignite. From fizz and foam he fashions flight, a vessel born of bubbles and bright imagination, rising skyward on a sparkling beam.”"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
