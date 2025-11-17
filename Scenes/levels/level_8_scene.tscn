@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://cyoxpcag56i3y"]
+[gd_scene load_steps=127 format=3 uid="uid://cyoxpcag56i3y"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_bkfv3"]
 [ext_resource type="Script" uid="uid://02trpnykd33h" path="res://Scripts/levels/level_8_script.gd" id="1_mqs6j"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://b1uulmepksmhb" path="res://Scripts/object-level/level_8/carrot_patch.gd" id="14_mpdlk"]
 [ext_resource type="Texture2D" uid="uid://bqbwfjwmgbgax" path="res://Assets/levels/level_8/turtle-sheet.png" id="16_bgg6d"]
 [ext_resource type="Script" uid="uid://d22q7j5n4l6xi" path="res://Scripts/object-level/level_8/tree_lvl_8.gd" id="16_pcvy3"]
+[ext_resource type="Texture2D" uid="uid://b4660k64rbfcy" path="res://Assets/levels/level_8/congrats-combined-sheet.png" id="17_d08m7"]
 [ext_resource type="Texture2D" uid="uid://c8n4yst2eobue" path="res://Assets/levels/level_8/hare-life-sheet.png" id="18_no5gr"]
 [ext_resource type="Texture2D" uid="uid://sabtsjm8d7xd" path="res://Assets/levels/level_8/hare-eating-sheet.png" id="19_paq8g"]
 [ext_resource type="Script" uid="uid://dixa88bvwn3b5" path="res://Scripts/object-level/level_8/finish_line.gd" id="19_w44jm"]
@@ -690,6 +691,161 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtona"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(0, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65036"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(78, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_865ae"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(156, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nlyj"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(234, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cxn6"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(312, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg6ed"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(390, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u3kv"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(468, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elsnw"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(546, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36t65"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(624, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnu76"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(702, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y1tu"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(780, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn73g"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(858, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olilm"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(936, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy21g"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(1014, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r7xq"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(1092, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g73s7"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(1170, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylijp"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(1248, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gugn"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(1326, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0sxo"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(1404, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smtef"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(1482, 0, 78, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdohg"]
+atlas = ExtResource("17_d08m7")
+region = Rect2(1560, 0, 78, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d08m7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtona")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65036")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_865ae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nlyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cxn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eg6ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6u3kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elsnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36t65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnu76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y1tu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn73g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olilm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy21g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r7xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g73s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylijp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gugn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0sxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smtef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdohg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="level_8_scene" type="Node2D"]
 script = ExtResource("1_mqs6j")
 
@@ -734,7 +890,7 @@ position_smoothing_enabled = true
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.00006, -50)
+position = Vector2(641, -65)
 scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_jvjwy")
 
@@ -824,9 +980,11 @@ script = ExtResource("10_tivvh")
 object_name = "turtle"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turtle"]
-position = Vector2(1.2676303e-06, -29)
+position = Vector2(2, -23.000004)
 rotation = 3.1415927
 sprite_frames = SubResource("SpriteFrames_3qsgw")
+animation = &"celebrates"
+frame_progress = 0.42968997
 offset = Vector2(0, 269.41)
 flip_h = true
 
@@ -883,6 +1041,17 @@ position = Vector2(0, 152.16)
 
 [node name="player_gun_marker" type="Marker2D" parent="."]
 position = Vector2(-194.025, -132.41)
+
+[node name="shake_hand" type="Marker2D" parent="."]
+position = Vector2(-2, 301)
+
+[node name="congrats" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-1, 294)
+sprite_frames = SubResource("SpriteFrames_d08m7")
+
+[node name="pos_to_focus" type="Marker2D" parent="."]
+position = Vector2(128, 53)
 
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
