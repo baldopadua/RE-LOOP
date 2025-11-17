@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://db3cw6m00sqau"]
+
+[ext_resource type="AudioStream" uid="uid://d1k35lgnwibfy" path="res://Audio/sfx/bowl.wav" id="1_bowl"]
+
+[node name="bowl" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_bowl")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 2
