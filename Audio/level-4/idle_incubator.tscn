@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://e9f0g1h2i3j4k"]
 
-[ext_resource type="AudioStream" uid="uid://dfkssm4sgmp62" path="res://Audio/sfx/idle_incubator.wav" id="1_idle"]
+[ext_resource type="AudioStream" uid="uid://cy5up1t5ydk4q" path="res://Audio/sfx/idle_incubator_final.wav" id="1_idle"]
 
 [node name="idle_incubator" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_idle")
-volume_db = -5.0
+volume_db = 3.0
