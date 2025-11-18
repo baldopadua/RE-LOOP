@@ -26,6 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://2u5m6yv0d0ss" path="res://Assets/levels/level_8/hare-celebrate.png" id="23_qcaca"]
 [ext_resource type="Script" uid="uid://bhqeaytly6m30" path="res://Scripts/object-level/level_8/gun.gd" id="24_65a2d"]
 [ext_resource type="Texture2D" uid="uid://s2lv7m6iqlq" path="res://Assets/levels/level_8/gun-signal-sheet.png" id="25_ejpmq"]
+[ext_resource type="Shader" uid="uid://6nni72ykvmy7" path="res://Shaders/black_hole.gdshader" id="27_ofh5g"]
+[ext_resource type="Texture2D" uid="uid://bacqpwmbkc6hy" path="res://Shaders/black_hole.tres" id="28_bgg6d"]
+[ext_resource type="Texture2D" uid="uid://rjouqbpxr0qg" path="res://icon.svg" id="29_no5gr"]
 
 [sub_resource type="Gradient" id="Gradient_85ltu"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -180,7 +183,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqs6j"]
-size = Vector2(20, 68.21997)
+size = Vector2(20, 89.84601)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d08m7"]
 size = Vector2(36, 40.359985)
@@ -335,6 +338,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_ldsf4")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ldsf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldsf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7iyyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7iyyh")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7iyyh")
 }],
 "loop": true,
@@ -470,6 +485,21 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xdw70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdw70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdw70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdw70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdw70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdw70")
 }],
 "loop": false,
 "name": &"find_wife",
@@ -507,6 +537,21 @@ animations = [{
 "speed": 6.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qud0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qud0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qud0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qud0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qud0e")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qud0e")
 }],
@@ -691,6 +736,11 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_paq8g"]
+shader = ExtResource("27_ofh5g")
+shader_parameter/curve = ExtResource("28_bgg6d")
+shader_parameter/strength = 4.7499999933364734e-08
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtona"]
 atlas = ExtResource("17_d08m7")
 region = Rect2(0, 0, 78, 44)
@@ -759,25 +809,33 @@ region = Rect2(1170, 0, 78, 44)
 atlas = ExtResource("17_d08m7")
 region = Rect2(1248, 0, 78, 44)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0gugn"]
-atlas = ExtResource("17_d08m7")
-region = Rect2(1326, 0, 78, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0sxo"]
-atlas = ExtResource("17_d08m7")
-region = Rect2(1404, 0, 78, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_smtef"]
-atlas = ExtResource("17_d08m7")
-region = Rect2(1482, 0, 78, 44)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cdohg"]
-atlas = ExtResource("17_d08m7")
-region = Rect2(1560, 0, 78, 44)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_d08m7"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtona")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtona")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtona")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtona")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtona")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtona")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtona")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtona")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dtona")
 }, {
@@ -828,22 +886,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ylijp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0gugn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y0sxo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_smtef")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cdohg")
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="level_8_scene" type="Node2D"]
@@ -890,8 +936,8 @@ position_smoothing_enabled = true
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(641, -65)
-scale = Vector2(24, 1.5)
+position = Vector2(641, -72.5)
+scale = Vector2(24, 1.734375)
 texture = SubResource("GradientTexture2D_jvjwy")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
@@ -910,7 +956,8 @@ object_type = 1
 shape = SubResource("RectangleShape2D_85ltu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Start Line"]
-position = Vector2(6.556708e-07, 15)
+position = Vector2(-7.430936e-07, -17)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bou3q")
 
 [node name="CarrotPatch" parent="." instance=ExtResource("5_tsmqx")]
@@ -924,7 +971,8 @@ object_type = 1
 shape = SubResource("RectangleShape2D_kks11")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CarrotPatch"]
-position = Vector2(-2.9715018, 34.353207)
+position = Vector2(-2.972, 25.398)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_plygp")
 animation = &"no_carrot"
 
@@ -936,12 +984,13 @@ object_name = "tree"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tree"]
-position = Vector2(0.35876274, -9.26141)
-scale = Vector2(1.5, 1.5)
+position = Vector2(1.028636, -20.421665)
+scale = Vector2(1.7, 1.7)
 sprite_frames = SubResource("SpriteFrames_mpdlk")
 animation = &"window"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tree"]
+position = Vector2(0, 10.813019)
 shape = SubResource("RectangleShape2D_mqs6j")
 
 [node name="Chair" parent="." instance=ExtResource("5_tsmqx")]
@@ -954,8 +1003,10 @@ is_pickupable = true
 shape = SubResource("RectangleShape2D_d08m7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Chair"]
-position = Vector2(-2.0000002, -2.1799927)
+position = Vector2(0, 16.405)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jvjwy")
+offset = Vector2(0, -22.1)
 flip_h = true
 
 [node name="Finish Line" parent="." instance=ExtResource("5_tsmqx")]
@@ -966,7 +1017,8 @@ object_name = "finish_line"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Finish Line"]
-position = Vector2(-2.0000007, 17)
+position = Vector2(-1.9999996, -8)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pcvy3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Finish Line"]
@@ -974,18 +1026,17 @@ position = Vector2(-9.1410584e-08, 13)
 shape = SubResource("RectangleShape2D_w44jm")
 
 [node name="Turtle" parent="." instance=ExtResource("5_tsmqx")]
-position = Vector2(-4, 0)
+position = Vector2(0, 13.71)
 rotation = -1.5707964
 script = ExtResource("10_tivvh")
 object_name = "turtle"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turtle"]
-position = Vector2(2.0000012, -30)
 rotation = 3.1415927
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_3qsgw")
-animation = &"celebrates"
-frame_progress = 0.42968997
-offset = Vector2(0, 269.41)
+animation = &"walk"
+offset = Vector2(0, 187.685)
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Turtle"]
@@ -993,17 +1044,17 @@ position = Vector2(0, -269.41)
 shape = SubResource("RectangleShape2D_wv02y")
 
 [node name="Hare" parent="." instance=ExtResource("5_tsmqx")]
+position = Vector2(0, 10.55)
 rotation = -1.5707964
 script = ExtResource("12_plygp")
 object_name = "hare"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hare"]
-z_index = 1
-position = Vector2(14.999998, -24.000002)
+position = Vector2(9.87, 0)
 rotation = 3.1415927
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_tivvh")
-animation = &"eating_carrot"
-offset = Vector2(0, 269.41)
+offset = Vector2(0, 182.46)
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hare"]
@@ -1018,6 +1069,7 @@ object_name = "small_carrot"
 is_pickupable = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Small Carrot"]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_yjicb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Small Carrot"]
@@ -1035,6 +1087,8 @@ is_pickupable = true
 shape = SubResource("RectangleShape2D_203gj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun"]
+position = Vector2(0, -29.265)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nbcoo")
 
 [node name="marker1" type="Marker2D" parent="."]
@@ -1046,16 +1100,23 @@ position = Vector2(-194.025, -132.41)
 [node name="shake_hand" type="Marker2D" parent="."]
 position = Vector2(-2, 301)
 
-[node name="congrats" type="AnimatedSprite2D" parent="."]
-visible = false
-z_index = 2
-position = Vector2(-1, 294)
-sprite_frames = SubResource("SpriteFrames_d08m7")
-frame = 20
-frame_progress = 1.0
-
 [node name="pos_to_focus" type="Marker2D" parent="."]
 position = Vector2(128, 53)
+
+[node name="Blackhole" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_paq8g")
+position = Vector2(0, 259)
+scale = Vector2(2.609375, 2.1562502)
+texture = ExtResource("29_no5gr")
+
+[node name="congrats" type="AnimatedSprite2D" parent="Blackhole"]
+visible = false
+z_index = 1
+position = Vector2(-0.38323355, 12.521744)
+scale = Vector2(0.5748504, 0.6956521)
+sprite_frames = SubResource("SpriteFrames_d08m7")
+frame = 24
+frame_progress = 1.0
 
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
@@ -1066,3 +1127,4 @@ position = Vector2(128, 53)
 [connection signal="area_exited" from="Hare" to="Hare" method="_on_area_exited"]
 [connection signal="rotate_object" from="Hare" to="Hare" method="_on_rotate_object"]
 [connection signal="start_race" from="Gun" to="Gun" method="_on_start_race"]
+[connection signal="turtle_win_race" from="Gun" to="." method="_on_turtle_win_race"]

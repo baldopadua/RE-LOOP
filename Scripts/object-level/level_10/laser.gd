@@ -70,4 +70,3 @@ func _on_body_entered(body) -> void:
 		await animation_player.animation_finished
 		await get_tree().create_timer(0.50).timeout
 		get_parent().level_handler.complete_current_level(get_parent().get_parent())
-		

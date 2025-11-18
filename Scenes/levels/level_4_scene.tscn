@@ -1059,7 +1059,6 @@ rotation = 2.61799
 sprite_frames = SubResource("SpriteFrames_0bs5k")
 animation = &"dino"
 autoplay = "dino"
-frame_progress = 0.7489157
 
 [node name="chicken" parent="." instance=ExtResource("4_fiti8")]
 position = Vector2(262, -145)
@@ -1194,6 +1193,7 @@ scale = Vector2(1.57143, 1.57143)
 texture = ExtResource("18_be8ic")
 
 [node name="trex" parent="." instance=ExtResource("4_fiti8")]
+visible = false
 position = Vector2(-152, -256)
 rotation = 2.61799
 scale = Vector2(2, 2)
