@@ -55,10 +55,3 @@ func set_hold_progress(progress: float) -> void:
 		$Sprite2D.modulate = new_color
 	elif has_node("AnimatedSprite2D"):
 		$AnimatedSprite2D.modulate = new_color
-	
-
-func hit_stop(timeScale, duration):
-	Engine.time_scale = timeScale
-	var timer = get_tree().create_timer(timeScale * duration)
-	await timer.timeout
-	Engine.time_scale = 1

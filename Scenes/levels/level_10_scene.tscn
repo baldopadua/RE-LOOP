@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://devjgm4fpge0o" path="res://Scripts/levels/level_10_script.gd" id="1_lnfvu"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_lnfvu"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_geapq"]
-[ext_resource type="Script" uid="uid://f5wtdaokupbq" path="res://scripts/object-level/level_10/player.gd" id="4_qcf8u"]
+[ext_resource type="Script" uid="uid://f5wtdaokupbq" path="res://Scripts/object-level/level_10/player.gd" id="4_qcf8u"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_qcmyw"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_ttbi8"]
 [ext_resource type="Texture2D" uid="uid://dqtn354dybf4y" path="res://Assets/levels/level_10/lazer-sheet-new.png" id="8_ttn1o"]
@@ -1081,6 +1081,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_rmmn1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13.76, 14.645)]
+}
+
 [sub_resource type="Animation" id="Animation_qcf8u"]
 resource_name = "climbing_laser"
 length = 4.0
@@ -1095,21 +1110,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-13.76, 14.645), Vector2(-35.925, 31.335), Vector2(-38.71, 88.95), Vector2(48.815, 133.07)]
-}
-
-[sub_resource type="Animation" id="Animation_rmmn1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerScene:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-13.76, 14.645)]
 }
 
 [sub_resource type="Animation" id="Animation_odd5e"]
@@ -1155,7 +1155,6 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_lnfvu")]
 self_modulate = Color(1, 1, 1, 0.9000001)
-position = Vector2(-13.76, 14.645)
 up_direction = Vector2(0, 1)
 script = ExtResource("4_qcf8u")
 
@@ -1336,6 +1335,7 @@ autoplay = "default"
 offset = Vector2(17.34, -6.015)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
 libraries = {
 &"": SubResource("AnimationLibrary_odd5e")
 }

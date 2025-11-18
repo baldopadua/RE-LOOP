@@ -6,6 +6,7 @@ signal toggle_switch_circle()
 @onready var canvas_layer = $"../../CanvasLayer"
 @export var x_pos : float = 0.0
 @export var y_pos : float = 0.0
+
 var start_color := Color(1, 1, 1) # ffffff
 var end_color := Color("006162")  # 006162
 
