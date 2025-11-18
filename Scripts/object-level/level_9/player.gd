@@ -13,19 +13,21 @@ extends "res://Scripts/player_script.gd"
 signal loop_break_shown # Add this signal
 
 var matched = false
+var cat_matched = false
 
 
 func _on_player_finished_moving() -> void:
-	
 	# check if both cat states are the same
-	if not box.box_closed and box.cat_placed and box.cat2_placed:
+	if not box.box_closed and box.cat_placed and box.cat2_placed and not cat_matched:
 		if cat.current_state == cat2.current_state:
 			# play box close function
 			box.close_box_function()
-	
+			cat_matched = true	
+		
 	if not matched:
 		if s1.matched and s2.matched and lever2.matched and box.box_closed:
 			if s1.current_state == s2.current_state:
+				GlobalVariables.is_looping = false
 				GlobalVariables.player_stopped = true
 				set_process_input(false)
 				
@@ -68,32 +70,13 @@ func _on_player_finished_moving() -> void:
 				s1.animated_sprite1.play_backwards("default")
 				s1.animated_sprite2.play_backwards("default")
 				s1.current_state = 1
-				get_node("Camera2D").emit_signal("pan_to_orig_pos")
 				matched = true
 				# Reveal all the keystones here
 				position.x = 0.0
 				
-
 				# Fade out animation
 				flash.create_tween().tween_property(flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 				
 				await get_tree().create_timer(1.0).timeout
-				box.open_box_function()
-				await get_tree().create_timer(1.0).timeout
 				area_handler.show_loop_break(9)
-				emit_signal("loop_break_shown") 
-				await get_tree().create_timer(3.0).timeout
-				get_node("Camera2D").emit_signal("cam_orig_zoom")
-
-				# After the loop break, hide bars and enable player movement
-				get_node("Camera2D").emit_signal("hide_bars")
-				ui_handler.show_game_ui_elements()
-				set_process_input(true)
-				GlobalVariables.player_stopped = false
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	pass # Replace with function body.
-
-
-
+				box.open_box_function()

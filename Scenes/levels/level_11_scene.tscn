@@ -41,11 +41,11 @@
 [ext_resource type="Script" uid="uid://cplaslbu83cpc" path="res://Scripts/object-level/level_11/cat.gd" id="39_ufgag"]
 [ext_resource type="Script" uid="uid://dke5qtot13lgg" path="res://Scripts/object-level/level_11/lightbulb.gd" id="41_2ukqy"]
 
-[sub_resource type="Gradient" id="Gradient_k2n1d"]
+[sub_resource type="Gradient" id="Gradient_7hl30"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ob8a3"]
-gradient = SubResource("Gradient_k2n1d")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_edqfj"]
+gradient = SubResource("Gradient_7hl30")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wo06f"]
 atlas = ExtResource("10_vicku")
@@ -1444,12 +1444,6 @@ theme_override_font_sizes/font_size = 14
 text = "TEXT"
 horizontal_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-rotation = 3.143091
-scale = Vector2(0.99999994, 0.99999994)
-ignore_rotation = false
-position_smoothing_enabled = true
-
 [node name="SoundManager" parent="." instance=ExtResource("3_xr6bj")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -1458,15 +1452,15 @@ position_smoothing_enabled = true
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.00006, -50)
-scale = Vector2(24, 1.5)
-texture = SubResource("GradientTexture2D_ob8a3")
+position = Vector2(687.49994, -61)
+scale = Vector2(24.234373, 1.625)
+texture = SubResource("GradientTexture2D_edqfj")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.0001, 771)
-scale = Vector2(24, 1.5)
-texture = SubResource("GradientTexture2D_ob8a3")
+position = Vector2(677.2499, 769)
+scale = Vector2(23.789063, 1.5)
+texture = SubResource("GradientTexture2D_edqfj")
 
 [node name="tree_statue" parent="." instance=ExtResource("5_ngdtp")]
 position = Vector2(122, -214)

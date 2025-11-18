@@ -7,10 +7,13 @@ signal open_box # New signal
 @onready var cat = $"../cat"
 @onready var cat2 = $"../cat2"
 @onready var player = $"../PlayerScene"
+@onready var box_down_marker = $"../box_down_marker"
+@onready var schrodinger = $"../schrodinger"
 
 var cat_placed = false
 var cat2_placed = false
 var box_closed = false
+var is_loop_broken = false
 
 @onready var animation_sprite = $AnimatedSprite2D
 var float_tween : Tween
@@ -66,38 +69,70 @@ func open_box_function():
 	player.set_process_input(false)
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
-	player.get_node("Camera2D").emit_signal("pan_to_pos", global_position)
-	
-	await get_tree().create_timer(1.0).timeout
-	
-	animation_sprite.play_backwards("activate")
+	player.get_node("Camera2D").emit_signal("pan_to_pos", box_down_marker.global_position)
+	await get_tree().create_timer(1.0).timeout	
+	_on_open_box_animation_finished("activate") 
 	
 	# Show the cat at frame 2
-	cat.visible = true
-	cat.get_node("AnimatedSprite2D").frame = 2
+	#cat.visible = true
 
 func _on_open_box_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "activate":
-		player.get_node("Camera2D").emit_signal("cam_origEEEEE_zoom")
-		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
-		player.set_process_input(true)
-		box_closed = false
-		emit_signal("open_box")
+		cat.get_node("AnimatedSprite2D").frame = 2
+		schrodinger.get_node("AnimatedSprite2D").frame = 0
+		schrodinger.get_node("AnimatedSprite2D2").frame = 0
+		#emit_signal("open_box")
 		
-		visible = true
-
-		
-		if float_tween and float_tween.is_valid():
+		if float_tween and float_tween.is_valid() and cat.cat_tween and cat.cat_tween.is_valid():
 			float_tween.kill()
+			cat.cat_tween.kill()
 			print("Stopped floating tween.")
 
-		var marker = get_parent().get_node("box_down_marker")
-		print("Tweening box from ", position, " to ", marker.position)
 		var tween := create_tween()
-		tween.tween_property(self, "position", marker.position, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		cat.create_tween().tween_property(cat, "position:y", 280.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "position:y", 280.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		tween.connect("finished", Callable(self, "_on_box_tween_finished"))
 		print("Started downward tween.")
 
 func _on_box_tween_finished():
-	print("Box tween finished, new position: ", position)
+	#print("Box tween finished, new position: ", position)
+	animation_sprite.play_backwards("activate")
+	animation_sprite.animation_finished.connect(func():
+		player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+		player.get_node("Camera2D").emit_signal("hide_bars")
+		player.set_process_input(true)
+		box_closed = false
+		is_loop_broken = true
+		player.ui_handler.show_game_ui_elements()
+		player.set_process_input(true)
+		GlobalVariables.player_stopped = false
+	)
 
+func _on_body_entered(body) -> void:
+	handle_body_entered(body)
+	if is_loop_broken:
+		player.set_process_input(false)
+		player.get_node("Camera2D").emit_signal("pan_to_pos", cat.global_position)
+		player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
+		player.get_node("Camera2D").emit_signal("reveal_bars")
+		await get_tree().create_timer(1.0).timeout	
+		cat.create_tween().tween_property(cat, "position:y", 290.0, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func():
+			await get_tree().create_timer(0.5).timeout	
+			player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+			var tween := create_tween()
+			tween.tween_property(self, "position:y", 0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			player.create_tween().tween_property(player.get_node("AnimatedSprite2D"), "position:y", 0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func():
+				await get_tree().create_timer(1.0).timeout	
+				player.get_node("AnimatedSprite2D").play("jump")
+				player.create_tween().tween_property(player.get_node("AnimatedSprite2D"), "position:y", 100.0, 1.0).finished.connect(func():
+					player.create_tween().tween_property(player.get_node("AnimatedSprite2D"), "position:y", 20, 0.75)
+					player.create_tween().tween_property(player, "modulate:a",  0.0, 0.75).finished.connect(func():
+						get_parent().level_handler.complete_current_level(get_parent())
+					)
+					
+				)
+			)
+		)
+		
+#	handle here rising up and jumping

@@ -8,9 +8,9 @@ signal add_cur_state(direction)
 @onready var marker2D = $"../box/Marker2D"
 
 var is_loop_shown = false
+var cat_tween : Tween
 
 func _on_add_cur_state(direction: Variant) -> void:
-
 	if is_loop_shown:
 		return
 		
@@ -37,19 +37,17 @@ func _on_area_entered(area: Area2D) -> void:
 			float_cat()
 
 func float_cat() -> void:
-	var tween := create_tween()
-	
-	tween.set_loops()
+	cat_tween = create_tween()
+	cat_tween.set_loops()
 	
 	var float_offset := -5.0
 	var duration := 1.0
 	
-	tween.tween_property(self, "position:y", self.position.y + float_offset, duration) \
+	cat_tween.tween_property(self, "position:y", self.position.y + float_offset, duration) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "position:y", self.position.y, duration) \
+	cat_tween.tween_property(self, "position:y", self.position.y, duration) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
 func _on_player_scene_loop_break_shown() -> void:
 	is_loop_shown = true
-
