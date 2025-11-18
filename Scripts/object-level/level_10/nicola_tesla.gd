@@ -20,74 +20,53 @@ func _on_area_exited(area: Area2D) -> void:
 		object_that_this_is_on = "none"
 
 func _on_add_cur_state(direction) -> void:
+	
 	if object_that_this_is_on == "none":
 		if direction == GlobalVariables.player_direction.CLOCKWISE:
-			if current_state == 1:
-				animated_sprite.play("default")
-				is_pickupable = false
-			elif current_state == 2:
+			if current_state == 2:
 				animated_sprite.play("nic_t_skull")
 				is_pickupable = true
 		else:
 			if current_state == 1:
 				is_pickupable = false
-				animated_sprite.play_backwards("default")
-			elif current_state == 2:
 				animated_sprite.play_backwards("nic_t_skull")
-				is_pickupable = true
 
 	elif object_that_this_is_on == "lightning_cloud":
 		if direction == GlobalVariables.player_direction.CLOCKWISE:
-			if current_state == 1:
-				animated_sprite.play("default")
-				is_pickupable = false
-			elif current_state == 2:
+			if current_state == 2:
+				animated_sprite.play("nic_t_shocked")
 				var lightning_cloud = $"../LightningCloud"
-				lightning_cloud.get_node("AnimatedSprite2D").play("lightning_rod")
-				is_pickupable = false
-				laser.emit_signal("keystone_complete", object_name, true)
+				lightning_cloud.get_node("AnimatedSprite2D").play("lightning_cloud")
+				is_pickupable = true
 		else:
 			if current_state == 1:
-				animated_sprite.play_backwards("default")
-				is_pickupable = false
-				laser.emit_signal("keystone_complete", object_name, false)
-			elif current_state == 2:
+				animated_sprite.play_backwards("nic_t_shocked")
 				var lightning_cloud = $"../LightningCloud"
-				lightning_cloud.get_node("AnimatedSprite2D").play_backwards("lightning_rod")
+				lightning_cloud.get_node("AnimatedSprite2D").play("lightning_cloud")
 				is_pickupable = false
 
 	elif object_that_this_is_on == "light_bulb":
 		if direction == GlobalVariables.player_direction.CLOCKWISE:
-			if current_state == 1:
-				animated_sprite.play("default")
-				is_pickupable = false
-			elif current_state == 2:
+			if current_state == 2:
 				animated_sprite.play("nic_t_skull")
 				is_pickupable = true
 		else:
 			if current_state == 1:
-				animated_sprite.play_backwards("default")
-				is_pickupable = false
-			elif current_state == 2:
 				animated_sprite.play_backwards("nic_t_skull")
-				is_pickupable = true
+				is_pickupable = false
 
 	elif object_that_this_is_on == "tesla_coil":
 		if direction == GlobalVariables.player_direction.CLOCKWISE:
-			if current_state == 1:
-				animated_sprite.play("default")
-				is_pickupable = false
-			elif current_state == 2:
+			if current_state == 2:
+				animated_sprite.play("nic_t_invented")
 				var tesla_coil = $"../TeslaCoil"
 				tesla_coil.get_node("AnimatedSprite2D").play("tesla_coil_two")
 				is_pickupable = false
 				laser.emit_signal("keystone_complete", object_name, true)
 		else:
 			if current_state == 1:
-				animated_sprite.play_backwards("default")
+				animated_sprite.play_backwards("nic_t_invented")
+				var tesla_coil = $"../TeslaCoil"
+				tesla_coil.get_node("AnimatedSprite2D").play_backwards("tesla_coil_two")
 				is_pickupable = false
 				laser.emit_signal("keystone_complete", object_name, false)
-			elif current_state == 2:
-				var tesla_coil = $"../TeslaCoil"
-				tesla_coil.get_node("AnimatedSprite2D").play_backwards("teslo_coil_two")
-				is_pickupable = false

@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="RE:LOOP"
+config/name="Plooy"
+config/description="Break the Loop"
 run/main_scene="uid://dypu05rngiwmu"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/image="uid://d4dvjse2gw7kq"
@@ -33,6 +34,7 @@ runtime/balloon_path="res://dialogues/made/balloon.tscn"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 

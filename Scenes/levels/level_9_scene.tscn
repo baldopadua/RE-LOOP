@@ -455,12 +455,6 @@ theme_override_font_sizes/font_size = 14
 text = "TEXT"
 horizontal_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-rotation = 0.0071858168
-scale = Vector2(0.99999994, 0.99999994)
-ignore_rotation = false
-position_smoothing_enabled = true
-
 [node name="SoundManager" parent="." instance=ExtResource("3_bd58e")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -517,7 +511,7 @@ shape = SubResource("RectangleShape2D_w6vp2")
 
 [node name="schrodinger" parent="." instance=ExtResource("5_u54cp")]
 visible = false
-position = Vector2(-380.43, -241.76)
+position = Vector2(-393.985, -260.14)
 rotation = 2.6179938
 script = ExtResource("11_nu7n4")
 object_name = "schrodinger"
@@ -529,18 +523,21 @@ current_state = 1
 position = Vector2(0.73205566, 2.7320251)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
+offset = Vector2(0, -11.935)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="schrodinger"]
 position = Vector2(0.732, 2.732)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
+offset = Vector2(0, -11.935)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="schrodinger"]
+position = Vector2(0, -23.725)
 shape = SubResource("RectangleShape2D_w1tv0")
 
 [node name="schrodinger2" parent="." instance=ExtResource("5_u54cp")]
 visible = false
-position = Vector2(-512, 0)
+position = Vector2(-539.815, 0)
 rotation = 1.5707964
 script = ExtResource("13_rfmfc")
 object_name = "schrodinger2"
@@ -550,20 +547,23 @@ min_state_threshold = 1
 current_state = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="schrodinger2"]
-position = Vector2(0, 5)
+position = Vector2(0, -11.84)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 frame = 5
 frame_progress = 1.0
+offset = Vector2(0, -6.33)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="schrodinger2"]
-position = Vector2(0, 5)
+position = Vector2(0, -11.84)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 frame = 5
 frame_progress = 1.0
+offset = Vector2(0, -6.33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="schrodinger2"]
+position = Vector2(0, -26.29)
 shape = SubResource("RectangleShape2D_w1tv0")
 
 [node name="box" parent="." instance=ExtResource("5_u54cp")]
@@ -602,7 +602,7 @@ shape = SubResource("RectangleShape2D_uwqnk")
 
 [node name="lever2" parent="." instance=ExtResource("5_u54cp")]
 visible = false
-position = Vector2(-91.735, 258.32)
+position = Vector2(-87.88, 264.065)
 rotation = -0.5235988
 script = ExtResource("20_ckxqi")
 object_name = "lever2"
@@ -611,10 +611,12 @@ is_pickupable = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="lever2"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lvmv3")
+offset = Vector2(0, -4.915)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="lever2"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lvmv3")
+offset = Vector2(0, -4.915)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lever2"]
 shape = SubResource("RectangleShape2D_uwqnk")
@@ -637,7 +639,7 @@ autoplay = "default"
 [node name="center_pos" type="Marker2D" parent="."]
 
 [node name="box_down_marker" type="Marker2D" parent="."]
-position = Vector2(4, 300)
+position = Vector2(0, 215)
 
 [connection signal="loop_break_shown" from="PlayerScene" to="cat" method="_on_player_scene_loop_break_shown"]
 [connection signal="loop_break_shown" from="PlayerScene" to="cat2" method="_on_player_scene_loop_break_shown"]

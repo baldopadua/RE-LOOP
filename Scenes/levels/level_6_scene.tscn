@@ -18,11 +18,11 @@
 [ext_resource type="Script" uid="uid://dn4wa6vh46eft" path="res://Scripts/object-level/level_6/seed2.gd" id="20_f215k"]
 [ext_resource type="Texture2D" uid="uid://cqy4vnecvhahh" path="res://Assets/levels/level_6/inewton.png" id="22_f215k"]
 
-[sub_resource type="Gradient" id="Gradient_7hl30"]
+[sub_resource type="Gradient" id="Gradient_nlrgi"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cr1iw"]
-gradient = SubResource("Gradient_7hl30")
+gradient = SubResource("Gradient_nlrgi")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rk5e6"]
 atlas = ExtResource("9_cr1iw")

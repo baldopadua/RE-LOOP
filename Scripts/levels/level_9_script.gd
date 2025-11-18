@@ -43,7 +43,6 @@ func _ready():
 	
 	# HIDE THE UI DURING CINEMA
 	ui_handler.hide_game_ui_elements()
-	player.get_node("Camera2D").emit_signal("pan_to_pos", center_pos.global_position)
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	player.get_node("Camera2D").emit_signal("cam_zoom", 0.65)
 	player.shake_camera(5.0, 10.0, 2.5)

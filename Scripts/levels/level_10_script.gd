@@ -34,6 +34,8 @@ func _ready():
 	objects_initialize()
 	
 	player.rotation = deg_to_rad(300.0)
+	
+	initial_cinematic()
 
 func objects_initialize():
 	objects.append(laser)
@@ -43,6 +45,35 @@ func objects_initialize():
 	objects.append(tesla_coil)
 	objects.append(lightning_cloud)
 	objects.append(light_bulb)
+
+func initial_cinematic():
+	player.set_process_input(false)
+	await get_tree().create_timer(1.0).timeout
+	var p = player.get_node("Camera2D")
+	
+	p.emit_signal("cam_zoom", 1.5)
+	p.emit_signal("reveal_bars")
+	p.emit_signal("pan_to_pos", light_bulb.global_position)
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	p.emit_signal("pan_to_pos", tesla_coil.global_position)
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	p.emit_signal("pan_to_pos", lightning_cloud.global_position)
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	p.emit_signal("pan_to_pos", laser.get_node("AnimatedSprite2D").global_position)
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	p.emit_signal("cam_orig_zoom")
+	p.emit_signal("hide_bars")
+	p.emit_signal("pan_to_orig_pos")
+	
+	player.set_process_input(true)
 
 func _on_level_handler_skip_level_requested(level_number: int) -> void:
 	if level_number == 10:

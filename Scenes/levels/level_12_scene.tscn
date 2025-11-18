@@ -2339,14 +2339,14 @@ visible = false
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.00006, -50)
-scale = Vector2(24, 1.5)
+position = Vector2(637.00006, -59)
+scale = Vector2(24, 1.78125)
 texture = SubResource("GradientTexture2D_62p7t")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(637.0001, 771)
-scale = Vector2(24, 1.5)
+position = Vector2(637.0001, 785)
+scale = Vector2(24, 1.9375005)
 texture = SubResource("GradientTexture2D_62p7t")
 
 [node name="tree_statue" parent="." instance=ExtResource("6_j4nk1")]
