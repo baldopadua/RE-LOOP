@@ -89,7 +89,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh2gb"]
-size = Vector2(120, 20)
+size = Vector2(120, 355)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov81m"]
 size = Vector2(20, 72)
@@ -508,7 +508,6 @@ scale = Vector2(23.789063, 1.5)
 texture = SubResource("GradientTexture2D_cr1iw")
 
 [node name="switch_circle" parent="." instance=ExtResource("6_kapnr")]
-visible = false
 script = ExtResource("10_ov81m")
 object_name = "switch_circle"
 object_type = 1
@@ -520,7 +519,8 @@ autoplay = "default"
 frame_progress = 0.7319413
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="switch_circle"]
-position = Vector2(4, 0)
+visible = false
+position = Vector2(4, -14.5)
 shape = SubResource("RectangleShape2D_sh2gb")
 
 [node name="isaac_newton_1" parent="." instance=ExtResource("6_kapnr")]
