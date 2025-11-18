@@ -115,9 +115,9 @@
 ; ========================================
 ; LEVEL 8 SOUNDS (Wrappers - PackedScene)
 ; ========================================
-[ext_resource type="PackedScene" uid="uid://m2n3o4p5q6r7s" path="res://Audio/level-8/carrot_patch.tscn" id="55_level8"]
-[ext_resource type="PackedScene" uid="uid://k0l1m2n3o4p5q" path="res://Audio/level-8/chair.tscn" id="56_level8"]
-[ext_resource type="PackedScene" uid="uid://l1m2n3o4p5q6r" path="res://Audio/level-8/gunshut.tscn" id="57_level8"]
+[ext_resource type="PackedScene" uid="uid://bhghwxye2k5xi" path="res://Audio/level-8/carrot_patch.tscn" id="55_level8"]
+[ext_resource type="PackedScene" uid="uid://dasbgxtlkpym7" path="res://Audio/level-8/chair.tscn" id="56_level8"]
+[ext_resource type="PackedScene" uid="uid://gfgvwxd1j4wh" path="res://Audio/level-8/gunshut.tscn" id="57_level8"]
 
 ; ========================================
 ; LEVEL 9 SOUNDS (Wrappers - PackedScene)

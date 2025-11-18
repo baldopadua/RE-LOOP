@@ -139,6 +139,8 @@ func _on_start_race() -> void:
 	
 func _process_carrot() -> void:
 	carrot.visible = false
+	if sound_manager and sound_manager.sfx.has("carrot_patch"):
+		sound_manager.play_sfx("carrot_patch")
 	hare.animated_sprite.play("eating_carrot")
 	await hare.animated_sprite.animation_finished
 
@@ -155,6 +157,8 @@ func _process_carrot() -> void:
 
 func process_chair():
 	hare.visible = false
+	if sound_manager and sound_manager.sfx.has("chair"):
+		sound_manager.play_sfx("chair")
 	chair.get_node("AnimatedSprite2D").play("sleeping")
 	await chair.get_node("AnimatedSprite2D").animation_finished
 
