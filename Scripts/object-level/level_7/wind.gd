@@ -114,6 +114,9 @@ func _start_tornado_sequence(body) -> void:
 	is_playing = true
 	player_body.z_index = 2
 	anim_handler.play("flow_with_tornado")
+	# Play fly away tornado sound when player enters tornado
+	if sound_manager and sound_manager.sfx.has("fly_away_tornado"):
+		sound_manager.play_sfx("fly_away_tornado")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

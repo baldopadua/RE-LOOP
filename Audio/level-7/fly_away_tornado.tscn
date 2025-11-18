@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://k9l0m1n2o3p4q"]
+
+[ext_resource type="AudioStream" uid="uid://qbc6ncf7biut" path="res://Audio/sfx/fly_away_tornado.wav" id="1_fly_away"]
+
+[node name="fly_away_tornado" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_fly_away")
+volume_db = 6.0
+pitch_scale = 1.0
+max_polyphony = 2
+bus = &"sfx"

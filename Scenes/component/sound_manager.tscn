@@ -105,6 +105,7 @@
 [ext_resource type="PackedScene" uid="uid://b1c2d3e4f5g6h" path="res://Audio/level-7/butterfly.tscn" id="53_level7"]
 [ext_resource type="PackedScene" uid="uid://c2d3e4f5g6h7i" path="res://Audio/level-7/spider.tscn" id="54_level7"]
 [ext_resource type="PackedScene" uid="uid://d3e4f5g6h7i8j" path="res://Audio/level-7/tornado.tscn" id="55_level7"]
+[ext_resource type="PackedScene" uid="uid://k9l0m1n2o3p4q" path="res://Audio/level-7/fly_away_tornado.tscn" id="56_level7"]
 
 ; ========================================
 ; LEVEL 8 SOUNDS (Wrappers - PackedScene)
@@ -285,6 +286,8 @@ stream = ExtResource("15_clock")
 [node name="spider" parent="sfx/level_7_sfx" instance=ExtResource("54_level7")]
 
 [node name="tornado" parent="sfx/level_7_sfx" instance=ExtResource("55_level7")]
+
+[node name="fly_away_tornado" parent="sfx/level_7_sfx" instance=ExtResource("56_level7")]
 
 [node name="level_8_sfx" type="Node2D" parent="sfx"]
 
