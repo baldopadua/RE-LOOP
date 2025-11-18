@@ -56,6 +56,8 @@ func update_dreamer_state():
 				science_project.set_animation("depressed_salaryman")
 			[2, 3]:
 				# Depressed_salaryman to skeletal_remains
+				if sound_manager:
+					sound_manager.play_sfx("skeleton_collapse")
 				dreamer_animated_sprite.play("skeletal_remains")
 				science_project.set_animation("skeletal_remains")
 				await dreamer_animated_sprite.animation_finished
@@ -164,6 +166,8 @@ func set_rocket():
 	
 	rocket.visible = true
 	# Set dreamer animation to astronaut
+	if sound_manager:
+		sound_manager.play_sfx("astronaut_transform")
 	dreamer_animated_sprite.play("astronaut")
 	soda.visible = false
 	soda.is_pickupable = false

@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdtrk1qoe4bye"]
 
-[ext_resource type="AudioStream" uid="uid://bsw1xnshxgwuw" path="res://Audio/sfx/tornado.wav" id="1_tornado"]
+[ext_resource type="AudioStream" uid="uid://dq8tdbbhcqbks" path="res://Audio/sfx/final_tornado.wav" id="1_tornado"]
 
 [node name="tornado" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_tornado")
-volume_db = 24.0
+volume_db = 5.0
 pitch_scale = 1.0
 max_polyphony = 3
 bus = &"sfx"

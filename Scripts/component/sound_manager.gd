@@ -61,6 +61,13 @@ func set_sfx_volume(sfx_name: String, volume_db: float) -> void:
 		if player is AudioStreamPlayer2D:
 			player.volume_db = volume_db
 
+# SET VOLUME FOR A SPECIFIC SFX
+func set_sfx_volume(sfx_name: String, volume_db: float) -> void:
+	if sfx.has(sfx_name):
+		var player = sfx[sfx_name]
+		if player is AudioStreamPlayer2D:
+			player.volume_db = volume_db
+
 # UI SFX
 func play_ui(sound_name: String) -> void:
 	if ui_sfx.has(sound_name):

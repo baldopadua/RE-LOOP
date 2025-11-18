@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8lam5p3x7w2q"]
+
+[ext_resource type="AudioStream" uid="uid://bgqoutks1wanx" path="res://Audio/sfx/bones_collapse.wav" id="1_bones"]
+
+[node name="bones_collapse" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_bones")
+volume_db = -10.0
+pitch_scale = 1.0
+max_polyphony = 1
