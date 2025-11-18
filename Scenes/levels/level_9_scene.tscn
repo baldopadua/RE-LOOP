@@ -359,7 +359,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwqnk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmfc"]
-size = Vector2(120, 20)
+size = Vector2(120, 354)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rk5e6"]
 atlas = ExtResource("22_ckxqi")
@@ -628,7 +628,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="switch_circle"]
-position = Vector2(4, 0)
+position = Vector2(4, -13)
 shape = SubResource("RectangleShape2D_rfmfc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="switch_circle"]

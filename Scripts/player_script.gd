@@ -77,6 +77,8 @@ var cameraShakeNoise : FastNoiseLite
 #	To Intensity of Cam Shake
 var to_intensity : float = 0.0
 
+@onready var progress_bar = $ProgressBar
+
 func _ready() -> void:
 	if GlobalVariables.is_restarting:
 		GlobalVariables.is_restarting = false
@@ -105,10 +107,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_holding:
 		hold_time += delta
+		# Show progress bar and update its value
+		if progress_bar:
+			progress_bar.show_bar(true)
+			progress_bar.set_bar_progress(hold_time / HOLD_DURATION * 100)
 		if hold_time >= HOLD_DURATION and not triggered and current_rift != null:
 			current_rift.emit_signal("toggle_switch_circle")
 			triggered = true
 			print("PLOOY POSITION: ", position)
+	else:
+		# Hide progress bar when not holding
+		if progress_bar:
+			progress_bar.show_bar(false)
 
 func _input(event: InputEvent) -> void:
 	# MOVEMENT round(rad_to_deg(rotation)) < 180.0
@@ -168,9 +178,14 @@ func _input(event: InputEvent) -> void:
 			is_holding = true
 			hold_time = 0.0
 			triggered = false
-	
+			# Show progress bar at start of hold
+			if progress_bar:
+				progress_bar.show_bar(true)
 	if event.is_action_released("enter_rift"):		
 		is_holding = false
+		# Hide progress bar when released
+		if progress_bar:
+			progress_bar.show_bar(false)
 
 func _tween_finished():
 	# RESET THE SFX PITCH SCALE WHEN REACHING BOTH ENDS
