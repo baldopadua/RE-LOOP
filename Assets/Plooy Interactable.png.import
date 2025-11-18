@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckq7pw7mk8uro"
-path="res://.godot/imported/lightning-rod-sheet.png-d74e66edb319d7a4d01263b985470fed.ctex"
+uid="uid://js7dcga23gh3"
+path="res://.godot/imported/Plooy Interactable.png-2e6d4dafe9660c43a59d2b0ef5ca83eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/levels/level_10/lightning-rod-sheet.png"
-dest_files=["res://.godot/imported/lightning-rod-sheet.png-d74e66edb319d7a4d01263b985470fed.ctex"]
+source_file="res://Assets/Plooy Interactable.png"
+dest_files=["res://.godot/imported/Plooy Interactable.png-2e6d4dafe9660c43a59d2b0ef5ca83eb.ctex"]
 
 [params]
 

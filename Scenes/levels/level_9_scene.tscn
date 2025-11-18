@@ -547,7 +547,7 @@ min_state_threshold = 1
 current_state = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="schrodinger2"]
-position = Vector2(0, -11.84)
+position = Vector2(1.1736497e-07, -9.155003)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 frame = 5
@@ -555,7 +555,7 @@ frame_progress = 1.0
 offset = Vector2(0, -6.33)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="schrodinger2"]
-position = Vector2(0, -11.84)
+position = Vector2(1.1736497e-07, -9.155003)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 frame = 5
