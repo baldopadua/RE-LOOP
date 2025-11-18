@@ -346,6 +346,9 @@ volume_db = 5.0
 [node name="level_11_final_bgm" type="AudioStreamPlayer2D" parent="music"]
 stream = ExtResource("6_level11")
 volume_db = 5.0
+autoplay = true
+stream_paused = true
+max_polyphony = 1
 
 [node name="ambience" type="Node2D" parent="music"]
 
