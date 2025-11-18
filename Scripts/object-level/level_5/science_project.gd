@@ -5,6 +5,7 @@ var is_dreamer_here : bool = false
 var is_soda_here : bool = false
 @onready var rocket = $"../rocket"
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sound_manager = get_parent().get_node("SoundManager")
 
 func _ready():
 	print("SCIENCE PROJECT: ",get_rid())
@@ -46,6 +47,18 @@ func _on_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int,
 func set_animation(anim_name: String):
 	var target_anim = anim_name + "_cubicle"
 	if animated_sprite.animation != target_anim or animated_sprite.frame != 0:
+		# Play build_stall sound with pitch variation based on cubicle state
+		if sound_manager and sound_manager.sfx.has("build_stall"):
+			var stall_sound = sound_manager.sfx["build_stall"]
+			# Small stall (kid) = high pitch, Big stall (skeletal_remains) = low pitch
+			match anim_name:
+				"kid":
+					stall_sound.pitch_scale = 1.3  # High pitch for small stall
+				"depressed_salaryman":
+					stall_sound.pitch_scale = 1.0  # Medium pitch
+				"skeletal_remains":
+					stall_sound.pitch_scale = 0.7  # Low pitch for big stall
+			sound_manager.play_sfx("build_stall")
 		animated_sprite.play(target_anim)
 		# Connect to animation_finished to stop at last frame
 		if not animated_sprite.is_connected("animation_finished", Callable(self, "_on_animated_sprite_2d_animation_finished")):

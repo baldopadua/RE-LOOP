@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ch3clei25cbet"]
+[gd_scene load_steps=45 format=3 uid="uid://ch3clei25cbet"]
 
 [ext_resource type="Script" uid="uid://dc8173ksfevyx" path="res://Scripts/player_script.gd" id="1_8tj53"]
 [ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="2_7cibt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_e13mc"]
 [ext_resource type="Texture2D" uid="uid://ciskm1csg505j" path="res://Assets/Jump Sheep.png" id="3_q0huo"]
 [ext_resource type="Script" uid="uid://ddkt6xk5sru42" path="res://Scripts/component/camera_handler.gd" id="6_f11s3"]
+[ext_resource type="PackedScene" uid="uid://dqg53rmcdqo0m" path="res://Scenes/progress_bar.tscn" id="7_16waa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uui1g"]
 atlas = ExtResource("2_f11s3")
@@ -320,6 +321,12 @@ position = Vector2(0, -8.41)
 scale = Vector2(0.99999994, 0.99999994)
 position_smoothing_enabled = true
 script = ExtResource("6_f11s3")
+
+[node name="ProgressBar" parent="." instance=ExtResource("7_16waa")]
+visible = false
+position = Vector2(0, -263)
+rotation = -0.02895402
+scale = Vector2(0.23, 0.23)
 
 [connection signal="near_obj" from="." to="." method="_on_near_obj"]
 [connection signal="cam_orig_zoom" from="Camera2D" to="Camera2D" method="_on_cam_orig_zoom"]

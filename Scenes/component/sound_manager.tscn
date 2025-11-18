@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://co4mj4xfj7mhw" path="res://Audio/level-1/ice_break.tscn" id="11_kbx4k"]
 [ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="12_wax2h"]
 [ext_resource type="PackedScene" uid="uid://dfjn0ovrjl87e" path="res://Audio/level-1/time_freeze.tscn" id="13_ev6nr"]
+[ext_resource type="PackedScene" uid="uid://dnxj7bkmm8jxn" path="res://Audio/sfx/crystal_sfx.tscn" id="13_crystal"]
 [ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/level-1/time_manip.tscn" id="16_4nov3"]
 [ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="17_nb86s"]
 
@@ -91,6 +92,9 @@
 [ext_resource type="PackedScene" uid="uid://cc1p6nlx25ams" path="res://Audio/level-5/vending_machine.tscn" id="49_level5"]
 [ext_resource type="PackedScene" uid="uid://dcajafvxv6kos" path="res://Audio/level-5/soda_pop.tscn" id="50_level5"]
 [ext_resource type="PackedScene" uid="uid://b6fh2wn5tix1m" path="res://Audio/level-5/depress_man.tscn" id="51_level5"]
+[ext_resource type="PackedScene" uid="uid://c8k9m5p3x7w2q" path="res://Audio/level-5/bones_collapse.tscn" id="52_level5"]
+[ext_resource type="PackedScene" uid="uid://bvn5x8h4m7qrs" path="res://Audio/level-5/build_stall.tscn" id="53_level5"]
+[ext_resource type="PackedScene" uid="uid://d9h8k2m5p7w3x" path="res://Audio/level-5/astronaut_transform.tscn" id="54_level5"]
 
 ; ========================================
 ; LEVEL 6 SOUNDS (Wrappers - PackedScene)
@@ -98,13 +102,15 @@
 [ext_resource type="PackedScene" uid="uid://j9k0l1m2n3o4p" path="res://Audio/level-6/crystal_transition.tscn" id="52_level6"]
 [ext_resource type="PackedScene" uid="uid://n3o4p5q6r7s8t" path="res://Audio/level-6/person1.tscn" id="53_level6"]
 [ext_resource type="PackedScene" uid="uid://o4p5q6r7s8t9u" path="res://Audio/level-6/leaves.tscn" id="54_level6"]
+[ext_resource type="PackedScene" uid="uid://b5c6d7e8f9g0h" path="res://Audio/level-6/loop_shake.tscn" id="55_level6"]
 
 ; ========================================
 ; LEVEL 7 SOUNDS (Wrappers - PackedScene)
 ; ========================================
 [ext_resource type="PackedScene" uid="uid://b1c2d3e4f5g6h" path="res://Audio/level-7/butterfly.tscn" id="53_level7"]
 [ext_resource type="PackedScene" uid="uid://c2d3e4f5g6h7i" path="res://Audio/level-7/spider.tscn" id="54_level7"]
-[ext_resource type="PackedScene" uid="uid://d3e4f5g6h7i8j" path="res://Audio/level-7/tornado.tscn" id="55_level7"]
+[ext_resource type="PackedScene" uid="uid://cdtrk1qoe4bye" path="res://Audio/level-7/tornado.tscn" id="55_level7"]
+[ext_resource type="PackedScene" uid="uid://k9l0m1n2o3p4q" path="res://Audio/level-7/fly_away_tornado.tscn" id="56_level7"]
 
 ; ========================================
 ; LEVEL 8 SOUNDS (Wrappers - PackedScene)
@@ -169,6 +175,8 @@ bus = &"sfx"
 
 [node name="time_freeze" parent="sfx/global_sfx" instance=ExtResource("13_ev6nr")]
 
+[node name="crystal_sfx" parent="sfx/global_sfx" instance=ExtResource("13_crystal")]
+
 [node name="player_sfx" type="Node2D" parent="sfx"]
 
 [node name="pickup" type="AudioStreamPlayer2D" parent="sfx/player_sfx"]
@@ -189,6 +197,8 @@ stream = ExtResource("15_clock")
 [node name="clank" parent="sfx/player_sfx" instance=ExtResource("17_nb86s")]
 
 [node name="level_1_sfx" type="Node2D" parent="sfx"]
+
+[node name="leaves" parent="sfx/level_1_sfx" instance=ExtResource("54_level6")]
 
 [node name="level_2_sfx" type="Node2D" parent="sfx"]
 
@@ -268,6 +278,12 @@ stream = ExtResource("15_clock")
 
 [node name="depress_man" parent="sfx/level_5_sfx" instance=ExtResource("51_level5")]
 
+[node name="skeleton_collapse" parent="sfx/level_5_sfx" instance=ExtResource("52_level5")]
+
+[node name="build_stall" parent="sfx/level_5_sfx" instance=ExtResource("53_level5")]
+
+[node name="astronaut_transform" parent="sfx/level_5_sfx" instance=ExtResource("54_level5")]
+
 [node name="level_6_sfx" type="Node2D" parent="sfx"]
 
 [node name="crystal_transition" parent="sfx/level_6_sfx" instance=ExtResource("52_level6")]
@@ -278,6 +294,8 @@ stream = ExtResource("15_clock")
 
 [node name="bones_collapse" parent="sfx/level_6_sfx" instance=ExtResource("20_oau0s")]
 
+[node name="loop_shake" parent="sfx/level_6_sfx" instance=ExtResource("55_level6")]
+
 [node name="level_7_sfx" type="Node2D" parent="sfx"]
 
 [node name="butterfly" parent="sfx/level_7_sfx" instance=ExtResource("53_level7")]
@@ -285,6 +303,8 @@ stream = ExtResource("15_clock")
 [node name="spider" parent="sfx/level_7_sfx" instance=ExtResource("54_level7")]
 
 [node name="tornado" parent="sfx/level_7_sfx" instance=ExtResource("55_level7")]
+
+[node name="fly_away_tornado" parent="sfx/level_7_sfx" instance=ExtResource("56_level7")]
 
 [node name="level_8_sfx" type="Node2D" parent="sfx"]
 
@@ -326,7 +346,7 @@ volume_db = 5.0
 
 [node name="space_ambience" type="AudioStreamPlayer2D" parent="music/ambience"]
 stream = ExtResource("7_2aguw")
-volume_db = 15.848
+volume_db = -5.0
 
 [node name="bird_chirp" type="AudioStreamPlayer2D" parent="music/ambience"]
 stream = ExtResource("5_bird")

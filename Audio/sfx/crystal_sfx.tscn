@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnxj7bkmm8jxn"]
+
+[ext_resource type="AudioStream" uid="uid://dfsphrqapylw1" path="res://Audio/sfx/crystal_sfx.wav" id="1_crystal"]
+
+[node name="crystal_sfx" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_crystal")
+volume_db = 3.0
+pitch_scale = 0.5
