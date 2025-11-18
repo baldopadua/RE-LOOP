@@ -293,6 +293,10 @@ func enter_phase_1():
 	ui_handler.disable_game_ui_elements()
 	ui_handler.hide_game_ui_elements()
 	
+	# Play loop shake sound before transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
 #	Cinematic Cameras
@@ -303,6 +307,10 @@ func enter_phase_1():
 	player.get_node("Camera2D").emit_signal("pan_to_pos", center_pos.global_position)
 	
 	await get_tree().create_timer(1.0).timeout
+	
+	# Play crystal transition sound
+	if sound_manager and sound_manager.sfx.has("crystal_transition"):
+		sound_manager.play_sfx("crystal_transition")
 	
 	var flash = ColorRect.new()
 	flash.color = Color(1.0, 1.0, 1.0, 0.0)

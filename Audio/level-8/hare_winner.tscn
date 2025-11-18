@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs6jhs62nbf3v"]
+
+[ext_resource type="AudioStream" uid="uid://b3hcyq7ff33m5" path="res://Audio/sfx/evil_won.wav" id="1_winner"]
+
+[node name="hare_winner" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_winner")
+volume_db = 0.0
+pitch_scale = 1.1
+max_polyphony = 1

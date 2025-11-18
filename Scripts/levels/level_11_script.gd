@@ -48,9 +48,11 @@ func _ready():
 	
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
-	# PLAY LEVEL AMBIENCE
+	# PLAY LEVEL 11 SPECIAL MUSIC (NO AMBIENCE)
 	if sound_manager:
-		sound_manager.play_level_ambience()
+		sound_manager.stop_level_ambience()
+		sound_manager.stop_music("main_bgm")
+		sound_manager.play_music("level_11_final_bgm")
 
 	player.rotation = deg_to_rad(330.0)
 	GlobalVariables.is_looping = false

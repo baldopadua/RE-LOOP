@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://bsit1023yqhvh" path="res://Audio/ambience/cricket.wav" id="5_cricket"]
 [ext_resource type="AudioStream" uid="uid://cqd8pth4qyq4u" path="res://Audio/music/plooy_final_level.wav" id="5_final"]
 [ext_resource type="AudioStream" uid="uid://dea8sk7i1sra3" path="res://Audio/ambience/idle_wind.wav" id="5_wind"]
+[ext_resource type="AudioStream" uid="uid://d2fhuq17q56f7" path="res://Audio/music/level_11_final.wav" id="6_level11"]
 [ext_resource type="AudioStream" uid="uid://cskwu36g87k23" path="res://Audio/music/space_ambience_clock.wav" id="7_2aguw"]
 [ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/music/game_theme_song.mp3" id="29_fwa5o"]
 
@@ -115,9 +116,15 @@
 ; ========================================
 ; LEVEL 8 SOUNDS (Wrappers - PackedScene)
 ; ========================================
-[ext_resource type="PackedScene" uid="uid://m2n3o4p5q6r7s" path="res://Audio/level-8/carrot_patch.tscn" id="55_level8"]
-[ext_resource type="PackedScene" uid="uid://k0l1m2n3o4p5q" path="res://Audio/level-8/chair.tscn" id="56_level8"]
-[ext_resource type="PackedScene" uid="uid://l1m2n3o4p5q6r" path="res://Audio/level-8/gunshut.tscn" id="57_level8"]
+[ext_resource type="PackedScene" uid="uid://bhghwxye2k5xi" path="res://Audio/level-8/carrot_patch.tscn" id="55_level8"]
+[ext_resource type="PackedScene" uid="uid://dasbgxtlkpym7" path="res://Audio/level-8/chair.tscn" id="56_level8"]
+[ext_resource type="PackedScene" uid="uid://gfgvwxd1j4wh" path="res://Audio/level-8/gunshut.tscn" id="57_level8"]
+[ext_resource type="PackedScene" uid="uid://c1x2y3z4a5b6c" path="res://Audio/level-8/rabbit_turtle_step.tscn" id="58_level8"]
+[ext_resource type="PackedScene" uid="uid://d7e8f9g0h1i2j" path="res://Audio/level-8/turtle_cry.tscn" id="59_level8"]
+[ext_resource type="PackedScene" uid="uid://k3l4m5n6o7p8q" path="res://Audio/level-8/hare_surprised.tscn" id="60_level8"]
+[ext_resource type="PackedScene" uid="uid://r9s0t1u2v3w4x" path="res://Audio/level-8/hare_winner.tscn" id="61_level8"]
+[ext_resource type="PackedScene" uid="uid://y5z6a7b8c9d0e" path="res://Audio/level-8/hare_loser.tscn" id="62_level8"]
+[ext_resource type="PackedScene" uid="uid://f1g2h3i4j5k6l" path="res://Audio/level-8/turtle_winner.tscn" id="63_level8"]
 
 ; ========================================
 ; LEVEL 9 SOUNDS (Wrappers - PackedScene)
@@ -314,6 +321,18 @@ stream = ExtResource("15_clock")
 
 [node name="gunshut" parent="sfx/level_8_sfx" instance=ExtResource("57_level8")]
 
+[node name="rabbit_turtle_step" parent="sfx/level_8_sfx" instance=ExtResource("58_level8")]
+
+[node name="turtle_cry" parent="sfx/level_8_sfx" instance=ExtResource("59_level8")]
+
+[node name="hare_surprised" parent="sfx/level_8_sfx" instance=ExtResource("60_level8")]
+
+[node name="hare_winner" parent="sfx/level_8_sfx" instance=ExtResource("61_level8")]
+
+[node name="hare_loser" parent="sfx/level_8_sfx" instance=ExtResource("62_level8")]
+
+[node name="turtle_winner" parent="sfx/level_8_sfx" instance=ExtResource("63_level8")]
+
 [node name="level_9_sfx" type="Node2D" parent="sfx"]
 
 [node name="cat" parent="sfx/level_9_sfx" instance=ExtResource("58_level9")]
@@ -321,6 +340,10 @@ stream = ExtResource("15_clock")
 [node name="lever" parent="sfx/level_9_sfx" instance=ExtResource("59_level9")]
 
 [node name="bowl" parent="sfx/level_9_sfx" instance=ExtResource("60_level9")]
+
+[node name="loop_shake" parent="sfx/level_9_sfx" instance=ExtResource("55_level6")]
+
+[node name="crystal_transition" parent="sfx/level_9_sfx" instance=ExtResource("52_level6")]
 
 [node name="level_10_sfx" type="Node2D" parent="sfx"]
 
@@ -332,6 +355,10 @@ stream = ExtResource("15_clock")
 
 [node name="level_12_sfx" type="Node2D" parent="sfx"]
 
+[node name="loop_shake" parent="sfx/level_12_sfx" instance=ExtResource("55_level6")]
+
+[node name="crystal_transition" parent="sfx/level_12_sfx" instance=ExtResource("52_level6")]
+
 [node name="music" type="Node2D" parent="."]
 
 [node name="main_bgm" type="AudioStreamPlayer2D" parent="music"]
@@ -340,6 +367,10 @@ volume_db = 5.0
 
 [node name="final_level_bgm" type="AudioStreamPlayer2D" parent="music"]
 stream = ExtResource("5_final")
+volume_db = 5.0
+
+[node name="level_11_final_bgm" type="AudioStreamPlayer2D" parent="music"]
+stream = ExtResource("6_level11")
 volume_db = 5.0
 
 [node name="ambience" type="Node2D" parent="music"]
