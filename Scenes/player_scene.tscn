@@ -322,6 +322,7 @@ position_smoothing_enabled = true
 script = ExtResource("6_f11s3")
 
 [node name="ProgressBar" parent="." instance=ExtResource("7_16waa")]
+visible = false
 position = Vector2(0, -263)
 rotation = -0.02895402
 scale = Vector2(0.23, 0.23)
