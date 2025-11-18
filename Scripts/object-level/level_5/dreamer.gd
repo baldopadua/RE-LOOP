@@ -12,6 +12,7 @@ signal add_cur_state(direction)
 @onready var soda = $"../soda"
 @onready var science_project = $"../science_project" 
 @onready var rocket = $"../rocket"
+@onready var rocket_animated_sprite: AnimatedSprite2D = rocket.get_node("AnimatedSprite2D")
 @onready var timer = $"../Timer"
 @onready var temp_timer = $"../temp_timer"
 @onready var vending = $"../vending"
@@ -161,8 +162,11 @@ func set_rocket():
 	# Play rocket blastoff sound when building the rocket
 	if sound_manager:
 		sound_manager.play_sfx("rocket_blastoff")
-	
+		
 	rocket.visible = true
+	rocket_animated_sprite.play("rocket_ship")
+	science_project.visible = false
+	await rocket_animated_sprite.animation_finished
 	# Set dreamer animation to astronaut
 	dreamer_animated_sprite.play("astronaut")
 	soda.visible = false
