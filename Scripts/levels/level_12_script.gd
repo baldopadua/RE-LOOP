@@ -735,7 +735,8 @@ func infinite_rotation() -> void:
 	tween.tween_property(circly_thingy, "rotation_degrees", 360.0, 1.0).as_relative().set_trans(Tween.TRANS_LINEAR)
 
 func _on_timer_timeout() -> void:
-	trigger_random_event()
+	if player.is_processing_input():
+		trigger_random_event()
 	
 func trigger_random_event():
 	print("Monk Created") 
@@ -751,7 +752,7 @@ func trigger_random_event():
 	add_child(monk_duplicate)
 
 	# Countdown variables
-	var countdown_data = {"time": 5}
+	var countdown_data = {"time": 6}
 
 	# Create a repeating 1-second timer for this monk
 	var countdown_timer = Timer.new()
@@ -775,16 +776,22 @@ func trigger_random_event():
 
 			if player.phase == 1:
 				var obj = objects_in_phase_1.pick_random()
-				var area = area_handlers_1.pick_random()
-				place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
+				if obj.is_pickupable:
+					var area = area_handlers_1.pick_random()
+					obj.matched = false
+					place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
 			elif player.phase == 2:
 				var obj = objects_in_phase_2.pick_random()
-				var area = area_handlers_2.pick_random()
-				place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
+				if obj.is_pickupable:
+					var area = area_handlers_2.pick_random()
+					obj.matched = false
+					place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
 			elif player.phase == 3:
 				var obj = objects_in_phase_3.pick_random()
-				var area = area_handlers_3.pick_random()
-				place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
+				if obj.is_pickupable:
+					var area = area_handlers_3.pick_random()
+					obj.matched = false
+					place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
 	)
 	
 	countdown_timer.start()
@@ -793,25 +800,29 @@ func trigger_random_event():
 	monk_duplicate.body_entered.connect(func(_body):
 		countdown_timer.queue_free()
 		monk_duplicate.queue_free()
+		player.shake_camera(1.0, 3.0, 1.0)
 	)
 
 func on_countdown_tick(_monk, time_left):
+	time_left -= 1
 	# Create a Label to show the countdown
 	var label = Label.new()
 	label.text = str(time_left)
 
 	# Font, size, and color
 	var font = FontFile.new()
-	font.font_data = load("res://path_to_your_font.ttf")  # choose your font
-	font.size = 64  # choose size
-	label.add_theme_font_override("font", font)
-	label.modulate = Color(1,1,1,0)  # start invisible
-
-	# Position: center of the screen
-	var viewport_size = get_viewport().get_visible_rect().size
-	label.position = viewport_size / 2 - label.rect_size / 2
-
+	font.load_dynamic_font("res://Assets/fonts/ByteBounce.ttf")  
+	label.add_theme_font_override("font", font)  
+	label.add_theme_font_size_override("font_size", 256) 
+	label.modulate = Color(1, 1, 1, 0)        
+	
 	add_child(label)
+	
+	label.pivot_offset = label.size / 2
+	label.set_anchors_preset(Control.PRESET_CENTER, true)
+	
+	label.position = player.position
+	label.position = label.position - label.pivot_offset
 
 	# Create a Tween for scale in/out and fade
 	var tween = create_tween()

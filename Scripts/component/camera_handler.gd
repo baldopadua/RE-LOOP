@@ -22,6 +22,10 @@ signal hide_bars()
 @onready var orig_parent = get_parent()
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
+var min_zoom = Vector2(0.5, 0.5)
+var max_zoom = Vector2(3, 3)
+var zoom_speed = 0.1
+
 # HIDING POSITIONS
 # -50
 # 676
@@ -116,3 +120,19 @@ func _on_cam_orig_zoom() -> void:
 	cam_tween.finished.connect(func():
 		cam_tween.kill()
 	)
+
+
+func _input(event):
+	if event is InputEventMouseButton and not GlobalVariables.player_stopped and get_parent().is_processing_input():
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+			zoom_in()
+		elif event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			zoom_out()
+
+func zoom_in():
+	zoom -= Vector2(zoom_speed, zoom_speed)
+	zoom = zoom.clamp(min_zoom, max_zoom)
+
+func zoom_out():
+	zoom += Vector2(zoom_speed, zoom_speed)
+	zoom = zoom.clamp(min_zoom, max_zoom)

@@ -2780,7 +2780,7 @@ metadata/_edit_lock_ = true
 position = Vector2(0.5, 0.5)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 15.0
 
 [connection signal="toggle_switch_circle" from="AreaHandler1/1_switch_circle" to="AreaHandler1/1_switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="toggle_switch_circle" from="AreaHandler1/2_switch_circle" to="AreaHandler1/2_switch_circle" method="_on_toggle_switch_circle"]
