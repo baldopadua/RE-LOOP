@@ -4,7 +4,7 @@
 
 [node name="tornado" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_tornado")
-volume_db = 24.0
+volume_db = 5.0
 pitch_scale = 1.0
 max_polyphony = 3
 bus = &"sfx"
