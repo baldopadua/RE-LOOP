@@ -284,10 +284,14 @@ func tween_opacity(target: CanvasItem, to_alpha: float, duration: float = 0.5):
 	)
 
 func enter_phase_1():
-	ui_handler.disable_game_ui_elements()
+	for node in get_children():
+		if node is Timer:
+			if node.name.contains("countdown"):
+				node.queue_free()
 	
 	player.set_process_input(false)
 	ui_handler.disable_game_ui_elements()
+	ui_handler.hide_game_ui_elements()
 	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
@@ -356,6 +360,7 @@ func enter_phase_1():
 		switch_circle.monitorable = true
 
 #	Show elements again
+	ui_handler.enable_game_ui_elements()
 	ui_handler.show_game_ui_elements()
 	
 #	Enable Player Movement
@@ -363,7 +368,11 @@ func enter_phase_1():
 	$Timer.start()
 
 func enter_phase_2():
-	ui_handler.disable_game_ui_elements()
+	for node in get_children():
+		if node is Timer:
+			if node.name.contains("countdown"):
+				node.queue_free()
+	ui_handler.hide_game_ui_elements()
 	
 	player.set_process_input(false)
 	ui_handler.disable_game_ui_elements()
@@ -489,12 +498,17 @@ func enter_phase_2():
 
 #	Show elements again
 	ui_handler.show_game_ui_elements()
+	ui_handler.enable_game_ui_elements()
 	
 #	Enable Player Movement
 	player.set_process_input(true)
 
 func enter_phase_3():
-	ui_handler.disable_game_ui_elements()
+	for node in get_children():
+		if node is Timer:
+			if node.name.contains("countdown"):
+				node.queue_free()
+	ui_handler.hide_game_ui_elements()
 	
 	player.set_process_input(false)
 	ui_handler.disable_game_ui_elements()
@@ -647,6 +661,7 @@ func enter_phase_3():
 
 #	Show elements again
 	ui_handler.show_game_ui_elements()
+	ui_handler.enable_game_ui_elements()
 	
 #	Enable Player Movement
 	player.set_process_input(true)
@@ -654,6 +669,7 @@ func enter_phase_3():
 func finish_it():	
 	GlobalVariables.player_stopped = true
 	ui_handler.disable_game_ui_elements()
+	ui_handler.hide_game_ui_elements()
 	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
@@ -703,8 +719,6 @@ func finish_it():
 	monk.create_tween().tween_property(monk, "position", Vector2(20, 0), 2.0)
 	monk.get_node("AnimatedSprite2D").rotation_degrees = 0.0
 
-
-	
 	await unflash.finished
 	
 	DialogueManager.show_dialogue_balloon_scene("res://dialogues/made/balloon.tscn", load("res://dialogues/ending.dialogue"))
@@ -727,6 +741,7 @@ func _on_dialogue_ended(_resource: DialogueResource):
 		
 		flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		await get_tree().create_timer(3.0).timeout
+		level_handler.complete_current_level(get_parent())
 	)
 
 func infinite_rotation() -> void:
@@ -737,7 +752,7 @@ func infinite_rotation() -> void:
 func _on_timer_timeout() -> void:
 	if player.is_processing_input():
 		trigger_random_event()
-	
+
 func trigger_random_event():
 	print("Monk Created") 
 
@@ -746,6 +761,7 @@ func trigger_random_event():
 
 	# Duplicate monk
 	var monk_duplicate = monk.duplicate(true)
+	monk_duplicate.name = "monk_duplicate"
 	monk_duplicate.modulate = Color(1,1,1,0.75)
 	monk_duplicate.position = player_cur_pos
 	monk_duplicate.rotation_degrees = rand_rotation_in_circle
@@ -756,6 +772,7 @@ func trigger_random_event():
 
 	# Create a repeating 1-second timer for this monk
 	var countdown_timer = Timer.new()
+	countdown_timer.name = "countdown"
 	countdown_timer.wait_time = 1.0
 	countdown_timer.one_shot = false  # repeating
 	add_child(countdown_timer)
@@ -792,19 +809,38 @@ func trigger_random_event():
 					var area = area_handlers_3.pick_random()
 					obj.matched = false
 					place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
+			for area in area_handlers_3:
+				area.get_node("world_environment").get_node("map").frame = 0
 	)
 	
 	countdown_timer.start()
 	
 	# If body touches monk, immediately remove monk and stop timer
 	monk_duplicate.body_entered.connect(func(_body):
-		countdown_timer.queue_free()
-		monk_duplicate.queue_free()
-		player.shake_camera(1.0, 3.0, 1.0)
+		if monk_duplicate.name.contains("duplicate"):
+			if countdown_timer:
+				countdown_timer.queue_free()
+			monk_duplicate.queue_free()
+			player.shake_camera(3.0, 6.0, 1.0)
 	)
 
 func on_countdown_tick(_monk, time_left):
+	player.shake_camera(1.0, 3.0, 1.0)
 	time_left -= 1
+	
+	if time_left == 4 or time_left == 0:
+		for area in area_handlers_3:
+			area.get_node("world_environment").get_node("map").frame = 0
+	elif time_left == 3:
+		for area in area_handlers_3:
+			area.get_node("world_environment").get_node("map").frame = 1
+	elif time_left == 2:
+		for area in area_handlers_3:
+			area.get_node("world_environment").get_node("map").frame = 2
+	elif time_left == 1:
+		for area in area_handlers_3:
+			area.get_node("world_environment").get_node("map").frame = 3
+			
 	# Create a Label to show the countdown
 	var label = Label.new()
 	label.text = str(time_left)

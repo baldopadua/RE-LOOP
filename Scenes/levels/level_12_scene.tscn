@@ -1,4 +1,4 @@
-[gd_scene load_steps=253 format=3 uid="uid://d0bch0apbias6"]
+[gd_scene load_steps=250 format=3 uid="uid://d0bch0apbias6"]
 
 [ext_resource type="Script" uid="uid://cdwufukld6gqp" path="res://Scripts/levels/level_12_script.gd" id="1_1urvf"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_isc8s"]
@@ -57,35 +57,23 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p42lt"]
 atlas = ExtResource("6_yy3na")
-region = Rect2(0, 0, 200, 1010)
+region = Rect2(0, 0, 540, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wan2m"]
 atlas = ExtResource("6_yy3na")
-region = Rect2(200, 0, 200, 1010)
+region = Rect2(540, 0, 540, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oam8e"]
 atlas = ExtResource("6_yy3na")
-region = Rect2(400, 0, 200, 1010)
+region = Rect2(1080, 0, 540, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51dsj"]
 atlas = ExtResource("6_yy3na")
-region = Rect2(600, 0, 200, 1010)
+region = Rect2(1620, 0, 540, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwl73"]
 atlas = ExtResource("6_yy3na")
-region = Rect2(800, 0, 200, 1010)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eevqw"]
-atlas = ExtResource("6_yy3na")
-region = Rect2(1000, 0, 200, 1010)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ufae"]
-atlas = ExtResource("6_yy3na")
-region = Rect2(1200, 0, 200, 1010)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvulg"]
-atlas = ExtResource("6_yy3na")
-region = Rect2(1400, 0, 200, 1010)
+region = Rect2(2160, 0, 540, 200)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pg2al"]
 animations = [{
@@ -104,15 +92,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uwl73")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eevqw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ufae")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lvulg")
 }],
 "loop": true,
 "name": &"default",
@@ -1446,6 +1425,7 @@ metadata/_edit_lock_ = true
 
 [node name="1_switch_circle" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
 visible = false
+z_index = 5
 position = Vector2(284, 0)
 monitoring = false
 monitorable = false
@@ -2214,7 +2194,6 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="3_switch_circle2" parent="AreaHandler11" instance=ExtResource("6_j4nk1")]
-visible = false
 position = Vector2(-284, 0)
 monitoring = false
 monitorable = false
@@ -2780,7 +2759,7 @@ metadata/_edit_lock_ = true
 position = Vector2(0.5, 0.5)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 20.0
 
 [connection signal="toggle_switch_circle" from="AreaHandler1/1_switch_circle" to="AreaHandler1/1_switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="toggle_switch_circle" from="AreaHandler1/2_switch_circle" to="AreaHandler1/2_switch_circle" method="_on_toggle_switch_circle"]
