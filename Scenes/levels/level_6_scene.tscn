@@ -508,6 +508,7 @@ scale = Vector2(23.789063, 1.5)
 texture = SubResource("GradientTexture2D_cr1iw")
 
 [node name="switch_circle" parent="." instance=ExtResource("6_kapnr")]
+visible = false
 script = ExtResource("10_ov81m")
 object_name = "switch_circle"
 object_type = 1
