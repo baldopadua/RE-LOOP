@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cibg6y0i6u2df" path="res://Audio/ambience/bird_chirp.wav" id="5_bird"]
 [ext_resource type="AudioStream" uid="uid://bsit1023yqhvh" path="res://Audio/ambience/cricket.wav" id="5_cricket"]
 [ext_resource type="AudioStream" uid="uid://cqd8pth4qyq4u" path="res://Audio/music/plooy_final_level.wav" id="5_final"]
-[ext_resource type="AudioStream" uid="uid://dea8sk7i1sra3" path="res://Audio/ambience/idle_wind.wav" id="5_wind"]
+[ext_resource type="AudioStream" uid="uid://dea7i1sra3" path="res://Audio/ambience/idle_wind.wav" id="5_wind"]
 [ext_resource type="AudioStream" uid="uid://cskwu36g87k23" path="res://Audio/music/space_ambience_clock.wav" id="7_2aguw"]
 [ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/music/game_theme_song.mp3" id="29_fwa5o"]
 
@@ -92,6 +92,9 @@
 [ext_resource type="PackedScene" uid="uid://cc1p6nlx25ams" path="res://Audio/level-5/vending_machine.tscn" id="49_level5"]
 [ext_resource type="PackedScene" uid="uid://dcajafvxv6kos" path="res://Audio/level-5/soda_pop.tscn" id="50_level5"]
 [ext_resource type="PackedScene" uid="uid://b6fh2wn5tix1m" path="res://Audio/level-5/depress_man.tscn" id="51_level5"]
+[ext_resource type="PackedScene" uid="uid://c8k9m5p3x7w2q" path="res://Audio/level-5/bones_collapse.tscn" id="52_level5"]
+[ext_resource type="PackedScene" uid="uid://bvn5x8h4m7qrs" path="res://Audio/level-5/build_stall.tscn" id="53_level5"]
+[ext_resource type="PackedScene" uid="uid://d9h8k2m5p7w3x" path="res://Audio/level-5/astronaut_transform.tscn" id="54_level5"]
 
 ; ========================================
 ; LEVEL 6 SOUNDS (Wrappers - PackedScene)
@@ -274,6 +277,12 @@ stream = ExtResource("15_clock")
 [node name="soda_pop" parent="sfx/level_5_sfx" instance=ExtResource("50_level5")]
 
 [node name="depress_man" parent="sfx/level_5_sfx" instance=ExtResource("51_level5")]
+
+[node name="skeleton_collapse" parent="sfx/level_5_sfx" instance=ExtResource("52_level5")]
+
+[node name="build_stall" parent="sfx/level_5_sfx" instance=ExtResource("53_level5")]
+
+[node name="astronaut_transform" parent="sfx/level_5_sfx" instance=ExtResource("54_level5")]
 
 [node name="level_6_sfx" type="Node2D" parent="sfx"]
 
