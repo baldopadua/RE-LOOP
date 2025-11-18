@@ -12,6 +12,7 @@ signal add_cur_state(direction)
 @onready var soda = $"../soda"
 @onready var science_project = $"../science_project" 
 @onready var rocket = $"../rocket"
+@onready var rocket_animated_sprite: AnimatedSprite2D = rocket.get_node("AnimatedSprite2D")
 @onready var timer = $"../Timer"
 @onready var temp_timer = $"../temp_timer"
 @onready var vending = $"../vending"
@@ -163,8 +164,11 @@ func set_rocket():
 	# Play rocket blastoff sound when building the rocket
 	if sound_manager:
 		sound_manager.play_sfx("rocket_blastoff")
-	
+		
 	rocket.visible = true
+	rocket_animated_sprite.play("rocket_ship")
+	science_project.visible = false
+	await rocket_animated_sprite.animation_finished
 	# Set dreamer animation to astronaut
 	if sound_manager:
 		sound_manager.play_sfx("astronaut_transform")
@@ -197,7 +201,7 @@ func check_and_start_rocket():
 	if rocket.visible:
 		return # Already started
 	# All must be visible and pickupable (soda), and dreamer must be kid
-	if soda.visible and soda.is_pickupable and current_state == 1 and science_project.visible:
+	if soda.visible and soda.is_pickupable and current_state == 3 and science_project.visible:
 		# Check if all are close enough (same area)
 		var dist1 = global_position.distance_to(soda.global_position)
 		var dist2 = global_position.distance_to(science_project.global_position)

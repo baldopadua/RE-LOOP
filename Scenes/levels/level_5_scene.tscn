@@ -246,6 +246,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p7kb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjnuc")
 }],
 "loop": false,
 "name": &"kid_cubicle",
@@ -735,6 +738,8 @@ rotation = 2.13695
 scale = Vector2(1.6032808, 1.7601186)
 sprite_frames = SubResource("SpriteFrames_oyxes")
 animation = &"kid_cubicle"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="science_project"]
 position = Vector2(-6.30145, -3.63814)

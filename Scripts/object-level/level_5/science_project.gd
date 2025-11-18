@@ -70,11 +70,11 @@ func _on_animated_sprite_2d_animation_finished(_finished_anim: String = "") -> v
 	var last_frame = 0
 	match anim_name:
 		"depressed_salaryman_cubicle":
-			last_frame = 5 # last frame index for depressed_salaryman_cubicle
+			last_frame = 4 # last frame index for depressed_salaryman_cubicle
 		"skeletal_remains_cubicle":
-			last_frame = 3 # last frame index for skeletal_remains_cubicle
+			last_frame = 4 # last frame index for skeletal_remains_cubicle
 		"kid_cubicle":
-			last_frame = 0 # only one frame for kid_cubicle
+			last_frame = 4 # only one frame for kid_cubicle
 		_:
 			return # Do nothing for unknown animations
 	animated_sprite.frame = last_frame

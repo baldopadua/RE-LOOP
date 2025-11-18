@@ -2,38 +2,38 @@
 
 [ext_resource type="Script" uid="uid://dc8173ksfevyx" path="res://Scripts/player_script.gd" id="1_8tj53"]
 [ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="2_7cibt"]
-[ext_resource type="Texture2D" uid="uid://doh6g386h51e4" path="res://Assets/Plooy Interactable (1)-Sheet.png" id="2_oirxf"]
+[ext_resource type="Texture2D" uid="uid://js7dcga23gh3" path="res://Assets/Plooy Interactable.png" id="2_f11s3"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_e13mc"]
 [ext_resource type="Texture2D" uid="uid://ciskm1csg505j" path="res://Assets/Jump Sheep.png" id="3_q0huo"]
 [ext_resource type="Script" uid="uid://ddkt6xk5sru42" path="res://Scripts/component/camera_handler.gd" id="6_f11s3"]
 [ext_resource type="PackedScene" uid="uid://dqg53rmcdqo0m" path="res://Scenes/progress_bar.tscn" id="7_16waa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uui1g"]
-atlas = ExtResource("2_oirxf")
+atlas = ExtResource("2_f11s3")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxlqe"]
-atlas = ExtResource("2_oirxf")
+atlas = ExtResource("2_f11s3")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gjvg1"]
-atlas = ExtResource("2_oirxf")
+atlas = ExtResource("2_f11s3")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6v4v3"]
-atlas = ExtResource("2_oirxf")
+atlas = ExtResource("2_f11s3")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2sq1x"]
-atlas = ExtResource("2_oirxf")
+atlas = ExtResource("2_f11s3")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0owqy"]
-atlas = ExtResource("2_oirxf")
+atlas = ExtResource("2_f11s3")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmr0n"]
-atlas = ExtResource("2_oirxf")
+atlas = ExtResource("2_f11s3")
 region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e13mc"]
@@ -297,6 +297,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3rj77")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.5046046
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -295)

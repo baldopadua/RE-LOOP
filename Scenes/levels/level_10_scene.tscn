@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://cvuyhsgfvpxwp"]
+[gd_scene load_steps=172 format=3 uid="uid://cvuyhsgfvpxwp"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_k7dlq"]
 [ext_resource type="Script" uid="uid://devjgm4fpge0o" path="res://Scripts/levels/level_10_script.gd" id="1_lnfvu"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dub8e4wj25m6m" path="res://Assets/levels/level_10/bFranklin.png" id="15_odd5e"]
 [ext_resource type="Script" uid="uid://cb06hc578vh0y" path="res://Scripts/object-level/level_10/thomas_edison.gd" id="16_2i4re"]
 [ext_resource type="Texture2D" uid="uid://de5hb3qgfo8n1" path="res://Assets/levels/level_10/Teslacoil.png" id="17_hqhit"]
-[ext_resource type="Texture2D" uid="uid://kpenmjl4vr6j" path="res://Assets/levels/level_10/lightning-rod-sheet.png" id="19_ttn1o"]
+[ext_resource type="Texture2D" uid="uid://ckq7pw7mk8uro" path="res://Assets/levels/level_10/lightning-rod-sheet.png" id="19_ttn1o"]
 [ext_resource type="Texture2D" uid="uid://c4h23ib0v2b6j" path="res://Assets/levels/level_10/Lightning.png" id="19_we0dh"]
 [ext_resource type="Script" uid="uid://bcnwj5j8jv0rr" path="res://Scripts/object-level/level_10/benjamin_franklin.gd" id="20_xjo33"]
 [ext_resource type="Texture2D" uid="uid://cpyrh25etlwdj" path="res://Assets/levels/level_10/lightbulb.png" id="21_2bove"]
@@ -371,53 +371,77 @@ region = Rect2(240, 0, 60, 100)
 atlas = ExtResource("19_ttn1o")
 region = Rect2(300, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1tb2b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojfod"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(360, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3bssw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pilxn"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(420, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t18yn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ji1v"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(480, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hl1ol"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_my1yr"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(540, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1fig"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tb2b"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(600, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vxgem"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bssw"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(660, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uhbky"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t18yn"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(720, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6cx7o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl1ol"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(780, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5djlc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1fig"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(840, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1lv3g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxgem"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(900, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4guci"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhbky"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(960, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_45pv2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cx7o"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(1020, 0, 60, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5djlc"]
+atlas = ExtResource("19_ttn1o")
+region = Rect2(1080, 0, 60, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lv3g"]
+atlas = ExtResource("19_ttn1o")
+region = Rect2(1140, 0, 60, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4guci"]
+atlas = ExtResource("19_ttn1o")
+region = Rect2(1200, 0, 60, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45pv2"]
+atlas = ExtResource("19_ttn1o")
+region = Rect2(1260, 0, 60, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb5c7"]
+atlas = ExtResource("19_ttn1o")
+region = Rect2(1320, 0, 60, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft1lr"]
+atlas = ExtResource("19_ttn1o")
+region = Rect2(1380, 0, 60, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4quvs"]
 animations = [{
@@ -473,6 +497,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_2bove")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ojfod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pilxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ji1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my1yr")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1tb2b")
 }, {
 "duration": 1.0,
@@ -507,6 +543,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_45pv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb5c7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft1lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5djlc")
 }],
 "loop": false,
 "name": &"lightning_rod",
@@ -1260,14 +1305,13 @@ object_type = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LightBulb"]
 position = Vector2(-0.6586304, 5.063095)
 shape = SubResource("RectangleShape2D_qcf8u")
-metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LightBulb"]
 z_index = 2
+position = Vector2(14.913351, -0.5609975)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ehdct")
 animation = &"light_bulb_flicker"
-metadata/_edit_lock_ = true
 
 [node name="NicolaTesla" parent="." instance=ExtResource("6_ttbi8")]
 position = Vector2(151.69, -269.705)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckq7pw7mk8uro"
-path="res://.godot/imported/lightning-rod-sheet.png-d74e66edb319d7a4d01263b985470fed.ctex"
+uid="uid://qr2nd4amratc"
+path="res://.godot/imported/plooy-wormhole-sheet.png-189210eb77f98956761341c3652573bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/levels/level_10/lightning-rod-sheet.png"
-dest_files=["res://.godot/imported/lightning-rod-sheet.png-d74e66edb319d7a4d01263b985470fed.ctex"]
+source_file="res://Assets/plooy-wormhole-sheet.png"
+dest_files=["res://.godot/imported/plooy-wormhole-sheet.png-189210eb77f98956761341c3652573bd.ctex"]
 
 [params]
 

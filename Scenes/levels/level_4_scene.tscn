@@ -975,7 +975,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_0bs5k"]
 resource_name = "tail_whipped"
-length = 0.3
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -983,7 +983,7 @@ tracks/0/path = NodePath("PlayerScene:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.36666667, 0.6666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(150, 250)]
@@ -995,7 +995,7 @@ tracks/1/path = NodePath("PlayerScene:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0666667, 0.3),
+"times": PackedFloat32Array(0.43333334, 0.6666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
