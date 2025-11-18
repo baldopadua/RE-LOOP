@@ -22,8 +22,8 @@ signal hide_bars()
 @onready var orig_parent = get_parent()
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
-var min_zoom = Vector2(0.5, 0.5)
-var max_zoom = Vector2(3, 3)
+var min_zoom = Vector2(0.1, 0.1)
+var max_zoom = Vector2(1.0, 1.0)
 var zoom_speed = 0.1
 
 # HIDING POSITIONS

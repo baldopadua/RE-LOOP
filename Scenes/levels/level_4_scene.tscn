@@ -1,7 +1,8 @@
-[gd_scene load_steps=162 format=3 uid="uid://fyqypy6fcyaf"]
+[gd_scene load_steps=163 format=3 uid="uid://fyqypy6fcyaf"]
 
 [ext_resource type="Script" uid="uid://m5ceg1df4m54" path="res://Scripts/levels/level_4_script.gd" id="1_f0imo"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_lahvx"]
+[ext_resource type="Script" uid="uid://ktlyakuwsoua" path="res://Scripts/object-level/level_4/player.gd" id="4_b0trk"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="4_be8ic"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="4_fiti8"]
 [ext_resource type="Script" uid="uid://c41pep8mnkrp4" path="res://Scripts/object-level/level_4/chicken.gd" id="5_gmxhw"]
@@ -1025,6 +1026,7 @@ script = ExtResource("1_f0imo")
 [node name="AreaHandler" parent="." instance=ExtResource("2_lahvx")]
 
 [node name="PlayerScene" parent="." instance=ExtResource("4_be8ic")]
+script = ExtResource("4_b0trk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false

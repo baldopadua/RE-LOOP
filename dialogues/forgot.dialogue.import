@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d1k2nv3py4jfj"
+path="res://.godot/imported/forgot.dialogue-3559003cdf3d3fec9fa8af33a3cef10d.tres"
+
+[deps]
+
+source_file="res://dialogues/forgot.dialogue"
+dest_files=["res://.godot/imported/forgot.dialogue-3559003cdf3d3fec9fa8af33a3cef10d.tres"]
+
+[params]
+
+defaults=true

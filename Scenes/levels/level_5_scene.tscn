@@ -1,9 +1,10 @@
-[gd_scene load_steps=96 format=3 uid="uid://c68gmkh2e26af"]
+[gd_scene load_steps=97 format=3 uid="uid://c68gmkh2e26af"]
 
 [ext_resource type="Script" uid="uid://bht2nh4ymwmf5" path="res://Scripts/levels/level_5_script.gd" id="1_0li43"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="2_aql1r"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="3_tahrn"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="4_ctghb"]
+[ext_resource type="Script" uid="uid://bxcptf7mrcjuv" path="res://Scripts/object-level/level_5/player.gd" id="4_dtqwf"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_ryj1a"]
 [ext_resource type="Script" uid="uid://cex25lnpgh2tf" path="res://Scripts/object-level/level_5/dreamer.gd" id="7_cltmq"]
 [ext_resource type="Texture2D" uid="uid://kmxvp6sy4oyr" path="res://Assets/levels/level_5/vending machine.png" id="7_dtqwf"]
@@ -104,7 +105,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mcjbw")
 }],
-"loop": true,
+"loop": false,
 "name": &"climax",
 "speed": 5.0
 }, {
@@ -121,7 +122,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jmgu3")
 }],
-"loop": true,
+"loop": false,
 "name": &"future",
 "speed": 5.0
 }, {
@@ -138,7 +139,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gd7gb")
 }],
-"loop": true,
+"loop": false,
 "name": &"past",
 "speed": 5.0
 }, {
@@ -155,7 +156,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ws0yp")
 }],
-"loop": true,
+"loop": false,
 "name": &"present",
 "speed": 5.0
 }]
@@ -680,31 +681,7 @@ script = ExtResource("1_0li43")
 [node name="PlayerScene" parent="." instance=ExtResource("3_tahrn")]
 self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
-
-[node name="Label" type="Label" parent="PlayerScene"]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -156.5
-offset_top = -220.0
-offset_right = 156.5
-offset_bottom = -186.0
-grow_horizontal = 2
-rotation = 3.1415927
-pivot_offset = Vector2(156.5, 0)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 14
-text = "I didn't forget you, but you forgot me..."
-horizontal_alignment = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-rotation = -0.000160575
-ignore_rotation = false
-position_smoothing_enabled = true
+script = ExtResource("4_dtqwf")
 
 [node name="SoundManager" parent="." instance=ExtResource("4_ctghb")]
 
@@ -713,13 +690,15 @@ position = Vector2(-137, 252)
 script = ExtResource("17_dtqwf")
 object_name = "vending"
 object_type = 1
+max_state_threshold = 4
+min_state_threshold = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="vending"]
 position = Vector2(-6, 2)
 rotation = 0.523599
 scale = Vector2(1.7, 1.7)
 sprite_frames = SubResource("SpriteFrames_ds2sm")
-animation = &"climax"
+animation = &"present"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vending"]
 position = Vector2(0, -8)
@@ -737,9 +716,7 @@ position = Vector2(31.000002, 24)
 rotation = 2.13695
 scale = Vector2(1.6032808, 1.7601186)
 sprite_frames = SubResource("SpriteFrames_oyxes")
-animation = &"kid_cubicle"
-frame = 3
-frame_progress = 1.0
+animation = &"skeletal_remains_cubicle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="science_project"]
 position = Vector2(-6.30145, -3.63814)
@@ -763,21 +740,20 @@ frame = 14
 frame_progress = 1.0
 
 [node name="Label" type="Label" parent="rocket/AnimatedSprite2D"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.877403
-offset_top = -95.91116
-offset_right = -32.877403
-offset_bottom = -171.91116
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.889015
+offset_top = -102.448296
+offset_right = 49.110985
+offset_bottom = -14.448296
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -2.1088762
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
+rotation = -2.0943952
 theme_override_fonts/font = ExtResource("20_0da36")
-theme_override_font_sizes/font_size = 37
+theme_override_font_sizes/font_size = 128
 text = "10"
 horizontal_alignment = 1
 
@@ -806,18 +782,20 @@ position = Vector2(6, 6)
 rotation = 2.0944
 scale = Vector2(2.4, 2.4)
 sprite_frames = SubResource("SpriteFrames_5xm4r")
-animation = &"skeletal_remains"
+animation = &"depressed_salaryman"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("11_dw1n4")]
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(711.49994, -54)
-scale = Vector2(24.234373, 1.625)
+visible = false
+position = Vector2(711.49994, -60.999996)
+scale = Vector2(24.234373, 1.8437499)
 texture = SubResource("GradientTexture2D_dtqwf")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(701.7499, 769)
 scale = Vector2(23.789063, 1.5)
 texture = SubResource("GradientTexture2D_dtqwf")
@@ -840,13 +818,12 @@ sprite_frames = SubResource("SpriteFrames_0da36")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_0da36")
 }
-
-[node name="temp_timer" type="Timer" parent="."]
 
 [node name="pos_to_focus" type="Marker2D" parent="."]
 position = Vector2(-148, -75)
@@ -854,13 +831,13 @@ position = Vector2(-148, -75)
 [node name="rocket_exit" type="Marker2D" parent="."]
 position = Vector2(-58, -5)
 
+[connection signal="add_cur_state" from="vending" to="vending" method="_on_add_cur_state"]
 [connection signal="animation_finished" from="vending/AnimatedSprite2D" to="vending" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_shape_entered" from="science_project" to="science_project" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="science_project" to="science_project" method="_on_area_shape_exited"]
-[connection signal="animation_finished" from="science_project/AnimatedSprite2D" to="science_project" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="add_cur_state" from="dreamer" to="dreamer" method="_on_add_cur_state"]
-[connection signal="area_shape_entered" from="dreamer" to="dreamer" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="dreamer" to="dreamer" method="_on_area_shape_exited"]
+[connection signal="area_entered" from="dreamer" to="dreamer" method="_on_area_entered"]
+[connection signal="area_exited" from="dreamer" to="dreamer" method="_on_area_exited"]
 [connection signal="animation_finished" from="dreamer/AnimatedSprite2D" to="dreamer" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="map_scale_tween_finished" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_map_scale_tween_finished"]
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]

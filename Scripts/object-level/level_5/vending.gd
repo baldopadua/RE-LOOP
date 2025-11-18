@@ -1,6 +1,8 @@
 extends object_class
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@warning_ignore("unused_signal")
+signal add_cur_state(direction)
 
 func _ready():
 	# Default to present animation, frame 0, and stop
@@ -35,3 +37,21 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	animated_sprite.frame = last_frame
 	animated_sprite.stop()
 	animated_sprite.frame = last_frame # set again in case stop resets it
+
+
+func _on_add_cur_state(direction: Variant) -> void:
+	if direction == GlobalVariables.Directions.CLOCKWISE:
+		if current_state == 2:
+			animated_sprite.play("present")
+		elif current_state == 3:
+			animated_sprite.play("future")
+		elif current_state == 4:
+			animated_sprite.play("climax")	
+	else:
+		if current_state == 1:
+			animated_sprite.play_backwards("past")
+		elif current_state == 2:
+			animated_sprite.play_backwards("present")
+		elif current_state == 3:
+			animated_sprite.play_backwards("future")
+		

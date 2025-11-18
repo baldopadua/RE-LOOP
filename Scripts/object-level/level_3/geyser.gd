@@ -187,7 +187,7 @@ func _on_player_scene_player_finished_moving() -> void:
 	# DEBUG PRINT CHECK PLAYER MOVES
 	#print("MOVES: ")
 	#print(player.moves)
-	if player.moves in allowed_positions and rocks.size() > 0 and player.direction == GlobalVariables.player_direction.CLOCKWISE:
+	if player.moves in allowed_positions and rocks.size() > 0:
 		geyser_ekusproshon()
 	elif player.moves in allowed_positions and rocks.size() > 0 and player.direction == GlobalVariables.player_direction.COUNTERCLOCKWISE:
 		return_rocks()

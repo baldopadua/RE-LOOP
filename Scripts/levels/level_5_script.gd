@@ -19,8 +19,6 @@ extends Node2D
 # PLAYER STATE AND LABEL
 var player_has_entered: bool = false
 var level_completed: bool = false  # NEW: Prevent multiple completions
-@onready var player_label: Label = $PlayerScene/Label
-@onready var temp_timer: Timer = Timer.new()
 @onready var upper_bar = $CanvasLayer/upper_bar
 @onready var lower_bar = $CanvasLayer/lower_bar
 
@@ -43,12 +41,6 @@ func _ready():
 	objects_initialize()
 	
 	player.rotation = deg_to_rad(150.0)
-	
-	# Add timer to scene tree and configure
-	add_child(temp_timer)
-	temp_timer.one_shot = true
-	if player_label:
-		player_label.visible = false
 
 func objects_initialize():
 	objects.append(science_project)
@@ -111,16 +103,17 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			$AnimationPlayer.disconnect("animation_finished", _on_animation_player_animation_finished)
 			
 		if not player_has_entered:
-			player_label.visible = true
+			await get_tree().create_timer(1.0).timeout
 			GlobalVariables.player_stopped = true
-			# start timer and wait, then restart level (no malformed connect)
-			temp_timer.start(3.0)
 			ui_handler.hide_game_ui_elements()
 			player.get_node("Camera2D").emit_signal("pan_to_pos", player.get_node("AnimatedSprite2D").global_position)
 			player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 			player.get_node("Camera2D").emit_signal("reveal_bars")
-			await temp_timer.timeout
-			level_handler.restart_level(get_parent())
+			DialogueManager.show_dialogue_balloon_scene("res://dialogues/made/balloon.tscn", load("res://dialogues/forgot.dialogue"), "", [self])
+			DialogueManager.dialogue_ended.connect(func(_resource: DialogueResource):
+				await get_tree().create_timer(1.0).timeout
+				level_handler.restart_level(get_parent())
+			)
 		else:
 			# Mark as completed BEFORE calling level handler
 			level_completed = true
