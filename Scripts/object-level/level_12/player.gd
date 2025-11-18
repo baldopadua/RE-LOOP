@@ -69,6 +69,8 @@ func _on_player_finished_moving() -> void:
 		if butterfly.matched and carrot.matched and cat.matched and lightbulb.matched and normalized_rotation == monk_normalized_rotation and position == monk.position:
 			print("ALL ARE MATCHED")
 			finish_phase_3()
+	
+	
 
 func finish_phase_1():
 	phase += 1

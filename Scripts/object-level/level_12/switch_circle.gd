@@ -7,6 +7,9 @@ signal toggle_switch_circle()
 @export var x_pos : float = 0.0
 @export var y_pos : float = 0.0
 
+var start_color := Color(1, 1, 1) # ffffff
+var end_color := Color("006162")  # 006162
+
 func _on_body_entered(body) -> void:
 	#print("BODY ENTERED: ", get_rid())
 	handle_body_entered(body)
@@ -39,3 +42,11 @@ func _on_toggle_switch_circle() -> void:
 		.set_trans(Tween.TRANS_SINE) \
 		.set_ease(Tween.EASE_OUT) \
 		.finished.connect(func():canvas_layer.remove_child(flash))
+
+func set_hold_progress(progress: float) -> void:
+	var t = clamp(progress, 0.0, 1.0)
+	var new_color = start_color.lerp(end_color, t)
+	if has_node("Sprite2D"):
+		$Sprite2D.modulate = new_color
+	elif has_node("AnimatedSprite2D"):
+		$AnimatedSprite2D.modulate = new_color

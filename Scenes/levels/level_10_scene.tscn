@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://devjgm4fpge0o" path="res://Scripts/levels/level_10_script.gd" id="1_lnfvu"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_lnfvu"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_geapq"]
-[ext_resource type="Script" path="res://scripts/object-level/level_10/player.gd" id="4_qcf8u"]
+[ext_resource type="Script" uid="uid://f5wtdaokupbq" path="res://Scripts/object-level/level_10/player.gd" id="4_qcf8u"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_qcmyw"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_ttbi8"]
 [ext_resource type="Texture2D" uid="uid://dqtn354dybf4y" path="res://Assets/levels/level_10/lazer-sheet-new.png" id="8_ttn1o"]
@@ -1200,8 +1200,6 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_lnfvu")]
 self_modulate = Color(1, 1, 1, 0.9000001)
-z_index = 2
-position = Vector2(-13.76, 14.645)
 up_direction = Vector2(0, 1)
 script = ExtResource("4_qcf8u")
 
@@ -1381,6 +1379,7 @@ autoplay = "default"
 offset = Vector2(17.34, -6.015)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
 libraries = {
 &"": SubResource("AnimationLibrary_odd5e")
 }
