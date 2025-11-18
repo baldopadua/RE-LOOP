@@ -15,6 +15,8 @@ var objects: Array = []
 @onready var sound_manager = $SoundManager
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 @onready var gun = $Gun # Make sure this matches your gun node path
+@onready var finish_line = $"Finish Line"
+@onready var start_line = $"Start Line"
 
 func _ready():
 	# SET LEVEL
@@ -29,8 +31,8 @@ func _ready():
 #	OBject initialize
 
 	player.rotation = deg_to_rad(240.0)
-	if gun and gun.has_signal("turtle_win_race"):
-		gun.connect("turtle_win_race", Callable(self, "_on_turtle_win_race"))
+	
+	initial_cam_scene()
 
 func _on_level_handler_skip_level_requested(level_number: int) -> void:
 	if level_number == 8:
@@ -39,3 +41,20 @@ func _on_level_handler_skip_level_requested(level_number: int) -> void:
 func _on_turtle_win_race():
 	if level_handler:
 		level_handler.complete_current_level(get_parent())
+
+func initial_cam_scene():
+	var p = player.get_node("Camera2D")
+	player.set_process_input(false)
+	await get_tree().create_timer(1.0).timeout
+	p.emit_signal("reveal_bars")
+	p.emit_signal("cam_zoom", 1.5)
+	p.emit_signal("pan_to_pos", finish_line.global_position)
+	await get_tree().create_timer(1.5).timeout
+	p.emit_signal("pan_to_pos", start_line.global_position)
+	await get_tree().create_timer(1.5).timeout
+	p.emit_signal("pan_to_pos", gun.global_position)
+	await get_tree().create_timer(1.5).timeout
+	p.emit_signal("cam_orig_zoom")
+	p.emit_signal("pan_to_orig_pos")
+	p.emit_signal("hide_bars")
+	player.set_process_input(true)

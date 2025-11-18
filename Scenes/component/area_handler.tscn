@@ -1058,7 +1058,7 @@ frame_progress = 1.0
 [node name="level_8_break" type="AnimatedSprite2D" parent="loop_break"]
 visible = false
 position = Vector2(-2, -2)
-rotation = -3.6651917
+rotation = 3.1415927
 scale = Vector2(2.175, -2.175)
 sprite_frames = SubResource("SpriteFrames_domgy")
 frame = 6
