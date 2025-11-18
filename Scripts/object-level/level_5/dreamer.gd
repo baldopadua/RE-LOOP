@@ -201,7 +201,7 @@ func check_and_start_rocket():
 	if rocket.visible:
 		return # Already started
 	# All must be visible and pickupable (soda), and dreamer must be kid
-	if soda.visible and soda.is_pickupable and current_state == 1 and science_project.visible:
+	if soda.visible and soda.is_pickupable and current_state == 3 and science_project.visible:
 		# Check if all are close enough (same area)
 		var dist1 = global_position.distance_to(soda.global_position)
 		var dist2 = global_position.distance_to(science_project.global_position)
