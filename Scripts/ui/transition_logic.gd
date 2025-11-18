@@ -20,7 +20,7 @@ func play_plooy_falling_animation():
 	plooy.rotation = 0.0
 	plooy.scale = Vector2(1, 1)
 	plooy.modulate.a = 1.0
-	plooy.visible = true
+	plooy.visible = false
 	
 	plooy_tween = create_tween()
 	# DELAY BAGO MAGSIMULA ANG HULOG
