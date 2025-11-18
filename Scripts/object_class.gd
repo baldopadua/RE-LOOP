@@ -291,6 +291,7 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 		10: [],
 		11: [],
 		12: [],
+		13: [] 
 	}
 
 
