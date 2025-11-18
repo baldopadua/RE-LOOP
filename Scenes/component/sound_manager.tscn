@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://co4mj4xfj7mhw" path="res://Audio/level-1/ice_break.tscn" id="11_kbx4k"]
 [ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="12_wax2h"]
 [ext_resource type="PackedScene" uid="uid://dfjn0ovrjl87e" path="res://Audio/level-1/time_freeze.tscn" id="13_ev6nr"]
+[ext_resource type="PackedScene" uid="uid://dnxj7bkmm8jxn" path="res://Audio/sfx/crystal_sfx.tscn" id="13_crystal"]
 [ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/level-1/time_manip.tscn" id="16_4nov3"]
 [ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="17_nb86s"]
 
@@ -170,6 +171,8 @@ bus = &"sfx"
 [node name="bell" parent="sfx/global_sfx/finish_level_sfx" instance=ExtResource("12_wax2h")]
 
 [node name="time_freeze" parent="sfx/global_sfx" instance=ExtResource("13_ev6nr")]
+
+[node name="crystal_sfx" parent="sfx/global_sfx" instance=ExtResource("13_crystal")]
 
 [node name="player_sfx" type="Node2D" parent="sfx"]
 

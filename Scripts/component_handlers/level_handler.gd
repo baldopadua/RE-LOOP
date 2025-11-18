@@ -186,7 +186,14 @@ func complete_current_level(levels_frame):
 			_mark_level_completed_and_print_status()
 		
 		kill_current_level(current_level)
-		await get_tree().create_timer(1.2).timeout
+		
+		# Play crystal sound when player enters loop break portal
+		var area_handler_node = current_level.get_node_or_null("AreaHandler")
+		if area_handler_node:
+			var sound_mgr = area_handler_node.get_node_or_null("SoundManager")
+			if sound_mgr and sound_mgr.sfx.has("crystal_sfx"):
+				sound_mgr.play_sfx("crystal_sfx")
+		await get_tree().create_timer(0.7).timeout
 
 		var next_level_number = current_level_number + 1
 		if next_level_number > TOTAL_LEVEL_COUNT:
