@@ -359,7 +359,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwqnk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmfc"]
-size = Vector2(120, 20)
+size = Vector2(120, 357)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rk5e6"]
 atlas = ExtResource("22_ckxqi")
@@ -539,7 +539,6 @@ sprite_frames = SubResource("SpriteFrames_aqds8")
 shape = SubResource("RectangleShape2D_w1tv0")
 
 [node name="schrodinger2" parent="." instance=ExtResource("5_u54cp")]
-visible = false
 position = Vector2(-512, 0)
 rotation = 1.5707964
 script = ExtResource("13_rfmfc")
@@ -550,14 +549,14 @@ min_state_threshold = 1
 current_state = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="schrodinger2"]
-position = Vector2(2.000002, 3)
+position = Vector2(2.0000021, 6)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 frame = 5
 frame_progress = 1.0
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="schrodinger2"]
-position = Vector2(2.000002, 3)
+position = Vector2(2.0000021, 6)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 frame = 5
@@ -626,7 +625,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="switch_circle"]
-position = Vector2(4, 0)
+position = Vector2(4, -12.5)
 shape = SubResource("RectangleShape2D_rfmfc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="switch_circle"]
