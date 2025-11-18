@@ -33,8 +33,7 @@ var center_circle: Vector2i = Vector2i(0, 0)
 @onready var enter_10: object_class = $enter_10
 @onready var enter_11: object_class = $enter_11
 @onready var enter_12: object_class = $enter_12
-@onready var enter_13: object_class = $enter_13 # <--- NEW
-
+@onready var enter_13: object_class = null
 @onready var short_hand_rotation_lobby = $short_hand_rotation_lobby
 
 var clock_area: int = 12
