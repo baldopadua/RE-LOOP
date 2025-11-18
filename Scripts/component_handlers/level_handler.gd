@@ -8,6 +8,7 @@ signal short_hand_state_changed(level_number: int, is_unlocked: bool)
 signal map_scale_tween_finished() 
 signal hint_level_changed(level_number: int)
 signal skip_level_requested(level_number: int) # <--- ADD THIS LINE
+signal lobby_returned # Notify GameScene when lobby is returned
 
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 var player = null
@@ -248,6 +249,7 @@ func load_next_level_directly(next_level_number: int, levels_frame):
 		return_to_lobby(levels_frame)
 
 func _continue_to_level(level_path: String, levels_frame):
+	ui_handler.show_and_enable_hint_and_time()
 	GlobalVariables.player_moves = 0
 	change_level(level_path, levels_frame)
 	ui_handler.set_default_time_indicator()
@@ -258,9 +260,8 @@ func return_to_lobby(levels_frame):
 	
 	var lobby_path = "res://Scenes/levels/level_lobby.tscn"
 	change_level(lobby_path, levels_frame)
+	emit_signal("lobby_returned")
 	ui_handler.set_default_time_indicator()
-	ui_handler.visible = true
-	
 	if is_replaying_completed_level:
 		level_status_node.preserved_hand_rotation = 0.0
 		level_status_node.resume_following_player()
