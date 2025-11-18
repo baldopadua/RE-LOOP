@@ -323,6 +323,10 @@ stream = ExtResource("15_clock")
 
 [node name="bowl" parent="sfx/level_9_sfx" instance=ExtResource("60_level9")]
 
+[node name="loop_shake" parent="sfx/level_9_sfx" instance=ExtResource("55_level6")]
+
+[node name="crystal_transition" parent="sfx/level_9_sfx" instance=ExtResource("52_level6")]
+
 [node name="level_10_sfx" type="Node2D" parent="sfx"]
 
 [node name="laser" parent="sfx/level_10_sfx" instance=ExtResource("61_level10")]
@@ -332,6 +336,10 @@ stream = ExtResource("15_clock")
 [node name="level_11_sfx" type="Node2D" parent="sfx"]
 
 [node name="level_12_sfx" type="Node2D" parent="sfx"]
+
+[node name="loop_shake" parent="sfx/level_12_sfx" instance=ExtResource("55_level6")]
+
+[node name="crystal_transition" parent="sfx/level_12_sfx" instance=ExtResource("52_level6")]
 
 [node name="music" type="Node2D" parent="."]
 
