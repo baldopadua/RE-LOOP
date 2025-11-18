@@ -106,10 +106,22 @@ func _on_add_cur_state(direction: Variant) -> void:
 	if direction == GlobalVariables.Directions.CLOCKWISE:
 		if current_state == 2:
 			animated_sprite.play("grow_1")
+			# Play leaves sound with high pitch for small tree
+			if sound_manager and sound_manager.sfx.has("leaves"):
+				sound_manager.set_sfx_pitch_scale("leaves", 1.4)
+				sound_manager.play_sfx("leaves")
 		elif current_state == 3:
 			animated_sprite.play("grow_2")
+			# Play leaves sound with medium pitch for medium tree
+			if sound_manager and sound_manager.sfx.has("leaves"):
+				sound_manager.set_sfx_pitch_scale("leaves", 1.0)
+				sound_manager.play_sfx("leaves")
 		elif current_state == 4:
 			animated_sprite.play("grow_3")
+			# Play leaves sound with low pitch for big tree
+			if sound_manager and sound_manager.sfx.has("leaves"):
+				sound_manager.set_sfx_pitch_scale("leaves", 0.7)
+				sound_manager.play_sfx("leaves")
 			# Stop
 			area_handler.show_loop_break(1)
 			GlobalVariables.is_looping = false
@@ -136,7 +148,19 @@ func _on_add_cur_state(direction: Variant) -> void:
 	else:
 		if current_state == 2:
 			animated_sprite.play_backwards("grow_1")
+			# Play leaves sound with high pitch when shrinking to small
+			if sound_manager and sound_manager.sfx.has("leaves"):
+				sound_manager.set_sfx_pitch_scale("leaves", 1.4)
+				sound_manager.play_sfx("leaves")
 		elif current_state == 3:
 			animated_sprite.play_backwards("grow_2")
+			# Play leaves sound with medium pitch when shrinking to medium
+			if sound_manager and sound_manager.sfx.has("leaves"):
+				sound_manager.set_sfx_pitch_scale("leaves", 1.0)
+				sound_manager.play_sfx("leaves")
 		elif current_state == 4:
 			animated_sprite.play_backwards("grow_3")
+			# Play leaves sound with low pitch when shrinking from big
+			if sound_manager and sound_manager.sfx.has("leaves"):
+				sound_manager.set_sfx_pitch_scale("leaves", 0.7)
+				sound_manager.play_sfx("leaves")

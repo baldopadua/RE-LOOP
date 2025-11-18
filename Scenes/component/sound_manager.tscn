@@ -192,6 +192,8 @@ stream = ExtResource("15_clock")
 
 [node name="level_1_sfx" type="Node2D" parent="sfx"]
 
+[node name="leaves" parent="sfx/level_1_sfx" instance=ExtResource("54_level6")]
+
 [node name="level_2_sfx" type="Node2D" parent="sfx"]
 
 [node name="sword" parent="sfx/level_2_sfx" instance=ExtResource("18_4r04m")]
