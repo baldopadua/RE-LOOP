@@ -259,8 +259,8 @@ func handle_body_entered(body):
 			
 			if level_handler and level_number > 0:
 				if level_handler.completed_levels.has(level_number):
-					# Green glow for completed levels
-					create_glow_light_to_lobby(Color.GREEN)
+					# Light green glow for completed levels
+					create_glow_light_to_lobby(Color(0.6, 1.0, 0.6, 1.0))
 				elif is_level_accessible(level_number, level_handler):
 					# Yellow glow for accessible but incomplete levels
 					create_glow_light_to_lobby(Color.YELLOW)
@@ -280,8 +280,8 @@ func is_level_accessible(level_number: int, level_handler) -> bool:
 	# An empty array means the level is always accessible.
 	var requirements := {
 		1: [],
-		2: [1],
-		3: [1, 2],
+		2: [],
+		3: [],
 		4: [],
 		5: [],
 		6: [],
@@ -348,30 +348,34 @@ func get_level_handler():
 	return null
 
 func set_level_completion_visual(is_completed: bool):
-	# Change sprite color - use the correct node name from the scene
 	var level_number = get_level_number_from_name()
 	var level_handler = get_level_handler()
 	
-	
-	if has_node("Sprite2D2"):
-		var sprite = $Sprite2D2
-		
-		if is_completed:
-			sprite.modulate = Color.GREEN
-		elif level_handler and is_level_accessible(level_number, level_handler):
-			sprite.modulate = Color.WHITE
-		else:
-			sprite.modulate = Color.DARK_GRAY
-	elif has_node("item_sprite"):
-		var sprite = $item_sprite
-		
-		if is_completed:
-			sprite.modulate = Color.GREEN
-		elif level_handler and is_level_accessible(level_number, level_handler):
-			sprite.modulate = Color.WHITE
-		else:
-			sprite.modulate = Color.DARK_GRAY
+	# Find the AnimatedSprite2D node (not Sprite2D)
+	var anim_sprite: AnimatedSprite2D = null
+	for child in get_children():
+		if child is AnimatedSprite2D:
+			anim_sprite = child
+			break
 
+	if anim_sprite:
+		if not level_handler or not is_level_accessible(level_number, level_handler):
+			# Locked: set animation to "lock" and frame to 0, modulate to dark gray
+			anim_sprite.animation = "lock"
+			anim_sprite.frame = 0
+		elif is_completed:
+			# Completed: unlock animation, frame index, modulate to light green
+			anim_sprite.animation = "unlock"
+			var frame_idx = clamp(level_number - 1, 0, 11)
+			anim_sprite.frame = frame_idx
+			anim_sprite.modulate = Color(0.6, 1.0, 0.6, 1.0)
+		else:
+			# Unlocked but not completed: unlock animation, frame index, modulate to white
+			anim_sprite.animation = "unlock"
+			var frame_idx = clamp(level_number - 1, 0, 11)
+			anim_sprite.frame = frame_idx
+			anim_sprite.modulate = Color(1, 1, 1, 1)
+	# ...existing code for item_sprite/Sprite2D2 can be removed or left for fallback...
 func create_glow_light_to_lobby(color: Color = Color.YELLOW):
 	# Remove existing glow light first
 	if glow_light:

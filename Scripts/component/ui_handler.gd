@@ -204,6 +204,41 @@ func show_overlay_credits():
 				await tween.finished
 			show_close_button()
 
+func show_overlay_credits_for_settings():
+	if not ui_logic.has_node("overlay"):
+		return
+	var overlay = ui_logic.get_node("overlay")
+	if not overlay.has_node("credits"):
+		return
+	overlay.visible = true
+	hide_all_children(overlay)
+	var credits = overlay.get_node("credits")
+	var credits_bg = credits.get_node_or_null("credits_bg")
+	if credits_bg:
+		credits_bg.visible = true
+		credits_bg.modulate = Color(0.1, 0.1, 0.1, 1) # darken the credits_bg
+	var credits_overlay = credits.get_node_or_null("credits_overlay")
+	if credits_overlay:
+		credits_overlay.visible = true
+	credits.visible = true
+	var settings = overlay.get_node_or_null("settings")
+	var settings_box = settings.get_node_or_null("settings_box") if settings else null
+	var settings_bg = settings.get_node_or_null("settings_bg") if settings else null
+	if settings_box:
+		settings_box.visible = false
+	if settings_bg:
+		settings_bg.modulate = Color(0.1, 0.1, 0.1, 1)
+	var button = settings.get_node_or_null("credits_button_settings") if settings else null
+	var tween = null
+	if button and is_instance_valid(button):
+		tween = ui_logic.popup_overlay_from_button(button, credits)
+	else:
+		ui_logic.animate_overlay_open_from_right(credits)
+	if tween:
+		await tween.finished
+	show_close_button()
+
+
 func close_overlay_button(_node):
 	var overlay = ui_logic.get_node_or_null("overlay")
 	if not overlay:
@@ -237,6 +272,19 @@ func close_overlay_button(_node):
 			solution_timer.get_node("timer_label").visible = false
 			solution_timer.get_node("timer_label").modulate.a = 0
 	
+	# SPECIAL HANDLING FOR CREDITS OVERLAY FROM SETTINGS
+	if visible_child and visible_child.name == "credits":
+		var credits_bg = visible_child.get_node_or_null("credits_bg_for_settings")
+		if credits_bg and credits_bg.visible:
+			credits_bg.visible = false
+		var settings = overlay.get_node_or_null("settings")
+		var settings_box = settings.get_node_or_null("settings_box") if settings else null
+		var settings_bg = settings.get_node_or_null("settings_bg") if settings else null
+		if settings_box and not settings_box.visible:
+			settings_box.visible = true
+		if settings_bg and settings_bg.modulate != Color(1, 1, 1, 1):
+			settings_bg.modulate = Color(1, 1, 1, 1) # restore bg to light
+
 	# HIDE VISIBLE OVERLAY AND CLOSE BUTTON
 	if visible_child:
 		visible_child.visible = false
@@ -481,3 +529,23 @@ func shake_hint_button():
 	
 	# RESET TEXTURE AFTER ALL SHAKES ARE DONE
 	hint_button.texture_normal = original_texture
+
+func disable_game_ui_elements():
+	if ui_logic.has_node("game_ui_elements"):
+		var game_ui = ui_logic.get_node("game_ui_elements")
+		game_ui.set_process(false)
+		game_ui.set_process_input(false)
+		game_ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		for child in game_ui.get_children():
+			if child is Control:
+				child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func enable_game_ui_elements():
+	if ui_logic.has_node("game_ui_elements"):
+		var game_ui = ui_logic.get_node("game_ui_elements")
+		game_ui.set_process(true)
+		game_ui.set_process_input(true)
+		game_ui.mouse_filter = Control.MOUSE_FILTER_STOP
+		for child in game_ui.get_children():
+			if child is Control:
+				child.mouse_filter = Control.MOUSE_FILTER_STOP

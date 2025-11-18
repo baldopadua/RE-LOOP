@@ -6,8 +6,18 @@ signal toggle_switch_circle()
 @onready var canvas_layer = $"../CanvasLayer"
 
 func _on_body_entered(body) -> void:
+	print("BODY ENTERED: ", get_rid())
 	handle_body_entered(body)
-	emit_signal("toggle_switch_circle")
+	body.rift_near_player = true
+	body.current_rift = self
+	
+func _on_body_exited(body) -> void:
+	print("BODY EXITED: ", get_rid())
+	handle_body_exited(body)
+	if body.current_rift.get_rid() == get_rid():
+		print("THEY ARE EQUAL")
+		body.current_rift = null
+		body.rift_near_player = false
 
 func _on_toggle_switch_circle() -> void:
 	if player.position.x == -240.0:

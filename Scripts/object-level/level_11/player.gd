@@ -11,7 +11,6 @@ extends "res://Scripts/player_script.gd"
 @onready var cat = $"../cat"
 @onready var lightbulb = $"../lightbulb"
 
-
 # Monk
 @onready var monk = $"../monk"
 # Statues
@@ -93,6 +92,15 @@ func _on_player_finished_moving() -> void:
 			await get_tree().create_timer(0.75).timeout
 			monk.get_node("AnimatedSprite2D").play("reveal")
 			
-			broken = true
+			var bg = get_parent().get_parent().get_parent().get_node("CanvasLayer").get_node("game_scene_bg")
 			
+			get_parent().toggle_grayscale(bg)
+			get_parent().toggle_grayscale(area_handler.map_sprite)
+			bg.play()
+			
+			await monk.get_node("AnimatedSprite2D").animation_finished
+			await get_tree().create_timer(0.75).timeout
+			
+			broken = true
+			level_handler.complete_current_level(get_parent().get_parent())
 			

@@ -42,6 +42,7 @@ var objects: Array = []
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(11)
+	ui_handler.disable_game_ui_elements()
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# PLAY LEVEL AMBIENCE
@@ -109,10 +110,6 @@ func _on_dialogue_ended(_resource: DialogueResource):
 	player.set_process_input(true)
 #	Reshow ui elements
 	ui_handler.show_game_ui_elements()
-
-func _on_letter_spoke(letter, index, speed):
-	if letter in [" ", "\n"]: return # (optional)
-	$AudioStreamPlayer.play()
 
 
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 

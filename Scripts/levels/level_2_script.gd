@@ -25,6 +25,7 @@ var tween_scale: Tween
 func _ready():
 	# SET LEVELd
 	level_handler.set_current_level(2)
+	
 	# INTRO OF MAP ROTATE AND SCALE PLUS TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# SHOW DECORATIVES
@@ -33,7 +34,7 @@ func _ready():
 	if sound_manager:
 		sound_manager.play_level_ambience()
 	player.rotation = deg_to_rad(60.0)
-
+	
 	# INITIALIE OBJECTS
 	objects_initialize()
 	
@@ -71,15 +72,6 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 	
 	GlobalVariables.player_stopped = false
-
-# ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
-# TO WORK ON THE SCRIPT
-# ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
-func enter_level():
-	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
-	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
-	level_handler.complete_current_level(get_parent())
-
 
 func _on_level_handler_skip_level_requested(level_number: int) -> void:
 	# Only complete if this is the current level

@@ -43,7 +43,6 @@ func _ready():
 	
 	# HIDE THE UI DURING CINEMA
 	ui_handler.hide_game_ui_elements()
-	player.get_node("Camera2D").emit_signal("pan_to_pos", center_pos.global_position)
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	player.get_node("Camera2D").emit_signal("cam_zoom", 0.65)
 	player.shake_camera(5.0, 10.0, 2.5)
@@ -90,15 +89,6 @@ func object_initialize():
 	objects.append(box)
 	objects.append(lever1)
 	objects.append(lever2)
-
-# ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
-# TO WORK ON THE SCRIPT
-# ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
-func enter_level():
-	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
-	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
-	level_handler.complete_current_level(get_parent()) 
-	
 
 
 func _on_level_handler_skip_level_requested(level_number: int) -> void:

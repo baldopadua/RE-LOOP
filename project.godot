@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="RE:LOOP"
+config/name="Plooy"
+config/description="Break the Loop"
 run/main_scene="uid://dypu05rngiwmu"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/image="uid://d4dvjse2gw7kq"
@@ -33,6 +34,7 @@ runtime/balloon_path="res://dialogues/made/balloon.tscn"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 
@@ -55,10 +57,15 @@ interact={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
+enter_rift={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/initial_meeting.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/initial_meeting.dialogue", "res://dialogues/ending.dialogue")
 
 [rendering]
 

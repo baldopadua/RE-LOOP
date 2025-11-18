@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://3tla2n3edqkn"]
+[gd_scene load_steps=67 format=3 uid="uid://3tla2n3edqkn"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_2r23t"]
 [ext_resource type="Script" uid="uid://ds7lwxirvmjvs" path="res://Scripts/levels/level_6_script.gd" id="1_odmpw"]
@@ -7,24 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_jmy7j"]
 [ext_resource type="Script" uid="uid://bm414w0mavhw0" path="res://Scripts/object-level/level_6/player.gd" id="4_pwedw"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_kapnr"]
-[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_kapnr"]
-[ext_resource type="Texture2D" uid="uid://vo008hjrvaok" path="res://Assets/level_select_lobby/level_7.png" id="8_pwedw"]
 [ext_resource type="Texture2D" uid="uid://cm1ofcp5mp3f1" path="res://Assets/VarianceSplit-Sheet.png" id="9_cr1iw"]
 [ext_resource type="Script" uid="uid://ipneen5ggosr" path="res://Scripts/object-level/level_6/in_1.gd" id="10_cr1iw"]
 [ext_resource type="Script" uid="uid://b4sgciq6gkscg" path="res://Scripts/object-level/level_6/switch_circle.gd" id="10_ov81m"]
 [ext_resource type="Texture2D" uid="uid://dhn4nwd5xx3k2" path="res://Assets/levels/level_6/placeholder_assets/seed 1.png" id="13_cr1iw"]
 [ext_resource type="Texture2D" uid="uid://bbu4jrknv4i47" path="res://Assets/levels/level_6/recolored-tree.png" id="15_8mnya"]
 [ext_resource type="Script" uid="uid://dpen7dd1hhm1c" path="res://Scripts/object-level/level_6/in_2.gd" id="15_bxtqd"]
+[ext_resource type="Texture2D" uid="uid://bm3mx745gtphx" path="res://Assets/levels/level_6/apple-keystone.png" id="16_nlrgi"]
 [ext_resource type="Script" uid="uid://4ps5tmbu0ta5" path="res://Scripts/object-level/level_6/seed.gd" id="17_8mnya"]
-[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="19_cr1iw"]
 [ext_resource type="Script" uid="uid://dn4wa6vh46eft" path="res://Scripts/object-level/level_6/seed2.gd" id="20_f215k"]
 [ext_resource type="Texture2D" uid="uid://cqy4vnecvhahh" path="res://Assets/levels/level_6/inewton.png" id="22_f215k"]
 
-[sub_resource type="Gradient" id="Gradient_7hl30"]
+[sub_resource type="Gradient" id="Gradient_nlrgi"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cr1iw"]
-gradient = SubResource("Gradient_7hl30")
+gradient = SubResource("Gradient_nlrgi")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rk5e6"]
 atlas = ExtResource("9_cr1iw")
@@ -367,6 +365,58 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("apple:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53, 208)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("apple:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pugdj"]
+resource_name = "apple_fall"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("apple:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(39, 189), Vector2(28, 214), Vector2(39, 307)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("apple:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_cr1iw"]
 resource_name = "climbing_animation"
@@ -403,13 +453,10 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8mnya"]
 _data = {
 &"RESET": SubResource("Animation_bxtqd"),
+&"apple_fall": SubResource("Animation_pugdj"),
 &"climbing_animation": SubResource("Animation_cr1iw"),
 &"jumping_animation": SubResource("Animation_8mnya")
 }
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxtqd"]
-radius = 33.212807
-height = 85.85651
 
 [node name="level_6_scene" type="Node2D"]
 script = ExtResource("1_odmpw")
@@ -449,11 +496,13 @@ layer = 2
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_jmy7j")]
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(687.49994, -61)
 scale = Vector2(24.234373, 1.625)
 texture = SubResource("GradientTexture2D_cr1iw")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(677.2499, 769)
 scale = Vector2(23.789063, 1.5)
 texture = SubResource("GradientTexture2D_cr1iw")
@@ -490,13 +539,13 @@ position = Vector2(-1.8358784e-06, -42)
 shape = SubResource("RectangleShape2D_ov81m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="isaac_newton_1"]
-position = Vector2(-14.999998, -28)
+position = Vector2(-23, -15)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_iwthe")
 animation = &"young"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="isaac_newton_1"]
-position = Vector2(-14.750001, -28.000015)
+position = Vector2(-23, -16.000015)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_iwthe")
 
@@ -581,83 +630,15 @@ sprite_frames = SubResource("SpriteFrames_iwthe")
 [node name="center_pos" type="Marker2D" parent="."]
 position = Vector2(0, 25)
 
+[node name="apple" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(53, 208)
+texture = ExtResource("16_nlrgi")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_8mnya")
 }
-
-[node name="enter_7" parent="." instance=ExtResource("6_kapnr")]
-rotation = -2.6179938
-script = ExtResource("7_kapnr")
-object_name = "enter_7"
-object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_7"]
-position = Vector2(-8.998106, -321.5852)
-shape = SubResource("CapsuleShape2D_bxtqd")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="enter_7"]
-texture_filter = 1
-position = Vector2(-2.0096188, -33.480762)
-rotation = 3.121508
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("8_pwedw")
-offset = Vector2(0, 380)
-
-[node name="hover_text" type="RichTextLabel" parent="enter_7"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -91.05516
-offset_top = -225.71211
-offset_right = 88.94484
-offset_bottom = -191.71211
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-pivot_offset = Vector2(90, 11.5)
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = 1
-theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("19_cr1iw")
-theme_override_font_sizes/normal_font_size = 31
-text = "Ancient Tree"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="interact_text" type="RichTextLabel" parent="enter_7"]
-modulate = Color(1, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -250.0
-offset_right = 90.0
-offset_bottom = -227.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-scale = Vector2(1.30259, 1.39847)
-pivot_offset = Vector2(90, 11.5)
-theme_override_fonts/normal_font = ExtResource("19_cr1iw")
-theme_override_font_sizes/normal_font_size = 25
-text = "INTERACT"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [connection signal="loop_break_shown" from="PlayerScene" to="isaac_newton_1" method="_on_player_scene_loop_break_shown"]
 [connection signal="loop_break_shown" from="PlayerScene" to="seed" method="_on_player_scene_loop_break_shown"]

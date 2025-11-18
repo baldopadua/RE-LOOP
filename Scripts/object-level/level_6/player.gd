@@ -46,10 +46,10 @@ func _on_player_finished_moving() -> void:
 				seed1.is_pickupable = false
 				seed2.is_pickupable = false
 				in_2.visible = false
-				seed2.visible = false
 				switch_circle.visible = false
 				in_1.position.x = 0.0
 				seed1.position.x = 0.0
+				seed2.position.x = 0.0
 				in_1.animated_sprite.play("default")
 				in_1.animated_sprite2.play("default")
 				seed1.animated_sprite.play("tree")
@@ -61,10 +61,18 @@ func _on_player_finished_moving() -> void:
 				get_parent().enable_animation_player()
 				# Reveal all the keystones here
 				# Fade out animation
+				position.x = 0.0
 				flash.create_tween().tween_property(flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 				
 				await get_tree().create_timer(1.0).timeout
-				
+
+				# Ensure AnimationPlayer is active before playing apple_fall
+				var anim_player = get_parent().get_node_or_null("AnimationPlayer")
+				if anim_player:
+					anim_player.playback_active = true
+					anim_player.play("apple_fall")
+					await anim_player.animation_finished
+
 				get_node("Camera2D").emit_signal("cam_orig_zoom")
 				# Play all finish_level_sfx SFX at once
 				if sound_manager.has_method("play_finish_level_sfx"):
@@ -79,7 +87,7 @@ func _on_player_finished_moving() -> void:
 				get_node("Camera2D").emit_signal("hide_bars")
 				set_process_input(true)
 				GlobalVariables.player_stopped = false
-
+				
 				# Connect body_entered signals for climbable objects
 				seed1.connect("body_entered", Callable(self, "_on_climbable_body_entered"))
 				seed2.connect("body_entered", Callable(self, "_on_climbable_body_entered"))

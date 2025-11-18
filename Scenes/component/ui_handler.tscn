@@ -10,10 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://cwndswkyv0b33" path="res://Assets/ui/start_button_hover.png" id="6_f7f2r"]
 [ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="7_vdxet"]
 [ext_resource type="Texture2D" uid="uid://dycrhdnxrjgsl" path="res://Assets/ui/credits_animated_icon.png" id="8_8crwb"]
-[ext_resource type="Texture2D" uid="uid://c2dq7rfpmpmqb" path="res://Assets/ui/keys_elements.png" id="9_8crwb"]
+[ext_resource type="Texture2D" uid="uid://bcehs3kb87ooy" path="res://Assets/ui/keys_elements.png" id="9_8crwb"]
 [ext_resource type="Texture2D" uid="uid://oxutfru2ik0r" path="res://Assets/ui/brochure_unhovered.png" id="10_wyu2o"]
 [ext_resource type="Texture2D" uid="uid://3vkvbxe40udp" path="res://Assets/ui/brochure_hovered.png" id="11_tocme"]
 [ext_resource type="Texture2D" uid="uid://fwomc1y72s18" path="res://Assets/ui/hint/hint_icon.png" id="12_us0vv"]
+[ext_resource type="Texture2D" uid="uid://co6jwl3bru7ka" path="res://Assets/ui/settings_icon_hover.png" id="12_yg0r3"]
 [ext_resource type="Texture2D" uid="uid://dbhcu8amka32c" path="res://Assets/ui/hint/hint_icon_hover.png" id="13_us0vv"]
 [ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="16_gvmfu"]
 [ext_resource type="Texture2D" uid="uid://dmlkwrmka11h8" path="res://Assets/ui/counterclockwise_time_indicator.png" id="17_otg63"]
@@ -21,13 +22,12 @@
 [ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="19_bo42c"]
 [ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="19_dumc0"]
 [ext_resource type="Script" uid="uid://bdxwx60b8pdlx" path="res://Scripts/ui/custom_cursor.gd" id="20_qpkpn"]
+[ext_resource type="Texture2D" uid="uid://bacei26qp35s5" path="res://Assets/ui/settings_icon.png" id="21_kyj2j"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="21_qpkpn"]
-[ext_resource type="Texture2D" uid="uid://cvnnf0m2baxac" path="res://Assets/ui/sound_icon.png" id="21_swapm"]
 [ext_resource type="Texture2D" uid="uid://cg2l84tao5f1l" path="res://Assets/ui/credits_bg.png" id="21_taira"]
 [ext_resource type="Script" uid="uid://qyn6g7sbegxs" path="res://Scripts/ui/hint.gd" id="22_exohx"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="22_iwsb4"]
 [ext_resource type="Texture2D" uid="uid://ckok4beotp5ne" path="res://Assets/ui/Brochure.png" id="22_kyj2j"]
-[ext_resource type="Texture2D" uid="uid://cj8vhumcbbns3" path="res://Assets/ui/sound_icon_hover.png" id="22_yg0r3"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="23_4r7hv"]
 [ext_resource type="Texture2D" uid="uid://y5ujgaokyei8" path="res://Assets/ui/hint/hint_dialog.png" id="23_us0vv"]
 [ext_resource type="Texture2D" uid="uid://cgs10454tk44a" path="res://Assets/ui/hint/lock.png" id="24_y4w7x"]
@@ -545,12 +545,12 @@ autoplay = "default"
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.9085938
-anchor_top = 0.013888889
-anchor_right = 0.9859375
-anchor_bottom = 0.12638889
-texture_normal = ExtResource("21_swapm")
-texture_hover = ExtResource("22_yg0r3")
+anchor_left = 0.915625
+anchor_top = 0.03888889
+anchor_right = 0.96953124
+anchor_bottom = 0.12777779
+texture_normal = ExtResource("21_kyj2j")
+texture_hover = ExtResource("12_yg0r3")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
@@ -632,12 +632,12 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.9085938
-anchor_top = 0.015277778
-anchor_right = 0.9859375
-anchor_bottom = 0.12638889
-texture_normal = ExtResource("21_swapm")
-texture_hover = ExtResource("22_yg0r3")
+anchor_left = 0.9171875
+anchor_top = 0.03888889
+anchor_right = 0.96875
+anchor_bottom = 0.125
+texture_normal = ExtResource("21_kyj2j")
+texture_hover = ExtResource("12_yg0r3")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
@@ -702,6 +702,18 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="credits_bg" type="TextureRect" parent="ui_logic/overlay/credits"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.015625
+anchor_right = 1.015625
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_bo42c")
+metadata/_edit_use_anchors_ = true
+
 [node name="credits_overlay" type="TextureRect" parent="ui_logic/overlay/credits"]
 texture_filter = 1
 layout_mode = 1
@@ -718,6 +730,7 @@ texture = ExtResource("21_taira")
 expand_mode = 1
 
 [node name="hint" type="Control" parent="ui_logic/overlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -864,7 +877,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
-wait_time = 5.0
+wait_time = 120.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2/hint_2_timer"]
 visible = false
@@ -921,7 +934,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
-wait_time = 5.0
+wait_time = 120.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution/solution_timer"]
 visible = false
@@ -1237,10 +1250,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05406056
-anchor_top = 0.13878547
-anchor_right = 0.9748218
-anchor_bottom = 0.8245696
+anchor_left = 0.042877227
+anchor_top = 0.19427639
+anchor_right = 0.9636385
+anchor_bottom = 0.8800605
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1251,7 +1264,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 50
-text = "“Stack the stones beside the geyser so that it doesn’t explode from the pressure of time. Only then when all stones are collected shall you place it inside” "
+text = "“Stack the stones on the left side of the geyser so that it doesn’t explode from the pressure of time. Only then when all stones are collected shall you place it inside” "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1354,10 +1367,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.00932722
-anchor_top = 0.016286632
-anchor_right = 1.0183126
-anchor_bottom = 1.0670079
+anchor_left = 0.0640013
+anchor_top = -0.008841335
+anchor_right = 0.9561829
+anchor_bottom = 1.0418799
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1369,10 +1382,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 47
-text = "“A soda in hand, a sparkle and gleam,
-He builds his creation from bubbles and dream
-and soar to the stars on a fizzy beam”
-"
+text = "“A child holds a simple soda, yet dreams ignite. From fizz and foam he fashions a vessel born of bubbles and bright imagination, rising skyward on a sparkling beam.”"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1459,8 +1469,8 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 56
-text = "hard"
+theme_override_font_sizes/font_size = 42
+text = "“A world divided drifts out of tune. Roots and bones wander where they do not belong, and time forgets which story is true. Only when both circles echo the same moment,seed to seed, mind to mind, will gravity remember its purpose and let the fruit of truth fall.”"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1471,9 +1481,9 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05406056
-anchor_top = 0.15030245
-anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_top = -0.060144268
+anchor_right = 0.97730696
+anchor_bottom = 1.1083062
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1483,8 +1493,11 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 54
-text = "medium"
+theme_override_font_sizes/font_size = 42
+text = "“Each circle shows a different version of the same scene.
+Match what belongs on the left with its counterpart on the right. A seed must meet its seed, a Newton must meet his other self. When both timelines mirror each other perfectly,
+the tree will know when to drop the apple.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1495,9 +1508,11 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05406056
-anchor_top = 0.15030245
-anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_top = 0.064448565
+anchor_right = 0.937544
+anchor_bottom = 0.9837134
+offset_top = 12.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1507,8 +1522,14 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 54
-text = "easy"
+theme_override_font_sizes/font_size = 38
+text = "“Place each keystone in the circle where it really belongs.
+Plant the seed so it matches the other timeline,
+put Isaac Newton where the other world shows him,
+and keep both circles synchronized.
+When everything is in the same state in both timelines,
+the apple will fall and the two worlds will merge.“
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1715,9 +1736,9 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.032936484
-anchor_top = -0.021405319
+anchor_top = 0.030944612
 anchor_right = 0.971094
-anchor_bottom = 1.029316
+anchor_bottom = 1.0816659
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1728,8 +1749,13 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+theme_override_font_sizes/font_size = 42
+text = "“Two worlds argue over a single truth.
+A cat caught between fates,
+a lever pulled in one reality but not the other.
+Bring both moments into agreement,
+and the box at the center will reveal what time has decided.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1753,9 +1779,9 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+text = "“Put the cat inside the center box, then make sure the lever in both circles matches.
+When both timelines share the same action, the two labs will begin to merge and the box will open.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1779,7 +1805,10 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+text = "“Place the cat inside the center box.
+Match the lever position in both worlds.
+Once the levers line up at the same time, the timelines merge and the box opens.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1800,9 +1829,9 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.032936484
-anchor_top = -0.021405319
+anchor_top = 0.0120986365
 anchor_right = 0.971094
-anchor_bottom = 1.029316
+anchor_bottom = 1.06282
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1813,8 +1842,12 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+theme_override_font_sizes/font_size = 47
+text = "“Three sparks sleep in silence.
+Wake the minds that once chased lightning, coils, and burning filaments.
+Only when their forgotten discoveries shine again
+will the laser remember how to roar.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1824,10 +1857,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05406056
-anchor_top = 0.15030245
-anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_left = 0.056545746
+anchor_top = 0.10842251
+anchor_right = 0.943757
+anchor_bottom = 0.99418336
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1838,9 +1871,10 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+text = "“Charge the laser by restoring the work of the three inventors.
+Let Franklin reclaim lightning, Tesla his coil, and Edison his light.
+When all three inventions shine together, the laser will reactivate.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1851,9 +1885,9 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05406056
-anchor_top = 0.15030245
-anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_top = 0.04769659
+anchor_right = 0.937544
+anchor_bottom = 1.0276873
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -1863,8 +1897,11 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+theme_override_font_sizes/font_size = 49
+text = "“Place each inventor’s skull at their invention: Franklin at the lightning cloud , Tesla at the coil, and Edison at the lightbulb.
+Once placed, returned them into their young selves, powering the laser.
+When all three lights shine, the laser fires and breaks the loop.”
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1898,8 +1935,12 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+theme_override_font_sizes/font_size = 42
+text = "\"Echoes guard the hall of memory.
+What once belonged will call to what was taken,
+yet silence waits for those who’ve forgotten.
+Only by returning each fragment to the statue that remembers its story
+will time dare to move again.\""
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1922,10 +1963,12 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+theme_override_font_sizes/font_size = 45
+text = "“Each statue is missing the keystone it once carried.
+The relics you’ve gathered from earlier journeys still remember
+where they were meant to belong.
+Listen to their echoes and return each keystone to the statue
+that matches its past.”"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1949,7 +1992,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+text = "Match the correct keystones to its rightful statue, all are echoes from the previous levels, remember which keystone they ought to belong. Once everything is in place, go to the Plooy statue and time will once more flow."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -1984,7 +2027,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 56
-text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+text = "hard"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2008,9 +2051,8 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“A skull of heroes rests in silence.
-Take it, and return it to the grave it belongs to.
-The moment you choose may decide its fate.”"
+text = "medium
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2034,7 +2076,7 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
 theme_override_font_sizes/font_size = 54
-text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+text = "Place the keystones in their rightful statues, but keep in mind your other self. Match his position to prevent the reset, or lose a keystone from its proper place."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2088,10 +2130,10 @@ metadata/_edit_use_anchors_ = true
 [node name="settings_box" type="TextureRect" parent="ui_logic/overlay/settings"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.23984376
-anchor_top = 0.25277779
-anchor_right = 0.78203124
-anchor_bottom = 0.69305557
+anchor_left = 0.21875
+anchor_top = 0.24722221
+anchor_right = 0.84375
+anchor_bottom = 0.76666665
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("34_l8elr")
@@ -2102,10 +2144,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.08933718
-anchor_top = 0.2681388
-anchor_right = 0.16138329
-anchor_bottom = 0.42271292
+anchor_left = 0.092500016
+anchor_top = 0.17647061
+anchor_right = 0.16454613
+anchor_bottom = 0.33104473
 grow_horizontal = 2
 grow_vertical = 2
 toggle_mode = true
@@ -2119,10 +2161,10 @@ metadata/_edit_use_anchors_ = true
 [node name="music_mute_button" type="TextureButton" parent="ui_logic/overlay/settings/settings_box"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.08933718
-anchor_top = 0.5646688
-anchor_right = 0.16138329
-anchor_bottom = 0.71924293
+anchor_left = 0.08875002
+anchor_top = 0.39839572
+anchor_right = 0.16079612
+anchor_bottom = 0.5529699
 grow_horizontal = 2
 grow_vertical = 2
 toggle_mode = true
@@ -2133,14 +2175,45 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
+[node name="enable_skip_toggle" type="CheckButton" parent="ui_logic/overlay/settings/settings_box"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6475
+anchor_top = 0.64705884
+anchor_right = 0.795175
+anchor_bottom = 0.8556148
+offset_right = -74.140015
+offset_bottom = -48.949677
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.685, 2.685)
+focus_behavior_recursive = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 16
+metadata/_edit_use_anchors_ = true
+
+[node name="enable" type="Label" parent="ui_logic/overlay/settings/settings_box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.255
+anchor_top = 0.7058824
+anchor_right = 0.65
+anchor_bottom = 0.8315508
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 45
+text = "Enable Skip Levels"
+metadata/_edit_use_anchors_ = true
+
 [node name="sfx_slider" type="HSlider" parent="ui_logic/overlay/settings/settings_box"]
 modulate = Color(18.892, 7.06, 18.892, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3559078
-anchor_top = 0.20189273
-anchor_right = 0.7997118
-anchor_bottom = 0.5362298
+anchor_left = 0.35500005
+anchor_top = 0.12566847
+anchor_right = 0.7988041
+anchor_bottom = 0.46000552
 metadata/_edit_use_anchors_ = true
 
 [node name="sfx_title" type="Label" parent="ui_logic/overlay/settings/settings_box/sfx_slider"]
@@ -2175,10 +2248,10 @@ metadata/_edit_use_anchors_ = true
 modulate = Color(18.892157, 7.0600886, 18.892157, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.35590777
-anchor_top = 0.49526808
-anchor_right = 0.7997118
-anchor_bottom = 0.80111915
+anchor_left = 0.36000004
+anchor_top = 0.36096257
+anchor_right = 0.8038041
+anchor_bottom = 0.6668137
 metadata/_edit_use_anchors_ = true
 
 [node name="music_volume" type="Label" parent="ui_logic/overlay/settings/settings_box/music_slider"]
@@ -2207,6 +2280,26 @@ theme_override_font_sizes/font_size = 50
 text = "Music"
 metadata/_edit_use_anchors_ = true
 
+[node name="credits_button_settings" type="TextureButton" parent="ui_logic/overlay/settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1578125
+anchor_top = 0.12083333
+anchor_right = 0.2820315
+anchor_bottom = 0.36111027
+grow_horizontal = 2
+grow_vertical = 2
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="credits_animated_icon" type="AnimatedSprite2D" parent="ui_logic/overlay/settings/credits_button_settings"]
+texture_filter = 1
+position = Vector2(88, 65.2501)
+scale = Vector2(6.28704, 6.95834)
+sprite_frames = SubResource("SpriteFrames_ko6nu")
+autoplay = "default"
+
 [node name="close_button" type="TextureButton" parent="ui_logic/overlay"]
 visible = false
 texture_filter = 1
@@ -2225,17 +2318,7 @@ texture_hover = ExtResource("23_4r7hv")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="level_lobby" type="Control" parent="ui_logic/overlay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="cutscene" parent="." instance=ExtResource("33_nol8b")]
-visible = false
 layout_mode = 1
 
 [node name="custom_cursor" type="Sprite2D" parent="."]
@@ -2249,5 +2332,7 @@ script = ExtResource("20_qpkpn")
 
 [connection signal="pressed" from="ui_logic/overlay/settings/settings_box/sfx_mute_button" to="ui_logic/overlay/settings" method="_on_sfx_mute_button_pressed"]
 [connection signal="pressed" from="ui_logic/overlay/settings/settings_box/music_mute_button" to="ui_logic/overlay/settings" method="_on_music_mute_button_pressed"]
+[connection signal="toggled" from="ui_logic/overlay/settings/settings_box/enable_skip_toggle" to="ui_logic/overlay/hint" method="_on_enable_skip_toggle_toggled"]
 [connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/sfx_slider" to="ui_logic/overlay/settings" method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/music_slider" to="ui_logic/overlay/settings" method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="ui_logic/overlay/settings/credits_button_settings" to="ui_logic/overlay/settings" method="_on_credits_button_settings_pressed"]

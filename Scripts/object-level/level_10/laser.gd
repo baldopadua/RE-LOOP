@@ -14,6 +14,9 @@ var did_franklin_successfully_invented_electricity: bool = false
 
 # MY ANIMATED SPRITE
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var player = $"../PlayerScene"
+@onready var animation_player =$"../AnimationPlayer"
+var is_loop_broken = false
 
 # ENABLE PROCEEDING IN DIFFERENT LEVEL
 
@@ -29,21 +32,41 @@ func _on_keystone_complete(obj_name: String, enabled: bool) -> void:
 	
 	# IF ALL KEYSTONE ARE COMPLETE
 	if did_nicola_successfully_invented_tesla and did_edison_successfully_invented_bulb and did_franklin_successfully_invented_electricity:
-		animated_sprite.play("laser_fire")
-		# STOP PLOOY MOVEMENT
-		GlobalVariables.player_stopped = true
+		player.set_process_input(false)
+		var p = player.get_node("Camera2D")
+		p.emit_signal("reveal_bars")
+		p.emit_signal("cam_zoom", 1.5)
+		p.emit_signal("pan_to_pos", get_node("AnimatedSprite2D").global_position)
+		await get_tree().create_timer(1.0).timeout
+		animated_sprite.play("laser_fire")		
 		animated_sprite.animation_finished.connect(func():
 			# DO SOMETHING HERE
-			
-			
-			# PLAY CAMERA CUTSCENE
-			
-			# PLAY SFX
-			
-			# ENABLE BODY ENTERED OR SOMETHING THAT WILL GO TO THE NEXT LEVEL
-			
-			# ENABLE PLOOY MOVEMENT
+			get_parent().area_handler.show_loop_break(10)
+			await get_tree().create_timer(1.0).timeout
+			p.emit_signal("hide_bars")
+			p.emit_signal("cam_orig_zoom")
+			p.emit_signal("pan_to_orig_pos")
+			player.set_process_input(true)
 			GlobalVariables.player_stopped = false
 			GlobalVariables.is_looping = false
-			pass	
+			is_loop_broken = true
 		)
+
+func _on_body_entered(body) -> void:
+	handle_body_entered(body)
+	if is_loop_broken:
+		player.set_process_input(false)
+		var p = player.get_node("Camera2D")
+		p.emit_signal("reveal_bars")
+		p.emit_signal("cam_zoom", 1.5)
+		p.emit_signal("pan_to_pos", player.get_node("AnimatedSprite2D").global_position)
+		animation_player.play("climbing_laser")
+		player.get_node("AnimatedSprite2D").play("climb")
+		await animation_player.animation_finished
+		player.get_node("AnimatedSprite2D").play("idle")
+		await get_tree().create_timer(0.25).timeout
+		player.get_node("AnimatedSprite2D").play("jump")
+		animation_player.play("jumping_from_laser")
+		await animation_player.animation_finished
+		await get_tree().create_timer(0.50).timeout
+		get_parent().level_handler.complete_current_level(get_parent().get_parent())

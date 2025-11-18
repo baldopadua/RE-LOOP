@@ -17,6 +17,7 @@ var hint_progress = {}  # DICTIONARY TO STORE PROGRESS PER LEVEL
 @onready var solution_lock = $hint_box/hint_box_empty/solution/solution_lock
 @onready var solution_overlay = $hint_box/hint_box_empty/solution/solution_overlay
 @onready var skip_level_button = $hint_box/skip_level
+@onready var enable_skip_button = get_node("/root/MainScene/CanvasLayerUi/UiHandler/ui_logic/overlay/settings/settings_box/enable_skip_toggle")
 
 @onready var orig_hint_1_modulate: Color = hint_1_status_bar.modulate
 @onready var orig_hint_2_modulate: Color = hint_2_status_bar.modulate
@@ -57,6 +58,9 @@ func _ready() -> void:
 		skip_level_button.visible = false
 		skip_level_button.disabled = true
 		skip_level_button.pressed.connect(_on_skip_level_pressed)
+	
+	print("skip_level_button:", skip_level_button)
+	print("enable_skip_button:", enable_skip_button)
 
 func _init_timer_labels() -> void:
 	if hint_2_timer and hint_2_timer.has_node("timer_label"):
@@ -172,23 +176,12 @@ func update_hint_text(difficulty: String):
 	for level in range(1, 13):  
 		var level_hint = $hint_box/hint_dialog_empty.get_node_or_null("level_" + str(level) + "_hint")
 		if level_hint:
-			# Hide all hint labels first
 			for hint in level_hint.get_children():
 				hint.visible = false
-
-			# Always use the pattern "hint_{level}_{difficulty}"
 			var hint_node = level_hint.get_node_or_null("hint_%d_%s" % [level, difficulty])
 			if hint_node:
 				hint_node.visible = true
-
-	# Show/hide skip_level button based on difficulty
-	if skip_level_button:
-		if difficulty == "easy":
-			skip_level_button.visible = true
-			skip_level_button.disabled = false
-		else:
-			skip_level_button.visible = false
-			skip_level_button.disabled = true
+	
 
 func show_appropriate_container():
 	print("show_appropriate_container: current_level =", current_level)
@@ -265,7 +258,8 @@ func show_appropriate_container():
 
 		# Also ensure skip_level button is updated
 		if skip_level_button:
-			if last_difficulty == "easy":
+			# Only show if enable_skip is toggled ON
+			if enable_skip_button and enable_skip_button.button_pressed:
 				skip_level_button.visible = true
 				skip_level_button.disabled = false
 			else:
@@ -331,8 +325,12 @@ func _reset_hint_state():
 			label.text = format_time(solution_timer.wait_time)
 
 	if skip_level_button:
-		skip_level_button.visible = false
-		skip_level_button.disabled = true
+		if enable_skip_button and enable_skip_button.button_pressed:
+			skip_level_button.visible = true
+			skip_level_button.disabled = false
+		else:
+			skip_level_button.visible = false
+			skip_level_button.disabled = true
 
 func find_level_handler() -> Node:
 	# SEARCH THE ENTIRE SCENE TREE FOR THE LEVEL_HANDLER SCRIPT
@@ -409,22 +407,57 @@ func show_hint():
 
 func hide_hint():
 	visible = false
+	
 
 func _on_skip_level_pressed():
-	# Find the overlay node and hide it
 	var overlay = get_parent()
 	while overlay and overlay.name != "overlay":
 		overlay = overlay.get_parent()
 	if overlay:
 		overlay.visible = false
-	# Hide the hint itself
 	visible = false
-	# Optionally hide the close button if present
 	if overlay and overlay.has_node("close_button"):
 		overlay.get_node("close_button").visible = false
 
-	# Trigger skip level signal on the handler
+	if hint_2_timer and hint_2_timer.has_node("timer_label"):
+		var label = hint_2_timer.get_node("timer_label")
+		label.visible = false
+		label.modulate.a = 0
+	if solution_timer and solution_timer.has_node("timer_label"):
+		var label = solution_timer.get_node("timer_label")
+		label.visible = false
+		label.modulate.a = 0
+
 	if connected_level_handler and connected_level_handler.has_method("request_skip_level"):
 		connected_level_handler.request_skip_level()
 
 
+func _on_enable_skip_toggle_toggled(toggled_on: bool) -> void:
+
+	if skip_level_button:
+		skip_level_button.visible = toggled_on
+		skip_level_button.disabled = not toggled_on
+		skip_level_button.modulate = Color(1, 1, 0, 1) if toggled_on else Color(0.9368433, 0.8956263, 1, 1)
+	if enable_skip_button:
+		enable_skip_button.modulate = Color(1, 1, 0, 1) if toggled_on else Color(0.9368433, 0.8956263, 1, 1)
+	# Only auto-show hint overlay if hint system is active (not lobby, level > 0)
+	if toggled_on and ui_handler:
+		var hint_btn = null
+		if ui_handler.ui_logic and ui_handler.ui_logic.has_node("game_ui_elements/hint_button"):
+			hint_btn = ui_handler.ui_logic.get_node("game_ui_elements/hint_button")
+		# Check if hint system is active
+		var level_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler").get_node_or_null("level_handler") if get_tree().root.has_node("MainScene/CanvasLayerUi/UiHandler") else null
+		var hint_active = false
+		if level_handler and level_handler.has_method("is_lobby") and level_handler.has_method("current_level_number"):
+			hint_active = not level_handler.is_lobby and level_handler.current_level_number > 0
+		elif connected_level_handler:
+			hint_active = not connected_level_handler.is_lobby and connected_level_handler.current_level_number > 0
+		if hint_btn and hint_btn.visible and hint_active:
+			var ui_logic = ui_handler.ui_logic
+			var overlay = ui_logic.get_node_or_null("overlay")
+			if overlay:
+				if overlay.has_node("settings"):
+					overlay.get_node("settings").visible = false
+				overlay.visible = false
+			if ui_handler.has_method("show_overlay_hint"):
+				ui_handler.show_overlay_hint()

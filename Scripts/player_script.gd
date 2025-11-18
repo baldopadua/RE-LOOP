@@ -51,6 +51,12 @@ var previous_clock_area: int = 12
 var prev_deg: float = 0.0
 var available_object_last_pos: Vector2
 var moves: int = 0
+var is_holding = false
+var hold_time = 0.0
+var HOLD_DURATION = 0.75
+var triggered = false
+var rift_near_player = false
+var current_rift = null
 
 # Changed from Sprite2D to AnimatedSprite2D
 @onready var sprite = $AnimatedSprite2D
@@ -95,6 +101,14 @@ func _ready() -> void:
 		area_handler = null
 	
 	cameraShakeNoise = FastNoiseLite.new()
+
+func _process(delta: float) -> void:
+	if is_holding:
+		hold_time += delta
+		if hold_time >= HOLD_DURATION and not triggered and current_rift != null:
+			current_rift.emit_signal("toggle_switch_circle")
+			triggered = true
+			print("PLOOY POSITION: ", position)
 
 func _input(event: InputEvent) -> void:
 	# MOVEMENT round(rad_to_deg(rotation)) < 180.0
@@ -148,6 +162,15 @@ func _input(event: InputEvent) -> void:
 		elif is_holding_object and not is_moving:
 			item_drop()
 			sprite.play("idle")
+	
+	if event.is_action_pressed("enter_rift"):
+		if rift_near_player:
+			is_holding = true
+			hold_time = 0.0
+			triggered = false
+	
+	if event.is_action_released("enter_rift"):		
+		is_holding = false
 
 func _tween_finished():
 	# RESET THE SFX PITCH SCALE WHEN REACHING BOTH ENDS

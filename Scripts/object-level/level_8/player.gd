@@ -74,7 +74,7 @@ func item_pick_up() -> void:
 			await get_tree().create_timer(2.0).timeout  
 			held_object.animated_sprite.play("fire")
 			
-			await get_tree().create_timer(0.25).timeout  
+			await get_tree().create_timer(1.5).timeout  
 			held_object.animated_sprite.play("default")
 				
 			camera2d.emit_signal("pan_to_pos", marker1.global_position)
@@ -85,22 +85,19 @@ func item_pick_up() -> void:
 			
 			await held_object.race_finished
 			
-			camera2d.emit_signal("pan_to_orig_pos")
-			camera2d.emit_signal("cam_orig_zoom")
-			camera2d.emit_signal("hide_bars")
-			
 			if held_object.turtle_won:
 				# Hare cutscene
 				# Hare throws child and break loop
 				# enable body area of hare
 				# disable loop
-				item_drop()	
 				gun.is_pickupable = false
 				carrot.is_pickupable = false
 				chair.is_pickupable = false
 				GlobalVariables.player_stopped = false
-				set_process_input(true)
 			else:
 				# Show turtle is crying and rabbit is celebrating
+				camera2d.emit_signal("pan_to_orig_pos")
+				camera2d.emit_signal("cam_orig_zoom")
+				camera2d.emit_signal("hide_bars")
 				await get_tree().create_timer(2.0).timeout
 				level_handler.restart_level(get_parent().get_parent())	

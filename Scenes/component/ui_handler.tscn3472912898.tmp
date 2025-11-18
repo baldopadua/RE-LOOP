@@ -1,0 +1,2314 @@
+[gd_scene load_steps=97 format=3 uid="uid://m46y1wd88uf1"]
+
+[ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
+[ext_resource type="Texture2D" uid="uid://c284erqqs1py8" path="res://Assets/ui/gametitle.png" id="2_uxtkq"]
+[ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="2_yg0r3"]
+[ext_resource type="Script" uid="uid://bbfmoj7rwicly" path="res://Scripts/ui/ui_logic.gd" id="3_1mbbf"]
+[ext_resource type="Texture2D" uid="uid://b4b5idm0212da" path="res://Assets/ui/tutorial_button.png" id="3_6ccr0"]
+[ext_resource type="Texture2D" uid="uid://coddlv2n5auim" path="res://Assets/ui/tutorial_button_hover.png" id="4_lt4iy"]
+[ext_resource type="Texture2D" uid="uid://chg7xq6f7mumr" path="res://Assets/ui/start_button.png" id="5_monvt"]
+[ext_resource type="Texture2D" uid="uid://cwndswkyv0b33" path="res://Assets/ui/start_button_hover.png" id="6_f7f2r"]
+[ext_resource type="Texture2D" uid="uid://p35h4x1in57" path="res://Assets/ui/credits_animated_icon_hover.png" id="7_vdxet"]
+[ext_resource type="Texture2D" uid="uid://dycrhdnxrjgsl" path="res://Assets/ui/credits_animated_icon.png" id="8_8crwb"]
+[ext_resource type="Texture2D" uid="uid://c2dq7rfpmpmqb" path="res://Assets/ui/keys_elements.png" id="9_8crwb"]
+[ext_resource type="Texture2D" uid="uid://oxutfru2ik0r" path="res://Assets/ui/brochure_unhovered.png" id="10_wyu2o"]
+[ext_resource type="Texture2D" uid="uid://3vkvbxe40udp" path="res://Assets/ui/brochure_hovered.png" id="11_tocme"]
+[ext_resource type="Texture2D" uid="uid://fwomc1y72s18" path="res://Assets/ui/hint/hint_icon.png" id="12_us0vv"]
+[ext_resource type="Texture2D" uid="uid://co6jwl3bru7ka" path="res://Assets/ui/settings_icon_hover.png" id="12_yg0r3"]
+[ext_resource type="Texture2D" uid="uid://dbhcu8amka32c" path="res://Assets/ui/hint/hint_icon_hover.png" id="13_us0vv"]
+[ext_resource type="Texture2D" uid="uid://bcyt5vrhmahov" path="res://Assets/ui/clockwise_time_indicator.png" id="16_gvmfu"]
+[ext_resource type="Texture2D" uid="uid://dmlkwrmka11h8" path="res://Assets/ui/counterclockwise_time_indicator.png" id="17_otg63"]
+[ext_resource type="Texture2D" uid="uid://dhryuxfhoh3aa" path="res://Assets/ui/fixed.png" id="18_dumc0"]
+[ext_resource type="Texture2D" uid="uid://ce46u6aapl8kl" path="res://Assets/ui/tutorial_bg.png" id="19_bo42c"]
+[ext_resource type="Texture2D" uid="uid://kyj08tlkj0vm" path="res://Assets/Loopling.png" id="19_dumc0"]
+[ext_resource type="Script" uid="uid://bdxwx60b8pdlx" path="res://Scripts/ui/custom_cursor.gd" id="20_qpkpn"]
+[ext_resource type="Texture2D" uid="uid://bacei26qp35s5" path="res://Assets/ui/settings_icon.png" id="21_kyj2j"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="21_qpkpn"]
+[ext_resource type="Texture2D" uid="uid://cg2l84tao5f1l" path="res://Assets/ui/credits_bg.png" id="21_taira"]
+[ext_resource type="Script" uid="uid://qyn6g7sbegxs" path="res://Scripts/ui/hint.gd" id="22_exohx"]
+[ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="22_iwsb4"]
+[ext_resource type="Texture2D" uid="uid://ckok4beotp5ne" path="res://Assets/ui/Brochure.png" id="22_kyj2j"]
+[ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="23_4r7hv"]
+[ext_resource type="Texture2D" uid="uid://y5ujgaokyei8" path="res://Assets/ui/hint/hint_dialog.png" id="23_us0vv"]
+[ext_resource type="Texture2D" uid="uid://cgs10454tk44a" path="res://Assets/ui/hint/lock.png" id="24_y4w7x"]
+[ext_resource type="Texture2D" uid="uid://coq0k521hiqir" path="res://Assets/ui/hint/hint_2_overlay.png" id="26_exohx"]
+[ext_resource type="Texture2D" uid="uid://d0q68tpidyitt" path="res://Assets/ui/hint/solution_overlay.png" id="27_nol8b"]
+[ext_resource type="Texture2D" uid="uid://b8yg1u36ng1al" path="res://Assets/ui/hint/unlock_status_bar.png" id="27_us0vv"]
+[ext_resource type="Texture2D" uid="uid://bt02461ew12vr" path="res://Assets/ui/hint/hintbox.png" id="28_5ue8t"]
+[ext_resource type="Texture2D" uid="uid://du2njb678chcx" path="res://Assets/Plooy Guy-Sheet.png" id="29_g2hc1"]
+[ext_resource type="Script" uid="uid://xbkpwj8hqvws" path="res://Scripts/ui/settings.gd" id="33_6k3yl"]
+[ext_resource type="PackedScene" uid="uid://b11bd22bl1hik" path="res://Scenes/component/cutscene.tscn" id="33_nol8b"]
+[ext_resource type="Texture2D" uid="uid://donw7tlc1yq2f" path="res://Assets/ui/hint/settings_dialog.png" id="34_l8elr"]
+[ext_resource type="Texture2D" uid="uid://cx5jspt8um5dv" path="res://Assets/ui/hint/note_sound_icon.png" id="35_0pln8"]
+[ext_resource type="Texture2D" uid="uid://bxlkfq5axax5a" path="res://Assets/ui/hint/mute_sound_icon.png" id="36_swapm"]
+[ext_resource type="Texture2D" uid="uid://biicj40cdmvm6" path="res://Assets/ui/hint/note_sound_icon_hover.png" id="37_yg0r3"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="38_kyj2j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyj2j"]
+atlas = ExtResource("2_yg0r3")
+region = Rect2(0, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oupgw"]
+atlas = ExtResource("2_yg0r3")
+region = Rect2(240, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neudi"]
+atlas = ExtResource("2_yg0r3")
+region = Rect2(480, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6iih"]
+atlas = ExtResource("2_yg0r3")
+region = Rect2(720, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a78uh"]
+atlas = ExtResource("2_yg0r3")
+region = Rect2(960, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1035"]
+atlas = ExtResource("2_yg0r3")
+region = Rect2(1200, 0, 240, 135)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5jpe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyj2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oupgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neudi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6iih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a78uh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1035")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyb3p"]
+atlas = ExtResource("8_8crwb")
+region = Rect2(0, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvnna"]
+atlas = ExtResource("8_8crwb")
+region = Rect2(27, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b48ew"]
+atlas = ExtResource("8_8crwb")
+region = Rect2(54, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8edxt"]
+atlas = ExtResource("8_8crwb")
+region = Rect2(81, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oxhp"]
+atlas = ExtResource("8_8crwb")
+region = Rect2(108, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt2eh"]
+atlas = ExtResource("8_8crwb")
+region = Rect2(135, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cm5d"]
+atlas = ExtResource("7_vdxet")
+region = Rect2(0, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bov3"]
+atlas = ExtResource("7_vdxet")
+region = Rect2(27, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xle81"]
+atlas = ExtResource("7_vdxet")
+region = Rect2(54, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8qe6"]
+atlas = ExtResource("7_vdxet")
+region = Rect2(81, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb0ja"]
+atlas = ExtResource("7_vdxet")
+region = Rect2(108, 0, 27, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15kh8"]
+atlas = ExtResource("7_vdxet")
+region = Rect2(135, 0, 27, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ko6nu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyb3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvnna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b48ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8edxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oxhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt2eh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cm5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bov3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xle81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8qe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb0ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15kh8")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xvw7"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(0, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uxsa"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(35, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1l18"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(70, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfekx"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(105, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdjnv"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(140, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diq68"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(175, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vjlb"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(210, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jir84"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(245, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42rsh"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(280, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ee8l"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(315, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g7y3"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(350, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gsxx"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(385, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duq1c"]
+atlas = ExtResource("16_gvmfu")
+region = Rect2(420, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev2l3"]
+atlas = ExtResource("17_otg63")
+region = Rect2(0, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwqlr"]
+atlas = ExtResource("17_otg63")
+region = Rect2(35, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl4jv"]
+atlas = ExtResource("17_otg63")
+region = Rect2(70, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuqki"]
+atlas = ExtResource("17_otg63")
+region = Rect2(105, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0phbq"]
+atlas = ExtResource("17_otg63")
+region = Rect2(140, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smuvt"]
+atlas = ExtResource("17_otg63")
+region = Rect2(175, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovp1g"]
+atlas = ExtResource("17_otg63")
+region = Rect2(210, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihimg"]
+atlas = ExtResource("17_otg63")
+region = Rect2(245, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3ud2"]
+atlas = ExtResource("17_otg63")
+region = Rect2(280, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi5lg"]
+atlas = ExtResource("17_otg63")
+region = Rect2(315, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhjud"]
+atlas = ExtResource("17_otg63")
+region = Rect2(350, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jur52"]
+atlas = ExtResource("17_otg63")
+region = Rect2(385, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3ktg"]
+atlas = ExtResource("17_otg63")
+region = Rect2(420, 0, 35, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6evt"]
+atlas = ExtResource("18_dumc0")
+region = Rect2(0, 0, 35, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpkpn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xvw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uxsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1l18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfekx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdjnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diq68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vjlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jir84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42rsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ee8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g7y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gsxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duq1c")
+}],
+"loop": false,
+"name": &"clockwise_time_indicator",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev2l3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwqlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl4jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuqki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0phbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smuvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovp1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihimg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3ud2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi5lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhjud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jur52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3ktg")
+}],
+"loop": false,
+"name": &"counterclockwise_time_indicator",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6evt")
+}],
+"loop": false,
+"name": &"fixed",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhjfp"]
+atlas = ExtResource("29_g2hc1")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wecr"]
+atlas = ExtResource("29_g2hc1")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l46pk"]
+atlas = ExtResource("29_g2hc1")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fite"]
+atlas = ExtResource("29_g2hc1")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkpeg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhjfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wecr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l46pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fite")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="UiHandler" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hoadv")
+metadata/_edit_use_anchors_ = true
+
+[node name="background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="game_animated_bg" type="AnimatedSprite2D" parent="background"]
+texture_filter = 1
+position = Vector2(718, 362.375)
+scale = Vector2(6.383333, 5.535185)
+sprite_frames = SubResource("SpriteFrames_u5jpe")
+
+[node name="ui_logic" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_1mbbf")
+
+[node name="main_menu" type="Control" parent="ui_logic"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="gametitle" type="TextureRect" parent="ui_logic/main_menu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -612.0
+offset_top = -9.0
+offset_right = 668.0
+offset_bottom = 711.0
+grow_horizontal = 2
+rotation = 0.0409988
+texture = ExtResource("2_uxtkq")
+expand_mode = 1
+
+[node name="tutorial_button" type="TextureButton" parent="ui_logic/main_menu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.416406
+anchor_top = 0.759722
+anchor_right = 0.644531
+anchor_bottom = 0.880556
+texture_normal = ExtResource("3_6ccr0")
+texture_hover = ExtResource("4_lt4iy")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="start_button" type="TextureButton" parent="ui_logic/main_menu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.417188
+anchor_top = 0.606944
+anchor_right = 0.646875
+anchor_bottom = 0.736111
+offset_bottom = -6.10352e-05
+texture_normal = ExtResource("5_monvt")
+texture_hover = ExtResource("6_f7f2r")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="credits_button" type="TextureButton" parent="ui_logic/main_menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.263281
+anchor_top = 0.479167
+anchor_right = 0.3875
+anchor_bottom = 0.719444
+grow_horizontal = 2
+grow_vertical = 2
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="credits_animated_icon" type="AnimatedSprite2D" parent="ui_logic/main_menu/credits_button"]
+texture_filter = 1
+position = Vector2(88, 65.2501)
+scale = Vector2(6.28704, 6.95834)
+sprite_frames = SubResource("SpriteFrames_ko6nu")
+animation = &"hover"
+autoplay = "default"
+
+[node name="settings_button" type="TextureButton" parent="ui_logic/main_menu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.915625
+anchor_top = 0.03888889
+anchor_right = 0.96953124
+anchor_bottom = 0.12777779
+texture_normal = ExtResource("21_kyj2j")
+texture_hover = ExtResource("12_yg0r3")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="game_ui_elements" type="Control" parent="ui_logic"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="keys_elements" type="TextureRect" parent="ui_logic/game_ui_elements"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0289063
+anchor_top = 0.765278
+anchor_right = 0.167969
+anchor_bottom = 0.972222
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-10, 210)
+texture = ExtResource("9_8crwb")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_button" type="TextureButton" parent="ui_logic/game_ui_elements"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01796875
+anchor_top = 0.023611112
+anchor_right = 0.08125
+anchor_bottom = 0.12638889
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-10, -10)
+texture_normal = ExtResource("12_us0vv")
+texture_hover = ExtResource("13_us0vv")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="time" type="TextureRect" parent="ui_logic/game_ui_elements"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8453125
+anchor_top = 0.6666667
+anchor_right = 0.9984375
+anchor_bottom = 0.9875
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="indicator" type="AnimatedSprite2D" parent="ui_logic/game_ui_elements/time"]
+texture_filter = 1
+position = Vector2(107, 108)
+scale = Vector2(7.22857, 6.83333)
+sprite_frames = SubResource("SpriteFrames_qpkpn")
+animation = &"clockwise_time_indicator"
+
+[node name="tutorial_button" type="TextureButton" parent="ui_logic/game_ui_elements"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0375
+anchor_top = 0.60694444
+anchor_right = 0.14453097
+anchor_bottom = 0.7611116
+texture_normal = ExtResource("10_wyu2o")
+texture_hover = ExtResource("11_tocme")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="settings_button" type="TextureButton" parent="ui_logic/game_ui_elements"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9171875
+anchor_top = 0.03888889
+anchor_right = 0.96875
+anchor_bottom = 0.125
+texture_normal = ExtResource("21_kyj2j")
+texture_hover = ExtResource("12_yg0r3")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="overlay" type="Control" parent="ui_logic"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="tutorial" type="Control" parent="ui_logic/overlay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="tutorial_bg" type="TextureRect" parent="ui_logic/overlay/tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 2.0
+offset_right = 20.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_bo42c")
+
+[node name="tutorial_overlay" type="TextureRect" parent="ui_logic/overlay/tutorial"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -648.0
+offset_top = -379.0
+offset_right = 1272.0
+offset_bottom = 701.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("22_kyj2j")
+stretch_mode = 4
+
+[node name="credits" type="Control" parent="ui_logic/overlay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="credits_overlay" type="TextureRect" parent="ui_logic/overlay/credits"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = 11.0
+offset_right = -46.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_taira")
+expand_mode = 1
+
+[node name="hint" type="Control" parent="ui_logic/overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("22_exohx")
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_bg" type="TextureRect" parent="ui_logic/overlay/hint"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_bo42c")
+
+[node name="hint_box" type="Control" parent="ui_logic/overlay/hint"]
+texture_filter = 1
+layout_mode = 1
+anchor_left = 0.18125
+anchor_top = 0.10555556
+anchor_right = 0.965625
+anchor_bottom = 0.8833333
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_box_empty" type="TextureRect" parent="ui_logic/overlay/hint/hint_box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.060869575
+anchor_top = -0.016071431
+anchor_right = 0.69275355
+anchor_bottom = 0.22083335
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("28_5ue8t")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_title_text" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.061296113
+anchor_top = 0.16582914
+anchor_right = 0.2977357
+anchor_bottom = 0.8517588
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 64
+text = "Hint 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2_title_text" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38758272
+anchor_top = 0.15829144
+anchor_right = 0.6240223
+anchor_bottom = 0.84422106
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 64
+text = "Hint 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="solution_title_text" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.71071684
+anchor_top = 0.15075377
+anchor_right = 0.94715637
+anchor_bottom = 0.8366834
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 55
+text = "Answer"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_box_empty"]
+layout_mode = 1
+anchor_left = 0.3529049
+anchor_top = 0.10552763
+anchor_right = 0.6539713
+anchor_bottom = 0.8366834
+offset_left = 1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2_overlay" type="TextureRect" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.010309278
+anchor_right = 1.0052356
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_exohx")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2_lock" type="TextureRect" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32984287
+anchor_top = 0.15463914
+anchor_right = 0.6910994
+anchor_bottom = 0.85802484
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_y4w7x")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
+wait_time = 5.0
+
+[node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2/hint_2_timer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.46640626
+anchor_top = 0.20694445
+anchor_right = 0.49765626
+anchor_bottom = 0.25416666
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 28
+text = "60"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="solution" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_box_empty"]
+layout_mode = 1
+anchor_left = 0.676039
+anchor_top = 0.09045226
+anchor_right = 0.9786817
+anchor_bottom = 0.8366834
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="solution_overlay" type="TextureRect" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_nol8b")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="solution_lock" type="TextureRect" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33333322
+anchor_top = 0.19191918
+anchor_right = 0.69791657
+anchor_bottom = 0.8201002
+offset_right = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_y4w7x")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
+wait_time = 5.0
+
+[node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution/solution_timer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.6195313
+anchor_top = 0.20555556
+anchor_right = 0.6507813
+anchor_bottom = 0.25277779
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 10.0
+offset_bottom = 5.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 28
+text = "60"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_dialog_empty" type="TextureRect" parent="ui_logic/overlay/hint/hint_box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0453125
+anchor_top = 0.16111112
+anchor_right = 0.846875
+anchor_bottom = 1.0138888
+offset_right = 0.00012207031
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_us0vv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_status_bar" type="TextureRect" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+modulate = Color(0.15686275, 0.92941177, 0.21176471, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11370503
+anchor_top = 0.026756618
+anchor_right = 0.21684025
+anchor_bottom = 0.05397858
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_us0vv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2_status_bar" type="TextureRect" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+modulate = Color(0.15686275, 0.92941177, 0.21176471, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.367194
+anchor_top = 0.026756618
+anchor_right = 0.47032923
+anchor_bottom = 0.053978566
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_us0vv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="solution_status_bar" type="TextureRect" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+modulate = Color(0.15686275, 0.92941177, 0.21176471, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6231681
+anchor_top = 0.026756618
+anchor_right = 0.72630334
+anchor_bottom = 0.05397858
+offset_left = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_us0vv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="level_1_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_1_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.087610565
+anchor_top = 0.09585853
+anchor_right = 0.93133104
+anchor_bottom = 1.1465799
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 59
+text = "\"The smallest start holds the tallest end. Bring life to the barren ground, and time will repay your patience.\"
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_1_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.12308049
+anchor_right = 0.9412718
+anchor_bottom = 0.87063754
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 59
+text = "\"A seed waits in dry ground, cares for it and it will grow.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_1_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_1_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049090188
+anchor_top = 0.13564448
+anchor_right = 0.9363014
+anchor_bottom = 0.8832015
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 60
+text = "“Plant the seed in the soil and move clockwise”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_2_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_2_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 56
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_2_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“A skull of heroes rests in silence.
+Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_2_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_2_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_3_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_3_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 56
+text = "\"Block the roaring path where water longs to escape. The stones hide the key, placing each heavy heart where it belongs.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_3_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“Gather all the stones in one place before placing them in the geyser. Only then will its power remain.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_3_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_3_hint"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042877227
+anchor_top = 0.19427639
+anchor_right = 0.9636385
+anchor_bottom = 0.8800605
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 50
+text = "“Stack the stones on the left side of the geyser so that it doesn’t explode from the pressure of time. Only then when all stones are collected shall you place it inside” "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_4_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_4_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_4_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 56
+text = "\"To break the loop, rewrite the thread, Awake the code that long lay dead revealed to you which may be asked for time itself will be unmasked\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_4_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_4_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“Follow the whispers the machine will sing, provide what you’ve gathered, each precious thing, when pieces combine in their destined relation, you’ll witness the spark of a grand creation. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_4_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_4_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“Take the feather from the chicken and the tail left by the lizard. Plant the seed and let it grow into a stick, let the dog bite it, in exchange for the bone. Place them all into the incubator and see what it creates.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_5_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_5_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_5_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0640013
+anchor_top = -0.008841335
+anchor_right = 0.9561829
+anchor_bottom = 1.0418799
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 47
+text = "“A child holds a simple soda, yet dreams ignite. From fizz and foam he fashions a vessel born of bubbles and bright imagination, rising skyward on a sparkling beam.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_5_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_5_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“The child needs a soda, go take him there. Return to the spot where dreams fill the air, once bubbles are built and the project complete. Move forth in time, your journey’s replete. ”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_5_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_5_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = -0.060144268
+anchor_right = 0.9412718
+anchor_bottom = 1.1083062
+offset_top = 100.5
+offset_bottom = -100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 40
+text = "“Place the skeleton at the vending machine.
+Move backward in time for the kid to buy a soda,
+Then return him where he used to be. place the soda there as well. The kid will use it as a science project, and see what the future lies. Once it's built, catch a ride. You don't want to be left out.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_6_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_6_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_6_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 42
+text = "“A world divided drifts out of tune. Roots and bones wander where they do not belong, and time forgets which story is true. Only when both circles echo the same moment,seed to seed, mind to mind, will gravity remember its purpose and let the fruit of truth fall.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_6_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_6_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = -0.060144268
+anchor_right = 0.97730696
+anchor_bottom = 1.1083062
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 42
+text = "“Each circle shows a different version of the same scene.
+Match what belongs on the left with its counterpart on the right. A seed must meet its seed, a Newton must meet his other self. When both timelines mirror each other perfectly,
+the tree will know when to drop the apple.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_6_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_6_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.064448565
+anchor_right = 0.937544
+anchor_bottom = 0.9837134
+offset_top = 12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 38
+text = "“Place each keystone in the circle where it really belongs.
+Plant the seed so it matches the other timeline,
+put Isaac Newton where the other world shows him,
+and keep both circles synchronized.
+When everything is in the same state in both timelines,
+the apple will fall and the two worlds will merge.“
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_7_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_7_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_7_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036664262
+anchor_top = -0.05409495
+anchor_right = 0.9748218
+anchor_bottom = 1.1708934
+offset_top = 41.611115
+offset_bottom = -41.611084
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 38
+text = "\"A fragile traveler flits along a treacherous path.
+One wrong step and silence falls; one careful touch and the sky awakens.
+Webs of shadow block the way, yet petals of life extend your reach.
+Guide wings that barely stir the air, and witness a storm rise where none dared to tread.\"
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_7_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_7_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "\"The butterfly must fly beyond the web that lies ahead.
+Remove the spider, let the wings find the flower,
+and watch as its strength grows to stir the winds into a mighty tornado.\"
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_7_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_7_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.045362413
+anchor_top = 0.102140516
+anchor_right = 0.9325736
+anchor_bottom = 0.84969753
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 57
+text = "“Help the butterfly avoid the spider and reach the flower.
+The flower gives it energy to fly far enough to make a tornado.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_8_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_8_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_8_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = 0.056072578
+anchor_right = 0.96115327
+anchor_bottom = 1.1067939
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 44
+text = "“Tempt the swift with sweetness and rest.
+Where hunger meets comfort, pride will fade.
+Patience wins where haste decays,
+the still shall pass while the restless stays.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_8_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_8_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“The hare can’t resist temptation.
+Place a carrot on his path, and a chair in a resting spot.
+Once both distractions are ready, start the race and let time run its course.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_8_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_8_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.03408561
+anchor_right = 0.9412718
+anchor_bottom = 1.0140764
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 50
+text = "“Plant the carrot on the track to slow the hare,
+then place the chair somewhere along the track to double his distraction time.
+Once both are set, start the race and move forward in time until the turtle wins.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_9_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_9_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_9_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = 0.030944612
+anchor_right = 0.971094
+anchor_bottom = 1.0816659
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 42
+text = "“Two worlds argue over a single truth.
+A cat caught between fates,
+a lever pulled in one reality but not the other.
+Bring both moments into agreement,
+and the box at the center will reveal what time has decided.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_9_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_9_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“Put the cat inside the center box, then make sure the lever in both circles matches.
+When both timelines share the same action, the two labs will begin to merge and the box will open.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_9_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_9_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“Place the cat inside the center box.
+Match the lever position in both worlds.
+Once the levers line up at the same time, the timelines merge and the box opens.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_10_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_10_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_10_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = 0.0120986365
+anchor_right = 0.971094
+anchor_bottom = 1.06282
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 47
+text = "“Three sparks sleep in silence.
+Wake the minds that once chased lightning, coils, and burning filaments.
+Only when their forgotten discoveries shine again
+will the laser remember how to roar.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_10_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_10_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056545746
+anchor_top = 0.10842251
+anchor_right = 0.943757
+anchor_bottom = 0.99418336
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“Charge the laser by restoring the work of the three inventors.
+Let Franklin reclaim lightning, Tesla his coil, and Edison his light.
+When all three inventions shine together, the laser will reactivate.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_10_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_10_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.04769659
+anchor_right = 0.937544
+anchor_bottom = 1.0276873
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 49
+text = "“Place each inventor’s skull at their invention: Franklin at the lightning cloud , Tesla at the coil, and Edison at the lightbulb.
+Once placed, returned them into their young selves, powering the laser.
+When all three lights shine, the laser fires and breaks the loop.”
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_11_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_11_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_11_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 56
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_11_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_11_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“A skull of heroes rests in silence.
+Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_11_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_11_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="level_12_hint" type="Control" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_12_hard" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_12_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032936484
+anchor_top = -0.021405319
+anchor_right = 0.971094
+anchor_bottom = 1.029316
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 20
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 56
+text = "\"What rests in silence once danced in battle. A hero's story, locked from fate, Buried deep in stone where time unravels May be awakened from its oldest state.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_12_medium" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_12_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“A skull of heroes rests in silence.
+Take it, and return it to the grave it belongs to.
+The moment you choose may decide its fate.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_12_easy" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_dialog_empty/level_12_hint"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05406056
+anchor_top = 0.15030245
+anchor_right = 0.9412718
+anchor_bottom = 0.89785945
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(0.31764707, 0.31764707, 0.31764707, 0.48235294)
+theme_override_constants/line_spacing = 7
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 54
+text = "“Find the skull and place it on the sword on stone, then move backward in time to make the old man young.”"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="skip_level" type="Button" parent="ui_logic/overlay/hint/hint_box"]
+modulate = Color(0.9368433, 0.8956263, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.20119523
+anchor_top = 0.54821426
+anchor_right = 0.035395954
+anchor_bottom = 0.63035715
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 55
+text = "Skip Level"
+metadata/_edit_use_anchors_ = true
+
+[node name="plooy_hint" type="AnimatedSprite2D" parent="ui_logic/overlay/hint"]
+texture_filter = 1
+position = Vector2(152.2421, 571.2965)
+scale = Vector2(12.563159, 12.441378)
+sprite_frames = SubResource("SpriteFrames_tkpeg")
+flip_h = true
+
+[node name="settings" type="Control" parent="ui_logic/overlay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("33_6k3yl")
+
+[node name="settings_bg" type="TextureRect" parent="ui_logic/overlay/settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.015625
+anchor_right = 1.015625
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_bo42c")
+metadata/_edit_use_anchors_ = true
+
+[node name="settings_box" type="TextureRect" parent="ui_logic/overlay/settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21875
+anchor_top = 0.24722221
+anchor_right = 0.84375
+anchor_bottom = 0.76666665
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_l8elr")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx_mute_button" type="TextureButton" parent="ui_logic/overlay/settings/settings_box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.092500016
+anchor_top = 0.17647061
+anchor_right = 0.16454613
+anchor_bottom = 0.33104473
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("35_0pln8")
+texture_pressed = ExtResource("36_swapm")
+texture_hover = ExtResource("37_yg0r3")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="music_mute_button" type="TextureButton" parent="ui_logic/overlay/settings/settings_box"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08875002
+anchor_top = 0.39839572
+anchor_right = 0.16079612
+anchor_bottom = 0.5529699
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("35_0pln8")
+texture_pressed = ExtResource("36_swapm")
+texture_hover = ExtResource("37_yg0r3")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="enable_skip_toggle" type="CheckButton" parent="ui_logic/overlay/settings/settings_box"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.68
+anchor_top = 0.6524064
+anchor_right = 0.82767504
+anchor_bottom = 0.8609624
+offset_right = -74.140015
+offset_bottom = -48.949677
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.685, 2.685)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 17
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx_title" type="Label" parent="ui_logic/overlay/settings/settings_box/enable_skip_toggle"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.0218391
+anchor_top = 0.24358991
+anchor_right = 0.23700576
+anchor_bottom = 0.9102569
+offset_left = 3.0517578e-05
+offset_right = 3.0517578e-05
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 20
+text = "Enable Skip Level"
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx_slider" type="HSlider" parent="ui_logic/overlay/settings/settings_box"]
+modulate = Color(18.892, 7.06, 18.892, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35500005
+anchor_top = 0.12566847
+anchor_right = 0.7988041
+anchor_bottom = 0.46000552
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx_title" type="Label" parent="ui_logic/overlay/settings/settings_box/sfx_slider"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.30194816
+anchor_top = 0.28305933
+anchor_right = -0.11038971
+anchor_bottom = 0.7315242
+offset_left = 3.0517578e-05
+offset_right = 3.0517578e-05
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 50
+text = "Sfx"
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx_volume" type="Label" parent="ui_logic/overlay/settings/settings_box/sfx_slider"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0357144
+anchor_top = 0.28305933
+anchor_right = 1.2326386
+anchor_bottom = 0.7315242
+offset_right = -1.6526489
+offset_bottom = -0.8557434
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 50
+text = "100 "
+metadata/_edit_use_anchors_ = true
+
+[node name="music_slider" type="HSlider" parent="ui_logic/overlay/settings/settings_box"]
+modulate = Color(18.892157, 7.0600886, 18.892157, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36000004
+anchor_top = 0.36096257
+anchor_right = 0.8038041
+anchor_bottom = 0.6668137
+metadata/_edit_use_anchors_ = true
+
+[node name="music_volume" type="Label" parent="ui_logic/overlay/settings/settings_box/music_slider"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0357143
+anchor_top = 0.26816633
+anchor_right = 1.2401673
+anchor_bottom = 0.8144552
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 50
+text = "100"
+metadata/_edit_use_anchors_ = true
+
+[node name="music_title" type="Label" parent="ui_logic/overlay/settings/settings_box/music_slider"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.36038962
+anchor_top = 0.26816624
+anchor_right = -0.020608284
+anchor_bottom = 0.727596
+offset_right = -1.6526489
+offset_bottom = -0.8557434
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 50
+text = "Music"
+metadata/_edit_use_anchors_ = true
+
+[node name="close_button" type="TextureButton" parent="ui_logic/overlay"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 110.0
+grow_horizontal = 0
+pivot_offset = Vector2(110, -10)
+texture_normal = ExtResource("22_iwsb4")
+texture_hover = ExtResource("23_4r7hv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level_lobby" type="Control" parent="ui_logic/overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="cutscene" parent="." instance=ExtResource("33_nol8b")]
+visible = false
+layout_mode = 1
+
+[node name="custom_cursor" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.999998, 2)
+scale = Vector2(3.95833, 4.04167)
+texture = ExtResource("19_dumc0")
+script = ExtResource("20_qpkpn")
+
+[node name="SoundManager" parent="." instance=ExtResource("21_qpkpn")]
+
+[connection signal="pressed" from="ui_logic/overlay/settings/settings_box/sfx_mute_button" to="ui_logic/overlay/settings" method="_on_sfx_mute_button_pressed"]
+[connection signal="pressed" from="ui_logic/overlay/settings/settings_box/music_mute_button" to="ui_logic/overlay/settings" method="_on_music_mute_button_pressed"]
+[connection signal="toggled" from="ui_logic/overlay/settings/settings_box/enable_skip_toggle" to="ui_logic/overlay/hint" method="_on_enable_skip_toggle_toggled"]
+[connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/sfx_slider" to="ui_logic/overlay/settings" method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/music_slider" to="ui_logic/overlay/settings" method="_on_music_slider_value_changed"]

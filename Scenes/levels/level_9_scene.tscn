@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://8a2v680niu5p"]
+[gd_scene load_steps=76 format=3 uid="uid://8a2v680niu5p"]
 
 [ext_resource type="Script" uid="uid://c4rebl1aw8xj3" path="res://Scripts/levels/level_9_script.gd" id="1_pn0o0"]
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_tiu38"]
@@ -7,9 +7,6 @@
 [ext_resource type="Script" uid="uid://cl35vuhqynqxq" path="res://Scripts/object-level/level_9/player.gd" id="4_m8a2i"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_u54cp"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="5_u54cp"]
-[ext_resource type="Texture2D" uid="uid://drwtiaj6m5wpq" path="res://Assets/level_select_lobby/level_10.png" id="7_nkbtn"]
-[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="7_pn0o0"]
-[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="9_nkbtn"]
 [ext_resource type="Texture2D" uid="uid://swdhm3lxv1ct" path="res://Assets/levels/level_9/cat-life-sheet.png" id="10_4w81x"]
 [ext_resource type="Script" uid="uid://mmdkubc5d0w" path="res://Scripts/object-level/level_9/cat1.gd" id="10_pwust"]
 [ext_resource type="Texture2D" uid="uid://b2bmpkbvrhe15" path="res://Assets/levels/level_9/box-contraption-sheet.png" id="10_w6vp2"]
@@ -29,9 +26,9 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nkbtn"]
 gradient = SubResource("Gradient_pn0o0")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w6vp2"]
-radius = 33.212807
-height = 93.28204
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqds8"]
+atlas = ExtResource("10_4w81x")
+region = Rect2(60, 0, 30, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omca5"]
 atlas = ExtResource("10_4w81x")
@@ -61,6 +58,14 @@ region = Rect2(150, 0, 30, 25)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_aqds8")
+}],
+"loop": true,
+"name": &"alive_cat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_omca5")
 }, {
 "duration": 1.0,
@@ -86,8 +91,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6vp2"]
 size = Vector2(50, 54)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvmv3"]
+atlas = ExtResource("10_4w81x")
+region = Rect2(60, 0, 30, 25)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_37n40"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvmv3")
+}],
+"loop": true,
+"name": &"alive_cat",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mbaqs")
@@ -438,12 +455,6 @@ theme_override_font_sizes/font_size = 14
 text = "TEXT"
 horizontal_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-rotation = 0.0071858168
-scale = Vector2(0.99999994, 0.99999994)
-ignore_rotation = false
-position_smoothing_enabled = true
-
 [node name="SoundManager" parent="." instance=ExtResource("3_bd58e")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -451,86 +462,16 @@ position_smoothing_enabled = true
 [node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_u54cp")]
 
 [node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(637.00006, -50)
-scale = Vector2(24, 1.5)
+visible = false
+position = Vector2(637.00006, -60)
+scale = Vector2(24, 1.8125)
 texture = SubResource("GradientTexture2D_nkbtn")
 
 [node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(637.0001, 771)
 scale = Vector2(24, 1.5)
 texture = SubResource("GradientTexture2D_nkbtn")
-
-[node name="enter_10" parent="." instance=ExtResource("5_u54cp")]
-rotation = -1.5463034
-scale = Vector2(0.99999994, 0.99999994)
-script = ExtResource("7_pn0o0")
-object_name = "enter_10"
-object_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_10"]
-position = Vector2(3.213935, -331.82175)
-shape = SubResource("CapsuleShape2D_w6vp2")
-debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
-
-[node name="Sprite2D2" type="Sprite2D" parent="enter_10"]
-texture_filter = 1
-position = Vector2(6.4472322, -43.35243)
-rotation = 3.135674
-scale = Vector2(0.54803, 0.75198)
-texture = ExtResource("7_nkbtn")
-offset = Vector2(0, 380)
-
-[node name="hover_text" type="RichTextLabel" parent="enter_10"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -220.0
-offset_right = 90.0
-offset_bottom = -186.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-pivot_offset = Vector2(90, 11.5)
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = 1
-theme_override_constants/paragraph_separation = 1
-theme_override_fonts/normal_font = ExtResource("9_nkbtn")
-theme_override_font_sizes/normal_font_size = 31
-text = "Ancient Tree"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="interact_text" type="RichTextLabel" parent="enter_10"]
-modulate = Color(1, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -250.0
-offset_right = 90.0
-offset_bottom = -227.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-scale = Vector2(1.30259, 1.39847)
-pivot_offset = Vector2(90, 11.5)
-text = "INTERACT"
-fit_content = true
-scroll_active = false
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="cat" parent="." instance=ExtResource("5_u54cp")]
 visible = false
@@ -570,7 +511,7 @@ shape = SubResource("RectangleShape2D_w6vp2")
 
 [node name="schrodinger" parent="." instance=ExtResource("5_u54cp")]
 visible = false
-position = Vector2(-380.43, -241.76)
+position = Vector2(-393.985, -260.14)
 rotation = 2.6179938
 script = ExtResource("11_nu7n4")
 object_name = "schrodinger"
@@ -582,18 +523,21 @@ current_state = 1
 position = Vector2(0.73205566, 2.7320251)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
+offset = Vector2(0, -11.935)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="schrodinger"]
 position = Vector2(0.732, 2.732)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
+offset = Vector2(0, -11.935)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="schrodinger"]
+position = Vector2(0, -23.725)
 shape = SubResource("RectangleShape2D_w1tv0")
 
 [node name="schrodinger2" parent="." instance=ExtResource("5_u54cp")]
 visible = false
-position = Vector2(-512, 0)
+position = Vector2(-539.815, 0)
 rotation = 1.5707964
 script = ExtResource("13_rfmfc")
 object_name = "schrodinger2"
@@ -603,20 +547,23 @@ min_state_threshold = 1
 current_state = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="schrodinger2"]
-position = Vector2(0, 5)
+position = Vector2(0, -11.84)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 frame = 5
 frame_progress = 1.0
+offset = Vector2(0, -6.33)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="schrodinger2"]
-position = Vector2(0, 5)
+position = Vector2(0, -11.84)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aqds8")
 frame = 5
 frame_progress = 1.0
+offset = Vector2(0, -6.33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="schrodinger2"]
+position = Vector2(0, -26.29)
 shape = SubResource("RectangleShape2D_w1tv0")
 
 [node name="box" parent="." instance=ExtResource("5_u54cp")]
@@ -629,6 +576,7 @@ object_type = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="box"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_w6vp2")
+animation = &"activate"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="box"]
 shape = SubResource("RectangleShape2D_4w81x")
@@ -654,7 +602,7 @@ shape = SubResource("RectangleShape2D_uwqnk")
 
 [node name="lever2" parent="." instance=ExtResource("5_u54cp")]
 visible = false
-position = Vector2(-91.735, 258.32)
+position = Vector2(-87.88, 264.065)
 rotation = -0.5235988
 script = ExtResource("20_ckxqi")
 object_name = "lever2"
@@ -663,10 +611,12 @@ is_pickupable = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="lever2"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lvmv3")
+offset = Vector2(0, -4.915)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="lever2"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lvmv3")
+offset = Vector2(0, -4.915)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lever2"]
 shape = SubResource("RectangleShape2D_uwqnk")
@@ -688,6 +638,13 @@ autoplay = "default"
 
 [node name="center_pos" type="Marker2D" parent="."]
 
+[node name="box_down_marker" type="Marker2D" parent="."]
+position = Vector2(0, 215)
+
+[connection signal="loop_break_shown" from="PlayerScene" to="cat" method="_on_player_scene_loop_break_shown"]
+[connection signal="loop_break_shown" from="PlayerScene" to="cat2" method="_on_player_scene_loop_break_shown"]
+[connection signal="loop_break_shown" from="PlayerScene" to="schrodinger" method="_on_player_scene_loop_break_shown"]
+[connection signal="loop_break_shown" from="PlayerScene" to="schrodinger2" method="_on_player_scene_loop_break_shown"]
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
 [connection signal="add_cur_state" from="cat" to="cat" method="_on_add_cur_state"]
@@ -698,6 +655,8 @@ autoplay = "default"
 [connection signal="is_dropped" from="schrodinger" to="schrodinger" method="_on_is_dropped"]
 [connection signal="add_cur_state" from="schrodinger2" to="schrodinger2" method="_on_add_cur_state"]
 [connection signal="is_dropped" from="schrodinger2" to="schrodinger2" method="_on_is_dropped"]
+[connection signal="close_box" from="box" to="PlayerScene" method="_on_box_close_box"]
 [connection signal="close_box" from="box" to="box" method="_on_close_box"]
+[connection signal="open_box" from="box" to="PlayerScene" method="_on_box_open_box"]
 [connection signal="is_dropped" from="lever2" to="lever2" method="_on_is_dropped"]
 [connection signal="toggle_switch_circle" from="switch_circle" to="switch_circle" method="_on_toggle_switch_circle"]

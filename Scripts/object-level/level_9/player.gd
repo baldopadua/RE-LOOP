@@ -10,19 +10,24 @@ extends "res://Scripts/player_script.gd"
 @onready var canvas_layer = $"../CanvasLayer"
 @onready var switch_circle = $"../switch_circle"
 @onready var center_pos = $"../center_pos"
+signal loop_break_shown # Add this signal
 
 var matched = false
+var cat_matched = false
+
 
 func _on_player_finished_moving() -> void:
 	# check if both cat states are the same
-	if not box.box_closed and box.cat_placed and box.cat2_placed:
+	if not box.box_closed and box.cat_placed and box.cat2_placed and not cat_matched:
 		if cat.current_state == cat2.current_state:
 			# play box close function
 			box.close_box_function()
-	
+			cat_matched = true	
+		
 	if not matched:
 		if s1.matched and s2.matched and lever2.matched and box.box_closed:
 			if s1.current_state == s2.current_state:
+				GlobalVariables.is_looping = false
 				GlobalVariables.player_stopped = true
 				set_process_input(false)
 				
@@ -55,20 +60,23 @@ func _on_player_finished_moving() -> void:
 				lever2.is_pickupable = false
 				s2.visible = false
 				lever2.visible = false
-				box.visible = false
+				box.visible = true
+				cat.visible = true
 				switch_circle.visible = false
-				s1.position.x = -243.425
-				lever1.position.x = -243.425
+				s1.position.x = -101.0
+				lever1.position.x = -101.0
+				s1.position.y = 280.0
+				lever1.position.y = 280.0
 				s1.animated_sprite1.play_backwards("default")
 				s1.animated_sprite2.play_backwards("default")
 				s1.current_state = 1
-				get_node("Camera2D").emit_signal("pan_to_orig_pos")
 				matched = true
 				# Reveal all the keystones here
-
+				position.x = 0.0
+				
 				# Fade out animation
 				flash.create_tween().tween_property(flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 				
 				await get_tree().create_timer(1.0).timeout
-				get_node("Camera2D").emit_signal("cam_orig_zoom")
 				area_handler.show_loop_break(9)
+				box.open_box_function()

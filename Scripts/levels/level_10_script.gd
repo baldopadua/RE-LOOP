@@ -11,6 +11,7 @@ var objects: Array = []
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var area_handler = $AreaHandler
 @onready var sound_manager = $SoundManager
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
 # LEVEL 10 OBJECTS
 @onready var laser = $Laser
@@ -33,6 +34,8 @@ func _ready():
 	objects_initialize()
 	
 	player.rotation = deg_to_rad(300.0)
+	
+	initial_cinematic()
 
 func objects_initialize():
 	objects.append(laser)
@@ -43,15 +46,34 @@ func objects_initialize():
 	objects.append(lightning_cloud)
 	objects.append(light_bulb)
 
-# ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
-# TO WORK ON THE SCRIPT
-# ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
-func enter_level():
-	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
-	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
-	level_handler.complete_current_level(get_parent()) 
+func initial_cinematic():
+	player.set_process_input(false)
+	await get_tree().create_timer(1.0).timeout
+	var p = player.get_node("Camera2D")
 	
-
+	p.emit_signal("cam_zoom", 1.5)
+	p.emit_signal("reveal_bars")
+	p.emit_signal("pan_to_pos", light_bulb.global_position)
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	p.emit_signal("pan_to_pos", tesla_coil.global_position)
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	p.emit_signal("pan_to_pos", lightning_cloud.global_position)
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	p.emit_signal("pan_to_pos", laser.get_node("AnimatedSprite2D").global_position)
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	p.emit_signal("cam_orig_zoom")
+	p.emit_signal("hide_bars")
+	p.emit_signal("pan_to_orig_pos")
+	
+	player.set_process_input(true)
 
 func _on_level_handler_skip_level_requested(level_number: int) -> void:
 	if level_number == 10:
