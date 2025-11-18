@@ -59,6 +59,22 @@ var statue_rotation_based_on_position = {
 	Vector2(-210, -119): 120
 }
 
+var rotations_possible = [
+	0.0,
+	30.0,
+	60.0,
+	90.0,
+	120.0,
+	150.0,
+	180.0,
+	210.0,
+	240.0,
+	270.0,
+	300.0,
+	330.0,
+	360.0
+]
+
 @onready var level_handler = $CanvasLayer/LevelHandler
 @onready var sound_manager = $SoundManager
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
@@ -70,6 +86,7 @@ var statue_rotation_based_on_position = {
 @onready var phase_1_switch_circles = [$"AreaHandler1/1_switch_circle", $"AreaHandler2/1_switch_circle"]
 @onready var phase_2_switch_circles = [$"AreaHandler1/2_switch_circle", $"AreaHandler1/2_switch_circle2", $"AreaHandler2/2_switch_circle", $"AreaHandler2/2_switch_circle2", $"AreaHandler3/2_switch_circle", $"AreaHandler3/2_switch_circle2", $"AreaHandler4/2_switch_circle", $"AreaHandler4/2_switch_circle2", $"AreaHandler5/2_switch_circle", $"AreaHandler5/2_switch_circle2", $"AreaHandler6/2_switch_circle", $"AreaHandler6/2_switch_circle2"]
 @onready var phase_3_switch_circles = [$"AreaHandler1/3_switch_circle2", $"AreaHandler1/3_switch_circle", $"AreaHandler2/3_switch_circle2", $"AreaHandler2/3_switch_circle", $"AreaHandler3/3_switch_circle2", $"AreaHandler3/3_switch_circle", $"AreaHandler4/3_switch_circle2", $"AreaHandler4/3_switch_circle", $"AreaHandler5/3_switch_circle2", $"AreaHandler5/3_switch_circle", $"AreaHandler6/3_switch_circle2", $"AreaHandler6/3_switch_circle", $"AreaHandler7/3_switch_circle2", $"AreaHandler7/3_switch_circle", $"AreaHandler8/3_switch_circle2", $"AreaHandler8/3_switch_circle", $"AreaHandler9/3_switch_circle2", $"AreaHandler9/3_switch_circle", $"AreaHandler10/3_switch_circle2", $"AreaHandler10/3_switch_circle", $"AreaHandler11/3_switch_circle2", $"AreaHandler11/3_switch_circle", $"AreaHandler12/3_switch_circle2", $"AreaHandler12/3_switch_circle"]
+@onready var area_handlers_1 = [$AreaHandler1, $AreaHandler2]
 @onready var area_handlers_2 = [$AreaHandler1, $AreaHandler2, $AreaHandler3, $AreaHandler4, $AreaHandler5, $AreaHandler6]
 @onready var area_handlers_3 = [$AreaHandler1, $AreaHandler2, $AreaHandler3, $AreaHandler4, $AreaHandler5, $AreaHandler6, $AreaHandler7, $AreaHandler8, $AreaHandler9, $AreaHandler10, $AreaHandler11, $AreaHandler12]
 
@@ -115,7 +132,14 @@ var statue_rotation_based_on_position = {
 @onready var cat = $cat
 @onready var lightbulb = $lightbulb
 
+var objects_in_phase_1 = []
+var objects_in_phase_2 = []
+var objects_in_phase_3 = []
+
 func _ready():
+	objects_in_phase_1 = [seed, skull]
+	objects_in_phase_2 = [rock, egg, soda, apple]
+	objects_in_phase_3 = [butterfly, carrot, cat, lightbulb]
 	# SET LEVEL
 	level_handler.set_current_level(12)
 	# ROTATION, SCALE SETUP AND MAP TWEENING
@@ -127,6 +151,8 @@ func _ready():
 	#enter_phase_2()
 	#enter_phase_3()
 	#finish_it()
+	
+	infinite_rotation()
 
 	# PLAY SPECIAL FINAL LEVEL MUSIC
 	if sound_manager:
@@ -334,6 +360,7 @@ func enter_phase_1():
 	
 #	Enable Player Movement
 	player.set_process_input(true)
+	$Timer.start()
 
 func enter_phase_2():
 	ui_handler.disable_game_ui_elements()
@@ -407,7 +434,7 @@ func enter_phase_2():
 	area_handler6.show()
 	
 	# make the circly thingy bigger scale
-	circly_thingy.create_tween().tween_property(circly_thingy, "scale", Vector2(2.0, 2.0), 3.0)
+	circly_thingy.create_tween().tween_property(circly_thingy, "scale", Vector2(0.6, 0.6), 3.0)
 	
 #	Tween of the two circle separating	
 		# Circle 1: (0, -900)
@@ -534,7 +561,7 @@ func enter_phase_3():
 	unflash.tween_property(flash, "modulate:a", 0.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 	
 	# make the circly thingy bigger scale
-	circly_thingy.create_tween().tween_property(circly_thingy, "scale", Vector2(3.5, 3.5), 3.0)
+	circly_thingy.create_tween().tween_property(circly_thingy, "scale", Vector2(1.05, 1.05), 3.0)
 	
 #	Tween of the two circle separating	
 	# Circle 1: (0, -1600)
@@ -683,8 +710,6 @@ func finish_it():
 	DialogueManager.show_dialogue_balloon_scene("res://dialogues/made/balloon.tscn", load("res://dialogues/ending.dialogue"))
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	
-
-	
 func _on_dialogue_ended(_resource: DialogueResource):
 	player.create_tween().tween_property(player, "position", Vector2(0, 0), 3.0)
 #	Monk gets separated to the right circle
@@ -703,3 +728,102 @@ func _on_dialogue_ended(_resource: DialogueResource):
 		flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		await get_tree().create_timer(3.0).timeout
 	)
+
+func infinite_rotation() -> void:
+	var tween := create_tween().set_loops()
+
+	tween.tween_property(circly_thingy, "rotation_degrees", 360.0, 1.0).as_relative().set_trans(Tween.TRANS_LINEAR)
+
+func _on_timer_timeout() -> void:
+	trigger_random_event()
+	
+func trigger_random_event():
+	print("Monk Created") 
+
+	var player_cur_pos = player.position
+	var rand_rotation_in_circle = rotations_possible.pick_random()
+
+	# Duplicate monk
+	var monk_duplicate = monk.duplicate(true)
+	monk_duplicate.modulate = Color(1,1,1,0.75)
+	monk_duplicate.position = player_cur_pos
+	monk_duplicate.rotation_degrees = rand_rotation_in_circle
+	add_child(monk_duplicate)
+
+	# Countdown variables
+	var countdown_data = {"time": 5}
+
+	# Create a repeating 1-second timer for this monk
+	var countdown_timer = Timer.new()
+	countdown_timer.wait_time = 1.0
+	countdown_timer.one_shot = false  # repeating
+	add_child(countdown_timer)
+	
+	# Connect timeout signal with a lambda to capture monk and countdown_time
+	countdown_timer.timeout.connect(func():
+		print("Countdown:", countdown_data.time)
+		
+		# Execute your per-second function here
+		on_countdown_tick(monk_duplicate, countdown_data.time)
+
+		countdown_data.time -= 1
+
+		if countdown_data.time <= 0:
+			# Time's up, remove monk and timer, and trigger object placement
+			monk_duplicate.queue_free()
+			countdown_timer.queue_free()
+
+			if player.phase == 1:
+				var obj = objects_in_phase_1.pick_random()
+				var area = area_handlers_1.pick_random()
+				place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
+			elif player.phase == 2:
+				var obj = objects_in_phase_2.pick_random()
+				var area = area_handlers_2.pick_random()
+				place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
+			elif player.phase == 3:
+				var obj = objects_in_phase_3.pick_random()
+				var area = area_handlers_3.pick_random()
+				place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
+	)
+	
+	countdown_timer.start()
+	
+	# If body touches monk, immediately remove monk and stop timer
+	monk_duplicate.body_entered.connect(func(_body):
+		countdown_timer.queue_free()
+		monk_duplicate.queue_free()
+	)
+
+func on_countdown_tick(_monk, time_left):
+	# Create a Label to show the countdown
+	var label = Label.new()
+	label.text = str(time_left)
+
+	# Font, size, and color
+	var font = FontFile.new()
+	font.font_data = load("res://path_to_your_font.ttf")  # choose your font
+	font.size = 64  # choose size
+	label.add_theme_font_override("font", font)
+	label.modulate = Color(1,1,1,0)  # start invisible
+
+	# Position: center of the screen
+	var viewport_size = get_viewport().get_visible_rect().size
+	label.position = viewport_size / 2 - label.rect_size / 2
+
+	add_child(label)
+
+	# Create a Tween for scale in/out and fade
+	var tween = create_tween()
+
+	# Scale from 0.5 → 1.2 → 1.0 (pop effect)
+	label.scale = Vector2(0.5, 0.5)
+	tween.tween_property(label, "scale", Vector2(1.2, 1.2), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(label, "scale", Vector2(1,1), 0.1)
+
+	# Fade in/out
+	tween.tween_property(label, "modulate:a", 1.0, 0.2)  # fade in
+	tween.tween_property(label, "modulate:a", 0.0, 0.3).set_delay(0.3)  # fade out
+
+	# Remove label after tween is done
+	tween.finished.connect(func(): label.queue_free())

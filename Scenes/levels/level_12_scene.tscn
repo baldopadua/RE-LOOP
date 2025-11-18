@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_8ftga"]
 [ext_resource type="Script" uid="uid://binyh0ej31lmb" path="res://Scripts/object-level/level_12/player.gd" id="5_yy3na"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_j4nk1"]
+[ext_resource type="Texture2D" uid="uid://ce2vum1lf5xs1" path="res://Assets/levels/level_12/portal_small_sheet.png" id="6_yy3na"]
 [ext_resource type="Texture2D" uid="uid://4gu6kuviroho" path="res://Assets/levels/level_11/statue-tree-sheet-Sheet.png" id="7_rdsab"]
 [ext_resource type="Texture2D" uid="uid://cfsgv0k3seegy" path="res://Assets/levels/level_11/statue-hero-sheet-Sheet.png" id="8_yuv2b"]
 [ext_resource type="Texture2D" uid="uid://dpv8tnci5fvu2" path="res://Assets/levels/level_11/statue-geyser-sheet-sheet.png" id="9_bjqkp"]
@@ -42,7 +43,6 @@
 [ext_resource type="Script" uid="uid://coo0cum754s83" path="res://Scripts/object-level/level_12/lightbulb.gd" id="39_1ufae"]
 [ext_resource type="Texture2D" uid="uid://bgf013042hubx" path="res://Assets/levels/level_11/lightbulb.png" id="39_47c5w"]
 [ext_resource type="Script" uid="uid://bb4am05ach10w" path="res://Scripts/object-level/level_12/switch_circle.gd" id="41_yy3na"]
-[ext_resource type="Texture2D" uid="uid://cm1ofcp5mp3f1" path="res://Assets/VarianceSplit-Sheet.png" id="42_yy3na"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yuv2b"]
 animations = [{
@@ -55,64 +55,64 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rk5e6"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(0, 0, 146, 273)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p42lt"]
+atlas = ExtResource("6_yy3na")
+region = Rect2(0, 0, 200, 1010)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mek2u"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(146, 0, 146, 273)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wan2m"]
+atlas = ExtResource("6_yy3na")
+region = Rect2(200, 0, 200, 1010)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ghasi"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(292, 0, 146, 273)
+[sub_resource type="AtlasTexture" id="AtlasTexture_oam8e"]
+atlas = ExtResource("6_yy3na")
+region = Rect2(400, 0, 200, 1010)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mpdsn"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(438, 0, 146, 273)
+[sub_resource type="AtlasTexture" id="AtlasTexture_51dsj"]
+atlas = ExtResource("6_yy3na")
+region = Rect2(600, 0, 200, 1010)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3ctc"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(584, 0, 146, 273)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwl73"]
+atlas = ExtResource("6_yy3na")
+region = Rect2(800, 0, 200, 1010)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_82sfl"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(730, 0, 146, 273)
+[sub_resource type="AtlasTexture" id="AtlasTexture_eevqw"]
+atlas = ExtResource("6_yy3na")
+region = Rect2(1000, 0, 200, 1010)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5464"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(876, 0, 146, 273)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ufae"]
+atlas = ExtResource("6_yy3na")
+region = Rect2(1200, 0, 200, 1010)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_us4og"]
-atlas = ExtResource("42_yy3na")
-region = Rect2(1022, 0, 146, 273)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvulg"]
+atlas = ExtResource("6_yy3na")
+region = Rect2(1400, 0, 200, 1010)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pg2al"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rk5e6")
+"texture": SubResource("AtlasTexture_p42lt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mek2u")
+"texture": SubResource("AtlasTexture_wan2m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ghasi")
+"texture": SubResource("AtlasTexture_oam8e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mpdsn")
+"texture": SubResource("AtlasTexture_51dsj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t3ctc")
+"texture": SubResource("AtlasTexture_uwl73")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_82sfl")
+"texture": SubResource("AtlasTexture_eevqw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p5464")
+"texture": SubResource("AtlasTexture_1ufae")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_us4og")
+"texture": SubResource("AtlasTexture_lvulg")
 }],
 "loop": true,
 "name": &"default",
@@ -1438,7 +1438,7 @@ animations = [{
 script = ExtResource("1_1urvf")
 
 [node name="CirclyThingy" type="AnimatedSprite2D" parent="."]
-visible = false
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_yuv2b")
 metadata/_edit_lock_ = true
 
@@ -1456,7 +1456,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler1/1_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1478,7 +1478,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler1/2_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1500,7 +1500,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler1/2_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1522,7 +1522,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler1/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1544,7 +1544,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler1/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1568,7 +1568,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler2/1_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1590,7 +1590,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler2/2_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1612,7 +1612,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler2/2_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1634,7 +1634,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler2/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1656,7 +1656,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler2/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1680,7 +1680,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler3/2_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1701,7 +1701,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler3/2_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1723,7 +1723,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler3/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1745,7 +1745,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler3/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1769,7 +1769,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler4/2_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1790,7 +1790,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler4/2_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1812,7 +1812,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler4/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1834,7 +1834,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler4/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1858,7 +1858,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler5/2_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1879,7 +1879,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler5/2_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1901,7 +1901,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler5/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1923,7 +1923,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler5/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1947,7 +1947,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler6/2_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1968,7 +1968,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler6/2_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -1990,7 +1990,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler6/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2012,7 +2012,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler6/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2037,7 +2037,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler7/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2059,7 +2059,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler7/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2084,7 +2084,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler8/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2106,7 +2106,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler8/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2131,7 +2131,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler9/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2153,7 +2153,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler9/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2178,7 +2178,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler10/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2200,7 +2200,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler10/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2225,7 +2225,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler11/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2247,7 +2247,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler11/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2272,7 +2272,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler12/3_switch_circle2"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2294,7 +2294,7 @@ object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AreaHandler12/3_switch_circle"]
-scale = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_pg2al")
 autoplay = "default"
 metadata/_edit_lock_ = true
@@ -2779,6 +2779,9 @@ metadata/_edit_lock_ = true
 [node name="center_pos" type="Marker2D" parent="."]
 position = Vector2(0.5, 0.5)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="toggle_switch_circle" from="AreaHandler1/1_switch_circle" to="AreaHandler1/1_switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="toggle_switch_circle" from="AreaHandler1/2_switch_circle" to="AreaHandler1/2_switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="toggle_switch_circle" from="AreaHandler1/2_switch_circle2" to="AreaHandler1/2_switch_circle2" method="_on_toggle_switch_circle"]
@@ -2839,3 +2842,4 @@ position = Vector2(0.5, 0.5)
 [connection signal="is_dropped" from="cat" to="cat" method="_on_is_dropped"]
 [connection signal="area_entered" from="lightbulb" to="lightbulb" method="_on_area_entered"]
 [connection signal="is_dropped" from="lightbulb" to="lightbulb" method="_on_is_dropped"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
