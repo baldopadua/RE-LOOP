@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cibg6y0i6u2df" path="res://Audio/ambience/bird_chirp.wav" id="5_bird"]
 [ext_resource type="AudioStream" uid="uid://bsit1023yqhvh" path="res://Audio/ambience/cricket.wav" id="5_cricket"]
 [ext_resource type="AudioStream" uid="uid://cqd8pth4qyq4u" path="res://Audio/music/plooy_final_level.wav" id="5_final"]
-[ext_resource type="AudioStream" uid="uid://dea7i1sra3" path="res://Audio/ambience/idle_wind.wav" id="5_wind"]
+[ext_resource type="AudioStream" uid="uid://dea8sk7i1sra3" path="res://Audio/ambience/idle_wind.wav" id="5_wind"]
 [ext_resource type="AudioStream" uid="uid://cskwu36g87k23" path="res://Audio/music/space_ambience_clock.wav" id="7_2aguw"]
 [ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/music/game_theme_song.mp3" id="29_fwa5o"]
 
@@ -109,7 +109,7 @@
 ; ========================================
 [ext_resource type="PackedScene" uid="uid://b1c2d3e4f5g6h" path="res://Audio/level-7/butterfly.tscn" id="53_level7"]
 [ext_resource type="PackedScene" uid="uid://c2d3e4f5g6h7i" path="res://Audio/level-7/spider.tscn" id="54_level7"]
-[ext_resource type="PackedScene" uid="uid://d3e4f5g6h7i8j" path="res://Audio/level-7/tornado.tscn" id="55_level7"]
+[ext_resource type="PackedScene" uid="uid://cdtrk1qoe4bye" path="res://Audio/level-7/tornado.tscn" id="55_level7"]
 [ext_resource type="PackedScene" uid="uid://k9l0m1n2o3p4q" path="res://Audio/level-7/fly_away_tornado.tscn" id="56_level7"]
 
 ; ========================================

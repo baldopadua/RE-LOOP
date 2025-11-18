@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvn5x8h4m7qrs"]
 
-[ext_resource type="AudioStream" uid="uid://bupqovtivogpt" path="res://Audio/sfx/build_stall.wav" id="1_stall"]
+[ext_resource type="AudioStream" uid="uid://4bnq10kav2le" path="res://Audio/sfx/build_stall.wav" id="1_stall"]
 
 [node name="build_stall" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_stall")

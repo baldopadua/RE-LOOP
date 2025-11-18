@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://e3dy0pv502c6"]
 
-[ext_resource type="AudioStream" uid="uid://b5mxvt1xagwxr" path="res://Audio/sfx/man_transformation.wav" id="1_transform"]
+[ext_resource type="AudioStream" uid="uid://dglemqrh3iwqs" path="res://Audio/sfx/man_transformation.wav" id="1_transform"]
 
 [node name="astronaut_transform" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_transform")
