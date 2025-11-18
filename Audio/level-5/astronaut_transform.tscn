@@ -4,5 +4,5 @@
 
 [node name="astronaut_transform" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_transform")
-volume_db = 0.0
+volume_db = 10.0
 pitch_scale = 0.7
