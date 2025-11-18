@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1x2y304a5b6c"]
+
+[ext_resource type="AudioStream" uid="uid://ck4fu0gbrh0ro" path="res://Audio/sfx/rabbit_turtle_step.wav" id="1_step"]
+
+[node name="rabbit_turtle_step" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_step")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 4

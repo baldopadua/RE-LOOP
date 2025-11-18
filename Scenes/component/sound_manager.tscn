@@ -119,6 +119,7 @@
 [ext_resource type="PackedScene" uid="uid://bhghwxye2k5xi" path="res://Audio/level-8/carrot_patch.tscn" id="55_level8"]
 [ext_resource type="PackedScene" uid="uid://dasbgxtlkpym7" path="res://Audio/level-8/chair.tscn" id="56_level8"]
 [ext_resource type="PackedScene" uid="uid://gfgvwxd1j4wh" path="res://Audio/level-8/gunshut.tscn" id="57_level8"]
+[ext_resource type="PackedScene" uid="uid://c1x2y3z4a5b6c" path="res://Audio/level-8/rabbit_turtle_step.tscn" id="58_level8"]
 
 ; ========================================
 ; LEVEL 9 SOUNDS (Wrappers - PackedScene)
@@ -314,6 +315,8 @@ stream = ExtResource("15_clock")
 [node name="chair" parent="sfx/level_8_sfx" instance=ExtResource("56_level8")]
 
 [node name="gunshut" parent="sfx/level_8_sfx" instance=ExtResource("57_level8")]
+
+[node name="rabbit_turtle_step" parent="sfx/level_8_sfx" instance=ExtResource("58_level8")]
 
 [node name="level_9_sfx" type="Node2D" parent="sfx"]
 
