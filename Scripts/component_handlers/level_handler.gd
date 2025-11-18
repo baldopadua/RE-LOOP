@@ -210,6 +210,10 @@ func complete_current_level(levels_frame):
 				lobby_scene.start_replay_return_animation(current_level_number, target_pos)
 			return
 		else:
+			# --- NEW LOGIC: show comic cutscene after level 12 completion ---
+			if current_level_number == 12 and ui_handler:
+				ui_handler.show_level_cutscene(12, func(): await return_to_lobby(levels_frame))
+				return
 			await return_to_lobby(levels_frame)
 			# --- REMOVE/COMMENT OUT THE CUTSCENE LOGIC BELOW ---
 			# var lobby_scene = levels_frame.get_child(0)

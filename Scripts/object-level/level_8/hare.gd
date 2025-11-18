@@ -15,6 +15,11 @@ func _on_rotate_object(direction: Variant) -> void:
 	var rotation_tween: float
 	if direction == GlobalVariables.Directions.COUNTERCLOCKWISE and round(rad_to_deg(rotation)) > max_rotation:
 		animated_sprite.play("walk")
+		# Play footstep sound with normal pitch for hare
+		var sound_manager = get_parent().get_node("SoundManager")
+		if sound_manager and sound_manager.sfx.has("rabbit_turtle_step"):
+			sound_manager.set_sfx_pitch_scale("rabbit_turtle_step", 1.0)
+			sound_manager.play_sfx("rabbit_turtle_step")
 		rotation_tween = rotation - deg_to_rad(angle_per_move)
 		animated_sprite.flip_h = true
 	else:

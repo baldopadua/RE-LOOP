@@ -46,12 +46,20 @@ func _on_start_race() -> void:
 			if finish.array.front() == hare:
 				hare_won = true
 				turtle.animated_sprite.play("cry")
+				if sound_manager and sound_manager.sfx.has("turtle_cry"):
+					sound_manager.play_sfx("turtle_cry")
 				hare.animated_sprite.play("winner_hare")
+				if sound_manager and sound_manager.sfx.has("hare_winner"):
+					sound_manager.play_sfx("hare_winner")
 				break
 			elif finish.array.front() == turtle:
 				turtle_won = true
 				turtle.animated_sprite.play("celebrates")
+				if sound_manager and sound_manager.sfx.has("turtle_winner"):
+					sound_manager.play_sfx("turtle_winner")
 				hare.animated_sprite.play("loser_hare")
+				if sound_manager and sound_manager.sfx.has("hare_loser"):
+					sound_manager.play_sfx("hare_loser")
 
 				if area_handler:
 					# Hide UI and focus camera to tree
@@ -118,7 +126,11 @@ func _on_start_race() -> void:
 		if finish in hare.array:
 			hare_won = true
 			turtle.animated_sprite.play("cry")
+			if sound_manager and sound_manager.sfx.has("turtle_cry"):
+				sound_manager.play_sfx("turtle_cry")
 			hare.animated_sprite.play("winner_hare")
+			if sound_manager and sound_manager.sfx.has("hare_winner"):
+				sound_manager.play_sfx("hare_winner")
 			break
 
 #		object branches
@@ -139,6 +151,8 @@ func _on_start_race() -> void:
 	
 func _process_carrot() -> void:
 	carrot.visible = false
+	if sound_manager and sound_manager.sfx.has("carrot_patch"):
+		sound_manager.play_sfx("carrot_patch")
 	hare.animated_sprite.play("eating_carrot")
 	await hare.animated_sprite.animation_finished
 
@@ -148,6 +162,8 @@ func _process_carrot() -> void:
 	await get_tree().create_timer(1.0).timeout
 
 	hare.animated_sprite.play("surprised")
+	if sound_manager and sound_manager.sfx.has("hare_surprised"):
+		sound_manager.play_sfx("hare_surprised")
 	await hare.animated_sprite.animation_finished
 	hare.animated_sprite.play("default")
 
@@ -155,6 +171,8 @@ func _process_carrot() -> void:
 
 func process_chair():
 	hare.visible = false
+	if sound_manager and sound_manager.sfx.has("chair"):
+		sound_manager.play_sfx("chair")
 	chair.get_node("AnimatedSprite2D").play("sleeping")
 	await chair.get_node("AnimatedSprite2D").animation_finished
 
@@ -166,6 +184,8 @@ func process_chair():
 	await get_tree().create_timer(1.0).timeout
 
 	hare.animated_sprite.play("surprised")
+	if sound_manager and sound_manager.sfx.has("hare_surprised"):
+		sound_manager.play_sfx("hare_surprised")
 	await hare.animated_sprite.animation_finished
 	hare.animated_sprite.play("default")
 
@@ -181,6 +201,8 @@ func process_tree():
 	await get_tree().create_timer(1.0).timeout
 
 	hare.animated_sprite.play("surprised")
+	if sound_manager and sound_manager.sfx.has("hare_surprised"):
+		sound_manager.play_sfx("hare_surprised")
 	await hare.animated_sprite.animation_finished
 	hare.animated_sprite.play("default")
 

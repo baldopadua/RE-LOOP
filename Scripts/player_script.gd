@@ -123,7 +123,8 @@ func _input(event: InputEvent) -> void:
 		direction = player_directions.CLOCKWISE
 		prev_deg = round(rad_to_deg(rotation))
 		rotate_player()
-		sound_manager.adjust_sfx_pitch_scale("time_manip", 0.03)
+		if GlobalVariables.is_looping:
+			sound_manager.adjust_sfx_pitch_scale("time_manip", 0.03)
 		sound_manager.adjust_sfx_pitch_scale("clank", 0.03)
 		sound_manager.play_sfx("time_manip")
 		sound_manager.play_sfx("clank")
@@ -132,7 +133,8 @@ func _input(event: InputEvent) -> void:
 		prev_deg = round(rad_to_deg(rotation))
 		direction = player_directions.COUNTERCLOCKWISE
 		rotate_player()
-		sound_manager.adjust_sfx_pitch_scale("time_manip", -0.03)
+		if GlobalVariables.is_looping:
+			sound_manager.adjust_sfx_pitch_scale("time_manip", -0.03)
 		sound_manager.adjust_sfx_pitch_scale("clank", -0.03)
 		sound_manager.play_sfx("time_manip")
 		sound_manager.play_sfx("clank")

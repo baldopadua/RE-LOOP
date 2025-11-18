@@ -65,39 +65,43 @@ func item_pick_up() -> void:
 		# The player is currently holding an object
 		is_holding_object = true
 		
-		if held_object.object_name == "gun":
-			set_process_input(false)
-			camera2d.emit_signal("pan_to_pos", marker_gun_player.global_position)
-			camera2d.emit_signal("cam_zoom", 1.5)
-			camera2d.emit_signal("reveal_bars")
-			
-			await get_tree().create_timer(2.0).timeout  
-			held_object.animated_sprite.play("fire")
-			
-			await get_tree().create_timer(1.5).timeout  
-			held_object.animated_sprite.play("default")
-				
-			camera2d.emit_signal("pan_to_pos", marker1.global_position)
-			camera2d.emit_signal("cam_zoom", 1.2)
-			
-			await get_tree().create_timer(2.0).timeout  
-			held_object.emit_signal("start_race")
-			
-			await held_object.race_finished
-			
-			if held_object.turtle_won:
-				# Hare cutscene
-				# Hare throws child and break loop
-				# enable body area of hare
-				# disable loop
-				gun.is_pickupable = false
-				carrot.is_pickupable = false
-				chair.is_pickupable = false
-				GlobalVariables.player_stopped = false
-			else:
-				# Show turtle is crying and rabbit is celebrating
-				camera2d.emit_signal("pan_to_orig_pos")
-				camera2d.emit_signal("cam_orig_zoom")
-				camera2d.emit_signal("hide_bars")
-				await get_tree().create_timer(2.0).timeout
-				level_handler.restart_level(get_parent().get_parent())	
+	if held_object.object_name == "gun":
+		set_process_input(false)
+		camera2d.emit_signal("pan_to_pos", marker_gun_player.global_position)
+		camera2d.emit_signal("cam_zoom", 1.5)
+		camera2d.emit_signal("reveal_bars")
+		
+		await get_tree().create_timer(2.0).timeout  
+		if held_object.has_node("AnimatedSprite2D"):
+			held_object.get_node("AnimatedSprite2D").play("fire")
+		if sound_manager and sound_manager.sfx.has("gunshut"):
+			sound_manager.play_sfx("gunshut")
+		
+		await get_tree().create_timer(1.5).timeout  
+		if held_object.has_node("AnimatedSprite2D"):
+			held_object.get_node("AnimatedSprite2D").play("default")
+		
+		camera2d.emit_signal("pan_to_pos", marker1.global_position)
+		camera2d.emit_signal("cam_zoom", 1.2)
+		
+		await get_tree().create_timer(2.0).timeout  
+		held_object.emit_signal("start_race")
+		
+		await held_object.race_finished
+		
+		if held_object.turtle_won:
+			# Hare cutscene
+			# Hare throws child and break loop
+			# enable body area of hare
+			# disable loop
+			gun.is_pickupable = false
+			carrot.is_pickupable = false
+			chair.is_pickupable = false
+			GlobalVariables.player_stopped = false
+		else:
+			# Show turtle is crying and rabbit is celebrating
+			camera2d.emit_signal("pan_to_orig_pos")
+			camera2d.emit_signal("cam_orig_zoom")
+			camera2d.emit_signal("hide_bars")
+			await get_tree().create_timer(2.0).timeout
+			level_handler.restart_level(get_parent().get_parent())

@@ -33,6 +33,7 @@ var center_circle: Vector2i = Vector2i(0, 0)
 @onready var enter_10: object_class = $enter_10
 @onready var enter_11: object_class = $enter_11
 @onready var enter_12: object_class = $enter_12
+@onready var enter_13: object_class = $enter_13 # <--- NEW
 
 @onready var short_hand_rotation_lobby = $short_hand_rotation_lobby
 
@@ -90,7 +91,7 @@ func _ready():
 			obj.is_enterable = false
 
 func initialize_text_labels():
-	var entrances = [enter_1, enter_2, enter_3, enter_4, enter_5, enter_6, enter_7, enter_8, enter_9, enter_10, enter_11, enter_12]
+	var entrances = [enter_1, enter_2, enter_3, enter_4, enter_5, enter_6, enter_7, enter_8, enter_9, enter_10, enter_11, enter_12, enter_13] # <--- include enter_13
 	for entrance in entrances:
 		if entrance and entrance.has_node("hover_text"):
 			var hover_label = entrance.get_node("hover_text")
@@ -101,7 +102,7 @@ func initialize_text_labels():
 			interact_label.visible = false
 
 func objects_initialize():
-	for i in range(1, 13):
+	for i in range(1, 14): # <--- up to 13
 		var entrance_var_name = "enter_" + str(i)
 		var entrance = get(entrance_var_name)
 		if entrance:
@@ -134,10 +135,15 @@ func enter_level(level_number: int):
 	level_handler.kill_current_level(self)
 	await get_tree().create_timer(1.0).timeout
 	
-	if ui_handler:
-		ui_handler.show_level_cutscene(level_number, func(): _show_clock_animation_then_level(level_number, levels_frame))
-	else:
+	# --- NEW LOGIC: skip comic for level 12 ---
+	if level_number == 12:
+		# Directly show clock animation then load level 12
 		await _show_clock_animation_then_level(level_number, levels_frame)
+	else:
+		if ui_handler:
+			ui_handler.show_level_cutscene(level_number, func(): _show_clock_animation_then_level(level_number, levels_frame))
+		else:
+			await _show_clock_animation_then_level(level_number, levels_frame)
 
 func _show_clock_animation_then_level(level_number: int, levels_frame):
 	print("Showing clock animation for level ", level_number)
@@ -179,7 +185,7 @@ func update_completed_levels_visual():
 	print("Updating completed levels visual...")
 	print("Completed levels: ", level_handler.completed_levels)
 	
-	for level_num in range(1, 13):
+	for level_num in range(1, 14): # <--- up to 13
 		var is_completed = level_handler.completed_levels.has(level_num)
 		print("Level ", level_num, " - Completed: ", is_completed)
 		
@@ -455,3 +461,16 @@ func get_level_number_from_entrance(entrance_obj) -> int:
 		var num_str = obj_name.substr(6) 
 		return int(num_str)
 	return 0
+
+# --- NEW: Handle interaction with enter_13 ---
+func handle_enter_13_interaction():
+	# Mark level 12 as completed if not already
+	if not level_handler.completed_levels.has(12):
+		level_handler.completed_levels.append(12)
+		print("Level 12 marked as completed via enter_13.")
+	# Always update visuals after marking complete
+	update_completed_levels_visual()
+	# Optionally, disable enter_13 after interaction
+	if enter_13:
+		disable_entrance_completely(enter_13)
+	# You can add more logic here if needed (e.g., show a "Congratulations" message)
