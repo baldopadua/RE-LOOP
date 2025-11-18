@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://bsit1023yqhvh" path="res://Audio/ambience/cricket.wav" id="5_cricket"]
 [ext_resource type="AudioStream" uid="uid://cqd8pth4qyq4u" path="res://Audio/music/plooy_final_level.wav" id="5_final"]
 [ext_resource type="AudioStream" uid="uid://dea8sk7i1sra3" path="res://Audio/ambience/idle_wind.wav" id="5_wind"]
+[ext_resource type="AudioStream" uid="uid://b5k8m3p7r2v6w" path="res://Audio/music/level_11_final.wav" id="6_level11"]
 [ext_resource type="AudioStream" uid="uid://cskwu36g87k23" path="res://Audio/music/space_ambience_clock.wav" id="7_2aguw"]
 [ext_resource type="AudioStream" uid="uid://cigshhmo4cxq6" path="res://Audio/music/game_theme_song.mp3" id="29_fwa5o"]
 
@@ -340,6 +341,10 @@ volume_db = 5.0
 
 [node name="final_level_bgm" type="AudioStreamPlayer2D" parent="music"]
 stream = ExtResource("5_final")
+volume_db = 5.0
+
+[node name="level_11_final_bgm" type="AudioStreamPlayer2D" parent="music"]
+stream = ExtResource("6_level11")
 volume_db = 5.0
 
 [node name="ambience" type="Node2D" parent="music"]
