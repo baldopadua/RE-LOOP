@@ -52,6 +52,10 @@ func _ready():
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 	player.get_node("Camera2D").emit_signal("cam_zoom", 0.65)
 	player.shake_camera(5.0, 10.0, 2.5)
+
+	# Play loop shake sound before transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
 	
 	await get_tree().create_timer(2.5).timeout
 	
