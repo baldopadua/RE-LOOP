@@ -841,7 +841,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cdohg")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -980,7 +980,7 @@ script = ExtResource("10_tivvh")
 object_name = "turtle"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turtle"]
-position = Vector2(2, -23.000004)
+position = Vector2(2.0000012, -30)
 rotation = 3.1415927
 sprite_frames = SubResource("SpriteFrames_3qsgw")
 animation = &"celebrates"
@@ -998,6 +998,7 @@ script = ExtResource("12_plygp")
 object_name = "hare"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hare"]
+z_index = 1
 position = Vector2(14.999998, -24.000002)
 rotation = 3.1415927
 sprite_frames = SubResource("SpriteFrames_tivvh")
@@ -1047,8 +1048,11 @@ position = Vector2(-2, 301)
 
 [node name="congrats" type="AnimatedSprite2D" parent="."]
 visible = false
+z_index = 2
 position = Vector2(-1, 294)
 sprite_frames = SubResource("SpriteFrames_d08m7")
+frame = 20
+frame_progress = 1.0
 
 [node name="pos_to_focus" type="Marker2D" parent="."]
 position = Vector2(128, 53)

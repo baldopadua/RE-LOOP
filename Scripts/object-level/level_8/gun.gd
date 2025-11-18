@@ -217,3 +217,4 @@ func process_normal_movement():
 func hide_hare_and_turtle():
 	hare.visible = false
 	turtle.visible = false
+	chair.visivle = false
