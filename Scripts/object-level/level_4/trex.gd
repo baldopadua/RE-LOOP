@@ -43,12 +43,12 @@ func _on_body_entered(body):
 
 	stop_player()
 	sprite.play("tail_whip")
-	await sprite.animation_finished
+	anim_player.play("tail_whipped")
+	await anim_player.animation_finished
 	area_handler.show_loop_break(4)
 	# Play all finish_level_sfx SFX at once
 	if sound_manager.has_method("play_finish_level_sfx"):
 		sound_manager.play_finish_level_sfx()
-	anim_player.play("tail_whipped")
 	await get_tree().create_timer(0.9).timeout
 	# HIDE PLAYER AFTER RIDING THE WATER
 	player_body.visible = false
