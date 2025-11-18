@@ -38,19 +38,19 @@ func _on_add_wind_state(direction: Variant) -> void:
 			var pitch_scale = 1.0
 			
 			if current_state == 2:
-				volume_scale = -15.0  # Very quiet breeze
+				volume_scale = 0.5  # Very quiet breeze
 				pitch_scale = 0.8
 			elif current_state == 3:
-				volume_scale = -10.0  # Light wind
+				volume_scale = 1.0  # Light wind
 				pitch_scale = 0.9
 			elif current_state == 4:
-				volume_scale = -5.0   # Moderate wind
+				volume_scale = 5.0   # Moderate wind
 				pitch_scale = 1.0
 			elif current_state == 5:
-				volume_scale = 0.0    # Strong wind
+				volume_scale = 10.0    # Strong wind
 				pitch_scale = 1.1
 			elif current_state == 6:
-				volume_scale = 8.0    # Full tornado
+				volume_scale = 20.0    # Full tornado
 				pitch_scale = 1.2
 			
 			# Set volume and pitch, then play
