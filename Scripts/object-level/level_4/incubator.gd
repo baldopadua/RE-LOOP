@@ -19,14 +19,13 @@ var player_body: Node
 
 func _on_item_put(obj) -> void:
 	material_count += 1
-
 	if material_count == 1 and obj.object_name == "chicken":
 		level_script.play_incubator_processing()
 		
 		# Play symbol animations
 		symbol_anim_sprite.play("correct")
 		await symbol_anim_sprite.animation_finished
-		symbol_anim_sprite.play("dino")
+		symbol_anim_sprite.play("lizard tail")
 		
 		# Start DinoEggSprite animation — ensure it’s looping in the editor
 		DinoEggSprite.visible = true
@@ -41,7 +40,7 @@ func _on_item_put(obj) -> void:
 			sound_manager.play_sfx("incubator_check")
 		symbol_anim_sprite.play("correct")
 		await symbol_anim_sprite.animation_finished
-		symbol_anim_sprite.play("dino")	
+		symbol_anim_sprite.play("bone")	
 		return
 	elif material_count == 3 and obj.object_name == "bone":
 		GlobalVariables.player_stopped = true
