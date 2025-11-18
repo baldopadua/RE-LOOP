@@ -623,6 +623,7 @@ shape = SubResource("RectangleShape2D_uwqnk")
 
 [node name="switch_circle" parent="." instance=ExtResource("5_u54cp")]
 visible = false
+position = Vector2(10, 11)
 script = ExtResource("14_bv4bh")
 object_name = "switch_circle"
 object_type = 1

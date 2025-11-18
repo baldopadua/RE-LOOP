@@ -509,11 +509,13 @@ texture = SubResource("GradientTexture2D_cr1iw")
 
 [node name="switch_circle" parent="." instance=ExtResource("6_kapnr")]
 visible = false
+position = Vector2(6, 11)
 script = ExtResource("10_ov81m")
 object_name = "switch_circle"
 object_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="switch_circle"]
+position = Vector2(8, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_kapnr")
 autoplay = "default"
