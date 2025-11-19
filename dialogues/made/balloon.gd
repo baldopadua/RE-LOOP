@@ -110,7 +110,7 @@ func hide_evil_plooy_and_monk():
 	evil_plooy_detailed.hide()
 	
 func show_monk():
-	monk_detailed.hide()
+	monk_detailed.show()
 
 func change_pitch(tone: String):
 	if tone == "low":

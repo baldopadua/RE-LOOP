@@ -50,7 +50,7 @@ const ANIM_SPEED_MULTIPLIER: float = 1.8
 func _ready():
 	await get_tree().process_frame
 	lobby_active = true
-    
+	
 	call_deferred("initialize_text_labels")
 	ui_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler")
 	ui_handler.hide_and_disable_hint_and_time()
