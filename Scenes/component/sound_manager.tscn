@@ -165,6 +165,12 @@
 ; ========================================
 [ext_resource type="PackedScene" uid="uid://s1t2u3v4w5x6y" path="res://Audio/level-11/statue_destruction.tscn" id="71_level11"]
 
+; ========================================
+; LEVEL 12 SOUNDS (Wrappers - PackedScene)
+; ========================================
+[ext_resource type="PackedScene" uid="uid://c1d2e3f4g5h6i" path="res://Audio/level-12/countdown_beep.tscn" id="72_level12"]
+[ext_resource type="PackedScene" uid="uid://j7k8l9m0n1o2p" path="res://Audio/level-12/time_up.tscn" id="73_level12"]
+
 
 
 [node name="SoundManager" type="Node2D"]
@@ -426,6 +432,10 @@ stream = ExtResource("15_clock")
 [node name="loop_shake" parent="sfx/level_12_sfx" instance=ExtResource("55_level6")]
 
 [node name="crystal_transition" parent="sfx/level_12_sfx" instance=ExtResource("52_level6")]
+
+[node name="countdown_beep" parent="sfx/level_12_sfx" instance=ExtResource("72_level12")]
+
+[node name="time_up" parent="sfx/level_12_sfx" instance=ExtResource("73_level12")]
 
 [node name="music" type="Node2D" parent="."]
 
