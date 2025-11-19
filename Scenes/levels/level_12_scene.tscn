@@ -99,7 +99,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p42lt"]
-size = Vector2(19, 20)
+size = Vector2(145.63998, 20)
 
 [sub_resource type="Gradient" id="Gradient_1urvf"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -1425,8 +1425,7 @@ metadata/_edit_lock_ = true
 
 [node name="1_switch_circle" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
 visible = false
-z_index = 5
-position = Vector2(284, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1448,7 +1447,7 @@ metadata/_edit_lock_ = true
 
 [node name="2_switch_circle" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1470,7 +1469,7 @@ metadata/_edit_lock_ = true
 
 [node name="2_switch_circle2" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1492,7 +1491,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle2" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1514,7 +1513,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler1" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1538,7 +1537,7 @@ metadata/_edit_lock_ = true
 
 [node name="1_switch_circle" parent="AreaHandler2" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1560,7 +1559,7 @@ metadata/_edit_lock_ = true
 
 [node name="2_switch_circle" parent="AreaHandler2" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1582,7 +1581,7 @@ metadata/_edit_lock_ = true
 
 [node name="2_switch_circle2" parent="AreaHandler2" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1604,7 +1603,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle2" parent="AreaHandler2" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1626,7 +1625,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler2" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1650,7 +1649,8 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="2_switch_circle" parent="AreaHandler3" instance=ExtResource("6_j4nk1")]
-position = Vector2(-284, 0)
+visible = false
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1671,7 +1671,8 @@ shape = SubResource("RectangleShape2D_p42lt")
 metadata/_edit_lock_ = true
 
 [node name="2_switch_circle2" parent="AreaHandler3" instance=ExtResource("6_j4nk1")]
-position = Vector2(297, 0)
+visible = false
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1693,7 +1694,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle2" parent="AreaHandler3" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1715,7 +1716,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler3" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1739,7 +1740,8 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="2_switch_circle" parent="AreaHandler4" instance=ExtResource("6_j4nk1")]
-position = Vector2(-284, 0)
+visible = false
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1760,7 +1762,8 @@ shape = SubResource("RectangleShape2D_p42lt")
 metadata/_edit_lock_ = true
 
 [node name="2_switch_circle2" parent="AreaHandler4" instance=ExtResource("6_j4nk1")]
-position = Vector2(297, 0)
+visible = false
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1782,7 +1785,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle2" parent="AreaHandler4" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1804,7 +1807,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler4" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1828,7 +1831,8 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="2_switch_circle" parent="AreaHandler5" instance=ExtResource("6_j4nk1")]
-position = Vector2(-284, 0)
+visible = false
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1849,7 +1853,8 @@ shape = SubResource("RectangleShape2D_p42lt")
 metadata/_edit_lock_ = true
 
 [node name="2_switch_circle2" parent="AreaHandler5" instance=ExtResource("6_j4nk1")]
-position = Vector2(297, 0)
+visible = false
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1871,7 +1876,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle2" parent="AreaHandler5" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1893,7 +1898,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler5" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1917,7 +1922,8 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="2_switch_circle" parent="AreaHandler6" instance=ExtResource("6_j4nk1")]
-position = Vector2(-284, 0)
+visible = false
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1938,7 +1944,8 @@ shape = SubResource("RectangleShape2D_p42lt")
 metadata/_edit_lock_ = true
 
 [node name="2_switch_circle2" parent="AreaHandler6" instance=ExtResource("6_j4nk1")]
-position = Vector2(297, 0)
+visible = false
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1960,7 +1967,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle2" parent="AreaHandler6" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -1982,7 +1989,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler6" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2007,7 +2014,7 @@ visible = false
 
 [node name="3_switch_circle2" parent="AreaHandler7" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2029,7 +2036,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler7" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2054,7 +2061,7 @@ visible = false
 
 [node name="3_switch_circle2" parent="AreaHandler8" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2076,7 +2083,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler8" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2101,7 +2108,7 @@ visible = false
 
 [node name="3_switch_circle2" parent="AreaHandler9" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2123,7 +2130,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler9" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2148,7 +2155,7 @@ visible = false
 
 [node name="3_switch_circle2" parent="AreaHandler10" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2170,7 +2177,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler10" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2194,7 +2201,8 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="3_switch_circle2" parent="AreaHandler11" instance=ExtResource("6_j4nk1")]
-position = Vector2(-284, 0)
+visible = false
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2216,7 +2224,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler11" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2241,7 +2249,7 @@ visible = false
 
 [node name="3_switch_circle2" parent="AreaHandler12" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(-284, 0)
+position = Vector2(-233.13, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2263,7 +2271,7 @@ metadata/_edit_lock_ = true
 
 [node name="3_switch_circle" parent="AreaHandler12" instance=ExtResource("6_j4nk1")]
 visible = false
-position = Vector2(297, 0)
+position = Vector2(234.695, 0)
 monitoring = false
 monitorable = false
 script = ExtResource("41_yy3na")
@@ -2525,6 +2533,8 @@ shape = SubResource("RectangleShape2D_lnogc")
 metadata/_edit_lock_ = true
 
 [node name="monk" parent="." instance=ExtResource("6_j4nk1")]
+monitoring = false
+monitorable = false
 object_name = "monk"
 object_type = 1
 
@@ -2761,6 +2771,8 @@ position = Vector2(0.5, 0.5)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
 
+[node name="count_down" type="Timer" parent="."]
+
 [connection signal="toggle_switch_circle" from="AreaHandler1/1_switch_circle" to="AreaHandler1/1_switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="toggle_switch_circle" from="AreaHandler1/2_switch_circle" to="AreaHandler1/2_switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="toggle_switch_circle" from="AreaHandler1/2_switch_circle2" to="AreaHandler1/2_switch_circle2" method="_on_toggle_switch_circle"]
@@ -2799,6 +2811,7 @@ wait_time = 20.0
 [connection signal="toggle_switch_circle" from="AreaHandler11/3_switch_circle" to="AreaHandler11/3_switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="toggle_switch_circle" from="AreaHandler12/3_switch_circle2" to="AreaHandler12/3_switch_circle2" method="_on_toggle_switch_circle"]
 [connection signal="toggle_switch_circle" from="AreaHandler12/3_switch_circle" to="AreaHandler12/3_switch_circle" method="_on_toggle_switch_circle"]
+[connection signal="player_finished_moving" from="PlayerScene" to="." method="_on_player_scene_player_finished_moving"]
 [connection signal="player_finished_moving" from="PlayerScene" to="PlayerScene" method="_on_player_finished_moving"]
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
 [connection signal="area_entered" from="seed" to="seed" method="_on_area_entered"]
@@ -2822,3 +2835,4 @@ wait_time = 20.0
 [connection signal="area_entered" from="lightbulb" to="lightbulb" method="_on_area_entered"]
 [connection signal="is_dropped" from="lightbulb" to="lightbulb" method="_on_is_dropped"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="count_down" to="." method="_on_count_down_timeout"]

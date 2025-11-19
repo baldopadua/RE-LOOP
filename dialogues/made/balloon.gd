@@ -37,6 +37,7 @@ var _locale: String = TranslationServer.get_locale()
 @onready var monk_detailed = %monk_detailed
 @onready var plooy_detailed = %plooy_detailed
 @onready var evil_plooy_detailed = %evil_plooy_detailed
+@onready var audio = %AudioStreamPlayer
 
 ## The current line
 var dialogue_line: DialogueLine:
@@ -103,6 +104,19 @@ func highlight_speaker(speaker: String):
 func show_evil_plooy_and_hide_monk():
 	monk_detailed.hide()
 	evil_plooy_detailed.show()
+
+func hide_evil_plooy_and_monk():
+	monk_detailed.hide()
+	evil_plooy_detailed.hide()
+	
+func show_monk():
+	monk_detailed.hide()
+
+func change_pitch(tone: String):
+	if tone == "low":
+		audio.pitch_scale = 0.5
+	elif tone == "high":
+		audio.pitch_scale = 0.75
 
 func _ready() -> void:
 	balloon.hide()

@@ -47,31 +47,18 @@ var phase = 1
 @onready var lightbulb = $"../lightbulb"
 
 func _on_player_finished_moving() -> void:
-	var normalized_rotation = int(round(rotation_degrees)) % 360
-	var monk_normalized_rotation = int(round(monk.rotation_degrees)) % 360
-	#print("NORMALIZED ROTATION: ", normalized_rotation)
-	#print("MONK NORMALIZED ROTATION: ", monk_normalized_rotation)
-	#print("SEED MATCHED: ", seed.matched)
-	#print("SKULL MATCHED: ", skull.matched)
-	print("ROTATION MATCHED: ", normalized_rotation == monk_normalized_rotation )
-	print("POSITION MATCHED: ", position == monk.position )
+	#var normalized_rotation = int(round(rotation_degrees)) % 360
+	#var monk_normalized_rotation = int(round(monk.rotation_degrees)) % 360
 	if phase == 1:
-		if seed.matched and skull.matched and normalized_rotation == monk_normalized_rotation and position == monk.position:
+		if seed.matched and skull.matched:
 			finish_phase_1()
 	elif phase == 2:
-		if rock.matched and egg.matched and soda.matched and apple.matched and normalized_rotation == monk_normalized_rotation and position == monk.position:
+		if rock.matched and egg.matched and soda.matched and apple.matched:
 			finish_phase_2()
 	elif phase == 3:
-		print("BUTTERFLY MATCHED: ", butterfly.matched)
-		print("CARROT MATCHED: ", carrot.matched)
-		print("CAT MATCHED: ", cat.matched)
-		print("LIGHTBULB MATCHED: ", lightbulb.matched)
-		if butterfly.matched and carrot.matched and cat.matched and lightbulb.matched and normalized_rotation == monk_normalized_rotation and position == monk.position:
-			print("ALL ARE MATCHED")
+		if butterfly.matched and carrot.matched and cat.matched and lightbulb.matched:
 			finish_phase_3()
 	
-	
-
 func finish_phase_1():
 	phase += 1
 	get_parent().enter_phase_2()

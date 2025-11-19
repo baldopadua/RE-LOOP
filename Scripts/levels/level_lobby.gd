@@ -89,7 +89,7 @@ func _ready():
 			obj.is_enterable = false
 
 func initialize_text_labels():
-	var entrances = [enter_1, enter_2, enter_3, enter_4, enter_5, enter_6, enter_7, enter_8, enter_9, enter_10, enter_11, enter_12, enter_13] # <--- include enter_13
+	var entrances = [enter_1, enter_2, enter_3, enter_4, enter_5, enter_6, enter_7, enter_8, enter_9, enter_10, enter_11, enter_12]
 	for entrance in entrances:
 		if entrance and entrance.has_node("hover_text"):
 			var hover_label = entrance.get_node("hover_text")
@@ -100,7 +100,7 @@ func initialize_text_labels():
 			interact_label.visible = false
 
 func objects_initialize():
-	for i in range(1, 14): # <--- up to 13
+	for i in range(1, 13):
 		var entrance_var_name = "enter_" + str(i)
 		var entrance = get(entrance_var_name)
 		if entrance:
@@ -183,7 +183,7 @@ func update_completed_levels_visual():
 	print("Updating completed levels visual...")
 	print("Completed levels: ", level_handler.completed_levels)
 	
-	for level_num in range(1, 14): # <--- up to 13
+	for level_num in range(1, 13):
 		var is_completed = level_handler.completed_levels.has(level_num)
 		print("Level ", level_num, " - Completed: ", is_completed)
 		
@@ -459,16 +459,3 @@ func get_level_number_from_entrance(entrance_obj) -> int:
 		var num_str = obj_name.substr(6) 
 		return int(num_str)
 	return 0
-
-# --- NEW: Handle interaction with enter_13 ---
-func handle_enter_13_interaction():
-	# Mark level 12 as completed if not already
-	if not level_handler.completed_levels.has(12):
-		level_handler.completed_levels.append(12)
-		print("Level 12 marked as completed via enter_13.")
-	# Always update visuals after marking complete
-	update_completed_levels_visual()
-	# Optionally, disable enter_13 after interaction
-	if enter_13:
-		disable_entrance_completely(enter_13)
-	# You can add more logic here if needed (e.g., show a "Congratulations" message)
