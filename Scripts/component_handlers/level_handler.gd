@@ -448,3 +448,71 @@ func _on_geyser_level_3_completed() -> void:
 	# Update clock entrance visuals immediately
 	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
 		level_status_node.update_completed_levels_visual(completed_levels)
+
+
+func _on_level_4_level_4_completed() -> void:
+	ui_handler.show_game_ui_elements()
+	if not completed_levels.has(4):
+		completed_levels.append(4)
+		print("Level 4 marked as completed via tree signal.")
+	# Update clock entrance visuals immediately
+	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
+		level_status_node.update_completed_levels_visual(completed_levels)
+
+
+func _on_level_5_level_5_completed() -> void:
+	ui_handler.hide_and_disable_hint_and_time()
+	# --- Ensure hint and time are hidden visually ---
+	var game_ui = ui_handler.ui_logic.get_node_or_null("game_ui_elements")
+	if game_ui:
+		var hint_btn = game_ui.get_node_or_null("hint_button")
+		if hint_btn:
+			hint_btn.visible = false
+		var time_node = game_ui.get_node_or_null("time")
+		if time_node:
+			time_node.visible = false
+	# ...existing code...
+	if not completed_levels.has(5):
+		completed_levels.append(5)
+		print("Level 4 marked as completed via tree signal.")
+	# ...existing code...
+	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
+		level_status_node.update_completed_levels_visual(completed_levels)
+
+func _on_level_6_scene_level_6_completed() -> void:
+	ui_handler.show_game_ui_elements()
+	# --- Ensure hint and time are hidden visually ---
+	var game_ui = ui_handler.ui_logic.get_node_or_null("game_ui_elements")
+	if game_ui:
+		var hint_btn = game_ui.get_node_or_null("hint_button")
+		if hint_btn:
+			hint_btn.visible = false
+		var time_node = game_ui.get_node_or_null("time")
+		if time_node:
+			time_node.visible = false
+	# ...existing code...
+	if not completed_levels.has(6):
+		completed_levels.append(6)
+		print("Level 6 marked as completed via tree signal.")
+	# ...existing code...
+	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
+		level_status_node.update_completed_levels_visual(completed_levels)
+
+func _on_wind_level_7_completed() -> void:
+	ui_handler.hide_and_disable_hint_and_time()
+	# --- Ensure hint and time are hidden visually ---
+	var game_ui = ui_handler.ui_logic.get_node_or_null("game_ui_elements")
+	if game_ui:
+		var hint_btn = game_ui.get_node_or_null("hint_button")
+		if hint_btn:
+			hint_btn.visible = false
+		var time_node = game_ui.get_node_or_null("time")
+		if time_node:
+			time_node.visible = false
+	# ...existing code...
+	if not completed_levels.has(7):
+		completed_levels.append(7)
+		print("Level 7 marked as completed via tree signal.")
+	# Update clock entrance visuals immediately
+	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
+		level_status_node.update_completed_levels_visual(completed_levels)

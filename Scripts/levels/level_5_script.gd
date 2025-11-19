@@ -28,6 +28,9 @@ var level_completed: bool = false  # NEW: Prevent multiple completions
 @onready var tween_rotate: Tween
 @onready var tween_scale: Tween
 
+
+signal level_5_completed 
+
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(5)
@@ -49,6 +52,13 @@ func _ready():
 	temp_timer.one_shot = true
 	if player_label:
 		player_label.visible = false
+
+	# Ensure AnimationPlayer is ready for replay
+	if $AnimationPlayer.is_connected("animation_finished", _on_animation_player_animation_finished):
+		$AnimationPlayer.disconnect("animation_finished", _on_animation_player_animation_finished)
+	$AnimationPlayer.connect("animation_finished", _on_animation_player_animation_finished)
+	$AnimationPlayer.stop()
+	$AnimationPlayer.seek(0, true)
 
 func objects_initialize():
 	objects.append(science_project)
@@ -113,6 +123,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		if not player_has_entered:
 			player_label.visible = true
 			GlobalVariables.player_stopped = true
+			# Immediately stop and reset the animation to "kill" it
+			$AnimationPlayer.stop()
+			$AnimationPlayer.seek(0, true)
+			# Disconnect signal to avoid further triggers
+			if $AnimationPlayer.is_connected("animation_finished", _on_animation_player_animation_finished):
+				$AnimationPlayer.disconnect("animation_finished", _on_animation_player_animation_finished)
 			# start timer and wait, then restart level (no malformed connect)
 			temp_timer.start(3.0)
 			ui_handler.hide_game_ui_elements()
@@ -121,6 +137,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			player.get_node("Camera2D").emit_signal("reveal_bars")
 			await temp_timer.timeout
 			level_handler.restart_level(get_parent())
+			await get_tree().process_frame 
+			emit_signal("level_5_completed")
+			
+			
 		else:
 			# Mark as completed BEFORE calling level handler
 			level_completed = true
@@ -129,6 +149,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 			player.get_node("Camera2D").emit_signal("cam_orig_zoom")
 			
+			await get_tree().process_frame # Wait for animation to visually finish
 			level_handler.complete_current_level(get_parent())
 			player.get_node("Camera2D").emit_signal("hide_bars")
 			# Permanently remove bars so they can't come back

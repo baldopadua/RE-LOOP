@@ -854,6 +854,7 @@ position = Vector2(-148, -75)
 [node name="rocket_exit" type="Marker2D" parent="."]
 position = Vector2(-58, -5)
 
+[connection signal="level_5_completed" from="." to="CanvasLayer/LevelHandler" method="_on_level_5_level_5_completed"]
 [connection signal="animation_finished" from="vending/AnimatedSprite2D" to="vending" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_shape_entered" from="science_project" to="science_project" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="science_project" to="science_project" method="_on_area_shape_exited"]

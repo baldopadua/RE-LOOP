@@ -1277,6 +1277,7 @@ texture = SubResource("GradientTexture2D_enhda")
 [node name="pos_to_focus" type="Marker2D" parent="."]
 position = Vector2(-58, -217)
 
+[connection signal="level_4_completed" from="." to="CanvasLayer/LevelHandler" method="_on_level_4_level_4_completed"]
 [connection signal="item_put" from="incubator" to="incubator" method="_on_item_put"]
 [connection signal="add_cur_state" from="chicken" to="chicken" method="_on_add_cur_state"]
 [connection signal="add_cur_state" from="lizard" to="lizard" method="_on_add_cur_state"]

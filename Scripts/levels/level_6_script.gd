@@ -25,6 +25,8 @@ var player_body: Node = null
 
 var jump_animation_played := false # Add this flag
 
+signal level_6_completed 
+
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(6)
@@ -118,6 +120,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			anim_handler.stop() 
 			ui_handler.set_time_indicator_fixed()
 			level_handler.complete_current_level(get_parent())
+		emit_signal("level_6_completed")
 		player_body.get_node("Camera2D").emit_signal("hide_bars")
 		player_body.get_node("Camera2D").emit_signal("cam_orig_zoom")
 		player_body.get_node("Camera2D").emit_signal("pan_to_orig_pos")

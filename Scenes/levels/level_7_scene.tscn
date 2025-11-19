@@ -823,4 +823,5 @@ libraries = {
 [connection signal="area_entered" from="spider" to="spider" method="_on_area_entered"]
 [connection signal="add_cur_state" from="flower" to="flower" method="_on_add_cur_state"]
 [connection signal="add_wind_state" from="wind" to="wind" method="_on_add_wind_state"]
+[connection signal="level_7_completed" from="wind" to="CanvasLayer/LevelHandler" method="_on_wind_level_7_completed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="wind" method="_on_animation_player_animation_finished"]
