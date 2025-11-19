@@ -93,6 +93,10 @@ func _on_open_box_animation_finished(anim_name: StringName) -> void:
 			cat.cat_tween.kill()
 			print("Stopped floating tween.")
 
+		# Play loop break sound when box goes down
+		if sound_manager and sound_manager.sfx.has("loop_break"):
+			sound_manager.play_sfx("loop_break")
+
 		var tween := create_tween()
 		cat.create_tween().tween_property(cat, "position:y", 280.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "position:y", 280.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -101,6 +105,11 @@ func _on_open_box_animation_finished(anim_name: StringName) -> void:
 
 func _on_box_tween_finished():
 	#print("Box tween finished, new position: ", position)
+	
+	# Play box opening sound when cats appear
+	if sound_manager and sound_manager.sfx.has("box_opening"):
+		sound_manager.play_sfx("box_opening")
+	
 	animation_sprite.play_backwards("activate")
 	animation_sprite.animation_finished.connect(func():
 		player.get_node("Camera2D").emit_signal("cam_orig_zoom")
