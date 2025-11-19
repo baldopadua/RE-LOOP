@@ -19,7 +19,7 @@ var did_franklin_successfully_invented_electricity: bool = false
 var is_loop_broken = false
 
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
-
+signal level_10_completed
 # ENABLE PROCEEDING IN DIFFERENT LEVEL
 
 func _on_keystone_complete(obj_name: String, enabled: bool) -> void:
@@ -75,3 +75,4 @@ func _on_body_entered(body) -> void:
 		await get_tree().create_timer(0.50).timeout
 		ui_handler.show_game_ui_elements()
 		get_parent().level_handler.complete_current_level(get_parent().get_parent())
+		emit_signal("level_10_completed")
