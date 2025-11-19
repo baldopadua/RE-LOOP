@@ -131,11 +131,6 @@ func set_current_lobby():
 	
 
 func complete_current_level(levels_frame):
-	ui_handler.enable_game_ui_elements()
-	# Always hide hint and timer when any level is completed
-	if ui_handler:
-		ui_handler.hide_and_disable_hint_and_time()
-	
 	if current_level_number > 0:
 		var current_level = levels_frame.get_child(0)
 		if current_level:
