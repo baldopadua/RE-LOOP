@@ -9,6 +9,7 @@ signal open_box # New signal
 @onready var player = $"../PlayerScene"
 @onready var box_down_marker = $"../box_down_marker"
 @onready var schrodinger = $"../schrodinger"
+@onready var sound_manager = $"../SoundManager"
 
 var cat_placed = false
 var cat2_placed = false
@@ -51,6 +52,10 @@ func close_box_function():
 	player.get_node("Camera2D").emit_signal("pan_to_pos", global_position)
 	
 	await get_tree().create_timer(1.5).timeout
+	
+	# Play box closing SFX
+	if sound_manager and sound_manager.sfx.has("box_closing"):
+		sound_manager.play_sfx("box_closing")
 	
 	animation_sprite.play("activate")
 
@@ -120,6 +125,11 @@ func _on_body_entered(body) -> void:
 		cat.create_tween().tween_property(cat, "position:y", 290.0, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func():
 			await get_tree().create_timer(0.5).timeout	
 			player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+			
+			# Play box climbing SFX when Plooy ascends
+			if sound_manager and sound_manager.sfx.has("box_climb"):
+				sound_manager.play_sfx("box_climb")
+			
 			var tween := create_tween()
 			tween.tween_property(self, "position:y", 0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 			player.create_tween().tween_property(player.get_node("AnimatedSprite2D"), "position:y", 0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func():

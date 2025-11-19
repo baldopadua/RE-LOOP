@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqhvbm4et3w57"]
+
+[ext_resource type="AudioStream" uid="uid://c23bf0v6505ig" path="res://Audio/sfx/person3.wav" id="1_schrodinger"]
+
+[node name="schrodinger_voice" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_schrodinger")
+volume_db = 3.0
+pitch_scale = 0.75
+max_polyphony = 2
+bus = &"sfx"

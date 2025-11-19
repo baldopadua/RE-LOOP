@@ -4,6 +4,7 @@ signal toggle_switch_circle()
 
 @onready var player = $"../../PlayerScene"
 @onready var canvas_layer = $"../../CanvasLayer"
+@onready var sound_manager = $"../../SoundManager"
 @export var x_pos : float = 0.0
 @export var y_pos : float = 0.0
 
@@ -23,6 +24,12 @@ func _on_body_exited(body) -> void:
 
 func _on_toggle_switch_circle() -> void:
 	print("TOGGLE_SWITCH_CIRCLE TOGGLED")
+	
+	# Play teleportation SFX
+	if sound_manager and sound_manager.sfx.has("crystal_sfx"):
+		sound_manager.play_sfx("crystal_sfx")
+	if sound_manager and sound_manager.sfx.has("teleport"):
+		sound_manager.play_sfx("teleport")
 
 	var flash = ColorRect.new()
 	flash.color = Color(0, 0, 0, 1)

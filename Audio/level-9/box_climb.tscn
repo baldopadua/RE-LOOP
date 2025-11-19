@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr7sir71oag2w"]
+
+[ext_resource type="AudioStream" uid="uid://mx84a50byjkj" path="res://Audio/sfx/climb_lvl1_2.wav" id="1_climb"]
+
+[node name="box_climb" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_climb")
+volume_db = 3.0
+pitch_scale = 0.95
+max_polyphony = 2
+bus = &"sfx"

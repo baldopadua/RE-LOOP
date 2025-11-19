@@ -22,7 +22,7 @@ func _on_body_exited(body) -> void:
 
 func _on_toggle_switch_circle() -> void:
 	if player.position.x == -240.0:
-		# Play teleportation SFX
+		# Play teleportation SFX (pitched up)
 		if sound_manager and sound_manager.sfx.has("crystal_sfx"):
 			sound_manager.play_sfx("crystal_sfx")
 		if sound_manager and sound_manager.sfx.has("teleport"):
@@ -40,7 +40,7 @@ func _on_toggle_switch_circle() -> void:
 		# Fade out animation
 		flash.create_tween().tween_property(flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 	else:
-		# Play teleportation SFX
+		# Play teleportation SFX (pitched up)
 		if sound_manager and sound_manager.sfx.has("crystal_sfx"):
 			sound_manager.play_sfx("crystal_sfx")
 		if sound_manager and sound_manager.sfx.has("teleport"):
