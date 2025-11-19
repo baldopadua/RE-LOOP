@@ -160,6 +160,11 @@
 [ext_resource type="PackedScene" uid="uid://e2f3g4h5i6j7k" path="res://Audio/level-10/laser_climb.tscn" id="69_level10"]
 [ext_resource type="PackedScene" uid="uid://f3g4h5i6j7k8l" path="res://Audio/level-10/bones_collapse.tscn" id="70_level10"]
 
+; ========================================
+; LEVEL 11 SOUNDS (Wrappers - PackedScene)
+; ========================================
+[ext_resource type="PackedScene" uid="uid://s1t2u3v4w5x6y" path="res://Audio/level-11/statue_destruction.tscn" id="71_level11"]
+
 
 
 [node name="SoundManager" type="Node2D"]
@@ -413,6 +418,8 @@ stream = ExtResource("15_clock")
 [node name="bones_collapse" parent="sfx/level_10_sfx" instance=ExtResource("70_level10")]
 
 [node name="level_11_sfx" type="Node2D" parent="sfx"]
+
+[node name="statue_destruction" parent="sfx/level_11_sfx" instance=ExtResource("71_level11")]
 
 [node name="level_12_sfx" type="Node2D" parent="sfx"]
 

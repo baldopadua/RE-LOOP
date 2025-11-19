@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://s1t2u3v4w5x6y"]
+
+[ext_resource type="AudioStream" uid="uid://r1p3goyqtthx" path="res://Audio/sfx/rock_explode.wav" id="1_rock"]
+
+[node name="statue_destruction" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_rock")
+volume_db = 3.0
+pitch_scale = 1.0
+max_polyphony = 3
+bus = &"sfx"
