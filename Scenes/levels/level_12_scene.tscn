@@ -2773,6 +2773,7 @@ wait_time = 20.0
 
 [node name="count_down" type="Timer" parent="."]
 
+[connection signal="level_12_completed" from="." to="CanvasLayer/LevelHandler" method="_on_level_12_scene_level_12_completed"]
 [connection signal="toggle_switch_circle" from="AreaHandler1/1_switch_circle" to="AreaHandler1/1_switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="toggle_switch_circle" from="AreaHandler1/2_switch_circle" to="AreaHandler1/2_switch_circle" method="_on_toggle_switch_circle"]
 [connection signal="toggle_switch_circle" from="AreaHandler1/2_switch_circle2" to="AreaHandler1/2_switch_circle2" method="_on_toggle_switch_circle"]

@@ -531,7 +531,7 @@ func _on_gun_level_8_completed() -> void:
 	# Update clock entrance visuals immediately
 	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
 		level_status_node.update_completed_levels_visual(completed_levels)
-		
+
 func _on_laser_level_10_completed() -> void:
 	ui_handler.show_game_ui_elements()
 	if not completed_levels.has(10):
@@ -541,5 +541,11 @@ func _on_laser_level_10_completed() -> void:
 	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
 		level_status_node.update_completed_levels_visual(completed_levels)
 
-
-
+func _on_level_12_scene_level_12_completed() -> void:
+	ui_handler.show_game_ui_elements()
+	if not completed_levels.has(12):
+		completed_levels.append(12)
+		print("Level 8 marked as completed via tree signal.")
+	# Update clock entrance visuals immediately
+	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
+		level_status_node.update_completed_levels_visual(completed_levels)

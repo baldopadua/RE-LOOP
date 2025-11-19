@@ -8,6 +8,8 @@ var tween_rotate: Tween
 var tween_scale: Tween
 var objects: Array = []
 
+signal level_12_completed 
+
 var object_positions = [
 	Vector2(144, -253),
 	Vector2(254, -144),
@@ -735,6 +737,7 @@ func finish_it():
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	
 func _on_dialogue_ended(_resource: DialogueResource):
+	
 	player.create_tween().tween_property(player, "position", Vector2(0, 0), 3.0)
 #	Monk gets separated to the right circle
 	monk.create_tween().tween_property(monk, "position", Vector2(0, 0), 3.0).finished.connect(func():
@@ -748,10 +751,13 @@ func _on_dialogue_ended(_resource: DialogueResource):
 		flash.anchor_right = 1
 		flash.anchor_bottom = 1
 		canvas_layer.add_child(flash)
-		
+		#enable ui
+		ui_handler.enable_game_ui_elements()
 		flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		await get_tree().create_timer(3.0).timeout
+		emit_signal("level_12_completed")
 		level_handler.complete_current_level(get_parent())
+		
 	)
 
 func infinite_rotation() -> void:

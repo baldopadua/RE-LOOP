@@ -877,7 +877,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hint_2_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2"]
-wait_time = 10.0
+wait_time = 120.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/hint_2/hint_2_timer"]
 visible = false
@@ -934,7 +934,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="solution_timer" type="Timer" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution"]
-wait_time = 10.0
+wait_time = 120.0
 
 [node name="timer_label" type="Label" parent="ui_logic/overlay/hint/hint_box/hint_box_empty/solution/solution_timer"]
 visible = false
@@ -2012,10 +2012,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.032936484
-anchor_top = -0.021405319
-anchor_right = 0.971094
-anchor_bottom = 1.029316
+anchor_left = 0.0987939
+anchor_top = 0.08120055
+anchor_right = 0.93133104
+anchor_bottom = 1.0234994
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -2026,8 +2026,14 @@ theme_override_constants/paragraph_spacing = 0
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 56
-text = "Place the keystones in their rightful statues, but keep in mind your other self. Match his position to prevent the reset, or lose a keystone from its proper place."
+theme_override_font_sizes/font_size = 39
+text = "\"Two selves walk the final thread of time.
+One knows the path, the other repeats it.
+Every step your echo takes pulls a memory from its place,
+and every misplaced memory drags the loop tighter.
+Guide both Plooys so their moments align,
+or the keystones will scatter and the end will begin again.\"
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -2038,9 +2044,11 @@ texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05406056
-anchor_top = 0.15030245
+anchor_top = -0.070614256
 anchor_right = 0.9412718
-anchor_bottom = 0.89785945
+anchor_bottom = 1.1187762
+offset_top = 105.5
+offset_bottom = -105.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.972549, 0.972549, 1, 1)
@@ -2050,8 +2058,13 @@ theme_override_constants/line_spacing = 7
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("38_kyj2j")
-theme_override_font_sizes/font_size = 54
-text = "Place the keystones in their rightful statues, but keep in mind your other self. Match his position to prevent the reset, or lose a keystone from its proper place."
+theme_override_font_sizes/font_size = 37
+text = "\"Your past self retraces your old steps.
+If his path collides with what you’ve set in the present,
+a keystone will fall out of place and the loop will restart.
+Place each keystone on its correct statue
+while keeping your other self positioned safely away
+from anything that could undo your work.\""
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
