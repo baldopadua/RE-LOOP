@@ -111,11 +111,12 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 
 # If the rocket animation is finished go to level 6
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	# GUARD: Prevent multiple calls
+
 	if level_completed:
 		return
 		
 	if anim_name == "rocket_animation":
+		
 		# DISCONNECT immediately to prevent re-triggers
 		if $AnimationPlayer.is_connected("animation_finished", _on_animation_player_animation_finished):
 			$AnimationPlayer.disconnect("animation_finished", _on_animation_player_animation_finished)
@@ -136,14 +137,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 			player.get_node("Camera2D").emit_signal("reveal_bars")
 			await temp_timer.timeout
+			
+			
 			level_handler.restart_level(get_parent())
 			await get_tree().process_frame 
-			emit_signal("level_5_completed")
-			
 			
 		else:
 			# Mark as completed BEFORE calling level handler
 			level_completed = true
+			emit_signal("level_5_completed")
 			# Player successfully entered the rocket and animation finished
 			ui_handler.set_time_indicator_fixed()
 			player.get_node("Camera2D").emit_signal("pan_to_orig_pos")

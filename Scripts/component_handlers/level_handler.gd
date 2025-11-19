@@ -128,8 +128,13 @@ func set_current_lobby():
 	
 	level_status_node.resume_following_player()
 	emit_signal("hint_level_changed", 0)
+	
 
 func complete_current_level(levels_frame):
+	# Always hide hint and timer when any level is completed
+	if ui_handler:
+		ui_handler.hide_and_disable_hint_and_time()
+	
 	if current_level_number > 0:
 		var current_level = levels_frame.get_child(0)
 		if current_level:
@@ -461,7 +466,7 @@ func _on_level_4_level_4_completed() -> void:
 
 
 func _on_level_5_level_5_completed() -> void:
-	ui_handler.hide_and_disable_hint_and_time()
+	ui_handler.show_game_ui_elements()
 	# --- Ensure hint and time are hidden visually ---
 	var game_ui = ui_handler.ui_logic.get_node_or_null("game_ui_elements")
 	if game_ui:
@@ -513,6 +518,16 @@ func _on_wind_level_7_completed() -> void:
 	if not completed_levels.has(7):
 		completed_levels.append(7)
 		print("Level 7 marked as completed via tree signal.")
+	# Update clock entrance visuals immediately
+	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
+		level_status_node.update_completed_levels_visual(completed_levels)
+
+
+func _on_level_8_scene_level_8_completed() -> void:
+	ui_handler.show_game_ui_elements()
+	if not completed_levels.has(8):
+		completed_levels.append(8)
+		print("Level 8 marked as completed via tree signal.")
 	# Update clock entrance visuals immediately
 	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
 		level_status_node.update_completed_levels_visual(completed_levels)

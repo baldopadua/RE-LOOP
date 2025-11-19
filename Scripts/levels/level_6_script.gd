@@ -105,6 +105,7 @@ func object_initialize():
 	objects.append(seed2)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	emit_signal("level_6_completed")
 	print("Animation finished: ", anim_name)
 	if anim_name == "climbing_animation":
 		# Play jump animation on player sprite after climbing finishes
@@ -120,7 +121,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			anim_handler.stop() 
 			ui_handler.set_time_indicator_fixed()
 			level_handler.complete_current_level(get_parent())
-		emit_signal("level_6_completed")
 		player_body.get_node("Camera2D").emit_signal("hide_bars")
 		player_body.get_node("Camera2D").emit_signal("cam_orig_zoom")
 		player_body.get_node("Camera2D").emit_signal("pan_to_orig_pos")
