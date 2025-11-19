@@ -439,35 +439,35 @@ stream = ExtResource("15_clock")
 
 [node name="music" type="Node2D" parent="."]
 
-[node name="main_bgm" type="AudioStreamPlayer2D" parent="music"]
+[node name="main_bgm" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource("29_fwa5o")
 volume_db = 5.0
 
-[node name="final_level_bgm" type="AudioStreamPlayer2D" parent="music"]
+[node name="final_level_bgm" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource("5_final")
 volume_db = 5.0
 
-[node name="level_11_final_bgm" type="AudioStreamPlayer2D" parent="music"]
+[node name="level_11_final_bgm" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource("6_level11")
 volume_db = 5.0
 
 [node name="ambience" type="Node2D" parent="music"]
 
-[node name="space_ambience" type="AudioStreamPlayer2D" parent="music/ambience"]
+[node name="space_ambience" type="AudioStreamPlayer" parent="music/ambience"]
 stream = ExtResource("7_2aguw")
 volume_db = -5.0
 
-[node name="bird_chirp" type="AudioStreamPlayer2D" parent="music/ambience"]
+[node name="bird_chirp" type="AudioStreamPlayer" parent="music/ambience"]
 stream = ExtResource("5_bird")
 volume_db = -12.0
 bus = &"sfx"
 
-[node name="cricket" type="AudioStreamPlayer2D" parent="music/ambience"]
+[node name="cricket" type="AudioStreamPlayer" parent="music/ambience"]
 stream = ExtResource("5_cricket")
 volume_db = -12.0
 bus = &"sfx"
 
-[node name="idle_wind" type="AudioStreamPlayer2D" parent="music/ambience"]
+[node name="idle_wind" type="AudioStreamPlayer" parent="music/ambience"]
 stream = ExtResource("5_wind")
 volume_db = 5.0
 bus = &"sfx"
