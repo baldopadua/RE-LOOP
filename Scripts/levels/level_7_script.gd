@@ -31,6 +31,25 @@ func _ready():
 	objects_initialize()
 
 	player.rotation = deg_to_rad(210.0)
+	
+	player.set_process_input(false)
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	player.get_node("Camera2D").emit_signal("reveal_bars")
+	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
+	player.get_node("Camera2D").emit_signal("pan_to_pos", butterfly.global_position)
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	player.get_node("Camera2D").emit_signal("pan_to_pos", wind.global_position)
+	await get_tree().create_timer(2.0).timeout
+	
+	player.get_node("Camera2D").emit_signal("hide_bars")
+	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
+	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+	
+	player.set_process_input(true)
 
 func objects_initialize():
 	objects.append(butterfly)
