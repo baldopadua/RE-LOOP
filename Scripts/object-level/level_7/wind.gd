@@ -131,4 +131,3 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		# NOTIFY LEVEL 7 IS COMPLETED - this will handle cutscene and next level automatically
 		level_handler.complete_current_level(get_parent().get_parent())
 	emit_signal("level_7_completed")
-

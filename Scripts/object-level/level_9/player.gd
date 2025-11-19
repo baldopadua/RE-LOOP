@@ -33,6 +33,10 @@ func _on_player_finished_moving() -> void:
 				
 				await get_tree().create_timer(2.0).timeout
 				
+				# Play level switch SFX when levers activate
+				if sound_manager and sound_manager.sfx.has("level_switch"):
+					sound_manager.play_sfx("level_switch")
+				
 				lever1.get_node("AnimatedSprite2D").play("default")
 				lever2.get_node("AnimatedSprite2D").play("default")
 				lever2.get_node("AnimatedSprite2D2").play("default")
@@ -44,7 +48,15 @@ func _on_player_finished_moving() -> void:
 				get_node("Camera2D").emit_signal("cam_zoom", 0.75)
 				shake_camera(5.0, 10.0, 2.5)	
 				
+				# Play variance merging SFX (loop shake)
+				if sound_manager and sound_manager.sfx.has("loop_shake"):
+					sound_manager.play_sfx("loop_shake")
+				
 				await get_tree().create_timer(2.5).timeout
+				
+				# Play crystal transition for variance merge
+				if sound_manager and sound_manager.sfx.has("crystal_transition"):
+					sound_manager.play_sfx("crystal_transition")
 				
 				var flash = ColorRect.new()
 				flash.color = Color(1, 1, 1, 1)

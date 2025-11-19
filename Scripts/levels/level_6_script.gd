@@ -133,6 +133,11 @@ func enable_animation_player():
 
 func play_climb_animation(body: Node) -> void:
 	self.player_body = body
+	
+	# Play tree climbing SFX
+	if sound_manager and sound_manager.sfx.has("tree_climb"):
+		sound_manager.play_sfx("tree_climb")
+	
 	anim_handler.play("climbing_animation")
 
 

@@ -110,7 +110,7 @@ func hide_evil_plooy_and_monk():
 	evil_plooy_detailed.hide()
 	
 func show_monk():
-	monk_detailed.hide()
+	monk_detailed.show()
 
 func change_pitch(tone: String):
 	if tone == "low":
@@ -133,7 +133,6 @@ func _ready() -> void:
 		if not is_instance_valid(dialogue_resource):
 			assert(false, DMConstants.get_error_message(DMConstants.ERR_MISSING_RESOURCE_FOR_AUTOSTART))
 		start()
-
 
 func _process(delta: float) -> void:
 	if is_instance_valid(dialogue_line):

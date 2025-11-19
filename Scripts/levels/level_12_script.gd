@@ -3,6 +3,7 @@ extends Node2D
 @export var source_tilemap: TileMapLayer
 @onready var player = $PlayerScene
 @onready var count_down = $count_down
+@onready var timer = $Timer
 
 var tween_rotate: Tween
 var tween_scale: Tween
@@ -140,6 +141,7 @@ var objects_in_phase_2 = []
 var objects_in_phase_3 = []
 
 func _ready():
+	timer.start()
 	objects_in_phase_1 = [seed, skull]
 	objects_in_phase_2 = [rock, egg, soda, apple]
 	objects_in_phase_3 = [butterfly, carrot, cat, lightbulb]
@@ -287,14 +289,14 @@ func tween_opacity(target: CanvasItem, to_alpha: float, duration: float = 0.5):
 	)
 
 func enter_phase_1():
-	for node in get_children():
-		if node is Timer:
-			if node.name.contains("countdown"):
-				node.queue_free()
 	
 	player.set_process_input(false)
 	ui_handler.disable_game_ui_elements()
 	ui_handler.hide_game_ui_elements()
+	
+	# Play loop shake sound before transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
 	
 	# Play loop shake sound before transition
 	if sound_manager and sound_manager.sfx.has("loop_shake"):
@@ -376,17 +378,12 @@ func enter_phase_1():
 	
 #	Enable Player Movement
 	player.set_process_input(true)
-	$Timer.start()
 	tween_opacity(monk, 0.0, 3.0)
 	await get_tree().create_timer(3.0).timeout
 	monk.hide()
 	monk.position = Vector2(9999, 9999)
 
 func enter_phase_2():
-	for node in get_children():
-		if node is Timer:
-			if node.name.contains("countdown"):
-				node.queue_free()
 	ui_handler.hide_game_ui_elements()
 	
 	player.set_process_input(false)
@@ -394,6 +391,11 @@ func enter_phase_2():
 	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
+	
+	# Play loop shake sound for phase transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
 #	Cinematic Cameras
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 #	Zoom out
@@ -410,6 +412,11 @@ func enter_phase_2():
 	canvas_layer.add_child(flash)
 	
 	flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+	# Play crystal transition sound during flash
+	if sound_manager and sound_manager.sfx.has("crystal_transition"):
+		sound_manager.play_sfx("crystal_transition")
+	
 	await get_tree().create_timer(3.0).timeout
 	
 	# Reveal all while still on white flash
@@ -517,10 +524,6 @@ func enter_phase_2():
 	player.set_process_input(true)
 
 func enter_phase_3():
-	for node in get_children():
-		if node is Timer:
-			if node.name.contains("countdown"):
-				node.queue_free()
 	ui_handler.hide_game_ui_elements()
 	
 	player.set_process_input(false)
@@ -528,6 +531,16 @@ func enter_phase_3():
 	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
+	
+	# Play loop shake sound for phase transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
+#	Cinematic Cameras
+	player.get_node("Camera2D").emit_signal("reveal_bars")
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
 #	Cinematic Cameras
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 #	Zoom out
@@ -544,6 +557,11 @@ func enter_phase_3():
 	canvas_layer.add_child(flash)
 	
 	flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+	# Play crystal transition sound during flash
+	if sound_manager and sound_manager.sfx.has("crystal_transition"):
+		sound_manager.play_sfx("crystal_transition")
+	
 	await get_tree().create_timer(3.0).timeout
 	
 	# Reveal all while still on white flash
@@ -678,6 +696,9 @@ func enter_phase_3():
 	player.set_process_input(true)
 	
 func finish_it():	
+	tween_opacity(player, 0.0, 2.0)
+	tween_opacity(monk, 0.0, 2.0)	
+	
 	GlobalVariables.player_stopped = true
 	ui_handler.disable_game_ui_elements()
 	ui_handler.hide_game_ui_elements()
@@ -689,7 +710,7 @@ func finish_it():
 #	Zoom out
 	player.get_node("Camera2D").emit_signal("cam_zoom", 0.1)
 	
-	player.get_node("Camera2D").emit_signal("pan_to_pos", monk.global_position)
+	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	
 	await get_tree().create_timer(1.0).timeout
 	
@@ -712,6 +733,7 @@ func finish_it():
 	
 	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 	
+	
 	for area_handlerr in area_handlers_3:
 		area_handlerr.hide()
 	
@@ -719,17 +741,20 @@ func finish_it():
 	var unflash = create_tween()
 	unflash.tween_property(flash, "modulate:a", 0.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 
+	tween_opacity(player, 1.0, 2.0)
+	tween_opacity(monk, 1.0, 2.0)
+
 #	The separation of the two symbolizes the 
 	
 #	Plooy also gets separated to the left circle
 	player.create_tween().tween_property(player, "position", Vector2(-20, 0), 2.0)
 	#player.get_node("AnimatedSprite2D").flip_h = true
 	player.get_node("AnimatedSprite2D").rotation_degrees = 0.0
+	player.rotation_degrees = 0.0
 	player.get_node("AnimatedSprite2D").flip_h = true
-#	Monk gets separated to the right circle
-	monk.show()
 	monk.create_tween().tween_property(monk, "position", Vector2(20, 0), 2.0)
 	monk.get_node("AnimatedSprite2D").rotation_degrees = 0.0
+	monk.rotation_degrees = 0.0
 
 	await unflash.finished
 	
@@ -766,8 +791,9 @@ func infinite_rotation() -> void:
 	tween.tween_property(circly_thingy, "rotation_degrees", 360.0, 1.0).as_relative().set_trans(Tween.TRANS_LINEAR)
 
 func _on_timer_timeout() -> void:
-	if player.is_processing_input():
-		trigger_random_event()
+	if not player.is_processing_input() or GlobalVariables.player_stopped:
+		return
+	trigger_random_event()
 
 var countdown_data = {"time": 6}
 
@@ -797,6 +823,14 @@ func trigger_random_event():
 
 func on_countdown_tick(_monk_duplicate, time_left):
 	time_left -= 1
+	print("COUNTDOWN DATA TIME: ", countdown_data.time)
+	print("TIMER TIME: ", timer.time_left)
+
+	# Play countdown beep with increasing pitch as time decreases
+	if sound_manager and sound_manager.sfx.has("countdown_beep"):
+		var pitch = 0.7 + (6 - time_left) * 0.1  # 0.7 at 6 seconds, 1.2 at 1 second
+		sound_manager.set_sfx_pitch_scale("countdown_beep", pitch)
+		sound_manager.play_sfx("countdown_beep")
 
 	player.shake_camera(1.0, 3.0, 1.0)
 	
@@ -843,15 +877,16 @@ func create_countdown_label(time_left: int) -> void:
 	tween.finished.connect(func(): label.queue_free())
 
 
-func _on_player_scene_player_finished_moving() -> void:
+func _on_player_scene_player_finished_moving() -> void:	
 	# Check rotation alignment FIRST
 	var plyr_clock_pos = int(abs(round(player.rotation_degrees))) % 360
 	var monk_clock_pos = int(abs(round(monk.rotation_degrees))) % 360
 	
-	print("PLR ROT: ", plyr_clock_pos)
-	print("MONK ROT: ", monk_clock_pos)
+	#print("PLR ROT: ", plyr_clock_pos)
+	#print("MONK ROT: ", monk_clock_pos)
 	
-	if plyr_clock_pos == monk_clock_pos:
+	if plyr_clock_pos == monk_clock_pos and countdown_data.time < 6:
+		print("MONK MATCHED")
 		# Stop the timer and clean up
 		count_down.stop()
 		
@@ -866,22 +901,30 @@ func _on_player_scene_player_finished_moving() -> void:
 		# Reset map frames
 		for area in area_handlers_3:
 			area.get_node("world_environment").get_node("map").frame = 0
-
-
-func _on_count_down_timeout() -> void:
-	print("Countdown:", countdown_data.time)
 		
+#		Reset countdown data back to 6
+		countdown_data = {"time": 6}
+
+
+func _on_count_down_timeout() -> void:		
 	# Execute your per-second function here
 	on_countdown_tick(monk, countdown_data.time)
 
 	countdown_data.time -= 1
 
 	if countdown_data.time <= 0:
-		# Time's up, remove monk and timer, and trigger object placement
+		# Time's up! Play failure sound
+		if sound_manager and sound_manager.sfx.has("time_up"):
+			sound_manager.play_sfx("time_up")
+		
+		# Remove monk and timer, and trigger object placement
 		monk.monitoring = false
 		monk.monitorable = false
 		tween_opacity(monk, 0.0, 2.0)
 		count_down.stop()
+		
+#		Reset countdown data time to 6
+		countdown_data = {"time": 6}
 
 		if player.phase == 1:
 			var obj = objects_in_phase_1.pick_random()

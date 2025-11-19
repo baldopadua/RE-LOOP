@@ -9,6 +9,7 @@ signal open_box # New signal
 @onready var player = $"../PlayerScene"
 @onready var box_down_marker = $"../box_down_marker"
 @onready var schrodinger = $"../schrodinger"
+@onready var sound_manager = $"../SoundManager"
 
 var cat_placed = false
 var cat2_placed = false
@@ -54,6 +55,10 @@ func close_box_function():
 	
 	await get_tree().create_timer(1.5).timeout
 	
+	# Play box closing SFX
+	if sound_manager and sound_manager.sfx.has("box_closing"):
+		sound_manager.play_sfx("box_closing")
+	
 	animation_sprite.play("activate")
 
 	await get_tree().create_timer(1.5).timeout
@@ -90,6 +95,10 @@ func _on_open_box_animation_finished(anim_name: StringName) -> void:
 			cat.cat_tween.kill()
 			print("Stopped floating tween.")
 
+		# Play loop break sound when box goes down
+		if sound_manager and sound_manager.sfx.has("loop_break"):
+			sound_manager.play_sfx("loop_break")
+
 		var tween := create_tween()
 		cat.create_tween().tween_property(cat, "position:y", 280.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "position:y", 280.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -98,6 +107,11 @@ func _on_open_box_animation_finished(anim_name: StringName) -> void:
 
 func _on_box_tween_finished():
 	#print("Box tween finished, new position: ", position)
+	
+	# Play box opening sound when cats appear
+	if sound_manager and sound_manager.sfx.has("box_opening"):
+		sound_manager.play_sfx("box_opening")
+	
 	animation_sprite.play_backwards("activate")
 	animation_sprite.animation_finished.connect(func():
 		player.get_node("Camera2D").emit_signal("cam_orig_zoom")
@@ -123,6 +137,11 @@ func _on_body_entered(body) -> void:
 		cat.create_tween().tween_property(cat, "position:y", 290.0, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func():
 			await get_tree().create_timer(0.5).timeout	
 			player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
+			
+			# Play box climbing SFX when Plooy ascends
+			if sound_manager and sound_manager.sfx.has("box_climb"):
+				sound_manager.play_sfx("box_climb")
+			
 			ui_handler.show_game_ui_elements()
 			var tween := create_tween()
 			tween.tween_property(self, "position:y", 0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

@@ -45,46 +45,79 @@ func _on_player_finished_moving() -> void:
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", tree_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 0.8)
+				sound_manager.play_sfx("statue_destruction")
 			tree_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", hero_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 0.85)
+				sound_manager.play_sfx("statue_destruction")
 			hero_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", geyser_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 0.9)
+				sound_manager.play_sfx("statue_destruction")
 			geyser_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", dinosaur_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 0.95)
+				sound_manager.play_sfx("statue_destruction")
 			dinosaur_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", rocket_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 1.0)
+				sound_manager.play_sfx("statue_destruction")
 			rocket_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", apple_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 1.05)
+				sound_manager.play_sfx("statue_destruction")
 			apple_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", butterfly_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 1.1)
+				sound_manager.play_sfx("statue_destruction")
 			butterfly_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", turtle_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 1.15)
+				sound_manager.play_sfx("statue_destruction")
 			turtle_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", cat_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 1.2)
+				sound_manager.play_sfx("statue_destruction")
 			cat_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", electric_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 1.25)
+				sound_manager.play_sfx("statue_destruction")
 			electric_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
 			get_node("Camera2D").emit_signal("pan_to_pos", plooy_statue.global_position)
+			if sound_manager and sound_manager.sfx.has("statue_destruction"):
+				sound_manager.set_sfx_pitch_scale("statue_destruction", 1.3)
+				sound_manager.play_sfx("statue_destruction")
 			plooy_statue.get_node("AnimatedSprite2D").play("default")
 			
 			await get_tree().create_timer(0.75).timeout
