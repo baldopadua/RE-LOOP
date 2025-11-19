@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://devjgm4fpge0o" path="res://Scripts/levels/level_10_script.gd" id="1_lnfvu"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_lnfvu"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_geapq"]
-[ext_resource type="Script" path="res://Scripts/object-level/level_10/player.gd" id="4_qcf8u"]
+[ext_resource type="Script" uid="uid://f5wtdaokupbq" path="res://Scripts/object-level/level_10/player.gd" id="4_qcf8u"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_qcmyw"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_ttbi8"]
 [ext_resource type="Texture2D" uid="uid://dqtn354dybf4y" path="res://Assets/levels/level_10/lazer-sheet-new.png" id="8_ttn1o"]
@@ -451,7 +451,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"lightning_cloud",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1354,7 +1354,7 @@ shape = SubResource("CapsuleShape2D_rmmn1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NicolaTesla"]
 z_index = 1
-position = Vector2(-1.862157, -3.7053607)
+position = Vector2(-1.862, -1.365)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_htemg")
 animation = &"nic_t_skull"

@@ -291,7 +291,6 @@ func tween_opacity(target: CanvasItem, to_alpha: float, duration: float = 0.5):
 func enter_phase_1():
 	
 	player.set_process_input(false)
-	ui_handler.disable_game_ui_elements()
 	ui_handler.hide_game_ui_elements()
 	
 	# Play loop shake sound before transition
@@ -373,7 +372,6 @@ func enter_phase_1():
 		switch_circle.monitorable = true
 
 #	Show elements again
-	ui_handler.enable_game_ui_elements()
 	ui_handler.show_game_ui_elements()
 	
 #	Enable Player Movement
@@ -383,11 +381,9 @@ func enter_phase_1():
 	monk.hide()
 	monk.position = Vector2(9999, 9999)
 
-func enter_phase_2():
-	ui_handler.hide_game_ui_elements()
-	
+func enter_phase_2():	
 	player.set_process_input(false)
-	ui_handler.disable_game_ui_elements()
+	ui_handler.hide_game_ui_elements()
 	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
@@ -518,16 +514,13 @@ func enter_phase_2():
 
 #	Show elements again
 	ui_handler.show_game_ui_elements()
-	ui_handler.enable_game_ui_elements()
 	
 #	Enable Player Movement
 	player.set_process_input(true)
 
 func enter_phase_3():
-	ui_handler.hide_game_ui_elements()
-	
 	player.set_process_input(false)
-	ui_handler.disable_game_ui_elements()
+	ui_handler.hide_game_ui_elements()
 	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
@@ -690,7 +683,6 @@ func enter_phase_3():
 
 #	Show elements again
 	ui_handler.show_game_ui_elements()
-	ui_handler.enable_game_ui_elements()
 	
 #	Enable Player Movement
 	player.set_process_input(true)
@@ -700,7 +692,6 @@ func finish_it():
 	tween_opacity(monk, 0.0, 2.0)	
 	
 	GlobalVariables.player_stopped = true
-	ui_handler.disable_game_ui_elements()
 	ui_handler.hide_game_ui_elements()
 	
 #	Shake Camera
@@ -776,8 +767,6 @@ func _on_dialogue_ended(_resource: DialogueResource):
 		flash.anchor_right = 1
 		flash.anchor_bottom = 1
 		canvas_layer.add_child(flash)
-		#enable ui
-		ui_handler.enable_game_ui_elements()
 		flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		await get_tree().create_timer(3.0).timeout
 		emit_signal("level_12_completed")
