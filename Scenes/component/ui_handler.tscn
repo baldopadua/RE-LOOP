@@ -677,6 +677,7 @@ grow_vertical = 2
 texture = ExtResource("19_bo42c")
 
 [node name="tutorial_back" type="TextureRect" parent="ui_logic/overlay/tutorial"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
