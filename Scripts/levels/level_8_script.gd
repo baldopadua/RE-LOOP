@@ -18,7 +18,6 @@ var objects: Array = []
 @onready var finish_line = $"Finish Line"
 @onready var start_line = $"Start Line"
 
-signal level_8_completed
 
 func _ready():
 	# SET LEVEL
@@ -43,7 +42,8 @@ func _on_level_handler_skip_level_requested(level_number: int) -> void:
 func _on_turtle_win_race():
 	if level_handler:
 		level_handler.complete_current_level(get_parent())
-	emit_signal("level_8_completed")
+	
+
 func initial_cam_scene():
 	ui_handler.hide_game_ui_elements()
 	var p = player.get_node("Camera2D")

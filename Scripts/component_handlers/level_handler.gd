@@ -504,7 +504,7 @@ func _on_level_6_scene_level_6_completed() -> void:
 		level_status_node.update_completed_levels_visual(completed_levels)
 
 func _on_wind_level_7_completed() -> void:
-	ui_handler.hide_and_disable_hint_and_time()
+	ui_handler.show_game_ui_elements()
 	# --- Ensure hint and time are hidden visually ---
 	var game_ui = ui_handler.ui_logic.get_node_or_null("game_ui_elements")
 	if game_ui:
@@ -523,7 +523,7 @@ func _on_wind_level_7_completed() -> void:
 		level_status_node.update_completed_levels_visual(completed_levels)
 
 
-func _on_level_8_scene_level_8_completed() -> void:
+func _on_gun_level_8_completed() -> void:
 	ui_handler.show_game_ui_elements()
 	if not completed_levels.has(8):
 		completed_levels.append(8)
@@ -531,8 +531,7 @@ func _on_level_8_scene_level_8_completed() -> void:
 	# Update clock entrance visuals immediately
 	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
 		level_status_node.update_completed_levels_visual(completed_levels)
-
-
+		
 func _on_laser_level_10_completed() -> void:
 	ui_handler.show_game_ui_elements()
 	if not completed_levels.has(10):
@@ -541,3 +540,6 @@ func _on_laser_level_10_completed() -> void:
 	# Update clock entrance visuals immediately
 	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
 		level_status_node.update_completed_levels_visual(completed_levels)
+
+
+
