@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://m46y1wd88uf1"]
+[gd_scene load_steps=100 format=3 uid="uid://m46y1wd88uf1"]
 
 [ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
 [ext_resource type="Texture2D" uid="uid://c284erqqs1py8" path="res://Assets/ui/gametitle.png" id="2_uxtkq"]
@@ -658,7 +658,6 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="tutorial" type="Control" parent="ui_logic/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -681,7 +680,6 @@ grow_vertical = 2
 texture = ExtResource("19_bo42c")
 
 [node name="tutorial_back" type="TextureRect" parent="ui_logic/overlay/tutorial"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1

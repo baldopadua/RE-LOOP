@@ -795,16 +795,7 @@ func finish_it():
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	
 func _on_dialogue_ended(_resource: DialogueResource):
-
-	# STOP ALL TIMERS AND SOUNDS
-	if count_down:
-		count_down.stop()
-	if timer:
-		timer.stop()
-	if sound_manager:
-		if sound_manager.sfx.has("countdown_beep"):
-			sound_manager.stop_sfx("countdown_beep")
-
+	
 	player.create_tween().tween_property(player, "position", Vector2(0, 0), 3.0)
 #	Monk gets separated to the right circle
 	monk.create_tween().tween_property(monk, "position", Vector2(0, 0), 3.0).finished.connect(func():
@@ -824,7 +815,7 @@ func _on_dialogue_ended(_resource: DialogueResource):
 		await get_tree().create_timer(3.0).timeout
 		emit_signal("level_12_completed")
 		level_handler.complete_current_level(get_parent())
-
+		
 	)
 
 func infinite_rotation() -> void:
