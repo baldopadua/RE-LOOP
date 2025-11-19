@@ -3,7 +3,7 @@ do show_evil_plooy_and_hide_monk()
 do change_detailed_sprite("plooy", "neutral", false)
 do change_detailed_sprite("evil_plooy", "sad", true)
 do change_pitch("low")
-Yoolp: [speed=0.5]I thought, stopping time would fix everything..
+Yoolp: I thought, stopping time would fix everything..
 do change_detailed_sprite("plooy", "speaking", true)
 do change_detailed_sprite("evil_plooy", "sad", false)
 do change_pitch("high")
@@ -39,7 +39,7 @@ Yoolp: You would let Plooy make mistakes?
 do change_detailed_sprite("plooy", "happy", true)
 do change_detailed_sprite("evil_plooy", "worried", false)
 do change_pitch("high")
-Plooy: [speed=0.6]As long as we face them... [speed=0.3]Together.
+Plooy: As long as we face them... [speed=0.5]Together.
 do change_detailed_sprite("plooy", "happy", false)
 do change_detailed_sprite("evil_plooy", "happy", true)
 do change_pitch("low")
