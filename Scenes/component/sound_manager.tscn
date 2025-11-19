@@ -151,6 +151,14 @@
 ; ========================================
 [ext_resource type="PackedScene" uid="uid://h7i8j9k0l1m2n" path="res://Audio/level-10/laser.tscn" id="61_level10"]
 [ext_resource type="PackedScene" uid="uid://i8j9k0l1m2n3o" path="res://Audio/level-10/tesla_coil.tscn" id="62_level10"]
+[ext_resource type="PackedScene" uid="uid://y6z7a8b9c0d1e" path="res://Audio/level-10/scientist1.tscn" id="63_level10"]
+[ext_resource type="PackedScene" uid="uid://z7a8b9c0d1e2f" path="res://Audio/level-10/scientist2.tscn" id="64_level10"]
+[ext_resource type="PackedScene" uid="uid://a8b9c0d1e2f3g" path="res://Audio/level-10/old_scientist.tscn" id="65_level10"]
+[ext_resource type="PackedScene" uid="uid://b9c0d1e2f3g4h" path="res://Audio/level-10/loop_break.tscn" id="66_level10"]
+[ext_resource type="PackedScene" uid="uid://c0d1e2f3g4h5i" path="res://Audio/level-10/laser_loading.tscn" id="67_level10"]
+[ext_resource type="PackedScene" uid="uid://d1e2f3g4h5i6j" path="res://Audio/level-10/laser_firing.tscn" id="68_level10"]
+[ext_resource type="PackedScene" uid="uid://e2f3g4h5i6j7k" path="res://Audio/level-10/laser_climb.tscn" id="69_level10"]
+[ext_resource type="PackedScene" uid="uid://f3g4h5i6j7k8l" path="res://Audio/level-10/bones_collapse.tscn" id="70_level10"]
 
 
 
@@ -387,6 +395,22 @@ stream = ExtResource("15_clock")
 [node name="laser" parent="sfx/level_10_sfx" instance=ExtResource("61_level10")]
 
 [node name="tesla_coil" parent="sfx/level_10_sfx" instance=ExtResource("62_level10")]
+
+[node name="scientist1" parent="sfx/level_10_sfx" instance=ExtResource("63_level10")]
+
+[node name="scientist2" parent="sfx/level_10_sfx" instance=ExtResource("64_level10")]
+
+[node name="old_scientist" parent="sfx/level_10_sfx" instance=ExtResource("65_level10")]
+
+[node name="loop_break" parent="sfx/level_10_sfx" instance=ExtResource("66_level10")]
+
+[node name="laser_loading" parent="sfx/level_10_sfx" instance=ExtResource("67_level10")]
+
+[node name="laser_firing" parent="sfx/level_10_sfx" instance=ExtResource("68_level10")]
+
+[node name="laser_climb" parent="sfx/level_10_sfx" instance=ExtResource("69_level10")]
+
+[node name="bones_collapse" parent="sfx/level_10_sfx" instance=ExtResource("70_level10")]
 
 [node name="level_11_sfx" type="Node2D" parent="sfx"]
 
