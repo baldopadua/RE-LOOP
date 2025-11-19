@@ -47,6 +47,7 @@ func objects_initialize():
 	objects.append(light_bulb)
 
 func initial_cinematic():
+	ui_handler.hide_game_ui_elements()
 	player.set_process_input(false)
 	await get_tree().create_timer(1.0).timeout
 	var p = player.get_node("Camera2D")
@@ -72,6 +73,7 @@ func initial_cinematic():
 	p.emit_signal("cam_orig_zoom")
 	p.emit_signal("hide_bars")
 	p.emit_signal("pan_to_orig_pos")
+	ui_handler.show_game_ui_elements()
 	
 	player.set_process_input(true)
 

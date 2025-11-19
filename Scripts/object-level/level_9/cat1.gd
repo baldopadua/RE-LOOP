@@ -6,6 +6,7 @@ signal add_cur_state(direction)
 @onready var animated_sprite1 = $AnimatedSprite2D
 @onready var box = $"../box"
 @onready var marker2D = $"../box/Marker2D"
+@onready var sound_manager = $"../SoundManager"
 
 var is_loop_shown = false
 var cat_tween : Tween
@@ -17,9 +18,15 @@ func _on_add_cur_state(direction: Variant) -> void:
 	if direction == GlobalVariables.Directions.CLOCKWISE:
 		if current_state == 2:
 			animated_sprite1.play("default")
+			# Play cat sound
+			if sound_manager and sound_manager.sfx.has("cat_sound"):
+				sound_manager.play_sfx("cat_sound")
 	else:
 		if current_state == 1:
 			animated_sprite1.play_backwards("default")
+			# Play bones collapse when cat becomes bones
+			if sound_manager and sound_manager.sfx.has("bones_collapse"):
+				sound_manager.play_sfx("bones_collapse")
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is object_class:

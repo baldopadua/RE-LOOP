@@ -656,6 +656,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_8mnya")
 }
 
+[connection signal="level_6_completed" from="." to="CanvasLayer/LevelHandler" method="_on_level_6_scene_level_6_completed"]
 [connection signal="loop_break_shown" from="PlayerScene" to="isaac_newton_1" method="_on_player_scene_loop_break_shown"]
 [connection signal="loop_break_shown" from="PlayerScene" to="seed" method="_on_player_scene_loop_break_shown"]
 [connection signal="loop_break_shown" from="PlayerScene" to="seed2" method="_on_player_scene_loop_break_shown"]

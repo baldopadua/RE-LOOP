@@ -2,10 +2,14 @@ extends Node2D
 
 @export var source_tilemap: TileMapLayer
 @onready var player = $PlayerScene
+@onready var count_down = $count_down
+@onready var timer = $Timer
 
 var tween_rotate: Tween
 var tween_scale: Tween
 var objects: Array = []
+
+signal level_12_completed 
 
 var object_positions = [
 	Vector2(144, -253),
@@ -137,6 +141,7 @@ var objects_in_phase_2 = []
 var objects_in_phase_3 = []
 
 func _ready():
+	timer.start()
 	objects_in_phase_1 = [seed, skull]
 	objects_in_phase_2 = [rock, egg, soda, apple]
 	objects_in_phase_3 = [butterfly, carrot, cat, lightbulb]
@@ -284,14 +289,14 @@ func tween_opacity(target: CanvasItem, to_alpha: float, duration: float = 0.5):
 	)
 
 func enter_phase_1():
-	for node in get_children():
-		if node is Timer:
-			if node.name.contains("countdown"):
-				node.queue_free()
 	
 	player.set_process_input(false)
 	ui_handler.disable_game_ui_elements()
 	ui_handler.hide_game_ui_elements()
+	
+	# Play loop shake sound before transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
 	
 	# Play loop shake sound before transition
 	if sound_manager and sound_manager.sfx.has("loop_shake"):
@@ -373,13 +378,12 @@ func enter_phase_1():
 	
 #	Enable Player Movement
 	player.set_process_input(true)
-	$Timer.start()
+	tween_opacity(monk, 0.0, 3.0)
+	await get_tree().create_timer(3.0).timeout
+	monk.hide()
+	monk.position = Vector2(9999, 9999)
 
 func enter_phase_2():
-	for node in get_children():
-		if node is Timer:
-			if node.name.contains("countdown"):
-				node.queue_free()
 	ui_handler.hide_game_ui_elements()
 	
 	player.set_process_input(false)
@@ -387,6 +391,11 @@ func enter_phase_2():
 	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
+	
+	# Play loop shake sound for phase transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
 #	Cinematic Cameras
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 #	Zoom out
@@ -403,6 +412,11 @@ func enter_phase_2():
 	canvas_layer.add_child(flash)
 	
 	flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+	# Play crystal transition sound during flash
+	if sound_manager and sound_manager.sfx.has("crystal_transition"):
+		sound_manager.play_sfx("crystal_transition")
+	
 	await get_tree().create_timer(3.0).timeout
 	
 	# Reveal all while still on white flash
@@ -488,8 +502,6 @@ func enter_phase_2():
 	
 #	Plooy also gets separated to the left circle
 	player.create_tween().tween_property(player, "position", Vector2(0, -900), 3.0)
-#	Monk gets separated to the right circle
-	monk.create_tween().tween_property(monk, "position", Vector2(0, 900), 3.0)
 	
 	await unflash.finished
 	
@@ -512,10 +524,6 @@ func enter_phase_2():
 	player.set_process_input(true)
 
 func enter_phase_3():
-	for node in get_children():
-		if node is Timer:
-			if node.name.contains("countdown"):
-				node.queue_free()
 	ui_handler.hide_game_ui_elements()
 	
 	player.set_process_input(false)
@@ -523,6 +531,16 @@ func enter_phase_3():
 	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
+	
+	# Play loop shake sound for phase transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
+#	Cinematic Cameras
+	player.get_node("Camera2D").emit_signal("reveal_bars")
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
 #	Cinematic Cameras
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 #	Zoom out
@@ -539,6 +557,11 @@ func enter_phase_3():
 	canvas_layer.add_child(flash)
 	
 	flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+	# Play crystal transition sound during flash
+	if sound_manager and sound_manager.sfx.has("crystal_transition"):
+		sound_manager.play_sfx("crystal_transition")
+	
 	await get_tree().create_timer(3.0).timeout
 	
 	# Reveal all while still on white flash
@@ -651,8 +674,6 @@ func enter_phase_3():
 	
 #	Plooy also gets separated to the left circle
 	player.create_tween().tween_property(player, "position", Vector2(0, -1600), 3.0)
-#	Monk gets separated to the right circle
-	monk.create_tween().tween_property(monk, "position", Vector2(0, 1600), 3.0)
 	
 	await unflash.finished
 	
@@ -675,6 +696,9 @@ func enter_phase_3():
 	player.set_process_input(true)
 	
 func finish_it():	
+	tween_opacity(player, 0.0, 2.0)
+	tween_opacity(monk, 0.0, 2.0)	
+	
 	GlobalVariables.player_stopped = true
 	ui_handler.disable_game_ui_elements()
 	ui_handler.hide_game_ui_elements()
@@ -686,7 +710,7 @@ func finish_it():
 #	Zoom out
 	player.get_node("Camera2D").emit_signal("cam_zoom", 0.1)
 	
-	player.get_node("Camera2D").emit_signal("pan_to_pos", monk.global_position)
+	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	
 	await get_tree().create_timer(1.0).timeout
 	
@@ -709,6 +733,7 @@ func finish_it():
 	
 	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 	
+	
 	for area_handlerr in area_handlers_3:
 		area_handlerr.hide()
 	
@@ -716,16 +741,20 @@ func finish_it():
 	var unflash = create_tween()
 	unflash.tween_property(flash, "modulate:a", 0.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 
+	tween_opacity(player, 1.0, 2.0)
+	tween_opacity(monk, 1.0, 2.0)
+
 #	The separation of the two symbolizes the 
 	
 #	Plooy also gets separated to the left circle
 	player.create_tween().tween_property(player, "position", Vector2(-20, 0), 2.0)
 	#player.get_node("AnimatedSprite2D").flip_h = true
 	player.get_node("AnimatedSprite2D").rotation_degrees = 0.0
+	player.rotation_degrees = 0.0
 	player.get_node("AnimatedSprite2D").flip_h = true
-#	Monk gets separated to the right circle
 	monk.create_tween().tween_property(monk, "position", Vector2(20, 0), 2.0)
 	monk.get_node("AnimatedSprite2D").rotation_degrees = 0.0
+	monk.rotation_degrees = 0.0
 
 	await unflash.finished
 	
@@ -733,6 +762,7 @@ func finish_it():
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	
 func _on_dialogue_ended(_resource: DialogueResource):
+	
 	player.create_tween().tween_property(player, "position", Vector2(0, 0), 3.0)
 #	Monk gets separated to the right circle
 	monk.create_tween().tween_property(monk, "position", Vector2(0, 0), 3.0).finished.connect(func():
@@ -746,10 +776,13 @@ func _on_dialogue_ended(_resource: DialogueResource):
 		flash.anchor_right = 1
 		flash.anchor_bottom = 1
 		canvas_layer.add_child(flash)
-		
+		#enable ui
+		ui_handler.enable_game_ui_elements()
 		flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		await get_tree().create_timer(3.0).timeout
+		emit_signal("level_12_completed")
 		level_handler.complete_current_level(get_parent())
+		
 	)
 
 func infinite_rotation() -> void:
@@ -758,84 +791,50 @@ func infinite_rotation() -> void:
 	tween.tween_property(circly_thingy, "rotation_degrees", 360.0, 1.0).as_relative().set_trans(Tween.TRANS_LINEAR)
 
 func _on_timer_timeout() -> void:
-	if player.is_processing_input():
-		trigger_random_event()
+	if not player.is_processing_input() or GlobalVariables.player_stopped:
+		return
+	trigger_random_event()
+
+var countdown_data = {"time": 6}
 
 func trigger_random_event():
 	print("Monk Created") 
 
 	var player_cur_pos = player.position
+	if player.phase == 1:
+		player_cur_pos = area_handlers_1.pick_random().position
+	elif player.phase == 2:
+		player_cur_pos = area_handlers_2.pick_random().position
+	elif player.phase == 3:
+		player_cur_pos = area_handlers_3.pick_random().position
+		
 	var rand_rotation_in_circle = rotations_possible.pick_random()
 
 	# Duplicate monk
-	var monk_duplicate = monk.duplicate(true)
-	monk_duplicate.name = "monk_duplicate"
-	monk_duplicate.modulate = Color(1,1,1,0.75)
-	monk_duplicate.position = player_cur_pos
-	monk_duplicate.rotation_degrees = rand_rotation_in_circle
-	add_child(monk_duplicate)
+	monk.position = player_cur_pos
+	monk.rotation_degrees = rand_rotation_in_circle
+	monk.monitoring = true
+	monk.monitorable = true
+	tween_opacity(monk, 1.0, 2.0)
 
 	# Countdown variables
-	var countdown_data = {"time": 6}
+	countdown_data = {"time": 6}
+	count_down.start()
 
-	# Create a repeating 1-second timer for this monk
-	var countdown_timer = Timer.new()
-	countdown_timer.name = "countdown"
-	countdown_timer.wait_time = 1.0
-	countdown_timer.one_shot = false  # repeating
-	add_child(countdown_timer)
-	
-	# Connect timeout signal with a lambda to capture monk and countdown_time
-	countdown_timer.timeout.connect(func():
-		print("Countdown:", countdown_data.time)
-		
-		# Execute your per-second function here
-		on_countdown_tick(monk_duplicate, countdown_data.time)
-
-		countdown_data.time -= 1
-
-		if countdown_data.time <= 0:
-			# Time's up, remove monk and timer, and trigger object placement
-			monk_duplicate.queue_free()
-			countdown_timer.queue_free()
-
-			if player.phase == 1:
-				var obj = objects_in_phase_1.pick_random()
-				if obj.is_pickupable:
-					var area = area_handlers_1.pick_random()
-					obj.matched = false
-					place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
-			elif player.phase == 2:
-				var obj = objects_in_phase_2.pick_random()
-				if obj.is_pickupable:
-					var area = area_handlers_2.pick_random()
-					obj.matched = false
-					place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
-			elif player.phase == 3:
-				var obj = objects_in_phase_3.pick_random()
-				if obj.is_pickupable:
-					var area = area_handlers_3.pick_random()
-					obj.matched = false
-					place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
-			for area in area_handlers_3:
-				area.get_node("world_environment").get_node("map").frame = 0
-	)
-	
-	countdown_timer.start()
-	
-	# If body touches monk, immediately remove monk and stop timer
-	monk_duplicate.body_entered.connect(func(_body):
-		if monk_duplicate.name.contains("duplicate"):
-			if countdown_timer:
-				countdown_timer.queue_free()
-			monk_duplicate.queue_free()
-			player.shake_camera(3.0, 6.0, 1.0)
-	)
-
-func on_countdown_tick(_monk, time_left):
-	player.shake_camera(1.0, 3.0, 1.0)
+func on_countdown_tick(_monk_duplicate, time_left):
 	time_left -= 1
+	print("COUNTDOWN DATA TIME: ", countdown_data.time)
+	print("TIMER TIME: ", timer.time_left)
+
+	# Play countdown beep with increasing pitch as time decreases
+	if sound_manager and sound_manager.sfx.has("countdown_beep"):
+		var pitch = 0.7 + (6 - time_left) * 0.1  # 0.7 at 6 seconds, 1.2 at 1 second
+		sound_manager.set_sfx_pitch_scale("countdown_beep", pitch)
+		sound_manager.play_sfx("countdown_beep")
+
+	player.shake_camera(1.0, 3.0, 1.0)
 	
+	# Update map frames based on time_left
 	if time_left == 4 or time_left == 0:
 		for area in area_handlers_3:
 			area.get_node("world_environment").get_node("map").frame = 0
@@ -848,12 +847,14 @@ func on_countdown_tick(_monk, time_left):
 	elif time_left == 1:
 		for area in area_handlers_3:
 			area.get_node("world_environment").get_node("map").frame = 3
-			
-	# Create a Label to show the countdown
+	
+	# Show countdown label
+	create_countdown_label(time_left)
+
+func create_countdown_label(time_left: int) -> void:
 	var label = Label.new()
 	label.text = str(time_left)
 
-	# Font, size, and color
 	var font = FontFile.new()
 	font.load_dynamic_font("res://Assets/fonts/ByteBounce.ttf")  
 	label.add_theme_font_override("font", font)  
@@ -865,20 +866,111 @@ func on_countdown_tick(_monk, time_left):
 	label.pivot_offset = label.size / 2
 	label.set_anchors_preset(Control.PRESET_CENTER, true)
 	
-	label.position = player.position
-	label.position = label.position - label.pivot_offset
+	label.position = player.position - label.pivot_offset
 
-	# Create a Tween for scale in/out and fade
 	var tween = create_tween()
-
-	# Scale from 0.5 → 1.2 → 1.0 (pop effect)
 	label.scale = Vector2(0.5, 0.5)
 	tween.tween_property(label, "scale", Vector2(1.2, 1.2), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(label, "scale", Vector2(1,1), 0.1)
-
-	# Fade in/out
-	tween.tween_property(label, "modulate:a", 1.0, 0.2)  # fade in
-	tween.tween_property(label, "modulate:a", 0.0, 0.3).set_delay(0.3)  # fade out
-
-	# Remove label after tween is done
+	tween.tween_property(label, "scale", Vector2(1, 1), 0.1)
+	tween.tween_property(label, "modulate:a", 1.0, 0.2)
+	tween.tween_property(label, "modulate:a", 0.0, 0.3).set_delay(0.3)
 	tween.finished.connect(func(): label.queue_free())
+
+
+func _on_player_scene_player_finished_moving() -> void:	
+	# Check rotation alignment FIRST
+	var plyr_clock_pos = int(abs(round(player.rotation_degrees))) % 360
+	var monk_clock_pos = int(abs(round(monk.rotation_degrees))) % 360
+	
+	#print("PLR ROT: ", plyr_clock_pos)
+	#print("MONK ROT: ", monk_clock_pos)
+	
+	if plyr_clock_pos == monk_clock_pos and countdown_data.time < 6:
+		print("MONK MATCHED")
+		# Stop the timer and clean up
+		count_down.stop()
+		
+		# Fade out and remove the monk
+		tween_opacity(monk, 0.0, 0.3)
+		monk.monitoring = false
+		monk.monitorable = false
+		await get_tree().create_timer(0.3).timeout
+		
+		player.shake_camera(3.0, 6.0, 1.0)
+		
+		# Reset map frames
+		for area in area_handlers_3:
+			area.get_node("world_environment").get_node("map").frame = 0
+		
+#		Reset countdown data back to 6
+		countdown_data = {"time": 6}
+
+
+func _on_count_down_timeout() -> void:		
+	# Execute your per-second function here
+	on_countdown_tick(monk, countdown_data.time)
+
+	countdown_data.time -= 1
+
+	if countdown_data.time <= 0:
+		# Time's up! Play failure sound
+		if sound_manager and sound_manager.sfx.has("time_up"):
+			sound_manager.play_sfx("time_up")
+		
+		# Remove monk and timer, and trigger object placement
+		monk.monitoring = false
+		monk.monitorable = false
+		tween_opacity(monk, 0.0, 2.0)
+		count_down.stop()
+		
+#		Reset countdown data time to 6
+		countdown_data = {"time": 6}
+
+		if player.phase == 1:
+			var obj = objects_in_phase_1.pick_random()
+			for object in objects_in_phase_1:
+				if object.matched:
+					obj = object
+					break
+			if obj.is_pickupable or obj.matched:
+				var area = area_handlers_1.pick_random()
+				obj.matched = false
+				obj.is_pickupable = true
+				place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
+		elif player.phase == 2:
+			var obj = objects_in_phase_2.pick_random()
+			for object in objects_in_phase_2:
+				if object.matched:
+					obj = object
+					break
+			if obj.is_pickupable or obj.matched:
+				var area = area_handlers_2.pick_random()
+				obj.matched = false
+				obj.is_pickupable = true
+				place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
+		elif player.phase == 3:
+			var obj = objects_in_phase_3.pick_random()
+			for object in objects_in_phase_3:
+				if object.matched:
+					obj = object
+					break
+			if obj.is_pickupable or obj.matched:
+				var area = area_handlers_3.pick_random()
+				obj.matched = false
+				obj.is_pickupable = true
+				place_object_with_random_position(obj, area, object_positions, object_rotation_based_on_position)
+		for area in area_handlers_3:
+			area.get_node("world_environment").get_node("map").frame = 0
+
+func get_normalized_rotation(rotation_deg: float) -> float:
+	# Normalize any rotation to 0-360 range
+	var normalized = fmod(rotation_deg, 360.0)
+	if normalized < 0:
+		normalized += 360.0
+	return normalized
+
+func get_clock_position(rotation_deg: float) -> int:
+	# Get which "hour" on the clock (0-11)
+	var normalized = get_normalized_rotation(rotation_deg)
+	var sector_size = 360.0 / 12.0  # 30 degrees per sector
+	return int(round(normalized / sector_size)) % 12

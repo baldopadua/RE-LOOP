@@ -29,7 +29,15 @@ func _on_player_finished_moving() -> void:
 				get_node("Camera2D").emit_signal("cam_zoom", 0.75)
 				shake_camera(5.0, 10.0, 2.5)
 				
+				# Play variance merging SFX (loop shake + crystal transition)
+				if sound_manager and sound_manager.sfx.has("loop_shake"):
+					sound_manager.play_sfx("loop_shake")
+				
 				await get_tree().create_timer(2.5).timeout
+				
+				# Play crystal transition sound for variance merge
+				if sound_manager and sound_manager.sfx.has("crystal_transition"):
+					sound_manager.play_sfx("crystal_transition")
 				
 				var flash = ColorRect.new()
 				flash.color = Color(1, 1, 1, 1)
@@ -71,6 +79,11 @@ func _on_player_finished_moving() -> void:
 				if anim_player:
 					anim_player.playback_active = true
 					anim_player.play("apple_fall")
+					
+					# Play apple fall SFX
+					if sound_manager and sound_manager.sfx.has("apple_fall"):
+						sound_manager.play_sfx("apple_fall")
+					
 					await anim_player.animation_finished
 
 				get_node("Camera2D").emit_signal("cam_orig_zoom")

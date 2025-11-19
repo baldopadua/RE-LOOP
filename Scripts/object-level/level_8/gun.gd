@@ -33,6 +33,8 @@ var hare_won := false
 @onready var shake_hand_marker = get_parent().get_node("shake_hand")
 @onready var congrats_anim = $"../Blackhole/congrats"
 
+signal level_8_completed
+
 func move_turtle():
 	turtle.emit_signal("rotate_object", GlobalVariables.Directions.COUNTERCLOCKWISE)
 
@@ -117,6 +119,7 @@ func _on_start_race() -> void:
 										e_bhole_tween.kill()
 										#player.get_node("Camera2D").emit_signal("hide_bars")
 										emit_signal("turtle_win_race")
+										emit_signal("level_8_completed")
 									)
 								)	
 							)

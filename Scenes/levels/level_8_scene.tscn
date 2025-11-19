@@ -1125,5 +1125,6 @@ frame = 1
 [connection signal="area_entered" from="Hare" to="Hare" method="_on_area_entered"]
 [connection signal="area_exited" from="Hare" to="Hare" method="_on_area_exited"]
 [connection signal="rotate_object" from="Hare" to="Hare" method="_on_rotate_object"]
+[connection signal="level_8_completed" from="Gun" to="CanvasLayer/LevelHandler" method="_on_gun_level_8_completed"]
 [connection signal="start_race" from="Gun" to="Gun" method="_on_start_race"]
 [connection signal="turtle_win_race" from="Gun" to="." method="_on_turtle_win_race"]

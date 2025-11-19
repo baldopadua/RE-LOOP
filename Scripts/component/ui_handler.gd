@@ -22,6 +22,8 @@ func _ready() -> void:
 	
 	_connect_hover_sound(self)
 	hint_button = ui_logic.get_node_or_null("game_ui_elements/hint_button")  
+	# Example usage: call on startup (remove if you want to trigger elsewhere)
+	# activate_hide_hint_and_time()
 
 func _process(_delta: float) -> void:
 	pass
@@ -549,3 +551,25 @@ func enable_game_ui_elements():
 		for child in game_ui.get_children():
 			if child is Control:
 				child.mouse_filter = Control.MOUSE_FILTER_STOP
+
+func hide_and_disable_hint_and_time():
+	var game_ui = ui_logic.get_node_or_null("game_ui_elements")
+	if game_ui:
+		var hint_btn = game_ui.get_node_or_null("hint_button")
+		if hint_btn:
+			hint_btn.visible = false
+			hint_btn.disabled = true
+		var time_node = game_ui.get_node_or_null("time")
+		if time_node:
+			time_node.visible = false
+
+func show_and_enable_hint_and_time():
+	var game_ui = ui_logic.get_node_or_null("game_ui_elements")
+	if game_ui:
+		var hint_btn = game_ui.get_node_or_null("hint_button")
+		if hint_btn:
+			hint_btn.visible = true
+			hint_btn.disabled = false
+		var time_node = game_ui.get_node_or_null("time")
+		if time_node:
+			time_node.visible = true

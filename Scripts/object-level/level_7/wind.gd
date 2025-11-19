@@ -13,6 +13,8 @@ extends object_class
 
 @warning_ignore("unused_signal")
 signal add_wind_state(direction)
+signal level_7_completed
+
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -128,3 +130,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		player.get_node("Camera2D").emit_signal("hide_bars")
 		# NOTIFY LEVEL 7 IS COMPLETED - this will handle cutscene and next level automatically
 		level_handler.complete_current_level(get_parent().get_parent())
+	emit_signal("level_7_completed")

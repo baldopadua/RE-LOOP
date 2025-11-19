@@ -1,4 +1,4 @@
-[gd_scene load_steps=172 format=3 uid="uid://cvuyhsgfvpxwp"]
+[gd_scene load_steps=166 format=3 uid="uid://cvuyhsgfvpxwp"]
 
 [ext_resource type="PackedScene" uid="uid://ciik8gauu5jgn" path="res://Scenes/component/area_handler.tscn" id="1_k7dlq"]
 [ext_resource type="Script" uid="uid://devjgm4fpge0o" path="res://Scripts/levels/level_10_script.gd" id="1_lnfvu"]
@@ -371,77 +371,53 @@ region = Rect2(240, 0, 60, 100)
 atlas = ExtResource("19_ttn1o")
 region = Rect2(300, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ojfod"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tb2b"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(360, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pilxn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bssw"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(420, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ji1v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t18yn"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(480, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_my1yr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl1ol"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(540, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1tb2b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1fig"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(600, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3bssw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxgem"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(660, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t18yn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhbky"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(720, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hl1ol"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cx7o"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(780, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1fig"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5djlc"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(840, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vxgem"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lv3g"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(900, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uhbky"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4guci"]
 atlas = ExtResource("19_ttn1o")
 region = Rect2(960, 0, 60, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6cx7o"]
-atlas = ExtResource("19_ttn1o")
-region = Rect2(1020, 0, 60, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5djlc"]
-atlas = ExtResource("19_ttn1o")
-region = Rect2(1080, 0, 60, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1lv3g"]
-atlas = ExtResource("19_ttn1o")
-region = Rect2(1140, 0, 60, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4guci"]
-atlas = ExtResource("19_ttn1o")
-region = Rect2(1200, 0, 60, 100)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_45pv2"]
 atlas = ExtResource("19_ttn1o")
-region = Rect2(1260, 0, 60, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rb5c7"]
-atlas = ExtResource("19_ttn1o")
-region = Rect2(1320, 0, 60, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ft1lr"]
-atlas = ExtResource("19_ttn1o")
-region = Rect2(1380, 0, 60, 100)
+region = Rect2(1020, 0, 60, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4quvs"]
 animations = [{
@@ -497,18 +473,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_2bove")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ojfod")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pilxn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ji1v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_my1yr")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_1tb2b")
 }, {
 "duration": 1.0,
@@ -543,15 +507,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_45pv2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rb5c7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ft1lr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5djlc")
 }],
 "loop": false,
 "name": &"lightning_rod",
@@ -1200,6 +1155,7 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_lnfvu")]
 self_modulate = Color(1, 1, 1, 0.9000001)
+position = Vector2(-13.76, 14.645)
 up_direction = Vector2(0, 1)
 script = ExtResource("4_qcf8u")
 
@@ -1305,13 +1261,14 @@ object_type = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LightBulb"]
 position = Vector2(-0.6586304, 5.063095)
 shape = SubResource("RectangleShape2D_qcf8u")
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LightBulb"]
 z_index = 2
-position = Vector2(14.913351, -0.5609975)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ehdct")
 animation = &"light_bulb_flicker"
+metadata/_edit_lock_ = true
 
 [node name="NicolaTesla" parent="." instance=ExtResource("6_ttbi8")]
 position = Vector2(151.69, -269.705)
@@ -1379,7 +1336,6 @@ autoplay = "default"
 offset = Vector2(17.34, -6.015)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-active = false
 libraries = {
 &"": SubResource("AnimationLibrary_odd5e")
 }
@@ -1387,6 +1343,7 @@ libraries = {
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
 [connection signal="area_entered" from="Laser" to="Laser" method="_on_area_entered"]
 [connection signal="keystone_complete" from="Laser" to="Laser" method="_on_keystone_complete"]
+[connection signal="level_10_completed" from="Laser" to="CanvasLayer/LevelHandler" method="_on_laser_level_10_completed"]
 [connection signal="add_cur_state" from="NicolaTesla" to="NicolaTesla" method="_on_add_cur_state"]
 [connection signal="area_entered" from="NicolaTesla" to="NicolaTesla" method="_on_area_entered"]
 [connection signal="area_exited" from="NicolaTesla" to="NicolaTesla" method="_on_area_exited"]

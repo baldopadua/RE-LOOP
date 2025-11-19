@@ -125,7 +125,15 @@ func _input(event: InputEvent) -> void:
 		rotate_player()
 		if GlobalVariables.is_looping:
 			sound_manager.adjust_sfx_pitch_scale("time_manip", 0.03)
+			var player = sound_manager.sfx.get("time_manip", null)
+			if player and player is AudioStreamPlayer2D:
+				player.pitch_scale = clamp(player.pitch_scale, 0.7, 1.3)
+				print("time_manip pitch_scale after right:", player.pitch_scale)
 		sound_manager.adjust_sfx_pitch_scale("clank", 0.03)
+		var clank_player = sound_manager.sfx.get("clank", null)
+		if clank_player and clank_player is AudioStreamPlayer2D:
+			clank_player.pitch_scale = clamp(clank_player.pitch_scale, 0.7, 1.3)
+			print("clank pitch_scale after right:", clank_player.pitch_scale)
 		sound_manager.play_sfx("time_manip")
 		sound_manager.play_sfx("clank")
 		sprite.flip_h = false
@@ -135,7 +143,15 @@ func _input(event: InputEvent) -> void:
 		rotate_player()
 		if GlobalVariables.is_looping:
 			sound_manager.adjust_sfx_pitch_scale("time_manip", -0.03)
+			var player = sound_manager.sfx.get("time_manip", null)
+			if player and player is AudioStreamPlayer2D:
+				player.pitch_scale = clamp(player.pitch_scale, 0.7, 1.3)
+				print("time_manip pitch_scale after left:", player.pitch_scale)
 		sound_manager.adjust_sfx_pitch_scale("clank", -0.03)
+		var clank_player = sound_manager.sfx.get("clank", null)
+		if clank_player and clank_player is AudioStreamPlayer2D:
+			clank_player.pitch_scale = clamp(clank_player.pitch_scale, 0.7, 1.3)
+			print("clank pitch_scale after left:", clank_player.pitch_scale)
 		sound_manager.play_sfx("time_manip")
 		sound_manager.play_sfx("clank")
 		sprite.flip_h = true
@@ -187,6 +203,12 @@ func _tween_finished():
 	if round(rad_to_deg(rotation)) == 360.0 or round(rad_to_deg(rotation)) == -360.0 or round(rad_to_deg(rotation)) == 0.0:
 		sound_manager.set_sfx_pitch_scale("time_manip", 1.0)
 		sound_manager.set_sfx_pitch_scale("clank", 1.0)
+		var player = sound_manager.sfx.get("time_manip", null)
+		var clank_player = sound_manager.sfx.get("clank", null)
+		if player and player is AudioStreamPlayer2D:
+			print("time_manip pitch_scale reset:", player.pitch_scale)
+		if clank_player and clank_player is AudioStreamPlayer2D:
+			print("clank pitch_scale reset:", clank_player.pitch_scale)
 	
 	# SWITCH THE TIME INDICATOR
 	# INITIAL VALUE NO ENERGY and # POSITIVE MEANS CLOCKWISE

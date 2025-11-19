@@ -301,7 +301,7 @@ size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_8qrun")
 theme_override_font_sizes/normal_font_size = 42
 text = "Dialogue..."
-seconds_per_step = 0.05
+seconds_per_step = 0.1
 seconds_per_pause_step = 0.4
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
@@ -347,7 +347,8 @@ text = "Response example"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("7_x8upi")
-volume_db = 1.0
+volume_db = -10.0
+pitch_scale = 0.5
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

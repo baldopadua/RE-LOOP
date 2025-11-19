@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://fs0x6toxftuh"]
+
+[ext_resource type="AudioStream" uid="uid://bgqoutks1wanx" path="res://Audio/sfx/bones_collapse.wav" id="1_bones"]
+
+[node name="schrodinger_death" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_bones")
+volume_db = 4.0
+pitch_scale = 0.9
+max_polyphony = 2
+bus = &"sfx"

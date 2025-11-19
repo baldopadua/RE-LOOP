@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6c7d8e9f0g1h"]
+
+[ext_resource type="AudioStream" uid="uid://dfsphrqapylw1" path="res://Audio/sfx/crystal_sfx.wav" id="1_level12"]
+
+[node name="teleport" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_level12")
+volume_db = 5.0
+pitch_scale = 1.4
+max_polyphony = 3
+bus = &"sfx"

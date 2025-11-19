@@ -1,0 +1,7 @@
+~ start
+do hide_evil_plooy_and_monk()
+do change_pitch("high")
+do change_detailed_sprite("plooy", "neutral", true)
+Plooy: ...
+Plooy: I didn't forget you, but you forgot me...
+=> END
