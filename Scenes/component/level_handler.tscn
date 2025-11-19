@@ -208,7 +208,6 @@ radius = 33.212807
 height = 85.85651
 
 [node name="LevelHandler" type="Node2D"]
-position = Vector2(112.00001, 47)
 scale = Vector2(0.9, 0.9)
 script = ExtResource("1_sijlw")
 

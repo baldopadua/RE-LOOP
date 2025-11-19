@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cish1hlamy3ad" path="res://Assets/comics/level_10.png" id="11_55x6a"]
 [ext_resource type="Texture2D" uid="uid://dye4ghh43qdb0" path="res://Assets/comics/level_11.png" id="12_wyaj5"]
 [ext_resource type="Texture2D" uid="uid://dy6iqfkhnkc3e" path="res://Assets/comics/level_12.png" id="14_37vhi"]
-[ext_resource type="Texture2D" uid="uid://0y7v4vah4ugq" path="res://Assets/ui/continue.png" id="16_37vhi"]
-[ext_resource type="Texture2D" uid="uid://hrncghgid8q4" path="res://Assets/ui/continue_hover.png" id="17_55x6a"]
+[ext_resource type="Texture2D" uid="uid://vndwta81lw7f" path="res://Assets/ui/continue_normal.png" id="16_37vhi"]
+[ext_resource type="Texture2D" uid="uid://f2p2weof25bf" path="res://Assets/ui/continue_hovering.png" id="17_37vhi"]
 
 [node name="Cutscene" type="Control"]
 layout_mode = 3
@@ -234,15 +234,15 @@ autowrap_mode = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.38046876
-anchor_top = 0.8541667
+anchor_top = 0.82916665
 anchor_right = 0.625
 anchor_bottom = 0.9375
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("16_37vhi")
-texture_hover = ExtResource("17_55x6a")
+texture_hover = ExtResource("17_37vhi")
 ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
