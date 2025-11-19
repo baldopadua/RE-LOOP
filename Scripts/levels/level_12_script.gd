@@ -169,17 +169,50 @@ func _ready():
 # TO WORK ON THE SCRIPT
 # ALSO REMOVE THE OBJECT "enter_[number]" WHEN THE SCRIPTING IS DONE
 func enter_level():
+	# STOP COUNTDOWN TIMER AND SOUNDS
+	if count_down:
+		count_down.stop()
+
+	# STOP MAIN TIMER
+	if timer:
+		timer.stop()
+
 	# STOP FINAL LEVEL MUSIC BEFORE COMPLETING
 	if sound_manager:
 		sound_manager.stop_music("final_level_bgm")
-	
+		# Stop any countdown beep sounds that might still be playing
+		if sound_manager.sfx.has("countdown_beep"):
+			sound_manager.stop_sfx("countdown_beep")
+
 	# CALL THIS WHEN METHOD IS DONE IN LEVEL SCRIPT, IF THE FINISH CONDITION IS IN THE
-	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent()) 
+	# OBJECT, USE level_handler.complete_current_level(get_parent()get_parent())
 	level_handler.complete_current_level(get_parent()) 
 	
 
 func _on_level_handler_skip_level_requested(level_number: int) -> void:
 	if level_number == 12:
+		print("=== SKIP LEVEL 12 - CLEANING UP ===")
+
+		# Stop all timers
+		if count_down:
+			count_down.stop()
+			print("Stopped count_down timer")
+		if timer:
+			timer.stop()
+			print("Stopped main timer")
+
+		# Stop all sounds
+		if sound_manager:
+			sound_manager.stop_music("final_level_bgm")
+			if sound_manager.sfx.has("countdown_beep"):
+				sound_manager.stop_sfx("countdown_beep")
+			print("Stopped all level 12 sounds")
+
+		# Stop player input
+		if player:
+			player.set_process_input(false)
+
+		# Complete the level
 		level_handler.complete_current_level(get_parent())
 
 func initialize_locations_and_reparenting():
@@ -762,7 +795,16 @@ func finish_it():
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	
 func _on_dialogue_ended(_resource: DialogueResource):
-	
+
+	# STOP ALL TIMERS AND SOUNDS
+	if count_down:
+		count_down.stop()
+	if timer:
+		timer.stop()
+	if sound_manager:
+		if sound_manager.sfx.has("countdown_beep"):
+			sound_manager.stop_sfx("countdown_beep")
+
 	player.create_tween().tween_property(player, "position", Vector2(0, 0), 3.0)
 #	Monk gets separated to the right circle
 	monk.create_tween().tween_property(monk, "position", Vector2(0, 0), 3.0).finished.connect(func():
@@ -770,7 +812,7 @@ func _on_dialogue_ended(_resource: DialogueResource):
 		player.create_tween().tween_property(player, "position", Vector2(0, 0), 2.0)
 	#	Monk gets separated to the right circle
 		monk.create_tween().tween_property(monk, "position", Vector2(0, 0), 2.0)
-		
+
 		var flash = ColorRect.new()
 		flash.color = Color(1.0, 1.0, 1.0, 0.0)
 		flash.anchor_right = 1
@@ -782,7 +824,7 @@ func _on_dialogue_ended(_resource: DialogueResource):
 		await get_tree().create_timer(3.0).timeout
 		emit_signal("level_12_completed")
 		level_handler.complete_current_level(get_parent())
-		
+
 	)
 
 func infinite_rotation() -> void:

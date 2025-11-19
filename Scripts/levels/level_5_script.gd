@@ -85,13 +85,14 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	
 	player.get_node("Camera2D").emit_signal("pan_to_pos", vending.global_position)
 	await get_tree().create_timer(1.5).timeout
-	
-	ui_handler.show_game_ui_elements()
-	
+
 	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")
-	
+
+	await get_tree().create_timer(0.3).timeout
+
+	ui_handler.show_game_ui_elements()
 	GlobalVariables.player_stopped = false
 
 # If the rocket animation is finished go to level 6

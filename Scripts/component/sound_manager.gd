@@ -38,7 +38,11 @@ func play_sfx(sfx_name: String) -> void:
 
 func stop_sfx(sfx_name: String) -> void:
 	if sfx.has(sfx_name):
-		sfx[sfx_name].stop()
+		var player = sfx[sfx_name]
+		if player is AudioStreamPlayer2D:
+			player.stop()
+		elif player.has_method("stop"):
+			player.stop()
 
 # SET PITCH SCALE FOR A SPECIFIC SFX 
 func set_sfx_pitch_scale(sfx_name: String, pitch: float) -> void:
@@ -222,3 +226,27 @@ func set_sfx_bus_volume(volume: float) -> void:
 func set_music_bus_volume(volume: float) -> void:
 	var db = linear_to_db(volume / 100.0)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), db)
+
+# Stop all sounds (music, sfx, ambience)
+func stop_all_sounds() -> void:
+	# Stop all music
+	for music_name in music.keys():
+		stop_music(music_name)
+
+	# Stop all sfx
+	for sfx_name in sfx.keys():
+		stop_sfx(sfx_name)
+
+	# Stop all ui sfx
+	for ui_sfx_name in ui_sfx.keys():
+		stop_ui(ui_sfx_name)
+
+	# Stop all player sfx
+	for player_sfx_name in player_sfx.keys():
+		stop_player_sfx(player_sfx_name)
+
+	# Stop all ambience
+	stop_level_ambience()
+	stop_ambience_music("space_ambience")
+
+	print("All sounds stopped")

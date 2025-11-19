@@ -29,6 +29,13 @@ static var last_play_was_replay: bool = false
 
 var initializing_map_node: Node = null
 
+# Static method to reset all static variables (for game restart)
+static func reset_static_variables():
+	completed_levels = []
+	last_entered_level = 0
+	last_play_was_replay = false
+	print("Level handler static variables reset")
+
 func map_initialize(this, tween_rotate, tween_scale):
 	initializing_map_node = this
 	if initializing_map_node and "visible" in initializing_map_node:
@@ -212,21 +219,12 @@ func complete_current_level(levels_frame):
 				lobby_scene.start_replay_return_animation(current_level_number, target_pos)
 			return
 		else:
-			# --- NEW LOGIC: show comic cutscene after level 12 completion ---
+			# --- LEVEL 12 SPECIAL LOGIC: show comic cutscene then return to main menu ---
 			if current_level_number == 12 and ui_handler:
-				ui_handler.show_level_cutscene(12, func(): await return_to_lobby(levels_frame))
+				# Show cutscene, when continue is clicked, reset game and return to main menu
+				ui_handler.show_level_cutscene(12, func(): _complete_level_12_and_return_to_main_menu())
 				return
 			await return_to_lobby(levels_frame)
-			# --- REMOVE/COMMENT OUT THE CUTSCENE LOGIC BELOW ---
-			# var lobby_scene = levels_frame.get_child(0)
-			# if lobby_scene and lobby_scene.has_method("start_cutscene_then_enter_next_level"):
-			# 	lobby_scene.start_cutscene_then_enter_next_level(next_level_number)
-			# else:
-			# 	if ui_handler:
-			# 		ui_handler.show_level_cutscene(next_level_number, func(): _continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame))
-			# 	else:
-			# 		_continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame)
-			# --- NOW, JUST RETURN TO LOBBY ---
 			return
 		# if ui_handler:
 		# 	ui_handler.show_level_cutscene(next_level_number, func(): _continue_to_level("res://Scenes/levels/level_" + str(next_level_number) + "_scene.tscn", levels_frame))
@@ -276,6 +274,7 @@ func return_to_lobby(levels_frame):
 	if ui_handler:
 		print("Calling show_game_ui_elements from return_to_lobby")
 		ui_handler.show_game_ui_elements()
+		ui_handler.hide_and_disable_hint_and_time()
 
 func _mark_level_completed_and_print_status():
 	if not completed_levels.has(current_level_number):
@@ -420,6 +419,30 @@ func on_skip_level_and_return_to_lobby(levels_frame):
 func request_skip_level():
 	emit_signal("skip_level_requested", current_level_number)
 
+func _complete_level_12_and_return_to_main_menu():
+	print("=== _complete_level_12_and_return_to_main_menu called ===")
+
+	if not ui_handler:
+		print("ERROR: ui_handler not found!")
+		ui_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler")
+		if not ui_handler:
+			print("ERROR: Could not find ui_handler!")
+			return
+
+	# Get main scene reference
+	var main_scene = get_tree().root.get_node_or_null("MainScene")
+	if not main_scene:
+		print("ERROR: MainScene not found")
+		return
+
+	print("Resetting game state...")
+	# Reset all game state (like the YES button did)
+	ui_handler._reset_all_game_state()
+	await get_tree().create_timer(0.5).timeout
+
+	print("Returning to main menu...")
+	# Return to main menu (this will hide GameScene and show main menu)
+	main_scene._on_level_12_complete_return_to_menu()
 
 func _on_tree_level_1_completed() -> void:
 	ui_handler.show_game_ui_elements()

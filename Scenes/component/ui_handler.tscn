@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://m46y1wd88uf1"]
+[gd_scene load_steps=102 format=3 uid="uid://m46y1wd88uf1"]
 
 [ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
 [ext_resource type="Texture2D" uid="uid://c284erqqs1py8" path="res://Assets/ui/gametitle.png" id="2_uxtkq"]
@@ -46,6 +46,8 @@
 [ext_resource type="Texture2D" uid="uid://bxlkfq5axax5a" path="res://Assets/ui/hint/mute_sound_icon.png" id="36_swapm"]
 [ext_resource type="Texture2D" uid="uid://biicj40cdmvm6" path="res://Assets/ui/hint/note_sound_icon_hover.png" id="37_yg0r3"]
 [ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="38_kyj2j"]
+[ext_resource type="Script" uid="uid://dkcmwg1p30lxy" path="res://Scripts/ui/play_again.gd" id="43_a78uh"]
+[ext_resource type="Texture2D" uid="uid://cnmt0b4y7gy50" path="res://Assets/ui/BG.png" id="44_i1035"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyj2j"]
 atlas = ExtResource("2_yg0r3")
@@ -646,6 +648,7 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="overlay" type="Control" parent="ui_logic"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -655,6 +658,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="tutorial" type="Control" parent="ui_logic/overlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -677,6 +681,7 @@ grow_vertical = 2
 texture = ExtResource("19_bo42c")
 
 [node name="tutorial_back" type="TextureRect" parent="ui_logic/overlay/tutorial"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -2367,6 +2372,87 @@ texture_hover = ExtResource("23_4r7hv")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="play_again" type="Control" parent="ui_logic/overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("43_a78uh")
+metadata/_edit_use_anchors_ = true
+
+[node name="box" type="Control" parent="ui_logic/overlay/play_again"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="overlay_bg" type="TextureRect" parent="ui_logic/overlay/play_again/box"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.015625
+anchor_right = 1.015625
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_bo42c")
+metadata/_edit_use_anchors_ = true
+
+[node name="bg" type="TextureRect" parent="ui_logic/overlay/play_again/box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 398.0
+offset_top = 221.0
+offset_right = -484.0
+offset_bottom = -267.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("44_i1035")
+expand_mode = 1
+
+[node name="text" type="Label" parent="ui_logic/overlay/play_again/box"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37109375
+anchor_top = 0.36944443
+anchor_right = 0.5703125
+anchor_bottom = 0.43194443
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 60
+text = "Play again?"
+metadata/_edit_use_anchors_ = true
+
+[node name="yes" type="Button" parent="ui_logic/overlay/play_again/box"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 351.0
+offset_right = 582.0
+offset_bottom = 394.0
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 50
+text = "Yes"
+
+[node name="no" type="Button" parent="ui_logic/overlay/play_again/box"]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 356.0
+offset_right = 677.0
+offset_bottom = 399.0
+theme_override_fonts/font = ExtResource("38_kyj2j")
+theme_override_font_sizes/font_size = 50
+text = "No
+"
+
 [node name="cutscene" parent="." instance=ExtResource("33_nol8b")]
 visible = false
 layout_mode = 1
@@ -2387,3 +2473,5 @@ script = ExtResource("20_qpkpn")
 [connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/sfx_slider" to="ui_logic/overlay/settings" method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="ui_logic/overlay/settings/settings_box/music_slider" to="ui_logic/overlay/settings" method="_on_music_slider_value_changed"]
 [connection signal="pressed" from="ui_logic/overlay/settings/credits_button_settings" to="ui_logic/overlay/settings" method="_on_credits_button_settings_pressed"]
+[connection signal="pressed" from="ui_logic/overlay/play_again/box/yes" to="ui_logic/overlay/play_again" method="_on_yes_pressed"]
+[connection signal="pressed" from="ui_logic/overlay/play_again/box/no" to="ui_logic/overlay/play_again" method="_on_no_pressed"]
