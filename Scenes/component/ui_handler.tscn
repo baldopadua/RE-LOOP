@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://m46y1wd88uf1"]
+[gd_scene load_steps=100 format=3 uid="uid://m46y1wd88uf1"]
 
 [ext_resource type="Script" uid="uid://dby3u2jxm0fk8" path="res://Scripts/component/ui_handler.gd" id="1_hoadv"]
 [ext_resource type="Texture2D" uid="uid://c284erqqs1py8" path="res://Assets/ui/gametitle.png" id="2_uxtkq"]
@@ -29,7 +29,10 @@
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="22_iwsb4"]
 [ext_resource type="Texture2D" uid="uid://ckok4beotp5ne" path="res://Assets/ui/Brochure.png" id="22_kyj2j"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="23_4r7hv"]
+[ext_resource type="Texture2D" uid="uid://b5sf6ryxjr30n" path="res://Assets/Rift-Brochure.png" id="23_neudi"]
+[ext_resource type="Texture2D" uid="uid://cg1sdqx07aidm" path="res://Assets/ui/page_turn.png" id="23_oupgw"]
 [ext_resource type="Texture2D" uid="uid://y5ujgaokyei8" path="res://Assets/ui/hint/hint_dialog.png" id="23_us0vv"]
+[ext_resource type="Texture2D" uid="uid://he8yyg0rig6x" path="res://Assets/ui/page_turn_hover.png" id="24_neudi"]
 [ext_resource type="Texture2D" uid="uid://cgs10454tk44a" path="res://Assets/ui/hint/lock.png" id="24_y4w7x"]
 [ext_resource type="Texture2D" uid="uid://coq0k521hiqir" path="res://Assets/ui/hint/hint_2_overlay.png" id="26_exohx"]
 [ext_resource type="Texture2D" uid="uid://d0q68tpidyitt" path="res://Assets/ui/hint/solution_overlay.png" id="27_nol8b"]
@@ -652,7 +655,6 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="tutorial" type="Control" parent="ui_logic/overlay"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -674,23 +676,58 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("19_bo42c")
 
+[node name="tutorial_back" type="TextureRect" parent="ui_logic/overlay/tutorial"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01484375
+anchor_top = -0.011111109
+anchor_right = 0.9854778
+anchor_bottom = 1.0734313
+offset_right = 582.58813
+offset_bottom = 322.07056
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("23_neudi")
+expand_mode = 1
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="tutorial_overlay" type="TextureRect" parent="ui_logic/overlay/tutorial"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -648.0
-offset_top = -379.0
-offset_right = 1272.0
-offset_bottom = 701.0
+anchors_preset = -1
+anchor_left = -0.014843749
+anchor_right = 0.95234364
+anchor_bottom = 0.95055556
+offset_right = 582.58813
+offset_bottom = 322.07056
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.68, 0.68)
 texture = ExtResource("22_kyj2j")
-stretch_mode = 4
+expand_mode = 1
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="page_turn_button" type="TextureButton" parent="ui_logic/overlay/tutorial"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8859375
+anchor_top = 0.80694443
+anchor_right = 0.97734374
+anchor_bottom = 0.9722224
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("23_oupgw")
+texture_pressed = ExtResource("24_neudi")
+texture_hover = ExtResource("24_neudi")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="credits" type="Control" parent="ui_logic/overlay"]
 visible = false
@@ -2343,6 +2380,7 @@ script = ExtResource("20_qpkpn")
 
 [node name="SoundManager" parent="." instance=ExtResource("21_qpkpn")]
 
+[connection signal="toggled" from="ui_logic/overlay/tutorial/page_turn_button" to="ui_logic" method="_on_page_turn_button_toggled"]
 [connection signal="pressed" from="ui_logic/overlay/settings/settings_box/sfx_mute_button" to="ui_logic/overlay/settings" method="_on_sfx_mute_button_pressed"]
 [connection signal="pressed" from="ui_logic/overlay/settings/settings_box/music_mute_button" to="ui_logic/overlay/settings" method="_on_music_mute_button_pressed"]
 [connection signal="toggled" from="ui_logic/overlay/settings/settings_box/enable_skip_toggle" to="ui_logic/overlay/hint" method="_on_enable_skip_toggle_toggled"]

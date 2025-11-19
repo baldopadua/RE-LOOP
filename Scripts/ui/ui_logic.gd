@@ -118,3 +118,52 @@ func popup_overlay_from_button(button: Control, overlay: Control, duration: floa
 	tween.tween_property(overlay, "scale", Vector2(1, 1), duration)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	return tween
+
+func show_overlay_tutorial():
+	if has_node("overlay"):
+		var overlay = get_node("overlay")
+		if overlay.has_node("tutorial"):
+			var tutorial = overlay.get_node("tutorial")
+			animate_overlay_open_from_top(tutorial)
+			overlay.visible = true
+			hide_all_children(overlay)
+			tutorial.visible = true
+			# Ensure default: overlay visible, back hidden
+			var tutorial_overlay = tutorial.get_node_or_null("tutorial_overlay")
+			var tutorial_back = tutorial.get_node_or_null("tutorial_back")
+			if tutorial_overlay:
+				tutorial_overlay.visible = true
+			if tutorial_back:
+				tutorial_back.visible = false
+			show_close_button()
+
+# Utility: Show the close button in overlay if present
+func show_close_button():
+	var overlay = get_node_or_null("overlay")
+	if overlay and overlay.has_node("close_button"):
+		overlay.get_node("close_button").visible = true
+
+# Utility: Hide all children of a node
+func hide_all_children(node: Node) -> void:
+	for child in node.get_children():
+		if child.has_method("set_visible"):
+			child.visible = false
+
+# Handler for page_turn_button toggled
+func _on_page_turn_button_toggled(button_pressed: bool) -> void:
+	var overlay = get_node_or_null("overlay")
+	if not overlay or not overlay.has_node("tutorial"):
+		return
+	var tutorial = overlay.get_node("tutorial")
+	var tutorial_overlay = tutorial.get_node_or_null("tutorial_overlay")
+	var tutorial_back = tutorial.get_node_or_null("tutorial_back")
+	if button_pressed:
+		if tutorial_overlay:
+			tutorial_overlay.visible = false
+		if tutorial_back:
+			tutorial_back.visible = true
+	else:
+		if tutorial_overlay:
+			tutorial_overlay.visible = true
+		if tutorial_back:
+			tutorial_back.visible = false
