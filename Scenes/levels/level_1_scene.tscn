@@ -15,6 +15,126 @@
 [ext_resource type="Texture2D" uid="uid://bacqpwmbkc6hy" path="res://Shaders/black_hole.tres" id="15_ggo0n"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="23_gu1y6"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkn6d"]
+size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ystme"]
+size = Vector2(31, 22.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl30"]
+size = Vector2(31, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr302"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(0, 0, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttgta"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(64, 0, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2f8f"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(128, 0, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_157a6"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(192, 0, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r5jx"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(256, 0, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu1y6"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(320, 0, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgaox"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(384, 0, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivggd"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(448, 0, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmm5q"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(512, 0, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq6s4"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(576, 0, 64, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khfc4"]
+atlas = ExtResource("11_ggo0n")
+region = Rect2(640, 0, 64, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gbijq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr302")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttgta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2f8f")
+}],
+"loop": false,
+"name": &"grow_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_157a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r5jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu1y6")
+}],
+"loop": false,
+"name": &"grow_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgaox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivggd")
+}],
+"loop": false,
+"name": &"grow_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmm5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq6s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khfc4")
+}],
+"loop": true,
+"name": &"grow_4",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_7hl30"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7hl30"]
+gradient = SubResource("Gradient_7hl30")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggo0n"]
+shader = ExtResource("14_cd6w3")
+shader_parameter/curve = ExtResource("15_ggo0n")
+shader_parameter/strength = 4.7499999933364734e-08
+
 [sub_resource type="Animation" id="Animation_pxia2"]
 resource_name = "ClimbingAnimation"
 length = 2.5
@@ -139,126 +259,6 @@ _data = {
 &"RESET": SubResource("Animation_l4q40")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkn6d"]
-size = Vector2(18, 18)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ystme"]
-size = Vector2(31, 22.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hl30"]
-size = Vector2(31, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jr302"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(0, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ttgta"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(64, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j2f8f"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(128, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_157a6"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(192, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8r5jx"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(256, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gu1y6"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(320, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tgaox"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(384, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivggd"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(448, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rmm5q"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(512, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sq6s4"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(576, 0, 64, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_khfc4"]
-atlas = ExtResource("11_ggo0n")
-region = Rect2(640, 0, 64, 112)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gbijq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jr302")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ttgta")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j2f8f")
-}],
-"loop": false,
-"name": &"grow_1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_157a6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8r5jx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gu1y6")
-}],
-"loop": false,
-"name": &"grow_2",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tgaox")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ivggd")
-}],
-"loop": false,
-"name": &"grow_3",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rmm5q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sq6s4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_khfc4")
-}],
-"loop": true,
-"name": &"grow_4",
-"speed": 5.0
-}]
-
-[sub_resource type="Gradient" id="Gradient_7hl30"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7hl30"]
-gradient = SubResource("Gradient_7hl30")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggo0n"]
-shader = ExtResource("14_cd6w3")
-shader_parameter/curve = ExtResource("15_ggo0n")
-shader_parameter/strength = 4.7499999933364734e-08
-
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_pxia2")
 
@@ -269,11 +269,6 @@ self_modulate = Color(1, 1, 1, 0)
 up_direction = Vector2(0, 1)
 
 [node name="SoundManager" parent="." instance=ExtResource("23_gu1y6")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_cmquk")
-}
 
 [node name="Seed" parent="." instance=ExtResource("9_l4q40")]
 position = Vector2(0, 290)
@@ -365,7 +360,13 @@ position = Vector2(1, -159)
 [node name="initial_seed_focus" type="Marker2D" parent="."]
 position = Vector2(0, 250)
 
-[connection signal="animation_finished" from="AnimationPlayer" to="tree" method="_on_animation_player_animation_finished"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cmquk")
+}
+
 [connection signal="add_cur_state" from="tree" to="tree" method="_on_add_cur_state"]
+[connection signal="level_1_completed" from="tree" to="CanvasLayer/LevelHandler" method="_on_tree_level_1_completed"]
 [connection signal="map_scale_tween_finished" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_map_scale_tween_finished"]
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
+[connection signal="animation_finished" from="AnimationPlayer" to="tree" method="_on_animation_player_animation_finished"]

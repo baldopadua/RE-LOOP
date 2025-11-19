@@ -33,7 +33,7 @@ var center_circle: Vector2i = Vector2i(0, 0)
 @onready var enter_10: object_class = $enter_10
 @onready var enter_11: object_class = $enter_11
 @onready var enter_12: object_class = $enter_12
-
+@onready var enter_13: object_class = null
 @onready var short_hand_rotation_lobby = $short_hand_rotation_lobby
 
 var clock_area: int = 12
@@ -50,11 +50,10 @@ const ANIM_SPEED_MULTIPLIER: float = 1.8
 func _ready():
 	await get_tree().process_frame
 	lobby_active = true
-
+    
 	call_deferred("initialize_text_labels")
 	ui_handler = get_tree().root.get_node_or_null("MainScene/CanvasLayerUi/UiHandler")
-	ui_handler.hide_game_ui_elements()
-
+	ui_handler.hide_and_disable_hint_and_time()
 	var game_scene = get_tree().root.get_node("MainScene/GameScene")
 	if game_scene and game_scene.has_node("CanvasLayer/bg") and game_scene.has_node("CanvasLayer/game_scene_bg"):
 		game_scene.get_node("CanvasLayer/bg").visible = true

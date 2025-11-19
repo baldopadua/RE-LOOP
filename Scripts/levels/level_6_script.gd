@@ -25,6 +25,8 @@ var player_body: Node = null
 
 var jump_animation_played := false # Add this flag
 
+signal level_6_completed 
+
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(6)
@@ -103,6 +105,7 @@ func object_initialize():
 	objects.append(seed2)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	emit_signal("level_6_completed")
 	print("Animation finished: ", anim_name)
 	if anim_name == "climbing_animation":
 		# Play jump animation on player sprite after climbing finishes
