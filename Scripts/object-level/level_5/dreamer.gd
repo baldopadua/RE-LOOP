@@ -183,7 +183,7 @@ func set_rocket():
 	player.get_node("Camera2D").emit_signal("pan_to_pos", rocket.global_position)
 	
 	await get_tree().create_timer(1.0).timeout
-
+   
 	# Stop player and play animation of kid going into rocket...
 	GlobalVariables.player_stopped = true
 	# Kunyare nag play na yung animation ni player na getting in the ship

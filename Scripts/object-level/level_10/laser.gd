@@ -18,6 +18,8 @@ var did_franklin_successfully_invented_electricity: bool = false
 @onready var animation_player =$"../AnimationPlayer"
 var is_loop_broken = false
 
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+
 # ENABLE PROCEEDING IN DIFFERENT LEVEL
 
 func _on_keystone_complete(obj_name: String, enabled: bool) -> void:
@@ -33,6 +35,7 @@ func _on_keystone_complete(obj_name: String, enabled: bool) -> void:
 	# IF ALL KEYSTONE ARE COMPLETE
 	if did_nicola_successfully_invented_tesla and did_edison_successfully_invented_bulb and did_franklin_successfully_invented_electricity:
 		player.set_process_input(false)
+		ui_handler.hide_game_ui_elements()
 		var p = player.get_node("Camera2D")
 		p.emit_signal("reveal_bars")
 		p.emit_signal("cam_zoom", 1.5)
@@ -53,6 +56,7 @@ func _on_keystone_complete(obj_name: String, enabled: bool) -> void:
 		)
 
 func _on_body_entered(body) -> void:
+	
 	handle_body_entered(body)
 	if is_loop_broken:
 		player.set_process_input(false)
@@ -69,4 +73,5 @@ func _on_body_entered(body) -> void:
 		animation_player.play("jumping_from_laser")
 		await animation_player.animation_finished
 		await get_tree().create_timer(0.50).timeout
+		ui_handler.show_game_ui_elements()
 		get_parent().level_handler.complete_current_level(get_parent().get_parent())
