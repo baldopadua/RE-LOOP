@@ -67,12 +67,14 @@ func _on_keystone_complete(obj_name: String, enabled: bool) -> void:
 			GlobalVariables.player_stopped = false
 			GlobalVariables.is_looping = false
 			is_loop_broken = true
+			ui_handler.show_game_ui_elements()
 		)
 
 func _on_body_entered(body) -> void:
 	
 	handle_body_entered(body)
 	if is_loop_broken:
+		ui_handler.hide_game_ui_elements()
 		player.set_process_input(false)
 		var p = player.get_node("Camera2D")
 		p.emit_signal("reveal_bars")
@@ -92,6 +94,6 @@ func _on_body_entered(body) -> void:
 		animation_player.play("jumping_from_laser")
 		await animation_player.animation_finished
 		await get_tree().create_timer(0.50).timeout
-		ui_handler.show_game_ui_elements()
+		
 		get_parent().level_handler.complete_current_level(get_parent().get_parent())
 		emit_signal("level_10_completed")

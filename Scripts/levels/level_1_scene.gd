@@ -84,7 +84,7 @@ func _on_level_handler_map_scale_tween_finished() -> void:
 	player.get_node("Camera2D").emit_signal("pan_to_pos", soil.global_position)
 	
 	await get_tree().create_timer(2.0).timeout
-
+	ui_handler.show_game_ui_elements()
 	player.get_node("Camera2D").emit_signal("pan_to_orig_pos")
 	player.get_node("Camera2D").emit_signal("hide_bars")
 	player.get_node("Camera2D").emit_signal("cam_orig_zoom")

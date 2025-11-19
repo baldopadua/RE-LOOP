@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="4_fiti8"]
 [ext_resource type="Script" uid="uid://c41pep8mnkrp4" path="res://Scripts/object-level/level_4/chicken.gd" id="5_gmxhw"]
 [ext_resource type="Texture2D" uid="uid://77dvm6bmfb65" path="res://Assets/levels/level_4/Incubator.png" id="7_enhda"]
+[ext_resource type="Texture2D" uid="uid://5rvn2k57d7b8" path="res://Assets/levels/level_4/new-moving-indicators-sheet.png" id="8_b0trk"]
 [ext_resource type="Script" uid="uid://bvkjbo5mnux15" path="res://Scripts/object-level/level_4/dog.gd" id="9_yxj7a"]
 [ext_resource type="Texture2D" uid="uid://it0nf1j8lb0e" path="res://Assets/levels/level_4/Dog_Stick-Sheet.png" id="10_f0imo"]
 [ext_resource type="Texture2D" uid="uid://c3rxnkwijd1xu" path="res://Assets/levels/level_4/Dog_Bone-Sheet.png" id="11_dljml"]
@@ -113,6 +114,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lahvx"]
 size = Vector2(85, 99)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ashh0"]
+atlas = ExtResource("8_b0trk")
+region = Rect2(39, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5axec"]
+atlas = ExtResource("8_b0trk")
+region = Rect2(52, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuxco"]
+atlas = ExtResource("8_b0trk")
+region = Rect2(65, 0, 12, 11)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2w5h1"]
 atlas = ExtResource("17_6d2y4")
 region = Rect2(0, 0, 20, 11)
@@ -137,6 +150,30 @@ region = Rect2(20, 0, 20, 11)
 atlas = ExtResource("18_mj1vs")
 region = Rect2(40, 0, 20, 11)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcdml"]
+atlas = ExtResource("8_b0trk")
+region = Rect2(0, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26j28"]
+atlas = ExtResource("8_b0trk")
+region = Rect2(13, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h0xq"]
+atlas = ExtResource("8_b0trk")
+region = Rect2(26, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loqgc"]
+atlas = ExtResource("8_b0trk")
+region = Rect2(78, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urdww"]
+atlas = ExtResource("8_b0trk")
+region = Rect2(91, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcv2c"]
+atlas = ExtResource("8_b0trk")
+region = Rect2(104, 0, 12, 11)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcs1b"]
 atlas = ExtResource("19_37es6")
 region = Rect2(0, 0, 20, 11)
@@ -151,6 +188,20 @@ region = Rect2(40, 0, 20, 11)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0bs5k"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ashh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5axec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuxco")
+}],
+"loop": true,
+"name": &"bone",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2w5h1")
@@ -187,6 +238,34 @@ animations = [{
 "loop": true,
 "name": &"dino",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcdml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26j28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h0xq")
+}],
+"loop": true,
+"name": &"feather",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loqgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urdww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcv2c")
+}],
+"loop": true,
+"name": &"lizard tail",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1058,9 +1137,11 @@ shape = SubResource("RectangleShape2D_lahvx")
 [node name="symbol_anim_sprite" type="AnimatedSprite2D" parent="incubator"]
 position = Vector2(-15, -26)
 rotation = 2.61799
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_0bs5k")
-animation = &"dino"
-autoplay = "dino"
+animation = &"feather"
+autoplay = "feather"
+frame_progress = 0.5701239
 
 [node name="chicken" parent="." instance=ExtResource("4_fiti8")]
 position = Vector2(262, -145)

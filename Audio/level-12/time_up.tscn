@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://chrif5sijmxj6"]
 
-[ext_resource type="AudioStream" uid="uid://cjl2glb73shsb" path="res://Audio/sfx/cinematic_impact.mp3" id="1_impact"]
+[ext_resource type="AudioStream" uid="uid://jp54wk0pw6di" path="res://Audio/sfx/cinematic_impact.mp3" id="1_impact"]
 
 [node name="time_up" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_impact")
