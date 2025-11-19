@@ -4,6 +4,7 @@ signal toggle_switch_circle()
 
 @onready var player = $"../PlayerScene"
 @onready var canvas_layer = $"../CanvasLayer"
+@onready var sound_manager = $"../SoundManager"
 
 func _on_body_entered(body) -> void:
 	print("BODY ENTERED: ", get_rid())
@@ -21,6 +22,10 @@ func _on_body_exited(body) -> void:
 
 func _on_toggle_switch_circle() -> void:
 	if player.position.x == -240.0:
+		# Play teleportation SFX
+		if sound_manager and sound_manager.sfx.has("teleport"):
+			sound_manager.play_sfx("teleport")
+		
 		var flash = ColorRect.new()
 		flash.color = Color(0, 0, 0, 1)
 		flash.anchor_right = 1
@@ -33,6 +38,10 @@ func _on_toggle_switch_circle() -> void:
 		# Fade out animation
 		flash.create_tween().tween_property(flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 	else:
+		# Play teleportation SFX
+		if sound_manager and sound_manager.sfx.has("teleport"):
+			sound_manager.play_sfx("teleport")
+		
 		var flash = ColorRect.new()
 		flash.color = Color(0, 0, 0, 1)
 		flash.anchor_right = 1
