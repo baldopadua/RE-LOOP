@@ -389,6 +389,11 @@ func enter_phase_2():
 	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
+	
+	# Play loop shake sound for phase transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
 #	Cinematic Cameras
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 #	Zoom out
@@ -405,6 +410,11 @@ func enter_phase_2():
 	canvas_layer.add_child(flash)
 	
 	flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+	# Play crystal transition sound during flash
+	if sound_manager and sound_manager.sfx.has("crystal_transition"):
+		sound_manager.play_sfx("crystal_transition")
+	
 	await get_tree().create_timer(3.0).timeout
 	
 	# Reveal all while still on white flash
@@ -519,6 +529,16 @@ func enter_phase_3():
 	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
+	
+	# Play loop shake sound for phase transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
+#	Cinematic Cameras
+	player.get_node("Camera2D").emit_signal("reveal_bars")
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
 #	Cinematic Cameras
 	player.get_node("Camera2D").emit_signal("reveal_bars")
 #	Zoom out
@@ -535,6 +555,11 @@ func enter_phase_3():
 	canvas_layer.add_child(flash)
 	
 	flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+	# Play crystal transition sound during flash
+	if sound_manager and sound_manager.sfx.has("crystal_transition"):
+		sound_manager.play_sfx("crystal_transition")
+	
 	await get_tree().create_timer(3.0).timeout
 	
 	# Reveal all while still on white flash
@@ -795,6 +820,12 @@ func on_countdown_tick(_monk_duplicate, time_left):
 	print("COUNTDOWN DATA TIME: ", countdown_data.time)
 	print("TIMER TIME: ", timer.time_left)
 
+	# Play countdown beep with increasing pitch as time decreases
+	if sound_manager and sound_manager.sfx.has("countdown_beep"):
+		var pitch = 0.7 + (6 - time_left) * 0.1  # 0.7 at 6 seconds, 1.2 at 1 second
+		sound_manager.set_sfx_pitch_scale("countdown_beep", pitch)
+		sound_manager.play_sfx("countdown_beep")
+
 	player.shake_camera(1.0, 3.0, 1.0)
 	
 	# Update map frames based on time_left
@@ -876,7 +907,11 @@ func _on_count_down_timeout() -> void:
 	countdown_data.time -= 1
 
 	if countdown_data.time <= 0:
-		# Time's up, remove monk and timer, and trigger object placement
+		# Time's up! Play failure sound
+		if sound_manager and sound_manager.sfx.has("time_up"):
+			sound_manager.play_sfx("time_up")
+		
+		# Remove monk and timer, and trigger object placement
 		monk.monitoring = false
 		monk.monitorable = false
 		tween_opacity(monk, 0.0, 2.0)
