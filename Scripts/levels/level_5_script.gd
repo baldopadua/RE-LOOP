@@ -130,11 +130,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			await get_tree().process_frame # Wait for animation to visually finish
 			level_handler.complete_current_level(get_parent())
 			player.get_node("Camera2D").emit_signal("hide_bars")
-			# Permanently remove bars so they can't come back
-			if upper_bar:
-				upper_bar.queue_free()
-			if lower_bar:
-				lower_bar.queue_free()
+			
 
 
 func _on_level_handler_skip_level_requested(level_number: int) -> void:

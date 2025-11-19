@@ -19,6 +19,8 @@ var is_loop_broken = false
 @onready var animation_sprite = $AnimatedSprite2D
 var float_tween : Tween
 
+@onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
+
 func _ready() -> void:
 	float_box()
 	
@@ -127,6 +129,7 @@ func _on_body_entered(body) -> void:
 	handle_body_entered(body)
 	if is_loop_broken:
 		player.set_process_input(false)
+		ui_handler.hide_game_ui_elements()
 		player.get_node("Camera2D").emit_signal("pan_to_pos", cat.global_position)
 		player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 		player.get_node("Camera2D").emit_signal("reveal_bars")
@@ -139,6 +142,7 @@ func _on_body_entered(body) -> void:
 			if sound_manager and sound_manager.sfx.has("box_climb"):
 				sound_manager.play_sfx("box_climb")
 			
+			ui_handler.show_game_ui_elements()
 			var tween := create_tween()
 			tween.tween_property(self, "position:y", 0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 			player.create_tween().tween_property(player.get_node("AnimatedSprite2D"), "position:y", 0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func():
@@ -147,6 +151,7 @@ func _on_body_entered(body) -> void:
 				player.create_tween().tween_property(player.get_node("AnimatedSprite2D"), "position:y", 100.0, 1.0).finished.connect(func():
 					player.create_tween().tween_property(player.get_node("AnimatedSprite2D"), "position:y", 20, 0.75)
 					player.create_tween().tween_property(player, "modulate:a",  0.0, 0.75).finished.connect(func():
+						ui_handler.show_game_ui_elements()
 						get_parent().level_handler.complete_current_level(get_parent())
 					)
 					
