@@ -15,7 +15,7 @@ extends Node2D
 # RECURSIVELY COLLECT ALL AUDIOSTREAMPLAYER2D NODES UNDER A GIVEN NODE
 func _collect_sfx_nodes(parent: Node, dict: Dictionary, prefix: String = ""):
 	for child in parent.get_children():
-		if child is AudioStreamPlayer2D:
+		if child is AudioStreamPlayer2D or child is AudioStreamPlayer:
 			dict[prefix + child.name] = child
 		else:
 			_collect_sfx_nodes(child, dict, prefix)
@@ -44,14 +44,14 @@ func stop_sfx(sfx_name: String) -> void:
 func set_sfx_pitch_scale(sfx_name: String, pitch: float) -> void:
 	if sfx.has(sfx_name):
 		var player = sfx[sfx_name]
-		if player is AudioStreamPlayer2D:
+		if player is AudioStreamPlayer2D or player is AudioStreamPlayer:
 			player.pitch_scale = pitch
 
 # ADJUST PITCH SCALE FOR A SPECIFIC SFX 
 func adjust_sfx_pitch_scale(sfx_name: String, delta: float) -> void:
 	if sfx.has(sfx_name):
 		var player = sfx[sfx_name]
-		if player is AudioStreamPlayer2D:
+		if player is AudioStreamPlayer2D or player is AudioStreamPlayer:
 			if player.pitch_scale > 0.0:
 				player.pitch_scale += delta
 
@@ -59,7 +59,7 @@ func adjust_sfx_pitch_scale(sfx_name: String, delta: float) -> void:
 func set_sfx_volume(sfx_name: String, volume_db: float) -> void:
 	if sfx.has(sfx_name):
 		var player = sfx[sfx_name]
-		if player is AudioStreamPlayer2D:
+		if player is AudioStreamPlayer2D or player is AudioStreamPlayer:
 			player.volume_db = volume_db
 
 # UI SFX
@@ -119,19 +119,19 @@ func play_reset_level_sfx():
 func play_ambience_music(music_name: String) -> void:
 	if has_node("music/ambience/" + music_name):
 		var player = get_node("music/ambience/" + music_name)
-		if player is AudioStreamPlayer2D:
+		if player is AudioStreamPlayer or player is AudioStreamPlayer2D:
 			player.play()
 
 func stop_ambience_music(music_name: String) -> void:
 	if has_node("music/ambience/" + music_name):
 		var player = get_node("music/ambience/" + music_name)
-		if player is AudioStreamPlayer2D:
+		if player is AudioStreamPlayer or player is AudioStreamPlayer2D:
 			player.stop()
 
 func set_ambience_music_volume(music_name: String, volume: float) -> void:
 	if has_node("music/ambience/" + music_name):
 		var player = get_node("music/ambience/" + music_name)
-		if player is AudioStreamPlayer2D:
+		if player is AudioStreamPlayer or player is AudioStreamPlayer2D:
 			player.volume_db = volume
 
 func _ready():
@@ -150,7 +150,7 @@ func _set_bus_for_all_music():
 
 func _set_bus_recursive(parent: Node, bus_name: String):
 	for child in parent.get_children():
-		if child is AudioStreamPlayer2D:
+		if child is AudioStreamPlayer2D or child is AudioStreamPlayer:
 			if child.bus == "Master":
 				child.bus = bus_name
 		else:
