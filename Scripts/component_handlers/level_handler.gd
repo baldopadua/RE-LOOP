@@ -131,6 +131,7 @@ func set_current_lobby():
 	
 
 func complete_current_level(levels_frame):
+	ui_handler.enable_game_ui_elements()
 	# Always hide hint and timer when any level is completed
 	if ui_handler:
 		ui_handler.hide_and_disable_hint_and_time()
@@ -192,7 +193,7 @@ func complete_current_level(levels_frame):
 			_mark_level_completed_and_print_status()
 		
 		kill_current_level(current_level)
-		ui_handler.enable_game_ui_elements()
+		
 		# Play crystal sound when player enters loop break portal
 		var area_handler_node = current_level.get_node_or_null("AreaHandler")
 		if area_handler_node:
