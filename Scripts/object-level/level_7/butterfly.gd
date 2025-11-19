@@ -1,16 +1,5 @@
 extends object_class
 
-# Butterfly can freely fly to make the wind reach the 6th state.
-# 	Limit that by introducing a hunger mechanic
-# Give a solution to hunger
-# 	Flower will energize and sustain the butterfly so it can now move to form tornado.
-# too easy, introduce another challenge
-# 	Add spider enemy
-# the spider will eat the butterfly therefore forfeiting the game, cinematic to butterfly then restart.
-# 	Solution is to remove the spider from the way.
-# Too easy, make it so that the spider is not pickup-able until dead.
-# 	Tt can now be moved away from the butterfly's path.
-
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var sound_manager = get_parent().get_node("SoundManager")
 var moves : int = 3
@@ -37,7 +26,8 @@ func _on_rotate_object(direction: Variant) -> void:
 		var rotation_tween: float
 		
 		if direction == GlobalVariables.Directions.COUNTERCLOCKWISE and moves < 3 and moves >= 0:
-			animated_sprite.play("flap_wings")
+			if moves == 0:
+				animated_sprite.play_backwards("butterfly_to_starved")
 			rotation_tween = rotation - deg_to_rad(30.0)
 			animated_sprite.flip_h = true
 			moves += 1
@@ -51,7 +41,8 @@ func _on_rotate_object(direction: Variant) -> void:
 			)
 			
 		elif direction == GlobalVariables.Directions.CLOCKWISE and moves > 0 and moves <= 3:
-			animated_sprite.play("flap_wings")
+			if moves == 1:
+				animated_sprite.play("butterfly_to_starved")
 			rotation_tween = rotation + deg_to_rad(30.0)
 			animated_sprite.flip_h = false
 			moves -= 1
@@ -65,9 +56,7 @@ func _on_rotate_object(direction: Variant) -> void:
 			)
 		else:
 			tween.kill()
-		
-		if moves == 0:
-			animated_sprite.play("starved_butterfly")
+			
 		print("MOVES: ", moves)
 		
 
@@ -77,25 +66,27 @@ func _on_add_state(direction: Variant) -> void:
 	if direction == GlobalVariables.Directions.CLOCKWISE:
 		if b_curr_state < b_max_state:
 			b_curr_state += 1
-		if b_curr_state == 2:
-			animated_sprite.play("cocoon")
-		elif b_curr_state == 3:
-			animated_sprite.play("default")
-			emit_signal("butterfly_state_changed") # <--- emit when state 3
+			if b_curr_state == 2:
+				animated_sprite.play("caterpillar_to_cocoon")
+			elif b_curr_state == 3:
+				animated_sprite.play("cocoon_to_butterfly")
+				await animated_sprite.animation_finished
+				animated_sprite.play("default")
+				emit_signal("butterfly_state_changed") # <--- emit when state 3
 	else:
 		if b_curr_state > b_min_state:
 			b_curr_state -= 1
-		if b_curr_state == 1:
-			animated_sprite.play_backwards("caterpillar")
-		elif b_curr_state == 2:
-			animated_sprite.play_backwards("cocoon")
+			if b_curr_state == 1:
+				animated_sprite.play_backwards("caterpillar_to_cocoon")
+			elif b_curr_state == 2:
+				animated_sprite.play_backwards("cocoon_to_butterfly")
 	print("CURR_STATE: ", b_curr_state)
 
 
 func _on_area_entered(area: Area2D) -> void:
 	if area == flower and flower.is_pickupable and flower.animated_sprite.animation == "flower_blooming":
 		moves = 3
-		animated_sprite.play("starved_to_alive")
+		animated_sprite.play("butterfly_to_starved")
 		print("Butterfly touched the flower!")
 
 func _on_area_exited(area: Area2D) -> void:

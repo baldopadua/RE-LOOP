@@ -11,11 +11,8 @@ extends object_class
 signal add_cur_state(direction)
 @onready var ui_handler = get_tree().root.get_node("MainScene/CanvasLayerUi/UiHandler")
 
-func _ready():
-	butterfly.connect("butterfly_state_changed", Callable(self, "_on_butterfly_butterfly_state_changed"))
-
 func _on_area_entered(area: Area2D) -> void:
-	if area == butterfly:
+	if area == butterfly and current_state == 2 and butterfly.b_curr_state == 3:
 		# IGNORE COLLISION IF BEING HELD, DEAD, OR BUTTERFLY NOT IN FINAL STATE
 		if is_pickupable or current_state == 1 or butterfly.b_curr_state != 3:
 			return
@@ -59,9 +56,3 @@ func _on_add_cur_state(direction: Variant) -> void:
 		if current_state == 1:
 			animated_sprite.play("dead_spider")
 			is_pickupable = true
-
-func _on_butterfly_butterfly_state_changed() -> void:
-	if not butterfly.is_alive:
-		return
-	if current_state == 2 and butterfly.b_curr_state == 3 and butterfly.get_overlapping_areas().has(self):
-		_on_area_entered(butterfly)
