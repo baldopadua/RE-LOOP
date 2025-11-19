@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://devjgm4fpge0o" path="res://Scripts/levels/level_10_script.gd" id="1_lnfvu"]
 [ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_lnfvu"]
 [ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_geapq"]
-[ext_resource type="Script" uid="uid://f5wtdaokupbq" path="res://scripts/object-level/level_10/player.gd" id="4_qcf8u"]
+[ext_resource type="Script" uid="uid://f5wtdaokupbq" path="res://Scripts/object-level/level_10/player.gd" id="4_qcf8u"]
 [ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_qcmyw"]
 [ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_ttbi8"]
 [ext_resource type="Texture2D" uid="uid://dqtn354dybf4y" path="res://Assets/levels/level_10/lazer-sheet-new.png" id="8_ttn1o"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dub8e4wj25m6m" path="res://Assets/levels/level_10/bFranklin.png" id="15_odd5e"]
 [ext_resource type="Script" uid="uid://cb06hc578vh0y" path="res://Scripts/object-level/level_10/thomas_edison.gd" id="16_2i4re"]
 [ext_resource type="Texture2D" uid="uid://de5hb3qgfo8n1" path="res://Assets/levels/level_10/Teslacoil.png" id="17_hqhit"]
-[ext_resource type="Texture2D" uid="uid://kpenmjl4vr6j" path="res://Assets/levels/level_10/lightning-rod-sheet.png" id="19_ttn1o"]
+[ext_resource type="Texture2D" uid="uid://ckq7pw7mk8uro" path="res://Assets/levels/level_10/lightning-rod-sheet.png" id="19_ttn1o"]
 [ext_resource type="Texture2D" uid="uid://c4h23ib0v2b6j" path="res://Assets/levels/level_10/Lightning.png" id="19_we0dh"]
 [ext_resource type="Script" uid="uid://bcnwj5j8jv0rr" path="res://Scripts/object-level/level_10/benjamin_franklin.gd" id="20_xjo33"]
 [ext_resource type="Texture2D" uid="uid://cpyrh25etlwdj" path="res://Assets/levels/level_10/lightbulb.png" id="21_2bove"]
@@ -1081,6 +1081,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_rmmn1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13.76, 14.645)]
+}
+
 [sub_resource type="Animation" id="Animation_qcf8u"]
 resource_name = "climbing_laser"
 length = 4.0
@@ -1095,21 +1110,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-13.76, 14.645), Vector2(-35.925, 31.335), Vector2(-38.71, 88.95), Vector2(48.815, 133.07)]
-}
-
-[sub_resource type="Animation" id="Animation_rmmn1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerScene:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-13.76, 14.645)]
 }
 
 [sub_resource type="Animation" id="Animation_odd5e"]
@@ -1343,6 +1343,7 @@ libraries = {
 [connection signal="skip_level_requested" from="CanvasLayer/LevelHandler" to="." method="_on_level_handler_skip_level_requested"]
 [connection signal="area_entered" from="Laser" to="Laser" method="_on_area_entered"]
 [connection signal="keystone_complete" from="Laser" to="Laser" method="_on_keystone_complete"]
+[connection signal="level_10_completed" from="Laser" to="CanvasLayer/LevelHandler" method="_on_laser_level_10_completed"]
 [connection signal="add_cur_state" from="NicolaTesla" to="NicolaTesla" method="_on_add_cur_state"]
 [connection signal="area_entered" from="NicolaTesla" to="NicolaTesla" method="_on_area_entered"]
 [connection signal="area_exited" from="NicolaTesla" to="NicolaTesla" method="_on_area_exited"]

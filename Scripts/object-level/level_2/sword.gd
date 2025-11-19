@@ -29,6 +29,8 @@ var time_indicator: AnimatedSprite2D
 
 # POS TO FOCUS
 @onready var pos_to_focus = $"../pos_to_focus"
+
+signal level_2_completed 
 var player_body: Node
 
 func _ready() -> void:
@@ -147,3 +149,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		
 		# NOTIFY LEVEL 2 IS COMPLETED - this will handle cutscene and next level automatically
 		level_handler.complete_current_level(get_parent().get_parent())
+		emit_signal("level_2_completed")

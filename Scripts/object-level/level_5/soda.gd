@@ -1,6 +1,5 @@
 extends object_class
 
-var area_entered_objects : Array = []
 @onready var sound_manager = get_parent().get_node("SoundManager")
 
 func _on_body_entered(body) -> void:

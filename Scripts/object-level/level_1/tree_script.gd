@@ -24,6 +24,9 @@ var player_body: Node
 
 # POS TO FOCUS
 @onready var pos_to_focus = $"../pos_to_focus"
+
+
+signal level_1_completed 
 	
 func _on_body_entered(body) -> void:
 	handle_body_entered(body)
@@ -89,9 +92,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 			
 			# DECLARE LEVEL TO BE FINISHED
-		
+			await get_tree().create_timer(0.2).timeout
 			# NOTIFY LEVEL 1 IS COMPLETED - this will handle cutscene and next level automatically
 			level_handler.complete_current_level(get_parent().get_parent())
+			emit_signal("level_1_completed")
 			
 			end_bhole_tween.finished.connect(func():
 				end_bhole_tween.kill()

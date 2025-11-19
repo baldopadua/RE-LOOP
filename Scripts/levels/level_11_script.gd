@@ -39,10 +39,13 @@ var objects: Array = []
 @onready var cat = $cat
 @onready var lightbulb = $lightbulb
 
+@onready var balloon = "res://dialogues/made/balloon.tscn"
+
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(11)
 	ui_handler.disable_game_ui_elements()
+	
 	# ROTATION, SCALE SETUP AND MAP TWEENING
 	level_handler.map_initialize(self, tween_rotate, tween_scale)
 	# PLAY LEVEL 11 SPECIAL MUSIC (NO AMBIENCE)
@@ -98,7 +101,7 @@ func _ready():
 	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
 	
 	# Dialogue here
-	DialogueManager.show_dialogue_balloon_scene("res://dialogues/made/balloon.tscn", load("res://dialogues/initial_meeting.dialogue"))
+	DialogueManager.show_dialogue_balloon_scene("res://dialogues/made/balloon.tscn", load("res://dialogues/initial_meeting.dialogue"), "", [self])
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	
 
@@ -112,7 +115,6 @@ func _on_dialogue_ended(_resource: DialogueResource):
 	player.set_process_input(true)
 #	Reshow ui elements
 	ui_handler.show_game_ui_elements()
-
 
 # ADD THIS METHOD AS A TEMPORARY WAY TO ENTER LEVELS 7 TO 12, REMOVE IT WHEN STARTING 
 # TO WORK ON THE SCRIPT
@@ -132,7 +134,6 @@ func toggle_grayscale(bg):
 func tween_time_scale(target: float, duration: float = 0.5):
 	var tween = get_tree().create_tween()
 	tween.tween_property(Engine, "time_scale", target, duration)
-
 
 func _on_level_handler_skip_level_requested(level_number: int) -> void:
 	if level_number == 11:

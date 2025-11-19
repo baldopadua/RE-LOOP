@@ -31,6 +31,8 @@ var player_body: Node
 # ALLOWED POSITIONS/MOVES
 var allowed_positions: Array = [0, 3, -3, 6, -6, 9, -9, 12, -12]
 
+signal level_3_completed 
+
 func geyser_ekusproshon():
 	animate_geyser.visible = true
 	# LESS THAN FIVE ROCKS IS NOT GOING TO BUILD PRESSURE
@@ -177,7 +179,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 		# NOTIFY LEVEL 3 IS COMPLETED - this will handle cutscene and next level automatically
 		level_handler.complete_current_level(get_parent().get_parent())
-
+		emit_signal("level_3_completed")
 
 # EXECUTE AFTER PLAYER FINISHES MOVING
 func _on_player_scene_player_finished_moving() -> void:
@@ -187,7 +189,7 @@ func _on_player_scene_player_finished_moving() -> void:
 	# DEBUG PRINT CHECK PLAYER MOVES
 	#print("MOVES: ")
 	#print(player.moves)
-	if player.moves in allowed_positions and rocks.size() > 0 and player.direction == GlobalVariables.player_direction.CLOCKWISE:
+	if player.moves in allowed_positions and rocks.size() > 0:
 		geyser_ekusproshon()
 	elif player.moves in allowed_positions and rocks.size() > 0 and player.direction == GlobalVariables.player_direction.COUNTERCLOCKWISE:
 		return_rocks()

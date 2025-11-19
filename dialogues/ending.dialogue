@@ -1,13 +1,52 @@
 ~ start
-Monk: [speed=0.5]I thought, stopping time would fix everything..
+do show_evil_plooy_and_hide_monk()
+do change_detailed_sprite("plooy", "neutral", false)
+do change_detailed_sprite("evil_plooy", "sad", true)
+do change_pitch("low")
+Yoolp: [speed=0.5]I thought, stopping time would fix everything..
+do change_detailed_sprite("plooy", "speaking", true)
+do change_detailed_sprite("evil_plooy", "sad", false)
+do change_pitch("high")
 Plooy: If we never do anything, time will eventually cease to exist in this dimension.
-Monk: But I am the embodiment of your mistakes. I will always choose the opposite. The cycle will never end.
+do change_detailed_sprite("plooy", "neutral", false)
+do change_detailed_sprite("evil_plooy", "worried", true)
+do change_pitch("low")
+Yoolp: But I am the embodiment of your mistakes. I will always choose the opposite. The cycle will never end.
+do change_detailed_sprite("plooy", "speaking", true)
+do change_detailed_sprite("evil_plooy", "sad", false)
+do change_pitch("high")
 Plooy: Like you said, for every choice we make, there's a timeline where it's different.
 Plooy: There is a Plooy that never acts. And a Plooy that chooses to destroy.
+do change_detailed_sprite("plooy", "happy", true)
+do change_pitch("high")
 Plooy: But what matters... is the Plooy we are at this very moment.
-Monk: But the loop of disappointment will just keep repeating itself.
+do change_detailed_sprite("plooy", "happy", false)
+do change_detailed_sprite("evil_plooy", "worried", true)
+do change_pitch("low")
+Yoolp: But the loop of disappointment will just keep repeating itself.
+do change_detailed_sprite("plooy", "speaking", true)
+do change_detailed_sprite("evil_plooy", "worried", false)
+do change_pitch("high")
 Plooy: The loop will never break if we choose to do nothing about it.
+do change_detailed_sprite("plooy", "happy", true)
+do change_detailed_sprite("evil_plooy", "worried", false)
+do change_pitch("high")
 Plooy: What we are now is what matters... And what tomorrow becomes is our next step.
-Monk: You would let Plooy make mistakes?
+do change_detailed_sprite("plooy", "happy", false)
+do change_detailed_sprite("evil_plooy", "worried", true)
+do change_pitch("low")
+Yoolp: You would let Plooy make mistakes?
+do change_detailed_sprite("plooy", "happy", true)
+do change_detailed_sprite("evil_plooy", "worried", false)
+do change_pitch("high")
 Plooy: [speed=0.6]As long as we face them... [speed=0.3]Together.
+do change_detailed_sprite("plooy", "happy", false)
+do change_detailed_sprite("evil_plooy", "happy", true)
+do change_pitch("low")
+Yoolp: ...
+do change_detailed_sprite("plooy", "happy", true)
+do change_detailed_sprite("evil_plooy", "happy", false)
+do change_pitch("high")
+Plooy: ...
+
 => END

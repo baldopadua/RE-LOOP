@@ -19,6 +19,33 @@ static var level_titles = {
 static func handle_level_entrance(level_number: int, object_interacted: object_class):
 	print("enter_", level_number, " interact called with: ", object_interacted.object_name)
 	
+	# --- NEW: handle enter_13 as "done with level 12" ---
+	if object_interacted.object_name == "enter_13":
+		var parent_scene = object_interacted.get_parent()
+		while parent_scene and not parent_scene.has_method("enter_level") and not parent_scene.has_method("handle_enter_13_interaction"):
+			parent_scene = parent_scene.get_parent()
+		# Always mark level 12 as complete
+		var level_handler = object_interacted.get_level_handler()
+		if level_handler and not level_handler.completed_levels.has(12):
+			level_handler.completed_levels.append(12)
+			print("Level 12 marked as completed via enter_13 (from enter_lobby.gd).")
+			if level_handler.level_status_node and level_handler.level_status_node.has_method("update_completed_levels_visual"):
+				level_handler.level_status_node.update_completed_levels_visual(level_handler.completed_levels)
+		# If in level_lobby, call handle_enter_13_interaction (already handled)
+		if parent_scene and parent_scene.has_method("handle_enter_13_interaction"):
+			parent_scene.handle_enter_13_interaction()
+			return
+		# If in level_12_scene, play comic cutscene then return to lobby
+		if parent_scene and parent_scene.name == "level_12_scene":
+			if level_handler and level_handler.ui_handler:
+				# Show comic cutscene, then return to lobby
+				level_handler.ui_handler.show_level_cutscene(12, func(): level_handler.return_to_lobby(parent_scene.get_parent()))
+			else:
+				# Fallback: just return to lobby
+				level_handler.return_to_lobby(parent_scene.get_parent())
+			return
+		return
+	
 	if object_interacted.object_name == "enter_" + str(level_number):
 		if object_interacted.hover_text_label:
 			object_interacted.hover_text_label.visible = false

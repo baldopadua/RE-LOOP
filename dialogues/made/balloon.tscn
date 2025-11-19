@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://duqsq3ocla18y"]
+[gd_scene load_steps=28 format=3 uid="uid://duqsq3ocla18y"]
 
 [ext_resource type="Script" uid="uid://buenb4cydo6i2" path="res://dialogues/made/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
@@ -6,7 +6,15 @@
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 [ext_resource type="Texture2D" uid="uid://d2k104v8y0uc5" path="res://Assets/ui/dialog/dialog-boxes3.png" id="3_a2on6"]
 [ext_resource type="Texture2D" uid="uid://cgdb7fck0pbus" path="res://Assets/ui/dialog/monk2.png" id="4_e8h4v"]
+[ext_resource type="Texture2D" uid="uid://dtg0cebp80amr" path="res://Assets/ui/dialog/monk4.png" id="4_m3736"]
+[ext_resource type="Texture2D" uid="uid://dqqddcxlk4s00" path="res://Assets/ui/dialog/monk3.png" id="6_fep7s"]
+[ext_resource type="Texture2D" uid="uid://de3y6b2fkwykq" path="res://Assets/ui/dialog/plooy_neutral.png" id="7_fep7s"]
+[ext_resource type="Texture2D" uid="uid://dgulrd6n8i80o" path="res://Assets/ui/dialog/plooy_happy.png" id="7_um3x7"]
 [ext_resource type="AudioStream" uid="uid://bkxdxhenjrua0" path="res://Audio/dialogue/blip3.wav" id="7_x8upi"]
+[ext_resource type="Texture2D" uid="uid://c0wkxkhchnlx5" path="res://Assets/ui/dialog/plooy_speak.png" id="9_6mn6q"]
+[ext_resource type="Texture2D" uid="uid://cgjak2h5brr6y" path="res://Assets/ui/dialog/Monk_eyeClosed-export.png" id="10_6mn6q"]
+[ext_resource type="Texture2D" uid="uid://6c1j3416tpa8" path="res://Assets/ui/dialog/Monk_eyeClosed_smile-export.png" id="10_22i6y"]
+[ext_resource type="Texture2D" uid="uid://gqkn2mam1o4x" path="res://Assets/ui/dialog/Monk_Neutral-export.png" id="12_cs60i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -90,6 +98,90 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_x8upi")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nhvyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m3736")
+}],
+"loop": false,
+"name": &"eyes",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_e8h4v")
+}],
+"loop": false,
+"name": &"hoodie",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fep7s")
+}],
+"loop": false,
+"name": &"no_hoodie",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_um3x7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_um3x7")
+}],
+"loop": false,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_fep7s")
+}],
+"loop": false,
+"name": &"neutral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_6mn6q")
+}],
+"loop": false,
+"name": &"speaking",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dlrpp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_22i6y")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_6mn6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cs60i")
+}],
+"loop": false,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_cs60i")
+}],
+"loop": false,
+"name": &"worried",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_nlsx6"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -150,10 +242,29 @@ offset_top = -219.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Balloon/MarginContainer"]
-position = Vector2(1017.99994, -240.75)
-scale = Vector2(0.42929688, 0.42929688)
-texture = ExtResource("4_e8h4v")
+[node name="monk_detailed" type="AnimatedSprite2D" parent="Balloon/MarginContainer"]
+unique_name_in_owner = true
+position = Vector2(999.75, -235.24998)
+scale = Vector2(0.44648436, 0.44648436)
+sprite_frames = SubResource("SpriteFrames_nhvyn")
+animation = &"no_hoodie"
+flip_h = true
+
+[node name="plooy_detailed" type="AnimatedSprite2D" parent="Balloon/MarginContainer"]
+unique_name_in_owner = true
+position = Vector2(255.99992, -214.84071)
+scale = Vector2(2.265624, 2.2656238)
+sprite_frames = SubResource("SpriteFrames_um3x7")
+animation = &"neutral"
+flip_h = true
+
+[node name="evil_plooy_detailed" type="AnimatedSprite2D" parent="Balloon/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(1017.99994, -224.84071)
+scale = Vector2(2.265624, 2.2656238)
+sprite_frames = SubResource("SpriteFrames_dlrpp")
+animation = &"worried"
 flip_h = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer"]
@@ -177,7 +288,7 @@ modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
 theme_override_fonts/normal_font = ExtResource("3_8qrun")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -188,7 +299,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_8qrun")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 42
 text = "Dialogue..."
 seconds_per_step = 0.05
 seconds_per_pause_step = 0.4
@@ -236,7 +347,8 @@ text = "Response example"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("7_x8upi")
-volume_db = 1.0
+volume_db = -10.0
+pitch_scale = 0.5
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

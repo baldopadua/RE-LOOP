@@ -77,6 +77,8 @@ var cameraShakeNoise : FastNoiseLite
 #	To Intensity of Cam Shake
 var to_intensity : float = 0.0
 
+
+
 func _ready() -> void:
 	if GlobalVariables.is_restarting:
 		GlobalVariables.is_restarting = false
@@ -105,10 +107,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_holding:
 		hold_time += delta
+		if current_rift != null:
+			current_rift.set_hold_progress(hold_time / HOLD_DURATION)
 		if hold_time >= HOLD_DURATION and not triggered and current_rift != null:
 			current_rift.emit_signal("toggle_switch_circle")
 			triggered = true
 			print("PLOOY POSITION: ", position)
+	else:
+		if current_rift != null:
+			current_rift.set_hold_progress(0.0)
 
 func _input(event: InputEvent) -> void:
 	# MOVEMENT round(rad_to_deg(rotation)) < 180.0
@@ -116,18 +123,22 @@ func _input(event: InputEvent) -> void:
 		direction = player_directions.CLOCKWISE
 		prev_deg = round(rad_to_deg(rotation))
 		rotate_player()
-		sound_manager.adjust_sfx_pitch_scale("time_manip", 0.03)
+		if GlobalVariables.is_looping:
+			sound_manager.adjust_sfx_pitch_scale("time_manip", 0.03)
 		sound_manager.adjust_sfx_pitch_scale("clank", 0.03)
 		sound_manager.play_sfx("time_manip")
 		sound_manager.play_sfx("clank")
+		sprite.flip_h = false
 	elif event.is_action_pressed("move_left") and not is_moving and not GlobalVariables.player_stopped:
 		prev_deg = round(rad_to_deg(rotation))
 		direction = player_directions.COUNTERCLOCKWISE
 		rotate_player()
-		sound_manager.adjust_sfx_pitch_scale("time_manip", -0.03)
+		if GlobalVariables.is_looping:
+			sound_manager.adjust_sfx_pitch_scale("time_manip", -0.03)
 		sound_manager.adjust_sfx_pitch_scale("clank", -0.03)
 		sound_manager.play_sfx("time_manip")
 		sound_manager.play_sfx("clank")
+		sprite.flip_h = true
 		
 	# OBJECT INTERACTION AND DROP
 	if event.is_action_pressed("interact"):
@@ -168,7 +179,6 @@ func _input(event: InputEvent) -> void:
 			is_holding = true
 			hold_time = 0.0
 			triggered = false
-	
 	if event.is_action_released("enter_rift"):		
 		is_holding = false
 

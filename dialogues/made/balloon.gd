@@ -34,6 +34,11 @@ var locals: Dictionary = {}
 
 var _locale: String = TranslationServer.get_locale()
 
+@onready var monk_detailed = %monk_detailed
+@onready var plooy_detailed = %plooy_detailed
+@onready var evil_plooy_detailed = %evil_plooy_detailed
+@onready var audio = %AudioStreamPlayer
+
 ## The current line
 var dialogue_line: DialogueLine:
 	set(value):
@@ -67,6 +72,51 @@ var mutation_cooldown: Timer = Timer.new()
 ## Indicator to show that player can progress dialogue.
 @onready var progress: Polygon2D = %Progress
 
+func change_detailed_sprite(c: String, anim: String, is_speaking := false):
+	# Always change expression / animation
+	match c:
+		"plooy":
+			plooy_detailed.play(anim)
+		"monk":
+			monk_detailed.play(anim)
+		"evil_plooy":
+			evil_plooy_detailed.play(anim)
+
+	# Only apply bright/dark modulate if this character is speaking
+	if is_speaking:
+		highlight_speaker(c)
+		
+func highlight_speaker(speaker: String):
+	# Reset all to dark
+	plooy_detailed.modulate = Color(0.3, 0.3, 0.3)
+	monk_detailed.modulate = Color(0.3, 0.3, 0.3)
+	evil_plooy_detailed.modulate = Color(0.3, 0.3, 0.3)
+
+	# Brighten the speaking one
+	match speaker:
+		"plooy":
+			plooy_detailed.modulate = Color(1, 1, 1)
+		"monk":
+			monk_detailed.modulate = Color(1, 1, 1)
+		"evil_plooy":
+			evil_plooy_detailed.modulate = Color(1, 1, 1)
+
+func show_evil_plooy_and_hide_monk():
+	monk_detailed.hide()
+	evil_plooy_detailed.show()
+
+func hide_evil_plooy_and_monk():
+	monk_detailed.hide()
+	evil_plooy_detailed.hide()
+	
+func show_monk():
+	monk_detailed.show()
+
+func change_pitch(tone: String):
+	if tone == "low":
+		audio.pitch_scale = 0.5
+	elif tone == "high":
+		audio.pitch_scale = 0.75
 
 func _ready() -> void:
 	balloon.hide()

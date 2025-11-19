@@ -27,6 +27,11 @@ func _update_is_enterable():
 	var scene_name = scene.name if scene else ""
 	var parent_name = parent.name if parent else ""
 
+	# --- SPECIAL CASE: allow enter_13 to be enterable in level_lobby and level_12_scene ---
+	if object_name == "enter_13":
+		is_enterable = true
+		return
+
 	# Check if under level_handler (level select clock)
 	if parent_name == "level_status" or parent_name == "LevelHandler":
 		is_enterable = false
@@ -82,4 +87,8 @@ func interact(object_interacted: object_class):
 		return
 	print("interact called for ", object_name)
 	var enter_lobby = preload("res://Scripts/object-level/level_lobby/enter_lobby.gd")
-	enter_lobby.handle_level_entrance(level_number, object_interacted)
+	# --- SPECIAL CASE: pass correct level_number for enter_13 ---
+	if object_name == "enter_13":
+		enter_lobby.handle_level_entrance(13, object_interacted)
+	else:
+		enter_lobby.handle_level_entrance(level_number, object_interacted)

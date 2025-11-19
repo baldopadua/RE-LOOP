@@ -25,6 +25,8 @@ var objects: Array = []
 # FOCUS MARKERS
 @onready var pos_to_focus = $pos_to_focus
 
+signal level_4_completed 
+
 func _ready():
 	# SET LEVEL
 	level_handler.set_current_level(4)
@@ -68,7 +70,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		ui_handler.set_time_indicator_fixed()
 		await get_tree().create_timer(1).timeout
 		level_handler.complete_current_level(get_parent())
-
+		emit_signal("level_4_completed")
 
 func _on_level_handler_map_scale_tween_finished() -> void:
 		# EXECUTE INITIAL CAMERA CUTSCENES FIRST
@@ -111,3 +113,4 @@ func _on_dog_add_cur_state(_direction):
 func _on_level_handler_skip_level_requested(level_number: int) -> void:
 	if level_number == 4:
 		level_handler.complete_current_level(get_parent())
+		
