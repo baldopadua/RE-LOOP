@@ -5,6 +5,7 @@ signal add_cur_state(direction)
 
 @onready var animated_sprite1 = $AnimatedSprite2D
 @onready var animated_sprite2 = $AnimatedSprite2D2
+@onready var sound_manager = $"../SoundManager"
 
 var matched = false
 
@@ -22,11 +23,19 @@ func _on_add_cur_state(direction: Variant) -> void:
 			animated_sprite1.play("default")
 			animated_sprite2.play("default")
 			is_pickupable = true
+			# Play bones collapse sound when becoming bones
+			if sound_manager and sound_manager.sfx.has("bones_collapse"):
+				sound_manager.play_sfx("bones_collapse")
+
 	else:
 		if current_state == 1:
 			animated_sprite1.play_backwards("default")
 			animated_sprite2.play_backwards("default")
 			is_pickupable = false
+			# Play Schrödinger voice (alive state)
+			if sound_manager and sound_manager.sfx.has("schrodinger_voice"):
+				sound_manager.play_sfx("schrodinger_voice")
+
 # 125.0, 199.0
 func _on_is_dropped(plooy_rotation: Variant) -> void:
 	print("POSITION: ", round(position))

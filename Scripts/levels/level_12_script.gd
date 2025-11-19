@@ -298,6 +298,10 @@ func enter_phase_1():
 	if sound_manager and sound_manager.sfx.has("loop_shake"):
 		sound_manager.play_sfx("loop_shake")
 	
+	# Play loop shake sound before transition
+	if sound_manager and sound_manager.sfx.has("loop_shake"):
+		sound_manager.play_sfx("loop_shake")
+	
 #	Shake Camera
 	player.shake_camera(5.0, 10.0, 4.0)
 #	Cinematic Cameras

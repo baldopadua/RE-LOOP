@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://daj0k1l2m3n4o"]
+
+[ext_resource type="AudioStream" uid="uid://co17j3w75nee3" path="res://Audio/sfx/teleport.wav" id="1_teleport"]
+
+[node name="teleport" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_teleport")
+volume_db = 5.0
+pitch_scale = 1.0
+max_polyphony = 3
+bus = &"sfx"

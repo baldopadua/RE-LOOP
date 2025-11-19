@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://dlb043fvqn8o8" path="res://Audio/level-1/bell.tscn" id="12_wax2h"]
 [ext_resource type="PackedScene" uid="uid://dfjn0ovrjl87e" path="res://Audio/level-1/time_freeze.tscn" id="13_ev6nr"]
 [ext_resource type="PackedScene" uid="uid://dnxj7bkmm8jxn" path="res://Audio/sfx/crystal_sfx.tscn" id="13_crystal"]
+[ext_resource type="PackedScene" uid="uid://c9j0k1l2m3n4o" path="res://Audio/sfx/teleport.tscn" id="14_teleport"]
 [ext_resource type="PackedScene" uid="uid://dkdvxqnay6fsb" path="res://Audio/level-1/time_manip.tscn" id="16_4nov3"]
 [ext_resource type="PackedScene" uid="uid://doml17wfps8v4" path="res://Audio/level-1/clank.tscn" id="17_nb86s"]
 
@@ -104,6 +105,8 @@
 [ext_resource type="PackedScene" uid="uid://n3o4p5q6r7s8t" path="res://Audio/level-6/person1.tscn" id="53_level6"]
 [ext_resource type="PackedScene" uid="uid://o4p5q6r7s8t9u" path="res://Audio/level-6/leaves.tscn" id="54_level6"]
 [ext_resource type="PackedScene" uid="uid://b5c6d7e8f9g0h" path="res://Audio/level-6/loop_shake.tscn" id="55_level6"]
+[ext_resource type="PackedScene" uid="uid://d9e0f1g2h3i4j" path="res://Audio/level-6/apple_fall.tscn" id="57_level6"]
+[ext_resource type="PackedScene" uid="uid://e5f6g7h8i9j0k" path="res://Audio/level-6/tree_climb.tscn" id="58_level6"]
 
 ; ========================================
 ; LEVEL 7 SOUNDS (Wrappers - PackedScene)
@@ -132,12 +135,37 @@
 [ext_resource type="PackedScene" uid="uid://e4f5g6h7i8j9k" path="res://Audio/level-9/cat.tscn" id="58_level9"]
 [ext_resource type="PackedScene" uid="uid://f5g6h7i8j9k0l" path="res://Audio/level-9/lever.tscn" id="59_level9"]
 [ext_resource type="PackedScene" uid="uid://g6h7i8j9k0l1m" path="res://Audio/level-9/bowl.tscn" id="60_level9"]
+[ext_resource type="PackedScene" uid="uid://l1m2n3o4p5q6r" path="res://Audio/level-9/crystal_transition.tscn" id="61_level9"]
+[ext_resource type="PackedScene" uid="uid://m2n3o4p5q6r7s" path="res://Audio/level-9/loop_shake.tscn" id="62_level9"]
+[ext_resource type="PackedScene" uid="uid://n3o4p5q6r7s8t" path="res://Audio/level-9/schrodinger_voice.tscn" id="63_level9"]
+[ext_resource type="PackedScene" uid="uid://p5q6r7s8t9u0v" path="res://Audio/level-9/cat_sound.tscn" id="65_level9"]
+[ext_resource type="PackedScene" uid="uid://q6r7s8t9u0v1w" path="res://Audio/level-9/level_switch.tscn" id="66_level9"]
+[ext_resource type="PackedScene" uid="uid://r7s8t9u0v1w2x" path="res://Audio/level-9/box_closing.tscn" id="67_level9"]
+[ext_resource type="PackedScene" uid="uid://s8t9u0v1w2x3y" path="res://Audio/level-9/box_climb.tscn" id="68_level9"]
+[ext_resource type="PackedScene" uid="uid://u0v1w2x3y4z5a" path="res://Audio/level-9/bones_collapse.tscn" id="70_level9"]
+[ext_resource type="PackedScene" uid="uid://v1w2x3y4z5a6b" path="res://Audio/level-9/loop_break.tscn" id="71_level9"]
+[ext_resource type="PackedScene" uid="uid://w2x3y4z5a6b7c" path="res://Audio/level-9/box_opening.tscn" id="72_level9"]
 
 ; ========================================
 ; LEVEL 10 SOUNDS (Wrappers - PackedScene)
 ; ========================================
 [ext_resource type="PackedScene" uid="uid://h7i8j9k0l1m2n" path="res://Audio/level-10/laser.tscn" id="61_level10"]
 [ext_resource type="PackedScene" uid="uid://i8j9k0l1m2n3o" path="res://Audio/level-10/tesla_coil.tscn" id="62_level10"]
+[ext_resource type="PackedScene" uid="uid://y6z7a8b9c0d1e" path="res://Audio/level-10/scientist1.tscn" id="63_level10"]
+[ext_resource type="PackedScene" uid="uid://z7a8b9c0d1e2f" path="res://Audio/level-10/scientist2.tscn" id="64_level10"]
+[ext_resource type="PackedScene" uid="uid://a8b9c0d1e2f3g" path="res://Audio/level-10/old_scientist.tscn" id="65_level10"]
+[ext_resource type="PackedScene" uid="uid://b9c0d1e2f3g4h" path="res://Audio/level-10/loop_break.tscn" id="66_level10"]
+[ext_resource type="PackedScene" uid="uid://c0d1e2f3g4h5i" path="res://Audio/level-10/laser_loading.tscn" id="67_level10"]
+[ext_resource type="PackedScene" uid="uid://d1e2f3g4h5i6j" path="res://Audio/level-10/laser_firing.tscn" id="68_level10"]
+[ext_resource type="PackedScene" uid="uid://e2f3g4h5i6j7k" path="res://Audio/level-10/laser_climb.tscn" id="69_level10"]
+[ext_resource type="PackedScene" uid="uid://f3g4h5i6j7k8l" path="res://Audio/level-10/bones_collapse.tscn" id="70_level10"]
+
+; ========================================
+; LEVEL 11 SOUNDS (Wrappers - PackedScene)
+; ========================================
+[ext_resource type="PackedScene" uid="uid://s1t2u3v4w5x6y" path="res://Audio/level-11/statue_destruction.tscn" id="71_level11"]
+
+
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_ynhbd")
@@ -183,6 +211,8 @@ bus = &"sfx"
 [node name="time_freeze" parent="sfx/global_sfx" instance=ExtResource("13_ev6nr")]
 
 [node name="crystal_sfx" parent="sfx/global_sfx" instance=ExtResource("13_crystal")]
+
+[node name="teleport" parent="sfx/global_sfx" instance=ExtResource("14_teleport")]
 
 [node name="player_sfx" type="Node2D" parent="sfx"]
 
@@ -303,6 +333,10 @@ stream = ExtResource("15_clock")
 
 [node name="loop_shake" parent="sfx/level_6_sfx" instance=ExtResource("55_level6")]
 
+[node name="apple_fall" parent="sfx/level_6_sfx" instance=ExtResource("57_level6")]
+
+[node name="tree_climb" parent="sfx/level_6_sfx" instance=ExtResource("58_level6")]
+
 [node name="level_7_sfx" type="Node2D" parent="sfx"]
 
 [node name="butterfly" parent="sfx/level_7_sfx" instance=ExtResource("53_level7")]
@@ -341,9 +375,25 @@ stream = ExtResource("15_clock")
 
 [node name="bowl" parent="sfx/level_9_sfx" instance=ExtResource("60_level9")]
 
-[node name="loop_shake" parent="sfx/level_9_sfx" instance=ExtResource("55_level6")]
+[node name="crystal_transition" parent="sfx/level_9_sfx" instance=ExtResource("61_level9")]
 
-[node name="crystal_transition" parent="sfx/level_9_sfx" instance=ExtResource("52_level6")]
+[node name="loop_shake" parent="sfx/level_9_sfx" instance=ExtResource("62_level9")]
+
+[node name="schrodinger_voice" parent="sfx/level_9_sfx" instance=ExtResource("63_level9")]
+
+[node name="cat_sound" parent="sfx/level_9_sfx" instance=ExtResource("65_level9")]
+
+[node name="level_switch" parent="sfx/level_9_sfx" instance=ExtResource("66_level9")]
+
+[node name="box_closing" parent="sfx/level_9_sfx" instance=ExtResource("67_level9")]
+
+[node name="box_climb" parent="sfx/level_9_sfx" instance=ExtResource("68_level9")]
+
+[node name="bones_collapse" parent="sfx/level_9_sfx" instance=ExtResource("70_level9")]
+
+[node name="loop_break" parent="sfx/level_9_sfx" instance=ExtResource("71_level9")]
+
+[node name="box_opening" parent="sfx/level_9_sfx" instance=ExtResource("72_level9")]
 
 [node name="level_10_sfx" type="Node2D" parent="sfx"]
 
@@ -351,7 +401,25 @@ stream = ExtResource("15_clock")
 
 [node name="tesla_coil" parent="sfx/level_10_sfx" instance=ExtResource("62_level10")]
 
+[node name="scientist1" parent="sfx/level_10_sfx" instance=ExtResource("63_level10")]
+
+[node name="scientist2" parent="sfx/level_10_sfx" instance=ExtResource("64_level10")]
+
+[node name="old_scientist" parent="sfx/level_10_sfx" instance=ExtResource("65_level10")]
+
+[node name="loop_break" parent="sfx/level_10_sfx" instance=ExtResource("66_level10")]
+
+[node name="laser_loading" parent="sfx/level_10_sfx" instance=ExtResource("67_level10")]
+
+[node name="laser_firing" parent="sfx/level_10_sfx" instance=ExtResource("68_level10")]
+
+[node name="laser_climb" parent="sfx/level_10_sfx" instance=ExtResource("69_level10")]
+
+[node name="bones_collapse" parent="sfx/level_10_sfx" instance=ExtResource("70_level10")]
+
 [node name="level_11_sfx" type="Node2D" parent="sfx"]
+
+[node name="statue_destruction" parent="sfx/level_11_sfx" instance=ExtResource("71_level11")]
 
 [node name="level_12_sfx" type="Node2D" parent="sfx"]
 

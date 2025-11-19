@@ -4,6 +4,7 @@
 
 [node name="laser" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_laser")
-volume_db = 0.0
-pitch_scale = 1.0
+volume_db = 5.0
+pitch_scale = 1.5
 max_polyphony = 3
+bus = &"sfx"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ey4tyjswvndr"]
+
+[ext_resource type="AudioStream" uid="uid://ddeius2xpd3nn" path="res://Audio/sfx/egg_pop1.wav" id="1_apple_fall"]
+
+[node name="apple_fall" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_apple_fall")
+volume_db = 3.0
+pitch_scale = 0.9
+max_polyphony = 2
+bus = &"sfx"
