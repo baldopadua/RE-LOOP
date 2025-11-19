@@ -272,6 +272,10 @@ func return_to_lobby(levels_frame):
 		var sound_manager = lobby_scene.get_node("SoundManager")
 		sound_manager.play_ambience_music("space_ambience")
 
+	if ui_handler:
+		print("Calling show_game_ui_elements from return_to_lobby")
+		ui_handler.show_game_ui_elements()
+
 func _mark_level_completed_and_print_status():
 	if not completed_levels.has(current_level_number):
 		completed_levels.append(current_level_number)
@@ -414,3 +418,33 @@ func on_skip_level_and_return_to_lobby(levels_frame):
 
 func request_skip_level():
 	emit_signal("skip_level_requested", current_level_number)
+
+
+func _on_tree_level_1_completed() -> void:
+	ui_handler.show_game_ui_elements()
+	if not completed_levels.has(1):
+		completed_levels.append(1)
+		print("Level 1 marked as completed via tree signal.")
+	# Update clock entrance visuals immediately
+	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
+		level_status_node.update_completed_levels_visual(completed_levels)
+
+
+func _on_sword_level_2_completed() -> void:
+	ui_handler.show_game_ui_elements()
+	if not completed_levels.has(2):
+		completed_levels.append(2)
+		print("Level 2 marked as completed via tree signal.")
+	# Update clock entrance visuals immediately
+	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
+		level_status_node.update_completed_levels_visual(completed_levels)
+
+
+func _on_geyser_level_3_completed() -> void:
+	ui_handler.show_game_ui_elements()
+	if not completed_levels.has(3):
+		completed_levels.append(3)
+		print("Level 3 marked as completed via tree signal.")
+	# Update clock entrance visuals immediately
+	if level_status_node and level_status_node.has_method("update_completed_levels_visual"):
+		level_status_node.update_completed_levels_visual(completed_levels)
