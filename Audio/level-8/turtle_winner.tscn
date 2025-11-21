@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b516v1luyxpft"]
+
+[ext_resource type="AudioStream" uid="uid://bg3sl3jb78yai" path="res://Audio/sfx/happy_kid.wav" id="1_celebrate"]
+
+[node name="turtle_winner" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_celebrate")
+volume_db = 0.0
+pitch_scale = 0.85
+max_polyphony = 1

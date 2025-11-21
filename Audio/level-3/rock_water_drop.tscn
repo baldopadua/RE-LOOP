@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://r7d1g4i6k9n3o"]
+
+[ext_resource type="AudioStream" uid="uid://bhb388kh47yiw" path="res://Audio/sfx/rock_water_drop.wav" id="1_rock_water"]
+
+[node name="rock_water_drop" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_rock_water")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 8

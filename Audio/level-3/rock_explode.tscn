@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3y6b9d2g5h8i"]
+
+[ext_resource type="AudioStream" uid="uid://r1p3goyqtthx" path="res://Audio/sfx/rock_explode.wav" id="1_rock_explode"]
+
+[node name="rock_explode" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_rock_explode")
+volume_db = 2.0
+pitch_scale = 1.0
+max_polyphony = 4

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://j1k2l3m4n5o6p"]
+
+[ext_resource type="AudioStream" uid="uid://cwfo8gg6tbp2k" path="res://Audio/sfx/egg_crack1.wav" id="1_crack1"]
+
+[node name="egg_crack1" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_crack1")
+volume_db = 0.0

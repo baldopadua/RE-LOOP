@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://70yaibnhxpdt"]
+
+[ext_resource type="AudioStream" uid="uid://kngki8q86eu6" path="res://Audio/sfx/loop_shake.wav" id="1_loop_shake"]
+
+[node name="loop_shake" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_loop_shake")
+volume_db = 5.0
+pitch_scale = 0.7
+max_polyphony = 2
+bus = &"sfx"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1d2e3f4g5h6i"]
+
+[ext_resource type="AudioStream" uid="uid://c26jreererc3w" path="res://Audio/sfx/beep_countdown.wav" id="1_beep"]
+
+[node name="countdown_beep" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_beep")
+volume_db = 5.0
+pitch_scale = 1.0
+max_polyphony = 2
+bus = &"sfx"

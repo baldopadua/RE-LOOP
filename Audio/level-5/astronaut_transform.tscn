@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://e3dy0pv502c6"]
+
+[ext_resource type="AudioStream" uid="uid://dglemqrh3iwqs" path="res://Audio/sfx/man_transformation.wav" id="1_transform"]
+
+[node name="astronaut_transform" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_transform")
+volume_db = 10.0
+pitch_scale = 0.7

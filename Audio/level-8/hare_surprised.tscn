@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddseg1toksyp7"]
+
+[ext_resource type="AudioStream" uid="uid://c3nk4vsr5e80d" path="res://Audio/sfx/man_nagulat_sa_sword.wav" id="1_surprised"]
+
+[node name="hare_surprised" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_surprised")
+volume_db = -3.0
+pitch_scale = 1.2
+max_polyphony = 2

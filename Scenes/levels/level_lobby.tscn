@@ -1,0 +1,1479 @@
+[gd_scene load_steps=58 format=3 uid="uid://y4on1fq1mgnm"]
+
+[ext_resource type="Script" uid="uid://cej80lpoc3wmr" path="res://Scripts/levels/level_lobby.gd" id="1_6t7hq"]
+[ext_resource type="PackedScene" uid="uid://ch3clei25cbet" path="res://Scenes/player_scene.tscn" id="2_6t7hq"]
+[ext_resource type="Texture2D" uid="uid://dwely2w8w04vg" path="res://Assets/LevelSelect.png" id="2_ornx3"]
+[ext_resource type="PackedScene" uid="uid://wspt4mwhafhc" path="res://Scenes/component/sound_manager.tscn" id="3_1uaeg"]
+[ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_7i53v"]
+[ext_resource type="PackedScene" uid="uid://bp0rlhiddiiji" path="res://Scenes/component/object_handler.tscn" id="6_1uaeg"]
+[ext_resource type="Script" uid="uid://bmh2vcp2ptcrp" path="res://Scripts/object-level/level_lobby/enter_level.gd" id="6_rqxun"]
+[ext_resource type="Texture2D" uid="uid://cq1mkn747cwpe" path="res://Assets/level_select_lobby/lock_level.png" id="7_ycnx0"]
+[ext_resource type="Texture2D" uid="uid://dnfrlm1gi6bg3" path="res://Assets/level_select_lobby/unlock_level.png" id="8_o4wl8"]
+[ext_resource type="FontFile" uid="uid://c6diwgmw8c62a" path="res://Assets/fonts/ByteBounce.ttf" id="12_ycnx0"]
+[ext_resource type="Texture2D" uid="uid://vjw6qkta1b4b" path="res://Assets/level_select_lobby/clock_short_arm.png" id="19_ornx3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycnx0"]
+atlas = ExtResource("2_ornx3")
+region = Rect2(149, 52, 214, 214)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gdju7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycnx0")
+}],
+"loop": true,
+"name": &"base",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ornx3"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocyro"]
+atlas = ExtResource("7_ycnx0")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itkrw"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxb7l"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htv0f"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6aa3"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(192, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r86rd"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(256, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2ns4"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(320, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpm72"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(384, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdju7"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(448, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11bkw"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(512, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igr4h"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(576, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ornx3"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(640, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4wl8"]
+atlas = ExtResource("8_o4wl8")
+region = Rect2(704, 0, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kgpvv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocyro")
+}],
+"loop": false,
+"name": &"lock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itkrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxb7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htv0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6aa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r86rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2ns4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpm72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdju7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11bkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igr4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ornx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4wl8")
+}],
+"loop": false,
+"name": &"unlock",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ycnx0"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o4wl8"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1uaeg"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ocyro"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qbue"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgpvv"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_me8nm"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m35q0"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6wcj2"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbn7t"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6un46"]
+radius = 33.212807
+height = 85.85651
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v70hq"]
+atlas = ExtResource("19_ornx3")
+region = Rect2(0, 0, 219, 550)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycnx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v70hq")
+}],
+"loop": false,
+"name": &"short_hand",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_11bkw"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_igr4h"]
+gradient = SubResource("Gradient_11bkw")
+
+[sub_resource type="Animation" id="Animation_ornx3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("enter_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("enter_3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("enter_4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("enter_5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9, -5.9999995)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("enter_6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("enter_7:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("enter_8:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("enter_9:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("enter_10:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("enter_11:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("enter_12:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bbn7t"]
+resource_name = "enter_10_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_10:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(12.000002, 8.000001)]
+}
+
+[sub_resource type="Animation" id="Animation_6un46"]
+resource_name = "enter_11_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_11:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(13, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_h7iph"]
+resource_name = "enter_12_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_12:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_igr4h"]
+resource_name = "enter_1_upward"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-12, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_ycnx0"]
+resource_name = "enter_2_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-12, 7)]
+}
+
+[sub_resource type="Animation" id="Animation_o4wl8"]
+resource_name = "enter_3_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-12, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_ocyro"]
+resource_name = "enter_4_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-12, -8)]
+}
+
+[sub_resource type="Animation" id="Animation_2qbue"]
+resource_name = "enter_5_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -18.88889), Vector2(0, -18.000002)]
+}
+
+[sub_resource type="Animation" id="Animation_kgpvv"]
+resource_name = "enter_6_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_6:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -3.3333335), Vector2(0, -22.222223)]
+}
+
+[sub_resource type="Animation" id="Animation_me8nm"]
+resource_name = "enter_7_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_7:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(11, -16)]
+}
+
+[sub_resource type="Animation" id="Animation_m35q0"]
+resource_name = "enter_8_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_8:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.7881393e-07, -6.666667), Vector2(12, -9)]
+}
+
+[sub_resource type="Animation" id="Animation_6wcj2"]
+resource_name = "enter_9_upward"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enter_9:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(13, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ycnx0"]
+_data = {
+&"RESET": SubResource("Animation_ornx3"),
+&"enter_10_upward": SubResource("Animation_bbn7t"),
+&"enter_11_upward": SubResource("Animation_6un46"),
+&"enter_12_upward": SubResource("Animation_h7iph"),
+&"enter_1_upward": SubResource("Animation_igr4h"),
+&"enter_2_upward": SubResource("Animation_ycnx0"),
+&"enter_3_upward": SubResource("Animation_o4wl8"),
+&"enter_4_upward": SubResource("Animation_ocyro"),
+&"enter_5_upward": SubResource("Animation_2qbue"),
+&"enter_6_upward": SubResource("Animation_kgpvv"),
+&"enter_7_upward": SubResource("Animation_me8nm"),
+&"enter_8_upward": SubResource("Animation_m35q0"),
+&"enter_9_upward": SubResource("Animation_6wcj2")
+}
+
+[node name="LevelLobby" type="Node2D"]
+script = ExtResource("1_6t7hq")
+
+[node name="clock_area" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.6999998, 2.6999998)
+sprite_frames = SubResource("SpriteFrames_gdju7")
+animation = &"base"
+
+[node name="PlayerScene" parent="." instance=ExtResource("2_6t7hq")]
+self_modulate = Color(1, 1, 1, 0)
+rotation = 0.5235988
+scale = Vector2(0.9, 0.9)
+up_direction = Vector2(0, 1)
+
+[node name="enter_1" parent="." instance=ExtResource("6_1uaeg")]
+rotation = 0.5235988
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_1"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_1"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_ornx3")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_1"]
+texture_filter = 1
+position = Vector2(0.014378905, -344.9751)
+scale = Vector2(2.0603516, 2.0874085)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="hover_text" type="RichTextLabel" parent="enter_1"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.9404
+offset_top = -252.33649
+offset_right = 107.0596
+offset_bottom = -218.33649
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.001894474
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_1"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.44041
+offset_top = -251.47046
+offset_right = 107.55959
+offset_bottom = -228.47046
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="enter_2" parent="." instance=ExtResource("6_1uaeg")]
+rotation = 1.0471976
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_2"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_2"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_ycnx0")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_2"]
+texture_filter = 1
+position = Vector2(-0.31158447, -348.53973)
+scale = Vector2(2.0603516, 2.0874083)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="hover_text" type="RichTextLabel" parent="enter_2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.28386
+offset_top = -253.31557
+offset_right = 103.71614
+offset_bottom = -219.31557
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.001894474
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_2"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.933075
+offset_top = -257.15903
+offset_right = 107.066925
+offset_bottom = -234.15903
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="enter_3" parent="." instance=ExtResource("6_1uaeg")]
+rotation = 1.5707964
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_3"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_3"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_o4wl8")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_3"]
+texture_filter = 1
+position = Vector2(-11.000014, -335)
+scale = Vector2(2.0603516, 2.0874085)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="hover_text" type="RichTextLabel" parent="enter_3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -220.0
+offset_right = 90.0
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_3"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.00001
+offset_top = -263.99997
+offset_right = 90.99999
+offset_bottom = -240.99997
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="enter_4" parent="." instance=ExtResource("6_1uaeg")]
+rotation = 2.0943952
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_4"
+object_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_4"]
+position = Vector2(8.394165, -315.46088)
+shape = SubResource("CapsuleShape2D_1uaeg")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="hover_text" type="RichTextLabel" parent="enter_4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.88528
+offset_top = -205.02559
+offset_right = 95.11472
+offset_bottom = -171.02559
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_4"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.36862
+offset_top = -263.0589
+offset_right = 91.63138
+offset_bottom = -240.0589
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_4"]
+texture_filter = 1
+position = Vector2(0.15675426, -342.39514)
+scale = Vector2(2.0603516, 2.0874083)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="enter_5" parent="." instance=ExtResource("6_1uaeg")]
+position = Vector2(9, -5.9999995)
+rotation = 2.6179938
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_5"
+object_type = 1
+
+[node name="hover_text" type="RichTextLabel" parent="enter_5"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -220.0
+offset_right = 90.0
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_5"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.2058
+offset_top = -257.28415
+offset_right = 92.7942
+offset_bottom = -234.28415
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_5"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_ocyro")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_5"]
+texture_filter = 1
+position = Vector2(-0.5576028, -339.03412)
+scale = Vector2(2.0603516, 2.0874083)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="enter_6" parent="." instance=ExtResource("6_1uaeg")]
+rotation = -3.1415925
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_6"
+object_type = 1
+
+[node name="hover_text" type="RichTextLabel" parent="enter_6"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.00003
+offset_top = -207.0
+offset_right = 90.99997
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_6"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -250.0
+offset_right = 90.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_6"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_2qbue")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_6"]
+texture_filter = 1
+position = Vector2(-5.08196e-05, -334.44446)
+scale = Vector2(2.0603516, 2.0874083)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="enter_7" parent="." instance=ExtResource("6_1uaeg")]
+rotation = -2.6179938
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_7"
+object_type = 1
+
+[node name="hover_text" type="RichTextLabel" parent="enter_7"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.05516
+offset_top = -225.71211
+offset_right = 88.94484
+offset_bottom = -191.71211
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_7"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -250.0
+offset_right = 90.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_7"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_kgpvv")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_7"]
+texture_filter = 1
+position = Vector2(6.0732746, -338.36963)
+scale = Vector2(2.0603516, 2.0874083)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="enter_8" parent="." instance=ExtResource("6_1uaeg")]
+rotation = -2.094395
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_8"
+object_type = 1
+
+[node name="hover_text" type="RichTextLabel" parent="enter_8"]
+offset_left = -88.21474
+offset_top = -217.20764
+offset_right = 123.10579
+offset_bottom = -183.20764
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_8"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -250.0
+offset_right = 90.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_8"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_me8nm")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_8"]
+texture_filter = 1
+position = Vector2(3.8867207, -346.73212)
+scale = Vector2(2.0603516, 2.0874083)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="enter_9" parent="." instance=ExtResource("6_1uaeg")]
+rotation = -1.5707964
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_9"
+object_type = 1
+
+[node name="hover_text" type="RichTextLabel" parent="enter_9"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.99999
+offset_top = -199.00002
+offset_right = 132.0
+offset_bottom = -165.00002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_9"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -250.0
+offset_right = 90.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_9"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_m35q0")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_9"]
+texture_filter = 1
+position = Vector2(2.5000148, -340.00003)
+scale = Vector2(2.0603516, 2.0874083)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="enter_10" parent="." instance=ExtResource("6_1uaeg")]
+rotation = -1.0471976
+scale = Vector2(0.8999999, 0.8999999)
+script = ExtResource("6_rqxun")
+object_name = "enter_10"
+object_type = 1
+
+[node name="hover_text" type="RichTextLabel" parent="enter_10"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.04578
+offset_top = -251.72737
+offset_right = 88.95422
+offset_bottom = -217.72737
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.001894474
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_10"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.60243
+offset_top = -250.83104
+offset_right = 89.39757
+offset_bottom = -227.83104
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_10"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_6wcj2")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_10"]
+texture_filter = 1
+position = Vector2(-0.31158447, -348.53973)
+scale = Vector2(2.0603516, 2.0874083)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="enter_11" parent="." instance=ExtResource("6_1uaeg")]
+rotation = -0.52359897
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_11"
+object_type = 1
+
+[node name="hover_text" type="RichTextLabel" parent="enter_11"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.195404
+offset_top = -247.79614
+offset_right = 74.804596
+offset_bottom = -213.79614
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_11"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.90119
+offset_top = -244.16212
+offset_right = 83.09881
+offset_bottom = -221.16212
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_11"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_bbn7t")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_11"]
+texture_filter = 1
+position = Vector2(-5.1369042, -343.60248)
+scale = Vector2(2.0603516, 2.0874083)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="enter_12" parent="." instance=ExtResource("6_1uaeg")]
+scale = Vector2(0.9, 0.9)
+script = ExtResource("6_rqxun")
+object_name = "enter_12"
+object_type = 1
+is_enterable = true
+
+[node name="hover_text" type="RichTextLabel" parent="enter_12"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -239.99998
+offset_right = 90.0
+offset_bottom = -205.99998
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 6.2831855
+pivot_offset = Vector2(90, 11.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 31
+text = "Ancient Tree"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="interact_text" type="RichTextLabel" parent="enter_12"]
+modulate = Color(1, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -241.99998
+offset_right = 90.0
+offset_bottom = -218.99998
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.30259, 1.39847)
+pivot_offset = Vector2(90, 11.5)
+theme_override_fonts/normal_font = ExtResource("12_ycnx0")
+theme_override_font_sizes/normal_font_size = 25
+text = "INTERACT"
+fit_content = true
+scroll_active = false
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_12"]
+position = Vector2(0, -309.9)
+shape = SubResource("CapsuleShape2D_6un46")
+debug_color = Color(0.945098, 0.0392157, 0.588235, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enter_12"]
+texture_filter = 1
+position = Vector2(0, -342.5)
+scale = Vector2(2.0603516, 2.0874083)
+sprite_frames = SubResource("SpriteFrames_kgpvv")
+animation = &"lock"
+
+[node name="short_hand_rotation_lobby" type="Camera2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(0.9, 0.9)
+ignore_rotation = false
+zoom = Vector2(32.411, 1.889)
+rotation_smoothing_enabled = true
+
+[node name="short_hand_clock" type="AnimatedSprite2D" parent="short_hand_rotation_lobby"]
+texture_filter = 1
+position = Vector2(-4.053116e-06, -96)
+rotation = 3.1415927
+scale = Vector2(0.4342749, 0.37892228)
+sprite_frames = SubResource("SpriteFrames_ycnx0")
+animation = &"short_hand"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelHandler" parent="CanvasLayer" instance=ExtResource("4_7i53v")]
+visible = false
+z_index = 2
+position = Vector2(-1.9073486e-06, 20)
+
+[node name="upper_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(0, -409.59003)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_igr4h")
+
+[node name="lower_bar" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(0, 409.40997)
+scale = Vector2(20, 1.5)
+texture = SubResource("GradientTexture2D_igr4h")
+
+[node name="SoundManager" parent="." instance=ExtResource("3_1uaeg")]
+position = Vector2(29, 20)
+scale = Vector2(0.9, 0.9)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ycnx0")
+}

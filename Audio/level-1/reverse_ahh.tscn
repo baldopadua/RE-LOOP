@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfit8d0rxu8t4"]
+[gd_scene load_steps=2 format=3 uid="uid://bfit8d0rxu8t4"]
 
-[ext_resource type="AudioStream" uid="uid://squylqg55id6" path="res://Audio/wavs/reverse_ahh.mp3" id="1_yjw5y"]
+[ext_resource type="AudioStream" uid="uid://squylqg55id6" path="res://Audio/sfx/reverse_ahh.mp3" id="1_yjw5y"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyg4q"]
 playback_mode = 2

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3lal4n8p5q7r"]
+
+[ext_resource type="AudioStream" uid="uid://lkgup3yrmdri" path="res://Audio/sfx/kid_transformation.wav" id="1_kid"]
+
+[node name="kid_transformation" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_kid")
+volume_db = 0.0
+pitch_scale = 1.0
+max_polyphony = 2

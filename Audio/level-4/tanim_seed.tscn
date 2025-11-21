@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://u5v6w7x8y9z0a"]
+
+[ext_resource type="AudioStream" uid="uid://cknowng64v31f" path="res://Audio/sfx/tanim_seed.wav" id="1_seed"]
+
+[node name="tanim_seed" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_seed")
+volume_db = 0.0

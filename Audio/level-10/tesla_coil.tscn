@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://biqjevrjinwk5"]
+
+[ext_resource type="AudioStream" uid="uid://dn4dcocweetve" path="res://Audio/sfx/tesla_coil.wav" id="1_tesla"]
+
+[node name="tesla_coil" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_tesla")
+volume_db = 5.0
+pitch_scale = 1.0
+max_polyphony = 2
+bus = &"sfx"

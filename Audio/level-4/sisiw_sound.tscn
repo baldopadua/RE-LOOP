@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://n9o0p1q2r3s4t"]
+
+[ext_resource type="AudioStream" uid="uid://rt0o2cjxpnpb" path="res://Audio/sfx/sisiw_sound.wav" id="1_sisiw"]
+
+[node name="sisiw_sound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_sisiw")
+volume_db = 0.0

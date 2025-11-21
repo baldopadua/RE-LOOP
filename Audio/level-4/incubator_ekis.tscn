@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://z7a8b9c0d1e2f"]
+
+[ext_resource type="AudioStream" uid="uid://d0drrsnhgax01" path="res://Audio/sfx/incubator_ekis.wav" id="1_ekis"]
+
+[node name="incubator_ekis" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_ekis")
+volume_db = 0.0

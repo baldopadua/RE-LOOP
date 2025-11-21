@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bykxquspx14gs"]
+
+[ext_resource type="AudioStream" uid="uid://c5t73uqaq5ng4" path="res://Audio/sfx/depress_man.wav" id="1_loser"]
+
+[node name="hare_loser" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_loser")
+volume_db = -5.0
+pitch_scale = 0.9
+max_polyphony = 1

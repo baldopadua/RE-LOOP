@@ -1,0 +1,246 @@
+[gd_scene load_steps=11 format=3 uid="uid://ce2je8elhchuj"]
+
+[ext_resource type="Texture2D" uid="uid://d4dvjse2gw7kq" path="res://Assets/intro/bg.png" id="1_hwjxs"]
+[ext_resource type="Script" uid="uid://cjy5tsenryfxj" path="res://Scripts/intro.gd" id="1_rsiac"]
+[ext_resource type="Texture2D" uid="uid://c65bbynljbvqc" path="res://Assets/intro/godot_icon.png" id="2_alxvg"]
+[ext_resource type="Texture2D" uid="uid://i3vaj2tv0lyi" path="res://Assets/intro/patir_bg.png" id="2_geirw"]
+[ext_resource type="Texture2D" uid="uid://k7bybs1vg6kt" path="res://Assets/intro/godot_text.png" id="3_geirw"]
+[ext_resource type="Texture2D" uid="uid://bq2tsoxpqsid" path="res://Assets/intro/patir_icon.png" id="5_hwjxs"]
+
+[sub_resource type="Animation" id="Animation_3bmuq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg/godot_bg:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bg/icon/godot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bg/icon/godot:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.735357, 0.735357, 0.735357, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bg/patir_bg:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("bg/icon/patir_studio:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("bg/icon/patir_studio:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rsiac"]
+resource_name = "godot"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg/godot_bg:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bg/icon/godot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bg/icon/godot:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 1.6000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nn7w8"]
+resource_name = "patir"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg/patir_bg:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bg/icon/patir_studio:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bg/icon/patir_studio:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1.8, 1.9333333, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 0.5, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6156863), Color(1, 1, 1, 0.03529412)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b26wi"]
+_data = {
+&"RESET": SubResource("Animation_3bmuq"),
+&"godot": SubResource("Animation_rsiac"),
+&"patir": SubResource("Animation_nn7w8")
+}
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rsiac")
+metadata/_edit_use_anchors_ = true
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0507813
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="godot_bg" type="Sprite2D" parent="bg"]
+texture_filter = 1
+position = Vector2(742, 362.5)
+scale = Vector2(1.171875, 1.1291667)
+texture = ExtResource("1_hwjxs")
+
+[node name="patir_bg" type="Sprite2D" parent="bg"]
+modulate = Color(0.86036915, 0.8603692, 0.8603692, 1)
+position = Vector2(746.75006, 361.00003)
+scale = Vector2(1.1722658, 1.1361111)
+texture = ExtResource("2_geirw")
+
+[node name="icon" type="TextureRect" parent="bg"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24140625
+anchor_top = 0.115277775
+anchor_right = 0.7734375
+anchor_bottom = 0.7625
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="godot" type="Node2D" parent="bg/icon"]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+texture_filter = 1
+position = Vector2(-281, -105)
+
+[node name="icon" type="Sprite2D" parent="bg/icon/godot"]
+position = Vector2(630, 307)
+scale = Vector2(1.1436063, 1.1127533)
+texture = ExtResource("2_alxvg")
+
+[node name="text" type="Sprite2D" parent="bg/icon/godot"]
+position = Vector2(636.00006, 493.99997)
+scale = Vector2(0.8569891, 0.72814775)
+texture = ExtResource("3_geirw")
+
+[node name="patir_studio" type="Node2D" parent="bg/icon"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+position = Vector2(-295, -102)
+
+[node name="icon" type="Sprite2D" parent="bg/icon/patir_studio"]
+position = Vector2(626.99994, 320)
+scale = Vector2(1.1436063, 1.1127533)
+texture = ExtResource("5_hwjxs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bg"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_b26wi")
+}
+
+[connection signal="animation_finished" from="bg/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

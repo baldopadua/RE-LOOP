@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkdvxqnay6fsb"]
+[gd_scene load_steps=2 format=3 uid="uid://dkdvxqnay6fsb"]
 
-[ext_resource type="AudioStream" uid="uid://2co3uykc3dwt" path="res://Audio/wavs/time_manip.wav" id="1_fdhon"]
+[ext_resource type="AudioStream" uid="uid://2co3uykc3dwt" path="res://Audio/sfx/time_manip.wav" id="1_fdhon"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eyg4q"]
 playback_mode = 2

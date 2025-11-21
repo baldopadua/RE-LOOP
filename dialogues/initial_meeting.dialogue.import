@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://vrrqf6gmk7uk"
+path="res://.godot/imported/initial_meeting.dialogue-47db76790931fc0c3692cebe0fec5fa5.tres"
+
+[deps]
+
+source_file="res://dialogues/initial_meeting.dialogue"
+dest_files=["res://.godot/imported/initial_meeting.dialogue-47db76790931fc0c3692cebe0fec5fa5.tres"]
+
+[params]
+
+defaults=true

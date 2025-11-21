@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://x3y4z5a6b7c8d"]
+
+[ext_resource type="AudioStream" uid="uid://ddeius2xpd3nn" path="res://Audio/sfx/egg_pop1.wav" id="1_pop"]
+
+[node name="egg_pop1" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_pop")
+volume_db = 0.0

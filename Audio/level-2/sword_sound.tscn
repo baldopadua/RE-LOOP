@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://db5et3hq7nnmv"]
+
+[ext_resource type="AudioStream" uid="uid://bkr8pimm0kht" path="res://Audio/sfx/sword_sound.wav" id="1_sword_sound"]
+
+[node name="sword_sound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_sword_sound")
+volume_db = 1.0
+pitch_scale = 1.0
+max_polyphony = 3

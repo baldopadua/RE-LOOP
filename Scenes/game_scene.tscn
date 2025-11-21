@@ -1,47 +1,39 @@
-[gd_scene load_steps=13 format=3 uid="uid://clmxq6e31gwm8"]
+[gd_scene load_steps=14 format=3 uid="uid://clmxq6e31gwm8"]
 
 [ext_resource type="Script" uid="uid://cq7q8j32eespg" path="res://Scripts/game_scene.gd" id="1_6h5vk"]
 [ext_resource type="Texture2D" uid="uid://67d1im65ym6n" path="res://Assets/ui/GameBackground-Sheet.png" id="1_x87qo"]
-[ext_resource type="PackedScene" uid="uid://wvr0ph3yi7o1" path="res://Scenes/ui/game_ui_elements.tscn" id="3_fiftr"]
-[ext_resource type="PackedScene" uid="uid://cbl4k6bkjnggc" path="res://Scenes/levels/level_1_scene.tscn" id="4_fiftr"]
-[ext_resource type="PackedScene" uid="uid://dxspjb75j0pbc" path="res://Scenes/screen_effects/game_scene_transition.tscn" id="5_1ixah"]
+[ext_resource type="Shader" uid="uid://da7oyahfkv3u8" path="res://Shaders/gray_scale.gdshader" id="2_1ixah"]
+[ext_resource type="PackedScene" uid="uid://y4on1fq1mgnm" path="res://Scenes/levels/level_lobby.tscn" id="3_6h5vk"]
+[ext_resource type="PackedScene" uid="uid://dkpnl1djf5yd3" path="res://Scenes/component/level_handler.tscn" id="4_fiftr"]
+[ext_resource type="Texture2D" uid="uid://cnmt0b4y7gy50" path="res://Assets/ui/BG.png" id="4_rgj8m"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b6fju"]
-atlas = ExtResource("1_x87qo")
-region = Rect2(0, 0, 240, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6h5vk"]
-atlas = ExtResource("1_x87qo")
-region = Rect2(240, 0, 240, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fiftr"]
-atlas = ExtResource("1_x87qo")
-region = Rect2(480, 0, 240, 135)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rgj8m"]
+shader = ExtResource("2_1ixah")
+shader_parameter/gray_amount = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ixah"]
 atlas = ExtResource("1_x87qo")
-region = Rect2(720, 0, 240, 135)
+region = Rect2(240, 0, 240, 135)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgj8m"]
 atlas = ExtResource("1_x87qo")
-region = Rect2(960, 0, 240, 135)
+region = Rect2(480, 0, 240, 135)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2fmhe"]
+atlas = ExtResource("1_x87qo")
+region = Rect2(720, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iton"]
+atlas = ExtResource("1_x87qo")
+region = Rect2(960, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikfsv"]
 atlas = ExtResource("1_x87qo")
 region = Rect2(1200, 0, 240, 135)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7iton"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b6fju")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6h5vk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fiftr")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1ixah")
 }, {
@@ -50,6 +42,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2fmhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7iton")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikfsv")
 }],
 "loop": true,
 "name": &"default",
@@ -69,23 +67,29 @@ script = ExtResource("1_6h5vk")
 layer = -1
 
 [node name="game_scene_bg" type="AnimatedSprite2D" parent="CanvasLayer"]
-position = Vector2(640, 360)
-scale = Vector2(5.511, 5.5)
+material = SubResource("ShaderMaterial_rgj8m")
+position = Vector2(707, 360)
+scale = Vector2(6.2958336, 5.5)
 sprite_frames = SubResource("SpriteFrames_7iton")
+
+[node name="bg" type="TextureRect" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_right = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_rgj8m")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="levels_frame" type="Node2D" parent="."]
 position = Vector2(640, 360)
 
-[node name="level_1" parent="levels_frame" instance=ExtResource("4_fiftr")]
+[node name="LevelLobby" parent="levels_frame" instance=ExtResource("3_6h5vk")]
 
-[node name="CanvasLayerGameUi" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="game_ui_elements" parent="CanvasLayerGameUi" instance=ExtResource("3_fiftr")]
-texture_filter = 1
-pivot_offset = Vector2(640, 360)
-
-[node name="CanvasLayerTransition" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="game_scene_transition" parent="CanvasLayerTransition" instance=ExtResource("5_1ixah")]
+[node name="LevelHandler" parent="levels_frame" instance=ExtResource("4_fiftr")]
+position = Vector2(507, 379)

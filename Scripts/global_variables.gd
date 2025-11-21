@@ -2,113 +2,34 @@ extends Node
 
 enum Directions {COUNTERCLOCKWISE, CLOCKWISE}
 const player_direction = Directions
-enum object_types {TOOL, NONTOOL}
+enum object_types {TOOL, NONTOOL, DECORATIVE}
 
-const transition_time: float = 0.25
+const transition_time: float = 0.20 # 0.25 Default
 var is_looping: bool = false
 var player_stopped: bool = false
 var is_restarting: bool = false
-var custom_cursor = preload("res://Assets/Loopling.png")
-var plooy_right = preload("res://Assets/ui/plooy_right.png")
-var plooy_left = preload("res://Assets/ui/plooy_left.png")
+var player_moves: int = 0  # Track player moves globally
 
-var custom_cursor_enabled := true
+# Reset player moves (called when level restarts)
+func reset_player_moves() -> void:
+	player_moves = 0
 
-signal level_instantiated(level_name: String)
-
-func _ready():
-	# Set texture filter mode to nearest for crisp pixels
+# Extract level number from object names like "level_1_entrance", "level_2_door", etc.
+func get_level_number_from_name(object_name: String) -> int:
+	# Look for pattern "level_X" where X is a number
+	var regex = RegEx.new()
+	regex.compile("level_(\\d+)")
+	var result = regex.search(object_name)
 	
-	set_custom_cursor()
-
-func set_custom_cursor(direction = null):
-	if not custom_cursor_enabled:
-		return
+	if result:
+		return result.get_string(1).to_int()
 	
-	var cursor_texture: Texture2D = custom_cursor
-	if direction == player_direction.CLOCKWISE:
-		cursor_texture = plooy_right
-	elif direction == player_direction.COUNTERCLOCKWISE:
-		cursor_texture = plooy_left
-	
-	if cursor_texture and cursor_texture is Texture2D:
-		# Create a scaled-up version of the cursor
-		var img = cursor_texture.get_image()
-		if img:
-			if img.get_format() != Image.FORMAT_RGBA8:
-				img.convert(Image.FORMAT_RGBA8)
-			var scale_factor = 3.5
-			var new_size = img.get_size() * scale_factor
-			img.resize(new_size.x, new_size.y, Image.INTERPOLATE_NEAREST)
-			var big_cursor = ImageTexture.create_from_image(img)
-			Input.set_custom_mouse_cursor(big_cursor, Input.CURSOR_ARROW, new_size / 2)
+	return 0  # Return 0 if no level number found
 
-func remove_custom_cursor():
-	Input.set_custom_mouse_cursor(null)
-	custom_cursor_enabled = false
-	# Show system cursor when custom cursor is disabled
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-func enable_custom_cursor():
-	custom_cursor_enabled = true
-	# Hide system cursor again when re-enabling custom cursor
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	set_custom_cursor()
-
-func update_cursor_by_mouse_motion(event: InputEventMouseMotion):
-	if event.relative.x < 0:
-		set_custom_cursor(player_direction.COUNTERCLOCKWISE)
-	elif event.relative.x > 0:
-		set_custom_cursor(player_direction.CLOCKWISE)
-	else:
-		set_custom_cursor()
-
-func play_sfx(sfx: Object, direction: Directions):
-	if direction == player_direction.CLOCKWISE:
-		sfx.pitch_scale += 0.03
-		sfx.play()
-	else:
-		sfx.pitch_scale -= 0.03
-		sfx.play()
-
-func restart_level_sfx_vfx(sfxs: Array):
-	# PERFORM SOME CUTSCENES AFTER RESTARTING
-	# SFX
-	for sfx in sfxs:
-		sfx.play()
-
-func change_level(scene_path: String, levels_frame):
-	# Remove current level
-	for child in levels_frame.get_children():
-		child.queue_free()
-
-	# Load and add new level
-	var new_level = load(scene_path).instantiate()
-	levels_frame.add_child(new_level)
-	notify_level_instantiated(scene_path) # Notify that a new level has been instantiated
-
-func restart_level(levels_frame):
-	# Remove and Re-open current level
-	var current_level = levels_frame.get_child(0)
-
-	if current_level:
-		var level_scene = load(current_level.scene_file_path) 
-		current_level.queue_free()
-		var new_level = level_scene.instantiate()
-		levels_frame.add_child(new_level)
-		#notify_level_instantiated(current_level.scene_file_path) # Notify that the level has been restarted
-
-func notify_level_instantiated(scene_path: String):
-	var level_name := ""
-	if "seed" in scene_path:
-		level_name = "seed"
-	elif "old_man" in scene_path or "oldman" in scene_path \
-			or "level_2" in scene_path:
-		level_name = "old man"
-	elif "rock" in scene_path or "level_3" in scene_path:
-		level_name = "rock"
-	elif "dog" in scene_path or "level_4" in scene_path:
-		level_name = "dog"
-	else:
-		level_name = scene_path
-	emit_signal("level_instantiated", level_name)
+# returns true if the node has a signal with the passed name
+func hasSignal(node : Node, signalName : String) -> bool:
+	var signalList = node.get_signal_list()
+	for signalDictionary in signalList:
+		if signalDictionary.name == signalName:
+			return true
+	return false

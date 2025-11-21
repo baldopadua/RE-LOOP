@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp5qg06al7e0u"]
+
+[ext_resource type="AudioStream" uid="uid://cclyikp7hcetd" path="res://Audio/sfx/lever.wav" id="1_lever"]
+
+[node name="level_switch" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_lever")
+volume_db = 4.0
+pitch_scale = 1.0
+max_polyphony = 2
+bus = &"sfx"
