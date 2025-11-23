@@ -779,7 +779,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"nic_t_shocked",
-"speed": 10.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -823,7 +823,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"nic_t_skull",
-"speed": 10.0
+"speed": 14.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ttn1o"]
@@ -1038,7 +1038,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"thom_e_shocked",
-"speed": 10.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1097,7 +1097,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"thom_e_skull",
-"speed": 10.0
+"speed": 14.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odd5e"]
@@ -1359,7 +1359,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"ben_f_shocked",
-"speed": 10.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1415,7 +1415,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"ben_f_skull",
-"speed": 10.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1683,6 +1683,7 @@ z_index = 1
 position = Vector2(-8.432354, -43.26527)
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_weo38")
+animation = &"ben_f_shocked"
 autoplay = "default"
 offset = Vector2(17.34, -6.015)
 

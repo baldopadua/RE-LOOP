@@ -142,3 +142,26 @@ func _on_game_ui_elements_button_pressed(button_type):
 		elif button_type == "settings":
 			ui_handler.sound_manager.play_ui("page_turn")
 			ui_handler.show_overlay_settings()
+
+func _on_level_12_complete_return_to_menu():
+	# Hide game scene and disable its processing
+	$GameScene.visible = false
+	$GameScene.process_mode = Node.PROCESS_MODE_DISABLED
+
+	# Show main menu and cursor
+	ui_handler.show_main_menu()
+	ui_handler.show_cursor()
+
+	# Hide game UI elements
+	if ui_handler.ui_logic.has_node("game_ui_elements"):
+		ui_handler.ui_logic.get_node("game_ui_elements").visible = false
+
+	# Hide level handler
+	if $GameScene.has_node("levels_frame/level_lobby/LevelHandler"):
+		$GameScene.get_node("levels_frame/level_lobby/LevelHandler").visible = false
+
+	# Hide and disable credits_button_settings
+	var credits_btn_settings = ui_handler.ui_logic.get_node_or_null("overlay/settings/credits_button_settings")
+	if credits_btn_settings:
+		credits_btn_settings.visible = false
+		credits_btn_settings.disabled = true

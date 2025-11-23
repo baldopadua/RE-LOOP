@@ -75,6 +75,10 @@ func _init_timer_labels() -> void:
 
 # UPDATE TIMER DISPLAYS
 func _update_timer_displays():
+	# Only update if hint overlay is visible to avoid unnecessary processing
+	if not visible:
+		return
+
 	if hint_2_timer:
 		var label = hint_2_timer.get_node("timer_label")
 		if label:
@@ -83,7 +87,7 @@ func _update_timer_displays():
 					label.text = format_time(hint_2_timer.time_left)
 				else:
 					label.text = format_time(hint_2_timer.wait_time)
-			
+
 	# UPDATE SOLUTION TIMER DISPLAY
 	if solution_timer:
 		var label = solution_timer.get_node("timer_label")

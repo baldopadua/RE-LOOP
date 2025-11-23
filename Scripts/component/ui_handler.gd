@@ -5,12 +5,15 @@ extends Control
 @onready var background = $background
 @onready var time_indicator = $ui_logic/game_ui_elements/time/indicator
 @onready var cutscene = $cutscene
-var hint_button = null 
+var hint_button = null
 
 var bg_node: Node = null
 var main_menu: Node = null
 var player: Node = null
 var last_anim_type: String = ""
+
+# Guard flag to prevent multiple simultaneous resets
+var is_resetting: bool = false
 
 var nodes = []
 var all_nodes = _get_all_nodes(self)
@@ -68,12 +71,13 @@ func auto_play_visible_sprites(parent: Node) -> void:
 # SHOW ONLY THE DIRECT CHILDREN WHOSE NAMES ARE IN NODE_NAMES, HIDE OTHERS
 func show_only_nodes(node_names: Array) -> void:
 	for child in get_children():
-		if child.name in node_names:
-			if child.has_method("set_visible"):
-				child.visible = true
-		else:
-			if child.has_method("set_visible"):
-				child.visible = false
+		if child and is_instance_valid(child):
+			if child.name in node_names:
+				if child.has_method("set_visible"):
+					child.visible = true
+			else:
+				if child.has_method("set_visible"):
+					child.visible = false
 
 # SHOW ONLY THE DIRECT CHILDREN OF A GIVEN PARENT WHOSE NAMES ARE IN NODE_NAMES, HIDE OTHERS
 func show_only_children(parent: Node, node_names: Array) -> void:
@@ -105,14 +109,15 @@ func _on_button_hovered(_button):
 
 # SHOW SPECIFIC BACKGROUND CHILD BY NAME
 func show_background(bg_name: String) -> void:
-	if background:
+	if background and is_instance_valid(background):
 		hide_all_children(background)
 		background.visible = true
 		if background.has_node(bg_name):
 			bg_node = background.get_node(bg_name)
-			bg_node.visible = true
-			if bg_node is AnimatedSprite2D and bg_node.has_method("play"):
-				bg_node.play("default")
+			if bg_node and is_instance_valid(bg_node):
+				bg_node.visible = true
+				if bg_node is AnimatedSprite2D and bg_node.has_method("play"):
+					bg_node.play("default")
 
 func hide_background(bg_name: String) -> void:
 	if background and background.has_node(bg_name):
@@ -125,25 +130,27 @@ func show_main_menu():
 		sound_manager.play_music("main_bgm")
 	show_background("game_animated_bg")
 	# USE NEW HIERARCHY FOR MAIN_MENU
-	if ui_logic.has_node("main_menu"):
+	if ui_logic and ui_logic.has_node("main_menu"):
 		main_menu = ui_logic.get_node("main_menu")
-		hide_all_children(main_menu)
-		main_menu.visible = true
-		for child in main_menu.get_children():
-			if child.has_method("set_visible"):
-				child.visible = true
-		auto_play_visible_sprites(main_menu)
+		if main_menu and is_instance_valid(main_menu):
+			hide_all_children(main_menu)
+			main_menu.visible = true
+			for child in main_menu.get_children():
+				if child and is_instance_valid(child) and child.has_method("set_visible"):
+					child.visible = true
+			auto_play_visible_sprites(main_menu)
 	# ONLY SHOW BACKGROUND AND UI_logic, HIDE OTHER DIRECT CHILDREN
 	show_only_nodes(["background", "ui_logic"])
 	# ONLY SHOW MAIN_MENU INSIDE UI_logic, HIDE OTHERS
-	for child in ui_logic.get_children():
-		if child.name == "main_menu":
-			if child.has_method("set_visible"):
-				child.visible = true
-		else:
-			if child.has_method("set_visible"):
-				child.visible = false
-				child.visible = false
+	if ui_logic:
+		for child in ui_logic.get_children():
+			if child and is_instance_valid(child):
+				if child.name == "main_menu":
+					if child.has_method("set_visible"):
+						child.visible = true
+				else:
+					if child.has_method("set_visible"):
+						child.visible = false
 
 func remove_main_menu():
 	if main_menu:
@@ -155,12 +162,14 @@ func remove_main_menu():
 func hide_main_menu():
 	if main_menu:
 		main_menu.visible = false
-		main_menu.visible = false
+	if background:
+		background.visible = false
 
 func unhide_main_menu():
 	if main_menu:
 		main_menu.visible = true
-		main_menu.visible = true
+	if background:
+		background.visible = true
 
 # --------------------------OVERLAY 
 func show_close_button():
@@ -573,3 +582,41 @@ func show_and_enable_hint_and_time():
 		var time_node = game_ui.get_node_or_null("time")
 		if time_node:
 			time_node.visible = true
+
+# ------------------------------------------ GAME STATE MANAGEMENT (called from level_handler after level 12)
+
+func _reset_all_game_state():
+	# Prevent multiple simultaneous resets
+	if is_resetting:
+		print("Already resetting - ignoring duplicate call")
+		return
+
+	is_resetting = true
+	print("=== RESETTING ALL GAME STATE ===")
+
+	# Reset level handler instance completed levels
+	var level_handler = get_tree().get_first_node_in_group("level_handler")
+	if level_handler and "completed_levels" in level_handler:
+		level_handler.completed_levels.clear()
+		print("Cleared instance completed levels")
+
+	# Reset hint progress
+	if ui_logic and ui_logic.has_node("overlay/hint"):
+		var hint = ui_logic.get_node("overlay/hint")
+		if hint and "hint_progress" in hint:
+			hint.hint_progress.clear()
+			print("Cleared hint progress")
+
+	# Reset global variables
+	GlobalVariables.player_moves = 0
+	GlobalVariables.is_looping = false
+	GlobalVariables.player_stopped = false
+	GlobalVariables.is_restarting = false
+	print("Reset global variables")
+
+	# Reset level handler static variables using the static method
+	var LevelHandlerScript = preload("res://Scripts/component_handlers/level_handler.gd")
+	LevelHandlerScript.reset_static_variables()
+
+	is_resetting = false
+	print("All game state reset to initial values")

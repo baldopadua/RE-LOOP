@@ -152,9 +152,8 @@ func _on_body_entered(body) -> void:
 					player.create_tween().tween_property(player.get_node("AnimatedSprite2D"), "position:y", 20, 0.75)
 					player.create_tween().tween_property(player, "modulate:a",  0.0, 0.75).finished.connect(func():
 						ui_handler.show_game_ui_elements()
-						get_parent().level_handler.complete_current_level(get_parent())
+						get_parent().level_handler.complete_current_level(get_parent().get_parent())
 					)
-					
 				)
 			)
 		)
