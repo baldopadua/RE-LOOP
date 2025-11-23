@@ -27,10 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://cg2l84tao5f1l" path="res://Assets/ui/credits_bg.png" id="21_taira"]
 [ext_resource type="Script" uid="uid://qyn6g7sbegxs" path="res://Scripts/ui/hint.gd" id="22_exohx"]
 [ext_resource type="Texture2D" uid="uid://k735rk1tq305" path="res://Assets/ui/close_icon.png" id="22_iwsb4"]
-[ext_resource type="Texture2D" uid="uid://ckok4beotp5ne" path="res://Assets/ui/Brochure.png" id="22_kyj2j"]
 [ext_resource type="Texture2D" uid="uid://d3wmcbdgjnet" path="res://Assets/ui/close_icon_hover.png" id="23_4r7hv"]
 [ext_resource type="Texture2D" uid="uid://b5sf6ryxjr30n" path="res://Assets/Rift-Brochure.png" id="23_neudi"]
 [ext_resource type="Texture2D" uid="uid://cg1sdqx07aidm" path="res://Assets/ui/page_turn.png" id="23_oupgw"]
+[ext_resource type="Texture2D" uid="uid://bipia41ybsj8a" path="res://Assets/Brochure-Front.png" id="23_p6iih"]
 [ext_resource type="Texture2D" uid="uid://y5ujgaokyei8" path="res://Assets/ui/hint/hint_dialog.png" id="23_us0vv"]
 [ext_resource type="Texture2D" uid="uid://he8yyg0rig6x" path="res://Assets/ui/page_turn_hover.png" id="24_neudi"]
 [ext_resource type="Texture2D" uid="uid://cgs10454tk44a" path="res://Assets/ui/hint/lock.png" id="24_y4w7x"]
@@ -680,6 +680,7 @@ grow_vertical = 2
 texture = ExtResource("19_bo42c")
 
 [node name="tutorial_back" type="TextureRect" parent="ui_logic/overlay/tutorial"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -709,7 +710,7 @@ offset_bottom = 322.07056
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.68, 0.68)
-texture = ExtResource("22_kyj2j")
+texture = ExtResource("23_p6iih")
 expand_mode = 1
 stretch_mode = 2
 metadata/_edit_use_anchors_ = true

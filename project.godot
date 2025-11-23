@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Plooy"
 config/description="Break the Loop"
-run/main_scene="uid://dypu05rngiwmu"
+run/main_scene="uid://ce2je8elhchuj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/image="uid://d4dvjse2gw7kq"
 config/icon="uid://dqxv8sy5omreg"
