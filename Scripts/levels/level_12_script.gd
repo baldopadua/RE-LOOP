@@ -152,10 +152,10 @@ func _ready():
 	GlobalVariables.is_looping = false
 	
 #	Enter Phases
-	enter_phase_1()
+	#enter_phase_1()
 	#enter_phase_2()
 	#enter_phase_3()
-	#finish_it()
+	finish_it()
 	
 	infinite_rotation()
 
@@ -213,6 +213,7 @@ func _on_level_handler_skip_level_requested(level_number: int) -> void:
 			player.set_process_input(false)
 
 		# Complete the level
+		
 		level_handler.complete_current_level(get_parent())
 
 func initialize_locations_and_reparenting():
@@ -803,8 +804,8 @@ func _on_dialogue_ended(_resource: DialogueResource):
 		flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		await get_tree().create_timer(3.0).timeout
 		emit_signal("level_12_completed")
+		tween_opacity(flash, 0.0, 1.0)
 		level_handler.complete_current_level(get_parent())
-		
 	)
 
 func infinite_rotation() -> void:
@@ -898,7 +899,6 @@ func create_countdown_label(time_left: int) -> void:
 	tween.tween_property(label, "modulate:a", 0.0, 0.3).set_delay(0.3)
 	tween.finished.connect(func(): label.queue_free())
 
-
 func _on_player_scene_player_finished_moving() -> void:	
 	# Check rotation alignment FIRST
 	var plyr_clock_pos = int(abs(round(player.rotation_degrees))) % 360
@@ -926,7 +926,6 @@ func _on_player_scene_player_finished_moving() -> void:
 		
 #		Reset countdown data back to 6
 		countdown_data = {"time": 6}
-
 
 func _on_count_down_timeout() -> void:		
 	# Execute your per-second function here

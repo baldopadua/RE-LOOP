@@ -1,6 +1,6 @@
 extends "res://Scripts/player_script.gd"
 
-var phase = 1
+var phase = 3
 
 @onready var monk = $"../monk"
 

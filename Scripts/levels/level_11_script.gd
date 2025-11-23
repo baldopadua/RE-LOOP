@@ -55,7 +55,10 @@ func _ready():
 
 	player.rotation = deg_to_rad(330.0)
 	GlobalVariables.is_looping = false
-	var bg = get_parent().get_parent().get_node("CanvasLayer").get_node("game_scene_bg")
+#	
+
+	print("PARENT HATDOG: ", get_parent().get_parent().get_parent())
+	var bg = get_parent().get_parent().get_parent().get_node("CanvasLayer").get_node("game_scene_bg")
 	
 	# disable movement
 	player.set_process_input(false)
@@ -102,7 +105,6 @@ func _ready():
 	# Dialogue here
 	DialogueManager.show_dialogue_balloon_scene("res://dialogues/made/balloon.tscn", load("res://dialogues/initial_meeting.dialogue"), "", [self])
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
-	
 
 func _on_dialogue_ended(_resource: DialogueResource):
 	# Refocus original position
