@@ -71,6 +71,7 @@ func _on_add_wind_state(direction: Variant) -> void:
 		elif current_state == 6:
 			animated_sprite.play("wind_6")
 			is_tornado = true
+			GlobalVariables.is_looping = false
 			#BREAK LOOP
 			if sound_manager:
 				# Play all finish level SFX at once
@@ -96,16 +97,19 @@ func _on_add_wind_state(direction: Variant) -> void:
 	print("WIND CURRENT_STATE: ", current_state)
 
 func _on_body_entered(body) -> void:
+	handle_body_entered(body)
 	player_in_area = true
 	player_body = body
 	if is_tornado and not is_playing:
 		_start_tornado_sequence(body)
 
 func _on_body_exited(body) -> void:
+	handle_body_exited(body)
 	if body == player_body:
 		player_in_area = false
 
 func _start_tornado_sequence(body) -> void:
+	player.set_process_input(false)
 	GlobalVariables.player_stopped = true
 	ui_handler.hide_game_ui_elements()
 	player_body = body

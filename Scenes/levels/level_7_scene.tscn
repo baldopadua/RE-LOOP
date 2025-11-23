@@ -491,18 +491,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltkbt"]
 size = Vector2(41.042953, 57.50992)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ifcmi"]
-atlas = ExtResource("22_1h23k")
-region = Rect2(0, 0, 49, 59)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0dhcl"]
-atlas = ExtResource("22_1h23k")
-region = Rect2(49, 0, 49, 59)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r7iqr"]
-atlas = ExtResource("22_1h23k")
-region = Rect2(98, 0, 49, 59)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_6tg33"]
 atlas = ExtResource("22_1h23k")
 region = Rect2(147, 0, 49, 59)
@@ -519,48 +507,117 @@ region = Rect2(245, 0, 49, 59)
 atlas = ExtResource("22_1h23k")
 region = Rect2(294, 0, 49, 59)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbni0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1wgx"]
 atlas = ExtResource("22_1h23k")
 region = Rect2(343, 0, 49, 59)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2u454"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdkpo"]
 atlas = ExtResource("22_1h23k")
 region = Rect2(392, 0, 49, 59)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qcu35"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbni0"]
 atlas = ExtResource("22_1h23k")
 region = Rect2(441, 0, 49, 59)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1wgx"]
-atlas = ExtResource("22_1h23k")
-region = Rect2(637, 0, 49, 59)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fdkpo"]
-atlas = ExtResource("22_1h23k")
-region = Rect2(686, 0, 49, 59)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gx022"]
-atlas = ExtResource("22_1h23k")
-region = Rect2(735, 0, 49, 59)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3nid"]
-atlas = ExtResource("22_1h23k")
-region = Rect2(784, 0, 49, 59)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7qjvo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u454"]
 atlas = ExtResource("22_1h23k")
 region = Rect2(490, 0, 49, 59)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5l0tr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcu35"]
 atlas = ExtResource("22_1h23k")
 region = Rect2(539, 0, 49, 59)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4xlex"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx022"]
 atlas = ExtResource("22_1h23k")
 region = Rect2(588, 0, 49, 59)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3nid"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(637, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qjvo"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(686, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l0tr"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(735, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xlex"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(784, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifcmi"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(0, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dhcl"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(49, 0, 49, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7iqr"]
+atlas = ExtResource("22_1h23k")
+region = Rect2(98, 0, 49, 59)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7dou0"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tg33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6wxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhqkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odp1g")
+}],
+"loop": false,
+"name": &"flower_almost_bloom",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1wgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdkpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbni0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u454")
+}],
+"loop": false,
+"name": &"flower_blooming",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcu35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx022")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3nid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qjvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l0tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xlex")
+}],
+"loop": false,
+"name": &"flower_dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ifcmi")
@@ -573,60 +630,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6tg33")
-}],
-"loop": false,
-"name": &"flower_almost_bloom",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e6wxl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dhqkk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_odp1g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kbni0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2u454")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qcu35")
-}],
-"loop": false,
-"name": &"flower_blooming",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u1wgx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdkpo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gx022")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p3nid")
-}],
-"loop": false,
-"name": &"flower_dead",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7qjvo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5l0tr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4xlex")
 }],
 "loop": false,
 "name": &"flower_no_bloom",
@@ -931,9 +934,7 @@ texture_filter = 1
 position = Vector2(3.4864073, -60.438778)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_7dou0")
-animation = &"flower_almost_bloom"
-frame = 3
-frame_progress = 1.0
+animation = &"flower_blooming"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flower"]
 position = Vector2(2.1382751, -19.679413)

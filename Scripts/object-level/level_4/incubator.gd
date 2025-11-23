@@ -84,4 +84,9 @@ func _on_item_put(obj) -> void:
 				sound_manager.play_sfx("incubator_wrong")
 		symbol_anim_sprite.play("wrong")
 		await symbol_anim_sprite.animation_finished
-		symbol_anim_sprite.play("dino")
+		if material_count == 0 and obj.object_name != "chicken":
+			symbol_anim_sprite.play("feather")
+		elif material_count == 1 and obj.object_name != "lizard":
+			symbol_anim_sprite.play("lizard tail")
+		elif material_count == 2 and obj.object_name != "bone":
+			symbol_anim_sprite.play("bone")

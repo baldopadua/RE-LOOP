@@ -33,6 +33,7 @@ func _on_body_entered(body):
 		return
 	handle_body_entered(body)
 	
+	player.set_process_input(false)
 	# STORE THE PLAYER REFERENCE FOR CAM ZOOM
 	ui_handler.hide_game_ui_elements()
 	player_body = body
@@ -43,6 +44,7 @@ func _on_body_entered(body):
 
 	stop_player()
 	sprite.play("tail_whip")
+	await get_tree().create_timer(0.7).timeout
 	anim_player.play("tail_whipped")
 	await anim_player.animation_finished
 	area_handler.show_loop_break(4)
