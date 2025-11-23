@@ -116,7 +116,10 @@ func _on_player_finished_moving() -> void:
 func _on_climbable_body_entered(body: Node) -> void:
 	if body == self:
 		set_process_input(false)
-		print("Playing ClimbingAnimation")
+		get_node("Camera2D").emit_signal("reveal_bars")
+		get_node("Camera2D").emit_signal("pan_to_pos", animated_sprite.global_position)
+		get_node("Camera2D").emit_signal("cam_zoom", 1.5)
+		print("Playing Climbing Animation")
 		animated_sprite.play("climb") # Play climb on AnimatedSprite2D
 		var level_node = get_parent()
 		if level_node.has_method("play_climb_animation"):
@@ -125,7 +128,11 @@ func _on_climbable_body_entered(body: Node) -> void:
 # Add this function to be called from level script after climb animation finishes
 func play_jump_animation():
 	set_process_input(false)
+	
 	print("Playing JumpAnimation")
 	animated_sprite.play("jump") # Play jump on AnimatedSprite2D
+	animated_sprite.animation_finished.connect(func():
+		animated_sprite.queue_free()	
+	)
 	position = Vector2(-1, -200)
 	modulate = Color(1, 1, 1, 1)

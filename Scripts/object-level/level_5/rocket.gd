@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 		text.text = str(abs(round(int(timer.time_left))))
 
 func rocket_start():
-	await get_tree().create_timer(3.0).timeout
+	
 	ready_for_entering = true
 	timer.start(10.0)
 	
@@ -44,7 +44,8 @@ func rocket_start():
 		rocket_started = false
 		animationplayer.play("rocket_animation")
 		
-		await get_tree().create_timer(4.0).timeout
+		await get_tree().create_timer(3.2).timeout
+		animated_sprite.play("rocket_send_off")
 		player.get_node("Camera2D").emit_signal("pan_to_pos", rocket_exit.global_position)
 		
 		await get_tree().create_timer(1.0).timeout
@@ -107,7 +108,7 @@ func set_rocket():
 		science_project.visible = false
 		GlobalVariables.player_stopped = false
 		
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(4.0).timeout
 		
 		ui_handler.show_game_ui_elements()
 		player.get_node("Camera2D").emit_signal("pan_to_orig_pos")

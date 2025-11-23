@@ -38,9 +38,6 @@ func _ready():
 	
 	player.rotation = deg_to_rad(180.0)
 	
-	# Hide player at start
-	player.modulate.a = 0.0
-	
 	object_initialize()
 	
 	GlobalVariables.player_stopped = true
@@ -85,10 +82,7 @@ func _ready():
 	flash.create_tween().tween_property(flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).finished.connect(func(): canvas_layer.remove_child(flash))
 	
 	await get_tree().create_timer(2.0).timeout
-	
-	# Restore player visibility before enabling movement
-	player.modulate.a = 1.0
-	
+
 	GlobalVariables.player_stopped = false
 	player.set_process_input(true)
 	
