@@ -8,6 +8,7 @@ extends Node2D
 var tween_rotate: Tween
 var tween_scale: Tween
 var objects: Array = []
+var is_finishing_it = false
 
 signal level_12_completed 
 
@@ -152,10 +153,10 @@ func _ready():
 	GlobalVariables.is_looping = false
 	
 #	Enter Phases
-	#enter_phase_1()
+	enter_phase_1()
 	#enter_phase_2()
 	#enter_phase_3()
-	finish_it()
+	#finish_it()
 	
 	infinite_rotation()
 
@@ -722,6 +723,7 @@ func enter_phase_3():
 	player.set_process_input(true)
 	
 func finish_it():	
+	is_finishing_it = true
 	tween_opacity(player, 0.0, 2.0)
 	tween_opacity(monk, 0.0, 2.0)	
 	
@@ -751,13 +753,15 @@ func finish_it():
 		
 		monk.get_node("AnimatedSprite2D").position.y = 0.0
 		monk.get_node("CollisionShape2D").position.y = 0.0
+		
+		player.position = Vector2(0,0)
+		monk.position = Vector2(0,0)
 	)
 	await get_tree().create_timer(3.0).timeout
 	
 	# Show keystones and statues AND show keystones and statues
 	
 	player.get_node("Camera2D").emit_signal("cam_zoom", 1.5)
-	
 	
 	for area_handlerr in area_handlers_3:
 		area_handlerr.hide()
@@ -773,7 +777,6 @@ func finish_it():
 	
 #	Plooy also gets separated to the left circle
 	player.create_tween().tween_property(player, "position", Vector2(-20, 0), 2.0)
-	#player.get_node("AnimatedSprite2D").flip_h = true
 	player.get_node("AnimatedSprite2D").rotation_degrees = 0.0
 	player.rotation_degrees = 0.0
 	player.get_node("AnimatedSprite2D").flip_h = true
@@ -804,7 +807,6 @@ func _on_dialogue_ended(_resource: DialogueResource):
 		flash.create_tween().tween_property(flash, "color:a", 1.0, 3.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		await get_tree().create_timer(3.0).timeout
 		emit_signal("level_12_completed")
-		tween_opacity(flash, 0.0, 1.0)
 		level_handler.complete_current_level(get_parent())
 	)
 
@@ -824,13 +826,6 @@ func trigger_random_event():
 	print("Monk Created") 
 
 	var player_cur_pos = player.position
-	if player.phase == 1:
-		player_cur_pos = area_handlers_1.pick_random().position
-	elif player.phase == 2:
-		player_cur_pos = area_handlers_2.pick_random().position
-	elif player.phase == 3:
-		player_cur_pos = area_handlers_3.pick_random().position
-		
 	var rand_rotation_in_circle = rotations_possible.pick_random()
 
 	# Duplicate monk
@@ -933,7 +928,7 @@ func _on_count_down_timeout() -> void:
 
 	countdown_data.time -= 1
 
-	if countdown_data.time <= 0:
+	if countdown_data.time <= 0 and not is_finishing_it:
 		# Time's up! Play failure sound
 		if sound_manager and sound_manager.sfx.has("time_up"):
 			sound_manager.play_sfx("time_up")

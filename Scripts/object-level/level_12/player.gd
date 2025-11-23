@@ -1,7 +1,5 @@
 extends "res://Scripts/player_script.gd"
 
-var phase = 3
-
 @onready var monk = $"../monk"
 
 # Area Handlers
@@ -45,6 +43,8 @@ var phase = 3
 @onready var carrot = $"../carrot"
 @onready var cat = $"../cat"
 @onready var lightbulb = $"../lightbulb"
+
+var phase = 1
 
 func _on_player_finished_moving() -> void:
 	#var normalized_rotation = int(round(rotation_degrees)) % 360

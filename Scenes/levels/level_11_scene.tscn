@@ -23,10 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://dlc2xgxew4uv6" path="res://Assets/levels/level_11/seed.png" id="22_8ptkx"]
 [ext_resource type="Script" uid="uid://lbqdlud888h" path="res://Scripts/object-level/level_11/seed.gd" id="22_pplem"]
 [ext_resource type="Texture2D" uid="uid://x5wmuwrko0lv" path="res://Assets/levels/level_11/skull.png" id="23_ix161"]
-[ext_resource type="Texture2D" uid="uid://cvr6us7jjvyo4" path="res://Assets/levels/level_11/rock.png" id="24_rd4vr"]
 [ext_resource type="Texture2D" uid="uid://dw2c428cyugqr" path="res://Assets/levels/level_11/egg.png" id="25_00ofh"]
 [ext_resource type="Script" uid="uid://cx5mcfu0pbmtu" path="res://Scripts/object-level/level_11/skull.gd" id="25_5v6xn"]
 [ext_resource type="Texture2D" uid="uid://xhmphq7kkaxe" path="res://Assets/levels/level_11/soda.png" id="26_fim1n"]
+[ext_resource type="Texture2D" uid="uid://bibehf1sqmbjn" path="res://Assets/levels/level_3/rock.png" id="27_0slke"]
 [ext_resource type="Script" uid="uid://chewd1epm513" path="res://Scripts/object-level/level_11/rock.gd" id="27_6p7uy"]
 [ext_resource type="Texture2D" uid="uid://bf28ig28k8qbb" path="res://Assets/levels/level_11/apple.png" id="27_w76e2"]
 [ext_resource type="Texture2D" uid="uid://d2nxdxa8q4l32" path="res://Assets/levels/level_11/butterfly.png" id="28_ijq5r"]
@@ -1298,7 +1298,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("24_rd4vr")
+"texture": ExtResource("27_0slke")
 }],
 "loop": true,
 "name": &"default",
@@ -1703,12 +1703,10 @@ object_name = "rock"
 is_pickupable = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rock"]
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_qltul")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="rock"]
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_qltul")
 metadata/_edit_lock_ = true
 

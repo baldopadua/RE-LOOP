@@ -51,19 +51,28 @@ func _on_player_finished_moving() -> void:
 				# position.x = 0.0 # <-- REMOVE or move after animation finished
 				in_1.is_pickupable = false
 				in_2.is_pickupable = false
+				
 				seed1.is_pickupable = false
 				seed2.is_pickupable = false
-				in_2.visible = false
-				switch_circle.visible = false
+				
+				in_2.hide()
+				seed2.hide()
+				switch_circle.hide()
+				
 				in_1.position.x = 0.0
+				
 				seed1.position.x = 0.0
 				seed2.position.x = 0.0
+				
 				in_1.animated_sprite.play("default")
 				in_1.animated_sprite2.play("default")
+				
 				seed1.animated_sprite.play("tree")
 				seed1.animated_sprite2.play("tree")
+				
 				in_1.current_state = 2
 				seed1.current_state = 4
+				
 				matched = true
 				# Enable AnimationPlayer after match
 				get_parent().enable_animation_player()

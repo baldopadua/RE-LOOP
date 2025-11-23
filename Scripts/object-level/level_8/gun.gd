@@ -81,24 +81,24 @@ func _on_start_race() -> void:
 							cam.emit_signal("pan_to_pos", shake_hand_marker.global_position)
 							cam.emit_signal("cam_zoom", 3.0)
 							hide_hare_and_turtle()
-                            
+							
 							await get_tree().create_timer(2.0).timeout
-                            
+							
 							congrats_anim.play("default")
-                        
+						
 							congrats_anim.animation_finished.connect(func():
 								if sound_manager:
 									if sound_manager.sfx.has("sword"):
 										sound_manager.play_sfx("sword")
 									if sound_manager.has_method("play_finish_level_sfx"):
 										sound_manager.play_finish_level_sfx()
-                                
+								
 								area_handler.show_loop_break(8)
 								GlobalVariables.is_looping = false
 								GlobalVariables.player_stopped = true
-                                
+								
 								await get_tree().create_timer(2.0).timeout
-                                
+								
 								var bhole_tween : Tween = create_tween()
 								bhole_tween.tween_method(
 									func(value):
@@ -107,7 +107,7 @@ func _on_start_race() -> void:
 										-1.0,
 										3.0
 								).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-                                
+								
 								bhole_tween.finished.connect(func():
 									bhole_tween.kill()
 									var e_bhole_tween: Tween = create_tween()
@@ -118,7 +118,7 @@ func _on_start_race() -> void:
 											0.0,
 											0.1
 									).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-                                    
+									
 									e_bhole_tween.finished.connect(func():
 										e_bhole_tween.kill()
 										#player.get_node("Camera2D").emit_signal("hide_bars")

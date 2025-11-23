@@ -26,12 +26,12 @@
 [ext_resource type="Texture2D" uid="uid://dlc2xgxew4uv6" path="res://Assets/levels/level_11/seed.png" id="21_xj3l4"]
 [ext_resource type="Texture2D" uid="uid://x5wmuwrko0lv" path="res://Assets/levels/level_11/skull.png" id="23_di07y"]
 [ext_resource type="Script" uid="uid://dbpagmg7xq4gd" path="res://Scripts/object-level/level_12/skull.gd" id="23_yy3na"]
-[ext_resource type="Texture2D" uid="uid://cvr6us7jjvyo4" path="res://Assets/levels/level_11/rock.png" id="25_a55gj"]
 [ext_resource type="Script" uid="uid://clyfdhetb6cxd" path="res://Scripts/object-level/level_12/rock.gd" id="25_pg2al"]
 [ext_resource type="Texture2D" uid="uid://dw2c428cyugqr" path="res://Assets/levels/level_11/egg.png" id="27_bkswr"]
 [ext_resource type="Script" uid="uid://7pjck6rii462" path="res://Scripts/object-level/level_12/egg.gd" id="27_p42lt"]
 [ext_resource type="Texture2D" uid="uid://xhmphq7kkaxe" path="res://Assets/levels/level_11/soda.png" id="29_4ek57"]
 [ext_resource type="Script" uid="uid://ckdchopuyabi4" path="res://Scripts/object-level/level_12/soda.gd" id="29_wan2m"]
+[ext_resource type="Texture2D" uid="uid://bibehf1sqmbjn" path="res://Assets/levels/level_3/rock.png" id="29_yy3na"]
 [ext_resource type="Script" uid="uid://w4rhjjgdvf03" path="res://Scripts/object-level/level_12/apple.gd" id="31_oam8e"]
 [ext_resource type="Texture2D" uid="uid://bf28ig28k8qbb" path="res://Assets/levels/level_11/apple.png" id="31_ubdeg"]
 [ext_resource type="Script" uid="uid://bj6ko286vfu7e" path="res://Scripts/object-level/level_12/butterfly.gd" id="33_51dsj"]
@@ -1297,7 +1297,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("25_a55gj")
+"texture": ExtResource("29_yy3na")
 }],
 "loop": true,
 "name": &"default",
@@ -2605,12 +2605,10 @@ object_name = "rock"
 is_pickupable = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rock"]
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_bbmte")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="rock"]
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_bbmte")
 metadata/_edit_lock_ = true
 

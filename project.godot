@@ -40,6 +40,10 @@ window/vsync/vsync_mode=0
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
+[gui]
+
+theme/custom_font="uid://c6diwgmw8c62a"
+
 [input]
 
 move_right={
