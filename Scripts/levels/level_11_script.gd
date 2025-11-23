@@ -58,7 +58,9 @@ func _ready():
 #	
 
 	print("PARENT HATDOG: ", get_parent().get_parent().get_parent())
-	var bg = get_parent().get_parent().get_parent().get_node("CanvasLayer").get_node("game_scene_bg")
+	print("LESS PARENT HATDOG: ", get_parent().get_parent())
+	print("LESSER PARENT HATDOG: ", get_parent())
+	var bg = get_tree().root.get_node("MainScene/GameScene/CanvasLayer/game_scene_bg")
 	
 	# disable movement
 	player.set_process_input(false)
