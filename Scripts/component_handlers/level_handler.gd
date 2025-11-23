@@ -222,7 +222,7 @@ func complete_current_level(levels_frame):
 			# --- LEVEL 12 SPECIAL LOGIC: show comic cutscene then return to main menu ---
 			if current_level_number == 12 and ui_handler:
 				# Show cutscene, when continue is clicked, reset game and return to main menu
-				ui_handler.show_level_cutscene(12, func(): _complete_level_12_and_return_to_main_menu())
+				ui_handler.show_level_cutscene(12, func(): await return_to_lobby(levels_frame))
 				return
 			await return_to_lobby(levels_frame)
 			return
