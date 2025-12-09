@@ -52,9 +52,6 @@ These works are used with correct attribution:
   **License:** CC-BY 3.0  
   https://opengameart.org/content/collaboration-sound-effects-machine-001
 
-Some transformation, mechanical, or interface sounds may originate from  
-similar CC-BY sources and are used with proper attribution to their authors.
-
 ---
 
 # 4. YouTube-Sourced Audio
@@ -67,9 +64,6 @@ All YouTube assets were taken only from videos explicitly labeled as:
 - **Free to Use**,  
 - **Free SFX**,  
 - or **No Copyright SFX**.
-
-Due to Game Jam time constraints, exact video links may not all be listed,  
-but all selected audio came from legal reuse-friendly uploads.
 
 ---
 
@@ -97,8 +91,7 @@ No restricted or copyrighted audio has been used.
 ---
 
 ## Additional Documentation
-A complete list of all audio assets, including source links, license types, 
-and usage notes, is maintained here:
+A complete list of all audio assets, including source links, and license types is maintained here:
 
 https://docs.google.com/document/d/1_HKOOvZ8ifnFvdgimVm183Q86W0OdYQPpP9X1aBvaMM/edit?usp=sharing
 
